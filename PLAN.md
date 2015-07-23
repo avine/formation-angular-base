@@ -4,7 +4,6 @@ Sous-domaine: Angular
 
 # Angular 2
 
-## Sous-titre
 Durée: 3j
 
 ## Présentation
