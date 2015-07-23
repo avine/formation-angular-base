@@ -1,20 +1,35 @@
-Domaine: [Java, DevOps, Agilité, BigData, Web & Mobilité, NoSQL, Craftsmanship]
+Domaine: Web & Mobilité
 
-Sous-domaine: ?
+Sous-domaine: Angular
 
-# Titre de la formation
+# Angular 2
+
 ## Sous-titre
-Durée: ?j
+Durée: 3j
+
 ## Présentation
-?
+Angular 2 est la toute nouvelle version du framework créé par Google. Cette nouvelle version amène de nombreuses fonctionnalités, permettant de développer des applications web plus rapidement et de meilleure qualité. Cette formation permettra d'appréhender et d'utiliser tous les nouveaux concepts novateurs introduits par l'équipe en charge du projet. 
+
 ## Objectifs
-?
+- Découvrir les fonctionnalités du framework Angular 2
+- Savoir développer une nouvelle application Web
+- Savoir concevoir une application Angular2 avec JavaScript et TypeScript
+- Connaître les mécanismes avancés du framework
+
+
 ## Pédagogie
-??% Théorie, ??% Pratique
+30% Théorie, 70% Pratique
+
 ## Public
-?
+Développeur web
+
 ## Pré-requis
-?
+- Maitrise du javascript
+- Connaissance d'AngularJS
+  - Maitrise des notions de controller, directive, service / factory
+  - Maitrise des formulaires et de leur validation
+  - Architectures REST
+
 ## Programme
 1 Rappel
   * Angular 1
@@ -37,6 +52,7 @@ Durée: ?j
   * Evènements
   * Bindings
   * Import de directives 
+  * Les Web Components
 
 6 Composants  Angular2
   * ngFor
@@ -46,14 +62,18 @@ Durée: ?j
 
 7 Injection de Dépendances
 
-8 Router  
+8 Communication avec une API REST
+
+9 Router  
   * routerInjectables
   * l'annotation @RouteConfig
   * Directive RouterOutlet
   * Directive RouterLink
 
-9 Annotations et Décorateurs
+10 Annotations et Décorateurs
 
-10 Support d'EcmaScript 5
+11 Server-side rendering
 
-11 Bonnes pratiques pour une migration heureuse
+12 Support d'EcmaScript 5
+
+13 Bonnes pratiques pour une migration heureuse
