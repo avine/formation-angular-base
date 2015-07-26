@@ -23,26 +23,20 @@ Angular 2 est la toute nouvelle version du framework créé par Google. Cette no
 Développeur web
 
 ## Pré-requis
-- Maitrise du javascript
-- Connaissance d'AngularJS
-  - Maitrise des notions de controller, directive, service / factory
-  - Maitrise des formulaires et de leur validation
-  - Architectures REST
+- Maitrise du JavaScript
+- Maitrise du TypeScript
+- Maitrise de l'environnement NodeJS : Grunt, Gulp, NPM, Bower, Yeoman et les transpilers.
 
 ## Programme
-1 Rappel
-  * Angular 1
-  * Module
-  * Classes
+1 Rappels
+  * TypeScript
+  * Outillage
 
 2 Présentation
 
 3 Démarrer une application Angular 2
 
-4 Outillage 
-  * Gestion Typescript
-  * Gestion ES6
-  * Tests
+4 Tests
 
 5 Composants
   * l'annotation @Component
@@ -53,7 +47,7 @@ Développeur web
   * Import de directives 
   * Les Web Components
 
-6 Composants  Angular2
+6 Composants Angular2
   * ngFor
   * ngIf
   * ngSwitch
