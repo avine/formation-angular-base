@@ -23,9 +23,8 @@ Angular 2 est la toute nouvelle version du framework créé par Google. Cette no
 Développeur web
 
 ## Pré-requis
-- Maitrise du JavaScript
-- Maitrise du TypeScript
-- Maitrise de l'environnement NodeJS : Grunt, Gulp, NPM, Bower, Yeoman et les transpilers.
+- Connaissance de JavaScript/TypeScript
+- Connaissance de l'environnement NodeJS : Grunt, Gulp, NPM, Bower, Yeoman et les transpilers.
 
 ## Programme
 1 Rappels
