@@ -21,7 +21,7 @@ Le code ci-dessous utilise la coloration syntaxique de Java.
 
 ```java
 public class Slide {
-  
+
   private String name = "slide";
 
   public byte[] toPdf(){
@@ -34,8 +34,32 @@ Lorsqu'il est entouré de texte, l'exemple est encadré.
 
 
 
-## Code pleine page
+## Syntaxes disponibles
 
+La liste des syntaxes disponibles est dans la [doc HighlightJS](http://highlightjs.readthedocs.org/en/latest/css-classes-reference.html): `java`, `javascript`, `json`, `html`, `css`, `xml` pour les plus courantes
+
+Si on ne précise pas, HighlightJS essaye de détecter la syntaxe.
+Pour les cas, où il ne s'agit pas d'un langage (stacktrace, sortie console, commandes shell, fichiers de config...), on peut désactiver la coloration syntaxique en utilisant :
+
+- `text` :
+
+```text
+$ echo "Formation Zenika"
+Formation Zenika
+{"du":"json"} sans mise en forme
+```
+
+- ou `no-highlight`
+
+```no-highlight
+$ echo "Formation Zenika"
+Formation Zenika
+{"du":"json"} sans mise en forme
+```
+
+
+
+## Code pleine page
 
 ```json
 {
@@ -57,7 +81,7 @@ Lorsqu'il est entouré de texte, l'exemple est encadré.
 
   Exemple : \`echo "hello world"\` produit `echo "hello world"`
 
-- Pour afficher des backquote dans le code, double les backquotes entourantes. 
+- Pour afficher des backquote dans le code, double les backquotes entourantes.
 
   Exemple : \`\`echo \`pwd\` \`\` produit ``echo `pwd` ``
 

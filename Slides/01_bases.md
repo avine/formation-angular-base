@@ -19,7 +19,7 @@
 
 Dans un paragraphe, les retours chariots simples
 ne sont pas pris en compte. Pour commencer un nouveau paragraphe, il faut
-les séparer par une ligne vide (2 retours chariots). 
+les séparer par une ligne vide (2 retours chariots).
 
 Nouveau paragraphe.
 
@@ -37,7 +37,7 @@ Pour terminer la slide, insérer 3 lignes vides.
 - Commencer un paragraphe par **'\>'** pour faire une citation
 
 > Premier paragraphe de la citation
-> 
+>
 > Second paragraphe
 
 
@@ -45,11 +45,10 @@ Pour terminer la slide, insérer 3 lignes vides.
 ## Caractères spéciaux
 
 - Selon l'emplacement, il peut être nécessaire d'échapper les caractères suivants avec un **'\\'** :
-  - Les symboles : \\ \` \*  \_ 
-  - Les parenthèses : \{ \} \[ \] \( \) 
+  - Les symboles : \\ \` \*  \_
+  - Les parenthèses : \{ \} \[ \] \( \)
   - Les ponctuations : \#  \. \!
-  - Les signes : \+ \- 
-
+  - Les signes : \+ \-
 
 
 
@@ -80,12 +79,28 @@ Pour terminer la slide, insérer 3 lignes vides.
       - Item 1.1.1
   - Item 1.2
 - Item 2 *avec du texte*
-  
+
   1er paragraphe lié à l'item 2.
 
   2nd paragraphe lié à l'item 2.
-  
+
 - Item 3
+
+
+
+## CSS Personnalisé
+
+- Utiliser la feuille CSS spécique à chaque formation [ressources/custom.css](ressources/custom.css)
+
+<!-- .element: class="blue" -->
+En bleu
+
+```
+<!-- .element: class="blue" -->
+En bleu
+```
+<!-- .element class="alert alert-warning"-->
+**A utiliser avec parcimonie!** Essentiellement, pour le multi-colonne, le positionnement des illustrations...
 
 
 
@@ -113,7 +128,7 @@ Commentaire pour le formateur avec une liste d'élements.
 
 ## Pages spéciales
 
-Pour insérer une page spéciale, ajouter dans un slide avec ou sans titre, le commentaire html suivant avec la classe css souhaitée : 
+Pour insérer une page spéciale, ajouter dans un slide avec ou sans titre, le commentaire html suivant avec la classe css souhaitée :
 
 ```html
 <!-- .slide: class="page-xxx" -->

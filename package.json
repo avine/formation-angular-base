@@ -1,15 +1,22 @@
 {
-  "name": "zenika-formation-modele",
+  "name": "zenika-formation-angular2",
+  "description": "Formation Angular 2",
   "version": "0.0.1",
-  "description": "Model to copy to write or migrate trainings",
   "author": "Zenika",
+  "homepage": "https://www.zenika.com/Formation/notre-catalogue-formation.html",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Zenika/Formation--Modele"
+    "url": "https://github.com/Zenika/formation-angular2"
   },
   "private": true,
   "dependencies": {
     "grunt": "^0.4.5",
-    "zenika-formation-framework": "git+https://github.com/Zenika/Formation--Framework.git#tags/0.3.0"
+    "gulp": "^3.9.0",
+    "zenika-formation-framework": "git+https://github.com/Zenika/Formation--Framework.git#tags/0.4.5"
+  },
+  "config": {
+    "deploy": {
+      "name": "zen-formation-angular2"
+    }
   }
 }

@@ -7,9 +7,11 @@ Sous-domaine: Angular
 Durée: 3j
 
 ## Présentation
-Angular 2 est la toute nouvelle version du framework créé par Google. Cette nouvelle version amène de nombreuses fonctionnalités, permettant de développer des applications web plus rapidement et de meilleure qualité. Cette formation permettra d'appréhender et d'utiliser tous les nouveaux concepts novateurs introduits par l'équipe en charge du projet. 
+
+Angular 2 est la toute nouvelle version du framework créé par Google. Cette nouvelle version amène de nombreuses fonctionnalités, permettant de développer des applications web plus rapidement et de meilleure qualité. Cette formation permettra d'appréhender et d'utiliser tous les nouveaux concepts novateurs introduits par l'équipe en charge du projet.
 
 ## Objectifs
+
 - Découvrir les fonctionnalités du framework Angular 2
 - Savoir développer une nouvelle application Web
 - Savoir concevoir une application Angular2 avec JavaScript et TypeScript
@@ -17,55 +19,59 @@ Angular 2 est la toute nouvelle version du framework créé par Google. Cette no
 
 
 ## Pédagogie
+
 30% Théorie, 70% Pratique
 
 ## Public
+
 Développeur web
 
 ## Pré-requis
+
 - Connaissance de JavaScript et TypeScript
 - Connaissance de l'environnement NodeJS : Grunt, Gulp, NPM, Bower, Yeoman et les transpilers.
 
 ## Programme
-1 Rappels
-  * TypeScript
-  * Outillage
 
-2 Présentation
+1. Rappels
+  - TypeScript
+  - Outillage
 
-3 Démarrer une application Angular 2
+2. Présentation
 
-4 Tests
+3. Démarrer une application Angular 2
 
-5 Composants
-  * l'annotation @Component
-  * l'annotation @View
-  * Propriétés
-  * Evènements
-  * Bindings
-  * Import de directives 
-  * Les Web Components
+4. Tests
 
-6 Composants Angular2
-  * ngFor
-  * ngIf
-  * ngSwitch
-  * ngNonBindable
+5. Composants
+  - l'annotation @Component
+  - l'annotation @View
+  - Propriétés
+  - Evènements
+  - Bindings
+  - Import de directives
+  - Les Web Components
 
-7 Injection de Dépendances
+6. Composants Angular2
+  - ngFor
+  - ngIf
+  - ngSwitch
+  - ngNonBindable
 
-8 Communication avec une API REST
+7. Injection de Dépendances
 
-9 Router  
-  * routerInjectables
-  * l'annotation @RouteConfig
-  * Directive RouterOutlet
-  * Directive RouterLink
+8. Communication avec une API REST
 
-10 Annotations et Décorateurs
+9. Router
+  - routerInjectables
+  - l'annotation @RouteConfig
+  - Directive RouterOutlet
+  - Directive RouterLink
 
-11 Server-side rendering
+10. Annotations et Décorateurs
 
-12 Support d'EcmaScript 5
+11. Server-side rendering
 
-13 Bonnes pratiques pour une migration heureuse
+12. Support d'EcmaScript 5
+
+13. Bonnes pratiques pour une migration heureuse

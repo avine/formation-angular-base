@@ -17,6 +17,8 @@
 
 ## Logistique
 
-* Horaires
-* Déjeuner & pauses
-* Autres questions ?
+- Horaires
+- Déjeuner & pauses
+- Autres questions ?
+
+<!-- .slide: class="page-questions" -->
