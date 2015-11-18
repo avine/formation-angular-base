@@ -1,4 +1,4 @@
-# Angular2
+# Communication avec une API REST
 
 <!-- .slide: class="page-title" -->
 
@@ -8,7 +8,7 @@ Notes :
 
 ## Sommaire
 
-<!-- .slide: id="master-toc" class="toc" -->
+<!-- .slide: class="toc" -->
 
 - [Rappels](#/1)
 - [Présentation](#/2)
@@ -16,7 +16,7 @@ Notes :
 - [Composants](#/4)
 - [Les composants Angular2](#/5)
 - [Injection de Dépendances](#/6)
-- [Communication avec une API REST](#/7)
+- **[Communication avec une API REST](#/7)**
 - [Router](#/8)
 
 Notes : 
@@ -31,16 +31,6 @@ Notes :
 - [Server-side Rendering](#/10)
 - [Support d'EcmaScript 5](#/11)
 - [Bonne Pratiques pour une migration heureuse](#/12)
-
-Notes :
-
-
-
-## Logistique
-
-- Horaires
-- Déjeuner & pauses
-- Autres questions ?
 
 Notes :
 

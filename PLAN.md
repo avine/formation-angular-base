@@ -45,10 +45,8 @@ Développeur web
 
 5. Composants
   - l'annotation @Component
-  - l'annotation @View
   - Propriétés
   - Evènements
-  - Bindings
   - Import de directives
   - Les Web Components
 

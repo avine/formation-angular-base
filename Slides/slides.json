@@ -1,7 +1,15 @@
 [
   "00_agenda.md",
-  "01_bases.md",
-  "02_code.md",
-  "03_images.md",
-  "04_animations.md"
+  "01_rappels.md",
+  "02_presentation.md",
+  "03_start_angular2.md",
+  "04_composants.md",
+  "05_angular2_composants.md",
+  "06_injection_dependances.md",
+  "07_rest.md",
+  "08_router.md",
+  "09_annotations_decorateurs.md",
+  "10_serverside_rendering.md",
+  "11_ecma5.md",
+  "12_angularjs_bonne_pratique.md"
 ]

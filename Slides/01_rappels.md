@@ -1,4 +1,4 @@
-# Angular2
+# Rappels
 
 <!-- .slide: class="page-title" -->
 
@@ -8,9 +8,9 @@ Notes :
 
 ## Sommaire
 
-<!-- .slide: id="master-toc" class="toc" -->
+<!-- .slide: class="toc" -->
 
-- [Rappels](#/1)
+- **[Rappels](#/1)**
 - [Présentation](#/2)
 - [Démarrer une application Angular2](#/3)
 - [Composants](#/4)
@@ -31,16 +31,6 @@ Notes :
 - [Server-side Rendering](#/10)
 - [Support d'EcmaScript 5](#/11)
 - [Bonne Pratiques pour une migration heureuse](#/12)
-
-Notes :
-
-
-
-## Logistique
-
-- Horaires
-- Déjeuner & pauses
-- Autres questions ?
 
 Notes :
 

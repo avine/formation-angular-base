@@ -1,4 +1,4 @@
-# Angular2
+# Server-side Rendering
 
 <!-- .slide: class="page-title" -->
 
@@ -8,7 +8,7 @@ Notes :
 
 ## Sommaire
 
-<!-- .slide: id="master-toc" class="toc" -->
+<!-- .slide: class="toc" -->
 
 - [Rappels](#/1)
 - [Présentation](#/2)
@@ -28,19 +28,9 @@ Notes :
 <!-- .slide: class="toc" -->
 
 - [Annotations et Décorateurs](#/9)
-- [Server-side Rendering](#/10)
+- **[Server-side Rendering](#/10)**
 - [Support d'EcmaScript 5](#/11)
 - [Bonne Pratiques pour une migration heureuse](#/12)
-
-Notes :
-
-
-
-## Logistique
-
-- Horaires
-- Déjeuner & pauses
-- Autres questions ?
 
 Notes :
 
