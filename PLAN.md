@@ -66,10 +66,14 @@ Développeur web
   - Directive RouterOutlet
   - Directive RouterLink
 
-10. Annotations et Décorateurs
+10. Gestion des Formulaires
 
-11. Server-side rendering
+11. Les Pipes
 
-12. Support d'EcmaScript 5
+12. Annotations et Décorateurs
 
-13. Bonnes pratiques pour une migration heureuse
+13. Server-side rendering
+
+14. Support d'EcmaScript 5
+
+15. Bonnes pratiques pour une migration heureuse
