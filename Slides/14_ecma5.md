@@ -1,4 +1,4 @@
-# Démarrer une<br>application Angular2
+# Support<br>d'EcmaScript 5
 
 <!-- .slide: class="page-title" -->
 
@@ -12,7 +12,7 @@ Notes :
 
 - [Rappels](#/1)
 - [Présentation](#/2)
-- **[Démarrer une application Angular2](#/3)**
+- [Démarrer une application Angular2](#/3)
 - [Tests](#/4)
 - [Composants](#/5)
 - [Les composants Angular2](#/6)
@@ -32,7 +32,7 @@ Notes :
 - [Les Pipes](#/11)
 - [Annotations et Décorateurs](#/12)
 - [Server-side Rendering](#/13)
-- [Support d'EcmaScript 5](#/14)
+- **[Support d'EcmaScript 5](#/14)**
 - [Bonne Pratiques pour une migration heureuse](#/15)
 
 Notes :

@@ -1,4 +1,4 @@
-# Démarrer une<br>application Angular2
+# Router
 
 <!-- .slide: class="page-title" -->
 
@@ -12,13 +12,13 @@ Notes :
 
 - [Rappels](#/1)
 - [Présentation](#/2)
-- **[Démarrer une application Angular2](#/3)**
+- [Démarrer une application Angular2](#/3)
 - [Tests](#/4)
 - [Composants](#/5)
 - [Les composants Angular2](#/6)
 - [Injection de Dépendances](#/7)
 - [Communication avec une API REST](#/8)
-- [Router](#/9)
+- **[Router](#/9)**
 
 Notes : 
 

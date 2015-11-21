@@ -1,4 +1,4 @@
-# Démarrer une<br>application Angular2
+# Les Tests
 
 <!-- .slide: class="page-title" -->
 
@@ -12,8 +12,8 @@ Notes :
 
 - [Rappels](#/1)
 - [Présentation](#/2)
-- **[Démarrer une application Angular2](#/3)**
-- [Tests](#/4)
+- [Démarrer une application Angular2](#/3)
+- **[Tests](#/4)**
 - [Composants](#/5)
 - [Les composants Angular2](#/6)
 - [Injection de Dépendances](#/7)

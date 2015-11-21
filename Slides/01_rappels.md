@@ -13,11 +13,12 @@ Notes :
 - **[Rappels](#/1)**
 - [Présentation](#/2)
 - [Démarrer une application Angular2](#/3)
-- [Composants](#/4)
-- [Les composants Angular2](#/5)
-- [Injection de Dépendances](#/6)
-- [Communication avec une API REST](#/7)
-- [Router](#/8)
+- [Tests](#/4)
+- [Composants](#/5)
+- [Les composants Angular2](#/6)
+- [Injection de Dépendances](#/7)
+- [Communication avec une API REST](#/8)
+- [Router](#/9)
 
 Notes : 
 
@@ -27,10 +28,12 @@ Notes :
 
 <!-- .slide: class="toc" -->
 
-- [Annotations et Décorateurs](#/9)
-- [Server-side Rendering](#/10)
-- [Support d'EcmaScript 5](#/11)
-- [Bonne Pratiques pour une migration heureuse](#/12)
+- [Gestion des Formulaires](#/10)
+- [Les Pipes](#/11)
+- [Annotations et Décorateurs](#/12)
+- [Server-side Rendering](#/13)
+- [Support d'EcmaScript 5](#/14)
+- [Bonne Pratiques pour une migration heureuse](#/15)
 
 Notes :
 
