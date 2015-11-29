@@ -39,4 +39,175 @@ Notes :
 
 
 
+## Les Pipes
+
+- Mécanisme permettant la manipulation d'une donnée avant son utilisatioin
+- Similaire aux filtres dans *AngularJS*
+- Utilisation dans les templates HTML similaires à l'ancienne version
+- Possibilité de définir des *Pipes* statefull ou stateless
+- Pipes disponibles par défaut dans le framework :
+  - `UpperCasePipe`, `LowerCasePipe` 
+  - `DatePipe`, `CurrencyPipe`, `PercentPipe`, `SlicePipe`, `NumberPipe`, `JSONPipe`
+  - `AsyncPipe`
+
+Notes :
+
+
+
+## Les Pipes - Utilisation dans les Templates
+
+- *Pipes* disponibles dans Angular2 sont directement utilisables dans vos templates
+- Les Templates Angular supporte le caractère `|` pour appliquer un *Pipes*
+- Possibilité de chaîner les pipes l'un à la suite de l'autre
+
+```html
+{{ myVar | date | uppercase}}
+//FRIDAY, APRIL 15, 1988
+```
+
+- Certains pipes sont configurables
+  - Séparation des paramètres par le caractère `:`
+ 
+```html
+{{ myVar | pipe1:param1:'string' }}
+```
+
+Notes :
+
+
+
+## Les Pipes - AsyncPipe
+
+- *Pipe* recevant une `Promise` ou un `Observable` en entrée
+- Retournera le donnée émise
+
+```typescript
+@Component({
+  selector: 'pipes',
+  changeDetection: 'ON_PUSH'
+})
+@View({
+  tempalte: '{{ promise | async}}',
+})
+
+class PipesAppComponent {
+  promise: Promise;
+
+  constructor() {
+    this.promise = new Promise(function(resolve, reject) {
+      setTimeout(function() {
+        resolve("Hey, this is the result of the promise");
+      }, 2000)
+    });
+  }
+}
+``` 
+
+Notes :
+
+
+
+## Les Pipes - Utilisation dans les classes
+
+- Utisation de l'injection de dépendances pour utiliser un *Pipe*
+- Pas nécessaire un service `$filter` ou une règle de nommage (`dateFilter`) comme en *AngularJS*
+
+```typescript
+import {Component, UpperCasePipe} from 'angular2/angular2`
+@Component({
+  selector: 'app',
+  providers: [UpperCasePipe]
+})
+class App {
+  
+  name:string;
+  
+  constructor(public upper:UpperCasePipe){
+    this.string = upper.transform('Hello Angular2');
+  }
+  
+}
+```
+
+Notes :
+
+
+
+## Les Pipes - Création
+
+- Définir une classe implémentant l'interface `PipeTransform`
+- Implémenter la méthode `transform`
+- Annoter la classe avec le décorateur `@Pipe`
+- Exporter cette classe via `export`
+
+```typescript
+import {isString} from 'angular2/src/facade/lang';
+import {PipeTransform, Pipe} from 'angular2/core';
+import {InvalidPipeArgumentException} from './invalid_pipe_argument_exception';
+
+@Pipe({name: 'mylowercase'})
+export class MyLowerCasePipe implements PipeTransform {
+  transform(value: string, args: any[] = null): string {
+    if (!isString(value)) {
+      throw new InvalidPipeArgumentException(LowerCasePipe, value);
+    }
+    return value.toLowerCase();
+  }
+}
+```
+
+Notes :
+
+
+
+## Les Pipes - Création
+
+- Nécessité de charger explicitement les *pipes* externenes avant utilisation dans vos templates
+- Utilisation de la propriété `pipes` du décorateur `@Component`
+
+```typescript
+import {Component} from 'angular2/angular2'
+import {MyLowerCasePipe} from './mylowercase'
+@Component({ 
+	selector: 'app',
+	template: '<h2>{{'Hello World' | mylowercase}}</h2>',
+	pipes: [MyLowerCasePipe]
+})
+export class App { }
+```
+
+Notes :
+
+
+
+## Les Pipes - Tests
+
+- Instanciation du *Pipe* dans une méthode `BeforeEach`
+- Appel de la méthode `transform` pour tester tous les cas possibles
+
+```typescript
+import {describe,it,expect,beforeEach} from 'angular2/testing_internal';
+import {UpperCasePipe} from 'angular2/common';
+
+export function main() {
+  describe('UpperCasePipe', () => {
+    var pipe;
+
+    beforeEach(() => { pipe = new UpperCasePipe(); });
+
+    describe('transform', () => {
+      it('should return uppercase', () => {
+        var val = pipe.transform('something');
+        expect(val).toEqual(upper);
+      });
+    });
+
+  });
+}
+```
+
+Notes :
+
+
+
 <!-- .slide: class="page-questions" -->
