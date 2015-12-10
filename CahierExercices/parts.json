@@ -1,11 +1,12 @@
 [
   "Cahier.md",
   "01_start_angular2.md",
-  "02_composants.md",
-  "03_angular2_composants.md",
-  "04_injection_dependances.md",
-  "05_rest.md",
-  "06_router.md",
-  "07_annotations_decorateurs.md",
-  "08_serverside_rendering.md"
+  "02_tests.md",
+  "03_composants.md",
+  "04_angular2_composants.md",
+  "05_injection_dependances.md",
+  "06_rest.md",
+  "07_router.md",
+  "08_annotations_decorateurs.md",
+  "09_serverside_rendering.md"
 ]
