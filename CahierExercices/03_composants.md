@@ -34,4 +34,6 @@ npm install --save bootstrap
 
 - Nous allons à présent externaliser le template utilisé pour afficher un produit dans un nouveau composant `ProductComponent`. Ce composant aura un paramètre `data` correspondant à un objet de type `Product`.
 
-- Nous allons terminer par l'émission d'un évènement `addToBasket`, emis par le composant `ProductComponent` lorsque l'utilisateur cliquera sur le bouton `Ajoutez au panier`. Cet évènement sera utilisé par le composant `AppComponent` pour mettre à jour la variable `total` créée précédemment. 
+- Nous allons à présent émettre un évènement `addToBasket`, via le composant `ProductComponent`, lorsque l'utilisateur cliquera sur le bouton `Ajoutez au panier`. Cet évènement sera utilisé par le composant `AppComponent` pour mettre à jour la variable `total` créée précédemment.
+
+- Pour terminer ce TP, nous allons créer un dernier composant, `footer` qui sera utilisé à la place de l'élément HTML `<footer>`. Ce composant devra avoir un point d'insertion (via le composant `ng-content`), grâce auquel nous spécifirons le texte à afficher. 

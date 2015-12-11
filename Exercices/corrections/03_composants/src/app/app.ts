@@ -1,6 +1,7 @@
 import {Component, bootstrap} from "angular2/angular2"
 import {MenuComponent} from "./menu/menu"
 import {ProductComponent} from "./product/product"
+import {FooterComponent} from "./footer/footer"
 import {Product} from "./model/product"
 
 @Component({
@@ -34,17 +35,13 @@ import {Product} from "./model/product"
         <hr>
 
         <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
+            Copyright &copy; Your Website 2014
         </footer>
 
     </div>
   
   `,
-  directives: [MenuComponent , ProductComponent]
+  directives: [MenuComponent , ProductComponent, FooterComponent]
 })
 class AppComponent {
     public total:number;
