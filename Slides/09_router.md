@@ -41,7 +41,7 @@ Notes :
 
 ## Router
 
-- Module tota	lement différent du module `ngRoute`
+- Module totalement différent du module `ngRoute`
 - `ngRoute` était un module trop simpliste
 	- Un seul `ngView` dans l'application
 	- Pas de vue imbriquée
@@ -62,6 +62,18 @@ Notes :
 - Utilisation du décorateur `@RouteConfig` pour définir la configuration
 - Utilisation de la directive `RouterOutlet` pour définir le point d'insertion
 - Navigation entre les pages via la directive `RouterLink` 
+
+```typescript
+import {bootstrap} from 'angular2/angular2';
+import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
+
+@Component({
+	directives: [ROUTER_DIRECTIVES]
+})
+class AppComponent { ... }
+
+bootstrap(AppComponent, [ROUTER_PROVIDERS]);
+```
 
 Notes :
 
@@ -260,6 +272,38 @@ Notes :
   }
 })
 export class RouterLink { ...}
+```
+
+Notes :
+
+
+
+### Router - Stratégies pour le génération des URLs
+
+- `PathLocationStrategy` (stratégie par défaut)
+	- Nécessite la définition de l'URL de base de votre application (`APP_BASE_HREF` ou `<base>`)
+		
+```typescript
+location.go('/foo'); //example.com/my/app/foo
+```
+
+- `HashLocationStrategy`
+
+```typescript
+location.go('/foo'); //example.com#/foo
+```
+
+- Possible de configurer l'implémentation à utiliser 
+
+```typescript
+import {provide} from 'angular2/angular2';
+import {HashLocationStrategy } from 'angular2/router';
+
+@Component({directives: [ROUTER_DIRECTIVES]})
+class AppComponent { ... }
+ 
+bootstrap(AppComponent, [ ROUTER_PROVIDERS,
+	provide(LocationStrategy, {useClass: HashLocationStrategy}) ]);
 ```
 
 Notes :
