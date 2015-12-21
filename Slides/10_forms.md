@@ -42,7 +42,7 @@ Notes :
 ## Formulaires : Principe général (1/2)
 
 - Principe général de gestion des formulaires
-  - Baser sur la gestion HTML classique des formulaire
+  - Baser sur la gestion HTML classique des formulaires
   - Désactiver le mécanisme de validation natif du navigateur
   - Associer des champs de saisie à des propriétés du scope grâce à `ngModel`
   - Appeler une méthode du scope pour traiter le formulaire en Javascript
@@ -105,7 +105,7 @@ Notes :
 - Un champ peut posséder un ou plusieurs validateurs
   - Standards ou personnalisés
   
-- Il est possible d'associer à uyn champ un objet `Control` pour gérer la validation et les états du champ
+- Il est possible d'associer à un champ un objet `Control` pour gérer la validation et les états du champ
   - Cet objet contient une map de propriété pour chaque état :
     - valid, dirty, pristine...
     - required, pattern, ...
