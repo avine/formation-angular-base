@@ -1,20 +1,24 @@
 {
-  "name": "tmp2",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+  "name": "tedt",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
   "dependencies": {
-    "angular2": "2.0.0-alpha.46",
+    "angular2": "2.0.0-beta.0",
     "bootstrap": "^3.3.6",
-    "systemjs": "0.19.2"
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.33.3",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.0",
+    "systemjs": "0.19.4",
+    "zone.js": "0.5.10"
   },
   "devDependencies": {
-    "live-server": "^0.8.2",
-    "typescript": "^1.6.2"
+    "angular-cli": "0.0.*",
+    "angular-cli-github-pages": "^0.2.0",
+    "ember-cli-inject-live-reload": "^1.3.0",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.15",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-jasmine": "^0.3.6"
   }
 }

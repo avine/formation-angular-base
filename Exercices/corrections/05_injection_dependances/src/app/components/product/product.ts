@@ -1,5 +1,5 @@
-import {Component, EventEmitter} from "angular2/angular2";
-import {Product} from "../model/product";
+import {Component, EventEmitter} from "angular2/core";
+import {Product} from "../../model/product";
 
 @Component({
   selector: "product",
@@ -21,10 +21,8 @@ import {Product} from "../model/product";
 export class ProductComponent {
     data:Product
     addToBasket = new EventEmitter();
-    
+
     clickHandler(){
         this.addToBasket.next(this.data);
     }
 }
-
-
