@@ -131,7 +131,7 @@ Notes :
 
 ## Angular2 - Points Posifitifs
 
-- Environnement de developpement plus simple grâce à *TypeScript*
+- Création d'application modulaire
 - Utilisable avec plusieurs languages de programmation : `ES5`, `ES2015`, `TypeScript` et `Dart`
 - API plus simple que *AngularJS*
 - Seuls trois types d'éléments seront utilisés : `component`, `pipe` et les services
@@ -156,6 +156,57 @@ Notes :
   - `Zone`
   - `Observable`
   - `SystemJS`...
+
+Notes :
+
+
+
+## Architecture
+
+- Architecture d'une application Angular 2
+
+![architecture](ressources/overview2.png "architecture")
+
+Notes :
+
+
+
+## Architecture
+
+- Modules : regroupement sous un même namespace un ensemble de fonctionnalités
+- Library Modules (*barrels*): `angular2/core`, `angular2/http`...
+- Les composants : Elément graphique composé d'un template et d'une classe
+- Métadata : Moyen d'indiquer à Angular comment utiliser la classe
+- Directives : composants sans template (*ngFor*, *ngIf*, ...)
+- Services : Code métier implémenté dans des classes qui seront injectées dans les différents composants
+- Pipes : Elément permettant de formatter une donnée (équivalent au *filter* d'AngularJS)
+
+Notes :
+
+
+
+## Architecture - Exemple complet
+
+- Exemple complet utilisant les différentes briques d'une application Angular 2
+
+```typescript
+import {Component} from 'angular2/core'
+import {MyPipe} from './MyPipe'
+
+@Component({
+    selector: 'app',
+    template: '{{value | MyPipe}}',
+    pipes: [MyPipe]
+})
+export class Component{
+
+  value:string;
+
+  constructor(http:Http){
+
+  }
+}
+```
 
 Notes :
 
