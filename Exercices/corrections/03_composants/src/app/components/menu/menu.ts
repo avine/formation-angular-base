@@ -1,4 +1,4 @@
-import {Component} from "angular2/angular2"
+import {Component} from "angular2/core"
 
 @Component({
   selector: "menu",
@@ -19,5 +19,3 @@ import {Component} from "angular2/angular2"
 })
 export class MenuComponent {
 }
-
-
