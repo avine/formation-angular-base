@@ -113,7 +113,7 @@ Notes :
 - Pas nécessaire un service `$filter` ou une règle de nommage (`dateFilter`) comme en *AngularJS*
 
 ```typescript
-import {Component, UpperCasePipe} from 'angular2/angular2`
+import {Component, UpperCasePipe} from 'angular2/core`
 @Component({
   selector: 'app',
   providers: [UpperCasePipe]
@@ -166,7 +166,7 @@ Notes :
 - Utilisation de la propriété `pipes` du décorateur `@Component`
 
 ```typescript
-import {Component} from 'angular2/angular2'
+import {Component} from 'angular2/core'
 import {MyLowerCasePipe} from './mylowercase'
 @Component({ 
 	selector: 'app',
