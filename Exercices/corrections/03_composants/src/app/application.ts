@@ -27,10 +27,10 @@ import {Product} from "./model/product"
         </div>
 
         <div class="row text-center">
-            <product [data]="products[0]" (add-to-basket)="addToBasket($event)"></product>
-            <product [data]="products[1]" (add-to-basket)="addToBasket($event)"></product>
-            <product [data]="products[2]" (add-to-basket)="addToBasket($event)"></product>
-            <product [data]="products[3]" (add-to-basket)="addToBasket($event)"></product>
+            <product [data]="products[0]" (addToBasket)="addToBasket($event)"></product>
+            <product [data]="products[1]" (addToBasket)="addToBasket($event)"></product>
+            <product [data]="products[2]" (addToBasket)="addToBasket($event)"></product>
+            <product [data]="products[3]" (addToBasket)="addToBasket($event)"></product>
         </div>
 
         <hr>
