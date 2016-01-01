@@ -64,7 +64,7 @@ Notes :
 - Navigation entre les pages via la directive `RouterLink` 
 
 ```typescript
-import {bootstrap} from 'angular2/angular2';
+import {bootstrap} from 'angular2/platform/browser';
 import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
 
 @Component({
@@ -87,7 +87,7 @@ Notes :
 
 ```typescript
 import { RouterConfig } from 'angular2/router';
-import { Component } from 'angular2/angular2';
+import { Component } from 'angular2/core';
 
 import { Home } from './components/home';
 import { Product } from './components/product';
@@ -136,7 +136,7 @@ Notes :
 
 ```typescript
 import { RouterConfig } from 'angular2/router';
-import { Component } from 'angular2/angular2';
+import { Component } from 'angular2/core';
 
 import { Home } from './components/home';
 import { Product } from './components/product';
@@ -296,7 +296,7 @@ location.go('/foo'); //example.com#/foo
 - Possible de configurer l'implémentation à utiliser 
 
 ```typescript
-import {provide} from 'angular2/angular2';
+import {provide} from 'angular2/core';
 import {HashLocationStrategy } from 'angular2/router';
 
 @Component({directives: [ROUTER_DIRECTIVES]})
@@ -316,7 +316,7 @@ Notes :
 - Sera utilisé lors de la génération des différentes URLS
 
 ```typescript
-import {Component} from 'angular2/angular2';
+import {Component} from 'angular2/core';
 import {APP_BASE_HREF} from 'angular2/router';
  
 @Component({ ... })
@@ -378,7 +378,7 @@ Notes :
 
 ```typescript
 import { RouterConfig } from 'angular2/router';
-import { Component } from 'angular2/angular2';
+import { Component } from 'angular2/core';
 import { Admin } from './components/home';
 import { isLoggedIn } from './utils/is-logged-in';
 
