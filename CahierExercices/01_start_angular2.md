@@ -16,7 +16,7 @@ L'application, que nous allons implémenter, sera initialiser via l'outil `angul
 - la gestion des dépendances
 
 
-- Téléchargez `angular-cli` en utilisant `NPM`
+- Téléchargez `angular-cli` en utilisant `NPM`. Ce module nécessite une version récente de *NodeJS*
 
 - Depuis votre console, créez un nouveau projet via la commande `ng new Application`
 
