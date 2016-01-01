@@ -28,7 +28,7 @@ import {Product} from "./model/product"
 
         <div class="row text-center">
           <template ngFor #product [ngForOf]="products">
-              <product *ngIf="product.stock > 0" [data]="product" (add-to-basket)="addToBasket($event)" [ngClass]="{'last': product.stock === 1}"></product>
+              <product *ngIf="product.stock > 0" [data]="product" (addToBasket)="addToBasket($event)" [ngClass]="{'last': product.stock === 1}"></product>
           </template>
         </div>
 
