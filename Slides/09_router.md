@@ -201,8 +201,8 @@ Notes :
   template: '
     <div>
       <h1>Hello {{message}}!</h1>
-      <a [router-link]="['./Home]">Link 1</a>
-	  <a [router-link]="['./Product', {productId: 1}]">Link 2</a>
+      <a [routerLink]="['./Home]">Link 1</a>
+	  <a [routerLink]="['./Product', {productId: 1}]">Link 2</a>
       <router-outlet></router-outlet>
     </div>
   '})
@@ -231,7 +231,7 @@ import { Product } from './components/product';
 ])
 @Component({
 	template: '
-		<a [router-link]="['./product', {productId: 3}, 'Child']"></a>
+		<a [routerLink]="['./product', {productId: 3}, 'Child']"></a>
 		<router-outlet></router-outlet>
 	'
 })
@@ -256,14 +256,14 @@ Notes :
 
 ## Router - RouterLink en détails
 
-- Utilisation via un attribut `router-link`
-- Configuration de la route désirée via ce même attribut `router-link`
+- Utilisation via un attribut `routerLink`
+- Configuration de la route désirée via ce même attribut `routerLink`
 - Attribut `href` généré par le service `Location`
 - Ajout d'une classe CSS si la route est déjà active via le service `Router`
 
 ```typescript
-@Directive({
-  selector: '[router-link]',
+@Directive{(
+  selector: '[routerLink]',
   inputs: ['routeParams: routerLink', 'target: target'],
   host: {
     '(click)': 'onClick()',
@@ -346,7 +346,7 @@ import { Product } from './components/product';
 @RouteConfig([{ path: '/product/:productId', component: Product, name: 'Product' }])
 @Component({
 	template: '
-		<a [router-link]="['./product', {productId: 3}]"></a>
+		<a [routerLink]="['./product', {productId: 3}]"></a>
 		<router-outlet></router-outlet>
 	'
 })
