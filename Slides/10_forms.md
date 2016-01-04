@@ -138,14 +138,14 @@ A vérifier...
 
 ## Validation : Utiliser ngForm
 
-- Il est possible d'accéder à l'état de validation du formulaire directement depuis le template en le nommant:
+- Il est possible d'accéder à l'état de validation du formulaire directement depuis le template en le nommant :
 ```html
 <form #myForm="ngForm" novalidate>
      ...
 </form>
 ```
 
-- La syntaxe est la suivante : #name="ngForm". On affecte l'objet gérant le formulaire dans une variable.
+- On affecte l'objet gérant le formulaire dans une variable : #name="ngForm". 
 ```html
 <form #myForm="ngForm" novalidate>
     <!-- disabled button if form is invalid -->
@@ -182,7 +182,7 @@ Notes :
 ## Validation : État du formulaire et des champs
 
 - Angular2 expose 5 propriétés au niveau du formulaire et de chacun des champs de saisie
-  - `valid` : Indiquent si l'élément passe le contrôle des validateurs.
+  - `valid` : Indique si l'élément passe le contrôle des validateurs.
   - `pristine` / `dirty` : Indiquent si l'utilisateur a altéré l'élément.
     - Un élément est considéré dirty dès qu'il subit une modification, même si la valeur initiale est restaurée ensuite.
   - `untouched` / `touched` : Indiquent si l'élément a été touché (focus).
