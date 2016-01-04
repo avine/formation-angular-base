@@ -85,7 +85,7 @@ Notes :
 - `ngModel` : Associe un champ de saisie à une propriété du composant
 
 ```html
-<input type="text" [(ngModel])="contact.name" />
+<input type="text" [(ngModel)]="contact.name" >
 ```
 
 - `ngSubmit` : Associe une méthode à la validation du formulaire
@@ -111,7 +111,7 @@ Notes :
     - required, pattern, ...
   
 ```html
-<input type="text" [(ngModel])="contact.name" ngControl="name" />
+<input type="text" [(ngModel)]="contact.name" ngControl="name" >
 ```
 
 Notes :
@@ -123,14 +123,14 @@ Notes :
 - Un champ peut être rendu obligatoire
   - De manière permanente (standard HTML5) : `required`
 ```html
-<input type="text" [(ngModel)]="name" required />
+<input type="text" [(ngModel)]="name" required >
 ```
 
 Notes :
 A vérifier...
   - De manière conditionnelle par binding : 
 ```html
-<input type="checkbox" [(ngModel)]="nameRequired"/>
+<input type="checkbox" [(ngModel)]="nameRequired">
 <input [required]="nameRequired" [(ngModel)]="name">
 ```
 
@@ -162,7 +162,7 @@ Notes :
 - Il est possible de récupérer l'état de validation des champs depuis le formulaire
 ```html
 <form #myForm="ngForm" novalidate>
-    <input type="text" [(ngModel])="contact.name" ngControl="name" />
+    <input type="text" [(ngModel)]="contact.name" ngControl="name" >
     <span [hidden]="!myForm.controls.name.valid">Field required</span>
 </form>
 ```
@@ -170,7 +170,7 @@ Notes :
 - Ou en le nommant explicitement (la syntaxe est la même que le formulaire)
 ```html
 <form #myForm="ngForm" novalidate>
-    <input type="text" [(ngModel])="contact.name" ngControl="name" #name="ngForm" />
+    <input type="text" [(ngModel)]="contact.name" ngControl="name" #name="ngForm" >
     <span [hidden]="!name.valid">Field required</span>
 </form>
 ```
@@ -188,6 +188,15 @@ Notes :
   - `untouched` / `touched` : Indiquent si l'élément a été touché (focus).
 - Les classes CSS correspondantes sont appliquées aux éléments
   - `ng-valid`, `ng-invalid`, `ng-pristine`, `ng-dirty`, `ng-untouched`, `ng-touched`
+
+Notes :
+
+
+
+## Validation : ngControl
+
+- Ces propriétés et les classes CSS associées sont gérées par la directive ngControl
+- ngControl est automatiquement ajouté dans un formulaire par Angular2
 
 Notes :
 
