@@ -20,7 +20,7 @@ Notes :
 - [Communication avec une API REST](#/8)
 - [Router](#/9)
 
-Notes : 
+Notes :
 
 
 
@@ -46,7 +46,7 @@ Notes :
 - Utilisation dans les templates HTML similaires à l'ancienne version
 - Possibilité de définir des *Pipes* statefull ou stateless
 - Pipes disponibles par défaut dans le framework :
-  - `LowerCasePipe` , `UpperCasePipe` 
+  - `LowerCasePipe` , `UpperCasePipe`
   - `CurrencyPipe`, `DatePipe`, `DecimalPipe`, `JSONPipe`, `NumberPipe`, `PercentPipe`, `SlicePipe`
   - `AsyncPipe`
 
@@ -58,7 +58,7 @@ Notes :
 
 - Les *Pipes* disponibles par défaut sont directement utilisables dans les templates
 - Les Templates Angular supporte le caractère `|` pour appliquer un *Pipe*
-- Possibilité de chaîner les pipes es uns à la suite des autres
+- Possibilité de chaîner les pipes les uns à la suite des autres
 
 ```html
 {{ myVar | date | uppercase}}
@@ -67,9 +67,34 @@ Notes :
 
 - Certains pipes sont configurables
   - Séparation des paramètres par le caractère `:`
- 
+
 ```html
 {{ myVar | pipe1:param1:'string' }}
+```
+
+Notes :
+
+
+
+## Les Pipes stateful
+
+- Deux catégories de *Pipes* : Stateless et Stateful
+- *Pipes* sont stateless par défaut
+- Un *Pipe* stateful doit implémenter l'interface `PipeOnDestroy`
+- Exemple de *Pipes Stateful* : *AsyncPipe*
+- Pour définir un *pipe* stateful, nécessité de mettre la propriété `pure` à `false`
+- Permet d'indiquer au système de *Change Detection* de vérifier le résultat de ce *pipe* après chaque cycle.
+
+```typescript
+@Pipe({
+  name: 'fetch',
+  pure: false
+})
+class FetchPipe implements PipeOnDestroy {
+  transform(value){ ... }
+
+  onDestroy(){ ... }
+}
 ```
 
 Notes :
@@ -101,7 +126,7 @@ class PipesAppComponent {
     });
   }
 }
-``` 
+```
 
 Notes :
 
@@ -119,13 +144,13 @@ import {Component, UpperCasePipe} from 'angular2/core`
   providers: [UpperCasePipe]
 })
 class App {
-  
+
   name:string;
-  
+
   constructor(public upper:UpperCasePipe){
     this.string = upper.transform('Hello Angular2');
   }
-  
+
 }
 ```
 
@@ -143,15 +168,13 @@ Notes :
 ```typescript
 import {isString} from 'angular2/src/facade/lang';
 import {PipeTransform, Pipe} from 'angular2/core';
-import {InvalidPipeArgumentException} from './invalid_pipe_argument_exception';
 
 @Pipe({name: 'mylowercase'})
 export class MyLowerCasePipe implements PipeTransform {
   transform(value: string, args: any[] = null): string {
-    if (!isString(value)) {
-      throw new InvalidPipeArgumentException(LowerCasePipe, value);
-    }
+
     return value.toLowerCase();
+
   }
 }
 ```
@@ -168,7 +191,7 @@ Notes :
 ```typescript
 import {Component} from 'angular2/core'
 import {MyLowerCasePipe} from './mylowercase'
-@Component({ 
+@Component({
 	selector: 'app',
 	template: '<h2>{{'Hello World' | mylowercase}}</h2>',
 	pipes: [MyLowerCasePipe]
