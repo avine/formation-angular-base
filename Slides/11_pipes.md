@@ -41,13 +41,13 @@ Notes :
 
 ## Les Pipes
 
-- Mécanisme permettant la manipulation d'une donnée avant son utilisatioin
-- Similaire aux filtres dans *AngularJS*
+- Mécanisme permettant la manipulation d'une donnée avant son utilisation
+- Similaire à *AngularJS*
 - Utilisation dans les templates HTML similaires à l'ancienne version
 - Possibilité de définir des *Pipes* statefull ou stateless
 - Pipes disponibles par défaut dans le framework :
-  - `UpperCasePipe`, `LowerCasePipe` 
-  - `DatePipe`, `CurrencyPipe`, `PercentPipe`, `SlicePipe`, `NumberPipe`, `JSONPipe`
+  - `LowerCasePipe` , `UpperCasePipe` 
+  - `CurrencyPipe`, `DatePipe`, `DecimalPipe`, `JSONPipe`, `NumberPipe`, `PercentPipe`, `SlicePipe`
   - `AsyncPipe`
 
 Notes :
@@ -56,9 +56,9 @@ Notes :
 
 ## Les Pipes - Utilisation dans les Templates
 
-- *Pipes* disponibles dans Angular2 sont directement utilisables dans vos templates
-- Les Templates Angular supporte le caractère `|` pour appliquer un *Pipes*
-- Possibilité de chaîner les pipes l'un à la suite de l'autre
+- Les *Pipes* disponibles par défaut sont directement utilisables dans les templates
+- Les Templates Angular supporte le caractère `|` pour appliquer un *Pipe*
+- Possibilité de chaîner les pipes es uns à la suite des autres
 
 ```html
 {{ myVar | date | uppercase}}
@@ -79,7 +79,7 @@ Notes :
 ## Les Pipes - AsyncPipe
 
 - *Pipe* recevant une `Promise` ou un `Observable` en entrée
-- Retournera le donnée émise
+- Retournera la donnée émise
 
 ```typescript
 @Component({
@@ -87,7 +87,7 @@ Notes :
   changeDetection: 'ON_PUSH'
 })
 @View({
-  tempalte: '{{ promise | async}}',
+  template: '{{ promise | async}}',
 })
 
 class PipesAppComponent {
@@ -109,8 +109,8 @@ Notes :
 
 ## Les Pipes - Utilisation dans les classes
 
-- Utisation de l'injection de dépendances pour utiliser un *Pipe*
-- Pas nécessaire un service `$filter` ou une règle de nommage (`dateFilter`) comme en *AngularJS*
+- Utilisation de l'injection de dépendances pour utiliser un *Pipe*
+- Pas nécessaire d'utiliser un service `$filter` ou une règle de nommage (`dateFilter`) comme en *AngularJS*
 
 ```typescript
 import {Component, UpperCasePipe} from 'angular2/core`
@@ -162,8 +162,8 @@ Notes :
 
 ## Les Pipes - Création
 
-- Nécessité de charger explicitement les *pipes* externenes avant utilisation dans vos templates
-- Utilisation de la propriété `pipes` du décorateur `@Component`
+- Charger explicitement les *pipes* externes avant utilisation dans vos templates
+- Utiliser de la propriété `Pipes` du décorateur `@Component`
 
 ```typescript
 import {Component} from 'angular2/core'
