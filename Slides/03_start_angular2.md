@@ -76,7 +76,7 @@ Notes :
   - via la méthode `bootstrap`
 
 ```typescript
-import {bootstrap}    from 'angular2/platform/browser'
+import {bootstrap} from 'angular2/platform/browser'
 
 @Component({
     selector: 'app',
@@ -204,7 +204,7 @@ System.config({
 - Configuration des librairies externes
 
 ```javascript
-//import * as $ from 'jquery';
+//import $ from 'jquery';
 System.config({
   map: {
     jquery: 'https://code.jquery.com/jquery.js'
