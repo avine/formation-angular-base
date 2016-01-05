@@ -44,7 +44,9 @@ Notes :
 - *Angular2* fournit une trentaine de directives : 
 	- Manipulation de DOM
 	- Gestion des formulaires
-	- Router
+	- Routeur
+
+- Directives importées automatiquement
 
 ```typescript
 import {CORE_DIRECTIVES} from 'angular2/common';
@@ -54,9 +56,7 @@ import {CORE_DIRECTIVES} from 'angular2/common';
   templateUrl: 'myComponent.html',
   directives: [CORE_DIRECTIVES]
 })
-export class MyComponent {
-
-}
+export class MyComponent { ... }
 ```
 
 Notes :
@@ -66,7 +66,7 @@ Notes :
 ## Les composants Angular2 - ngStyle
 
 - Directive permettant d'ajouter des définitions CSS
-- Nécessité de spécifier un objet JSON en tant que paramètres
+- Nécessité de spécifier un objet JSON en tant que paramètre
 
 ```typescript
 import {Component} from 'angular2/core';
@@ -146,7 +146,7 @@ Notes :
 - Correspond à la directive `ngRepeat` en *AngularJS*
 - Définition des éléments HTML à dupliquer dans un élément `<template>`
 - Utilisation de la propriété `ngForOf` pour définir l'expression permettant l'itération
-- Sauvegarde de la valeur en cours dans des variables de rendu (préfixée par `#`
+- Sauvegarde de la valeur en cours dans des variables de rendu (préfixée par `#`)
 - Angular2 met à disposition trois données supplémentaires : `index`, `last`, `even` et `odd`
 
 ```typescript
@@ -190,7 +190,7 @@ Notes :
 - Trois directives disponibles : 
 	- `ngSwitch` : élément container
 	- `ngSwitchWhen` : élément à utiliser pour chaque valeur possible
-	- `ngSwitchDefault` : pour définir un template pour une valeur par défaut.
+	- `ngSwitchDefault` : pour définir un template pour une valeur par défaut
 	
 ```typescript
 <div [ngSwitch]="value">
