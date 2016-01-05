@@ -58,7 +58,7 @@ Notes :
 
 - Différences entre les directives et `ngController`
 - Two-way data-binding source de problèmes de performance
-- Hierarchie des scopes
+- Hiérarchie des scopes
 - Pas de server-side rendering
 - Plusieurs syntaxes pour créer des services
 - API des directives trop complexe
@@ -68,7 +68,7 @@ Notes :
 
 
 
-## Points négatifs d'AngularJS
+## Points négatifs d'AngularJS - directive
 
 - API des directives trop complexe
 
@@ -100,7 +100,7 @@ Notes :
 
 
 
-## Points négatifs d'AngularJS
+## Points négatifs d'AngularJS - service
 
 - API pour créer des services en *AngularJS*
 
@@ -114,7 +114,7 @@ app.service('Service', function(){
 });
 ```
 
-- Version Angular 2
+- Version Angular2
 
 ```typescript
 class Service {
@@ -129,7 +129,7 @@ Notes :
 
 
 
-## Angular2 - Points Posifitifs
+## Angular2 - Points Positifs
 
 - Création d'application modulaire
 - Utilisable avec plusieurs languages de programmation : `ES5`, `ES2015`, `TypeScript` et `Dart`
@@ -173,7 +173,7 @@ Notes :
 
 ## Architecture
 
-- Modules : regroupement sous un même namespace un ensemble de fonctionnalités
+- Modules : regroupement d'un ensemble de fonctionnalités sous un même namespace
 - Library Modules (*barrels*): `angular2/core`, `angular2/http`...
 - Les composants : Elément graphique composé d'un template et d'une classe
 - Métadata : Moyen d'indiquer à Angular comment utiliser la classe
@@ -187,7 +187,7 @@ Notes :
 
 ## Architecture - Exemple complet
 
-- Exemple complet utilisant les différentes briques d'une application Angular 2
+- Exemple complet utilisant les différentes briques d'une application Angular2
 
 ```typescript
 import {Component} from 'angular2/core'
