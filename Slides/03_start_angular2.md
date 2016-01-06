@@ -156,7 +156,7 @@ Notes :
 - Loader universel de modules
 - Développé par Guy Bedford
 - Basé sur le polyfill *es6-module-loader*
-- Supporte les syntaxe `ES2015`, `CommonJS` `System` et `AMD`
+- Supporte les syntaxe `ES2015`, `CommonJS`, `System` et `AMD`
 - Fonctionne côté navigateur et serveur
 - Intégration avec le gestionnaire de dépendances *JSPM*
 
@@ -169,7 +169,7 @@ Notes :
 ## SystemJS - Configuration
 
 - Configuration dans `tsconfig.json` pour utiliser la syntaxe `System.register`
-- Modules *Angular2*  packagé via cette syntaxe
+- Modules *Angular2* packagés via cette syntaxe
 ```javascript
 System.register("angular2/core", [], true, function(require, exports, module){
     exports.fn = function(){};
@@ -188,7 +188,7 @@ Notes :
 ## SystemJS - Configuration
 
 - Configuration des sources de l'application
-- Paramètes communs pour tous les sources du répertoire `app`
+- Paramètres communs pour toutes les sources du répertoire `app`
 
 ```javascript
 System.config({
