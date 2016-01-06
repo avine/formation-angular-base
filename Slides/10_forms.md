@@ -39,13 +39,26 @@ Notes :
 
 
 
+## Formulaires et Angular2
+
+- Utilise sur la gestion HTML classique des formulaires
+- Supporte les types de champs de saisie habituels et les validations natives
+  - `input[text]`, `input[radio]`, `input[checkbox]`, `input[email]`, `input[number]`, `input[url]`
+  - `select`
+  - `textarea`
+  
+- Il est possible de créer ses propres composants
+
+Notes :
+
+
+
 ## Formulaires : Principe général (1/2)
 
-- Principe général de gestion des formulaires
-  - Baser sur la gestion HTML classique des formulaires
-  - Désactiver le mécanisme de validation natif du navigateur
-  - Associer des champs de saisie à des propriétés du scope grâce à `ngModel`
-  - Appeler une méthode du scope pour traiter le formulaire en Javascript
+- Désactiver le mécanisme de validation natif du navigateur
+- Associer des champs de saisie à des propriétés du scope grâce à `ngModel`
+- Nommer les champs de saisie grâce à `ngControl`
+- Appeler une méthode du scope pour traiter le formulaire en Javascript
 
 Notes :
 
@@ -68,13 +81,20 @@ Notes :
 
 
 
-## Formulaires : Types de champs
+## NgForm
 
-- Angular2 gère les types de champs de saisie habituels
-  - `input[text]`, `input[radio]`, `input[checkbox]`, `input[email]`, `input[number]`, `input[url]`
-  - `select`
-  - `textarea`
-- Il est possible de créer ses propres composants
+La directive `NgForm` est automatiquement associée à chaque balise `<form>`
+
+- Autorise l'utilisation du `(ngSubmit)` 
+- Créé un `ControlGroup` pour gérer les inputs contenus dans le formulaire
+- Utilisable par l'écriture : #myForm="ngForm"
+ 
+```html
+<form #myForm="ngForm" novalidate>
+    <!-- disabled button if form is invalid -->
+    <button type="submit" [disabled]="!myForm.valid">Validate</button>
+</form>
+```
 
 Notes :
 
@@ -82,18 +102,54 @@ Notes :
 
 ## Directives
 
-- `ngModel` : Associe un champ de saisie à une propriété du composant
-
+- `ngModel` : Gère le binding entre la variable du controlleur et le champ HTML
 ```html
 <input type="text" [(ngModel)]="contact.name" >
 ```
 
-- `ngSubmit` : Associe une méthode à la validation du formulaire
+- `ngControl` : Donne un nom champ input pour l'utiliser dans le formulaire
+```html
+<input type="text" [(ngModel)]="contact.name" ngControl="name">
+```
 
+- `ngSubmit` : Associe une méthode à la validation du formulaire
 ```html
 <form (ngSubmit)="saveForm()" novalidate>
      <button type="submit">Validate</button>
 </form>
+```
+
+Notes :
+
+
+
+## NgControl
+- Un `Control` est une classe réprésentant un champ `input` qui contient :
+ - La valeur
+ - l'état (dirty, valid, ...)
+ - les erreurs de validations
+ 
+- La directive ngControl créé un Control, l'associe au champ input et l'ajoute au ngForm
+- On peut l'associer à une variable pour l'utiliser dans le template avec la même syntaxe que le NgForm
+
+Notes :
+
+
+
+## NgControl : Example
+Example
+```html
+<form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm.controls)">
+  <input type="text" ngControl="nameControl" #name="ngForm" required>
+  <span [hidden]="name.valid"> Error </span>
+  <span [hidden]="name.pristine"> You changed the value </span>
+
+  <button type="submit" [disabled]="!myForm.controls.nameControl?.valid">
+    Validate
+  </button>
+</form>
+
+// myForm.value -> { "nameControl": <Control Object> }
 ```
 
 Notes :
@@ -105,13 +161,10 @@ Notes :
 - Un champ peut posséder un ou plusieurs validateurs
   - Standards ou personnalisés
   
-- Il est possible d'associer à un champ un objet `Control` pour gérer la validation et les états du champ
-  - Cet objet contient une map de propriété pour chaque état :
-    - valid, dirty, pristine...
-    - required, pattern, ...
-  
+- L'état de la validation est stocké par l'objet `Control` dans la propriété `errors`
 ```html
-<input type="text" [(ngModel)]="contact.name" ngControl="name" >
+<input type="text" [(ngModel)]="contact.name" ngControl="name" required>
+<span [hidden]="!name.errors?.required">Name is required</span>
 ```
 
 Notes :
@@ -123,7 +176,7 @@ Notes :
 - Un champ peut être rendu obligatoire
   - De manière permanente (standard HTML5) : `required`
 ```html
-<input type="text" [(ngModel)]="name" required >
+<input type="text" ngControl="name" required >
 ```
 
 Notes :
@@ -133,27 +186,6 @@ A vérifier...
 <input type="checkbox" [(ngModel)]="nameRequired">
 <input [required]="nameRequired" [(ngModel)]="name">
 ```
-
-
-
-## Validation : Utiliser ngForm
-
-- Il est possible d'accéder à l'état de validation du formulaire directement depuis le template en le nommant :
-```html
-<form #myForm="ngForm" novalidate>
-     ...
-</form>
-```
-
-- On affecte l'objet gérant le formulaire dans une variable : #name="ngForm". 
-```html
-<form #myForm="ngForm" novalidate>
-    <!-- disabled button if form is invalid -->
-    <button type="submit" [disabled]="!myForm.form.valid">Validate</button>
-</form>
-```
-
-Notes :
 
 
 
@@ -193,10 +225,22 @@ Notes :
 
 
 
-## Validation : ngControl
+## Customiser un Control
 
-- Ces propriétés et les classes CSS associées sont gérées par la directive ngControl
-- ngControl est automatiquement ajouté dans un formulaire par Angular2
+Il est possible de créer un `Control` en code pour l'adapter à son besoin (valeur par défaut, validateur personnalisé, ...)
+
+Le binding sur le template s'effectue par la directive `ngFormControl`
+
+```javascript
+nameControl = new Control('', Validators.Required);
+```
+
+```html
+<form #myForm="ngForm" novalidate>
+    <input type="text" [(ngModel)]="contact.name" [ngFormControl]="nameControl" #name="ngForm" >
+    <span [hidden]="!name.valid">Field required</span>
+</form>
+```
 
 Notes :
 
