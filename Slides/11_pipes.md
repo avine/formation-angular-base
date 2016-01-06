@@ -78,12 +78,12 @@ Notes :
 
 ## Les Pipes stateful
 
-- Deux catégories de *Pipes* : Stateless et Stateful
+- Deux catégories de *Pipes* : stateless et stateful
 - *Pipes* sont stateless par défaut
 - Un *Pipe* stateful doit implémenter l'interface `PipeOnDestroy`
-- Exemple de *Pipes Stateful* : *AsyncPipe*
-- Pour définir un *pipe* stateful, nécessité de mettre la propriété `pure` à `false`
-- Permet d'indiquer au système de *Change Detection* de vérifier le résultat de ce *pipe* après chaque cycle.
+- Exemple de *Pipes* stateful : *AsyncPipe*
+- Pour définir un *Pipe* stateful, nécessité de mettre la propriété `pure` à `false`
+- Permet d'indiquer au système de *Change Detection* de vérifier le résultat de ce *Pipe* après chaque cycle.
 
 ```typescript
 @Pipe({
