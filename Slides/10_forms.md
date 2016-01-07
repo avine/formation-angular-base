@@ -73,8 +73,8 @@ La directive `NgForm` est automatiquement associée à chaque balise `<form>`
  
 ```html
 <form #myForm="ngForm" novalidate>
-    <!-- disabled button if form is invalid -->
-    <button type="submit" [disabled]="!myForm.valid">Save</button>
+  <!-- disabled button if form is invalid -->
+  <button type="submit" [disabled]="!myForm.valid">Save</button>
 </form>
 ```
 
@@ -85,19 +85,22 @@ Notes :
 ## Directives
 
 - `ngModel` : Gère le binding entre la variable du contrôlleur et le champ HTML
+
 ```html
 <input type="text" [(ngModel)]="contact.name" >
 ```
 
 - `ngControl` : Donne un nom à l'input pour qu'il soit utilisable dans le ngForm
+
 ```html
 <input type="text" [(ngModel)]="contact.name" ngControl="name">
 ```
 
 - `ngSubmit` : Associe une méthode à la soumission du formulaire
+
 ```html
 <form (ngSubmit)="saveForm()" novalidate>
-     <button type="submit">Save</button>
+  <button type="submit">Save</button>
 </form>
 ```
 
@@ -164,7 +167,7 @@ Notes :
 
 ```html
 <form novalidate>
-	…
+  …
 </form>
 ```
 
@@ -193,6 +196,7 @@ A vérifier...
 ## Validation : Validation des champs
 
 - Il est possible de récupérer l'état de validation des champs depuis le formulaire
+
 ```html
 <form #myForm="ngForm" novalidate>
   <input type="text" [(ngModel)]="contact.name" ngControl="name">
@@ -201,6 +205,7 @@ A vérifier...
 ```
 
 - Ou en le nommant explicitement (la syntaxe est la même que le formulaire)
+
 ```html
 <form #myForm="ngForm" novalidate>
   <input type="text" [(ngModel)]="contact.name" ngControl="name" #name="ngForm">
