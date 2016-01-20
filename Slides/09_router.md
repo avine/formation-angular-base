@@ -93,8 +93,8 @@ import { Home } from './components/home';
 import { Product } from './components/product';
 
 @RouteConfig([
-  { path: '/', component: Home, name: 'home'}
-  { path: '/product', component: Product, name: 'product',  data: { adminOnly: true } }
+  { path: '/', component: Home, name: 'Home'}
+  { path: '/product', component: Product, name: 'Product',  data: { adminOnly: true } }
   { path: '/other', redirectTo: '/' }
 ])
 @Component({})
@@ -142,8 +142,8 @@ import { Home } from './components/home';
 import { Product } from './components/product';
 
 @RouteConfig([
-  { path: '/', component: Home, name: 'home' }
-  { path: '/product', component: Product, name: 'product' }
+  { path: '/', component: Home, name: 'Home' }
+  { path: '/product', component: Product, name: 'Product' }
 ])
 @Component({
 	template: '
@@ -166,7 +166,7 @@ Notes :
 import { Product } from './components/product';
 
 @RouteConfig([
-  { path: '/product', component: Product, name: 'product' }
+  { path: '/product', component: Product, name: 'Product' }
 ])
 @Component({
 	template: '<router-outlet></router-outlet>'
@@ -207,7 +207,7 @@ Notes :
     </div>
   '})
 @RouteConfig([
-  {path: '/', component: Home, as: 'home'}	
+  {path: '/', component: Home, as: 'Home'}	
   {path: '/product/:productId', component: Product, as: 'Product'}
 ])
 class AppComponent {
