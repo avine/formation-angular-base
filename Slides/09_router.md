@@ -64,7 +64,7 @@ Notes :
 - Navigation entre les pages via la directive `RouterLink`
 
 ```typescript
-import {bootstrap} from 'angular2/angular2';
+import {bootstrap} from 'angular2/platform/browser';
 import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
 
 @Component({
@@ -87,14 +87,14 @@ Notes :
 
 ```typescript
 import { RouterConfig } from 'angular2/router';
-import { Component } from 'angular2/angular2';
+import { Component } from 'angular2/core';
 
 import { Home } from './components/home';
 import { Product } from './components/product';
 
 @RouteConfig([
-  { path: '/', component: Home, name: 'home'}
-  { path: '/product', component: Product, name: 'product',  data: { adminOnly: true } }
+  { path: '/', component: Home, name: 'Home'}
+  { path: '/product', component: Product, name: 'Product',  data: { adminOnly: true } }
   { path: '/other', redirectTo: '/' }
 ])
 @Component({})
@@ -136,14 +136,14 @@ Notes :
 
 ```typescript
 import { RouterConfig } from 'angular2/router';
-import { Component } from 'angular2/angular2';
+import { Component } from 'angular2/core';
 
 import { Home } from './components/home';
 import { Product } from './components/product';
 
 @RouteConfig([
-  { path: '/', component: Home, name: 'home' }
-  { path: '/product', component: Product, name: 'product' }
+  { path: '/', component: Home, name: 'Home' }
+  { path: '/product', component: Product, name: 'Product' }
 ])
 @Component({
 	template: '
@@ -201,13 +201,13 @@ Notes :
   template: '
     <div>
       <h1>Hello {{message}}!</h1>
-      <a [router-link]="['./Home]">Link 1</a>
-	  <a [router-link]="['./Product', {productId: 1}]">Link 2</a>
+      <a [routerLink]="['./Home]">Link 1</a>
+	  <a [routerLink]="['./Product', {productId: 1}]">Link 2</a>
       <router-outlet></router-outlet>
     </div>
   '})
 @RouteConfig([
-  {path: '/', component: Home, as: 'home'}
+  {path: '/', component: Home, as: 'Home'}
   {path: '/product/:productId', component: Product, as: 'Product'}
 ])
 class AppComponent {
@@ -231,7 +231,7 @@ import { Product } from './components/product';
 ])
 @Component({
 	template: '
-		<a [router-link]="['./product', {productId: 3}, 'Child']"></a>
+		<a [routerLink]="['./product', {productId: 3}, 'Child']"></a>
 		<router-outlet></router-outlet>
 	'
 })
@@ -256,14 +256,14 @@ Notes :
 
 ## Router - RouterLink en détails
 
-- Utilisation via un attribut `router-link`
-- Configuration de la route désirée via ce même attribut `router-link`
+- Utilisation via un attribut `routerLink`
+- Configuration de la route désirée via ce même attribut `routerLink`
 - Attribut `href` généré par le service `Location`
 - Ajout d'une classe CSS si la route est déjà active via le service `Router`
 
 ```typescript
-@Directive({
-  selector: '[router-link]',
+@Directive{(
+  selector: '[routerLink]',
   inputs: ['routeParams: routerLink', 'target: target'],
   host: {
     '(click)': 'onClick()',
@@ -296,7 +296,7 @@ location.go('/foo'); //example.com#/foo
 - Possible de configurer l'implémentation à utiliser
 
 ```typescript
-import {provide} from 'angular2/angular2';
+import {provide} from 'angular2/core';
 import {HashLocationStrategy } from 'angular2/router';
 
 @Component({directives: [ROUTER_DIRECTIVES]})
@@ -316,7 +316,7 @@ Notes :
 - Sera utilisé lors de la génération des différentes URLS
 
 ```typescript
-import {Component} from 'angular2/angular2';
+import {Component} from 'angular2/core';
 import {APP_BASE_HREF} from 'angular2/router';
 
 @Component({ ... })
@@ -346,7 +346,7 @@ import { Product } from './components/product';
 @RouteConfig([{ path: '/product/:productId', component: Product, name: 'Product' }])
 @Component({
 	template: '
-		<a [router-link]="['./product', {productId: 3}]"></a>
+		<a [routerLink]="['./product', {productId: 3}]"></a>
 		<router-outlet></router-outlet>
 	'
 })
@@ -378,7 +378,7 @@ Notes :
 
 ```typescript
 import { RouterConfig } from 'angular2/router';
-import { Component } from 'angular2/angular2';
+import { Component } from 'angular2/core';
 import { Admin } from './components/home';
 import { isLoggedIn } from './utils/is-logged-in';
 
