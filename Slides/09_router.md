@@ -68,7 +68,7 @@ import {bootstrap} from 'angular2/platform/browser';
 import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
 
 @Component({
-	directives: [ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES]
 })
 class AppComponent { ... }
 
@@ -116,13 +116,13 @@ Notes :
 ```typescript
 @Directive({selector: 'router-outlet'})
 export class RouterOutlet {
-	constructor(
-			private _elementRef: ElementRef,
-			private _loader: DynamicComponentLoader,
-			private _parentRouter: routerMod.Router,
-			@Attribute('name') nameAttr: string) {
-		...
-	}
+  constructor(
+    private _elementRef: ElementRef,
+    private _loader: DynamicComponentLoader,
+    private _parentRouter: routerMod.Router,
+    @Attribute('name') nameAttr: string) {
+    ...
+  }
 }
 ```
 
@@ -146,10 +146,10 @@ import { Product } from './components/product';
   { path: '/product', component: Product, name: 'Product' }
 ])
 @Component({
-	template: '
-		<header><h1>Title</h1></header>
-		<router-outlet></router-outlet>
-	'
+  template: '
+    <header><h1>Title</h1></header>
+    <router-outlet></router-outlet>
+  '
 })
 class AppComponent { }
 ```
@@ -169,7 +169,7 @@ import { Product } from './components/product';
   { path: '/product/...', component: Product, name: 'product' }
 ])
 @Component({
-	template: '<router-outlet></router-outlet>'
+  template: '<router-outlet></router-outlet>'
 })
 class AppComponent { }
 ```
@@ -181,7 +181,7 @@ import { Child } from './components/child';
   { path: '/', component: Child, name: 'Child', useAsDefault: true }
 ])
 @Component({
-	template: '<main><router-outlet></router-outlet></main>'
+  template: '<main><router-outlet></router-outlet></main>'
 })
 class Product { }
 ```
@@ -201,11 +201,11 @@ Notes :
   template: '
     <div>
       <h1>Hello {{message}}!</h1>
-      <a [routerLink]="['./Home]">Link 1</a>
-	  <a [routerLink]="['./Product', {productId: 1}]">Link 2</a>
-      <router-outlet></router-outlet>
+        <a [routerLink]="['./Home]">Link 1</a>
+        <a [routerLink]="['./Product', {productId: 1}]">Link 2</a>
+        <router-outlet></router-outlet>
     </div>
-  '})
+'})
 @RouteConfig([
   {path: '/', component: Home, as: 'Home'}
   {path: '/product/:productId', component: Product, as: 'Product'}
@@ -230,10 +230,10 @@ import { Product } from './components/product';
   { path: '/product/:productId', component: Product, name: 'Product' }
 ])
 @Component({
-	template: '
-		<a [routerLink]="['./product', {productId: 3}, 'Child']"></a>
-		<router-outlet></router-outlet>
-	'
+  template: '
+    <a [routerLink]="['./product', {productId: 3}, 'Child']"></a
+    <router-outlet></router-outlet>
+  '
 })
 class AppComponent { }
 ```
@@ -245,7 +245,7 @@ import { Child } from './components/child';
   { path: '/', component: Child, name: 'Child' }
 ])
 @Component({
-	template: '<main><router-outlet></router-outlet></main>'
+  template: '<main><router-outlet></router-outlet></main>'
 })
 class Product { }
 ```
@@ -303,7 +303,7 @@ import {HashLocationStrategy } from 'angular2/router';
 class AppComponent { ... }
 
 bootstrap(AppComponent, [ ROUTER_PROVIDERS,
-	provide(LocationStrategy, {useClass: HashLocationStrategy}) ]);
+  provide(LocationStrategy, {useClass: HashLocationStrategy}) ]);
 ```
 
 Notes :
@@ -321,14 +321,14 @@ import {APP_BASE_HREF} from 'angular2/router';
 
 @Component({ ... })
 @RouteConfig([
-	{...},
+  {...},
 ])
 class AppComponent {
 
 }
 
 bootstrap(AppCmp, [
-	provide(APP_BASE_HREF, {useValue: '/my/app'})
+  provide(APP_BASE_HREF, {useValue: '/my/app'})
 ]);
 ```
 
@@ -345,10 +345,10 @@ import { Product } from './components/product';
 
 @RouteConfig([{ path: '/product/:productId', component: Product, name: 'Product' }])
 @Component({
-	template: '
-		<a [routerLink]="['./product', {productId: 3}]"></a>
-		<router-outlet></router-outlet>
-	'
+  template: '
+    <a [routerLink]="['./product', {productId: 3}]"></a>
+    <router-outlet></router-outlet>
+  '
 })
 class AppComponent { }
 ```
@@ -357,11 +357,11 @@ class AppComponent { }
 import { Child } from './components/child';
 
 @Component({
-	template: '<main><router-outlet></router-outlet></main>'
+  template: '<main><router-outlet></router-outlet></main>'
 })
 class Product {
-	id:string;
-	constructor(params: RouteParams) { this.id = params.get('productId'); }
+  id:string;
+  constructor(params: RouteParams) { this.id = params.get('productId'); }
 }
 ```
 
