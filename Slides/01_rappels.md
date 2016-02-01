@@ -42,12 +42,12 @@ Notes :
 ## TypeScript
 
 - Langage créé par *Anders Hejlsberg* en 2012
-- Projet open-source maintenu par *Microsoft* (Version actuelle *1.8*)
+- Projet open-source maintenu par *Microsoft* (Version actuelle *1.5*)
 - Influencé par *JavaScript*, *Java* et *C#*
 - Phase de compilation nécessaire pour générer du *JavaScript*
 - Tout programme *JavaScript* est un programme *TypeScript*
 - Ajout de nouvelles fonctionnalités au langage *JavaScript*
-- Support d'*ES3* / *ES5* / *ES2015*
+- Support d'ES3 / ES5 / ES2015
 - Alternatives : CoffeeScript, Dart, Haxe ou Flow
 - Certaines fonctionnalités n'ont aucun impact sur le JavaScript généré
 
@@ -59,9 +59,9 @@ Notes :
 
 - Typage
 - Génériques
-- Classes / Interfaces / Héritage
+- Classes / Interfaces  / Héritage
 - Développement modulaire
-- Fichiers de définitions
+- Les fichiers de définitions
 - Mixins
 - Décorateurs
 - Fonctionnalités *ES2015*
@@ -90,37 +90,13 @@ Notes :
 
 
 
-## Types primitifs
-
-- Accès aux prototypes des objets primitifs du langage JavaScript
-
-```typescript
-var name:string = 'Carl';
-
-name.indexOf('C'); //0
-
-var num:number = 6.01;
-
-num.toFixed(1); //6.0
-
-var arr:string[] = ['carl', 'laurent'];
-
-arr.filter(function(element){
-  return element === 'carl';
-}); //['carl']
-```
-
-Notes :
-
-
-
 ## Fonctions
 
 - Comme en JavaScript, possibilité de créer des fonctions nommées ou anonymes
 
 ```typescript
 //Fonction nommée
-function fn():void { }
+function  fn():void { }
 
 //Fonction anonyme
 var fn = function(): void { }
@@ -141,60 +117,18 @@ Notes :
 
 ## Fonctions - Paramètres (Optionels)
 
-- Une fonction peut prendre des paramètres
-
-```typescript
-function fn(name:string, forename :string){ }
-```
-
 - Un paramètre peut être optionel
   - utilisation du caractère `?`
   - ordre de définition très important
-  - aucune implication dans le code JavaScript généré
   - si pas défini, le paramètre aura la valeur `undefined`
 
-```typescript
-function fn(name:string, forename?:string){ }
-```  
-
-Notes :
-
-
-
-## Fonctions - Paramètres par défaut
-
 - Possibilité de définir une valeur par défaut pour chaque paramètre
-  - directement dans la signature de la méthode
-  - utilisation du signe `=`
+  - directement dans la signature de la méthode (via `=`)
   - ajoutera une condition `if` dans le javascript généré
 
 ```typescript
-function fn(name:string = 'carl'){
-
-}
-```
-
-Notes :
-
-
-
-## Fonctions - Rest Parameters
-
-- Manipuler un ensemble de paramètre en tant que groupe
-  - utilisation de la syntaxe `...`
-  - doit correspondre au dernier paramètre de la fonction
-  - est un tableau d'objet
-  - se base sur l'objet *JavaScript* `arguments`
-
-```typescript
-function company(name:string = 'zenika', ...tribus: string[]){
-
-}
-
-company('zenika', 'web', 'java');
-
-company('zenika', 'web');
-```
+function fn(name:string = 'carl', forename?:string){ }
+```  
 
 Notes :
 
@@ -203,7 +137,7 @@ Notes :
 ## Fonctions - Surcharge
 
 - Une fonction peut retourner un type différent en fonction des paramètres
-- Permet d'indiquer au compilateur *TypeScript* quel est le type retourné en fonction des paramètres passés
+- Permet d'indiquer au compilateur TypeScript quel est le type retourné en fonction des paramètres passés
 
 ```typescript
 function fn(param:string) : number;
@@ -225,7 +159,7 @@ Notes :
 
 - Permet de manipuler un tableau d'objet
 
-- Deux syntaxes pour définir des tableaux
+- 2 syntaxes pour créer des tableaux
   - Syntaxe Litérale
 
 ```typescript
@@ -238,32 +172,7 @@ var list:number[] = [1, 2, 3];
 var list:Array<number> = [1, 2, 3];
 ```
 
-- Ces 2 syntaxes aboutiront au même code *JavaScript*
-
-Notes :
-
-
-
-## Tuples
-
-- *JavaScript* ne propose pas de syntaxe pour la gestion des *tuples*
-  - se base sur des tableaux
-
-- *TypeScript* propose une syntaxe pour créer des tuples
-
-```typescript
-var tuple: [string, number];
-
-tuple = ['Zenika', 10];
-```
-
-- Possibilité d'utiliser les tuples en combinaison du système d'extraction de données
-
-```typescript
-var tuple: [string, number];
-tuple = ['Zenika', 10];
-var [name, age] = tuple
-```
+- Ces 2 syntaxes aboutiront au même code JavaScript
 
 Notes :
 
@@ -295,7 +204,7 @@ Notes :
 ## Classes
 
 - Système de *classes* et *interfaces* similaire à la programmation orientée objet
-- Le code *JavaScript* généré utilisera le système de `prototype`
+- Le code javascript généré utilisera le système de `prototype`
 - Possibilité de définir un constructeur, des méthodes et des propriétés
 - Propriétés/méthodes acccessibles via l'objet `this`
 
@@ -315,6 +224,8 @@ Notes :
 
 - Méthodes ajoutées au `prototype` de l'objet
 
+- Version TypeScript
+
 ```typescript
 class Person {
    constructor(){}
@@ -331,7 +242,7 @@ Notes :
 
 - Trois scopes disponibles : `public`, `private` et `protected`
 - Utilise le scope `public` par  défaut
-- Scope `protected` apparu en *TypeScript* 1.3
+- Scope `protected` apparu en TypeScript 1.3
 - Propriétés ajoutées sur l'objet en cours d'instanciation (`this`)
 - Possibilité de définir des propriétés statiques (`static`)
   - Tous les types supportés : types primitifs, fonctions, ...
@@ -344,7 +255,7 @@ Notes :
 
 ## Classes - Propriétés
 
-- Première version pour initialiser des propriétés :
+- 1e version pour initialiser des propriétés :
 
 ```typescript
 class Person {
@@ -370,13 +281,13 @@ Notes :
 ## Classes - Accesseurs
 
 - Possibilité de définir des accesseurs pour accéder à une propriété
-- Utiliser les mots clé `get` et `set`
-- Nécessité de générer du code *JavaScript* compatible *ES5*
-- Le code généré utilisera `Object.defineProperty`
+- Utiliser les mots clé *get* et *set*
+- Nécessité de générer du code JavaScript compatible ES5
+- Le code JavaScript généré utilisera `Object.defineProperty`
 
 ```typescript
 class Person {
-   private secret:string;
+   private _secret:string;
    get secret():string{
       return this._secret;
    }
@@ -416,85 +327,12 @@ Notes :
 ## Interfaces
 
 - Utilisée par le compilateur pour vérifier la cohérence des différents objets
-- Aucun impact sur le *JavaScript* généré
+- Aucun impact sur le JavaScript généré
 - Système d'héritage entre interfaces
 - Plusieurs cas d'utilisation possible
   - Vérification des paramètres d'une fonction
   - Vérification de la signature d'une fonction
   - Vérification de l'implémentation d'une classe
-
-Notes :
-
-
-
-## Interfaces - Paramètres d'une fonction
-
-- Vérification des paramètres d'une fonction
-
-```typescript
-function display(params: {message: string}){
-	console.log(params.message)
-}
-
-display() //KO
-display({message: 'hello'}) //OK
-```
-
-```typescript
-interface Message {
-  message:string
-}
-
-function display(params: Message){ }
-
-display() //KO
-display({message: 'hello'}) //OK
-```
-
-Notes :
-
-
-
-## Interfaces - Propriétés optionnelles
-
-- Possibilité de définir des propriétés optionnelles
-
-```typescript
-interface Message {
-  message:string
-  titre?:string
-}
-
-function display(params: Message){ }
-
-display() //KO
-display({message: 'hello'}) //OK
-display({message: 'hello', titre: 'Titre'}) //OK
-```
-
-Notes :
-
-
-
-## Interfaces - Signature d'une fonction
-
-- Vérification de la signature d'une fonction
-
-```typescript
-interface transform {
-  (source:string) : string;
-}
-
-var tranformFn: transform;
-
-tranformFn = function(source: string){
-  return source.toLowerCase()
-} //OK
-
-tranformFn = function(age: number){
-  return age > 18
-} //KO
-```
 
 Notes :
 
@@ -523,7 +361,7 @@ Notes :
 ## Génériques
 
 - Fonctionnalité permettant de créer des composants réutilisables
-- Inspiration des génériques disponibles en *Java* ou *C#*
+- Inspiration des génériques disponibles en Java ou C#
 - Nécessité de définir un (ou plusieurs) paramètre de type sur la fonction/variable/classe/interface générique
 
 ```typescript
@@ -566,7 +404,7 @@ Notes :
 
 ## NPM
 
-- Node.js inclut un système de gestion des paquets : *npm*
+- Node inclut un système de gestion des paquets : *npm*
 - Il existe pratiquement depuis la création de Node.js
 - C'est un canal important pour la diffusion des modules
 
@@ -626,6 +464,12 @@ Notes :
 - le nom est utilisé en fin d'url du module, ne pas utiliser les caractères suivants :
   - ne pas démarrer par un point `.` ou un underscore `_`
   - des caractères non-url-safe
+- la version doit être `semver` (Semantic Versioning)
+  - Majeure, mineure et patch doivent être numérique
+  - il est possible d'y adjoindre un complément informatif (date, numéro de build, ...) qui `ne servira pas` pour le filtrage
+  - il existe un outils `semver` permettant de vérifier les contraintes de version
+
+Notes :
 
 
 
@@ -680,10 +524,9 @@ Notes :
 ## Publier un module npm
 
 - Il est bien sûr conseillé de suivre toutes les bonnes pratiques
-  - Utiliser la numérotation recommandée (`semver`)
+  - Utiliser la numérotation recommandée
   - Avoir des tests unitaires
   - Avoir un minimum d'informations dans le `package.json`
-  - Avoir un fichier `README.md` permettant de décrire le module
 - Il n'y a pas d'autorité de validation
 - Il faut par contre trouver un nom disponible
 - La suite nécessite seulement la commande `npm`
