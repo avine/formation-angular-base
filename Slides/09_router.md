@@ -20,7 +20,7 @@ Notes :
 - [Communication avec une API REST](#/8)
 - **[Router](#/9)**
 
-Notes : 
+Notes :
 
 
 
@@ -56,12 +56,12 @@ Notes :
 
 
 ## Router
- 
+
 - Router orienté *composant*
 - Association d'un composant principal avec une URL de votre application
 - Utilisation du décorateur `@RouteConfig` pour définir la configuration
 - Utilisation de la directive `RouterOutlet` pour définir le point d'insertion
-- Navigation entre les pages via la directive `RouterLink` 
+- Navigation entre les pages via la directive `RouterLink`
 
 ```typescript
 import {bootstrap} from 'angular2/angular2';
@@ -115,13 +115,13 @@ Notes :
 
 ```typescript
 @Directive({selector: 'router-outlet'})
-export class RouterOutlet { 
+export class RouterOutlet {
 	constructor(
-			private _elementRef: ElementRef, 
+			private _elementRef: ElementRef,
 			private _loader: DynamicComponentLoader,
-			private _parentRouter: routerMod.Router, 
-			@Attribute('name') nameAttr: string) { 
-		... 
+			private _parentRouter: routerMod.Router,
+			@Attribute('name') nameAttr: string) {
+		...
 	}
 }
 ```
@@ -132,7 +132,7 @@ Notes :
 
 ## Router - RouterOutlet
 
-- Exemple simple de la directives `RouterOutlet` 
+- Exemple simple de la directives `RouterOutlet`
 
 ```typescript
 import { RouterConfig } from 'angular2/router';
@@ -160,13 +160,13 @@ Notes :
 
 ## Router - RouterOutlet imbriquées
 
-- Imbrication de plusieurs `RouterOutlet` pour définir une hiérarchie de vues 
+- Imbrication de plusieurs `RouterOutlet` pour définir une hiérarchie de vues
 
 ```typescript
 import { Product } from './components/product';
 
 @RouteConfig([
-  { path: '/product', component: Product, name: 'product' }
+  { path: '/product/...', component: Product, name: 'product' }
 ])
 @Component({
 	template: '<router-outlet></router-outlet>'
@@ -178,7 +178,7 @@ class AppComponent { }
 import { Child } from './components/child';
 
 @RouteConfig([
-  { path: '/', component: Child, name: 'Child' }
+  { path: '/', component: Child, name: 'Child', useAsDefault: true }
 ])
 @Component({
 	template: '<main><router-outlet></router-outlet></main>'
@@ -190,7 +190,7 @@ Notes :
 
 
 
-## Router - RouterLink 
+## Router - RouterLink
 
 - Permet de naviguer d'une route à une autre
 - Utilisation de la méthode `navigate` du service `Router`
@@ -207,7 +207,7 @@ Notes :
     </div>
   '})
 @RouteConfig([
-  {path: '/', component: Home, as: 'home'}	
+  {path: '/', component: Home, as: 'home'}
   {path: '/product/:productId', component: Product, as: 'Product'}
 ])
 class AppComponent {
@@ -282,7 +282,7 @@ Notes :
 
 - `PathLocationStrategy` (stratégie par défaut)
 	- Nécessite la définition de l'URL de base de votre application (`APP_BASE_HREF` ou `<base>`)
-		
+
 ```typescript
 location.go('/foo'); //example.com/my/app/foo
 ```
@@ -293,7 +293,7 @@ location.go('/foo'); //example.com/my/app/foo
 location.go('/foo'); //example.com#/foo
 ```
 
-- Possible de configurer l'implémentation à utiliser 
+- Possible de configurer l'implémentation à utiliser
 
 ```typescript
 import {provide} from 'angular2/angular2';
@@ -301,7 +301,7 @@ import {HashLocationStrategy } from 'angular2/router';
 
 @Component({directives: [ROUTER_DIRECTIVES]})
 class AppComponent { ... }
- 
+
 bootstrap(AppComponent, [ ROUTER_PROVIDERS,
 	provide(LocationStrategy, {useClass: HashLocationStrategy}) ]);
 ```
@@ -318,7 +318,7 @@ Notes :
 ```typescript
 import {Component} from 'angular2/angular2';
 import {APP_BASE_HREF} from 'angular2/router';
- 
+
 @Component({ ... })
 @RouteConfig([
 	{...},
@@ -330,7 +330,7 @@ class AppComponent {
 bootstrap(AppCmp, [
 	provide(APP_BASE_HREF, {useValue: '/my/app'})
 ]);
-``` 
+```
 
 Notes :
 
@@ -388,7 +388,7 @@ import { isLoggedIn } from './utils/is-logged-in';
 @Component({ template: '<router-outlet></router-outlet>' })
 @CanActivate((next, prev) => return isLoggedIn())
 class AppComponent {
-	
+
 }
 ```
 
