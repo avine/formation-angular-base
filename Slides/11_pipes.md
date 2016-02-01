@@ -203,6 +203,27 @@ Notes :
 
 
 
+## Les Pipes - Stack Globale
+
+- Possibilité de définir un stack globale de `pipes`
+- Les `pipes` seront utilisables dans l'ensemble de l'application
+- Surcharge du `provider` `PLATFORM_PIPES`
+
+```typescript
+import {bootstrap} from 'angular2/platform/browser';
+import {App} from './app/migr';
+import {MyPipe} from './appp/mypipe';
+import {provide, PLATFORM_PIPES} from 'angular2/core';
+
+bootstrap(App, [
+    provide(PLATFORM_PIPES, {useValue: [MyPipe], multi:true})
+]);
+```
+
+Notes :
+
+
+
 ## Les Pipes - Tests
 
 - Instanciation du *Pipe* dans une méthode `BeforeEach`
