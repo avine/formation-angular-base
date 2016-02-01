@@ -76,6 +76,77 @@ Notes :
 
 
 
+## Les Pipes - Création
+
+- Définir une classe implémentant l'interface `PipeTransform`
+- Implémenter la méthode `transform`
+- Annoter la classe avec le décorateur `@Pipe`
+- Exporter cette classe via `export`
+
+```typescript
+import {isString} from 'angular2/src/facade/lang';
+import {PipeTransform, Pipe} from 'angular2/core';
+
+@Pipe({name: 'mylowercase'})
+export class MyLowerCasePipe implements PipeTransform {
+  transform(value: string, args: any[] = null): string {
+
+    return value.toLowerCase();
+
+  }
+}
+```
+
+Notes :
+
+
+
+## Les Pipes - Utilisation
+
+- Charger explicitement les *pipes* externes avant utilisation dans vos templates
+- Utiliser de la propriété `Pipes` du décorateur `@Component`
+
+```typescript
+import {Component} from 'angular2/core'
+import {MyLowerCasePipe} from './mylowercase'
+@Component({
+	selector: 'app',
+	template: '<h2>{{'Hello World' | mylowercase}}</h2>',
+	pipes: [MyLowerCasePipe]
+})
+export class App { }
+```
+
+Notes :
+
+
+
+## Les Pipes - Utilisation
+
+- Utilisation de l'injection de dépendances pour utiliser un *Pipe*
+- Pas nécessaire d'utiliser un service `$filter` ou une règle de nommage (`dateFilter`) comme en *AngularJS*
+
+```typescript
+import {Component, UpperCasePipe} from 'angular2/core`
+@Component({
+  selector: 'app',
+  providers: [UpperCasePipe]
+})
+class App {
+
+  name:string;
+
+  constructor(public upper:UpperCasePipe){
+    this.string = upper.transform('Hello Angular2');
+  }
+
+}
+```
+
+Notes :
+
+
+
 ## Les Pipes stateful
 
 - Deux catégories de *Pipes* : stateless et stateful
@@ -126,77 +197,6 @@ class PipesAppComponent {
     });
   }
 }
-```
-
-Notes :
-
-
-
-## Les Pipes - Utilisation dans les classes
-
-- Utilisation de l'injection de dépendances pour utiliser un *Pipe*
-- Pas nécessaire d'utiliser un service `$filter` ou une règle de nommage (`dateFilter`) comme en *AngularJS*
-
-```typescript
-import {Component, UpperCasePipe} from 'angular2/core`
-@Component({
-  selector: 'app',
-  providers: [UpperCasePipe]
-})
-class App {
-
-  name:string;
-
-  constructor(public upper:UpperCasePipe){
-    this.string = upper.transform('Hello Angular2');
-  }
-
-}
-```
-
-Notes :
-
-
-
-## Les Pipes - Création
-
-- Définir une classe implémentant l'interface `PipeTransform`
-- Implémenter la méthode `transform`
-- Annoter la classe avec le décorateur `@Pipe`
-- Exporter cette classe via `export`
-
-```typescript
-import {isString} from 'angular2/src/facade/lang';
-import {PipeTransform, Pipe} from 'angular2/core';
-
-@Pipe({name: 'mylowercase'})
-export class MyLowerCasePipe implements PipeTransform {
-  transform(value: string, args: any[] = null): string {
-
-    return value.toLowerCase();
-
-  }
-}
-```
-
-Notes :
-
-
-
-## Les Pipes - Création
-
-- Charger explicitement les *pipes* externes avant utilisation dans vos templates
-- Utiliser de la propriété `Pipes` du décorateur `@Component`
-
-```typescript
-import {Component} from 'angular2/core'
-import {MyLowerCasePipe} from './mylowercase'
-@Component({
-	selector: 'app',
-	template: '<h2>{{'Hello World' | mylowercase}}</h2>',
-	pipes: [MyLowerCasePipe]
-})
-export class App { }
 ```
 
 Notes :
