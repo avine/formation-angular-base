@@ -205,7 +205,7 @@ Notes :
 
 ## Les Pipes - Stack Globale
 
-- Possibilité de définir un stack globale de `pipes`
+- Possibilité de définir une stack globale de `pipes`
 - Les `pipes` seront utilisables dans l'ensemble de l'application
 - Surcharge du `provider` `PLATFORM_PIPES`
 
