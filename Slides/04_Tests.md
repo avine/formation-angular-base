@@ -116,12 +116,12 @@ Notes :
   - `Spy.calls`
   
 ```javascript
-describe('Basket objet:', function() {
+describe('Service objet:', function() {
  
   it('checkout method should be called', function() { 
-     spyOn(basket, 'checkout');
-     basket.checkout();
-     expect(basket.checkout).toHaveBeenCalled();
+     spyOn(service, 'foo');
+     service.foo();
+     expect(service.foo).toHaveBeenCalled();
   });
 });
 ```
@@ -167,72 +167,17 @@ Notes :
 
 ## Tests - Automatisation de l'exécution des tests
 
-- Nécessité de compiler les fichiers  `TypeScript` avant l'exécution des tests
-- Possilité d'automatiser cette tâche : 
-  - Via un runner : *Karma* et le [Karma TypeScript preprocessor](https://www.npmjs.com/package/karma-typescript-preprocessor)
+- Configuration automatiquement réalisée par `angular-cli`
+- Les fichiers de test sont automatiquement créés lors de la création d'un `Composant`/`Service`/`Pipe` via `angular-cli`
+- Ils se trouvent dans le même répertoire que l'élément à tester : *mon-service.spec.ts*
+- Exécution des tests :
 
-```javascript
-// karma.conf.js 
-module.exports = function(config) {
-  config.set({
-    preprocessors: { '**/*.ts': ['typescript'] },
-    
-    files: [
-      '**/*.spec.ts'
-    ],
-  });
-};
+```shell
+ng build
+karma start
 ```
 
 Notes :
-
-
-
-## Tests - Automatisation de l'exécution des tests
-
-- Installer les différents modules :
-
-```shell
-npm install --save-dev karma typescript 
-                       karma-typescript-preprocessor
-
-npm install -g karma
-# ou pour Windows
-npm install -g karma-cli
-```
-
-- Initialisation des tests `Karma`
-
-```shell
-karma init
-```
-
-- Configuration du préprocesseur `TypeScript` dans le fichier *karma.conf.js*
-
-Notes :
-
-
-
-## Tests - Configuration du préprocesseur
-
-- Exemple de configuration du préprocesseur : 
-
-```javascript
-typescriptPreprocessor: {
-  options: {
-    target: 'ES5', 
-    module: 'amd', 
-  },
-  typings: [
-    'typings/tsd.d.ts'
-  ],
-  transformPath: function(path) {
-    return path.replace(/\.ts$/, '.js');
-  }
-}
-```
-
-Notes : 
 
 
 
