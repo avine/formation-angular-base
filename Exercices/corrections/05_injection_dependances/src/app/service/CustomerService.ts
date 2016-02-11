@@ -2,9 +2,9 @@ import {Product} from "../model/product";
 
 export class CustomerService {
 	
-	products:Product[] = new Array<Product>();
+	public products:Product[] = new Array<Product>();
 	
-	addProduct(product:Product){
+	addProduct(product:Product):void{
 		this.products.push(product);
 	}
 	
