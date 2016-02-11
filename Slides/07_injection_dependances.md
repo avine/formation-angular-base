@@ -41,24 +41,22 @@ Notes :
 
 ## Injecteurs
 
-- Elément utilisé pour injecter les services
+- Élément utilisé pour injecter les services
 - 1 injecteur par composant contrairement à *AngularJS*
 - 1 injecteur d'un composant hérite de celui du parent
 - Nécessité de configurer les injecteurs
     - de manière globale via `bootstrap`
     - de manière locale via `@Component`
-- Service injecté via le constructeur du composant
-- Les services injectés seront des singletons
+- Les services sont injectés via la constructeur du parent et sont des singletons
 
 Notes :
 
 
 
-## Configuration de l'Injecteur
+## Configuration globale de l'Injecteur
 
-- Exemple de configuration globale de l'injecteur
 - La méthode `bootstrap` peut prendre un second paramètre
-- Ce paramètre un tableau de `providers`
+- Ce paramètre est un tableau de `providers`
 
 ```typescript
 import {MyService} from './myservice'
@@ -77,9 +75,8 @@ Notes :
 
 
 
-## Configuration de l'Injecteur
+## Configuration locale de l'Injecteur
 
-- Exemple de configuration locale de l'injecteur
 - Possibilité de définir une propriété `providers` dans l'annotation `@Component`
 - Même syntaxe que la configuration globale
 
@@ -102,7 +99,7 @@ Notes :
 
 
 
-## Services ayant des dépendances
+## Dépendances des services
 
 - Nécessité d'ajouter l'annotation `@Injectable`
 - Utilisé pour que *Angular2* puisse générér les métadatas nécessaires pour l'injection de dépendances
@@ -153,7 +150,7 @@ Notes :
 
 - Lorsque nous avons des objets à injecter, et non des classes
 - Possibilité de définir une chaîne de caractère comme identifiant
-- *Angular2* convertir les objets et chaines de caratères en `OpenToken`
+- *Angular2* convertit les objets et chaines de caratères en `OpaqueToken`
 - Nécessité d'utilisation l'annotation `Inject` pour injecter ce genre de service
 
 ```typescript
