@@ -3,6 +3,6 @@ import {Application} from '../app/application';
 
 beforeEachProviders(() => [Application]);
 
-describe('App: Tedt', () => {
+describe('App: Test', () => {
   
 });
