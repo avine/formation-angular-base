@@ -5,7 +5,7 @@ export class ProductService {
 	private products:Product[];
 	
 	constructor(){
-		this.products = new Array<Product>();
+        this.products = new Array<Product>();
         
         this.products.push(new Product('Product 1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 10, 2));
         this.products.push(new Product('Product 2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500' ,20, 2));
