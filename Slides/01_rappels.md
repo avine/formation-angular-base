@@ -469,8 +469,6 @@ Notes :
   - il est possible d'y adjoindre un complément informatif (date, numéro de build, ...) qui `ne servira pas` pour le filtrage
   - il existe un outils `semver` permettant de vérifier les contraintes de version
 
-Notes :
-
 
 
 ## package.json : dépendances
