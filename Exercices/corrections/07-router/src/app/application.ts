@@ -7,8 +7,8 @@ import {Home} from "./components/home/home"
 import {Basket} from "./components/basket/basket"
 
 @RouteConfig([
-  {path: '/', component: Home, as: 'Home'},
-  {path: '/basket', component: Basket, as: 'Basket'}
+  {path: '/', component: Home, name: 'Home'},
+  {path: '/basket', component: Basket, name: 'Basket'}
 ])
 @Component({
   template: `
