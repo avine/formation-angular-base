@@ -190,20 +190,19 @@ Notes :
 - Exemple complet utilisant les différentes briques d'une application Angular2
 
 ```typescript
-import {Component} from 'angular2/core'
-import {MyPipe} from './MyPipe'
+import {Component} from 'angular2/core';
+import {HTTP_PROVIDERS, Http} from "angular2/http";
+import {MyPipe} from './MyPipe';
 
 @Component({
     selector: 'app',
     template: '{{value | MyPipe}}',
-    pipes: [MyPipe]
+    pipes: [MyPipe],
+    providers: [HTTP_PROVIDERS]
 })
 export class Component{
-
   value:string;
-
   constructor(http:Http){
-
   }
 }
 ```
