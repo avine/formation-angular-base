@@ -8,7 +8,6 @@ import {CustomerService} from "../../service/CustomerService"
 @Component({
   selector: 'home',
   templateUrl: 'app/components/home/home.html',
-  providers: [],
   directives: [ProductComponent],
   pipes: [OrderBy]
 })
