@@ -1,4 +1,4 @@
-import {Component, EventEmitter} from "angular2/angular2";
+import {Component, EventEmitter, Input, Output} from "angular2/angular2";
 import {Product} from "../model/product";
 
 @Component({
@@ -14,17 +14,13 @@ import {Product} from "../model/product";
                         </p>
                     </div>
                 </div>
-            </div>`,
-   inputs: ['data'],
-   outputs: ['addToBasket']
+            </div>`
 })
 export class ProductComponent {
-    data:Product
-    addToBasket = new EventEmitter();
-    
+    Input() data:Product
+    Output() addToBasket = new EventEmitter();
+
     clickHandler(){
         this.addToBasket.next(this.data);
     }
 }
-
-
