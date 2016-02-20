@@ -42,7 +42,7 @@ Notes :
 ## TypeScript
 
 - Langage créé par *Anders Hejlsberg* en 2012
-- Projet open-source maintenu par *Microsoft* (Version actuelle *1.5*)
+- Projet open-source maintenu par *Microsoft* (Version actuelle *1.8*)
 - Influencé par *JavaScript*, *Java* et *C#*
 - Phase de compilation nécessaire pour générer du *JavaScript*
 - Tout programme *JavaScript* est un programme *TypeScript*
