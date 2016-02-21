@@ -32,8 +32,7 @@ Notes :
 - **[Les Pipes](#/11)**
 - [Annotations et Décorateurs](#/12)
 - [Server-side Rendering](#/13)
-- [Support d'EcmaScript 5](#/14)
-- [Bonne Pratiques pour une migration heureuse](#/15)
+- [Bonne Pratiques pour une migration heureuse](#/14)
 
 Notes :
 
