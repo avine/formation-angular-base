@@ -7,12 +7,11 @@
   "05_composants.md",
   "06_angular2_composants.md",
   "07_injection_dependances.md",
-  "08_rest.md",
-  "09_router.md",
-  "10_forms.md",
-  "11_pipes.md",
-  "12_annotations_decorateurs.md",
-  "13_serverside_rendering.md",
-  "14_angularjs_bonne_pratique.md",
-  "15_ecma5.md"
+  "08_pipes.md",
+  "09_rest.md",
+  "10_router.md",
+  "11_forms.md",
+  "12_serverside_rendering.md",
+  "13_angularjs_bonne_pratique.md",
+  "14_ecma5.md"
 ]

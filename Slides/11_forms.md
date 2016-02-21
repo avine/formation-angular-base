@@ -17,8 +17,8 @@ Notes :
 - [Composants](#/5)
 - [Les composants Angular2](#/6)
 - [Injection de Dépendances](#/7)
-- [Service HTTP](#/8)
-- [Router](#/9)
+- [Les Pipes](#/8)
+- [Service HTTP](#/9)
 
 Notes :
 
@@ -28,11 +28,10 @@ Notes :
 
 <!-- .slide: class="toc" -->
 
-- **[Gestion des Formulaires](#/10)**
-- [Les Pipes](#/11)
-- [Annotations et Décorateurs](#/12)
-- [Server-side Rendering](#/13)
-- [Bonne Pratiques pour une migration heureuse](#/14)
+- [Router](#/10)
+- **[Gestion des Formulaires](#/11)**
+- [Server-side Rendering](#/12)
+- [Bonne Pratiques pour une migration heureuse](#/13)
 
 Notes :
 
@@ -45,7 +44,7 @@ Notes :
   - `input[text]`, `input[radio]`, `input[checkbox]`, `input[email]`, `input[number]`, `input[url]`
   - `select`
   - `textarea`
-  
+
 - Il est possible de créer ses propres composants
 
 Notes :
@@ -66,10 +65,10 @@ Notes :
 
 La directive `NgForm` est automatiquement associée à chaque balise `<form>`
 
-- Autorise l'utilisation du `(ngSubmit)` 
+- Autorise l'utilisation du `(ngSubmit)`
 - Créée un `ControlGroup` pour gérer les inputs contenus dans le formulaire
 - Utilisable par l'écriture : `#myForm="ngForm"`
- 
+
 ```html
 <form #myForm="ngForm" novalidate>
   <!-- disabled button if form is invalid -->
@@ -112,7 +111,7 @@ Notes :
  - La valeur
  - l'état (dirty, valid, ...)
  - les erreurs de validations
- 
+
 - La directive `ngControl` créé un `Control`, l'associe au champ input et l'ajoute au `ngForm`
 - On peut l'associer à une variable pour l'utiliser dans le template avec la même syntaxe que le `ngForm`
 
@@ -144,7 +143,7 @@ Notes :
 
 - Un champ peut posséder un ou plusieurs validateurs
   - Standards ou personnalisés
-  
+
 - L'état de la validation est stocké par l'objet `Control` dans la propriété `errors`
 ```html
 <input type="text" [(ngModel)]="contact.name" ngControl="name" required>
@@ -184,7 +183,7 @@ Notes :
 
 Notes :
 A vérifier...
-  - De manière conditionnelle par binding : 
+  - De manière conditionnelle par binding :
 ```html
 <input type="checkbox" [(ngModel)]="nameRequired">
 <input [required]="nameRequired" [(ngModel)]="name">
