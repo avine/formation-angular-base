@@ -32,8 +32,7 @@ Notes :
 - [Les Pipes](#/11)
 - [Annotations et Décorateurs](#/12)
 - [Server-side Rendering](#/13)
-- **[Support d'EcmaScript 5](#/14)**
-- [Bonne Pratiques pour une migration heureuse](#/15)
+- [Bonne Pratiques pour une migration heureuse](#/14)
 
 Notes :
 
@@ -61,7 +60,7 @@ Notes :
 ## Angular2 en EcmaScript 5
 
 - Initialisation de l'application via la méthode `bootstrap` du module `angular2/platform/browser`
-- Ecoute de l'événement `DOMContentLoaded`
+- Écoute de l'événement `DOMContentLoaded`
 - Signature de la méthode `bootstrap` identique à celle utilisée en *TypeScript*
 
 ```javascript
