@@ -17,7 +17,7 @@ Notes :
 - [Composants](#/5)
 - [Les composants Angular2](#/6)
 - [Injection de Dépendances](#/7)
-- **[Communication avec une API REST](#/8)**
+- **[Service HTTP](#/8)**
 - [Router](#/9)
 
 Notes :
@@ -58,7 +58,7 @@ Notes :
 - Exemple simple d'un service utilisant `Http`
   - Import d'`Http` depuis le module `angular2/http`
   - Injection du service via le constructeur
-  - La méthode du service retournera l'objet retourné par `Http`
+  - La méthode du service retournera le résultat de la requête `HTTP`
 
 ```typescript
 import {Http} from 'angular2/http';
@@ -93,7 +93,33 @@ body : string
 ```
 
 - `RequestMethod` : enum avec les différents méthodes HTTP possibles
-- `Headers` : correspont à la spécification `fetch`
+- `Headers` : correspond à la spécification `fetch`
+
+Notes :
+
+
+
+## HTTP - Exemple
+
+- Requête HTTP de type `POST` avec surcharge des `Headers`
+
+```typescript
+import {Http, HTTP_PROVIDERS} from 'angular2/http';
+
+export class AppComponent {
+    constructor(private http:Http){ }
+
+    save(contact){
+      let headers = new Headers();
+      headers.set('Content-Type', 'application/json');
+
+      return this.http.put('rest/contacts/' + contact.id,
+                                  JSON.stringify(contact), {'headers': headers});
+    }
+}
+
+bootstrap(AppComponent, [HTTP_PROVIDERS]);
+```
 
 Notes :
 
@@ -102,14 +128,13 @@ Notes :
 ## HTTP - Observable
 
 - Le pattern *Observable* se base sur la librairie *RxJS*
-- Proposition pour *EcmaScript 2016*
 - Documentation ici : https://github.com/Reactive-Extensions/RxJS
 - Traitement de tâches asynchrones similaires à des tableaux
 - Permet d'avoir des traitements asynchrones retournant plusieurs données
 - Un Observable peut être *cancelable*
-- Utilisation de méthodes dérivées la programmation fonctionnelle
+- Utilisation de méthodes dérivées de la programmation fonctionnelle
     - `map`, `forEach`, `filter`, ...
-- Utilisable pour les traitements asynchrones : websocket, gestion des événements JavaScript
+- Utilisable pour les traitements asynchrones : WebSocket, gestion des événements JavaScript
 
 Notes :
 
@@ -128,10 +153,8 @@ export class AppComponent {
         http.get('people.json')
             .map(result:Response => result.json())
             .subscribe(jsonObject => {
-
                 this.displayedData = jsonObject;
-
-            })
+            });
     }
 }
 
@@ -158,32 +181,6 @@ export class AppComponent {
             .subscribe(jsonObject:MyObject => {
                 this.displayedData = jsonObject;
             })
-    }
-}
-
-bootstrap(AppComponent, [HTTP_PROVIDERS]);
-```
-
-Notes :
-
-
-
-## HTTP - Exemple
-
-- Requête HTTP de type `POST` avec surcharge des `Headers`
-
-```typescript
-import {Http, HTTP_PROVIDERS} from 'angular2/http';
-
-export class AppComponent {
-    constructor(private http:Http){ }
-
-    save(contact){
-      let headers = new Headers();
-      headers.set('Content-Type', 'application/json');
-
-      return this.http.put('rest/contacts/' + contact.id,
-                                  JSON.stringify(contact), {'headers': headers});
     }
 }
 
