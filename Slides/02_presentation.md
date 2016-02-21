@@ -17,7 +17,7 @@ Notes :
 - [Composants](#/5)
 - [Les composants Angular2](#/6)
 - [Injection de Dépendances](#/7)
-- [Communication avec une API REST](#/8)
+- [Service HTTP](#/8)
 - [Router](#/9)
 
 Notes :
@@ -189,20 +189,19 @@ Notes :
 - Exemple complet utilisant les différentes briques d'une application Angular2
 
 ```typescript
-import {Component} from 'angular2/core'
-import {MyPipe} from './MyPipe'
+import {Component} from 'angular2/core';
+import {HTTP_PROVIDERS, Http} from "angular2/http";
+import {MyPipe} from './MyPipe';
 
 @Component({
     selector: 'app',
     template: '{{value | MyPipe}}',
-    pipes: [MyPipe]
+    pipes: [MyPipe],
+    providers: [HTTP_PROVIDERS]
 })
 export class Component{
-
   value:string;
-
   constructor(http:Http){
-
   }
 }
 ```

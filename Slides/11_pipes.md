@@ -17,7 +17,7 @@ Notes :
 - [Composants](#/5)
 - [Les composants Angular2](#/6)
 - [Injection de Dépendances](#/7)
-- [Communication avec une API REST](#/8)
+- [Service HTTP](#/8)
 - [Router](#/9)
 
 Notes :
@@ -196,6 +196,27 @@ class PipesAppComponent {
     });
   }
 }
+```
+
+Notes :
+
+
+
+## Les Pipes - Stack Globale
+
+- Possibilité de définir une stack globale de `pipes`
+- Les `pipes` seront utilisables dans l'ensemble de l'application
+- Surcharge du `provider` `PLATFORM_PIPES`
+
+```typescript
+import {bootstrap} from 'angular2/platform/browser';
+import {App} from './app/migr';
+import {MyPipe} from './appp/mypipe';
+import {provide, PLATFORM_PIPES} from 'angular2/core';
+
+bootstrap(App, [
+    provide(PLATFORM_PIPES, {useValue: [MyPipe], multi:true})
+]);
 ```
 
 Notes :

@@ -17,7 +17,7 @@ Notes :
 - [Composants](#/5)
 - **[Les composants Angular2](#/6)**
 - [Injection de Dépendances](#/7)
-- [Communication avec une API REST](#/8)
+- [Service HTTP](#/8)
 - [Router](#/9)
 
 Notes :
