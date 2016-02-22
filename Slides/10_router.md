@@ -199,8 +199,8 @@ Notes :
   template: '
     <div>
       <h1>Hello {{message}}!</h1>
-        <a [routerLink]="['Home]">Link 1</a>
-        <a [routerLink]="['Product', {productId: 1}]">Link 2</a>
+        <a [routerLink]="['/Home]">Link 1</a>
+        <a [routerLink]="['/Product', {productId: 1}]">Link 2</a>
         <router-outlet></router-outlet>
     </div>
 '})
@@ -229,7 +229,7 @@ import { Product } from './components/product';
 ])
 @Component({
   template: '
-    <a [routerLink]="['Product', {productId: 3}, 'Child']"></a
+    <a [routerLink]="['/Product', {productId: 3}, 'Child']"></a
     <router-outlet></router-outlet>
   '
 })
@@ -344,7 +344,7 @@ import { Product } from './components/product';
 @RouteConfig([{ path: '/product/:productId', component: Product, name: 'Product' }])
 @Component({
   template: '
-    <a [routerLink]="['Product', {productId: 3}]"></a>
+    <a [routerLink]="['/Product', {productId: 3}]"></a>
     <router-outlet></router-outlet>'
 })
 class AppComponent { }
@@ -382,7 +382,7 @@ import { Admin } from './components/home';
 import { isLoggedIn } from './utils/is-logged-in';
 
 @RouteConfig([
-    { path: '/admin', component: Admin, name: 'Admin',  data: { adminOnly: true }}
+  { path: '/admin', component: Admin, name: 'Admin',  data: { adminOnly: true }}
 ])
 @Component({ template: '<router-outlet></router-outlet>' })
 @CanActivate((next, prev) => { return isLoggedIn()})
