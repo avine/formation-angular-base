@@ -143,13 +143,18 @@ Notes :
 - Exemple simple d'une requête HTTP
 
 ```typescript
-import {Http, HTTP_PROVIDERS} from 'angular2/http';
 import 'rxjs/Rx';
+import {Http, Response, HTTP_PROVIDERS} from 'angular2/http';
+import {bootstrap} from 'angular2/platform/browser'
+import {Component} from "angular2/core";
 
+@Component({selector: 'app', template: '{{displayedData}}'})
 export class AppComponent {
-    constructor(private http:Http){
+    private displayedData;
+
+    constructor(private http:Http) {
         http.get('people.json')
-            .map(result:Response => result.json())
+            .map((result:Response) => result.json())
             .subscribe(jsonObject => {
                 this.displayedData = jsonObject;
             });
@@ -168,17 +173,23 @@ Notes :
 - Exemple d'un Observable utilisant la méthode `filter`
 
 ```typescript
-import {Http, HTTP_PROVIDERS} from 'angular2/http';
+import 'rxjs/Rx'; import {MyObject} from "./MyObject";
+import {Http, Response, HTTP_PROVIDERS} from 'angular2/http';
+import {bootstrap} from 'angular2/platform/browser'; 
+import {Component} from "angular2/core";
 
+@Component({selector: 'app',template: '{{displayedData}}'})
 export class AppComponent {
-    constructor(private http:Http){
+    private displayedData;
+
+    constructor(private http:Http) {
         http.get('people.json')
-            .map(result:Response => result.json())
+            .map((result:Response) => result.json())
             .filter(data => data.hasToBeDisplayed)
             .map(data => new MyObject(data.id, data.name))
-            .subscribe(jsonObject:MyObject => {
-                this.displayedData = jsonObject;
-            })
+            .subscribe((jsonObject:MyObject) => {
+            this.displayedData = jsonObject;
+        })
     }
 }
 
