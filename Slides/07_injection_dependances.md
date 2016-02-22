@@ -41,7 +41,7 @@ Notes :
 
 - Élément utilisé pour injecter les services
 - Possibilité d'un injecteur par composant contrairement à *AngularJS* (un unique injecteur global)
-- Les composants héritent de l'injecteur de son parent
+- Les composants héritent de l'injecteur de leurs parent
 - Nécessité de configurer les injecteurs
     - de manière globale via `bootstrap`
     - de manière locale via `@Component`
