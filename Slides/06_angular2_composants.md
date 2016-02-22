@@ -57,7 +57,7 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 export class MyComponent { ... }
 ```
 
-- Ici CORE_DIRECTIVES contient NgClass, NgFor, NgIf, NgStyle, NgSwitch, NgSwitchWhen, NgSwitchDefault
+- Ici `CORE_DIRECTIVES` contient NgClass, NgFor, NgIf, NgStyle, NgSwitch, NgSwitchWhen, NgSwitchDefault
 
 Notes :
 
