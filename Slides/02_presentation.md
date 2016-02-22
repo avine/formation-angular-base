@@ -143,7 +143,6 @@ Notes :
 Notes :
 - ES2015 et plus ES6 car maintenant il devrait y avoir une spécification chaque année.
 - Les prochaines itérations aurons moins de contenu
- 
 
 
 
