@@ -187,4 +187,268 @@ Notes :
 
 
 
+## Les composants
+
+- Fonctionnalité disponible depuis *Angular 1.5*
+- Méthode utilitaire pour simplifier la création des directives
+- Permet d'utiliser le style Angular2 pour la création de vos directives
+- Suppression du code redondant : `scope`, `controllerAs` et `bindToController`
+
+```js
+// before
+module.directive(name, fn);
+
+// after
+module.component(name, options);
+```
+
+Notes :
+
+
+
+## Les composants
+
+```javascript
+component: function(name, options) {
+  function factory($injector) {
+    function makeInjectable(fn) {
+      if (angular.isFunction(fn)) { } else { }
+    }
+
+    var template = (!options.template && !options.templateUrl ? '' : options.template);
+    return {
+      controller: options.controller || function() {},
+      controllerAs: identifierForController(options.controller) || options.controllerAs || name,
+      template: makeInjectable(template),
+      templateUrl: makeInjectable(options.templateUrl),
+      transclude: options.transclude === undefined ? true : options.transclude,
+      scope: options.isolate === false ? true : {},
+      bindToController: options.bindings || {},
+      restrict: options.restrict || 'E'
+    };
+  }
+
+  return moduleInstance.directive(name, factory);
+}
+```
+
+Notes :
+
+
+
+## Les composants - bindings
+
+- Bonne pratique de définir un scope isolé pour une directive
+- Obligation de définir au minimum une propriété `scope` pour chaque directive
+- Si nécessité d'accéder au `scope` dans la contrôleur, nécessité de configurer la propriété `bindToController`
+- Avec la méthode `component`, utilisation d'une nouvelle propriété `bindings`
+
+```javascript
+// before
+.directive('counter', function counter() {
+  return {
+    scope: {},
+    bindToController: { count: '=' }
+  };
+});
+
+// after
+.component('counter', {
+  bindings: { count: '=' }
+});
+```
+
+Notes :
+
+
+
+## Les composants - configuration
+
+- Possibilité de désactiver le scope isolé
+- Utilisation de la propriété `isolate`
+
+```javascript
+module.component('counter', {
+  isolate: false
+});
+```
+
+Notes :
+
+
+
+## Les composants - contrôleur
+
+- Possibilité de définir la propriété `controllerAs` directement dans la propriété `controller`
+
+```javascript
+module
+    .component('counter', {
+        controller:'counterCtrl as c'    
+    })
+    .controller('counterCtrl', function(){});
+```
+
+- Code de la méthode `component` :
+```javascript
+controller: options.controller || function() {},
+controllerAs: identifierForController(options.controller) || options.controllerAs || name,
+```
+
+Notes :
+
+
+
+## Les composants - templates
+
+- La propriété `template` peut prendre en paramètre une fonction
+- Cette fonction doit retourner un chaine de caractère représentant le template à utiliser
+- Accès à l'élément et aux attributs via les paramètres de la fonction
+
+```javascript
+module
+    .component('counter', {
+        template: function($element, $attrs){
+            return '<div></div>';
+        }    
+    })
+```
+
+Notes :
+
+
+
+## Le nouveau Routeur
+
+- Routeur créé pour Angular2
+	- Version n'utilisant plus les méthodes de configuration
+	- Plus nécessaire de configurer les routes dans une méthode `config`
+
+- Chaque route comportera deux parties :
+	- `path` : l'URL
+	- `component` : combinaison d'un template et d'un contrôleur
+
+- Par convention le template et le contrôleur doivent être nommés de la même façon
+
+Notes :
+
+
+
+## Configuration
+
+- Configuration réalisée via le service `$router`
+- Routes définies n'importe où dans l'application
+	- code devant être exécuté au chargement de la page
+
+```javascript
+angular.module('demoModule', ['ngNewRouter'])
+  .controller('RouteController', function($router){
+    $router.config([
+      { path:'/', redirectTo:'/first' },
+      { path:'/bar', component:'bar' },
+      { path:'/foo/:name', component:'foo' }
+    ]);
+
+  });
+```
+
+Notes :
+
+
+
+## Configuration
+
+- Structure de fichier spécifique doit être mise en place
+
+```
+project
+--- components
+    --- bar
+		--- bar.html
+	--- foo
+		--- foo.html
+```
+
+- Routes configurées pour utiliser la syntaxe `controllerAs`
+- Le nom du contrôleur doit être la concaténation du nom du composant suffixé par `Controller`
+- L'alias à utiliser dans les templates sera le nom du composant.
+
+```javascript
+angular.module('simpleRouterDemo')
+  .controller('FooController', function(){
+    this.property = '';
+  })
+  .controller('BarController', function($routeParams){ ... });
+```
+
+Notes :
+
+
+
+## Directives ngViewport et ngLink
+
+- Remplacent les directives `ngHref` et `ngView`
+
+```html
+<nav>
+  <ul class="nav">
+    <li>
+      <a ng-link="bar">Bar</a>
+    </li>
+    <li>
+      <a ng-link="foo({ name:'test' })">Foo</a>
+    </li>
+  </ul>
+</nav>
+<main>
+  <ng-viewport></ng-viewport>
+</main>
+```
+
+Notes :
+
+
+
+## Siblings ngViewPort
+
+- Possibilité de définir plusieurs directives `ngViewPort`
+
+```javascript
+$router.config([ {
+			path:'/user',
+			components: {
+				foo: 'userList',
+				bar: 'user'
+	  	}
+}]);
+```
+
+```html
+<div ng-viewport="foo"></div>
+<div ng-viewport="bar"></div>
+```
+
+Notes :
+
+
+
+## Cycle de vie des composants
+
+- Lifecycle identique à celui d'Angular2
+- Méthodes à implémenter dans les contrôleurs :
+	- `canReactivate`, `canActivate` ou `canDeactivate`
+
+```javascript
+this.canActivate = function(){
+  if(!userService.hasAccess()){
+    ...
+  }
+  return hasAccess;
+};
+```
+
+Notes :
+
+
+
 <!-- .slide: class="page-questions" -->
