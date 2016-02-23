@@ -156,11 +156,10 @@ Notes :
   - `Zone`
   - `Observable`
   - `SystemJS`...
-  - (mieux mais pas indispensable)
 
 Notes :
 - utilisation de directives 1 dans 2 : https://angular.io/docs/ts/latest/guide/upgrade.html#!#using-angular-1-component-directives-from-angular-2-code
-
+- Les nouveaux concepts ne sont pas indispensables à connaitre. C'est un plus
 
 
 ## Architecture
