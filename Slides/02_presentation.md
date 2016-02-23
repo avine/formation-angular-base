@@ -89,7 +89,7 @@ app.directive('MyDirective', function(){
   selector: 'my-directive',
   inputs: ['variable']
 })
-class MyDirective {
+export class MyDirective {
 
 }
 ```
@@ -115,7 +115,7 @@ app.service('Service', function(){
 - Version Angular2
 
 ```typescript
-class Service {
+export class Service {
 
   myMethod(){
 
@@ -130,7 +130,7 @@ Notes :
 ## Angular2 - Points Positifs
 
 - Création d'application modulaire
-- Utilisable avec plusieurs languages de programmation : `ES5`, `ES2015`, `TypeScript` et `Dart`
+- Utilisable avec plusieurs languages de programmation : `ES5`, `ES2015(ES6)`, `TypeScript` et `Dart`
 - API plus simple que *AngularJS*
 - Seuls trois types d'éléments seront utilisés : `component`, `pipe` et les `services`
 - Basé sur des standards : `Web Component`, `Decorator`, `ES2015`, `ES7`
@@ -141,21 +141,25 @@ Notes :
 - Collaboration avec Microsoft et Ember
 
 Notes :
+- ES2015 et plus ES6 car maintenant il devrait y avoir une spécification chaque année.
+- Les prochaines itérations aurons moins de contenu
 
 
 
 ## Angular2 - Points Négatifs
 
 - Nouvelle phase d'apprentissage du framework
-- Application AngularJS incompatible avec cette nouvelle version
 - Faible ecosystème pour l'instant
-- Impossible d'utiliser les directives *AngularJS* dans une application *Angular2*
+- Application AngularJS incompatible avec cette nouvelle version
+  - ngUpgrade permet de rendre compatible les directives, composant et services
 - De nouveaux concepts à apprendre :
   - `Zone`
   - `Observable`
   - `SystemJS`...
+  - (mieux mais pas indispensable)
 
 Notes :
+- utilisation de directives 1 dans 2 : https://angular.io/docs/ts/latest/guide/upgrade.html#!#using-angular-1-component-directives-from-angular-2-code
 
 
 
