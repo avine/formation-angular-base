@@ -39,13 +39,4 @@ Même si nous n'avons pas encore abordé les concepts du framework, nous allons 
 
 - La chaîne de caractère ci-dessous sera définie dans une variable `helloMsg` de la classe `Application`. Pour afficher cette variable dans le template, nous utiliserons la même syntaxe que AngularJS : `{{helloMsg}}`
 
-- Vérifiez que vous obtenez bien la toute dernière version de votre application dans le navigateur.
-
-- Ajoutez un test unitaire dans le fichier `application.spec.ts` pour tester la valeur de la variable qui vient d'être créée.
-
-- Lancez les tests via `angular-cli` et `karma`
-
-```shell
-ng build
-karma start
-```
+- Vérifiez que vous obtenez bien la toute de dernière version de votre application dans le navigteur.
