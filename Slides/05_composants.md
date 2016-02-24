@@ -344,4 +344,58 @@ Notes :
 
 
 
+## Les Composants - Tests
+
+- Nécessité d'instancier un composant via l'objet `TestComponentBuilder` et sa méthode `createAsync`
+- La méthode `createAsync` retourne un objet de type `ComponentFixture` qui est un représentation du composant
+- Un objet de type `ComponentFixture` propose deux propriétés intéressantes :
+  - `componentInstance` : l'instance *JavaScript* du composant
+  - `nativeElement` : l'élément *HTML*
+- Pour exécuter l'API *Change Detection*, utilisation de la méthode `detectChanges`
+
+```typescript
+@Component({
+  selector: 'title', template: '<h1>{{title}}</h1>'
+})
+export class TitleCmp {
+  @Input() title: string;
+}
+```
+
+Notes :
+
+
+
+## Les Composants - Tests
+
+- Test Unitaire :
+
+```typescript
+import {
+  describe, it, expect,
+  inject, injectAsync, beforeEach,
+  TestComponentBuilder
+} from 'angular2/testing';
+
+import {TitleCmp} from './titlecmp';
+describe('TitleCmp', () => {
+  it('should have a title', injectAsync([TestComponentBuilder], tcb => {
+    return tcb.createAsync(TitleCmp)
+      .then(fixture => {
+        let TitleCmp = fixture.componentInstance;
+        TitleCmp.title = 'Hello World';
+
+        fixture.detectChanges();
+
+        let element = fixture.nativeElement;
+        expect(element.querySelector('h1').textContent.toBe('Hello World');
+      });
+  }));
+});
+```
+
+Notes :
+
+
+
 <!-- .slide: class="page-questions" -->
