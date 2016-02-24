@@ -13,7 +13,7 @@ export class CustomerService {
 	constructor(private http:Http){ }
 
 	getBasket():Observable<Product[]>{
-		if(false && this.products && this.products.length > 0){
+		if(this.products && this.products.length > 0){
 			return Observable.from(this.products);
 		}
 
