@@ -1,4 +1,4 @@
-# Communication avec une API REST
+# Service HTTP
 
 <!-- .slide: class="page-title" -->
 
@@ -14,7 +14,7 @@ Notes :
 - [Présentation](#/2)
 - [Démarrer une application Angular2](#/3)
 - [Tests](#/4)
-- [Composants](#/5)
+- [Template, Directives & Composants](#/5)
 - [Les composants Angular2](#/6)
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
@@ -175,7 +175,7 @@ Notes :
 ```typescript
 import 'rxjs/Rx'; import {MyObject} from "./MyObject";
 import {Http, Response, HTTP_PROVIDERS} from 'angular2/http';
-import {bootstrap} from 'angular2/platform/browser'; 
+import {bootstrap} from 'angular2/platform/browser';
 import {Component} from "angular2/core";
 
 @Component({selector: 'app',template: '{{displayedData}}'})

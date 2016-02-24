@@ -14,7 +14,7 @@ Notes :
 - [Présentation](#/2)
 - [Démarrer une application Angular2](#/3)
 - **[Tests](#/4)**
-- [Composants](#/5)
+- [Template, Directives & Composants](#/5)
 - [Les composants Angular2](#/6)
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
@@ -65,15 +65,15 @@ Notes :
 ## Tests - Structure d'un test Jasmine
 
 - Méthodes `describe` et `it` pour décrire la suite de tests
-- Système de *matchers* : `toBe`, `toBeUndefined`, `toBeTruthy`, `toThrow`, ... 
+- Système de *matchers* : `toBe`, `toBeUndefined`, `toBeTruthy`, `toThrow`, ...
 - Possibilité d'utiliser les librairies `Chai` ou `SinonJS`
 
 ```javascript
 describe('True value:', function() {
   it('true should be equal to true', function() {
-     
+
      expect(true).toBe(true);
-     
+
   });
 });
 ```
@@ -90,11 +90,11 @@ Notes :
 ```javascript
 describe('True value:', function() {
   var value;
-  
+
   beforeEach(function(){
     value = true;
   });
-  
+
   it('true should be equal to true', function() {   
      expect(value).toBe(true);
   });
@@ -112,11 +112,11 @@ Notes :
   - `toHaveBeenCalled`, `toHaveBeenCalledWith`
   - `and.callThrough`, `and.returnValue`, `and.callFake`...
   - `Spy.calls`
-  
+
 ```javascript
 describe('Service objet:', function() {
- 
-  it('checkout method should be called', function() { 
+
+  it('checkout method should be called', function() {
      spyOn(service, 'foo');
      service.foo();
      expect(service.foo).toHaveBeenCalled();
@@ -124,7 +124,7 @@ describe('Service objet:', function() {
 });
 ```
 
-Notes : 
+Notes :
 
 
 
@@ -147,7 +147,7 @@ describe('True object:', () => {
 });
 ```
 
-Notes : 
+Notes :
 
 
 
