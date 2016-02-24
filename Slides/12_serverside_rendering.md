@@ -39,14 +39,14 @@ Notes :
 
 ## Besoin
 
-- Indexation par les moteur de recherche (SEO)
-- Prévisualition (comme dans le partage facebook)
+- Indexation par les moteurs de recherche (SEO)
+- Prévisualisation (comme dans le partage facebook)
 - Amélioration progressive
   - Proposer une version simple pour tous
-  - Enrichir l'experience en fonction du client
+  - Enrichir l'expérience en fonction du client
   
   
-- *Limiter le delais de chargement de l'application*
+- *Accélérer le chargement de l'application ?*
   
 Notes :
 
@@ -54,12 +54,12 @@ Notes :
 
 ## Angular Universal
 
-- Projet Angular officiel
+- Projet Angular officiel. Contrairement aux projets de Server Side Rendering pour `AngularJS`
 - Contient deux modules
   - Le premier rend le code coté serveur
-  - Le deuxieme enregistre les actions de l'utilisateur pour les rejouer une fois l'interface completement chargé
-- Le terme Universal vient de l'idée de pouvoir proposer l'application dans d'autre environnement que celui du navigateur 
-- Encore en développement
+  - Le deuxieme enregistre les actions de l'utilisateur pour les rejouer une fois l'interface complètement chargé
+- Le terme Universal vient de l'idée de pouvoir proposer l'application dans d'autres environnements que celui du navigateur 
+- Pas encore assez stable pour la mise en production
 
 ![Angular Universal Logo](ressources/angular-universal-logo.png "Angular Universal Logo")
 
@@ -67,7 +67,7 @@ Notes :
 
 
 
-## Mechanisme
+## Méchanisme
 
 - `AngularJS` fortement lié au DOM
 - `Angular 2` introduit une séparation du mécanisme de rendu
@@ -82,14 +82,15 @@ Notes :
 ## Procédure de rendu
 
 - Le moteur de rendu (Express en NodeJS) va construire le HTML
-- Le plugin `Angular Universal` attaché va faire le `bootstrap` de l'application
-- La réponse des appels REST est attendu
-- La page complètement construire est retourné à l'utilisateur
+- Le plugin `Angular Universal` va réaliser le `bootstrap` de l'application
+- La réponse des appels REST est attendue
+- La page complètement construite est retourné à l'utilisateur
 - La librairie `Preboot` de `Angular Universal` enregistre les actions de l'utilisateur
-- L'utilisateur termine de charger le code javascript
+- Le navigateur client termine de charger le code javascript
 - La librairie `Preboot` rejoue les actions de l'utilisateur
   
 Notes :
+- Uniquement Express pour l'instant. L'équipe de développement évoque le souhait que d'autre moteur propose cela (Apache...)
 
 
 
@@ -98,7 +99,7 @@ Notes :
 - Le plus simple est de reprendre le starter 
 https://github.com/angular/universal-starter
 
-- Créer deux point d'entré pour l'application
+- Créer deux points d'entrées pour l'application
   - Classique pour le client avec la fonction `bootstrap`
   - Pour le serveur avec la mise en place de `Express` et de `Angular Universal`
   
