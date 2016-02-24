@@ -46,7 +46,7 @@ Notes :
   - Enrichir l'expérience en fonction du client
   
   
-- *Accélérer le chargement de l'application ?*
+- *Accélérer le chargement de l'application*
   
 Notes :
 
@@ -102,6 +102,30 @@ https://github.com/angular/universal-starter
 - Créer deux points d'entrées pour l'application
   - Classique pour le client avec la fonction `bootstrap`
   - Pour le serveur avec la mise en place de `Express` et de `Angular Universal`
+  
+Notes :
+
+
+
+## Rendu serveur
+
+Elements notables du script de lancement du serveur
+
+```typescript
+import * as express from 'express';
+import {ng2engine, ...} from 'angular2-universal-preview';
+import {App} from './app/app';
+
+let app = express();
+app.engine('.html', ng2engine); // définit le plugin
+app.use('/', function (req, res) { // enrichie les traitements sur la requête  
+  res.render('index', {
+    App, // ng2engine va récupérer ces variables et réaliser le bootstrap
+    providers: [...],
+    preboot: true
+ });
+});
+```
   
 Notes :
 
