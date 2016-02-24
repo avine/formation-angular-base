@@ -17,8 +17,8 @@ Notes :
 - [Composants](#/5)
 - [Les composants Angular2](#/6)
 - [Injection de Dépendances](#/7)
-- [Communication avec une API REST](#/8)
-- [Router](#/9)
+- [Les Pipes](#/8)
+- [Service HTTP](#/9)
 
 Notes :
 
@@ -28,12 +28,10 @@ Notes :
 
 <!-- .slide: class="toc" -->
 
-- [Gestion des Formulaires](#/10)
-- [Les Pipes](#/11)
-- [Annotations et Décorateurs](#/12)
-- [Server-side Rendering](#/13)
-- [Support d'EcmaScript 5](#/14)
-- [Bonne Pratiques pour une migration heureuse](#/15)
+- [Router](#/10)
+- [Gestion des Formulaires](#/11)
+- [Server-side Rendering](#/12)
+- [Bonne Pratiques pour une migration heureuse](#/13)
 
 Notes :
 
@@ -42,7 +40,7 @@ Notes :
 ## TypeScript
 
 - Langage créé par *Anders Hejlsberg* en 2012
-- Projet open-source maintenu par *Microsoft* (Version actuelle *1.5*)
+- Projet open-source maintenu par *Microsoft* (Version actuelle *1.8*)
 - Influencé par *JavaScript*, *Java* et *C#*
 - Phase de compilation nécessaire pour générer du *JavaScript*
 - Tout programme *JavaScript* est un programme *TypeScript*
@@ -468,8 +466,6 @@ Notes :
   - Majeure, mineure et patch doivent être numérique
   - il est possible d'y adjoindre un complément informatif (date, numéro de build, ...) qui `ne servira pas` pour le filtrage
   - il existe un outils `semver` permettant de vérifier les contraintes de version
-
-Notes :
 
 
 

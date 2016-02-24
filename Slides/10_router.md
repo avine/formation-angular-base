@@ -17,8 +17,8 @@ Notes :
 - [Composants](#/5)
 - [Les composants Angular2](#/6)
 - [Injection de Dépendances](#/7)
-- [Communication avec une API REST](#/8)
-- **[Router](#/9)**
+- [Les Pipes](#/8)
+- [Service HTTP](#/9)
 
 Notes :
 
@@ -28,12 +28,10 @@ Notes :
 
 <!-- .slide: class="toc" -->
 
-- [Gestion des Formulaires](#/10)
-- [Les Pipes](#/11)
-- [Annotations et Décorateurs](#/12)
-- [Server-side Rendering](#/13)
-- [Support d'EcmaScript 5](#/14)
-- [Bonne Pratiques pour une migration heureuse](#/15)
+- **[Router](#/10)**
+- [Gestion des Formulaires](#/11)
+- [Server-side Rendering](#/12)
+- [Bonne Pratiques pour une migration heureuse](#/13)
 
 Notes :
 
@@ -201,8 +199,8 @@ Notes :
   template: '
     <div>
       <h1>Hello {{message}}!</h1>
-        <a [routerLink]="['./Home]">Link 1</a>
-        <a [routerLink]="['./Product', {productId: 1}]">Link 2</a>
+        <a [routerLink]="['/Home]">Link 1</a>
+        <a [routerLink]="['/Product', {productId: 1}]">Link 2</a>
         <router-outlet></router-outlet>
     </div>
 '})
@@ -231,7 +229,7 @@ import { Product } from './components/product';
 ])
 @Component({
   template: '
-    <a [routerLink]="['./product', {productId: 3}, 'Child']"></a
+    <a [routerLink]="['/Product', {productId: 3}, 'Child']"></a
     <router-outlet></router-outlet>
   '
 })
@@ -346,15 +344,15 @@ import { Product } from './components/product';
 @RouteConfig([{ path: '/product/:productId', component: Product, name: 'Product' }])
 @Component({
   template: '
-    <a [routerLink]="['./product', {productId: 3}]"></a>
-    <router-outlet></router-outlet>
-  '
+    <a [routerLink]="['/Product', {productId: 3}]"></a>
+    <router-outlet></router-outlet>'
 })
 class AppComponent { }
 ```
 
 ```typescript
 import { Child } from './components/child';
+import { RouteParams } from "angular2/router";
 
 @Component({
   template: '<main><router-outlet></router-outlet></main>'
@@ -377,7 +375,8 @@ Notes :
 	- @CanReuse/@OnReuse
 
 ```typescript
-import { RouterConfig } from 'angular2/router';
+import { HTTP_PROVIDERS } from 'angular2/http';
+import { RouteConfig, CanActivate } from "angular2/router";
 import { Component } from 'angular2/core';
 import { Admin } from './components/home';
 import { isLoggedIn } from './utils/is-logged-in';
@@ -386,7 +385,7 @@ import { isLoggedIn } from './utils/is-logged-in';
   { path: '/admin', component: Admin, name: 'Admin',  data: { adminOnly: true }}
 ])
 @Component({ template: '<router-outlet></router-outlet>' })
-@CanActivate((next, prev) => return isLoggedIn())
+@CanActivate((next, prev) => { return isLoggedIn()})
 class AppComponent {
 
 }
