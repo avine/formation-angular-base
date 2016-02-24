@@ -160,23 +160,22 @@ Notes :
 
 ## ECMAScript 2015
 
-- Possibilité d'utiliser la nouvelle spécification JavaScript
+- Possibilité d'utiliser la nouvelle spécification `JavaScript`
 - Obligation d'ajouter une phase de transpilation
     - *Babel*, *Traceur*, ...
 - Fournit de nouvelles syntaxes pour écrire des applications de meilleure qualité
 
 ```javascript
-class Ctrl {
+export class Ctrl {
 
     constructor() { ... }
 
     selectBeer() { ... }
 }
-export { Ctrl }
 ```
 
 ```javascript
-import { Ctrl} from './Ctrl';
+import { Ctrl } from './Ctrl';
 
 angular
     .module('app', [])
@@ -190,8 +189,8 @@ Notes :
 ## Les composants
 
 - Fonctionnalité disponible depuis *Angular 1.5*
-- Méthode utilitaire pour simplifier la création des directives
-- Permet d'utiliser le style Angular2 pour la création de vos directives
+- Méthode utilitaire pour simplifier la création des composants
+- Permet d'utiliser le style Angular2 pour la création de vos composants
 - Suppression du code redondant : `scope`, `controllerAs` et `bindToController`
 
 ```js
@@ -238,9 +237,9 @@ Notes :
 
 ## Les composants - bindings
 
-- Bonne pratique de définir un scope isolé pour une directive
-- Obligation de définir au minimum une propriété `scope` pour chaque directive
-- Si nécessité d'accéder au `scope` dans la contrôleur, nécessité de configurer la propriété `bindToController`
+- Bonne pratique de définir un scope isolé pour une componsant
+- Obligation de définir au minimum une propriété `scope` pour chaque componsant
+- Si besoin d'accéder au `scope` dans la contrôleur, nécessité de configurer la propriété `bindToController`
 - Avec la méthode `component`, utilisation d'une nouvelle propriété `bindings`
 
 ```javascript
@@ -344,7 +343,7 @@ Notes :
 angular.module('demoModule', ['ngNewRouter'])
   .controller('RouteController', function($router){
     $router.config([
-      { path:'/', redirectTo:'/first' },
+      { path:'/', redirectTo:'/bar' },
       { path:'/bar', component:'bar' },
       { path:'/foo/:name', component:'foo' }
     ]);
@@ -382,6 +381,8 @@ angular.module('simpleRouterDemo')
 ```
 
 Notes :
+
+- L'indentation de la structure du projet ne doit pas changer pour rester correct dans le rendu web
 
 
 
