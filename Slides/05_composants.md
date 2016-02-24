@@ -323,6 +323,29 @@ Notes :
 
 
 
+## Les Composants - Aggrégation
+
+- Permet d'insérer le contenu enfant défini lors de l'utilisation du composant
+- Correspond à la directive `ngTransclude` en *AngularJS*
+- Possibilité d'avoir plusieurs points d'insertion (utilisation de la propriété `select`)
+- La propriété `select` accepte comme valeur un sélecteur *CSS*
+
+```typescript
+//<post><h2>Title</h2><p>Content</p></post>
+import {Component} from 'angular2/core';
+@Component({
+    selector: 'post',
+    template: `<article>
+          <header><ng-content selector="h2"></ng-content></header>
+          <section><ng-content selector="p"></ng-content></section>
+    </article>`,
+})
+export class ArticleComponent { }
+```
+Notes :
+
+
+
 ## Les Composants - Stack Globale
 
 - Possibilité de définir une stack globale de composants
