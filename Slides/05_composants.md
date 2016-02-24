@@ -39,13 +39,13 @@ Notes :
 
 
 
-## Syntaxes des templates
+## Syntaxe des templates
 
 - Système d'interpolation grâce à la syntaxe `{{ expression }}`
 - L'expression peut-être :
     - une chaîne de caractère
     - la valeur d'une variable
-    - le valeur retournée d'une fonction
+    - la valeur retournée d'une fonction
 - Cette expression sera convertie en `string` avant son affichage
 - Une expression ne doit pas modifier l'état de l'application
 
@@ -57,7 +57,7 @@ Notes :
 
 - Possibilité de définir une valeur pour une propriété
 - Différent d'AngularJS, où nous utilisons les attributs *HTML*
-- Attention à la différence entre attribut   et propriété
+- Attention à la différence entre attribut et propriété
 - Un attribut est statique contrairement à une propriété
 - Syntaxe identique pour les propriétés des éléments `HTML`, des composants et des directives
 - Utilisation de la syntaxe `[ property-name ] = "expression"`
@@ -86,7 +86,7 @@ Angular transformera la syntaxe d'interpolation en binding de propriétés
 - Utilisation de la syntaxe `[ attr.attribute-name ] = "expression"`
 
 ```html
-<td [colspan]="3">help</button>
+<td [colspan]="3">help</td>
 
 <!-- Template parse errors:
 Can't bind to 'colspan' since it isn't a known native property-->
@@ -103,7 +103,7 @@ Notes :
 
 - Permet d'associer une expression *Angular2* à un évènement
     - défini dans la spécification HTML : `click`, `blur`, ...
-    - créé spécialement pour l'application (avec un sémantique précise)
+    - créé spécialement pour l'application (avec une sémantique précise)
 
 - Les méthodes et propriétés utilisées doivent être définies dans la classe associée
 
@@ -124,30 +124,30 @@ Notes :
 
 ## Les évènements
 
-- *Angular2* va créer un handler pour chaque événement
-- Possibilité de récupérer le contexte de l'événement, et de potentielles données via l'objet `$event`
+- *Angular2* va créer un handler pour chaque évènement
+- Possibilité de récupérer le contexte de l'évènement, et de potentielles données via l'objet `$event`
 - Cet objet peut être utilisé dans l'expression *Angular2*
-- Tous les événements natifs sont propagés vers les éléments parents
+- Tous les évènements natifs sont propagés vers les éléments parents
     - nous devons retourner une valeur `false` pour stopper cette propagation
-- Les événement `EventEmitter` ne se propage pas.
+- Les évènements `EventEmitter` ne se propagent pas.
 
 ```html
 <input [value]="currentHero.firstName"
-       (input)="currentHero.firstName=$event.target.value" >
+       (input)="currentHero.firstName=$event.target.value"/>
 ```
 
 Notes :
 
 
 
-## Syntaxe Banana in the Box
+## Syntaxe "Banana in the Box"
 
 - Le *2-way data-binding* est désactivé par défaut
 - Pour synchroniser un champ de formulaire avec une variable, nécessité d'utiliser cette syntaxe
 
 ```html
 <input [value]="currentHero.firstName"
-       (input)="currentHero.firstName=$event.target.value" >
+       (input)="currentHero.firstName=$event.target.value"/>
 ```
 
 - *Angular2* fournit du sucre syntaxique afin d'éviter cette redondance de code
@@ -156,13 +156,13 @@ Notes :
 ```html
 <input
   [ngModel]="currentHero.firstName"
-  (ngModelChange)="currentHero.firstName=$event">
+  (ngModelChange)="currentHero.firstName=$event"/>
 ```
 ̀
 - Deuxième solution :
 
 ```html
-<input [(ngModel)]="currentHero.firstName">
+<input [(ngModel)]="currentHero.firstName"/>
 ```
 
 Notes :
@@ -171,9 +171,9 @@ Notes :
 
 ## Les Directives
 
-- Elément permettant de changer l'apparence ou le fonctionnement d'un élément
-- Elément va s'appliquer à n'importe quel élément HTML en fonction d'un sélecteur CSS
-- Utilisation de l'annotation `@Directive` pour créer les notres
+- Portion de code permettant de définir l'apparence ou le fonctionnement d'un élément HTML
+- l'élément HTML est selectionné par une expression `CSS`
+- Création de directive personnalisée avec l'annotation `@Directive`
 - Utiliser un préfixe pour les noms de vos directives pour éviter les conflits
 - Pour faire de la manipulation de DOM, toujours utiliser le service `Renderer`
 
@@ -197,7 +197,7 @@ Notes :
 
 ## Les Directives - Action utilisateur
 
-- Possibilité d'écouter les événements de l'élément sur lequel est placé la directive
+- Possibilité d'écouter les évènements de l'élément sur lequel est placé la directive
 - Utilisation de la propriété `host` de l'annotation `@Directive`
 - L'ajout d'handler programmatiquement est à éviter pour des problèmes de mémoire
 
@@ -252,12 +252,12 @@ Notes :
 
 
 
-## Les Directives - Les événements
+## Les Directives - Les évènements
 
-- De la même façon, une directive pourra émettre un événement
+- De la même façon, une directive pourra émettre un évènement
 - Déclaration d'une variable de classe annotée `@Output` de type `EventEmitter`
-- Le nom de la variable correpond au nom de l'événement qui sera utilisé dans l'HTML
-- L'événement est émis lors de l'appel de la méthode `next`
+- Le nom de la variable correpond au nom de l'évènement qui sera utilisé dans l'HTML
+- L'évènement est émis lors de l'appel de la méthode `emit`
 - Possibilité de passer des paramètres, accessible depuis l'objet `$event`
 
 ```typescript
@@ -282,8 +282,8 @@ Notes :
 
 - Les composants sont des directives avec un template
 - Utilisation de l'annotation `@Component`, héritant de `@Directive`
-- Toute la configuration de `@Directive` disponible dans `@Component`
-- Possibilité de définir des paramètres et des événements de la même façon
+- Toute la configuration de `@Directive` est disponible dans `@Component`
+- Possibilité de définir des paramètres et des évènements de la même façon
 - `@Component` fournit notamment les paramètres `template`, `templateUrl`, `styles`, `styleUrl` et `encapsulation`
 
 ```typescript
@@ -327,7 +327,7 @@ Notes :
 
 ## Les Composants - Stack Globale
 
-- Possibilité de définir un stack globale de composants
+- Possibilité de définir une stack globale de composants
 - Les directives seront utilisables dans l'ensemble de l'application
 - Surcharge du `provider` `PLATFORM_DIRECTIVES`
 
