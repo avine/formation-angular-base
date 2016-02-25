@@ -56,8 +56,8 @@ Notes :
 
 - 1 composant par fichier
 - 1 feuille de style par directive
-- Structure des répertoires spécifiques
-    - regroupement par fonctionnalité
+- Structure des répertoires spécifiques 
+    - regroupement par fonctionnalité recommandé
     - regroupement par type de composant
 
 ```shell
@@ -244,7 +244,7 @@ Notes :
 
 ```javascript
 // before
-.directive('counter', function counter() {
+module.directive('counter', function counter() {
   return {
     scope: {},
     bindToController: { count: '=' }
@@ -252,7 +252,7 @@ Notes :
 });
 
 // after
-.component('counter', {
+module.component('counter', {
   bindings: { count: '=' }
 });
 ```
@@ -274,6 +274,7 @@ module.component('counter', {
 
 Notes :
 
+- Se comporte comme scope : true
 
 
 ## Les composants - contrôleur
@@ -450,6 +451,7 @@ this.canActivate = function(){
 
 Notes :
 
+- canActivate -> $resolve d'ui-router
 
 
 <!-- .slide: class="page-questions" -->
