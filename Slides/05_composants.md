@@ -156,7 +156,7 @@ Notes :
   [ngModel]="currentHero.firstName"
   (ngModelChange)="currentHero.firstName=$event"/>
 ```
-̀
+
 - Deuxième solution :
 
 ```html
@@ -170,7 +170,7 @@ Notes :
 ## Les Directives
 
 - Portion de code permettant de définir l'apparence ou le fonctionnement d'un élément HTML
-- l'élément HTML est selectionné par une expression `CSS`
+- L'élément HTML est selectionné par une expression `CSS`
 - Création de directive personnalisée avec l'annotation `@Directive`
 - Utiliser un préfixe pour les noms de vos directives pour éviter les conflits
 - Pour faire de la manipulation de DOM, toujours utiliser le service `Renderer`
@@ -261,7 +261,7 @@ Notes :
 ```typescript
 //<p [myHighlight]="color" (hightLightEvent)="callExpression($event)">Highlight me!</p>
 export class HighlightDirective {
-    @Output hightLightEvent:EventEmitter;
+    @Output() hightLightEvent:EventEmitter<any> = new EventEmitter();
 
     constructor(private el: ElementRef, private renderer: Renderer) { }
     onMouseEnter() {
@@ -293,7 +293,7 @@ import {Component} from 'angular2/core'
 })
 export class Product {
     @Input() product;
-    @Output() addToBasket:EventEmitter;
+    @Output() addToBasket:EventEmitter<any> = new EventEmitter();
 }
 ```
 

@@ -105,6 +105,7 @@ Notes :
 
 ```typescript
 import {Injectable} from 'angular2/core';
+import {Logger} from './logger-service';
 
 @Injectable()
 export class MyService {
@@ -118,6 +119,8 @@ export class MyService {
 ```
 
 Notes :
+- La documentation précise que c'est une (très) bonne pratique d'annoter tous les services avec @Injectable, même ceux n'ayant aucune dépendance (voir ici : https://angular.io/docs/ts/latest/guide/dependency-injection.html).
+- Possibilité d'avoir des dépendances optionnelles (en utilisant l'annotation @Optional() sur le paramètre).
 
 
 
