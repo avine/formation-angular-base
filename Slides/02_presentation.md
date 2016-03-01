@@ -162,6 +162,7 @@ Notes :
 - Les nouveaux concepts ne sont pas indispensables à connaitre. C'est un plus
 
 
+
 ## Architecture
 
 - Architecture d'une application Angular2

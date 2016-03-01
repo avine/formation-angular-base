@@ -54,7 +54,7 @@ Notes :
 
 - 1 composant par fichier
 - 1 feuille de style par directive
-- Structure des répertoires spécifiques 
+- Structure des répertoires spécifiques
     - regroupement par fonctionnalité recommandé
     - regroupement par type de composant
 
@@ -275,6 +275,7 @@ Notes :
 - Se comporte comme scope : true
 
 
+
 ## Les composants - contrôleur
 
 - Possibilité de définir la propriété `controllerAs` directement dans la propriété `controller`
@@ -450,6 +451,7 @@ this.canActivate = function(){
 Notes :
 
 - canActivate -> $resolve d'ui-router
+
 
 
 <!-- .slide: class="page-questions" -->
