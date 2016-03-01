@@ -323,6 +323,29 @@ Notes :
 
 
 
+## Les Composants - Aggrégation
+
+- Permet d'insérer le contenu enfant défini lors de l'utilisation du composant
+- Correspond à la directive `ngTransclude` en *AngularJS*
+- Possibilité d'avoir plusieurs points d'insertion (utilisation de la propriété `select`)
+- La propriété `select` accepte comme valeur un sélecteur *CSS*
+
+```typescript
+//<post><h2>Title</h2><p>Content</p></post>
+import {Component} from 'angular2/core';
+@Component({
+    selector: 'post',
+    template: `<article>
+          <header><ng-content selector="h2"></ng-content></header>
+          <section><ng-content selector="p"></ng-content></section>
+    </article>`,
+})
+export class ArticleComponent { }
+```
+Notes :
+
+
+
 ## Les Composants - Stack Globale
 
 - Possibilité de définir une stack globale de composants
@@ -338,6 +361,60 @@ import {provide, PLATFORM_DIRECTIVES} from 'angular2/core'
 bootstrap(App, [
     provide(PLATFORM_DIRECTIVES, {useValue: [RouterOutlet], multi:true})
 ]);
+```
+
+Notes :
+
+
+
+## Les Composants - Tests
+
+- Nécessité d'instancier un composant via l'objet `TestComponentBuilder` et sa méthode `createAsync`
+- La méthode `createAsync` retourne un objet de type `ComponentFixture` qui est un représentation du composant
+- Un objet de type `ComponentFixture` propose deux propriétés intéressantes :
+  - `componentInstance` : l'instance *JavaScript* du composant
+  - `nativeElement` : l'élément *HTML*
+- Pour exécuter l'API *Change Detection*, utilisation de la méthode `detectChanges`
+
+```typescript
+@Component({
+  selector: 'title', template: '<h1>{{title}}</h1>'
+})
+export class TitleCmp {
+  @Input() title: string;
+}
+```
+
+Notes :
+
+
+
+## Les Composants - Tests
+
+- Test Unitaire :
+
+```typescript
+import {
+  describe, it, expect,
+  inject, injectAsync, beforeEach,
+  TestComponentBuilder
+} from 'angular2/testing';
+
+import {TitleCmp} from './titlecmp';
+describe('TitleCmp', () => {
+  it('should have a title', injectAsync([TestComponentBuilder], tcb => {
+    return tcb.createAsync(TitleCmp)
+      .then(fixture => {
+        let TitleCmp = fixture.componentInstance;
+        TitleCmp.title = 'Hello World';
+
+        fixture.detectChanges();
+
+        let element = fixture.nativeElement;
+        expect(element.querySelector('h1').textContent.toBe('Hello World');
+      });
+  }));
+});
 ```
 
 Notes :

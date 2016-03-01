@@ -1,4 +1,4 @@
-Domaine: Web & Mobilité
+Domaine: Web
 
 Sous-domaine: Angular
 
