@@ -200,4 +200,55 @@ Notes :
 
 
 
+## HTTP - Tests
+
+- Possibilité de définir une implémentation bouchonnée du service `Http`
+
+```typescript
+import {describe, it, expect, beforeEachProviders, inject} from 'angular2/testing';
+import {Http, BaseRequestOptions, Response, ResponseOptions} from 'angular2/http';
+import {MockBackend} from 'angular2/http/testing';
+import {provide} from 'angular2/core';
+import 'rxjs/add/operator/map';
+
+describe('UserService', () => {
+  beforeEachProviders(() => [
+    MockBackend,
+    BaseRequestOptions,
+    provide(Http, {
+        useFactory: (backend, defaultOptions) => new Http(backend, defaultOptions),
+        deps: [MockBackend, BaseRequestOptions]
+    }),
+    UserService
+  ]);
+});
+```
+
+Notes :
+
+
+
+## HTTP - Tests
+
+- Création d'un test avec cette implémentation bouchonnée
+
+```typescript
+it('return return 1 user', inject([UserService, MockBackend],
+  (service, mockBackend) => {
+      let mockedUsers = [new User()];
+
+      let response = new Response(new ResponseOptions({body: mockedUsers}));
+
+      mockBackend.connections.subscribe(connection=>connection.mockRespond(response));
+
+      service.getUsers().subscribe(users => {
+          expect(users.length).toBe(1);
+      });
+  }));
+```
+
+Notes :
+
+
+
 <!-- .slide: class="page-questions" -->
