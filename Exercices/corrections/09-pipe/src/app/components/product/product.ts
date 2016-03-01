@@ -7,7 +7,7 @@ import {Product} from "../../model/product";
                 <div class="thumbnail">
                     <img [src]="data.photo" alt="">
                     <div class="caption">
-                        <h3>{{data.title | uppercase}} - {{data.price | currency:'EUR':true:4.2-2}}</h3>
+                        <h3>{{data.title}} - {{data.price | currency:'EUR':true:4.2-2}}</h3>
                         <p>{{data.description}}</p>
                         <p>
                             <button class="btn btn-primary" (click)="clickHandler()">Ajoutez au panier</button>
