@@ -10,12 +10,14 @@ Pour se faire, nous allons commencer par créer une classe et un service pour g�
 	- creditCard de type `string`
 
 - Dans le service `service\CustomerService.ts` rajouter une méthode `validate(customer)` qui doit :
-  - Vider le panier en cours
+  - faire un `POST` sur `/basket/confirm` pour valider la commande d'un client
   - Retourner sur la page `home`
   
-Pour interargir avec ses nouvelles focntionnalites, nous allons créer un nouveau composant `confirmation` qui :
+Pour interargir avec ses nouvelles fonctionnalités, nous allons créer un nouveau composant `Confirmation` qui :
   - affichera le panier de manière simplifier (une liste avec le nom et le prix de chaque produit)
   - un formulaire permettant de rentrer les informations du client.
+  
+Ajouter un lien dans le composant `Home` qui pointe vers la page `/confirmation`.
  
 Ce formulaire devra respecter les contraintes suivantes : 
   - utliser la directive `ngSubmit`
@@ -30,7 +32,7 @@ Ce formulaire devra respecter les contraintes suivantes :
   - un champ `input[text]` pour entrer un code de carte bleue factice qui devra
     - être binder sur la propriété `creditCard` de l'objet `Customer`
     - être required
-    - respecter le pattern `/[0-9]{3}-[0-9]{3}/` qui correspond par exemple à `123-456`
+    - respecter le pattern `^[0-9]{3}-[0-9]{3}$` qui correspond par exemple à `123-456`
     - avoir la class CSS `has-error` si il n'est pas valid
     - afficher le message `Invalid pattern. Example : 123-456` si le pattern est incorrect
   - un bouton `button[submit]` pour valider la saisie qui devra :

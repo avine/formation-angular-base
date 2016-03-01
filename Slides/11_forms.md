@@ -256,18 +256,24 @@ Il est possible de créer ses propres validateurs avec une classe implémentant 
 
 ```javascript
 @Directive({
-  selector: '[pattern]',
-  providers: [provide(NG_VALIDATORS, {useExisting: PatternDirective, multi: true})]
+    selector: '[pattern]',
+    providers: [provide(NG_VALIDATORS, {useExisting: PatternValidator, multi: true})]
 })
-class PatternDirective implements Validator {
-  validate(c: Control): {[key: string]: any} {
-    return c.value.match(key) ? null : {pattern: true}
-  }
+export class PatternValidator implements Validator {
+    @Input('pattern') pattern: string;
+
+    validate(c: Control): {[key: string]: any} {
+        if(c.value && c.value.match(new RegExp(this.pattern)) ) {
+            return null;
+        } else {
+            return {pattern: true};
+        }
+    }
 }
 ```
 
 ```html
-<input type="text" [(ngModel)]="contact.name" pattern="/">
+<input type="text" [(ngModel)]="contact.name" pattern="[a-z]{10}">
 ```
 
 Notes :

@@ -1,0 +1,40 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Basket</div>
+    <ul class="list-group">
+        <il class="list-group-item" *ngFor="#product of products">
+            {{product.title}} <span class="label label-primary pull-right">{{product.price}}€</span>
+        </il>
+    </ul>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Order</div>
+    <div class="panel-body">
+        <form (ngSubmit)="validate(customer)" #customerForm="ngForm" novalidate>
+            <div class="form-group" [class.has-error]="!name.valid">
+                <label class="control-label" for="name">Name</label>
+                <input type="text" id="name" class="form-control" [(ngModel)]="customer.name" required
+                       ngControl="name" #name="ngForm">
+            </div>
+
+            <div class="form-group" [class.has-error]="!address.valid">
+                <label class="control-label" for="address">Address</label>
+                <textarea id="address" class="form-control" #address [(ngModel)]="customer.address" required
+                          ngControl="address" #address="ngForm"></textarea>
+            </div>
+
+            <div class="form-group" [class.has-error]="!creditCard.valid">
+                <label class="control-label" for="creditCard">Credit card number</label>
+                <input id="creditCard" class="form-control" [(ngModel)]="customer.creditCard" pattern="^[0-9]{3}-[0-9]{3}$"
+                       ngControl="creditCard" #creditCard="ngForm">
+                <span class="help-block" [hidden]="creditCard.valid">Invalid pattern. Example : 123-456</span>
+            </div>
+
+            <div class="col-xs-12">
+                <button type="submit" class="btn btn-success pull-right" [disabled]="!customerForm.valid">
+                    Validate
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
