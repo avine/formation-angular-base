@@ -197,7 +197,7 @@ A vérifier...
 
 ```html
 <form #myForm="ngForm" novalidate>
-  <input type="text" [(ngModel)]="contact.name" ngControl="name">
+  <input type="text" [(ngModel)]="contact.name" ngControl="name" required>
   <span [hidden]="!myForm.controls.name.valid">Field required</span>
 </form>
 ```
@@ -206,7 +206,7 @@ A vérifier...
 
 ```html
 <form #myForm="ngForm" novalidate>
-  <input type="text" [(ngModel)]="contact.name" ngControl="name" #name="ngForm">
+  <input type="text" [(ngModel)]="contact.name" ngControl="name" #name="ngForm" required>
   <span [hidden]="!name.valid">Field required</span>
 </form>
 ```
@@ -244,6 +244,36 @@ public nameControl = new Control('', Validators.Required);
   <input type="text" [(ngModel)]="contact.name" [ngFormControl]="nameControl" #name="ngForm">
   <span [hidden]="!name.valid">Field required</span>
 </form>
+```
+
+Notes :
+
+
+
+## Validation : Création d'un validateur
+
+Il est possible de créer ses propres validateurs avec une classe implémentant l'interface `Validator`
+
+```javascript
+@Directive({
+    selector: '[pattern]',
+    providers: [provide(NG_VALIDATORS, {useExisting: PatternValidator, multi: true})]
+})
+export class PatternValidator implements Validator {
+    @Input('pattern') pattern: string;
+
+    validate(c: Control): {[key: string]: any} {
+        if(c.value && c.value.match(new RegExp(this.pattern)) ) {
+            return null;
+        } else {
+            return {pattern: true};
+        }
+    }
+}
+```
+
+```html
+<input type="text" [(ngModel)]="contact.name" pattern="[a-z]{10}">
 ```
 
 Notes :

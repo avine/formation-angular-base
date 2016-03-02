@@ -36,6 +36,11 @@ var createHandler = function(req, res) {
 
 app.post(context + '/basket', createHandler);
 
+app.post(context + '/basket/confirm', (req, res)=> {
+  basket = [];
+  res.send(200);
+});
+
 app.get(context + '/basket', function (req, res) {
   res.send(basket);
 });
