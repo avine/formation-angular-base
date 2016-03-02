@@ -184,7 +184,7 @@ import {Directive, ElementRef, Renderer, Input} from 'angular2/core';
 export class HighlightDirective {
     constructor(el: ElementRef, renderer: Renderer) {
         //el.nativeElement.style.backgroundColor = 'yellow';
-        renderer.setElementStyle(el, 'backgroundColor', 'yellow');
+        renderer.setElementStyle(el.nativeElement, 'backgroundColor', 'yellow');
     }
 }
 ```
@@ -214,7 +214,7 @@ export class HighlightDirective {
     onMouseEnter() { this._highlight("yellow"); }
     onMouseLeave() { this._highlight(null); }
     private _highlight(color: string) {
-        this.renderer.setElementStyle(this.el, 'backgroundColor', color);
+        this.renderer.setElementStyle(this.el.nativeElement, 'backgroundColor', color);
     }
 }
 ```
@@ -241,7 +241,7 @@ export class HighlightDirective {
     onMouseLeave() { this._highlight(null); }
 
     private _highlight(color:string) {
-        this.renderer.setElementStyle(this.el, 'backgroundColor', color);
+        this.renderer.setElementStyle(this.el.nativeElement, 'backgroundColor', color);
     }
 }
 ```
