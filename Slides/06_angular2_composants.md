@@ -100,7 +100,7 @@ Notes :
 - Trois syntaxes coexistent
 	- `[ngClass]="'class class1'"`
 	- `[ngClass]="['class', 'class1']"`
-	- `[ngClass]="['class': isClass, 'class1': isClass1}"`
+	- `[ngClass]="{'class': isClass, 'class1': isClass1}"`
 
 - La 3e syntaxe est la plus courante :
 	- permet de garder la déclaration CSS dans les templates
