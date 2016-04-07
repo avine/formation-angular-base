@@ -28,8 +28,7 @@ Développeur web
 
 ## Pré-requis
 
-- Connaissance de JavaScript et TypeScript
-- Connaissance de l'environnement NodeJS : Grunt, Gulp, NPM, Bower, Yeoman et les transpilers.
+- Connaissance de JavaScript ou TypeScript
 
 ## Programme
 
