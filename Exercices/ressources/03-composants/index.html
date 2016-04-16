@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+  <meta charset="UTF-8">
+  <head>
+    <style>
+      body {
+          padding-top: 70px;
+      }
+
+      .hero-spacer {
+          margin-top: 50px;
+      }
+
+      .hero-feature {
+          margin-bottom: 30px;
+      }
+
+      footer {
+          margin: 50px 0;
+      }
+    </style>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Zenika Ecommerce</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">Voir mon Panier</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+      <header class="jumbotron hero-spacer">
+          <h1>Bienvenue sur Zenika Ecommerce</h1>
+          <p>Votre panier s'élève à {{total}}€</p>
+          <p><a class="btn btn-primary btn-large">Voir mon panier</a></p>
+      </header>
+
+      <hr>
+
+      <div class="row">
+          <div class="col-lg-12">
+              <h3>Derniers Produits</h3>
+          </div>
+      </div>
+
+      <div class="row text-center">
+        <div class="col-md-3 col-sm-6 hero-feature">
+            <div class="thumbnail">
+                <img src="http://placehold.it/800x500" alt="">
+                <div class="caption">
+                    <h3>Product 1 - 10€</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <p>
+                        <button class="btn btn-primary">Ajoutez au panier</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 hero-feature">
+            <div class="thumbnail">
+                <img src="http://placehold.it/800x500" alt="">
+                <div class="caption">
+                    <h3>Product 2 - 20€</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <p>
+                        <button class="btn btn-primary">Ajoutez au panier</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 hero-feature">
+            <div class="thumbnail">
+                <img src="http://placehold.it/800x500" alt="">
+                <div class="caption">
+                    <h3>Product 3 - 30€</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <p>
+                        <button class="btn btn-primary">Ajoutez au panier</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 hero-feature">
+            <div class="thumbnail">
+                <img src="http://placehold.it/800x500" alt="">
+                <div class="caption">
+                    <h3>Product 4 - 40€</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <p>
+                        <button class="btn btn-primary">Ajoutez au panier</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+          Copyright &copy; Your Website 2016
+      </footer>
+
+    </div>
+  </body>
+</html>

@@ -4,7 +4,6 @@ L'application que nous allons développer tout le long de cette formation, est u
 
 Après avoir reçu du formateur le template princpal de l'application, veuillez suivre les étapes suivantes :
 
-<<<<<<< HEAD
 - Importez la feuille de style bootstrap en utilisant cette URL https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.
 
 - Modifiez le fichier index.html créé dans les TPs précédent, afin d'intégrer le template envoyé par le formateur.
@@ -14,50 +13,23 @@ Après avoir reçu du formateur le template princpal de l'application, veuillez 
 - Créez un nouveau composant `menu\menu.ts` dans lequel vous allez implémenter le menu principal de l'application. Pour créer un nouveau composant Angular2, nous allons utiliser a commande `ng generate component menu`
 
 - Remplacez dans le composant `Application` le menu initial par le composant que vous venez de créer.
-=======
-- Installez via `npm` la librairie *Bootstrap*
-
-```shell
-npm install --save bootstrap
-```
-
-- Modifiez le fichier index.html créé dans les TPs précédent, afin d'intégrer le template envoyé par le formateur.
-
-- Tous le code HTML situé entre les balises `body` doit être défini dans le template du composant `AppComponent`
-
-- Dans le répertoire `app`, créez un nouveau composant `menu\menu.ts` dans lequel vous allez implémenter le menu principal de l'application
-
-- Remplacez dans le composant `AppComponent` le menu initial par le composant que vous venez de créer.
->>>>>>> master
 
 - Le total de votre panier sera défini dans une variable `total` que nous allons initialiser dans le constructeur du composant.
 
 - Utilisez cette variable dans le template.
 
-<<<<<<< HEAD
 - Dans un nouveau fichier `model\product.ts`, créez une nouvelle classe `Product` ayant les propriétés suivantes:
-=======
-- Dans un nouveau fichier `model\product.ts', créez une nouvelle classe `Product` ayant les propriétés suivantes:
->>>>>>> master
 	- title de type `string`
 	- description de type `string`
 	- photo de type `string`
 	- price de type `number`
 
-<<<<<<< HEAD
 - Dans le constructeur du composant `Application`, instancier un nouveau tableau de `Product`. Et ajoutez les produits utilisés dans le template.
-=======
-- Dans le constructeur du composant `AppComponent`, instancier un nouveau tableau de `Product`. Et ajoutez les produits utilisés dans le template.
->>>>>>> master
 
 - Modifier le template pour utiliser ce tableau pour l'affichage des différents produits. Comme nous n'avons pas encore vu la directive `ngFor`, vous êtes obligé de copier/coller le template pour chaque élément du tableau.
 
 - Nous allons à présent externaliser le template utilisé pour afficher un produit dans un nouveau composant `ProductComponent`. Ce composant aura un paramètre `data` correspondant à un objet de type `Product`.
 
-<<<<<<< HEAD
 - Nous allons à présent émettre un évènement `addToBasket`, via le composant `ProductComponent`, lorsque l'utilisateur cliquera sur le bouton `Ajoutez au panier`. Cet évènement sera utilisé par le composant `Application` pour mettre à jour la variable `total` créée précédemment.
-=======
-- Nous allons à présent émettre un évènement `addToBasket`, via le composant `ProductComponent`, lorsque l'utilisateur cliquera sur le bouton `Ajoutez au panier`. Cet évènement sera utilisé par le composant `AppComponent` pour mettre à jour la variable `total` créée précédemment.
->>>>>>> master
 
 - Pour terminer ce TP, nous allons créer un dernier composant, `footer` qui sera utilisé à la place de l'élément HTML `<footer>`. Ce composant devra avoir un point d'insertion (via le composant `ng-content`), grâce auquel nous spécifirons le texte à afficher.
