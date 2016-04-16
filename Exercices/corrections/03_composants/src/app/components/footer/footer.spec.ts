@@ -12,16 +12,13 @@ import {
 import {provide} from 'angular2/core';
 import {FooterComponent} from './footer';
 
-
 describe('Footer Component', () => {
 
   beforeEachProviders(() => []);
-
 
   it('should ...', injectAsync([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     return tcb.createAsync(FooterComponent).then((fixture) => {
       fixture.detectChanges();
     });
   }));
-
 });

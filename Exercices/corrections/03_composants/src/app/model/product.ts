@@ -1,15 +1,8 @@
 export class Product {
-	
-	title:string;
-	description: string;
-	photo: string;
-	price: number;
-	
-	constructor(title, description, photo, price){
-		this.title = title;
-		this.description = description;
-		this.photo = photo;
-		this.price = price;
-	}
-	
+    constructor(public title:string,
+                public description:string,
+                public photo:string,
+                public price:number) {
+
+    }
 }

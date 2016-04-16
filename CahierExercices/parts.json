@@ -7,6 +7,6 @@
   "05_injection_dependances.md",
   "06_rest.md",
   "07_router.md",
-  "08_annotations_decorateurs.md",
-  "09_serverside_rendering.md"
+  "08_forms.md",
+  "09_pipes.md"
 ]

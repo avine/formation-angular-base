@@ -16,12 +16,10 @@ import {ProductComponent} from './product';
 describe('Product Component', () => {
 
   beforeEachProviders(() => []);
-
-
+  
   it('should ...', injectAsync([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     return tcb.createAsync(ProductComponent).then((fixture) => {
       fixture.detectChanges();
     });
   }));
-
 });

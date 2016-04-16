@@ -17,11 +17,9 @@ describe('Menu Component', () => {
 
   beforeEachProviders(() => []);
 
-
   it('should ...', injectAsync([TestComponentBuilder], (tcb:TestComponentBuilder) => {
     return tcb.createAsync(MenuComponent).then((fixture) => {
       fixture.detectChanges();
     });
   }));
-
 });

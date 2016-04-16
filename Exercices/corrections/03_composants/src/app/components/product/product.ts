@@ -1,9 +1,9 @@
-import {Component, EventEmitter} from "angular2/core";
+import {Component, EventEmitter, Input, Output} from "angular2/core";
 import {Product} from "../../model/product";
 
 @Component({
-  selector: "product",
-  template: `<div class="col-md-3 col-sm-6 hero-feature">
+    selector: "product",
+    template: `<div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
                     <img [src]="data.photo" alt="">
                     <div class="caption">
@@ -14,15 +14,13 @@ import {Product} from "../../model/product";
                         </p>
                     </div>
                 </div>
-            </div>`,
-   inputs: ['data'],
-   outputs: ['addToBasket']
+            </div>`
 })
 export class ProductComponent {
-    data:Product
-    addToBasket = new EventEmitter();
+    @Input() data:Product
+    @Output() addToBasket = new EventEmitter();
 
-    clickHandler(){
+    clickHandler() {
         this.addToBasket.next(this.data);
     }
 }
