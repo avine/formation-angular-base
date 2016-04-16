@@ -8,7 +8,5 @@
   "06_rest.md",
   "07_router.md",
   "08_forms.md",
-  "09_pipes.md",
-  "10_annotations_decorateurs.md",
-  "11_serverside_rendering.md"
+  "09_pipes.md"
 ]

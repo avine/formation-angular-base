@@ -11,3 +11,4 @@ Nous allons intégrer dans notre application le routeur proposé par défaut dan
 - Dans le template du composant `Application`, nous allons utiliser la directive `router-outlet` afin d'indiquer le point d'insertion des différentes pages de l'application.
 
 - Ajoutez la directive `routerLink` dans le composant `menu` afin de rediriger l'utilisateur vers les deux composants que nous venons de créer.
+

@@ -1,7 +1,7 @@
 import {Component, bootstrap} from "angular2/angular2"
-import {MenuComponent} from "./menu/menu"
-import {ProductComponent} from "./product/product"
-import {FooterComponent} from "./footer/footer"
+import {MenuComponent} from "./components/menu/menu"
+import {ProductComponent} from "./components/product/product"
+import {FooterComponent} from "./components/footer/footer"
 import {Product} from "./model/product"
 
 @Component({

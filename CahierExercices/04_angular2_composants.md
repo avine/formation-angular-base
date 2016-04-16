@@ -11,3 +11,4 @@ Dans ce TP, nous allons utiliser les directives `ngFor`, `ngIf` et `ngClass` pou
 - Grâce à la directive `ngIf`, affichez un produit, seulement si sa propriété `stock` est supérieure à 0. Vous serez peut-être obligé de revoir l'utilisation du `*ngFor` du point précédent.
 
 - Grâce à la directive `ngClass`, ajoutez une classe CSS `last` si la propriété `stock` d'un produit atteint 1. Cette classe ne sera utilisée que pour modifier la couleur de fond (`background-color`)
+
