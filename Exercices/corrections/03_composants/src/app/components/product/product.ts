@@ -18,7 +18,7 @@ import {Product} from "../../model/product";
 })
 export class ProductComponent {
     @Input() data:Product
-    @Output() addToBasket = new EventEmitter();
+    @Output('add-to-basket') addToBasket = new EventEmitter();
 
     clickHandler() {
         this.addToBasket.next(this.data);
