@@ -45,7 +45,7 @@ Notes :
 - Possibilité de définir des *Pipes* statefull ou stateless
 - Pipes disponibles par défaut dans le framework :
   - `LowerCasePipe` , `UpperCasePipe`
-  - `CurrencyPipe`, `DatePipe`, `DecimalPipe`, `JSONPipe`, `NumberPipe`, `PercentPipe`, `SlicePipe`
+  - `CurrencyPipe`, `DatePipe`, `DecimalPipe`, `JSONPipe`, `NumberPipe`, `PercentPipe`, `ReplacePipe`, `SlicePipe`
   - `AsyncPipe`
 
 Notes :
