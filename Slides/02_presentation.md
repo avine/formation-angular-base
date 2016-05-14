@@ -176,7 +176,7 @@ Notes :
 ## Architecture
 
 - Modules : regroupement d'un ensemble de fonctionnalités sous un même namespace
-- Library Modules (*barrels*): `angular2/core`, `angular2/http`...
+- Library Modules (*barrels*): `@angular/core`, `@angular/http`...
 - Les composants : Elément graphique composé d'un template et d'une classe
 - Métadata : Moyen d'indiquer à Angular comment utiliser la classe
 - Directives : composants sans template (*ngFor*, *ngIf*, ...)
@@ -192,8 +192,8 @@ Notes :
 - Exemple complet utilisant les différentes briques d'une application Angular2
 
 ```typescript
-import {Component} from 'angular2/core';
-import {HTTP_PROVIDERS, Http} from "angular2/http";
+import {Component} from '@angular/core';
+import {HTTP_PROVIDERS, Http} from "@angular/http";
 import {MyPipe} from './MyPipe';
 
 @Component({

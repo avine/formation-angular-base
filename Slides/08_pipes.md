@@ -82,8 +82,8 @@ Notes :
 - Exporter cette classe via `export`
 
 ```typescript
-import {isString} from 'angular2/src/facade/lang';
-import {PipeTransform, Pipe} from 'angular2/core';
+import {isString} from '@angular/src/facade/lang';
+import {PipeTransform, Pipe} from '@angular/core';
 
 @Pipe({name: 'mylowercase'})
 export class MyLowerCasePipe implements PipeTransform {
@@ -105,7 +105,7 @@ Notes :
 - Utiliser de la propriété `Pipes` du décorateur `@Component`
 
 ```typescript
-import {Component} from 'angular2/core'
+import {Component} from '@angular/core'
 import {MyLowerCasePipe} from './mylowercase'
 @Component({
 	selector: 'app',
@@ -125,7 +125,7 @@ Notes :
 - Pas nécessaire d'utiliser un service `$filter` ou une règle de nommage (`dateFilter`) comme en *AngularJS*
 
 ```typescript
-import {Component, UpperCasePipe} from 'angular2/core`
+import {Component, UpperCasePipe} from '@angular/core`
 @Component({
   selector: 'app',
   providers: [UpperCasePipe]
@@ -208,10 +208,10 @@ Notes :
 - Surcharge du `provider` `PLATFORM_PIPES`
 
 ```typescript
-import {bootstrap} from 'angular2/platform/browser';
+import {bootstrap} from '@angular/platform/browser';
 import {App} from './app/migr';
 import {MyPipe} from './appp/mypipe';
-import {provide, PLATFORM_PIPES} from 'angular2/core';
+import {provide, PLATFORM_PIPES} from '@angular/core';
 
 bootstrap(App, [
     provide(PLATFORM_PIPES, {useValue: [MyPipe], multi:true})
@@ -228,8 +228,8 @@ Notes :
 - Appel de la méthode `transform` pour tester tous les cas possibles
 
 ```typescript
-import {describe,it,expect,beforeEach} from 'angular2/testing_internal';
-import {UpperCasePipe} from 'angular2/common';
+import {describe,it,expect,beforeEach} from '@angular/testing_internal';
+import {UpperCasePipe} from '@angular/common';
 
 export function main() {
   describe('UpperCasePipe', () => {

@@ -54,13 +54,13 @@ Notes :
 ## HTTP
 
 - Exemple simple d'un service utilisant `Http`
-  - Import d'`Http` depuis le module `angular2/http`
+  - Import d'`Http` depuis le module `@angular/http`
   - Injection du service via le constructeur
   - La méthode du service retournera le résultat de la requête `HTTP`
 
 ```typescript
-import {Http} from 'angular2/http';
-import {Injectable} from 'angular2/core';
+import {Http} from '@angular/http';
+import {Injectable} from '@angular/core';
 
 @Injectable()
 export class Service {
@@ -102,7 +102,7 @@ Notes :
 - Requête HTTP de type `POST` avec surcharge des `Headers`
 
 ```typescript
-import {Http, HTTP_PROVIDERS} from 'angular2/http';
+import {Http, HTTP_PROVIDERS} from '@angular/http';
 
 export class AppComponent {
     constructor(private http:Http){ }
@@ -144,9 +144,9 @@ Notes :
 
 ```typescript
 import 'rxjs/Rx';
-import {Http, Response, HTTP_PROVIDERS} from 'angular2/http';
-import {bootstrap} from 'angular2/platform/browser'
-import {Component} from "angular2/core";
+import {Http, Response, HTTP_PROVIDERS} from '@angular/http';
+import {bootstrap} from '@angular/platform/browser'
+import {Component} from "@angular/core";
 
 @Component({selector: 'app', template: '{{displayedData}}'})
 export class AppComponent {
@@ -174,9 +174,9 @@ Notes :
 
 ```typescript
 import 'rxjs/Rx'; import {MyObject} from "./MyObject";
-import {Http, Response, HTTP_PROVIDERS} from 'angular2/http';
-import {bootstrap} from 'angular2/platform/browser';
-import {Component} from "angular2/core";
+import {Http, Response, HTTP_PROVIDERS} from '@angular/http';
+import {bootstrap} from '@angular/platform/browser';
+import {Component} from "@angular/core";
 
 @Component({selector: 'app',template: '{{displayedData}}'})
 export class AppComponent {
@@ -205,10 +205,10 @@ Notes :
 - Possibilité de définir une implémentation bouchonnée du service `Http`
 
 ```typescript
-import {describe, it, expect, beforeEachProviders, inject} from 'angular2/testing';
-import {Http, BaseRequestOptions, Response, ResponseOptions} from 'angular2/http';
-import {MockBackend} from 'angular2/http/testing';
-import {provide} from 'angular2/core';
+import {describe, it, expect, beforeEachProviders, inject} from '@angular/testing';
+import {Http, BaseRequestOptions, Response, ResponseOptions} from '@angular/http';
+import {MockBackend} from '@angular/http/testing';
+import {provide} from '@angular/core';
 import 'rxjs/add/operator/map';
 
 describe('UserService', () => {

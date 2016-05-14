@@ -58,7 +58,7 @@ Notes :
 
 ## Angular2 en EcmaScript 5
 
-- Initialisation de l'application via la méthode `bootstrap` du module `angular2/platform/browser`
+- Initialisation de l'application via la méthode `bootstrap` du module `@angular/platform/browser`
 - Écoute de l'événement `DOMContentLoaded`
 - Signature de la méthode `bootstrap` identique à celle utilisée en *TypeScript*
 
@@ -78,7 +78,7 @@ Notes :
 
 - Création d'un composant  via une fonction constructeur
 - Définition des annotations via la propriété `annotations`
-- Utilisation du constructeur `ng.core.Component` pour utiliser le décorateur `Component` du module `angular2/core`
+- Utilisation du constructeur `ng.core.Component` pour utiliser le décorateur `Component` du module `@angular/core`
 
 ```javascript
 var AppComponent = function() {};

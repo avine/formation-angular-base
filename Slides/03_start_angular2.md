@@ -74,7 +74,7 @@ Notes :
   - via la méthode `bootstrap`
 
 ```typescript
-import {bootstrap} from 'angular2/platform/browser'
+import {bootstrap} from '@angular/platform/browser'
 
 @Component({
     selector: 'app',
@@ -169,7 +169,7 @@ Notes :
 - Configuration dans `tsconfig.json` pour utiliser la syntaxe `System.register`
 - Modules *Angular2* packagés via cette syntaxe
 ```javascript
-System.register("angular2/core", [], true, function(require, exports, module){
+System.register("@angular/core", [], true, function(require, exports, module){
     exports.fn = function(){};
     return module.exports;
 });

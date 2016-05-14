@@ -47,7 +47,7 @@ Notes :
 - Directives importées automatiquement
 
 ```typescript
-import {CORE_DIRECTIVES} from 'angular2/common';
+import {CORE_DIRECTIVES} from '@angular/common';
 
 @Component({
   selector: 'my-component',
@@ -69,8 +69,8 @@ Notes :
 - Nécessité de spécifier un objet JSON en tant que paramètre
 
 ```typescript
-import {Component} from 'angular2/core';
-import {NgStyle} from 'angular2/common';
+import {Component} from '@angular/core';
+import {NgStyle} from '@angular/common';
 
 @Component({
 	selector: 'ngStyle-example',
@@ -114,8 +114,8 @@ Notes :
 - Exemple d'utilisation de la directive `ngClass`
 
 ```typescript
-import {Component} from 'angular2/core';
-import {NgClass} from 'angular2/common';
+import {Component} from '@angular/core';
+import {NgClass} from '@angular/common';
 
 @Component({
 	selector: 'toggle-button',

@@ -177,7 +177,7 @@ Notes :
 
 ```typescript
 //<span myHighlight>Highlight me!</span>
-import {Directive, ElementRef, Renderer, Input} from 'angular2/core';
+import {Directive, ElementRef, Renderer, Input} from '@angular/core';
 @Directive({
     selector: '[myHighlight]'
 })
@@ -200,7 +200,7 @@ Notes :
 - L'ajout d'handler programmatiquement est à éviter pour des problèmes de mémoire
 
 ```typescript
-import {Directive, ElementRef, Renderer, Input} from 'angular2/core';
+import {Directive, ElementRef, Renderer, Input} from '@angular/core';
 @Directive({
     selector: '[myHighlight]',
     host: {
@@ -285,7 +285,7 @@ Notes :
 - `@Component` fournit notamment les paramètres `template`, `templateUrl`, `styles`, `styleUrl` et `encapsulation`
 
 ```typescript
-import {Component} from 'angular2/core'
+import {Component} from '@angular/core'
 
 @Component({
     selector: 'product',
@@ -309,7 +309,7 @@ Notes :
 - Cette liste de composant doit être définie via la propriété `directives` des annotations `@Directive` et `@Component`
 
 ```typescript
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {HighlightDirective} from './highlight.directive';
 @Component({
     selector: 'my-app',
@@ -332,7 +332,7 @@ Notes :
 
 ```typescript
 //<post><h2>Title</h2><p>Content</p></post>
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 @Component({
     selector: 'post',
     template: `<article>
@@ -353,10 +353,10 @@ Notes :
 - Surcharge du `provider` `PLATFORM_DIRECTIVES`
 
 ```typescript
-import {bootstrap} from 'angular2/platform/browser';
+import {bootstrap} from '@angular/platform/browser';
 import {App} from './app/migr';
-import {RouterOutlet} from 'angular2/router'
-import {provide, PLATFORM_DIRECTIVES} from 'angular2/core'
+import {RouterOutlet} from '@angular/router'
+import {provide, PLATFORM_DIRECTIVES} from '@angular/core'
 
 bootstrap(App, [
     provide(PLATFORM_DIRECTIVES, {useValue: [RouterOutlet], multi:true})
@@ -398,7 +398,7 @@ import {
   describe, it, expect,
   inject, injectAsync, beforeEach,
   TestComponentBuilder
-} from 'angular2/testing';
+} from '@angular/testing';
 
 import {TitleCmp} from './titlecmp';
 describe('TitleCmp', () => {

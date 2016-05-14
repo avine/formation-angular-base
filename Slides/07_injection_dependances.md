@@ -104,7 +104,7 @@ Notes :
 - Inutile pour les composants, car nous utilisons déjà `@Component`
 
 ```typescript
-import {Injectable} from 'angular2/core';
+import {Injectable} from '@angular/core';
 import {Logger} from './logger-service';
 
 @Injectable()
@@ -179,7 +179,7 @@ Notes :
 - Méthode `injectAsync` utilisée pour tester les services asynchrones (utilise le méchanisme de *Zone*)
 
 ```typescript
-import {describe, it, expect, injectAsync, beforeEachProviders} from 'angular2/testing';
+import {describe, it, expect, injectAsync, beforeEachProviders} from '@angular/testing';
 
 describe('UserService', () => {
 

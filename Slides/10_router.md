@@ -62,8 +62,8 @@ Notes :
 - Navigation entre les pages via la directive `RouterLink`
 
 ```typescript
-import {bootstrap} from 'angular2/platform/browser';
-import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
+import {bootstrap} from '@angular/platform/browser';
+import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
 
 @Component({
   directives: [ROUTER_DIRECTIVES]
@@ -84,8 +84,8 @@ Notes :
 - Détection de l'implémentation à utiliser faite par le framework
 
 ```typescript
-import { RouterConfig } from 'angular2/router';
-import { Component } from 'angular2/core';
+import { RouterConfig } from '@angular/router';
+import { Component } from '@angular/core';
 
 import { Home } from './components/home';
 import { Product } from './components/product';
@@ -133,8 +133,8 @@ Notes :
 - Exemple simple de la directives `RouterOutlet`
 
 ```typescript
-import { RouterConfig } from 'angular2/router';
-import { Component } from 'angular2/core';
+import { RouterConfig } from '@angular/router';
+import { Component } from '@angular/core';
 
 import { Home } from './components/home';
 import { Product } from './components/product';
@@ -294,8 +294,8 @@ location.go('/foo'); //example.com#/foo
 - Possible de configurer l'implémentation à utiliser
 
 ```typescript
-import {provide} from 'angular2/core';
-import {HashLocationStrategy } from 'angular2/router';
+import {provide} from '@angular/core';
+import {HashLocationStrategy } from '@angular/router';
 
 @Component({directives: [ROUTER_DIRECTIVES]})
 class AppComponent { ... }
@@ -314,8 +314,8 @@ Notes :
 - Sera utilisé lors de la génération des différentes URLS
 
 ```typescript
-import {Component} from 'angular2/core';
-import {APP_BASE_HREF} from 'angular2/router';
+import {Component} from '@angular/core';
+import {APP_BASE_HREF} from '@angular/router';
 
 @Component({ ... })
 @RouteConfig([
@@ -352,7 +352,7 @@ class AppComponent { }
 
 ```typescript
 import { Child } from './components/child';
-import { RouteParams } from "angular2/router";
+import { RouteParams } from "@angular/router";
 
 @Component({
   template: '<main><router-outlet></router-outlet></main>'
@@ -375,9 +375,9 @@ Notes :
 	- @CanReuse/@OnReuse
 
 ```typescript
-import { HTTP_PROVIDERS } from 'angular2/http';
-import { RouteConfig, CanActivate } from "angular2/router";
-import { Component } from 'angular2/core';
+import { HTTP_PROVIDERS } from '@angular/http';
+import { RouteConfig, CanActivate } from "@angular/router";
+import { Component } from '@angular/core';
 import { Admin } from './components/home';
 import { isLoggedIn } from './utils/is-logged-in';
 
