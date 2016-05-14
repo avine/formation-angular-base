@@ -150,13 +150,13 @@ Notes :
 - Angular2 met à disposition trois données supplémentaires : `index`, `last`, `even` et `odd`
 
 ```typescript
-<template ngFor #item [ngForOf]="items" #i="index"><li>...</li></template>
+<template ngFor let-item [ngForOf]="items" let-i="index"><li>...</li></template>
 ```
 
 - Seconde syntaxe disponible (également pour `ngIf` et `ngSwitch`
 
 ```typescript
-<li *ngFor="#item of items; #i = index">...</li>
+<li *ngFor="let item of items; let i = index">...</li>
 ```
 
 Notes :
