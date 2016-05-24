@@ -197,7 +197,9 @@ Notes :
 - Possibilité de définir une implémentation bouchonnée du service `Http`
 
 ```typescript
-import {describe, it, expect, beforeEachProviders, inject} from '@angular/testing';
+import {
+  describe, it, expect, beforeEachProviders, inject
+} from '@angular/core/testing';
 import {Http, BaseRequestOptions, Response, ResponseOptions} from '@angular/http';
 import {MockBackend} from '@angular/http/testing';
 import 'rxjs/add/operator/map';

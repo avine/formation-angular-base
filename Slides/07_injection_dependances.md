@@ -167,20 +167,22 @@ Notes :
 
 - Possibilité de bénéficier de l'injection de dépendance grâce à la méthode `inject`
 - Définition des services injectés dans les tests via la méthode `beforeEachProviders`
-- Méthode `injectAsync` utilisée pour tester les services asynchrones (utilise le méchanisme de *Zone*)
+- Méthode `async` utilisée pour tester les services asynchrones (utilise le méchanisme de *Zone*)
 
 ```typescript
-import {describe, it, expect, injectAsync, beforeEachProviders} from '@angular/testing';
+import {
+  describe, it, expect, async, inject, beforeEachProviders
+} from '@angular/core/testing';
 
 describe('UserService', () => {
 
   beforeEachProviders(() => [UserService]);
 
-  it('should return 1 user', injectAsync([UserService], service => {
-    return service.getUsers().then(users => {
+  it('should return 1 user', async(inject([UserService], service => {
+    service.getUsers().then(users => {
       expect(users.length).toBe(1);
     });
-  }));
+  })));
 });
 ```
 

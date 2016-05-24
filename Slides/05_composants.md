@@ -202,11 +202,11 @@ import {Directive, ElementRef, Renderer, Input} from '@angular/core';
 })
 export class HighlightDirective {
     constructor(private el: ElementRef, private renderer: Renderer) { ... }
-
     onMouseEnter() { this._highlight("yellow"); }
     onMouseLeave() { this._highlight(null); }
     private _highlight(color: string) {
-        this.renderer.setElementStyle(this.el.nativeElement, 'backgroundColor', color);
+        this.renderer
+            .setElementStyle(this.el.nativeElement, 'backgroundColor', color);
     }
 }
 ```
@@ -233,7 +233,8 @@ export class HighlightDirective {
     onMouseLeave() { this._highlight(null); }
 
     private _highlight(color:string) {
-        this.renderer.setElementStyle(this.el.nativeElement, 'backgroundColor', color);
+        this.renderer
+            .setElementStyle(this.el.nativeElement, 'backgroundColor', color);
     }
 }
 ```
@@ -330,7 +331,7 @@ import {Component} from '@angular/core';
     template: `<article>
           <header><ng-content select="h2"></ng-content></header>
           <section><ng-content select="p"></ng-content></section>
-    </article>`,
+    </article>`
 })
 export class ArticleComponent { }
 ```
@@ -387,15 +388,14 @@ Notes :
 
 ```typescript
 import {
-  describe, it, expect,
-  inject, injectAsync, beforeEach,
-  TestComponentBuilder
-} from '@angular/testing';
+  describe, it, expect, inject, async, beforeEach
+} from '@angular/core/testing';
+import {TestComponentBuilder} from '@angular/compiler/testing';
 
 import {TitleCmp} from './titlecmp';
 describe('TitleCmp', () => {
-  it('should have a title', injectAsync([TestComponentBuilder], tcb => {
-    return tcb.createAsync(TitleCmp)
+  it('should have a title', async(inject([TestComponentBuilder], tcb => {
+    tcb.createAsync(TitleCmp)
       .then(fixture => {
         let TitleCmp = fixture.componentInstance;
         TitleCmp.title = 'Hello World';
@@ -405,7 +405,7 @@ describe('TitleCmp', () => {
         let element = fixture.nativeElement;
         expect(element.querySelector('h1').textContent.toBe('Hello World');
       });
-  }));
+  })));
 });
 ```
 
