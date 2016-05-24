@@ -19,19 +19,11 @@ Notes :
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
-
-Notes :
-
-
-
-## Sommaire
-
-<!-- .slide: class="toc" -->
-
 - [Router](#/10)
 - **[Gestion des Formulaires](#/11)**
 - [Server-side Rendering](#/12)
 - [Bonne Pratiques pour une migration heureuse](#/13)
+- [Angular2 en EcmaScript 5](#/14)
 
 Notes :
 
@@ -257,17 +249,18 @@ Il est possible de créer ses propres validateurs avec une classe implémentant 
 ```javascript
 @Directive({
     selector: '[pattern]',
-    providers: [provide(NG_VALIDATORS, {useExisting: PatternValidator, multi: true})]
+    providers: [
+      { provide: NG_VALIDATORS, useExisting: PatternValidator, multi: true }
+    ]
 })
 export class PatternValidator implements Validator {
     @Input('pattern') pattern: string;
 
-    validate(c: Control): {[key: string]: any} {
-        if(c.value && c.value.match(new RegExp(this.pattern)) ) {
+    validate(c: Control): { [key: string]: any } {
+        if (c.value && c.value.match(new RegExp(this.pattern))) {
             return null;
-        } else {
-            return {pattern: true};
         }
+        return { pattern: true };
     }
 }
 ```

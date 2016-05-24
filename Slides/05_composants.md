@@ -19,19 +19,11 @@ Notes :
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
-
-Notes :
-
-
-
-## Sommaire
-
-<!-- .slide: class="toc" -->
-
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
 - [Bonne Pratiques pour une migration heureuse](#/13)
+- [Angular2 en EcmaScript 5](#/14)
 
 Notes :
 
@@ -336,8 +328,8 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'post',
     template: `<article>
-          <header><ng-content selector="h2"></ng-content></header>
-          <section><ng-content selector="p"></ng-content></section>
+          <header><ng-content select="h2"></ng-content></header>
+          <section><ng-content select="p"></ng-content></section>
     </article>`,
 })
 export class ArticleComponent { }
@@ -354,12 +346,12 @@ Notes :
 
 ```typescript
 import {bootstrap} from '@angular/platform/browser';
-import {App} from './app/migr';
-import {RouterOutlet} from '@angular/router'
-import {provide, PLATFORM_DIRECTIVES} from '@angular/core'
+import {App} from './app/app';
+import {ROUTER_DIRECTIVES} from '@angular/router'
+import {PLATFORM_DIRECTIVES} from '@angular/core'
 
 bootstrap(App, [
-    provide(PLATFORM_DIRECTIVES, {useValue: [RouterOutlet], multi:true})
+    { provide: PLATFORM_DIRECTIVES, useValue: [ROUTER_DIRECTIVES], multi:true }
 ]);
 ```
 
