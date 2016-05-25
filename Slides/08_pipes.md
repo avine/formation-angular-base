@@ -172,12 +172,9 @@ Notes :
 ```typescript
 @Component({
   selector: 'pipes',
+  template: '{{ promise | async }}',
   changeDetection: 'ON_PUSH'
 })
-@View({
-  template: '{{ promise | async}}',
-})
-
 class PipesAppComponent {
   promise: Promise;
 
