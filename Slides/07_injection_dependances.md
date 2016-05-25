@@ -19,19 +19,11 @@ Notes :
 - **[Injection de Dépendances](#/7)**
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
-
-Notes :
-
-
-
-## Sommaire
-
-<!-- .slide: class="toc" -->
-
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
 - [Bonne Pratiques pour une migration heureuse](#/13)
+- [Angular2 en EcmaScript 5](#/14)
 
 Notes :
 
@@ -133,14 +125,13 @@ Notes :
 ```typescript
 bootstrap(AppComponent, [MyService]);
 bootstrap(AppComponent, [new Provider(AppComponent, {useClass: AppComponent})]);
-bootstrap(AppComponent, [provide(MyService, {useClass: MyService})]);
-bootstrap(AppComponent, [provide(string, {useValue: 'hello world'})]);
-bootstrap(AppComponent, [provide(string, {
-    useFactory: (myService:MyService) => {
-        return myService.myMethod();  
-    },
-    deps: [MyService]
-})]);
+bootstrap(AppComponent, [{ provide: MyService, useClass: MyService }]);
+bootstrap(AppComponent, [{ provide: string, useValue: 'hello world' }]);
+bootstrap(AppComponent, [{
+  provide: string,
+  useFactory: (myService: MyService) => myService.myMethod()
+  deps: [MyService]
+}]);
 ```
 
 Notes :
@@ -160,11 +151,11 @@ let config = {
     title: 'The Hero Employment Agency'
 };
 bootstrap(AppComponent, [
-    provide('config', {useValue:config})
+    { provide: 'config', useValue:config }
 ]);
 
 class AppComponent {
-    constructor(@Inject('config') config){ ... }
+    constructor(@Inject('config') config) { ... }
 }
 ```
 
@@ -176,20 +167,22 @@ Notes :
 
 - Possibilité de bénéficier de l'injection de dépendance grâce à la méthode `inject`
 - Définition des services injectés dans les tests via la méthode `beforeEachProviders`
-- Méthode `injectAsync` utilisée pour tester les services asynchrones (utilise le méchanisme de *Zone*)
+- Méthode `async` utilisée pour tester les services asynchrones (utilise le méchanisme de *Zone*)
 
 ```typescript
-import {describe, it, expect, injectAsync, beforeEachProviders} from '@angular/testing';
+import {
+  describe, it, expect, async, inject, beforeEachProviders
+} from '@angular/core/testing';
 
 describe('UserService', () => {
 
   beforeEachProviders(() => [UserService]);
 
-  it('should return 1 user', injectAsync([UserService], service => {
-    return service.getUsers().then(users => {
+  it('should return 1 user', async(inject([UserService], service => {
+    service.getUsers().then(users => {
       expect(users.length).toBe(1);
     });
-  }));
+  })));
 });
 ```
 

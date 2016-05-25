@@ -19,19 +19,11 @@ Notes :
 - [Injection de Dépendances](#/7)
 - **[Les Pipes](#/8)**
 - [Service HTTP](#/9)
-
-Notes :
-
-
-
-## Sommaire
-
-<!-- .slide: class="toc" -->
-
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
 - [Bonne Pratiques pour une migration heureuse](#/13)
+- [Angular2 en EcmaScript 5](#/14)
 
 Notes :
 
@@ -45,7 +37,9 @@ Notes :
 - Possibilité de définir des *Pipes* statefull ou stateless
 - Pipes disponibles par défaut dans le framework :
   - `LowerCasePipe` , `UpperCasePipe`
-  - `CurrencyPipe`, `DatePipe`, `DecimalPipe`, `JSONPipe`, `NumberPipe`, `PercentPipe`, `ReplacePipe`, `SlicePipe`
+  - `CurrencyPipe`, `DecimalPipe`, `PercentPipe`
+  - `DatePipe`, `JSONPipe`, `ReplacePipe`, `SlicePipe`
+  - `I18nPluralPipe`, `I18nSelectPipe`
   - `AsyncPipe`
 
 Notes :
@@ -178,12 +172,9 @@ Notes :
 ```typescript
 @Component({
   selector: 'pipes',
+  template: '{{ promise | async }}',
   changeDetection: 'ON_PUSH'
 })
-@View({
-  template: '{{ promise | async}}',
-})
-
 class PipesAppComponent {
   promise: Promise;
 
@@ -209,12 +200,12 @@ Notes :
 
 ```typescript
 import {bootstrap} from '@angular/platform/browser';
-import {App} from './app/migr';
-import {MyPipe} from './appp/mypipe';
+import {App} from './app/app';
+import {MyPipe} from './app/mypipe';
 import {provide, PLATFORM_PIPES} from '@angular/core';
 
 bootstrap(App, [
-    provide(PLATFORM_PIPES, {useValue: [MyPipe], multi:true})
+    { provide: PLATFORM_PIPES, useValue: [MyPipe], multi:true }
 ]);
 ```
 
@@ -228,7 +219,7 @@ Notes :
 - Appel de la méthode `transform` pour tester tous les cas possibles
 
 ```typescript
-import {describe,it,expect,beforeEach} from '@angular/testing_internal';
+import {describe,it,expect,beforeEach} from '@angular/core/testing';
 import {UpperCasePipe} from '@angular/common';
 
 export function main() {

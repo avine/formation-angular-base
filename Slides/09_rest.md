@@ -19,19 +19,11 @@ Notes :
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - **[Service HTTP](#/9)**
-
-Notes :
-
-
-
-## Sommaire
-
-<!-- .slide: class="toc" -->
-
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
 - [Bonne Pratiques pour une migration heureuse](#/13)
+- [Angular2 en EcmaScript 5](#/14)
 
 Notes :
 
@@ -205,20 +197,23 @@ Notes :
 - Possibilité de définir une implémentation bouchonnée du service `Http`
 
 ```typescript
-import {describe, it, expect, beforeEachProviders, inject} from '@angular/testing';
+import {
+  describe, it, expect, beforeEachProviders, inject
+} from '@angular/core/testing';
 import {Http, BaseRequestOptions, Response, ResponseOptions} from '@angular/http';
 import {MockBackend} from '@angular/http/testing';
-import {provide} from '@angular/core';
 import 'rxjs/add/operator/map';
 
 describe('UserService', () => {
   beforeEachProviders(() => [
     MockBackend,
     BaseRequestOptions,
-    provide(Http, {
-        useFactory: (backend, defaultOptions) => new Http(backend, defaultOptions),
-        deps: [MockBackend, BaseRequestOptions]
-    }),
+    {
+      provide: Http,
+      useFactory: (backend: MockBackend, defaultOptions: BaseRequestOptions)
+        => new Http(backend, defaultOptions),
+      deps: [MockBackend, BaseRequestOptions]
+    },
     UserService
   ]);
 });
