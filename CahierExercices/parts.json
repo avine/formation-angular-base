@@ -5,8 +5,8 @@
   "03_composants.md",
   "04_angular2_composants.md",
   "05_injection_dependances.md",
-  "06_rest.md",
-  "07_router.md",
-  "08_forms.md",
-  "09_pipes.md"
+  "06_pipes.md",
+  "07_rest.md",
+  "08_router.md",
+  "09_forms.md"
 ]

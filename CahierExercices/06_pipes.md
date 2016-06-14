@@ -1,4 +1,4 @@
-## TP9 : Les Pipes
+## TP6 : Les Pipes
 
 Nous allons à présent utiliser les `pipes`, afin de formatter le contenu de notre application.
 
