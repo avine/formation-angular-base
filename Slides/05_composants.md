@@ -347,7 +347,7 @@ Notes :
 - Surcharge du `provider` `PLATFORM_DIRECTIVES`
 
 ```typescript
-import {bootstrap} from '@@angular/platform-browser-dynamic';
+import {bootstrap} from '@angular/platform-browser-dynamic';
 import {App} from './app/app';
 import {MyComponent} from './MyComponent'
 import {PLATFORM_DIRECTIVES} from '@angular/core'

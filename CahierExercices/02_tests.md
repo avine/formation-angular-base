@@ -11,7 +11,5 @@ Nous allons vérifier que tout fonctionne correctement.
 - Lancez les tests via `angular-cli` et `karma`
 
 ```shell
-ng build
-karma start
+ng test
 ```
-

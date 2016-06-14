@@ -1,6 +1,6 @@
 ## TP3 : Composants
 
-L'application que nous allons développer tout le long de cette formation, est une application d'e-commerce.
+L'application que nous allons développer tout au long de cette formation, est une application d'e-commerce.
 
 Après avoir reçu du formateur le template princpal de l'application, veuillez suivre les étapes suivantes :
 
