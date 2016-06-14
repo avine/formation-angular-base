@@ -37,42 +37,62 @@ Développeur web
   - Outillage
 
 2. Présentation
+  - Points négatifs AngularJS
+  - Points positifs Angular 2
+  - Points négatifs Angular 2
+  - Architecture
 
 3. Démarrer une application Angular 2
+  - Commencer un nouveau projet
+  - Angular-CLI
+  - SystemJS
 
 4. Tests
+  - Jasmine
+  - Karma
 
 5. Composants
-  - l'annotation @Component
+  - Syntaxe des templates
   - Propriétés
   - Evènements
-  - Import de directives
-  - Les Web Components
+  - Directives
+  - Composants
 
 6. Composants Angular2
+  - ngStyle
+  - ngClass
   - ngFor
   - ngIf
   - ngSwitch
   - ngNonBindable
 
 7. Injection de Dépendances
+  - Injecteurs
+  - Providers
+  
+8. Les Pipes
+  - Création
+  - Utilisation
+  
+9. Communication avec une API REST
+  - Http
+  - Observables
 
-8. Communication avec une API REST
-
-9. Router
-  - routerInjectables
-  - l'annotation @RouteConfig
+10. Router
+  - L'annotation @Routes
   - Directive RouterOutlet
   - Directive RouterLink
+  - Stratégies URL
+  - Paramètres URL
+  - Cycle de vie
 
-10. Gestion des Formulaires
-
-11. Les Pipes
-
-12. Annotations et Décorateurs
+11. Gestion des Formulaires
+  - Directives
+  - Validation
 
 13. Server-side rendering
+  - Angular Universal
 
-14. Support d'EcmaScript 5
+14. Bonnes pratiques pour une migration heureuse
 
-15. Bonnes pratiques pour une migration heureuse
+15. Support d'EcmaScript 5
