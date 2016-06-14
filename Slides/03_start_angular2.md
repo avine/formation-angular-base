@@ -174,7 +174,7 @@ Notes :
 
 ```javascript
 System.config({
-  packages: {        
+  packages: {
     app: {
       format: 'register',
       defaultExtension: 'js'
@@ -199,3 +199,7 @@ Notes :
 
 
 <!-- .slide: class="page-questions" -->
+
+
+
+<!-- .slide: class="page-tp1" -->
