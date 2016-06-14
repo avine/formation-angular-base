@@ -32,21 +32,17 @@ Notes :
 ## Commencer un nouveau projet
 
 - Gestion des dépendances via *NPM*
-  - Angular2
+  - les différents modules *Angular* : `@angular/common`, `@angular/core` ...
   - SystemJS : gestion des modules
   - RxJS : gestion de l'asynchrone
 
 ```shell
 npm init
-npm install --save angular2 rxjs systemjs
+npm install --save @angular/common @angular/core rxjs systemjs...
 ```
 
-- Initialisation d'un projet *TypeScript*
-
-```shell
-npm install -g tsc
-tsc --init
-```
+- Initialisation et Configuration d'un projet *TypeScript*
+- Configuration du système de gestion des modules (*SystemJS*)
 
 - Nécessité d'utiliser un serveur Web
   - `Apache`, `serve`, `live-server`...
@@ -66,11 +62,11 @@ Notes :
   - via la méthode `bootstrap`
 
 ```typescript
-import {bootstrap} from '@angular/platform/browser'
+import {bootstrap} from '@angular/platform-browser-dynamic'
 
 @Component({
     selector: 'app',
-    template: '<p>Hello</p>'
+    template: `<p>Hello</p>`
 })
 class AppComponent { ... }
 
@@ -87,25 +83,20 @@ Notes :
   - Import des librairies *JavaScript*
 
 ```html
-< script src="node_modules/angular2/bundles/angular2-polyfills.js">< /script>
-< script src="node_modules/systemjs/dist/system.src.js">< /script>
-< script src="node_modules/rxjs/bundles/Rx.js">< /script>
-< script src="node_modules/angular2/bundles/angular2.dev.js">< /script>
+< script src="node_modules/core-js/client/shim.min.js"></ script>
+< script src="node_modules/zone.js/dist/zone.js"></ script>
+< script src="node_modules/reflect-metadata/Reflect.js"></ script>
+< script src="node_modules/systemjs/dist/system.src.js"></ script>
+<!-- 2. Configure SystemJS -->
+< script src="systemjs.config.js"></ script>
 ```
 
-  - Utilisation du composant principal
-  - Configuration de SystemJS
+  - Configuration de SystemJS pour charger le composant principal
 
 ```javascript
-System.config({
-  packages: {        
-    app: {
-      format: 'register',
-      defaultExtension: 'js'
-    }
-  }
-});
-System.import('app/app')
+< script>
+  System.import('app').catch(function(err){ console.error(err); });
+< /script>
 ```
 
 Notes :
@@ -117,7 +108,7 @@ Notes :
 - Projet en cours de développement
 - Basé sur le projet *Ember CLI*
 - Permet de créer le squelette d'une application
-  - TypeScript, SystemJS, Karma, ...
+  - TypeScript, SystemJS, Karma, Protractor ...
 - Projet disponible sur *NPM*
 
 ```shell
@@ -131,9 +122,10 @@ ng new application
 ng build
 ng serve
 
-ng generate component AppComponent
+ng generate component AppComponent (--inline-template)
 ng generate pipe UpperCasePipe
 ng generate service UserService
+ng generate directive myNgIf
 ```
 
 

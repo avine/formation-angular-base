@@ -29,17 +29,28 @@ Notes :
 
 
 
-## TypeScript
+## Introduction
+
+<img src="ressources/typescript-logo.png" height="300">
 
 - Langage créé par *Anders Hejlsberg* en 2012
 - Projet open-source maintenu par *Microsoft* (Version actuelle *1.8*)
 - Influencé par *JavaScript*, *Java* et *C#*
+- Alternatives : CoffeeScript, Dart, Haxe ou Flow
+
+Notes :
+
+
+
+## Introduction
+
 - Phase de compilation nécessaire pour générer du *JavaScript*
-- Tout programme *JavaScript* est un programme *TypeScript*
 - Ajout de nouvelles fonctionnalités au langage *JavaScript*
 - Support d'ES3 / ES5 / ES2015
-- Alternatives : CoffeeScript, Dart, Haxe ou Flow
 - Certaines fonctionnalités n'ont aucun impact sur le JavaScript généré
+- Tout programme *JavaScript* est un programme *TypeScript*
+
+<img src="ressources/typescript-javascript.png" height="300">
 
 Notes :
 
@@ -65,15 +76,15 @@ Notes :
 - Pour déclarer une variable :
 
 ```typescript
-var variableName:variableType = value;
-let variableName2:variableType = value;
-const variableName3:variableType = value;
+var variableName: variableType = value;
+let variableName2: variableType = value;
+const variableName3: variableType = value;
 ```
 
 - boolean : `var isDone: boolean = false;`
 - number : `var height: number = 6;`
 - string : `var name: string = 'Carl';`
-- array : `var names: string[] = ['Carl', 'Laurent'];`   
+- array : `var names: string[] = ['Carl', 'Laurent'];`
 - any : `var notSure: any = 4;`
 
 Notes :
@@ -86,19 +97,19 @@ Notes :
 
 ```typescript
 //Fonction nommée
-function  fn():void { }
+function  namedFunction():void { }
 
 //Fonction anonyme
-var fn = function(): void { }
+var variableAnonymousFunction = function(): void { }
 ```
 
 - Peut retourner une valeur grâce au mot clé `return`
 - Accès aux variables définies en dehors du scope de la fonction
 
 ```typescript
-var z:number = 10;
+var externalScope:number = 10;
 
-function add(x:number, y:number):number { return x + y + z; }
+function add(localArg: number): number { return localArg + externalScope; }
 ```
 
 Notes :
@@ -107,18 +118,21 @@ Notes :
 
 ## Fonctions - Paramètres (Optionels)
 
+- Une fonction peut prendre des paramètres
+
+```typescript
+function fn(name: string, forename: string) { }
+```
+
 - Un paramètre peut être optionel
   - utilisation du caractère `?`
   - ordre de définition très important
+  - aucune implication dans le code JavaScript généré
   - si pas défini, le paramètre aura la valeur `undefined`
 
-- Possibilité de définir une valeur par défaut pour chaque paramètre
-  - directement dans la signature de la méthode (via `=`)
-  - ajoutera une condition `if` dans le javascript généré
-
 ```typescript
-function fn(name:string = 'carl', forename?:string){ }
-```  
+function fn(name: string, forename?: string) { }
+```
 
 Notes :
 
@@ -130,10 +144,10 @@ Notes :
 - Permet d'indiquer au compilateur TypeScript quel est le type retourné en fonction des paramètres passés
 
 ```typescript
-function fn(param:string) : number;
-function fn(param:number) : string;
-function fn(param:any) : any {
-  if (typeof x == "number"){
+function fn(param: string): number;
+function fn(param: number): string;
+function fn(param: any): any {
+  if (typeof x === "number") {
 
   } else {
 
@@ -153,13 +167,13 @@ Notes :
   - Syntaxe Litérale
 
 ```typescript
-var list:number[] = [1, 2, 3];
+var list: number[] = [1, 2, 3];
 ```
 
   - Syntaxe utilisant le constructeur `Array`
 
 ```typescript
-var list:Array<number> = [1, 2, 3];
+var list: Array<number> = [1, 2, 3];
 ```
 
 - Ces 2 syntaxes aboutiront au même code JavaScript
@@ -173,7 +187,7 @@ Notes :
 - Possibilité de définir un type pour expliciter un ensemble de données numériques
 
 ```typescript
-enum Music {Rock, Jazz, Blues};
+enum Music { Rock, Jazz, Blues };
 
 var c: Music = Music.Jazz;
 ```
@@ -182,9 +196,15 @@ var c: Music = Music.Jazz;
 - Possibilité de surcharger les valeurs numériques
 
 ```typescript
-enum Music {Rock = 2, Jazz = 4, Blues = 8};
+enum Music { Rock = 2, Jazz = 4, Blues = 8 };
 
 var c: Music = Music.Jazz;
+```
+
+- Récupération de la chaîne de caractère associés à la valeur numérique
+
+```typescript
+var style: string = Music[4]; //Jazz
 ```
 
 Notes :
@@ -200,10 +220,10 @@ Notes :
 
 ```typescript
 class Person {
-   constructor(){}
+   constructor() {}
 }
 
-var p = new Person();
+var person = new Person();
 ```
 
 Notes :
@@ -218,10 +238,20 @@ Notes :
 
 ```typescript
 class Person {
-   constructor(){}
+   constructor() {}
 
-   sayHello(message:string){ }
+   sayHello(message: string) { }
 }
+```
+
+- Version JavaScript
+
+```javascript
+var Person = (function () {
+    function Person() { }
+    Person.prototype.sayHello = function (message) { };
+    return Person;
+})();
 ```
 
 Notes :
@@ -231,7 +261,7 @@ Notes :
 ## Classes - Propriétés
 
 - Trois scopes disponibles : `public`, `private` et `protected`
-- Utilise le scope `public` par  défaut
+- Utilise le scope `public` par défaut
 - Scope `protected` apparu en TypeScript 1.3
 - Propriétés ajoutées sur l'objet en cours d'instanciation (`this`)
 - Possibilité de définir des propriétés statiques (`static`)
@@ -245,23 +275,52 @@ Notes :
 
 ## Classes - Propriétés
 
-- 1e version pour initialiser des propriétés :
+- Version TypeScript
 
 ```typescript
 class Person {
-   firstName:string;
-   constructor(firstName:string){
+   firstName: string;
+   constructor(firstName: string){
 	   this.firstName = firstName;
-   }   
+   }
 }
 ```
 
-- Seconde version :
+- Version JavaScript
+
+```javascript
+var Person = (function () {
+    function Person(firstName) {
+        this.firstName = firstName;
+    }
+    return Person;
+})();
+```
+
+Notes :
+
+
+
+## Classes - Propriétés
+
+- Seconde version pour initialiser des propriétés
+- Version TypeScript
 
 ```typescript
 class Person {
-   constructor(public firstName:string){ }   
+   constructor(public firstName: string) { }
 }
+```
+
+- Version JavaScript
+
+```javascript
+var Person = (function () {
+    function Person(firstName) {
+        this.firstName = firstName;
+    }
+    return Person;
+})();
 ```
 
 Notes :
@@ -272,18 +331,19 @@ Notes :
 
 - Possibilité de définir des accesseurs pour accéder à une propriété
 - Utiliser les mots clé *get* et *set*
+- Attention à l'espacement apres les mots clé
 - Nécessité de générer du code JavaScript compatible ES5
 - Le code JavaScript généré utilisera `Object.defineProperty`
 
 ```typescript
 class Person {
-   private _secret:string;
-   get secret():string{
+   private _secret: string;
+   get secret(): string{
       return this._secret;
    }
-   set secret(value:string){
+   set secret(value: string) {
       this._secret = value;
-   }      
+   }
 }
 ```
 
@@ -300,13 +360,13 @@ Notes :
 
 ```typescript
 class Person {
-   constructor(){}
-   test(){}
+   constructor() {}
+   speak() {}
  }
 
 class Child extends Person {
- constructor(){ super() }
- test(){ super.test(); }
+ constructor() { super() }
+ speak() { super.speak(); }
 }
 ```
 
@@ -335,12 +395,12 @@ Notes :
 - Erreur de compilation tant que la classe ne respecte pas le contrat défini par l'interface
 
 ```typescript
-interface Musicien {
-	play():void;
+interface Musician {
+	play(): void;
 }
 
-class TrumpetPlay implements Musicien {
-	play(){}
+class TrumpetPlay implements Musician {
+	play() {}
 }
 ```
 
@@ -359,9 +419,9 @@ function identity<T>(arg: T): T {
     return arg;
 }
 
-identity(5).toFixed(2); //OK
+identity(5).toFixed(2); // Correct
 
-identity('hello').toFixed(2); //KO
+identity('hello').toFixed(2); // Incorrect
 
 identity(true);
 ```
@@ -372,20 +432,20 @@ Notes :
 
 ## Génériques
 
-- Possibilité de définir une classe/interface générique
+- Possibilité de définir une classe générique
 - Définition d'une liste de paramètres de type de manière globale
 
 ```typescript
 class Log<T> {
-	log(value: T){
-		console.log(value)
-	}
+    log(value: T) {
+        console.log(value);
+    }
 }
 
 var numericLog = new Log<number>();
 
-numericLog.log(5); //OK
-numeric.log('hello'); //KO
+numericLog.log(5); // Correct
+numericLog.log('hello'); // Incorrect
 ```
 
 Notes :

@@ -254,7 +254,7 @@ Notes :
 ```typescript
 //<p [myHighlight]="color" (hightLightEvent)="callExpression($event)">Highlight me!</p>
 export class HighlightDirective {
-    @Output() hightLightEvent:EventEmitter<any> = new EventEmitter();
+    @Output() hightLightEvent:EventEmitter<any> = new EventEmitter<string>();
 
     constructor(private el: ElementRef, private renderer: Renderer) { }
     onMouseEnter() {
@@ -279,14 +279,15 @@ Notes :
 
 ```typescript
 import {Component} from '@angular/core'
+import {Product} from ./model/Product'
 
 @Component({
     selector: 'product',
-    template: '<article>{{product.name}}</article>
+    template: `<article>{{product.name}}</article>`
 })
 export class Product {
-    @Input() product;
-    @Output() addToBasket:EventEmitter<any> = new EventEmitter();
+    @Input() product:Product;
+    @Output() addToBasket:EventEmitter<any> = new EventEmitter<Product>();
 }
 ```
 
@@ -298,8 +299,8 @@ Notes :
 
 - Pour agréger des composants entre eux, nécessité de
     - les lister explicitement dans chaque composant
-    - de définir une stack globale de composant pouvant être utilisé dans l'application
-- Cette liste de composant doit être définie via la propriété `directives` des annotations `@Directive` et `@Component`
+    - de définir une stack globale de composant pouvant être utilisée dans l'application
+- Cette liste de composants doit être définie via la propriété `directives` des annotations `@Directive` et `@Component`
 
 ```typescript
 import {Component} from '@angular/core';
@@ -346,13 +347,13 @@ Notes :
 - Surcharge du `provider` `PLATFORM_DIRECTIVES`
 
 ```typescript
-import {bootstrap} from '@angular/platform/browser';
+import {bootstrap} from '@@angular/platform-browser-dynamic';
 import {App} from './app/app';
-import {ROUTER_DIRECTIVES} from '@angular/router'
+import {MyComponent} from './MyComponent'
 import {PLATFORM_DIRECTIVES} from '@angular/core'
 
 bootstrap(App, [
-    { provide: PLATFORM_DIRECTIVES, useValue: [ROUTER_DIRECTIVES], multi:true }
+    { provide: PLATFORM_DIRECTIVES, useValue: [MyComponent], multi:true }
 ]);
 ```
 

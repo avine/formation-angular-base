@@ -35,7 +35,7 @@ Notes :
 - Réécriture total du framework
 - Reprend certains concepts d'*AngularJS*
 - 1e version *beta* annoncée le 23/10/2014
-- Version officielle prévue au premier semestre 2016
+- Version officielle prévue pour 2016
 - Programmation orientée *Composant*
 - Framework conçu pour être plus performant et optimisé pour les mobiles
 - http://angular.io/
@@ -124,7 +124,7 @@ Notes :
 - Création d'application modulaire
 - Utilisable avec plusieurs languages de programmation : `ES5`, `ES2015(ES6)`, `TypeScript` et `Dart`
 - API plus simple que *AngularJS*
-- Seuls trois types d'éléments seront utilisés : `component`, `pipe` et les `services`
+- Seuls trois types d'éléments seront utilisés : `directive`, `pipe` et les `services`
 - Basé sur des standards : `Web Component`, `Decorator`, `ES2015`, `ES7`
 - Nouvelle syntaxe utilisée dans les templates
 - Performance de l'API `Change Detection`

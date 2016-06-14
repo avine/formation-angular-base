@@ -119,7 +119,7 @@ Notes :
 ## Configurer les providers
 
 - Plusieurs syntaxes existent pour définir les providers
-- Ces syntaxes peuvent être utilisées via `bootstrap` ou `Injectable`
+- Ces syntaxes peuvent être utilisées via `bootstrap` ou `Component`
 - L'identifiant du provider peut être un objet, une chaîne de caractères ou un `OpaqueToken`
 
 ```typescript
@@ -178,11 +178,11 @@ describe('UserService', () => {
 
   beforeEachProviders(() => [UserService]);
 
-  it('should return 1 user', async(inject([UserService], service => {
+  it('should return 1 user', inject([UserService], service => {
     service.getUsers().then(users => {
       expect(users.length).toBe(1);
     });
-  })));
+  }));
 });
 ```
 

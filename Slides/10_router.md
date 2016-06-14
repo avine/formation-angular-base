@@ -38,6 +38,7 @@ Notes :
 - Développement d'un nouveau Router
 	- Prise en compte des différents cas d'utilisation : authentification, login, permission, ...
 	- Etude des autres solutions : `ui-router`, `route-recognizer` et `durandal`
+	- 3e implémentation depuis le début de *Angular2*
 - Compatible avec *AngularJS* et *Angular2*
 - Permet de faciliter la migration d'une application *AngularJS* vers *Angular2*
 

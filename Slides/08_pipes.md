@@ -199,7 +199,7 @@ Notes :
 - Surcharge du `provider` `PLATFORM_PIPES`
 
 ```typescript
-import {bootstrap} from '@angular/platform/browser';
+import {bootstrap} from '@angular/platform/platform-browser-dynamic';
 import {App} from './app/app';
 import {MyPipe} from './app/mypipe';
 import {provide, PLATFORM_PIPES} from '@angular/core';
