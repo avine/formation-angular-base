@@ -73,7 +73,7 @@ Notes :
 ## Router - provideRouter
 
 - Méthode permettant d'enregistrer de nouvelles routes
-- Elle prend en paramètre un tableau de `RouterConfig`
+- Elle prend en paramètre un tableau de `RouterConfig`, qui correspond à un tableau de `Route`
 
 ```typescript
 import { provideRouter, RouterConfig } from '@angular/router';
