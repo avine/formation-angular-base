@@ -183,14 +183,14 @@ Notes :
 	- `ngSwitch` : élément container
 	- `ngSwitchWhen` : élément à utiliser pour chaque valeur possible
 	- `ngSwitchDefault` : pour définir un template pour une valeur par défaut
+- Attention: `ngSwitchWhen` sera bientôt renommé en `ngSwitchCase`
 
 ```typescript
 <div [ngSwitch]="value">
 	<p *ngSwitchWhen="'init'">increment to start</p>
 	<p *ngSwitchWhen="0">0, increment again</p>
-	<p *ngSwitchWhen="1">1, increment again</p>
-	<p *ngSwitchWhen="2">2, stop incrementing</p>
-	<p *ngSwitchDefault>&gt; 2, STOP!</p>
+	<p *ngSwitchWhen="1">1, stop incrementing</p>
+	<p *ngSwitchDefault>&gt; 1, STOP!</p>
 </div>
  ```
 

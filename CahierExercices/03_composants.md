@@ -1,8 +1,8 @@
 ## TP3 : Composants
 
-L'application que nous allons développer tout le long de cette formation, est une application d'e-commerce.
+L'application que nous allons développer tout au long de cette formation, est une application d'e-commerce.
 
-Après avoir reçu du formateur le template princpal de l'application, veuillez suivre les étapes suivantes :
+Après avoir reçu du formateur le template principal de l'application, veuillez suivre les étapes suivantes :
 
 - Importez la feuille de style bootstrap en utilisant cette URL https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.
 

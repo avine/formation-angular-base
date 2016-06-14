@@ -94,6 +94,7 @@ Notes :
 - Requête HTTP de type `POST` avec surcharge des `Headers`
 
 ```typescript
+import {bootstrap} from '@angular/platform-browser-dynamic';
 import {Http, HTTP_PROVIDERS} from '@angular/http';
 
 export class AppComponent {
@@ -135,10 +136,10 @@ Notes :
 - Exemple simple d'une requête HTTP
 
 ```typescript
-import 'rxjs/Rx';
 import {Http, Response, HTTP_PROVIDERS} from '@angular/http';
-import {bootstrap} from '@angular/platform/browser'
+import {bootstrap} from '@angular/platform-browser-dynamic';
 import {Component} from "@angular/core";
+import 'rxjs/add/operator/map';
 
 @Component({selector: 'app', template: '{{displayedData}}'})
 export class AppComponent {
@@ -165,9 +166,10 @@ Notes :
 - Exemple d'un Observable utilisant la méthode `filter`
 
 ```typescript
-import 'rxjs/Rx'; import {MyObject} from "./MyObject";
+import 'rxjs/add/operator/map';
+import {MyObject} from "./MyObject";
 import {Http, Response, HTTP_PROVIDERS} from '@angular/http';
-import {bootstrap} from '@angular/platform/browser';
+import {bootstrap} from '@angular/platform-browser-dynamic';
 import {Component} from "@angular/core";
 
 @Component({selector: 'app',template: '{{displayedData}}'})

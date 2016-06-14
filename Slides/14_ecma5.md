@@ -50,7 +50,7 @@ Notes :
 
 ## Angular2 en EcmaScript 5
 
-- Initialisation de l'application via la méthode `bootstrap` du module `@angular/platform/browser`
+- Initialisation de l'application via la méthode `bootstrap` du module `@angular/platform-browser-dynamic`
 - Écoute de l'événement `DOMContentLoaded`
 - Signature de la méthode `bootstrap` identique à celle utilisée en *TypeScript*
 

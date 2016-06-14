@@ -38,6 +38,7 @@ Notes :
 - Développement d'un nouveau Router
 	- Prise en compte des différents cas d'utilisation : authentification, login, permission, ...
 	- Etude des autres solutions : `ui-router`, `route-recognizer` et `durandal`
+	- 3e implémentation depuis le début de *Angular2*
 - Compatible avec *AngularJS* et *Angular2*
 - Permet de faciliter la migration d'une application *AngularJS* vers *Angular2*
 
@@ -49,46 +50,46 @@ Notes :
 
 - Router orienté *composant*
 - Association d'un composant principal avec une URL de votre application
-- Utilisation du décorateur `@RouteConfig` pour définir la configuration
+- Utilisation d'une méthode `provideRouter` pour définir la configuration
 - Utilisation de la directive `RouterOutlet` pour définir le point d'insertion
 - Navigation entre les pages via la directive `RouterLink`
+- Installation via *NPM* : `npm install --save @angular/router@3.0.0-alpha.3`
 
 ```typescript
-import {bootstrap} from '@angular/platform/browser';
-import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
+import {bootstrap} from '@angular/platform-browser-dynamic';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 
 @Component({
   directives: [ROUTER_DIRECTIVES]
 })
 class AppComponent { ... }
-
-bootstrap(AppComponent, [ROUTER_PROVIDERS]);
+bootstrap(AppComponent);
 ```
 
 Notes :
 
 
 
-## Router - RouteConfig
+## Router - provideRouter
 
-- Décorateur utilisé pour l'association d'une URL et le composant principal
-- Plusieurs types de `RouteDefinition` : `Route`, `AuxRoute`, `AsyncRoute` et `redirect`
-- Détection de l'implémentation à utiliser faite par le framework
+- Méthode permettant d'enregistrer de nouvelles routes
+- Elle prend en paramètre un tableau de `RouterConfig`, qui correspond à un tableau de `Route`
 
 ```typescript
-import { RouterConfig } from '@angular/router';
-import { Component } from '@angular/core';
+import { provideRouter, RouterConfig } from '@angular/router';
+import { HeroListComponent }     from './hero-list.component';
+import { HeroDetailComponent }   from './hero-detail.component';
 
-import { Home } from './components/home';
-import { Product } from './components/product';
+export const HeroesRoutes = [
+  { path: '/heroes',  component: HeroListComponent },
+  { path: '/hero/:id', component: HeroDetailComponent }
+];
 
-@RouteConfig([
-  { path: '/', component: Home, name: 'Home'}
-  { path: '/product', component: Product, name: 'Product',  data: { adminOnly: true } }
-  { path: '/other', redirectTo: '/' }
-])
-@Component({})
-class AppComponent { ... }
+const routes: RouterConfig = HeroesRoutes;
+
+export const APP_ROUTER_PROVIDERS = [
+  provideRouter(routes)
+];
 ```
 
 Notes :
@@ -100,7 +101,7 @@ Notes :
 - Directive à utiliser via l'attribut `router-outlet`
 - Permet de définir le point d'insertion  dans le composant principal
 - Le composant sera inséré en tant qu'enfant de l'élément sur lequel la directive `RouterOutlet` est utilisée
-- Possibilité de définir la vue via un attribut `name`
+- Possibilité de définir la vue via un attribut `name` (utilisé pour définir plusieurs vues au même niveau)
 - Possibilité de créer des vues enfant grâce à l'utilisation de `RouterOutlet` imbriquées
 
 ```typescript
@@ -110,9 +111,7 @@ export class RouterOutlet {
     private _elementRef: ElementRef,
     private _loader: DynamicComponentLoader,
     private _parentRouter: routerMod.Router,
-    @Attribute('name') nameAttr: string) {
-    ...
-  }
+    @Attribute('name') nameAttr: string) {...}
 }
 ```
 
@@ -125,55 +124,17 @@ Notes :
 - Exemple simple de la directives `RouterOutlet`
 
 ```typescript
-import { RouterConfig } from '@angular/router';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Component } from '@angular/core';
 
-import { Home } from './components/home';
-import { Product } from './components/product';
-
-@RouteConfig([
-  { path: '/', component: Home, name: 'Home' }
-  { path: '/product', component: Product, name: 'Product' }
-])
 @Component({
   template: '
     <header><h1>Title</h1></header>
     <router-outlet></router-outlet>
-  '
+  ',
+	directives: [ROUTER_DIRECTIVES]
 })
 class AppComponent { }
-```
-
-Notes :
-
-
-
-## Router - RouterOutlet imbriquées
-
-- Imbrication de plusieurs `RouterOutlet` pour définir une hiérarchie de vues
-
-```typescript
-import { Product } from './components/product';
-
-@RouteConfig([
-  { path: '/product/...', component: Product, name: 'product' }
-])
-@Component({
-  template: '<router-outlet></router-outlet>'
-})
-class AppComponent { }
-```
-
-```typescript
-import { Child } from './components/child';
-
-@RouteConfig([
-  { path: '/', component: Child, name: 'Child', useAsDefault: true }
-])
-@Component({
-  template: '<main><router-outlet></router-outlet></main>'
-})
-class Product { }
 ```
 
 Notes :
@@ -191,18 +152,42 @@ Notes :
   template: '
     <div>
       <h1>Hello {{message}}!</h1>
-        <a [routerLink]="['/Home]">Link 1</a>
-        <a [routerLink]="['/Product', {productId: 1}]">Link 2</a>
+        <a [routerLink]="['/heroes]">Link 1</a>
+        <a [routerLink]="['/heroes', {id: 1}]">Link 2</a>
         <router-outlet></router-outlet>
     </div>
 '})
-@RouteConfig([
-  {path: '/', component: Home, as: 'Home'}
-  {path: '/product/:productId', component: Product, as: 'Product'}
-])
 class AppComponent {
 
 }
+```
+
+Notes :
+
+
+
+## Router - RouterOutlet imbriquées
+
+- Imbrication de plusieurs `RouterOutlet` pour définir une hiérarchie de vues
+
+```typescript
+import { provideRouter, RouterConfig } from '@angular/router';
+import { HeroListComponent }     from './hero-list.component';
+import { HeroDetailComponent }   from './hero-detail.component';
+
+export const HeroesRoutes = [
+  { path: '/heroes',  component: HeroListComponent, children: [
+    {path: '/details', component: DetailsCmp},
+    {path: '/movies', component: MoviesCmp}
+  ]},
+  { path: '/hero/:id', component: HeroDetailComponent }
+];
+
+const routes: RouterConfig = HeroesRoutes;
+
+export const APP_ROUTER_PROVIDERS = [
+  provideRouter(routes)
+];
 ```
 
 Notes :
@@ -216,12 +201,10 @@ Notes :
 ```typescript
 import { Product } from './components/product';
 
-@RouteConfig([
-  { path: '/product/:productId', component: Product, name: 'Product' }
-])
 @Component({
   template: '
-    <a [routerLink]="['/Product', {productId: 3}, 'Child']"></a
+    <a [routerLink]="['/heroes', {}, 'details']"></a>
+    <a [routerLink]="['../', {}, 'details']"></a>
     <router-outlet></router-outlet>
   '
 })
@@ -231,9 +214,6 @@ class AppComponent { }
 ```typescript
 import { Child } from './components/child';
 
-@RouteConfig([
-  { path: '/', component: Child, name: 'Child' }
-])
 @Component({
   template: '<main><router-outlet></router-outlet></main>'
 })
@@ -333,7 +313,6 @@ Notes :
 ```typescript
 import { Product } from './components/product';
 
-@RouteConfig([{ path: '/product/:productId', component: Product, name: 'Product' }])
 @Component({
   template: '
     <a [routerLink]="['/Product', {productId: 3}]"></a>
@@ -351,7 +330,10 @@ import { RouteParams } from "@angular/router";
 })
 class Product {
   id:string;
-  constructor(params: RouteParams) { this.id = params.get('productId'); }
+  constructor(activeRoute: ActivatedRoute) {
+		const snapshot: ActivatedRouteSnapshot = activeRoute.snapshot;
+    this.id = s.params.id;
+  }
 }
 ```
 
@@ -362,9 +344,7 @@ Notes :
 ### Router - Cycle de Vie
 
 - Possibilité d'intéragir avec le cycle de vie de la navigation (*Lifecycle Hooks*)
-	- @CanActivate/@OnActivate
-	- @CanDeactivate/@OnDeactivate
-	- @CanReuse/@OnReuse
+
 
 ```typescript
 import { HTTP_PROVIDERS } from '@angular/http';

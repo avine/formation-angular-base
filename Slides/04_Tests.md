@@ -36,6 +36,7 @@ Notes :
 - Karma propose d’exécuter facilement les tests
   - Il a été développé par l'équipe d'`AngularJS`, il est donc mis en avant
   - Il n'est pour autant ni indispensable ni lié à `Angular2`
+- `Jasmine` et `Karma` sont intégrés dans une application générée par *angular-cli*.
 
 Notes :
 
@@ -163,8 +164,7 @@ Notes :
 - Exécution des tests :
 
 ```shell
-ng build
-karma start
+ng test
 ```
 
 Notes :
