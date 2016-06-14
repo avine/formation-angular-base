@@ -53,6 +53,7 @@ Notes :
 - Utilisation d'une méthode `provideRouter` pour définir la configuration
 - Utilisation de la directive `RouterOutlet` pour définir le point d'insertion
 - Navigation entre les pages via la directive `RouterLink`
+- Installation via *NPM* : `npm install --save @angular/router@3.0.0-alpha.3`
 
 ```typescript
 import {bootstrap} from '@angular/platform-browser-dynamic';
@@ -62,7 +63,6 @@ import {ROUTER_DIRECTIVES} from '@angular/router';
   directives: [ROUTER_DIRECTIVES]
 })
 class AppComponent { ... }
-
 bootstrap(AppComponent);
 ```
 
