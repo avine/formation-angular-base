@@ -178,11 +178,11 @@ describe('UserService', () => {
 
   beforeEachProviders(() => [UserService]);
 
-  it('should return 1 user', inject([UserService], service => {
+  it('should return 1 user', async(inject([UserService], service => {
     service.getUsers().then(users => {
       expect(users.length).toBe(1);
     });
-  }));
+  })));
 });
 ```
 
