@@ -55,7 +55,7 @@ import {MyService} from './myservice'
 export class AppComponent {
     constructor(service:MyService){
         console.log(service.myMethod());
-    }   
+    }
 }
 
 bootstrap(AppComponent, [MyService]);
@@ -79,7 +79,7 @@ import {MyService} from './myservice'
 export class AppComponent {
     constructor(service:MyService){
         console.log(service.myMethod());
-    }   
+    }
 }
 
 bootstrap(AppComponent, []);
@@ -191,3 +191,7 @@ Notes :
 
 
 <!-- .slide: class="page-questions" -->
+
+
+
+<!-- .slide: class="page-tp5" -->

@@ -88,7 +88,7 @@ describe('True value:', function() {
     value = true;
   });
 
-  it('true should be equal to true', function() {   
+  it('true should be equal to true', function() {
      expect(value).toBe(true);
   });
 });
@@ -172,3 +172,7 @@ Notes :
 
 
 <!-- .slide: class="page-questions" -->
+
+
+
+<!-- .slide: class="page-tp2" -->
