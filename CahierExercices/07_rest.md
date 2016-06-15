@@ -1,4 +1,4 @@
-## TP6 : Communication avec une API REST
+## TP7 : Communication avec une API REST
 
 Après avoir reçu de la part du formateur un serveur REST développé en NodeJS, nous allons manipuler cette API pour récupérer la liste des produits, et persister le panier de l'utilisateur.
 

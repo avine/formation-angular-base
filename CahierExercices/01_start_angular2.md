@@ -11,7 +11,7 @@ L'initialisation de cette application se décomposera en plusieurs étapes :
 
 ### Création du projet
 
-L'application, que nous allons implémenter, sera initialiser via l'outil `angular-cli`. Cet outil va automatier
+L'application, que nous allons implémenter, sera initialiser via l'outil `angular-cli`. Cet outil va automatiser
 - la création et la configuration du squelette de l'application
 - la gestion des dépendances
 
