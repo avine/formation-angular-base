@@ -35,7 +35,6 @@ Notes :
 - Syntaxe un peu plus verbeuse que celle de *TypeScript*
 - Impossibilité d'utiliser les nouveautés de *EcmaScript 2015* et *TypeScript*
 - Remplacement des annotations par des appels à l'objet `ng`
-- Possibilité d'utiliser la librairie *a* pour bénéficier d'une syntaxe *TypeScript*
 - Pas besoin d'une librairie de gestion de modules
 
 ```html
