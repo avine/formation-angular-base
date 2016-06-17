@@ -9,7 +9,7 @@ Notes :
 ## Sommaire
 
 <!-- .slide: class="toc" -->
-
+n
 - [Rappels](#/1)
 - [Présentation](#/2)
 - [Démarrer une application Angular2](#/3)
@@ -49,7 +49,7 @@ import {CORE_DIRECTIVES} from '@angular/common';
 export class MyComponent { ... }
 ```
 
-- Ici `CORE_DIRECTIVES` contient NgClass, NgFor, NgIf, NgStyle, NgSwitch, NgSwitchWhen, NgSwitchDefault
+- Ici `CORE_DIRECTIVES` contient NgClass, NgFor, NgIf, NgStyle, NgSwitch, NgSwitchCase, NgSwitchDefault
 
 Notes :
 
@@ -181,15 +181,14 @@ Notes :
 - Ajout / Suppression d'elements HTML en fonction d'une condition
 - Trois directives disponibles :
 	- `ngSwitch` : élément container
-	- `ngSwitchWhen` : élément à utiliser pour chaque valeur possible
+	- `NgSwitchCase` : élément à utiliser pour chaque valeur possible
 	- `ngSwitchDefault` : pour définir un template pour une valeur par défaut
-- Attention: `ngSwitchWhen` sera bientôt renommé en `ngSwitchCase`
 
 ```typescript
 <div [ngSwitch]="value">
-	<p *ngSwitchWhen="'init'">increment to start</p>
-	<p *ngSwitchWhen="0">0, increment again</p>
-	<p *ngSwitchWhen="1">1, stop incrementing</p>
+	<p *ngSwitchCase="'init'">increment to start</p>
+	<p *ngSwitchCase="0">0, increment again</p>
+	<p *ngSwitchCase="1">1, stop incrementing</p>
 	<p *ngSwitchDefault>&gt; 1, STOP!</p>
 </div>
  ```
