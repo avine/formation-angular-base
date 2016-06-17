@@ -76,9 +76,11 @@ Notes :
 - Elle prend en paramètre un tableau de `RouterConfig`, qui correspond à un tableau de `Route`
 
 ```typescript
+import { bootstrap }            from '@angular/platform-browser-dynamic';
 import { provideRouter, RouterConfig } from '@angular/router';
 import { HeroListComponent }     from './hero-list.component';
 import { HeroDetailComponent }   from './hero-detail.component';
+import { AppComponent }         from './app.component';
 
 export const HeroesRoutes = [
   { path: '/heroes',  component: HeroListComponent },
@@ -90,6 +92,8 @@ const routes: RouterConfig = HeroesRoutes;
 export const APP_ROUTER_PROVIDERS = [
   provideRouter(routes)
 ];
+
+bootstrap(AppComponent, [APP_ROUTER_PROVIDERS]);
 ```
 
 Notes :
