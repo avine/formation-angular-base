@@ -4,8 +4,6 @@ L'application que nous allons développer tout au long de cette formation, est u
 
 Après avoir reçu du formateur le template principal de l'application, veuillez suivre les étapes suivantes :
 
-- Importez la feuille de style bootstrap en utilisant cette URL https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css.
-
 - Modifiez le fichier index.html créé dans les TPs précédent, afin d'intégrer le template envoyé par le formateur.
 
 - Tous le code HTML situé entre les balises `body` doit être défini dans le template du composant `Application`

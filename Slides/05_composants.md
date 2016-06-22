@@ -404,7 +404,7 @@ describe('TitleCmp', () => {
         fixture.detectChanges();
 
         let element = fixture.nativeElement;
-        expect(element.querySelector('h1').textContent.toBe('Hello World');
+        expect(element.querySelector('h1').textContent).toBe('Hello World');
       });
   })));
 });
