@@ -122,7 +122,7 @@ Notes :
 ## Angular2 - Points Positifs
 
 - Création d'application modulaire
-- Utilisable avec plusieurs languages de programmation : `ES5`, `ES2015(ES6)`, `TypeScript` et `Dart`
+- Utilisable avec plusieurs langages de programmation : `ES5`, `ES2015(ES6)`, `TypeScript` et `Dart`
 - API plus simple que *AngularJS*
 - Seuls trois types d'éléments seront utilisés : `directive`, `pipe` et les `services`
 - Basé sur des standards : `Web Component`, `Decorator`, `ES2015`, `ES7`
@@ -173,7 +173,7 @@ Notes :
 - Métadata : Moyen d'indiquer à Angular comment utiliser la classe
 - Directives : composants sans template (*ngFor*, *ngIf*, ...)
 - Services : Code métier implémenté dans des classes qui seront injectées dans les différents composants
-- Pipes : Elément permettant de formatter une donnée (équivalent au *filter* d'AngularJS)
+- Pipe : Elément permettant de formatter une donnée (équivalent au *filter* d'AngularJS)
 
 Notes :
 

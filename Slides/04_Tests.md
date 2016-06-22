@@ -78,7 +78,7 @@ Notes :
 ## Tests - Structure d'un test Jasmine
 
 - Méthodes `beforeEach`, `afterEach`, `beforeAll`, `afterAll`
-- Exécution d'une fonction avant ou après chaque tests
+- Exécution d'une fonction avant ou après chaque test
 
 ```javascript
 describe('True value:', function() {
