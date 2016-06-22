@@ -2,7 +2,7 @@
 
 Nous allons créer une nouvelle vue qui permettra de valider la commande.
 
-Pour se faire, nous allons commencer par créer une classe et un service pour gérer la validation.
+Pour ce faire, nous allons commencer par créer une classe et un service pour gérer la validation.
 
 - Dans un nouveau fichier `model\customer.ts`, créez une nouvelle classe `Customer` ayant les propriétés suivantes :
 	- name de type `string`
@@ -13,7 +13,7 @@ Pour se faire, nous allons commencer par créer une classe et un service pour g�
   - faire un `POST` sur `/basket/confirm` pour valider la commande d'un client
   - retourner sur la page `home`
 
-Pour interargir avec ces nouvelles fonctionnalités, nous allons créer un nouveau composant `Confirmation` qui affichera :
+Pour interagir avec ces nouvelles fonctionnalités, nous allons créer un nouveau composant `Confirmation` qui affichera :
   - le panier de manière simplifiée (une liste avec le nom et le prix de chaque produit)
   - un formulaire permettant de saisir les informations du client.
 
@@ -24,11 +24,11 @@ Ce formulaire devra respecter les contraintes suivantes :
   - un champ `input[text]` pour saisir le nom du client qui devra
     - être lié sur la propriété `name` de l'objet `Customer`
     - être requis (grâce à l'attribut *required*)
-    - avoir la class CSS `has-error` s'il n'est pas valid
+    - avoir la class CSS `has-error` s'il n'est pas valide
   - un champ `textarea` pour saisir l'adresse du client qui devra
     - être lié sur la propriété `address` de l'objet `Customer`
     - être requis (grâce à l'attribut *required*)
-    - avoir la class CSS `has-error` s'il n'est pas valid
+    - avoir la class CSS `has-error` s'il n'est pas valide
   - un champ `input[text]` pour saisir un code de carte bleue factice qui devra
     - être lié sur la propriété `creditCard` de l'objet `Customer`
     - être requis (grâce à l'attribut *required*)

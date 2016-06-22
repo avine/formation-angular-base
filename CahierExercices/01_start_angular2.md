@@ -11,7 +11,8 @@ L'initialisation de cette application se décomposera en plusieurs étapes :
 
 ### Création du projet
 
-L'application, que nous allons implémenter, sera initialiser via l'outil `angular-cli`. Cet outil va automatiser
+L'application, que nous allons implémenter, sera initialisée via l'outil `angular-cli`. Cet outil va automatiser :
+
 - la création et la configuration du squelette de l'application
 - la gestion des dépendances
 
@@ -39,4 +40,4 @@ Même si nous n'avons pas encore abordé les concepts du framework, nous allons 
 
 - La chaîne de caractère ci-dessous sera définie dans une variable `helloMsg` de la classe `Application`. Pour afficher cette variable dans le template, nous utiliserons la même syntaxe que AngularJS : `{{helloMsg}}`
 
-- Vérifiez que vous obtenez bien la toute de dernière version de votre application dans le navigteur.
+- Vérifiez que vous obtenez bien la toute dernière version de votre application dans le navigateur.
