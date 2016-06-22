@@ -224,7 +224,7 @@ import {UpperCasePipe} from '@angular/common';
 
 export function main() {
   describe('UpperCasePipe', () => {
-    var pipe;
+    let pipe;
 
     beforeEach(() => { pipe = new UpperCasePipe(); });
 

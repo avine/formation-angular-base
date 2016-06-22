@@ -81,11 +81,11 @@ let variableName2: variableType = value;
 const variableName3: variableType = value;
 ```
 
-- boolean : `var isDone: boolean = false;`
-- number : `var height: number = 6;`
-- string : `var name: string = 'Carl';`
-- array : `var names: string[] = ['Carl', 'Laurent'];`
-- any : `var notSure: any = 4;`
+- boolean : `let isDone: boolean = false;`
+- number : `let height: number = 6;`
+- string : `let name: string = 'Carl';`
+- array : `let names: string[] = ['Carl', 'Laurent'];`
+- any : `let notSure: any = 4;`
 
 Notes :
 
@@ -100,14 +100,14 @@ Notes :
 function  namedFunction():void { }
 
 //Fonction anonyme
-var variableAnonymousFunction = function(): void { }
+let variableAnonymousFunction = function(): void { }
 ```
 
 - Peut retourner une valeur grâce au mot clé `return`
 - Accès aux variables définies en dehors du scope de la fonction
 
 ```typescript
-var externalScope:number = 10;
+let externalScope:number = 10;
 
 function add(localArg: number): number { return localArg + externalScope; }
 ```
@@ -167,13 +167,13 @@ Notes :
   - Syntaxe Litérale
 
 ```typescript
-var list: number[] = [1, 2, 3];
+let list: number[] = [1, 2, 3];
 ```
 
   - Syntaxe utilisant le constructeur `Array`
 
 ```typescript
-var list: Array<number> = [1, 2, 3];
+let list: Array<number> = [1, 2, 3];
 ```
 
 - Ces 2 syntaxes aboutiront au même code JavaScript
@@ -189,7 +189,7 @@ Notes :
 ```typescript
 enum Music { Rock, Jazz, Blues };
 
-var c: Music = Music.Jazz;
+let c: Music = Music.Jazz;
 ```
 
 - La valeur numérique commence par défaut à `0`
@@ -198,13 +198,13 @@ var c: Music = Music.Jazz;
 ```typescript
 enum Music { Rock = 2, Jazz = 4, Blues = 8 };
 
-var c: Music = Music.Jazz;
+let c: Music = Music.Jazz;
 ```
 
 - Récupération de la chaîne de caractère associés à la valeur numérique
 
 ```typescript
-var style: string = Music[4]; //Jazz
+let style: string = Music[4]; //Jazz
 ```
 
 Notes :
@@ -223,7 +223,7 @@ class Person {
    constructor() {}
 }
 
-var person = new Person();
+let person = new Person();
 ```
 
 Notes :
@@ -442,7 +442,7 @@ class Log<T> {
     }
 }
 
-var numericLog = new Log<number>();
+let numericLog = new Log<number>();
 
 numericLog.log(5); // Correct
 numericLog.log('hello'); // Incorrect

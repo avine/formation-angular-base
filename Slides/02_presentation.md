@@ -97,7 +97,7 @@ Notes :
 ```javascript
 //provider, factory, constant et value
 app.service('Service', function(){
-  var vm = this;
+  let vm = this;
   vm.myMethod = function(){
 
   }

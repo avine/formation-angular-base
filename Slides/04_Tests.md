@@ -82,7 +82,7 @@ Notes :
 
 ```javascript
 describe('True value:', function() {
-  var value;
+  let value;
 
   beforeEach(function(){
     value = true;
@@ -133,7 +133,7 @@ class True {
 describe('True object:', () => {
   describe('returnTrue method:', () => {
       it('should return true', () => {
-          var trueObject:True = new True();
+          let trueObject:True = new True();
           expect(trueObject.returnTrue()).toBe(true);
       });
   });

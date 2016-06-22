@@ -9,7 +9,7 @@ Notes :
 ## Sommaire
 
 <!-- .slide: class="toc" -->
-n
+
 - [Rappels](#/1)
 - [Présentation](#/2)
 - [Démarrer une application Angular2](#/3)
@@ -145,7 +145,7 @@ Notes :
 <template ngFor let-item [ngForOf]="items" let-i="index"><li>...</li></template>
 ```
 
-- Seconde syntaxe disponible (également pour `ngIf` et `ngSwitch`
+- Seconde syntaxe disponible (également pour `ngIf` et `ngSwitch`)
 
 ```typescript
 <li *ngFor="let item of items; let i = index">...</li>
