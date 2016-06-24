@@ -182,8 +182,8 @@ export class AppComponent {
             .filter(data => data.hasToBeDisplayed)
             .map(data => new MyObject(data.id, data.name))
             .subscribe((jsonObject:MyObject) => {
-            this.displayedData = jsonObject;
-        })
+              this.displayedData = jsonObject;
+            })
     }
 }
 

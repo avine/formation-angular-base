@@ -124,11 +124,11 @@ Notes :
 
 ```typescript
 bootstrap(AppComponent, [MyService]);
-bootstrap(AppComponent, [new Provider(AppComponent, {useClass: AppComponent})]);
+bootstrap(AppComponent, [new Provider(MyService, {useClass: MyService})]);
 bootstrap(AppComponent, [{ provide: MyService, useClass: MyService }]);
-bootstrap(AppComponent, [{ provide: string, useValue: 'hello world' }]);
+bootstrap(AppComponent, [{ provide: String, useValue: 'hello world' }]);
 bootstrap(AppComponent, [{
-  provide: string,
+  provide: String,
   useFactory: (myService: MyService) => myService.myMethod()
   deps: [MyService]
 }]);
