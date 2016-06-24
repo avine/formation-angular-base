@@ -22,7 +22,7 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonne Pratiques pour une migration heureuse](#/13)
+- [Bonnes Pratiques pour une migration heureuse](#/13)
 - [Angular2 en EcmaScript 5](#/14)
 
 Notes :
@@ -201,7 +201,7 @@ enum Music { Rock = 2, Jazz = 4, Blues = 8 };
 var c: Music = Music.Jazz;
 ```
 
-- Récupération de la chaîne de caractère associés à la valeur numérique
+- Récupération de la chaîne de caractères associée à la valeur numérique
 
 ```typescript
 var style: string = Music[4]; //Jazz
@@ -376,7 +376,7 @@ Notes :
 
 ## Interfaces
 
-- Utilisée par le compilateur pour vérifier la cohérence des différents objets
+- Utilisées par le compilateur pour vérifier la cohérence des différents objets
 - Aucun impact sur le JavaScript généré
 - Système d'héritage entre interfaces
 - Plusieurs cas d'utilisation possible
@@ -412,7 +412,7 @@ Notes :
 
 - Fonctionnalité permettant de créer des composants réutilisables
 - Inspiration des génériques disponibles en Java ou C#
-- Nécessité de définir un (ou plusieurs) paramètre de type sur la fonction/variable/classe/interface générique
+- Nécessité de définir un (ou plusieurs) paramètre(s) de type sur la fonction/variable/classe/interface générique
 
 ```typescript
 function identity<T>(arg: T): T {
@@ -537,7 +537,7 @@ Notes :
 
 - `optionalDependencies` **(rare)**
 
-  Des dépendances qui ne sont pas indispensables à l'utilisation du module, prend en compte que la récupération peut échouer
+  Des dépendances qui ne sont pas indispensables à l'utilisation du module; prend en compte que la récupération peut échouer
 
 - `bundledDependencies` **(rare)**
 

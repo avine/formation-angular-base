@@ -8,7 +8,7 @@ Après avoir reçu du formateur le template principal de l'application, veuillez
 
 - Modifiez le fichier index.html créé dans les TPs précédent, afin d'intégrer le template envoyé par le formateur.
 
-- Tous le code HTML situé entre les balises `body` doit être défini dans le template du composant `Application`
+- Tout le code HTML situé entre les balises `body` doit être défini dans le template du composant `Application`
 
 - Créez un nouveau composant `menu\menu.ts` dans lequel vous allez implémenter le menu principal de l'application. Pour créer un nouveau composant Angular2, nous allons utiliser a commande `ng generate component menu`
 
@@ -32,4 +32,4 @@ Après avoir reçu du formateur le template principal de l'application, veuillez
 
 - Nous allons à présent émettre un évènement `addToBasket`, via le composant `ProductComponent`, lorsque l'utilisateur cliquera sur le bouton `Ajoutez au panier`. Cet évènement sera utilisé par le composant `Application` pour mettre à jour la variable `total` créée précédemment.
 
-- Pour terminer ce TP, nous allons créer un dernier composant, `footer` qui sera utilisé à la place de l'élément HTML `<footer>`. Ce composant devra avoir un point d'insertion (via le composant `ng-content`), grâce auquel nous spécifirons le texte à afficher.
+- Pour terminer ce TP, nous allons créer un dernier composant, `footer` qui sera utilisé à la place de l'élément HTML `<footer>`. Ce composant devra avoir un point d'insertion (via le composant `ng-content`), grâce auquel nous spécifierons le texte à afficher.

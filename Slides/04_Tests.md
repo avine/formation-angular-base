@@ -22,7 +22,7 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonne Pratiques pour une migration heureuse](#/13)
+- [Bonnes Pratiques pour une migration heureuse](#/13)
 - [Angular2 en EcmaScript 5](#/14)
 
 Notes :
@@ -78,7 +78,7 @@ Notes :
 ## Tests - Structure d'un test Jasmine
 
 - Méthodes `beforeEach`, `afterEach`, `beforeAll`, `afterAll`
-- Exécution d'une fonction avant ou après chaque tests
+- Exécution d'une fonction avant ou après chaque test
 
 ```javascript
 describe('True value:', function() {

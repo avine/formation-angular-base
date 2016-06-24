@@ -22,7 +22,7 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonne Pratiques pour une migration heureuse](#/13)
+- [Bonnes Pratiques pour une migration heureuse](#/13)
 - [Angular2 en EcmaScript 5](#/14)
 
 Notes :
@@ -32,7 +32,7 @@ Notes :
 ## Syntaxe des templates
 
 - Système d'interpolation grâce à la syntaxe `{{ expression }}`
-- L'expression peut-être :
+- L'expression peut être :
     - une chaîne de caractère
     - la valeur d'une variable
     - la valeur retournée d'une fonction
@@ -70,7 +70,7 @@ Angular transformera la syntaxe d'interpolation en binding de propriétés
 
 ## Les propriétés
 
-- Pout les attributs n'ayant pas d'équivalence dans l'API DOM
+- Pour les attributs n'ayant pas d'équivalence dans l'API DOM
     - utilisation du `Attribute Binding`
 - A utiliser pour `aria`, `colspan`, `svg` par exemple
 - Utilisation de la syntaxe `[ attr.attribute-name ] = "expression"`
@@ -219,7 +219,7 @@ Notes :
 
 - Une directive pourra être paramétrable
 - Déclaration d'une variable de classe annotée `@Input`
-- Le nom de la variable de classe sera utilisée dans le template
+- Le nom de la variable de classe qui sera utilisée dans le template
 
 ```typescript
 //<p [myHighlight]="color">Highlight me!</p>
@@ -247,9 +247,9 @@ Notes :
 
 - De la même façon, une directive pourra émettre un évènement
 - Déclaration d'une variable de classe annotée `@Output` de type `EventEmitter`
-- Le nom de la variable correpond au nom de l'évènement qui sera utilisé dans l'HTML
+- Le nom de la variable correspond au nom de l'évènement qui sera utilisé dans l'HTML
 - L'évènement est émis lors de l'appel de la méthode `emit`
-- Possibilité de passer des paramètres, accessible depuis l'objet `$event`
+- Possibilité de passer des paramètres, accessibles depuis l'objet `$event`
 
 ```typescript
 //<p [myHighlight]="color" (hightLightEvent)="callExpression($event)">Highlight me!</p>
@@ -299,7 +299,7 @@ Notes :
 
 - Pour agréger des composants entre eux, nécessité de
     - les lister explicitement dans chaque composant
-    - de définir une stack globale de composant pouvant être utilisée dans l'application
+    - définir une stack globale de composant pouvant être utilisée dans l'application
 - Cette liste de composants doit être définie via la propriété `directives` des annotations `@Directive` et `@Component`
 
 ```typescript

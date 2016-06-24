@@ -4,7 +4,7 @@ Nous allons à présent aborder les services et l'injection de dépendances dans
 
 Nous allons créer deux services :
 
-- ProductService : qui sera en charge de la gestion des produits.
+- ProductService : qui sera en charge de la gestion des produits,
 - CustomerService : qui sera en charge du panier de l'utilisateur.
 
 - Veuillez créer un service `service\ProductService.ts` dans lequel vous allez définir :
