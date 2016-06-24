@@ -76,21 +76,19 @@ Notes :
 - Elle prend en paramètre un tableau de `RouterConfig`, qui correspond à un tableau de `Route`
 
 ```typescript
-import { bootstrap }            from '@angular/platform-browser-dynamic';
 import { provideRouter, RouterConfig } from '@angular/router';
-import { HeroListComponent }     from './hero-list.component';
+import { HomeComponent } from './home';
+import { HeroListComponent, HeroDetailComponent } from './hero/';
 import { HeroDetailComponent }   from './hero-detail.component';
-import { AppComponent }         from './app.component';
 
-export const HeroesRoutes = [
+export const Routes: RouterConfig = [
+  { index: true, component: HomeComponent }, // path: '/'
   { path: '/heroes',  component: HeroListComponent },
   { path: '/hero/:id', component: HeroDetailComponent }
 ];
 
-const routes: RouterConfig = HeroesRoutes;
-
 export const APP_ROUTER_PROVIDERS = [
-  provideRouter(routes)
+  provideRouter(Routes)
 ];
 
 bootstrap(AppComponent, [APP_ROUTER_PROVIDERS]);
@@ -136,7 +134,7 @@ import { Component } from '@angular/core';
     <header><h1>Title</h1></header>
     <router-outlet></router-outlet>
   ',
-	directives: [ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES]
 })
 class AppComponent { }
 ```
@@ -157,10 +155,10 @@ Notes :
     <div>
       <h1>Hello {{message}}!</h1>
         <a [routerLink]="['/heroes]">Link 1</a>
-        <a [routerLink]="['/heroes', {id: 1}]">Link 2</a>
+        <a [routerLink]="['/heroes', 1]">Link 2</a>
         <router-outlet></router-outlet>
-    </div>
-'})
+    </div>'
+})
 class AppComponent {
 
 }
@@ -192,36 +190,6 @@ const routes: RouterConfig = HeroesRoutes;
 export const APP_ROUTER_PROVIDERS = [
   provideRouter(routes)
 ];
-```
-
-Notes :
-
-
-
-## Router - RouterLink avec des vues imbriquées
-
-- Lister les différentes vues nécessaires à la génération de la page cible
-
-```typescript
-import { Product } from './components/product';
-
-@Component({
-  template: '
-    <a [routerLink]="['/heroes', {}, 'details']"></a>
-    <a [routerLink]="['../', {}, 'details']"></a>
-    <router-outlet></router-outlet>
-  '
-})
-class AppComponent { }
-```
-
-```typescript
-import { Child } from './components/child';
-
-@Component({
-  template: '<main><router-outlet></router-outlet></main>'
-})
-class Product { }
 ```
 
 Notes :
@@ -273,7 +241,7 @@ location.go('/foo'); //example.com#/foo
 import {provide} from '@angular/core';
 import {HashLocationStrategy } from '@angular/router';
 
-@Component({directives: [ROUTER_DIRECTIVES]})
+@Component({ directives: [ROUTER_DIRECTIVES] })
 class AppComponent { ... }
 
 bootstrap(AppComponent, [ROUTER_PROVIDERS,
@@ -291,17 +259,15 @@ Notes :
 
 ```typescript
 import {Component} from '@angular/core';
-import {APP_BASE_HREF} from '@angular/router';
+import {provideRouter, RouterConfig, APP_BASE_HREF} from '@angular/router';
 
 @Component({ ... })
-@RouteConfig([
-  {...},
-])
-class AppComponent {
+class AppComponent {}
 
-}
+const AppRoutes: RouterConfig = [ ... ];
 
 bootstrap(AppCmp, [
+  provideRouter(AppRoutes),
   { provide: APP_BASE_HREF, useValue: '/my/app' }
 ]);
 ```
@@ -312,31 +278,65 @@ Notes :
 
 ### Router - Récupération des paramètres d'URL
 
-- Utilisation du service `RouteParams`
+- Utilisation du service `ActivatedRoute` et **params** (`Observable`)
 
 ```typescript
-import { Product } from './components/product';
-
 @Component({
   template: '
-    <a [routerLink]="['/Product', {productId: 3}]"></a>
+    <a [routerLink]="['/product', 3]"></a>
+    <router-outlet></router-outlet>'
+})
+class AppComponent { }
+```
+```typescript
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+  template: '<main><router-outlet></router-outlet></main>'
+})
+export class ProductComponent {
+  constructor(private _route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this._route.params.subscribe(params => {
+      let id = +params['id']; // (+) conversion 'id' string en number
+      ...
+    });
+  }
+}
+```
+
+Notes :
+
+
+
+### Router - Récupération des paramètres d'URL
+
+- Utilisation du service `ActivatedRoute` et `snapshot`
+
+```typescript
+@Component({
+  template: '
+    <a [routerLink]="['/product', 3]"></a>
     <router-outlet></router-outlet>'
 })
 class AppComponent { }
 ```
 
 ```typescript
-import { Child } from './components/child';
-import { RouteParams } from "@angular/router";
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 
 @Component({
   template: '<main><router-outlet></router-outlet></main>'
 })
-class Product {
-  id:string;
-  constructor(activeRoute: ActivatedRoute) {
-		const snapshot: ActivatedRouteSnapshot = activeRoute.snapshot;
-    this.id = s.params.id;
+export class ProductComponent {
+  constructor(private _route: ActivatedRoute) {}
+
+  ngOnInit() {
+    const s: ActivatedRouteSnapshot = this._route.snapshot;
+    // Valeur initiale des paramètres
+    let id = +s.params.id;
+    ...
   }
 }
 ```
@@ -348,28 +348,30 @@ Notes :
 ### Router - Cycle de Vie
 
 - Possibilité d'intéragir avec le cycle de vie de la navigation (*Lifecycle Hooks*)
-
+- Interface `CanActivate` : interdire / autoriser l'accès à une route
 
 ```typescript
-import { HTTP_PROVIDERS } from '@angular/http';
-import { RouteConfig, CanActivate } from "@angular/router";
-import { Component } from '@angular/core';
-import { Admin } from './components/home';
-import { isLoggedIn } from './utils/is-logged-in';
+// fichier app/admin/auth.guard.ts
+import { Injectable } from '@angular/core';
+import { CanActivate } from '@angular/router';
+import { AuthService } from '../shared/auth.service';
 
-@RouteConfig([
-  { path: '/admin', component: Admin, name: 'Admin',  data: { adminOnly: true }}
-])
-@Component({ template: '<router-outlet></router-outlet>' })
-@CanActivate((next, prev) => { return isLoggedIn()})
-class AppComponent {
-
+@Injectable()
+export class AuthGuard implements CanActivate {
+  constructor(private _authService: AuthService) {}
+  canActivate() { return this._authService.isLoggedIn(); }
 }
+
+// fichier app/application.routes.ts
+import { AdminComponent, AuthGuard } from './admin/';
+
+export const AppRoutes: RouterConfig = [
+  ...
+  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] }
+];
 ```
 
 Notes :
-- @CanActivate pour gérer les droits
-- @OnDeactivate ou @CanDeactivate pour vérifier qu'un formulaire a bien été sauvegardé avant une redirection
 
 
 
