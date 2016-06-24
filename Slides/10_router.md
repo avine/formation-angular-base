@@ -154,8 +154,8 @@ Notes :
   template: '
     <div>
       <h1>Hello {{message}}!</h1>
-        <a [routerLink]="['/heroes]">Link 1</a>
-        <a [routerLink]="['/heroes', 1]">Link 2</a>
+        <a [routerLink]="['/heroes']">Link 1</a>
+        <a [routerLink]="['/hero', 1]">Link 2</a>
         <router-outlet></router-outlet>
     </div>'
 })
@@ -237,7 +237,7 @@ location.go('/foo'); //example.com#/foo
 
 - Possible de configurer l'implémentation à utiliser
 
-```typescript
+```typescriptgrunt
 import {provide} from '@angular/core';
 import {HashLocationStrategy } from '@angular/router';
 
