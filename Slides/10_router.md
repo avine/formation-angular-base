@@ -83,8 +83,8 @@ import { HeroDetailComponent }   from './hero-detail.component';
 
 export const Routes: RouterConfig = [
   { index: true, component: HomeComponent }, // path: '/'
-  { path: '/heroes',  component: HeroListComponent },
-  { path: '/hero/:id', component: HeroDetailComponent }
+  { path: 'heroes',  component: HeroListComponent },
+  { path: 'hero/:id', component: HeroDetailComponent }
 ];
 
 export const APP_ROUTER_PROVIDERS = [
@@ -154,8 +154,8 @@ Notes :
   template: '
     <div>
       <h1>Hello {{message}}!</h1>
-        <a [routerLink]="['/heroes]">Link 1</a>
-        <a [routerLink]="['/heroes', 1]">Link 2</a>
+        <a [routerLink]="['/heroes']">Link 1</a>
+        <a [routerLink]="['/hero', 1]">Link 2</a>
         <router-outlet></router-outlet>
     </div>'
 })
@@ -178,11 +178,11 @@ import { HeroListComponent }     from './hero-list.component';
 import { HeroDetailComponent }   from './hero-detail.component';
 
 export const HeroesRoutes = [
-  { path: '/heroes',  component: HeroListComponent, children: [
-    {path: '/details', component: DetailsCmp},
-    {path: '/movies', component: MoviesCmp}
+  { path: 'heroes',  component: HeroListComponent, children: [
+    {path: 'details', component: DetailsCmp},
+    {path: 'movies', component: MoviesCmp}
   ]},
-  { path: '/hero/:id', component: HeroDetailComponent }
+  { path: 'hero/:id', component: HeroDetailComponent }
 ];
 
 const routes: RouterConfig = HeroesRoutes;
