@@ -22,7 +22,7 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonne Pratiques pour une migration heureuse](#/13)
+- [Bonnes Pratiques pour une migration heureuse](#/13)
 - [Angular2 en EcmaScript 5](#/14)
 
 Notes :
@@ -37,7 +37,7 @@ Notes :
   - Plus grande flexibilité grâce aux différents opérateurs de `RxJS` : `retry`, ...
 - Nous injecterons le service `Http` pour envoyer nos requêtes HTTP
 - D'autres providers disponibles : `RequestOptions` similaire à `transformRequest` d'AngularJS
-- Bonne pratique d'implémenter les appels REST dans des services
+- Bonne pratique : implémenter les appels REST dans des services
 
 Notes :
 
@@ -95,7 +95,7 @@ Notes :
 
 ```typescript
 import {bootstrap} from '@angular/platform-browser-dynamic';
-import {Http, HTTP_PROVIDERS} from '@angular/http';
+import {Http, HTTP_PROVIDERS, Headers} from '@angular/http';
 
 export class AppComponent {
     constructor(private http:Http){ }
@@ -183,7 +183,7 @@ export class AppComponent {
             .map(data => new MyObject(data.id, data.name))
             .subscribe((jsonObject:MyObject) => {
             this.displayedData = jsonObject;
-        })
+        });
     }
 }
 

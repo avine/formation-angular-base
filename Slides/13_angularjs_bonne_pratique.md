@@ -1,4 +1,4 @@
-# Bonne Pratiques pour une migration heureuse
+# Bonnes Pratiques pour une migration heureuse
 
 <!-- .slide: class="page-title" -->
 
@@ -22,7 +22,7 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- **[Bonne Pratiques pour une migration heureuse](#/13)**
+- **[Bonnes Pratiques pour une migration heureuse](#/13)**
 - [Angular2 en EcmaScript 5](#/14)
 
 Notes :
@@ -227,8 +227,8 @@ Notes :
 
 ## Les composants - bindings
 
-- Bonne pratique de définir un scope isolé pour une componsant
-- Obligation de définir au minimum une propriété `scope` pour chaque componsant
+- Bonne pratique de définir un scope isolé pour un composant
+- Obligation de définir au minimum une propriété `scope` pour chaque composant
 - Si besoin d'accéder au `scope` dans la contrôleur, nécessité de configurer la propriété `bindToController`
 - Avec la méthode `component`, utilisation d'une nouvelle propriété `bindings`
 

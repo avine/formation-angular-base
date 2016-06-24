@@ -22,7 +22,7 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonne Pratiques pour une migration heureuse](#/13)
+- [Bonnes Pratiques pour une migration heureuse](#/13)
 - [Angular2 en EcmaScript 5](#/14)
 
 Notes :
@@ -49,7 +49,7 @@ Notes :
 ## Les Pipes - Utilisation dans les Templates
 
 - Les *Pipes* disponibles par défaut sont directement utilisables dans les templates
-- Les Templates Angular supporte le caractère `|` pour appliquer un *Pipe*
+- Les Templates Angular supportent le caractère `|` pour appliquer un *Pipe*
 - Possibilité de chaîner les pipes les uns à la suite des autres
 
 ```html
@@ -99,8 +99,8 @@ Notes :
 - Utiliser de la propriété `Pipes` du décorateur `@Component`
 
 ```typescript
-import {Component} from '@angular/core'
-import {MyLowerCasePipe} from './mylowercase'
+import {Component} from '@angular/core';
+import {MyLowerCasePipe} from './mylowercase';
 @Component({
 	selector: 'app',
 	template: '<h2>{{'Hello World' | mylowercase}}</h2>',
@@ -119,7 +119,8 @@ Notes :
 - Pas nécessaire d'utiliser un service `$filter` ou une règle de nommage (`dateFilter`) comme en *AngularJS*
 
 ```typescript
-import {Component, UpperCasePipe} from '@angular/core`
+import {Component} from '@angular/core`;
+import {UpperCasePipe} from '@angular/common';
 @Component({
   selector: 'app',
   providers: [UpperCasePipe]
@@ -182,7 +183,7 @@ class PipesAppComponent {
     this.promise = new Promise(function(resolve, reject) {
       setTimeout(function() {
         resolve("Hey, this is the result of the promise");
-      }, 2000)
+      }, 2000);
     });
   }
 }

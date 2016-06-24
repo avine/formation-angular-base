@@ -22,7 +22,7 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonne Pratiques pour une migration heureuse](#/13)
+- [Bonnes Pratiques pour une migration heureuse](#/13)
 - [Angular2 en EcmaScript 5](#/14)
 
 Notes :
@@ -92,7 +92,7 @@ Notes :
 ## Dépendances des services
 
 - Nécessité d'ajouter l'annotation `@Injectable`
-- Utilisé pour que *Angular2* puisse générér les métadatas nécessaires pour l'injection de dépendances
+- Utilisée pour que *Angular2* puisse générer les métadatas nécessaires pour l'injection de dépendances
 - Inutile pour les composants, car nous utilisons déjà `@Component`
 
 ```typescript
@@ -143,7 +143,7 @@ Notes :
 - Lorsque nous avons des objets à injecter, et non des classes
 - Possibilité de définir une chaîne de caractère comme identifiant
 - *Angular2* convertit les objets et chaines de caratères en `OpaqueToken`
-- Nécessité d'utilisation l'annotation `Inject` pour injecter ce genre de service
+- Nécessité d'utiliser l'annotation `Inject` pour injecter ce genre de service
 
 ```typescript
 let config = {

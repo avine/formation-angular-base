@@ -22,7 +22,7 @@ Notes :
 - **[Router](#/10)**
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonne Pratiques pour une migration heureuse](#/13)
+- [Bonnes Pratiques pour une migration heureuse](#/13)
 - [Angular2 en EcmaScript 5](#/14)
 
 Notes :
@@ -125,7 +125,7 @@ Notes :
 
 ## Router - RouterOutlet
 
-- Exemple simple de la directives `RouterOutlet`
+- Exemple simple de la directive `RouterOutlet`
 
 ```typescript
 import { ROUTER_DIRECTIVES } from '@angular/router';

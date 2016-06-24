@@ -22,7 +22,7 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonne Pratiques pour une migration heureuse](#/13)
+- [Bonnes Pratiques pour une migration heureuse](#/13)
 - **[Angular2 en EcmaScript 5](#/14)**
 
 Notes :
@@ -67,7 +67,7 @@ Notes :
 
 ## Angular2 en ES5 - Les composants
 
-- Création d'un composant  via une fonction constructeur
+- Création d'un composant via une fonction constructeur
 - Définition des annotations via la propriété `annotations`
 - Utilisation du constructeur `ng.core.Component` pour utiliser le décorateur `Component` du module `@angular/core`
 
@@ -111,7 +111,7 @@ Notes :
 ## Angular2 en ES5
 
 - Syntaxe similaire pour les `services` et les `pipes`
-- Toutes les composants du framework sont disponibles via le namespace `ng`
+- Tous les composants du framework sont disponibles via le namespace `ng`
   - `@Directive` -> `ng.core.Directive`
   - `Http` -> `ng.http.Http`
   - `FORM_DIRECTIVES` -> `ng.common.FORM_DIRECTIVES`
