@@ -237,7 +237,7 @@ location.go('/foo'); //example.com#/foo
 
 - Possible de configurer l'implémentation à utiliser
 
-```typescriptgrunt
+```typescript
 import {provide} from '@angular/core';
 import {HashLocationStrategy } from '@angular/router';
 
