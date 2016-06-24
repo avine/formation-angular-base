@@ -233,19 +233,23 @@ Notes :
 - Utilisation via un attribut `routerLink`
 - Configuration de la route désirée via ce même attribut `routerLink`
 - Attribut `href` généré par le service `Location`
-- Ajout d'une classe CSS si la route est déjà active via le service `Router`
+- Ajout de classes CSS si la route est active (directive `routerLinkActive`)
 
 ```typescript
-@Directive{(
-  selector: '[routerLink]',
-  inputs: ['routeParams: routerLink', 'target: target'],
-  host: {
-    '(click)': 'onClick()',
-    '[attr.href]': 'visibleHref',
-    '[class.router-link-active]': 'isRouteActive'
-  }
-})
-export class RouterLink { ...}
+@Directive({selector: '[routerLink]'})
+export class RouterLink implements OnChanges {
+	@Input() routerLink: any[]|string;
+	@HostBinding() href: string;
+
+	ngOnChanges(changes: {}): any { this.updateTargetUrlAndHref(); }
+
+	@HostListener('click', [])
+	onClick(): boolean {
+		...
+		this.router.navigateByUrl(this.urlTree);
+		return false;
+	}
+}
 ```
 
 Notes :
