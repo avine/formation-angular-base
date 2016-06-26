@@ -14,7 +14,7 @@ Angular 2 est la toute nouvelle version du framework créé par Google. Cette no
 
 - Découvrir les fonctionnalités du framework Angular 2
 - Savoir développer une nouvelle application Web
-- Savoir concevoir une application Angular2 avec JavaScript et TypeScript
+- Savoir concevoir une application Angular2 en TypeScript
 - Connaître les mécanismes avancés du framework
 
 
@@ -69,11 +69,11 @@ Développeur web
 7. Injection de Dépendances
   - Injecteurs
   - Providers
-  
+
 8. Les Pipes
   - Création
   - Utilisation
-  
+
 9. Communication avec une API REST
   - Http
   - Observables
