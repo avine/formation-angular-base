@@ -174,7 +174,7 @@ Notes :
 @Component({
   selector: 'pipes',
   template: '{{ promise | async }}',
-  changeDetection: 'ON_PUSH'
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 class PipesAppComponent {
   promise: Promise;

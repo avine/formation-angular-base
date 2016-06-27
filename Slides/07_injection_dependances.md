@@ -49,6 +49,7 @@ Notes :
 - Ce paramètre est un tableau de `providers`
 
 ```typescript
+// fichier application.component.ts
 import {MyService} from './myservice'
 
 @Component({ ... })
@@ -58,6 +59,7 @@ export class AppComponent {
     }
 }
 
+// fichier main.ts
 bootstrap(AppComponent, [MyService]);
 ```
 
@@ -71,6 +73,7 @@ Notes :
 - Même syntaxe que la configuration globale
 
 ```typescript
+// fichier application.component.ts
 import {MyService} from './myservice'
 
 @Component({
@@ -82,6 +85,7 @@ export class AppComponent {
     }
 }
 
+// fichier main.ts
 bootstrap(AppComponent, []);
 ```
 
@@ -142,7 +146,7 @@ Notes :
 
 - Lorsque nous avons des objets à injecter, et non des classes
 - Possibilité de définir une chaîne de caractère comme identifiant
-- *Angular2* convertit les objets et chaines de caratères en `OpaqueToken`
+- Utilisation de l'objet `OpaqueToken` de préférence
 - Nécessité d'utiliser l'annotation `Inject` pour injecter ce genre de service
 
 ```typescript

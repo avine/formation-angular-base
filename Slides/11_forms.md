@@ -151,7 +151,7 @@ Notes :
 - Par défaut, les navigateurs effectuent les validations nativements
  - Manque de cohérence visuelle avec l'application et entre navigateurs
  - Interfère avec le mécanisme d'AngularJs
-- Solution : Désactiver la validation native et l'effectuée par Angular2
+- Solution : Désactiver la validation native et l'effectuer par Angular2
 - Attribut `novalidate` sur le formulaire
   - Attribut standard HTML5
 
