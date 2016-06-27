@@ -9,7 +9,7 @@ Notes :
 ## Sommaire
 
 <!-- .slide: class="toc" -->
-n
+
 - [Rappels](#/1)
 - [Présentation](#/2)
 - [Démarrer une application Angular2](#/3)
@@ -36,15 +36,12 @@ Notes :
 	- Gestion des formulaires
 	- Routeur
 
-- Directives importées automatiquement
+- Directives importées automatiquement : `CORE_DIRECTIVES`, `FORM_DIRECTIVES`
 
 ```typescript
-import {CORE_DIRECTIVES} from '@angular/common';
-
 @Component({
   selector: 'my-component',
-  templateUrl: 'myComponent.html',
-  directives: [CORE_DIRECTIVES]
+  templateUrl: 'myComponent.html'
 })
 export class MyComponent { ... }
 ```
@@ -62,7 +59,6 @@ Notes :
 
 ```typescript
 import {Component} from '@angular/core';
-import {NgStyle} from '@angular/common';
 
 @Component({
 	selector: 'ngStyle-example',
@@ -74,8 +70,7 @@ import {NgStyle} from '@angular/common';
 		<label>Size:
 			<input type="text" [value]="size" (change)="size = $event.target.value">
 		</label>
-	`,
-	directives: [NgStyle]
+	`
 })
 export class NgStyleExample {
 	size = '20px';
@@ -107,7 +102,6 @@ Notes :
 
 ```typescript
 import {Component} from '@angular/core';
-import {NgClass} from '@angular/common';
 
 @Component({
 	selector: 'toggle-button',
@@ -120,7 +114,6 @@ import {NgClass} from '@angular/common';
         ...
       }
     `]
-    directives: [NgClass]
   })
 class ToggleButton {
 	isDisabled = false;
@@ -138,14 +131,14 @@ Notes :
 - Correspond à la directive `ngRepeat` en *AngularJS*
 - Définition des éléments HTML à dupliquer dans un élément `<template>`
 - Utilisation de la propriété `ngForOf` pour définir l'expression permettant l'itération
-- Sauvegarde de la valeur en cours dans des variables de rendu (préfixée par `#`)
-- Angular2 met à disposition trois données supplémentaires : `index`, `last`, `even` et `odd`
+- Sauvegarde de la valeur en cours dans des variables de rendu (préfixées par `let-`)
+- Angular2 met à disposition quatre données supplémentaires : `index`, `last`, `even` et `odd`
 
 ```typescript
 <template ngFor let-item [ngForOf]="items" let-i="index"><li>...</li></template>
 ```
 
-- Seconde syntaxe disponible (également pour `ngIf` et `ngSwitch`
+- Seconde syntaxe disponible (également pour `ngIf` et `ngSwitch`)
 
 ```typescript
 <li *ngFor="let item of items; let i = index">...</li>

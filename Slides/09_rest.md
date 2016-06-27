@@ -55,11 +55,11 @@ import {Http} from '@angular/http';
 import {Injectable} from '@angular/core';
 
 @Injectable()
-export class Service {
+export class HttpService {
     constructor(private http:Http){ }
 
-    getContacts(){
-      return http.get('people.json');
+    getContacts() {
+      return this.http.get('people.json');
     }
 }
 ```
@@ -91,7 +91,7 @@ Notes :
 
 ## HTTP - Exemple
 
-- Requête HTTP de type `POST` avec surcharge des `Headers`
+- Requête HTTP de type `PUT` avec surcharge des `Headers`
 
 ```typescript
 import {bootstrap} from '@angular/platform-browser-dynamic';
@@ -178,12 +178,12 @@ export class AppComponent {
 
     constructor(private http:Http) {
         http.get('people.json')
-            .map((result:Response) => result.json())
+            .flatMap((result:Response) => result.json())
             .filter(data => data.hasToBeDisplayed)
             .map(data => new MyObject(data.id, data.name))
             .subscribe((jsonObject:MyObject) => {
-            this.displayedData = jsonObject;
-        });
+                this.displayedData = jsonObject;
+            });
     }
 }
 
