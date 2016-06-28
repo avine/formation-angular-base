@@ -17,7 +17,7 @@ Pour interargir avec ces nouvelles fonctionnalités, nous allons mettre à jour 
   - le panier de manière simplifiée (une liste avec le nom et le prix de chaque produit)
   - un formulaire permettant de saisir les informations du client.
 
-Ajouter un lien dans le composant `Home` qui pointe vers la page `/confirmation`.
+Ajouter un lien dans le composant `Home` qui pointe vers la page `/basket`.
 
 Ce formulaire devra respecter les contraintes suivantes :
   - utiliser la directive `ngSubmit`
