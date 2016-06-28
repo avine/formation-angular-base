@@ -261,13 +261,13 @@ Notes :
 	- Nécessite la définition de l'URL de base de votre application (`APP_BASE_HREF` ou `<base>`)
 
 ```typescript
-location.go('/foo'); //example.com/my/app/foo
+router.navidate(['/foo']); //example.com/my/app/foo
 ```
 
 - `HashLocationStrategy`
 
 ```typescript
-location.go('/foo'); //example.com#/foo
+router.navidate(['/foo']); //example.com#/foo
 ```
 
 - Possible de configurer l'implémentation à utiliser

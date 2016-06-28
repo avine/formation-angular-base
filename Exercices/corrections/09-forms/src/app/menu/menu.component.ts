@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
   moduleId: module.id,
@@ -12,14 +13,15 @@ import { Component, OnInit } from '@angular/core';
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">Voir mon Panier</a>
+                    <a [routerLink]="['/basket']">Voir mon Panier</a>
                 </li>
             </ul>
         </div>
     </div>
   </nav>
   `,
-  styleUrls: ['menu.component.css']
+  styleUrls: ['menu.component.css'],
+  directives: [ROUTER_DIRECTIVES]
 })
 export class MenuComponent implements OnInit {
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   moduleId: module.id,
-  selector: 'app-menu',
+  selector: 'menu',
   template: `
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">

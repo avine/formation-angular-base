@@ -13,7 +13,7 @@ Pour se faire, nous allons commencer par créer une classe et un service pour g�
   - faire un `POST` sur `/basket/confirm` pour valider la commande d'un client
   - retourner sur la page `home`
 
-Pour interargir avec ces nouvelles fonctionnalités, nous allons créer un nouveau composant `Confirmation` qui affichera :
+Pour interargir avec ces nouvelles fonctionnalités, nous allons mettre à jour le composant `basket` créé précédemment. Il affichera :
   - le panier de manière simplifiée (une liste avec le nom et le prix de chaque produit)
   - un formulaire permettant de saisir les informations du client.
 
@@ -24,11 +24,11 @@ Ce formulaire devra respecter les contraintes suivantes :
   - un champ `input[text]` pour saisir le nom du client qui devra
     - être lié sur la propriété `name` de l'objet `Customer`
     - être requis (grâce à l'attribut *required*)
-    - avoir la class CSS `has-error` s'il n'est pas valid
+    - avoir la class CSS `has-error` s'il n'est pas valide
   - un champ `textarea` pour saisir l'adresse du client qui devra
     - être lié sur la propriété `address` de l'objet `Customer`
     - être requis (grâce à l'attribut *required*)
-    - avoir la class CSS `has-error` s'il n'est pas valid
+    - avoir la class CSS `has-error` s'il n'est pas valide
   - un champ `input[text]` pour saisir un code de carte bleue factice qui devra
     - être lié sur la propriété `creditCard` de l'objet `Customer`
     - être requis (grâce à l'attribut *required*)
@@ -37,3 +37,12 @@ Ce formulaire devra respecter les contraintes suivantes :
     - afficher le message `Invalid pattern. Example : 123-456` si le pattern est incorrect
   - un bouton `button[submit]` pour valider la saisie qui devra :
     - être désactivé si tout le formulaire n'est pas valide
+
+Pour information, voici le template à utiliser pour ajouter un champ de formulaire dans votre page :
+
+```html
+<div class="form-group has-error">
+    <label class="control-label" for="name">Name</label>
+    <input type="text" id="name" class="form-control">
+</div>
+```
