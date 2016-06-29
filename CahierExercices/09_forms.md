@@ -17,7 +17,7 @@ Pour interargir avec ces nouvelles fonctionnalités, nous allons mettre à jour 
   - le panier de manière simplifiée (une liste avec le nom et le prix de chaque produit)
   - un formulaire permettant de saisir les informations du client.
 
-Ajouter un lien dans le composant `Home` qui pointe vers la page `/basket`.
+Ajoutez un lien dans le composant `Home` qui pointe vers la page `/basket`.
 
 Ce formulaire devra respecter les contraintes suivantes :
   - utiliser la directive `ngSubmit`
@@ -46,3 +46,11 @@ Pour information, voici le template à utiliser pour ajouter un champ de formula
     <input type="text" id="name" class="form-control">
 </div>
 ```
+
+Pour pouvoir bénéficier du module `@angular/forms`, il est nécessaire de l'installer via *NPM*. En effet, ce module n'est pas disponible par défaut dans un projet généré par *angular-cli*. 
+
+```shell
+npm install @angular/forms
+```
+
+La dernière chose à faire pour pouvoir utiliser ce module est de modifier la configuration de *SystemJS*, via le fichier *system-config.js*. Ajoutez la chaîne de caractères `@angular/forms'` dans le tableau `barrels`.
