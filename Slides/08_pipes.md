@@ -120,17 +120,18 @@ Notes :
 - Pas nécessaire d'utiliser un service `$filter` ou une règle de nommage (`dateFilter`) comme en *AngularJS*
 
 ```typescript
-import {Component, UpperCasePipe} from '@angular/core`
+import {Component} from '@angular/core`;
+import {MyLowerCasePipe} from './mylowercase';
+
 @Component({
   selector: 'app',
   providers: [MyLowerCasePipe]
 })
 class App {
-
   name:string;
 
-  constructor(public upper:MyLowerCasePipe){
-    this.string = upper.transform('Hello Angular2');
+  constructor(public lower:MyLowerCasePipe){
+    this.string = lower.transform('Hello Angular2');
   }
 
 }
@@ -221,7 +222,7 @@ Notes :
 
 ```typescript
 import {describe,it,expect,beforeEach} from '@angular/core/testing';
-import {MyLowerCasePipe} from './app/mylowercasepipe';
+import {MyLowerCasePipe} from './app/mylowercase';
 
 export function main() {
   describe('MyLowerCasePipe', () => {
@@ -231,8 +232,8 @@ export function main() {
 
     describe('transform', () => {
       it('should return uppercase', () => {
-        var val = pipe.transform('something');
-        expect(val).toEqual('SOMETHING');
+        var val = pipe.transform('SOMETHING');
+        expect(val).toEqual('something');
       });
     });
 

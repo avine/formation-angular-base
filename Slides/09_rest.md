@@ -182,7 +182,7 @@ export class AppComponent {
             .map(data => new MyObject(data.id, data.name))
             .subscribe((jsonObject:MyObject) => {
               this.displayedData = jsonObject;
-            })
+            });
     }
 }
 
