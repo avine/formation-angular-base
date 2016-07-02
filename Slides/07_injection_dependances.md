@@ -22,8 +22,7 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonnes Pratiques pour une migration heureuse](#/13)
-- [Angular2 en EcmaScript 5](#/14)
+- [Bonne Pratiques pour une migration heureuse](#/13)
 
 Notes :
 
@@ -128,11 +127,11 @@ Notes :
 
 ```typescript
 bootstrap(AppComponent, [MyService]);
-bootstrap(AppComponent, [new Provider(AppComponent, {useClass: AppComponent})]);
+bootstrap(AppComponent, [new Provider(MyService, {useClass: MyService})]);
 bootstrap(AppComponent, [{ provide: MyService, useClass: MyService }]);
-bootstrap(AppComponent, [{ provide: string, useValue: 'hello world' }]);
+bootstrap(AppComponent, [{ provide: String, useValue: 'hello world' }]);
 bootstrap(AppComponent, [{
-  provide: string,
+  provide: String,
   useFactory: (myService: MyService) => myService.myMethod()
   deps: [MyService]
 }]);

@@ -27,8 +27,7 @@
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonnes Pratiques pour une migration heureuse](#/13)
-- [Angular2 en EcmaScript 5](#/14)
+- [Bonne Pratiques pour une migration heureuse](#/13)
 
 Notes :
 

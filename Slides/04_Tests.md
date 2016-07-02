@@ -22,8 +22,7 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonnes Pratiques pour une migration heureuse](#/13)
-- [Angular2 en EcmaScript 5](#/14)
+- [Bonne Pratiques pour une migration heureuse](#/13)
 
 Notes :
 
@@ -82,7 +81,7 @@ Notes :
 
 ```javascript
 describe('True value:', function() {
-  var value;
+  let value;
 
   beforeEach(function(){
     value = true;
@@ -133,7 +132,7 @@ class True {
 describe('True object:', () => {
   describe('returnTrue method:', () => {
       it('should return true', () => {
-          var trueObject:True = new True();
+          let trueObject:True = new True();
           expect(trueObject.returnTrue()).toBe(true);
       });
   });

@@ -5,7 +5,9 @@ Après avoir reçu de la part du formateur un serveur REST développé en NodeJS
 Pour lancer le serveur REST, vous devez exécuter la commande suivante :
 
 ```shell
-node server\server.js
+cd server
+npm install
+node server.js
 ```
 
 Le serveur sera disponible via l'URL `http://localhost:8080/rest/`.
@@ -20,7 +22,7 @@ Cette API propose plusieurs points d'entrée :
   - convertir en `json`,
   - mettre en majuscule les propriétés `title` de chaque produit
 
-- Vous devez également mettre en place un système de cache pour ces produits, également plus tard pour le panier utilisateur. Pour cela, vous pouvez réutiliser la variable de classe `products` et la méthode `Observable.from` de `rxjs`
+- Vous devez également mettre en place un système de cache pour ces produits, également plus tard pour le panier utilisateur. Pour cela, vous pouvez réutiliser la variable de classe `products` et la méthode `Observable.from` du module `rxjs/add/observable/from`
 
 - Nous allons à présent modifier, de la même façon, le service `CustomerService`.
   - Créez une méthode `getBasket` avec le même fonctionnement que le point précédent

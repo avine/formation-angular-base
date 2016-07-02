@@ -22,8 +22,7 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonnes Pratiques pour une migration heureuse](#/13)
-- [Angular2 en EcmaScript 5](#/14)
+- [Bonne Pratiques pour une migration heureuse](#/13)
 
 Notes :
 
@@ -77,12 +76,12 @@ app.directive('MyDirective', function(){
 - Version *Angular2* :
 
 ```typescript
+import { Component, Input} from '@angular/core'
 @Component({
-  selector: 'my-directive',
-  inputs: ['variable']
+  selector: 'my-directive'
 })
 export class MyDirective {
-
+  @Input() variable:string;
 }
 ```
 
@@ -97,7 +96,7 @@ Notes :
 ```javascript
 //provider, factory, constant et value
 app.service('Service', function(){
-  var vm = this;
+  let vm = this;
   vm.myMethod = function(){
 
   }

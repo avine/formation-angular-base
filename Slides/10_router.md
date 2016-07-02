@@ -22,8 +22,7 @@ Notes :
 - **[Router](#/10)**
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonnes Pratiques pour une migration heureuse](#/13)
-- [Angular2 en EcmaScript 5](#/14)
+- [Bonne Pratiques pour une migration heureuse](#/13)
 
 Notes :
 
@@ -201,19 +200,23 @@ Notes :
 - Utilisation via un attribut `routerLink`
 - Configuration de la route désirée via ce même attribut `routerLink`
 - Attribut `href` généré par le service `Location`
-- Ajout d'une classe CSS si la route est déjà active via le service `Router`
+- Ajout de classes CSS si la route est active (directive `routerLinkActive`)
 
 ```typescript
-@Directive{(
-  selector: '[routerLink]',
-  inputs: ['routeParams: routerLink', 'target: target'],
-  host: {
-    '(click)': 'onClick()',
-    '[attr.href]': 'visibleHref',
-    '[class.router-link-active]': 'isRouteActive'
-  }
-})
-export class RouterLink { ...}
+@Directive({selector: '[routerLink]'})
+export class RouterLink implements OnChanges {
+	@Input() routerLink: any[]|string;
+	@HostBinding() href: string;
+
+	ngOnChanges(changes: {}): any { this.updateTargetUrlAndHref(); }
+
+	@HostListener('click', [])
+	onClick(): boolean {
+		...
+		this.router.navigateByUrl(this.urlTree);
+		return false;
+	}
+}
 ```
 
 Notes :
@@ -226,13 +229,13 @@ Notes :
 	- Nécessite la définition de l'URL de base de votre application (`APP_BASE_HREF` ou `<base>`)
 
 ```typescript
-location.go('/foo'); //example.com/my/app/foo
+router.navidate(['/foo']); //example.com/my/app/foo
 ```
 
 - `HashLocationStrategy`
 
 ```typescript
-location.go('/foo'); //example.com#/foo
+router.navidate(['/foo']); //example.com#/foo
 ```
 
 - Possible de configurer l'implémentation à utiliser

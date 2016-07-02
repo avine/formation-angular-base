@@ -22,8 +22,7 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonnes Pratiques pour une migration heureuse](#/13)
-- [Angular2 en EcmaScript 5](#/14)
+- [Bonne Pratiques pour une migration heureuse](#/13)
 
 Notes :
 
@@ -32,10 +31,10 @@ Notes :
 ## Les Pipes
 
 - Mécanisme permettant la manipulation d'une donnée avant son utilisation
-- Similaire à *AngularJS*
+- Similaire aux filtres dans *AngularJS*
 - Utilisation dans les templates HTML similaires à l'ancienne version
 - Possibilité de définir des *Pipes* statefull ou stateless
-- Pipes disponibles par défaut dans le framework :
+- Pipes disponibles par défaut dans le framework (`@angular/common`):
   - `LowerCasePipe` , `UpperCasePipe`
   - `CurrencyPipe`, `DecimalPipe`, `PercentPipe`
   - `DatePipe`, `JSONPipe`, `ReplacePipe`, `SlicePipe`
@@ -76,15 +75,17 @@ Notes :
 - Exporter cette classe via `export`
 
 ```typescript
-import {isString} from '@angular/src/facade/lang';
+import {isString, isBlank} from '@angular/core/src/facade/lang';
 import {PipeTransform, Pipe} from '@angular/core';
 
 @Pipe({name: 'mylowercase'})
 export class MyLowerCasePipe implements PipeTransform {
-  transform(value: string, args: any[] = null): string {
-
+  transform(value: string, param1:string, param2:string): string {
+    if (isBlank(value)) return value;
+    if (!isString(value)) {
+      throw new InvalidPipeArgumentException(MyLowerCasePipe, value);
+    }  
     return value.toLowerCase();
-
   }
 }
 ```
@@ -120,17 +121,17 @@ Notes :
 
 ```typescript
 import {Component} from '@angular/core`;
-import {UpperCasePipe} from '@angular/common';
+import {MyLowerCasePipe} from './mylowercase';
+
 @Component({
   selector: 'app',
-  providers: [UpperCasePipe]
+  providers: [MyLowerCasePipe]
 })
 class App {
-
   name:string;
 
-  constructor(public upper:UpperCasePipe){
-    this.string = upper.transform('Hello Angular2');
+  constructor(public lower:MyLowerCasePipe){
+    this.string = lower.transform('Hello Angular2');
   }
 
 }
@@ -202,11 +203,11 @@ Notes :
 ```typescript
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {App} from './app/app';
-import {MyPipe} from './app/mypipe';
+import {MyLowerCasePipe} from './app/mylowercasepipe';
 import {provide, PLATFORM_PIPES} from '@angular/core';
 
 bootstrap(App, [
-    { provide: PLATFORM_PIPES, useValue: [MyPipe], multi:true }
+    { provide: PLATFORM_PIPES, useValue: [MyLowerCasePipe], multi:true }
 ]);
 ```
 
@@ -221,18 +222,18 @@ Notes :
 
 ```typescript
 import {describe,it,expect,beforeEach} from '@angular/core/testing';
-import {UpperCasePipe} from '@angular/common';
+import {MyLowerCasePipe} from './app/mylowercase';
 
 export function main() {
-  describe('UpperCasePipe', () => {
-    var pipe;
+  describe('MyLowerCasePipe', () => {
+    let pipe;
 
-    beforeEach(() => { pipe = new UpperCasePipe(); });
+    beforeEach(() => { pipe = new MyLowerCasePipe(); });
 
     describe('transform', () => {
       it('should return uppercase', () => {
-        var val = pipe.transform('something');
-        expect(val).toEqual(upper);
+        var val = pipe.transform('SOMETHING');
+        expect(val).toEqual('something');
       });
     });
 
