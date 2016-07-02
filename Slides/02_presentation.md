@@ -76,12 +76,12 @@ app.directive('MyDirective', function(){
 - Version *Angular2* :
 
 ```typescript
+import { Component, Input} from '@angular/core'
 @Component({
-  selector: 'my-directive',
-  inputs: ['variable']
+  selector: 'my-directive'
 })
 export class MyDirective {
-
+  @Input() variable:string;
 }
 ```
 

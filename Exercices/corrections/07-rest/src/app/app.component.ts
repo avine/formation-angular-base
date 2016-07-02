@@ -11,8 +11,8 @@ import {ProductSortPipe} from './pipe/product-sort.pipe';
   moduleId: module.id,
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.css'], 
-  directives: [MenuComponent, FooterComponent, ProductComponent], 
+  styleUrls: ['app.component.css'],
+  directives: [MenuComponent, FooterComponent, ProductComponent],
   pipes: [ProductSortPipe]
 })
 export class AppComponent {
@@ -37,7 +37,7 @@ export class AppComponent {
     return this.productService.isTheLast(title);
   }
 
-  isNotAvailable(title: string): boolean {
-    return this.productService.isNotAvailable(title);
+  isAvailable(title: string): boolean {
+    return this.productService.isAvailable(title);
   }
 }

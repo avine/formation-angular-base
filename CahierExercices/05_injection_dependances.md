@@ -10,7 +10,7 @@ Nous allons créer deux services :
 - Veuillez créer un service `service\ProductService.ts` dans lequel vous allez définir :
 	- un tableau `products` avec les valeurs définies dans le composant `AppComponent.ts`
 	- une méthode `isTheLast(produitTitle)` : retournera `true` si le stock d'un produit est égal à 1
-	- une méthode `isNotAvailable(produitTitle)` : retournera `true` si le stock d'un produit est égal à 0
+	- une méthode `isAvailable(produitTitle)` : retournera `true` si le stock d'un produit n'est pas égal à 0
 	- une méthode `decreaseStock(produitTitle)` : mettra à jour la propriété `stock` du produit spécifié en paramètre
 
 - Veuillez créer un service `service\CustomerService.ts` dans lequel vous allez définir :
@@ -19,4 +19,4 @@ Nous allons créer deux services :
 
 - Importez ces deux services dans votre composant `Application`, et modifiez l'implémentation de ce composant afin d'utiliser les différentes méthodes implémentées précédemment.
 
-- Pour terminer ce TP, nous allons externaliser le titre "Bienvenue sur Zenika Ecommerce" dans une variable injectable de type `String` en utilisant un provider de type `Value` 
+- Pour terminer ce TP, nous allons externaliser le titre "Bienvenue sur Zenika Ecommerce" dans une variable injectable de type `String` en utilisant un provider de type `Value`

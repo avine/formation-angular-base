@@ -16,7 +16,7 @@ export class BasketComponent implements OnInit {
   customer:Customer;
 
   constructor( private router: Router, private customerService:CustomerService) {
-      this.customer = new Customer('', '', '');
+      this.customer = new Customer();
       this.customerService.getBasket().subscribe(products => this.products = products);
   }
 

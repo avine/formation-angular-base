@@ -31,8 +31,8 @@ export class ProductService {
     return this.products.find((product) => { return product.title === title }).stock === 1;
   }
 
-  isNotAvailable(title: string): boolean {
-    return this.products.find((product) => { return product.title === title }).stock === 0;
+  isAvailable(title: string): boolean {
+    return this.products.find((product) => { return product.title === title }).stock !== 0;
   }
 
   decreaseStock(title: string) {

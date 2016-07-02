@@ -27,7 +27,7 @@ export class CustomerService {
   addProduct(product: Product): Observable<any> {
     let headers = new Headers();
     headers.set('Content-Type', 'application/json');
-    return this.http.post(this.API + 'basket', JSON.stringify(product), { headers: headers })
+    return this.http.post(this.API + 'basket', JSON.stringify(product), { headers })
       .map(_ => this.products.push(product));
 
   }

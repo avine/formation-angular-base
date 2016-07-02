@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-import {FooterComponent} from '../footer';
 import {ProductComponent} from '../product';
 import {Product} from '../model/product.model';
 import {CustomerService} from '../service/customer.service';
@@ -12,7 +11,7 @@ import {ProductSortPipe} from '../pipe/product-sort.pipe';
   selector: 'app-home',
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.css'],
-  directives: [ROUTER_DIRECTIVES, FooterComponent, ProductComponent], 
+  directives: [ROUTER_DIRECTIVES, ProductComponent],
   pipes: [ProductSortPipe]
 })
 export class HomeComponent  {
@@ -23,7 +22,7 @@ export class HomeComponent  {
       this.productService.getProducts().subscribe(result => this.products = result);
       this.customerService.getBasket().subscribe();
   }
-  
+
   getTotal(): number {
       return this.customerService.getTotal();
   }
@@ -37,7 +36,7 @@ export class HomeComponent  {
     return this.productService.isTheLast(title);
   }
 
-  isNotAvailable(title: string): boolean {
-    return this.productService.isNotAvailable(title);
+  isAvailable(title: string): boolean {
+    return this.productService.isAvailable(title);
   }
 }

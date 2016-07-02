@@ -10,7 +10,7 @@ import {ProductService} from './service/product.service';
   moduleId: module.id,
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.css'], 
+  styleUrls: ['app.component.css'],
   directives: [MenuComponent, FooterComponent, ProductComponent]
 })
 export class AppComponent {
@@ -34,7 +34,7 @@ export class AppComponent {
     return this.productService.isTheLast(title);
   }
 
-  isNotAvailable(title: string): boolean {
-    return this.productService.isNotAvailable(title);
+  isAvailable(title: string): boolean {
+    return this.productService.isAvailable(title);
   }
 }
