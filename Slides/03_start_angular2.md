@@ -127,7 +127,6 @@ ng generate service UserService
 ng generate directive myNgIf
 ```
 
-
 Notes :
 
 

@@ -80,7 +80,6 @@ Angular transformera la syntaxe d'interpolation en binding de propriétés
 <!-- Template parse errors:
 Can't bind to 'colspan' since it isn't a known native property-->
 
-
 <button [attr.aria-label]="help">help</button>
 ```
 
