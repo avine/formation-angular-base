@@ -74,7 +74,7 @@ Notes :
 
 ## Directives
 
-- `ngModel` : Gère le binding entre la variable du contrôlleur et le champ HTML
+- `ngModel` : Gère le binding entre la variable du contrôleur et le champ HTML
 
 ```html
 <input type="text" [(ngModel)]="contact.name" name="name">
