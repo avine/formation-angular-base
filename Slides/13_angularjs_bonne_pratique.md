@@ -33,7 +33,7 @@ Notes :
 - Bonnes pratiques tirées du *guideline* de John Papa
     - https://github.com/johnpapa/angular-styleguide
 - Permet de se rapprocher de la structure d'une application *Angular2*
-- Facile à mettre en place, et sans risques (si des tests unitaires existent)
+- Facile à mettre en place, et sans risque (si des tests unitaires existent)
 - Possilité d'automatiser la vérification grâce au plugin *eslint-plugin-angular*
     - https://github.com/Gillespie59/eslint-plugin-angular/
 

@@ -47,8 +47,8 @@ Notes :
 
 - Projet Angular officiel. Contrairement aux projets de Server Side Rendering pour `AngularJS`
 - Contient deux modules
-  - Le premier rend le code coté serveur
-  - Le deuxieme enregistre les actions de l'utilisateur pour les rejouer une fois l'interface complètement chargé
+  - Le premier rend le code côté serveur
+  - Le deuxième enregistre les actions de l'utilisateur pour les rejouer une fois l'interface complètement chargée
 - Le terme Universal vient de l'idée de pouvoir proposer l'application dans d'autres environnements que celui du navigateur
 - Pas encore assez stable pour la mise en production
 

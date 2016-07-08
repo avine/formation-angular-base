@@ -74,7 +74,7 @@ Notes :
 
 ## Directives
 
-- `ngModel` : Gère le binding entre la variable du contrôlleur et le champ HTML
+- `ngModel` : Gère le binding entre la variable du contrôleur et le champ HTML
 
 ```html
 <input type="text" [(ngModel)]="contact.name" name="name">
@@ -93,10 +93,10 @@ Notes :
 
 
 ## NgControl
-- Un `Control` est une classe réprésentant un `input` qui contient :
+- Un `Control` est une classe représentant un `input` qui contient :
  - La valeur
- - l'état (dirty, valid, ...)
- - les erreurs de validations
+ - L'état (dirty, valid, ...)
+ - Les erreurs de validation
 
 - Angular2 crée un `Control` dès l'utilisation de la directive `ngModel`
 - Il utilise la valeur de la propriété `name` comme libellé
@@ -143,7 +143,7 @@ Notes :
 
 ## Validation : Désactiver la gestion native
 
-- Par défaut, les navigateurs effectuent les validations nativements
+- Par défaut, les navigateurs effectuent les validations nativement
  - Manque de cohérence visuelle avec l'application et entre navigateurs
  - Interfère avec le mécanisme d'AngularJs
 - Solution : Désactiver la validation native et l'effectuer par Angular2
