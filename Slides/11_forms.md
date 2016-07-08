@@ -93,10 +93,10 @@ Notes :
 
 
 ## NgControl
-- Un `Control` est une classe réprésentant un `input` qui contient :
+- Un `Control` est une classe représentant un `input` qui contient :
  - La valeur
- - l'état (dirty, valid, ...)
- - les erreurs de validations
+ - L'état (dirty, valid, ...)
+ - Les erreurs de validation
 
 - Angular2 crée un `Control` dès l'utilisation de la directive `ngModel`
 - Il utilise la valeur de la propriété `name` comme libellé
