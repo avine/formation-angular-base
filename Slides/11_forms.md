@@ -143,7 +143,7 @@ Notes :
 
 ## Validation : Désactiver la gestion native
 
-- Par défaut, les navigateurs effectuent les validations nativements
+- Par défaut, les navigateurs effectuent les validations nativement
  - Manque de cohérence visuelle avec l'application et entre navigateurs
  - Interfère avec le mécanisme d'AngularJs
 - Solution : Désactiver la validation native et l'effectuer par Angular2
