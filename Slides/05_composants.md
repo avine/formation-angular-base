@@ -22,7 +22,7 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonne Pratiques pour une migration heureuse](#/13)
+- [Bonnes Pratiques pour une migration heureuse](#/13)
 
 Notes :
 
@@ -79,7 +79,6 @@ Angular transformera la syntaxe d'interpolation en binding de propriétés
 
 <!-- Template parse errors:
 Can't bind to 'colspan' since it isn't a known native property-->
-
 
 <button [attr.aria-label]="help">help</button>
 ```
@@ -281,10 +280,10 @@ import {Component} from '@angular/core'
 import {Product} from ./model/Product'
 
 @Component({
-    selector: 'product',
-    template: `<article>{{product.name}}</article>`
+    selector: 'product-detail',
+    template: `<article>{{product.name}} <button (click)="addToBasket.emit(product)"></button></article>`
 })
-export class Product {
+export class ProductComponent {
     @Input() product:Product;
     @Output() addToBasket:EventEmitter<any> = new EventEmitter<Product>();
 }
@@ -333,7 +332,7 @@ import {Component} from '@angular/core';
           <section><ng-content select="p"></ng-content></section>
     </article>`
 })
-export class ArticleComponent { }
+export class PostComponent { }
 ```
 Notes :
 

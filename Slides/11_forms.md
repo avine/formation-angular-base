@@ -22,7 +22,7 @@ Notes :
 - [Router](#/10)
 - **[Gestion des Formulaires](#/11)**
 - [Server-side Rendering](#/12)
-- [Bonne Pratiques pour une migration heureuse](#/13)
+- [Bonnes Pratiques pour une migration heureuse](#/13)
 
 Notes :
 
@@ -44,10 +44,28 @@ Notes :
 
 ## Formulaires : Principe général
 
-- Associer des champs de saisie à des propriétés du scope grâce à `ngModel`
+- Associer des champs de saisie à des propriétés du composant grâce à `ngModel`
 - Nommer les champs grâce à l'attribut `name`
 - Ajouter des validateurs
-- Appeler une méthode du scope pour traiter le formulaire en JavaScript
+- Appeler une méthode du composant pour traiter le formulaire en JavaScript
+
+Notes :
+
+
+
+## Formulaires : Activation
+
+- Les formulaires doivent être activés par la méthode `provideForms`
+
+```typescript
+import { bootstrap } from '@angular/platform-browser-dynamic';
+import { disableDeprecatedForms, provideForms } from '@angular/forms';
+
+bootstrap(AppComponent, [
+  disableDeprecatedForms(), // only before Angular2 RC5
+  provideForms()
+]);
+```
 
 Notes :
 
@@ -58,7 +76,7 @@ Notes :
 La directive `NgForm` est automatiquement associée à chaque balise `<form>`
 
 - Autorise l'utilisation du `(ngSubmit)`
-- Créée un `ControlGroup` pour gérer les inputs contenus dans le formulaire
+- Créée un `FormGroup` pour gérer les inputs contenus dans le formulaire
 - Utilisable par l'écriture : `#myForm="ngForm"`
 
 ```html
@@ -92,34 +110,34 @@ Notes :
 
 
 
-## NgControl
-- Un `Control` est une classe réprésentant un `input` qui contient :
+## FormControl
+- Un `FormControl` est une classe réprésentant un `input` qui contient :
  - La valeur
  - l'état (dirty, valid, ...)
  - les erreurs de validations
 
-- Angular2 crée un `Control` dès l'utilisation de la directive `ngModel`
+- Angular2 crée un `FormControl` dès l'utilisation de la directive `ngModel`
 - Il utilise la valeur de la propriété `name` comme libellé
-- On peut l'associer à une variable pour l'utiliser dans le template avec la même syntaxe que le `ngForm`
+- On peut l'associer à une variable pour l'utiliser dans le template avec la syntaxe `#inputName="ngModel"`
 
 Notes :
 
 
 
-## NgControl : Exemple
-Utilisation du ngControl
+## Exemple
+Exemple complet:
 ```html
-<form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm.controls)">
-  <input type="text" name="name" #name="ngModel" required>
-  <span [hidden]="name.valid">Error</span>
-  <span [hidden]="name.pristine">You changed the value</span>
+<form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm.value)">
+  <input type="text" name="myName" [(ngModel)]="contact.name" #nameInput="ngModel" required>
+  <span [hidden]="nameInput.valid">Error</span>
+  <span [hidden]="nameInput.pristine">You changed the value</span>
 
-  <button type="submit" [disabled]="!myForm.controls.name?.valid">
+  <button type="submit" [disabled]="!myForm.valid">
     Validate
   </button>
 </form>
 
-// myForm.value -> { "nameControl": <Control Object> }
+// myForm.value -> { myName: '' }
 ```
 
 Notes :
@@ -131,7 +149,7 @@ Notes :
 - Un champ peut posséder un ou plusieurs validateurs
   - Standards ou personnalisés
   - Support des validateurs HTML5 : `required`, `min`, `max`, ...
-- L'état de la validation est stocké par l'objet `Control` dans la propriété `errors`
+- L'état de la validation est stocké par l'objet `FormControl` dans la propriété `errors`
 ```html
 <input type="text" [(ngModel)]="contact.name" #name="ngModel" name="name" required>
 <span [hidden]="name.errors?.required">Name is not valid</span>
@@ -198,7 +216,7 @@ export class PatternValidator implements Validator {
 ```
 
 ```html
-<input type="text" [(ngModel)]="contact.name" pattern="[a-z]{10}">
+<input type="text" name="name" [(ngModel)]="contact.name" pattern="[a-z]{10}">
 ```
 
 Notes :

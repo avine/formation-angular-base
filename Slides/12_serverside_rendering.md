@@ -22,7 +22,7 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - **[Server-side Rendering](#/12)**
-- [Bonne Pratiques pour une migration heureuse](#/13)
+- [Bonnes Pratiques pour une migration heureuse](#/13)
 
 Notes :
 
@@ -35,8 +35,7 @@ Notes :
 - Amélioration progressive
   - Proposer une version simple pour tous
   - Enrichir l'expérience en fonction du client
-
-
+  
 - *Accélérer le chargement de l'application*
 
 Notes :
