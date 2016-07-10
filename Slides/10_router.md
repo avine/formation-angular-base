@@ -22,7 +22,7 @@ Notes :
 - **[Router](#/10)**
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonne Pratiques pour une migration heureuse](#/13)
+- [Bonnes Pratiques pour une migration heureuse](#/13)
 
 Notes :
 
@@ -81,7 +81,7 @@ import { HeroListComponent, HeroDetailComponent } from './hero/';
 import { HeroDetailComponent }   from './hero-detail.component';
 
 export const Routes: RouterConfig = [
-  { index: true, component: HomeComponent }, // path: '/'
+  { path: '', component: HomeComponent }, // path: '/'
   { path: 'heroes',  component: HeroListComponent },
   { path: 'hero/:id', component: HeroDetailComponent }
 ];
@@ -153,10 +153,11 @@ Notes :
   template: '
     <div>
       <h1>Hello {{message}}!</h1>
-        <a [routerLink]="['/heroes']">Link 1</a>
-        <a [routerLink]="['/hero', 1]">Link 2</a>
+        <a [routerLink]="['heroes']">Link 1</a>
+        <a [routerLink]="['hero', 1]">Link 2</a>
         <router-outlet></router-outlet>
-    </div>'
+    </div>',
+    directives: [ROUTER_DIRECTIVES]
 })
 class AppComponent {
 
@@ -229,13 +230,13 @@ Notes :
 	- Nécessite la définition de l'URL de base de votre application (`APP_BASE_HREF` ou `<base>`)
 
 ```typescript
-router.navidate(['/foo']); //example.com/my/app/foo
+router.navigate(['foo']); //example.com/my/app/foo
 ```
 
 - `HashLocationStrategy`
 
 ```typescript
-router.navidate(['/foo']); //example.com#/foo
+router.navigate(['foo']); //example.com#/foo
 ```
 
 - Possible de configurer l'implémentation à utiliser
@@ -248,7 +249,8 @@ import {HashLocationStrategy } from '@angular/router';
 class AppComponent { ... }
 
 bootstrap(AppComponent, [ROUTER_PROVIDERS,
-  { provide: LocationStrategy, useClass: HashLocationStrategy }]);
+  { provide: LocationStrategy, useClass: HashLocationStrategy }
+]);
 ```
 
 Notes :
@@ -269,7 +271,7 @@ class AppComponent {}
 
 const AppRoutes: RouterConfig = [ ... ];
 
-bootstrap(AppCmp, [
+bootstrap(AppComponent, [
   provideRouter(AppRoutes),
   { provide: APP_BASE_HREF, useValue: '/my/app' }
 ]);
@@ -286,7 +288,7 @@ Notes :
 ```typescript
 @Component({
   template: '
-    <a [routerLink]="['/product', 3]"></a>
+    <a [routerLink]="['product', 3]"></a>
     <router-outlet></router-outlet>'
 })
 class AppComponent { }
@@ -320,7 +322,7 @@ Notes :
 ```typescript
 @Component({
   template: '
-    <a [routerLink]="['/product', 3]"></a>
+    <a [routerLink]="['product', 3]"></a>
     <router-outlet></router-outlet>'
 })
 class AppComponent { }
@@ -370,7 +372,7 @@ import { AdminComponent, AuthGuard } from './admin/';
 
 export const AppRoutes: RouterConfig = [
   ...
-  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] }
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] }
 ];
 ```
 

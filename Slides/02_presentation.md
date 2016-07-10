@@ -22,7 +22,7 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonne Pratiques pour une migration heureuse](#/13)
+- [Bonnes Pratiques pour une migration heureuse](#/13)
 
 Notes :
 
@@ -128,7 +128,7 @@ Notes :
 - Nouvelle syntaxe utilisée dans les templates
 - Performance de l'API `Change Detection`
 - Le Projet `Universal`
-- Librairies pour commencer la migration : `ngUpgrade` et `ngForward`
+- Librairie pour commencer la migration : `ngUpgrade`
 - Collaboration avec Microsoft et Ember
 
 Notes :
@@ -193,7 +193,7 @@ import {MyPipe} from './MyPipe';
     pipes: [MyPipe],
     providers: [HTTP_PROVIDERS]
 })
-export class Component{
+export class MyComponent{
   value:string;
   constructor(http:Http){
   }
