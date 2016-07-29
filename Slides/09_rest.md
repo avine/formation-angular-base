@@ -193,6 +193,75 @@ Notes :
 
 
 
+## HTTP - Intercepteurs (NEW !!!)
+
+- Possibilité de créer des Intercepteurs grâce
+    - à l'injection de dépendances
+    - à l'héritage
+
+```typescript
+import {HTTP_PROVIDERS, Http, Request, RequestOptionsArgs, Response, RequestOptions, ConnectionBackend} from '@angular/http';
+import {ROUTER_PROVIDERS, Router} from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+
+class HttpInterceptor extends Http {
+
+    constructor(backend: ConnectionBackend, defaultOptions: RequestOptions, private _router: Router) {
+        super(backend, defaultOptions);
+    }
+
+    request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
+        return this.intercept(super.request(url, options));
+    }
+
+    intercept(observable: Observable<Response>): Observable<Response> {
+        return observable.catch((err, source) => {
+    			if (err.status  == 401 && !_.endsWith(err.url, 'api/auth/login')) {
+                    this._router.navigate(['/login']);
+                    return Observable.empty();
+                } else {
+                    return Observable.throw(err);
+    			}
+        });
+    }
+}
+
+bootstrap(MyApp, [
+  HTTP_PROVIDERS,
+    ROUTER_PROVIDERS,
+    provide(Http, {
+        useFactory: (xhrBackend, requestOptions, router: Router) => new HttpInterceptor(xhrBackend, requestOptions, router),
+        deps: [XHRBackend, RequestOptions, Router]
+    })
+])
+```
+
+Notes : 
+
+
+
+## HTTP - Surcharger les en-têtes (NEW !!!)
+
+- Possibilité de surcharger les paramètres `HTTP` par défaut
+  - grâce à l'injection de dépendances, utilisation du token `RequestOptions`
+  - token utilisé dans le constructeur du service `Http`
+  - utilisation de la classe `BaseRequestOptions` pour bénéficier des paramètres par défaut définis par *Angular*
+  
+```typescript
+import {provide} from '@angular/core';
+import {bootstrap} from '@angular/platform-browser/browser';
+import {HTTP_PROVIDERS, Http, BaseRequestOptions, RequestOptions} from '@angular/http';
+import {App} from './myapp';
+class MyOptions extends BaseRequestOptions {
+  search: string = 'coreTeam=true';
+}
+bootstrap(App, [HTTP_PROVIDERS, {provide: RequestOptions, useClass: MyOptions}]);
+```
+
+Notes : 
+
+
+
 ## HTTP - Tests
 
 - Possibilité de définir une implémentation bouchonnée du service `Http`
