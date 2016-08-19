@@ -28,6 +28,168 @@ Notes :
 
 
 
+## Les Observables 
+
+- Le pattern *Observable* se base sur la librairie *RxJS*
+- Documentation ici : https://github.com/Reactive-Extensions/RxJS
+- Traitement de tâches asynchrones similaires à des tableaux
+- Permet d'avoir des traitements asynchrones retournant plusieurs données
+- Un Observable peut être *cancelable*
+- Utilisation de méthodes dérivées de la programmation fonctionnelle
+    - `map`, `forEach`, `filter`, ...
+- Utilisable pour les traitements asynchrones : WebSocket, gestion des événements JavaScript
+
+Notes :
+
+
+
+## Les Observables 
+
+- Tout observable peut être, comme un tableau, utilisé par  des fonctions classiques :
+    - take(n) va piocher les n premiers éléments.
+    - map(fn) va appliquer la fonction fn sur chaque événement et retourner le résultat.
+    - filter(predicate) laissera passer les seuls événements qui répondent positivement au prédicat.
+    - reduce(fn) appliquera la fonction fn à chaque événement pour réduire le flux à une seule valeur unique.
+    - merge(s1, s2) fusionnera les deux flux.
+    - subscribe(fn) appliquera la fonction fn à chaque évènement qu’elle reçoit.
+    - debounce(ms) retardera l'exécution d'un observable
+
+Notes :
+
+
+
+
+## Les Observables - Exemple simple 
+
+- Exmple complet d'utilisation des Observables
+    - `getDataFromNetwork` et `getDateFromAnotherRequest` sont des traitements asynchrones
+
+```typescript
+getDataFromNetwork()
+    .debounce(300)
+    .filter (rep1 => rep1 != null)
+    .flatMap(rep1 => getDateFromAnotherRequest(rep1))
+    .map(rep2 => `${rep2} transformed`)
+    .subscribe(value => console.log(`next => ${value}`))
+```
+
+Notes :
+
+
+
+
+## Les Observables - Création 
+
+- Conversion de `setInterval` en `Observable`
+
+```typescript
+import {Observable} from 'rxjs/Observable';
+import {Subscriber} from 'rxjs/Subscriber';
+
+@Component({})
+export class AppComponent {
+
+  private subscriber:Subscriber;
+
+  constructor() {
+       let source = new Observable(observer => {
+            let interval = setInterval(_ => observer.next('TICK', 1000);
+            return function () {
+                observer.complete();
+                clearInterval(interval);
+            };
+      });
+      this.subscriber = source.subscribe(v => console.log(v));
+  }
+
+  reset() { this.subscriber.unsubscribe(); }
+
+}
+```
+
+Notes  :
+
+
+
+## Les Observables dans Angular2 
+
+- Angular2 utilise ce système d'Observables à plusieurs endroits :
+    - requêtes HTTP
+    - intéraction avec un formulaire
+    - affichage des vues par le *router*
+    - *ngrx* : *ngrx/store*, *ngrx/devtools*, *ngrx/router*, ...
+
+Notes :
+
+
+
+## In Memory API 
+
+- L'équipe d'Angular2 propose le module *angular2-in-memory-api* pour commencer à intégrer une API sans serveur
+    - se base sur une implémentation *in-memory* du service `XHRBackend`
+    - idéal pour commencer les développements
+
+```shell
+npm install --save angular2-in-memory-web-api
+```
+
+- Nécessité d'implémenter l'interface `InMemoryDbService`
+- Surcharger dans le système d'Injection de Dépendances l'implémentation de `XHRBackend` à utiliser
+
+Notes :
+
+
+
+## In Memory API 
+
+- Exemple d'utilisation :
+
+    - Implémentation de l'interface `InMemoryDbService`
+
+```typescript
+import { InMemoryDbService }  from 'angular2-in-memory-web-api'
+
+//API accessible via app/heroes
+export class HeroData implements InMemoryDbService{
+  createDb() {
+    let heroes = [
+      { id: '1', name: 'Windstorm' },
+      { id: '2', name: 'Tornado' }
+    ];
+    return {heroes};
+  }
+}
+```
+
+Notes :
+
+
+
+## In Memory API 
+
+- Exemple d'utilisation :
+
+    - Enregistrement de notre `InMemoryDbService`
+    - Utilisation de l'implémentation `InMemoryBackendService` pour l'interface `XHRBackend`
+
+```typescript
+import { XHRBackend } from '@angular/http';
+import { InMemoryBackendService, SEED_DATA }  from 'angular2-in-memory-web-api';
+import { HeroData }   from './hero-data';
+
+@NgModule({
+  providers: [
+    { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
+    { provide: SEED_DATA,  useClass: HeroData }                // in-mem server data
+  ],
+})
+export class AppModule { }
+```
+
+Notes :
+
+
+
 ## HTTP
 
 - *Angular2* fournit un ensemble de services pour pouvoir communiquer via des requêtes AJAX
@@ -93,10 +255,9 @@ Notes :
 - Requête HTTP de type `PUT` avec surcharge des `Headers`
 
 ```typescript
-import {bootstrap} from '@angular/platform-browser-dynamic';
 import {Http, HTTP_PROVIDERS, Headers} from '@angular/http';
 
-export class AppComponent {
+export class HttpService {
     constructor(private http:Http){ }
 
     save(contact){
@@ -107,24 +268,7 @@ export class AppComponent {
                                   JSON.stringify(contact), {'headers': headers});
     }
 }
-
-bootstrap(AppComponent, [HTTP_PROVIDERS]);
 ```
-
-Notes :
-
-
-
-## HTTP - Observable
-
-- Le pattern *Observable* se base sur la librairie *RxJS*
-- Documentation ici : https://github.com/Reactive-Extensions/RxJS
-- Traitement de tâches asynchrones similaires à des tableaux
-- Permet d'avoir des traitements asynchrones retournant plusieurs données
-- Un Observable peut être *cancelable*
-- Utilisation de méthodes dérivées de la programmation fonctionnelle
-    - `map`, `forEach`, `filter`, ...
-- Utilisable pour les traitements asynchrones : WebSocket, gestion des événements JavaScript
 
 Notes :
 
@@ -136,7 +280,6 @@ Notes :
 
 ```typescript
 import {Http, Response, HTTP_PROVIDERS} from '@angular/http';
-import {bootstrap} from '@angular/platform-browser-dynamic';
 import {Component} from "@angular/core";
 import 'rxjs/add/operator/map';
 
@@ -152,8 +295,6 @@ export class AppComponent {
             });
     }
 }
-
-bootstrap(AppComponent, [HTTP_PROVIDERS]);
 ```
 
 Notes :
@@ -168,7 +309,6 @@ Notes :
 import 'rxjs/add/operator/map';
 import {MyObject} from "./MyObject";
 import {Http, Response, HTTP_PROVIDERS} from '@angular/http';
-import {bootstrap} from '@angular/platform-browser-dynamic';
 import {Component} from "@angular/core";
 
 @Component({selector: 'app',template: '{{displayedData}}'})
@@ -185,80 +325,34 @@ export class AppComponent {
             });
     }
 }
-
-bootstrap(AppComponent, [HTTP_PROVIDERS]);
 ```
 
 Notes :
 
 
 
-## HTTP - Intercepteurs (NEW !!!)
-
-- Possibilité de créer des Intercepteurs grâce
-    - à l'injection de dépendances
-    - à l'héritage
-
-```typescript
-import {HTTP_PROVIDERS, Http, Request, RequestOptionsArgs, Response, RequestOptions, ConnectionBackend} from '@angular/http';
-import {ROUTER_PROVIDERS, Router} from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-
-class HttpInterceptor extends Http {
-
-    constructor(backend: ConnectionBackend, defaultOptions: RequestOptions, private _router: Router) {
-        super(backend, defaultOptions);
-    }
-
-    request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
-        return this.intercept(super.request(url, options));
-    }
-
-    intercept(observable: Observable<Response>): Observable<Response> {
-        return observable.catch((err, source) => {
-    			if (err.status  == 401 && !_.endsWith(err.url, 'api/auth/login')) {
-                    this._router.navigate(['/login']);
-                    return Observable.empty();
-                } else {
-                    return Observable.throw(err);
-    			}
-        });
-    }
-}
-
-bootstrap(MyApp, [
-  HTTP_PROVIDERS,
-    ROUTER_PROVIDERS,
-    provide(Http, {
-        useFactory: (xhrBackend, requestOptions, router: Router) => new HttpInterceptor(xhrBackend, requestOptions, router),
-        deps: [XHRBackend, RequestOptions, Router]
-    })
-])
-```
-
-Notes : 
-
-
-
-## HTTP - Surcharger les en-têtes (NEW !!!)
+## HTTP - Surcharger les en-têtes 
 
 - Possibilité de surcharger les paramètres `HTTP` par défaut
   - grâce à l'injection de dépendances, utilisation du token `RequestOptions`
   - token utilisé dans le constructeur du service `Http`
   - utilisation de la classe `BaseRequestOptions` pour bénéficier des paramètres par défaut définis par *Angular*
-  
+
 ```typescript
 import {provide} from '@angular/core';
-import {bootstrap} from '@angular/platform-browser/browser';
-import {HTTP_PROVIDERS, Http, BaseRequestOptions, RequestOptions} from '@angular/http';
-import {App} from './myapp';
+import {Http, BaseRequestOptions, RequestOptions} from '@angular/http';
+
 class MyOptions extends BaseRequestOptions {
   search: string = 'coreTeam=true';
 }
-bootstrap(App, [HTTP_PROVIDERS, {provide: RequestOptions, useClass: MyOptions}]);
+
+@NgModule({
+  providers: [{provide: RequestOptions, useClass: MyOptions}],
+})
+export class AppModule { }
 ```
 
-Notes : 
+Notes :
 
 
 

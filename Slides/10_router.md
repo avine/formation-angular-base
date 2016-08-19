@@ -49,20 +49,18 @@ Notes :
 
 - Router orienté *composant*
 - Association d'un composant principal avec une URL de votre application
-- Utilisation d'une méthode `provideRouter` pour définir la configuration
+- Utilisation d'une méthode `RouterModule.forRoot` pour définir la configuration
 - Utilisation de la directive `RouterOutlet` pour définir le point d'insertion
 - Navigation entre les pages via la directive `RouterLink`
 - Installation via *NPM* : `npm install --save @angular/router@3.0.0-alpha.3`
 
 ```typescript
-import {bootstrap} from '@angular/platform-browser-dynamic';
-import {ROUTER_DIRECTIVES} from '@angular/router';
+import { RouterModule } from '@angular/router';
 
-@Component({
-  directives: [ROUTER_DIRECTIVES]
+@NgModule({
+  imports: [RouterModule],
 })
-class AppComponent { ... }
-bootstrap(AppComponent);
+export class AppModule { }
 ```
 
 Notes :
@@ -75,22 +73,21 @@ Notes :
 - Elle prend en paramètre un tableau de `RouterConfig`, qui correspond à un tableau de `Route`
 
 ```typescript
-import { provideRouter, RouterConfig } from '@angular/router';
-import { HomeComponent } from './home';
-import { HeroListComponent, HeroDetailComponent } from './hero/';
-import { HeroDetailComponent }   from './hero-detail.component';
+import { RouterModule, RouterConfig } from '@angular/router';
 
-export const Routes: RouterConfig = [
+export const routes: RouterConfig = [
   { path: '', component: HomeComponent }, // path: '/'
   { path: 'heroes',  component: HeroListComponent },
   { path: 'hero/:id', component: HeroDetailComponent }
 ];
 
-export const APP_ROUTER_PROVIDERS = [
-  provideRouter(Routes)
-];
-
-bootstrap(AppComponent, [APP_ROUTER_PROVIDERS]);
+@NgModule({
+  imports: [
+    RouterModule,
+    RouterModule.forRoot(routes)
+  ],
+})
+export class AppModule { }
 ```
 
 Notes :
@@ -125,15 +122,13 @@ Notes :
 - Exemple simple de la directive `RouterOutlet`
 
 ```typescript
-import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
   template: '
     <header><h1>Title</h1></header>
     <router-outlet></router-outlet>
-  ',
-  directives: [ROUTER_DIRECTIVES]
+  '
 })
 class AppComponent { }
 ```
@@ -156,8 +151,7 @@ Notes :
         <a [routerLink]="['heroes']">Link 1</a>
         <a [routerLink]="['hero', 1]">Link 2</a>
         <router-outlet></router-outlet>
-    </div>',
-    directives: [ROUTER_DIRECTIVES]
+    </div>'
 })
 class AppComponent {
 
@@ -173,11 +167,11 @@ Notes :
 - Imbrication de plusieurs `RouterOutlet` pour définir une hiérarchie de vues
 
 ```typescript
-import { provideRouter, RouterConfig } from '@angular/router';
+import { RouterModule, RouterConfig } from '@angular/router';
 import { HeroListComponent }     from './hero-list.component';
 import { HeroDetailComponent }   from './hero-detail.component';
 
-export const HeroesRoutes = [
+export const routes = [
   { path: 'heroes',  component: HeroListComponent, children: [
     {path: 'details', component: DetailsCmp},
     {path: 'movies', component: MoviesCmp}
@@ -185,11 +179,8 @@ export const HeroesRoutes = [
   { path: 'hero/:id', component: HeroDetailComponent }
 ];
 
-const routes: RouterConfig = HeroesRoutes;
+const routing = RouterModule.forRoot(routes);
 
-export const APP_ROUTER_PROVIDERS = [
-  provideRouter(routes)
-];
 ```
 
 Notes :
@@ -242,15 +233,12 @@ router.navigate(['foo']); //example.com#/foo
 - Possible de configurer l'implémentation à utiliser
 
 ```typescript
-import {provide} from '@angular/core';
-import {HashLocationStrategy } from '@angular/router';
+import {HashLocationStrategy, LocationStrategy } from '@angular/router';
 
-@Component({ directives: [ROUTER_DIRECTIVES] })
-class AppComponent { ... }
-
-bootstrap(AppComponent, [ROUTER_PROVIDERS,
-  { provide: LocationStrategy, useClass: HashLocationStrategy }
-]);
+@NgModule({
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+})
+export class AppModule { }
 ```
 
 Notes :
@@ -264,17 +252,12 @@ Notes :
 
 ```typescript
 import {Component} from '@angular/core';
-import {provideRouter, RouterConfig, APP_BASE_HREF} from '@angular/router';
+import {APP_BASE_HREF} from '@angular/router';
 
-@Component({ ... })
-class AppComponent {}
-
-const AppRoutes: RouterConfig = [ ... ];
-
-bootstrap(AppComponent, [
-  provideRouter(AppRoutes),
-  { provide: APP_BASE_HREF, useValue: '/my/app' }
-]);
+@NgModule({
+  providers: [{ provide: APP_BASE_HREF, useValue: '/my/app' }],
+})
+export class AppModule { }
 ```
 
 Notes :
@@ -356,22 +339,23 @@ Notes :
 - Interface `CanActivate` : interdire / autoriser l'accès à une route
 
 ```typescript
-// fichier app/admin/auth.guard.ts
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private _authService: AuthService) {}
-  canActivate() { return this._authService.isLoggedIn(); }
+  constructor(private _authService: AuthService, , private router: Router) {}
+  canActivate(route: ActivatedRouteSnapshot) { 
+    if(return this._authService.isLoggedIn()) return true;
+    this.router.navigate(['/login']);
+    return false;
+  }
 }
 
 // fichier app/application.routes.ts
 import { AdminComponent, AuthGuard } from './admin/';
-
 export const AppRoutes: RouterConfig = [
-  ...
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] }
 ];
 ```

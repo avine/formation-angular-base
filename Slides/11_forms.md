@@ -53,24 +53,6 @@ Notes :
 
 
 
-## Formulaires : Activation
-
-- Les formulaires doivent être activés par la méthode `provideForms`
-
-```typescript
-import { bootstrap } from '@angular/platform-browser-dynamic';
-import { disableDeprecatedForms, provideForms } from '@angular/forms';
-
-bootstrap(AppComponent, [
-  disableDeprecatedForms(), // only before Angular2 RC5
-  provideForms()
-]);
-```
-
-Notes :
-
-
-
 ## NgForm
 
 La directive `NgForm` est automatiquement associée à chaque balise `<form>`
@@ -185,7 +167,7 @@ Notes :
   - `pristine` / `dirty` : Indiquent si l'utilisateur a altéré l'élément
     - Un élément est considéré `dirty` dès qu'il subit une modification, même si la valeur initiale est restaurée ensuite
   - `untouched` / `touched` : Indiquent si l'élément a été touché (focus)
-- Les classes CSS correspondantes sont appliquées aux éléments
+- Les classes CSS correspondantes sont appliquées aux éléments (via la directive `NgControlStatus`)
   - `ng-valid`, `ng-invalid`, `ng-pristine`, `ng-dirty`, `ng-untouched`, `ng-touched`
 
 Notes :
@@ -198,7 +180,7 @@ Il est possible de créer ses propres validateurs avec une classe implémentant 
 
 ```javascript
 @Directive({
-    selector: '[pattern]',
+    selector: '[pattern][ngModel]',
     providers: [
       { provide: NG_VALIDATORS, useExisting: PatternValidator, multi: true }
     ]
