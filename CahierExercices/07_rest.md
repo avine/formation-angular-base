@@ -24,7 +24,7 @@ Cette API propose plusieurs points d'entrée :
 
 - Vous devez également mettre en place un système de cache pour ces produits, également plus tard pour le panier utilisateur. Pour cela, vous pouvez réutiliser la variable de classe `products` et la méthode `Observable.of`.
 
--  Il se peut que vous ayez des des erreurs dans navigateurs à cause de la méthode `map`. *RxJS* n'inclut pas tous les opérateurs afin de réduire au maximum la taille de la librairie. Pour résoudre ce problème, vous devez ajouter l'import ci-dessous dans l'un de vos fichiers :
+-  Il se peut que vous ayez des des erreurs dans votre navigateur à cause de la méthode `map`. *RxJS* n'inclut pas tous les opérateurs afin de réduire au maximum la taille de la librairie. Pour résoudre ce problème, vous devez ajouter l'import ci-dessous dans l'un de vos fichiers :
 
 ```typescript
 import 'rxjs/add/operator/map';
