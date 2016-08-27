@@ -146,11 +146,23 @@ Notes :
 - De nouveaux concepts à apprendre :
   - `Zone`
   - `Observable`
-  - `SystemJS`...
+  - `WebPack`...
 
 Notes :
 - utilisation de directives 1 dans 2 : https://angular.io/docs/ts/latest/guide/upgrade.html#!#using-angular-1-component-directives-from-angular-2-code
 - Les nouveaux concepts ne sont pas indispensables à connaitre. C'est un plus
+
+
+
+## Angular2 = Une Plateforme
+
+- Angular2 n'est pas qu'un simple framework
+- Intégration Mobile
+- Outillage pour faciliter la phase de développement
+
+![plateforme](ressources/platform.png "plateforme")
+
+Notes : 
 
 
 
@@ -190,7 +202,6 @@ import {MyPipe} from './MyPipe';
 @Component({
     selector: 'app',
     template: '{{value | MyPipe}}',
-    pipes: [MyPipe],
     providers: [HTTP_PROVIDERS]
 })
 export class MyComponent{

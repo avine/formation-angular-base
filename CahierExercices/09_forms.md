@@ -53,4 +53,4 @@ Pour pouvoir bénéficier du module `@angular/forms`, il est nécessaire de l'in
 npm install @angular/forms
 ```
 
-La dernière chose à faire pour pouvoir utiliser ce module est de modifier la configuration de *SystemJS*, via le fichier *system-config.js*. Ajoutez la chaîne de caractères `@angular/forms'` dans le tableau `barrels`.
+La dernière chose à faire pour pouvoir utiliser ce module est de modifier la configuration de *SystemJS*, via le fichier *system-config.js*. Ajoutez la chaîne de caractères `@angular/forms` dans le tableau `barrels`.

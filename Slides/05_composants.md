@@ -188,24 +188,22 @@ Notes :
 - Possibilité d'écouter les évènements de l'élément sur lequel est placé la directive
 - Utilisation de la propriété `host` de l'annotation `@Directive`
 - L'ajout d'handler programmatiquement est à éviter pour des problèmes de mémoire
+- Possibilité d'utiliser les décorateurs `HostListener` et `HostBinding`
 
 ```typescript
 import {Directive, ElementRef, Renderer, Input} from '@angular/core';
 @Directive({
     selector: '[myHighlight]',
     host: {
-    '(mouseenter)': 'onMouseEnter()',
-    '(mouseleave)': 'onMouseLeave()'
+      '(mouseenter)': 'onMouseEnter()',
+      '(mouseleave)': 'onMouseLeave()'
     }
 })
 export class HighlightDirective {
     constructor(private el: ElementRef, private renderer: Renderer) { ... }
     onMouseEnter() { this._highlight("yellow"); }
     onMouseLeave() { this._highlight(null); }
-    private _highlight(color: string) {
-        this.renderer
-            .setElementStyle(this.el.nativeElement, 'backgroundColor', color);
-    }
+    private _highlight(color: string) { ... }
 }
 ```
 
@@ -295,20 +293,26 @@ Notes :
 
 ## Les Composants - Aggrégation
 
-- Pour agréger des composants entre eux, nécessité de
-    - les lister explicitement dans chaque composant
-    - définir une stack globale de composant pouvant être utilisée dans l'application
-- Cette liste de composants doit être définie via la propriété `directives` des annotations `@Directive` et `@Component`
+- Les composants externes nécessaires à votre applications doivent :
+  - être définis dans un module importé par votre application (`ngModule`)
+  - être définis dans la propriété `declarations` du décorateur `ngModule` de votre application
 
 ```typescript
-import {Component} from '@angular/core';
-import {HighlightDirective} from './highlight.directive';
-@Component({
-    selector: 'my-app',
-    template: '<span myHighlight>Highlight me!</span>',
-    directives: [HighlightDirective]
+import { NgModule, ApplicationRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+  ],
+  imports: [
+    CommonModule,
+    FormsModule
+  ]
 })
-export class AppComponent { }
+export class AppModule {}
 ```
 
 Notes :
@@ -334,27 +338,6 @@ import {Component} from '@angular/core';
 })
 export class PostComponent { }
 ```
-Notes :
-
-
-
-## Les Composants - Stack Globale
-
-- Possibilité de définir une stack globale de composants
-- Les directives seront utilisables dans l'ensemble de l'application
-- Surcharge du `provider` `PLATFORM_DIRECTIVES`
-
-```typescript
-import {bootstrap} from '@angular/platform-browser-dynamic';
-import {App} from './app/app';
-import {MyComponent} from './MyComponent'
-import {PLATFORM_DIRECTIVES} from '@angular/core'
-
-bootstrap(App, [
-    { provide: PLATFORM_DIRECTIVES, useValue: [MyComponent], multi:true }
-]);
-```
-
 Notes :
 
 
