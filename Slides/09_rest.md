@@ -28,7 +28,7 @@ Notes :
 
 
 
-## Les Observables 
+## Les Observables
 
 - Le pattern *Observable* se base sur la librairie *RxJS*
 - Documentation ici : https://github.com/Reactive-Extensions/RxJS
@@ -43,7 +43,7 @@ Notes :
 
 
 
-## Les Observables 
+## Les Observables
 
 - Tout observable peut être, comme un tableau, utilisé par  des fonctions classiques :
     - take(n) va piocher les n premiers éléments.
@@ -59,7 +59,7 @@ Notes :
 
 
 
-## Les Observables - Exemple simple 
+## Les Observables - Exemple simple
 
 - Exmple complet d'utilisation des Observables
     - `getDataFromNetwork` et `getDateFromAnotherRequest` sont des traitements asynchrones
@@ -78,7 +78,7 @@ Notes :
 
 
 
-## Les Observables - Création 
+## Les Observables - Création
 
 - Conversion de `setInterval` en `Observable`
 
@@ -111,7 +111,7 @@ Notes  :
 
 
 
-## Les Observables dans Angular2 
+## Les Observables dans Angular2
 
 - Angular2 utilise ce système d'Observables à plusieurs endroits :
     - requêtes HTTP
@@ -123,7 +123,7 @@ Notes :
 
 
 
-## In Memory API 
+## In Memory API
 
 - L'équipe d'Angular2 propose le module *angular2-in-memory-api* pour commencer à intégrer une API sans serveur
     - se base sur une implémentation *in-memory* du service `XHRBackend`
@@ -140,7 +140,7 @@ Notes :
 
 
 
-## In Memory API 
+## In Memory API
 
 - Exemple d'utilisation :
 
@@ -165,7 +165,7 @@ Notes :
 
 
 
-## In Memory API 
+## In Memory API
 
 - Exemple d'utilisation :
 
@@ -331,7 +331,7 @@ Notes :
 
 
 
-## HTTP - Surcharger les en-têtes 
+## HTTP - Surcharger les en-têtes
 
 - Possibilité de surcharger les paramètres `HTTP` par défaut
   - grâce à l'injection de dépendances, utilisation du token `RequestOptions`
@@ -361,25 +361,26 @@ Notes :
 - Possibilité de définir une implémentation bouchonnée du service `Http`
 
 ```typescript
-import {
-  describe, it, expect, beforeEachProviders, inject
-} from '@angular/core/testing';
+import {TestBed, inject} from '@angular/core/testing';
 import {Http, BaseRequestOptions, Response, ResponseOptions} from '@angular/http';
 import {MockBackend} from '@angular/http/testing';
 import 'rxjs/add/operator/map';
 
 describe('UserService', () => {
-  beforeEachProviders(() => [
-    MockBackend,
-    BaseRequestOptions,
-    {
-      provide: Http,
-      useFactory: (backend: MockBackend, defaultOptions: BaseRequestOptions)
-        => new Http(backend, defaultOptions),
-      deps: [MockBackend, BaseRequestOptions]
-    },
-    UserService
-  ]);
+  beforeEach(() => {
+   TestBed.configureTestingModule({
+     providers: [
+       UserService,
+       MockBackend,
+       BaseRequestOptions,
+       {
+         provide: Http,
+         useFactory: (backend: MockBackend, defaultsOptions: BaseRequestOptions) =>
+           new Http(backend, defaultsOptions),
+         deps: [MockBackend, BaseRequestOptions]
+       }
+     ]
+   });
 });
 ```
 

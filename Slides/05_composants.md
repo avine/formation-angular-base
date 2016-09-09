@@ -344,8 +344,29 @@ Notes :
 
 ## Les Composants - Tests
 
-- Nécessité d'instancier un composant via l'objet `TestComponentBuilder` et sa méthode `createAsync`
-- La méthode `createAsync` retourne un objet de type `ComponentFixture` qui est un représentation du composant
+- Nécessité de configurer l'objet `TestBed` via sa méthode `configureTestingModule` :
+```typescript
+TestBed.configureTestingModule({
+    declarations: [
+      TitleComponent
+    ],
+    imports: [
+      // HttpModule, FormsModule, etc.
+    ],
+    providers: [
+      // TitleService,
+      // { provide: TitleService, useClass: TitleServiceMock })
+    ]
+});
+```
+- La méthode `createComponent` de l'objet `TestBed` retourne un objet de type `ComponentFixture` qui est un représentation du composant
+
+Notes :
+
+
+
+## Les Composants - Tests
+
 - Un objet de type `ComponentFixture` propose deux propriétés intéressantes :
   - `componentInstance` : l'instance *JavaScript* du composant
   - `nativeElement` : l'élément *HTML*
@@ -369,25 +390,25 @@ Notes :
 - Test Unitaire :
 
 ```typescript
-import {
-  describe, it, expect, inject, async, beforeEach
-} from '@angular/core/testing';
-import {TestComponentBuilder} from '@angular/compiler/testing';
+import {TestBed, async} from '@angular/core/testing';
 
-import {TitleCmp} from './titlecmp';
-describe('TitleCmp', () => {
-  it('should have a title', async(inject([TestComponentBuilder], tcb => {
-    tcb.createAsync(TitleCmp)
-      .then(fixture => {
-        let TitleCmp = fixture.componentInstance;
-        TitleCmp.title = 'Hello World';
+import {TitleComponent} from './title.component';
+describe('TitleComponent', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [TitleComponent]
+    });
+  });
 
-        fixture.detectChanges();
+  it('should have a title', async(() => {
+    let fixture = TestBed.createComponent(TitleComponent);
+    let instance = fixture.componentInstance;
+    instance.title = 'Hello World';
+    fixture.detectChanges();
 
-        let element = fixture.nativeElement;
-        expect(element.querySelector('h1').textContent).toBe('Hello World');
-      });
-  })));
+    let element = fixture.nativeElement;
+    expect(element.querySelector('h1').textContent).toBe('Hello World');
+  }));
 });
 ```
 
