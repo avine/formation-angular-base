@@ -200,7 +200,6 @@ Notes :
 - Appel de la méthode `transform` pour tester tous les cas possibles
 
 ```typescript
-import {describe,it,expect,beforeEach} from '@angular/core/testing';
 import {MyLowerCasePipe} from './app/mylowercase';
 
 describe('MyLowerCasePipe', () => {
