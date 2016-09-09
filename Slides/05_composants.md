@@ -359,7 +359,7 @@ TestBed.configureTestingModule({
     ]
 });
 ```
-- La méthode `createComponent` de l'objet `TestBed` retourne un objet de type `ComponentFixture` qui est un représentation du composant
+- La méthode `createComponent` de l'objet `TestBed` retourne un objet de type `ComponentFixture` qui est une représentation du composant
 
 Notes :
 
