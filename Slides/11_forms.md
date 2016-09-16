@@ -53,24 +53,6 @@ Notes :
 
 
 
-## Formulaires : Activation
-
-- Les formulaires doivent être activés par la méthode `provideForms`
-
-```typescript
-import { bootstrap } from '@angular/platform-browser-dynamic';
-import { disableDeprecatedForms, provideForms } from '@angular/forms';
-
-bootstrap(AppComponent, [
-  disableDeprecatedForms(), // only before Angular2 RC5
-  provideForms()
-]);
-```
-
-Notes :
-
-
-
 ## NgForm
 
 La directive `NgForm` est automatiquement associée à chaque balise `<form>`
@@ -92,7 +74,7 @@ Notes :
 
 ## Directives
 
-- `ngModel` : Gère le binding entre la variable du contrôlleur et le champ HTML
+- `ngModel` : Gère le binding entre la variable du contrôleur et le champ HTML
 
 ```html
 <input type="text" [(ngModel)]="contact.name" name="name">
@@ -111,10 +93,10 @@ Notes :
 
 
 ## FormControl
-- Un `FormControl` est une classe réprésentant un `input` qui contient :
+- Un `FormControl` est une classe représentant un `input` qui contient :
  - La valeur
- - l'état (dirty, valid, ...)
- - les erreurs de validations
+ - L'état (dirty, valid, ...)
+ - Les erreurs de validation
 
 - Angular2 crée un `FormControl` dès l'utilisation de la directive `ngModel`
 - Il utilise la valeur de la propriété `name` comme libellé
@@ -161,7 +143,7 @@ Notes :
 
 ## Validation : Désactiver la gestion native
 
-- Par défaut, les navigateurs effectuent les validations nativements
+- Par défaut, les navigateurs effectuent les validations nativement
  - Manque de cohérence visuelle avec l'application et entre navigateurs
  - Interfère avec le mécanisme d'AngularJs
 - Solution : Désactiver la validation native et l'effectuer par Angular2
@@ -185,7 +167,7 @@ Notes :
   - `pristine` / `dirty` : Indiquent si l'utilisateur a altéré l'élément
     - Un élément est considéré `dirty` dès qu'il subit une modification, même si la valeur initiale est restaurée ensuite
   - `untouched` / `touched` : Indiquent si l'élément a été touché (focus)
-- Les classes CSS correspondantes sont appliquées aux éléments
+- Les classes CSS correspondantes sont appliquées aux éléments (via la directive `NgControlStatus`)
   - `ng-valid`, `ng-invalid`, `ng-pristine`, `ng-dirty`, `ng-untouched`, `ng-touched`
 
 Notes :
@@ -198,7 +180,7 @@ Il est possible de créer ses propres validateurs avec une classe implémentant 
 
 ```javascript
 @Directive({
-    selector: '[pattern]',
+    selector: '[pattern][ngModel]',
     providers: [
       { provide: NG_VALIDATORS, useExisting: PatternValidator, multi: true }
     ]

@@ -58,8 +58,13 @@ export class AppComponent {
     }
 }
 
-// fichier main.ts
-bootstrap(AppComponent, [MyService]);
+// fichier app.module.ts
+import { MyService } from './services/myservice.service';
+
+@NgModule({
+  providers: [MyService],
+})
+export class AppModule { }
 ```
 
 Notes :
@@ -83,9 +88,6 @@ export class AppComponent {
         console.log(service.myMethod());
     }
 }
-
-// fichier main.ts
-bootstrap(AppComponent, []);
 ```
 
 Notes :
@@ -126,15 +128,14 @@ Notes :
 - L'identifiant du provider peut être un objet, une chaîne de caractères ou un `OpaqueToken`
 
 ```typescript
-bootstrap(AppComponent, [MyService]);
-bootstrap(AppComponent, [new Provider(MyService, {useClass: MyService})]);
-bootstrap(AppComponent, [{ provide: MyService, useClass: MyService }]);
-bootstrap(AppComponent, [{ provide: String, useValue: 'hello world' }]);
-bootstrap(AppComponent, [{
-  provide: String,
-  useFactory: (myService: MyService) => myService.myMethod()
-  deps: [MyService]
-}]);
+providers: [MyService]
+providers: [new Provider(MyService, {useClass: MyService})]
+providers: [{ provide: MyService, useClass: MyService }]
+providers: [{
+  provide: ServerConfig,
+  useFactory: (appService: AppService) => appService.getConfig();
+  deps: [AppService]
+}]
 ```
 
 Notes :
@@ -149,16 +150,16 @@ Notes :
 - Nécessité d'utiliser l'annotation `Inject` pour injecter ce genre de service
 
 ```typescript
-let config = {
-    apiEndpoint: 'api.heroes.com',
-    title: 'The Hero Employment Agency'
-};
-bootstrap(AppComponent, [
-    { provide: 'config', useValue:config }
-]);
+let apiUrl: string = 'api.heroes.com';
+let env: string = 'dev';
+
+@NgModule({
+  providers: [{provide: 'apiUrl', useValue:apiUrl},{provide: 'env', useValue:env}],
+})
+export class AppModule { }
 
 class AppComponent {
-    constructor(@Inject('config') config) { ... }
+    constructor(@Inject('apiUrl') api:string) { ... }
 }
 ```
 
@@ -169,23 +170,22 @@ Notes :
 ## Injection de Dépendances - Tests
 
 - Possibilité de bénéficier de l'injection de dépendance grâce à la méthode `inject`
-- Définition des services injectés dans les tests via la méthode `beforeEachProviders`
+- Définition des services injectés dans les tests via la méthode `configureTestingModule` de l'objet `TestBed` (propriété `providers`)
 - Méthode `async` utilisée pour tester les services asynchrones (utilise le méchanisme de *Zone*)
 
 ```typescript
-import {
-  describe, it, expect, async, inject, beforeEachProviders
-} from '@angular/core/testing';
+import {TestBed, async, inject} from '@angular/core/testing';
 
 describe('UserService', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({ providers: [UserService] });
+  });
 
-  beforeEachProviders(() => [UserService]);
-
-  it('should return 1 user', async(inject([UserService], service => {
+  it('should return 1 user', async(inject([UserService]) => {
     service.getUsers().then(users => {
       expect(users.length).toBe(1);
     });
-  })));
+  }));
 });
 ```
 

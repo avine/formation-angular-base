@@ -33,7 +33,7 @@ Notes :
 - Mécanisme permettant la manipulation d'une donnée avant son utilisation
 - Similaire aux filtres dans *AngularJS*
 - Utilisation dans les templates HTML similaires à l'ancienne version
-- Possibilité de définir des *Pipes* statefull ou stateless
+- Possibilité de définir des *Pipes* pure ou impure
 - Pipes disponibles par défaut dans le framework (`@angular/common`):
   - `LowerCasePipe` , `UpperCasePipe`
   - `CurrencyPipe`, `DecimalPipe`, `PercentPipe`
@@ -96,16 +96,16 @@ Notes :
 
 ## Les Pipes - Utilisation
 
-- Charger explicitement les *pipes* externes avant utilisation dans vos templates
-- Utiliser de la propriété `Pipes` du décorateur `@Component`
+- Les pipes externes nécessaires à votre applications doivent :
+  - être définis dans un module importé par votre application (`ngModule`)
+  - être définis dans la propriété `declarations` du décorateur `ngModule` de votre application
 
 ```typescript
 import {Component} from '@angular/core';
 import {MyLowerCasePipe} from './mylowercase';
 @Component({
 	selector: 'app',
-	template: '<h2>{{'Hello World' | mylowercase}}</h2>',
-	pipes: [MyLowerCasePipe]
+	template: '<h2>{{'Hello World' | mylowercase}}</h2>'
 })
 export class App { }
 ```
@@ -141,13 +141,13 @@ Notes :
 
 
 
-## Les Pipes stateful
+## Les Pipes impure
 
-- Deux catégories de *Pipes* : stateless et stateful
-- *Pipes* sont stateless par défaut
-- Un *Pipe* stateful doit implémenter l'interface `PipeOnDestroy`
-- Exemple de *Pipes* stateful : *AsyncPipe*
-- Pour définir un *Pipe* stateful, nécessité de mettre la propriété `pure` à `false`
+- Deux catégories de *Pipes* : pure et impure
+- *Pipes* sont pure par défaut
+- Un *Pipe* impure doit implémenter l'interface `PipeOnDestroy`
+- Exemple de *Pipes* impure : *AsyncPipe*
+- Pour définir un *Pipe* impure, nécessité de mettre la propriété `pure` à `false`
 - Permet d'indiquer au système de *Change Detection* de vérifier le résultat de ce *Pipe* après chaque cycle.
 
 ```typescript
@@ -194,51 +194,27 @@ Notes :
 
 
 
-## Les Pipes - Stack Globale
-
-- Possibilité de définir une stack globale de `pipes`
-- Les `pipes` seront utilisables dans l'ensemble de l'application
-- Surcharge du `provider` `PLATFORM_PIPES`
-
-```typescript
-import {bootstrap} from '@angular/platform-browser-dynamic';
-import {App} from './app/app';
-import {MyLowerCasePipe} from './app/mylowercasepipe';
-import {provide, PLATFORM_PIPES} from '@angular/core';
-
-bootstrap(App, [
-    { provide: PLATFORM_PIPES, useValue: [MyLowerCasePipe], multi:true }
-]);
-```
-
-Notes :
-
-
-
 ## Les Pipes - Tests
 
 - Instanciation du *Pipe* dans une méthode `BeforeEach`
 - Appel de la méthode `transform` pour tester tous les cas possibles
 
 ```typescript
-import {describe,it,expect,beforeEach} from '@angular/core/testing';
 import {MyLowerCasePipe} from './app/mylowercase';
 
-export function main() {
-  describe('MyLowerCasePipe', () => {
-    let pipe;
+describe('MyLowerCasePipe', () => {
+  let pipe;
 
-    beforeEach(() => { pipe = new MyLowerCasePipe(); });
+  beforeEach(() => { pipe = new MyLowerCasePipe(); });
 
-    describe('transform', () => {
-      it('should return uppercase', () => {
-        var val = pipe.transform('SOMETHING');
-        expect(val).toEqual('something');
-      });
+  describe('transform', () => {
+    it('should return uppercase', () => {
+      var val = pipe.transform('SOMETHING');
+      expect(val).toEqual('something');
     });
-
   });
-}
+
+});
 ```
 
 Notes :

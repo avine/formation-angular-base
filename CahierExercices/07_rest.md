@@ -22,7 +22,13 @@ Cette API propose plusieurs points d'entrée :
   - convertir en `json`,
   - mettre en majuscule les propriétés `title` de chaque produit
 
-- Vous devez également mettre en place un système de cache pour ces produits, également plus tard pour le panier utilisateur. Pour cela, vous pouvez réutiliser la variable de classe `products` et la méthode `Observable.from` du module `rxjs/add/observable/from`
+- Vous devez également mettre en place un système de cache pour ces produits, également plus tard pour le panier utilisateur. Pour cela, vous pouvez réutiliser la variable de classe `products` et la méthode `Observable.of`.
+
+-  Il se peut que vous ayez des des erreurs dans votre navigateur à cause de la méthode `map`. *RxJS* n'inclut pas tous les opérateurs afin de réduire au maximum la taille de la librairie. Pour résoudre ce problème, vous devez ajouter l'import ci-dessous dans l'un de vos fichiers :
+
+```typescript
+import 'rxjs/add/operator/map';
+```
 
 - Nous allons à présent modifier, de la même façon, le service `CustomerService`.
   - Créez une méthode `getBasket` avec le même fonctionnement que le point précédent
@@ -30,3 +36,4 @@ Cette API propose plusieurs points d'entrée :
 
 
 - Modifiez le composant `product` afin d'utiliser la nouvelle version des services `CustomerService` et `ProductService`.
+

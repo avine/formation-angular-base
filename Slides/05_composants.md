@@ -188,24 +188,22 @@ Notes :
 - Possibilité d'écouter les évènements de l'élément sur lequel est placé la directive
 - Utilisation de la propriété `host` de l'annotation `@Directive`
 - L'ajout d'handler programmatiquement est à éviter pour des problèmes de mémoire
+- Possibilité d'utiliser les décorateurs `HostListener` et `HostBinding`
 
 ```typescript
 import {Directive, ElementRef, Renderer, Input} from '@angular/core';
 @Directive({
     selector: '[myHighlight]',
     host: {
-    '(mouseenter)': 'onMouseEnter()',
-    '(mouseleave)': 'onMouseLeave()'
+      '(mouseenter)': 'onMouseEnter()',
+      '(mouseleave)': 'onMouseLeave()'
     }
 })
 export class HighlightDirective {
     constructor(private el: ElementRef, private renderer: Renderer) { ... }
     onMouseEnter() { this._highlight("yellow"); }
     onMouseLeave() { this._highlight(null); }
-    private _highlight(color: string) {
-        this.renderer
-            .setElementStyle(this.el.nativeElement, 'backgroundColor', color);
-    }
+    private _highlight(color: string) { ... }
 }
 ```
 
@@ -295,20 +293,26 @@ Notes :
 
 ## Les Composants - Aggrégation
 
-- Pour agréger des composants entre eux, nécessité de
-    - les lister explicitement dans chaque composant
-    - définir une stack globale de composant pouvant être utilisée dans l'application
-- Cette liste de composants doit être définie via la propriété `directives` des annotations `@Directive` et `@Component`
+- Les composants externes nécessaires à votre applications doivent :
+  - être définis dans un module importé par votre application (`ngModule`)
+  - être définis dans la propriété `declarations` du décorateur `ngModule` de votre application
 
 ```typescript
-import {Component} from '@angular/core';
-import {HighlightDirective} from './highlight.directive';
-@Component({
-    selector: 'my-app',
-    template: '<span myHighlight>Highlight me!</span>',
-    directives: [HighlightDirective]
+import { NgModule, ApplicationRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+  ],
+  imports: [
+    CommonModule,
+    FormsModule
+  ]
 })
-export class AppComponent { }
+export class AppModule {}
 ```
 
 Notes :
@@ -338,22 +342,24 @@ Notes :
 
 
 
-## Les Composants - Stack Globale
+## Les Composants - Tests
 
-- Possibilité de définir une stack globale de composants
-- Les directives seront utilisables dans l'ensemble de l'application
-- Surcharge du `provider` `PLATFORM_DIRECTIVES`
-
+- Nécessité de configurer l'objet `TestBed` via sa méthode `configureTestingModule` :
 ```typescript
-import {bootstrap} from '@angular/platform-browser-dynamic';
-import {App} from './app/app';
-import {MyComponent} from './MyComponent'
-import {PLATFORM_DIRECTIVES} from '@angular/core'
-
-bootstrap(App, [
-    { provide: PLATFORM_DIRECTIVES, useValue: [MyComponent], multi:true }
-]);
+TestBed.configureTestingModule({
+    declarations: [
+      TitleComponent
+    ],
+    imports: [
+      // HttpModule, FormsModule, etc.
+    ],
+    providers: [
+      // TitleService,
+      // { provide: TitleService, useClass: TitleServiceMock })
+    ]
+});
 ```
+- La méthode `createComponent` de l'objet `TestBed` retourne un objet de type `ComponentFixture` qui est une représentation du composant
 
 Notes :
 
@@ -361,8 +367,6 @@ Notes :
 
 ## Les Composants - Tests
 
-- Nécessité d'instancier un composant via l'objet `TestComponentBuilder` et sa méthode `createAsync`
-- La méthode `createAsync` retourne un objet de type `ComponentFixture` qui est un représentation du composant
 - Un objet de type `ComponentFixture` propose deux propriétés intéressantes :
   - `componentInstance` : l'instance *JavaScript* du composant
   - `nativeElement` : l'élément *HTML*
@@ -386,25 +390,25 @@ Notes :
 - Test Unitaire :
 
 ```typescript
-import {
-  describe, it, expect, inject, async, beforeEach
-} from '@angular/core/testing';
-import {TestComponentBuilder} from '@angular/compiler/testing';
+import {TestBed, async} from '@angular/core/testing';
 
-import {TitleCmp} from './titlecmp';
-describe('TitleCmp', () => {
-  it('should have a title', async(inject([TestComponentBuilder], tcb => {
-    tcb.createAsync(TitleCmp)
-      .then(fixture => {
-        let TitleCmp = fixture.componentInstance;
-        TitleCmp.title = 'Hello World';
+import {TitleComponent} from './title.component';
+describe('TitleComponent', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [TitleComponent]
+    });
+  });
 
-        fixture.detectChanges();
+  it('should have a title', async(() => {
+    let fixture = TestBed.createComponent(TitleComponent);
+    let instance = fixture.componentInstance;
+    instance.title = 'Hello World';
+    fixture.detectChanges();
 
-        let element = fixture.nativeElement;
-        expect(element.querySelector('h1').textContent).toBe('Hello World');
-      });
-  })));
+    let element = fixture.nativeElement;
+    expect(element.querySelector('h1').textContent).toBe('Hello World');
+  }));
 });
 ```
 

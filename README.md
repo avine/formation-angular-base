@@ -1,6 +1,6 @@
 Détails du modèle dans le [wiki](https://github.com/Zenika/Formation--Modele/wiki)
 
-Documentation du [framework](https://github.com/Zenika/Formation--Framework)
+Documentation du [framework](https://github.com/Zenika/zenika-formation-framework)
 
 
 ## Supports PDF et Live
@@ -68,12 +68,6 @@ Pour générer les `.pdf` des slides :
 grunt pdf
 ```
 
-Si vous utiliser NPM3, utiliser la commande :
-
-```shell
-gulp
-```
-
 
 ## Utilisation avec Docker
 
@@ -120,7 +114,7 @@ https://github.com/hakimel/reveal.js/wiki/Keyboard-Short
 
 ## Troubleshooting
 
-En cas de problème lors de l'installation ou de l'utilisation, consultez la page dédié dans le wiki du Framework : [Troubleshooting](https://github.com/Zenika/Formation--Framework/wiki/Troubleshooting).
+En cas de problème lors de l'installation ou de l'utilisation, consultez la page dédié dans le wiki du Framework : [Troubleshooting](https://github.com/Zenika/zenika-formation-framework/wiki/Troubleshooting).
 
 
 ## Intégration Continue
