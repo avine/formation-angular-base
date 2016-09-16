@@ -52,7 +52,7 @@ Notes :
 - Utilisation d'une méthode `RouterModule.forRoot` pour définir la configuration
 - Utilisation de la directive `RouterOutlet` pour définir le point d'insertion
 - Navigation entre les pages via la directive `RouterLink`
-- Installation via *NPM* : `npm install --save @angular/router@3.0.0-alpha.3`
+- Installation via *NPM* : `npm install --save @angular/router`
 
 ```typescript
 import { RouterModule } from '@angular/router';
@@ -73,9 +73,9 @@ Notes :
 - Elle prend en paramètre un tableau de `RouterConfig`, qui correspond à un tableau de `Route`
 
 ```typescript
-import { RouterModule, RouterConfig } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-export const routes: RouterConfig = [
+export const routes: Routes = [
   { path: '', component: HomeComponent }, // path: '/'
   { path: 'heroes',  component: HeroListComponent },
   { path: 'hero/:id', component: HeroDetailComponent }
@@ -83,7 +83,6 @@ export const routes: RouterConfig = [
 
 @NgModule({
   imports: [
-    RouterModule,
     RouterModule.forRoot(routes)
   ],
 })
@@ -345,9 +344,9 @@ import { AuthService } from '../shared/auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private _authService: AuthService, , private router: Router) {}
-  canActivate(route: ActivatedRouteSnapshot) { 
-    if(return this._authService.isLoggedIn()) return true;
+  constructor(private _authService: AuthService, private router: Router) {}
+  canActivate(route: ActivatedRouteSnapshot) {
+    if(this._authService.isLoggedIn()) return true;
     this.router.navigate(['/login']);
     return false;
   }

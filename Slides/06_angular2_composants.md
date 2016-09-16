@@ -140,7 +140,7 @@ Notes :
 - Seconde syntaxe disponible (également pour `ngIf` et `ngSwitch`)
 
 ```typescript
-<li *ngFor="let item of items; let i = index">...</li>
+<li *ngFor="let item of items; let i = index"> {{ item.label }} </li>
 ```
 
 Notes :
