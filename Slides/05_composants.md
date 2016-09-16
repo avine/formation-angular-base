@@ -250,7 +250,7 @@ Notes :
 ```typescript
 //<p [myHighlight]="color" (hightLightEvent)="callExpression($event)">Highlight me!</p>
 export class HighlightDirective {
-    @Output() hightLightEvent:EventEmitter<any> = new EventEmitter<string>();
+    @Output() hightLightEvent = new EventEmitter<string>();
 
     constructor(private el: ElementRef, private renderer: Renderer) { }
     onMouseEnter() {
@@ -274,8 +274,8 @@ Notes :
 - `@Component` fournit notamment les paramètres `template`, `templateUrl`, `styles`, `styleUrl` et `encapsulation`
 
 ```typescript
-import {Component} from '@angular/core'
-import {Product} from ./model/Product'
+import {Input, Output, EventEmitter, Component} from '@angular/core'
+import {Product} from './model/Product'
 
 @Component({
     selector: 'product-detail',
@@ -283,7 +283,7 @@ import {Product} from ./model/Product'
 })
 export class ProductComponent {
     @Input() product:Product;
-    @Output() addToBasket:EventEmitter<any> = new EventEmitter<Product>();
+    @Output() addToBasket = new EventEmitter<Product>();
 }
 ```
 

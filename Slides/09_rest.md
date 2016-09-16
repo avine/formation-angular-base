@@ -93,7 +93,7 @@ export class AppComponent {
 
   constructor() {
        let source = new Observable(observer => {
-            let interval = setInterval(_ => observer.next('TICK', 1000);
+            let interval = setInterval(_ => observer.next('TICK'), 1000);
             return function () {
                 observer.complete();
                 clearInterval(interval);
@@ -280,7 +280,7 @@ Notes :
 
 ```typescript
 import {Http, Response, HTTP_PROVIDERS} from '@angular/http';
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 import 'rxjs/add/operator/map';
 
 @Component({selector: 'app', template: '{{displayedData}}'})
@@ -307,13 +307,13 @@ Notes :
 
 ```typescript
 import 'rxjs/add/operator/map';
-import {MyObject} from "./MyObject";
+import {MyObject} from './MyObject';
 import {Http, Response, HTTP_PROVIDERS} from '@angular/http';
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 
-@Component({selector: 'app',template: '{{displayedData}}'})
+@Component({selector: 'app',template: '{{displayedData | json}}'})
 export class AppComponent {
-    private displayedData;
+    private displayedData = [];
 
     constructor(private http:Http) {
         http.get('people.json')
@@ -321,7 +321,7 @@ export class AppComponent {
             .filter(data => data.hasToBeDisplayed)
             .map(data => new MyObject(data.id, data.name))
             .subscribe((jsonObject:MyObject) => {
-                this.displayedData = jsonObject;
+                this.displayedData.push(jsonObject);
             });
     }
 }

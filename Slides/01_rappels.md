@@ -338,12 +338,16 @@ Notes :
 class Person {
    private _secret: string;
    get secret(): string{
-      return this._secret;
+      return this._secret.toLowerCase();
    }
    set secret(value: string) {
       this._secret = value;
    }
 }
+
+let person = new Person();
+person.secret = 'Test';
+console.log(person.secret); // => 'test'
 ```
 
 Notes :

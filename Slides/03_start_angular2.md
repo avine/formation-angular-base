@@ -58,7 +58,7 @@ Notes :
   - implémenter la classe *TypeScript*
 
 ```typescript
-import {bootstrap} from '@angular/platform-browser-dynamic'
+import { Component } from '@angular/core'
 
 @Component({
     selector: 'app',
@@ -98,7 +98,7 @@ import { AppComponent } from './app.component';
 })
 export class AppModule {}
 ```
-mode
+
 Notes :
 
 
@@ -122,9 +122,9 @@ ng new Application
 ng build (--dev / --prod)
 ng serve
 
-ng generate component AppComponent (--inline-template)
-ng generate pipe UpperCasePipe
-ng generate service UserService
+ng generate component Product (--inline-template) // => class ProductComponent{ ... }
+ng generate pipe UpperCase
+ng generate service User
 ng generate directive myNgIf
 ```
 

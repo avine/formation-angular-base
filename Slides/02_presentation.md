@@ -106,6 +106,7 @@ app.service('Service', function(){
 - Version Angular2
 
 ```typescript
+@Injectable()
 export class Service {
 
   myMethod(){

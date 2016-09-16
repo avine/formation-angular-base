@@ -17,7 +17,7 @@ L'application, que nous allons implémenter, sera initialisée via l'outil `angu
 - la gestion des dépendances
 
 
-- Téléchargez `angular-cli` en utilisant `NPM`. Ce module nécessite une version récente de *NodeJS*
+- Téléchargez `angular-cli@webpack` en utilisant `NPM`. Ce module nécessite une version récente de *NodeJS*
 
 - Depuis votre console, créez un nouveau projet via la commande `ng new Application`
 
@@ -32,12 +32,12 @@ L'application, que nous allons implémenter, sera initialisée via l'outil `angu
 
 Même si nous n'avons pas encore abordé les concepts du framework, nous allons faire des petites modifications afin de prendre en main la structure de notre application.
 
-- Le composant principal doit contenir l'HTML suivant :
+- Le composant principal devra contenir le code HTML suivant :
 
 ```html
-<p>This is my first component</p>
+<h1>This is my first component</h1>
 ```
 
-- La chaîne de caractère ci-dessous sera définie dans une variable `helloMsg` de la classe `Application`. Pour afficher cette variable dans le template, nous utiliserons la même syntaxe que AngularJS : `{{helloMsg}}`
+- La chaîne de caractère ci-dessus pourra être modifier par la variable `title` de la classe `Application`. Pour afficher cette variable dans le template, nous utiliserons la même syntaxe que AngularJS : `{{title}}`
 
 - Vérifiez que vous obtenez bien la toute dernière version de votre application dans le navigateur.

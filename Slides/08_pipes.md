@@ -37,7 +37,7 @@ Notes :
 - Pipes disponibles par défaut dans le framework (`@angular/common`):
   - `LowerCasePipe` , `UpperCasePipe`
   - `CurrencyPipe`, `DecimalPipe`, `PercentPipe`
-  - `DatePipe`, `JSONPipe`, `ReplacePipe`, `SlicePipe`
+  - `DatePipe`, `JSONPipe`, `SlicePipe`
   - `I18nPluralPipe`, `I18nSelectPipe`
   - `AsyncPipe`
 
@@ -60,7 +60,7 @@ Notes :
   - Séparation des paramètres par le caractère `:`
 
 ```html
-{{ myVar | pipe1:param1:'string' }}
+{{ price | currency:'EUR':true }}
 ```
 
 Notes :
