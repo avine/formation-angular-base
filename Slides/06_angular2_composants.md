@@ -1,4 +1,4 @@
-# Les composants<br>Angular2
+# Les directives<br>Angular2
 
 <!-- .slide: class="page-title" -->
 
@@ -15,7 +15,7 @@ Notes :
 - [Démarrer une application Angular2](#/3)
 - [Tests](#/4)
 - [Template, Directives & Composants](#/5)
-- **[Les composants Angular2](#/6)**
+- **[Les directives Angular2](#/6)**
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
@@ -28,7 +28,7 @@ Notes :
 
 
 
-## Les composants Angular2
+## Les directives Angular2
 
 - *Angular2* fournit une trentaine de directives :
 	- Manipulation de DOM
@@ -51,7 +51,7 @@ Notes :
 
 
 
-## Les composants Angular2 - ngStyle
+## Les directives Angular2 - ngStyle
 
 - Directive permettant d'ajouter des définitions CSS
 - Nécessité de spécifier un objet JSON en tant que paramètre
@@ -80,7 +80,7 @@ Notes :
 
 
 
-## Les composants Angular2 - ngClass
+## Les directives Angular2 - ngClass
 
 - La directive `ngClass` ajoute ou enlève des classes CSS.
 - Trois syntaxes coexistent
@@ -95,7 +95,7 @@ Notes :
 
 
 
-## Les composants Angular2 - ngClass
+## Les directives Angular2 - ngClass
 
 - Exemple d'utilisation de la directive `ngClass`
 
@@ -124,7 +124,7 @@ Notes :
 
 
 
-## Les composants Angular2 - ngFor
+## Les directives Angular2 - ngFor
 
 - Permet de dupliquer un template pour chaque élément d'une collection
 - Correspond à la directive `ngRepeat` en *AngularJS*
@@ -147,7 +147,7 @@ Notes :
 
 
 
-## Les composants Angular2 - ngIf
+## Les directives Angular2 - ngIf
 
 - Ajout / Suppression d'elements HTML en fonction d'une condition
 - Si l'expression retourne `true` le template sera inséré
@@ -168,7 +168,7 @@ Notes :
 
 
 
-## Les composants Angular2 - ngSwitch
+## Les directives Angular2 - ngSwitch
 
 - Ajout / Suppression d'elements HTML en fonction d'une condition
 - Trois directives disponibles :

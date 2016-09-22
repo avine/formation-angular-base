@@ -93,7 +93,6 @@ import { AppComponent } from './app.component';
     FormsModule
   ],
   providers: [],
-  entryComponents: [AppComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
@@ -103,7 +102,7 @@ Notes :
 
 
 
-## Angular-CLI 
+## Angular-CLI
 
 - Projet en cours de développement
 - Basé sur le projet *Ember CLI*
@@ -132,7 +131,7 @@ Notes :
 
 
 
-## Angular-CLI 
+## Angular-CLI
 
 - D'autres commandes disponibles :
   - `ng test`
@@ -143,7 +142,7 @@ Notes :
 
 
 
-## WebPack 
+## WebPack
 
 - Gestionnaire de modules
 - Supporte les différents systèmes de modules (*CommonJS*, *AMD*, *ES2015*, ...)
@@ -158,7 +157,7 @@ Notes :
 
 
 
-## WebPack  - Premier exemple 
+## WebPack  - Premier exemple
 
 - Première utilisation de *WebPack*
 ```javascript
@@ -185,7 +184,7 @@ Notes :
 
 
 
-## WebPack 
+## WebPack
 
 - Version avec un fichier de configuration
   - solution à privilégier pour que tous les développeurs utilisent la même configuration
@@ -207,7 +206,7 @@ Notes :
 
 
 
-## WebPack - Configuration 
+## WebPack - Configuration
 
 - Possibilité de générer plusieurs fichiers
   - Utilisation du placeholder `[name] `
@@ -239,7 +238,7 @@ Notes :
 
 
 
-## WebPack - Configuration 
+## WebPack - Configuration
 
 - Possibilité de regénérer le `bundle.js` à chaque modification des sources (`watch`)
 - Serveur web disponible (`webpack-dev-server`)
@@ -251,7 +250,7 @@ Notes :
 
 
 
-### WebPack - Les Loaders 
+### WebPack - Les Loaders
 
 - Permet d'indiquer à WebPack comment prendre en compte un fichier
 - Plusieurs *loaders* existent : *ECMAScript2015*, *TypeScript*, *CoffeeScript*, *Style*, ...

@@ -15,7 +15,7 @@ Notes :
 - [Démarrer une application Angular2](#/3)
 - [Tests](#/4)
 - [Template, Directives & Composants](#/5)
-- [Les composants Angular2](#/6)
+- [Les directives Angular2](#/6)
 - [Injection de Dépendances](#/7)
 - **[Les Pipes](#/8)**
 - [Service HTTP](#/9)
@@ -174,8 +174,7 @@ Notes :
 ```typescript
 @Component({
   selector: 'pipes',
-  template: '{{ promise | async }}',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  template: '{{ promise | async }}'
 })
 class PipesAppComponent {
   promise: Promise;

@@ -34,7 +34,7 @@ Notes :
 - Réécriture total du framework
 - Reprend certains concepts d'*AngularJS*
 - 1e version *beta* annoncée le 23/10/2014
-- Version officielle prévue pour 2016
+- Version officielle sortie en 2016
 - Programmation orientée *Composant*
 - Framework conçu pour être plus performant et optimisé pour les mobiles
 - http://angular.io/
@@ -163,7 +163,7 @@ Notes :
 
 ![plateforme](ressources/platform.png "plateforme")
 
-Notes : 
+Notes :
 
 
 
@@ -197,13 +197,11 @@ Notes :
 
 ```typescript
 import {Component} from '@angular/core';
-import {HTTP_PROVIDERS, Http} from "@angular/http";
-import {MyPipe} from './MyPipe';
+import {Http} from "@angular/http";
 
 @Component({
     selector: 'app',
-    template: '{{value | MyPipe}}',
-    providers: [HTTP_PROVIDERS]
+    template: '{{value | MyPipe}}'
 })
 export class MyComponent{
   value:string;

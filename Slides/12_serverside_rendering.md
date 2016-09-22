@@ -15,7 +15,7 @@ Notes :
 - [Démarrer une application Angular2](#/3)
 - [Tests](#/4)
 - [Template, Directives & Composants](#/5)
-- [Les composants Angular2](#/6)
+- [Les directives Angular2](#/6)
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
@@ -35,7 +35,7 @@ Notes :
 - Amélioration progressive
   - Proposer une version simple pour tous
   - Enrichir l'expérience en fonction du client
-  
+
 - *Accélérer le chargement de l'application*
 
 Notes :
