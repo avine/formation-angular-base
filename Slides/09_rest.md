@@ -193,7 +193,7 @@ Notes :
 ## HTTP
 
 - *Angular2* fournit un ensemble de services pour pouvoir communiquer via des requêtes AJAX
-- Services sont disponibles via un alias `HTTP_PROVIDERS` que nous devons définir dans la configuration de nos injecteurs
+- Services sont disponibles via le module `HttpModule` que nous devons importer dans notre module applicatif.
 - Se base sur le pattern `Observable` contrairement à AngularJS et ses `Promises`
   - Plus grande flexibilité grâce aux différents opérateurs de `RxJS` : `retry`, ...
 - Nous injecterons le service `Http` pour envoyer nos requêtes HTTP
@@ -255,7 +255,7 @@ Notes :
 - Requête HTTP de type `PUT` avec surcharge des `Headers`
 
 ```typescript
-import {Http, HTTP_PROVIDERS, Headers} from '@angular/http';
+import {Http, Headers} from '@angular/http';
 
 export class HttpService {
     constructor(private http:Http){ }
@@ -279,7 +279,7 @@ Notes :
 - Exemple simple d'une requête HTTP
 
 ```typescript
-import {Http, Response, HTTP_PROVIDERS} from '@angular/http';
+import {Http, Response} from '@angular/http';
 import {Component} from '@angular/core';
 import 'rxjs/add/operator/map';
 
@@ -308,7 +308,7 @@ Notes :
 ```typescript
 import 'rxjs/add/operator/map';
 import {MyObject} from './MyObject';
-import {Http, Response, HTTP_PROVIDERS} from '@angular/http';
+import {Http, Response} from '@angular/http';
 import {Component} from '@angular/core';
 
 @Component({selector: 'app',template: '{{displayedData | json}}'})
