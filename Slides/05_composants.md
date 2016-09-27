@@ -15,7 +15,7 @@ Notes :
 - [Démarrer une application Angular2](#/3)
 - [Tests](#/4)
 - **[Template, Directives & Composants](#/5)**
-- [Les composants Angular2](#/6)
+- [Les directives Angular2](#/6)
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
@@ -94,8 +94,6 @@ Notes :
     - créé spécialement pour l'application (avec une sémantique précise)
 
 - Les méthodes et propriétés utilisées doivent être définies dans la classe associée
-
-- Impossible d'appeler `console.log`, `Math.max`, `window` et `document`
 
 - Utilisation de la syntaxe `( event-name ) = "expression"`
 

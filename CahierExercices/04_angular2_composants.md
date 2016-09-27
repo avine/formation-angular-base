@@ -1,4 +1,4 @@
-## TP4 : Les composants Angular2
+## TP4 : Les directives Angular2
 
 Dans ce TP, nous allons utiliser les directives `ngFor`, `ngIf` et `ngClass` pour dynamiser notre page. Les autres directives d'Angular2 seront présentées lors du chapitre sur les formulaires.  
 
