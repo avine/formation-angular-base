@@ -77,9 +77,8 @@ Notes :
 - Création d'un module Angular
 
 ```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ApplicationRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
@@ -88,14 +87,15 @@ import { AppComponent } from './app.component';
     AppComponent,
   ],
   imports: [
-    BrowserModule,
-    CommonModule,
     FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+
 ```
 
 Notes :
