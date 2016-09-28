@@ -102,18 +102,21 @@ Notes :
 Elements notables du script de lancement du serveur
 
 ```typescript
-import * as express from 'express';
-import {ng2engine, ...} from 'angular2-universal-preview';
-import {App} from './app/app';
+import 'angular2-universal-polyfills';
+import { createEngine, ExpressEngineConfig } from 'angular2-express-engine';
+import { MainModule } from './main.node'; 
 
-let app = express();
-app.engine('.html', ng2engine); // définit le plugin
-app.use('/', function (req, res) { // enrichie les traitements sur la requête  
-  res.render('index', {
-    App, // ng2engine va récupérer ces variables et réaliser le bootstrap
-    providers: [...],
-    preboot: true
- });
+app.engine('.html', createEngine({}));
+
+app.get('/*', (req, res) => {
+
+  const expressConfig : ExpressEngineConfig = {
+    req,
+    res,
+    ngModule: MainModule,
+    preboot: false,
+  };
+  res.render('index', expressConfig);
 });
 ```
 
