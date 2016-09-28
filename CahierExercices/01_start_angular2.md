@@ -17,7 +17,7 @@ L'application, que nous allons implémenter, sera initialisée via l'outil `angu
 - la gestion des dépendances
 
 
-- Téléchargez `angular-cli@webpack` en utilisant `NPM`. Ce module nécessite une version récente de *NodeJS*
+- Téléchargez `angular-cli` en utilisant `NPM`. Ce module nécessite une version récente de *NodeJS*
 
 - Depuis votre console, créez un nouveau projet via la commande `ng new Application`
 

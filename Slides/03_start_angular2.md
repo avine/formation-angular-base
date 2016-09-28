@@ -111,7 +111,7 @@ Notes :
 - Projet disponible sur *NPM*
 
 ```shell
-npm install -g angular-cli@webpack
+npm install -g angular-cli
 ```
 
 - Plusieurs commandes disponibles
