@@ -4,9 +4,9 @@ Dans ce TP, nous allons utiliser les directives `ngFor`, `ngIf` et `ngClass` pou
 
 - Grâce à la directive `ngFor`, itérez sur la liste des `products` afin d'afficher autant de composants `ProductComponent` qu'il y a d'éléments dans ce tableau.
 
-- Dans la classe `Product`, ajoutez une propriété `stock` de type `number`
+- Dans la classe `Product`, ajoutez une propriété `stock` de type `number`.
 
-- Initiez cette propriété pour tous les produits définis dans le composant `AppComponent`
+- Initiez cette propriété pour tous les produits définis dans le composant `AppComponent`. Nous vous conseillons de mettre une valeur différente pour chaque produit, afin de pouvoir tester les différents cas définis ci-dessous. 
 
 - Grâce à la directive `ngIf`, affichez un produit, seulement si sa propriété `stock` est supérieure à 0. Vous serez peut-être obligé de revoir l'utilisation du `*ngFor` du point précédent.
 
