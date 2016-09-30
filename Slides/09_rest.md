@@ -22,7 +22,6 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonnes Pratiques pour une migration heureuse](#/13)
 
 Notes :
 
@@ -156,6 +155,7 @@ export class HeroData implements InMemoryDbService{
       { id: '1', name: 'Windstorm' },
       { id: '2', name: 'Tornado' }
     ];
+    //return {heroes: heroes};
     return {heroes};
   }
 }

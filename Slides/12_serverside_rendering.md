@@ -22,7 +22,6 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - **[Server-side Rendering](#/12)**
-- [Bonnes Pratiques pour une migration heureuse](#/13)
 
 Notes :
 
@@ -104,7 +103,7 @@ Elements notables du script de lancement du serveur
 ```typescript
 import 'angular2-universal-polyfills';
 import { createEngine, ExpressEngineConfig } from 'angular2-express-engine';
-import { MainModule } from './main.node'; 
+import { MainModule } from './main.node';
 
 app.engine('.html', createEngine({}));
 
