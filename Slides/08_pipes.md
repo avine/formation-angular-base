@@ -102,7 +102,7 @@ Notes :
 
 ```typescript
 import {Component} from '@angular/core';
-import {MyLowerCasePipe} from './mylowercase';
+
 @Component({
 	selector: 'app',
 	template: '<h2>{{'Hello World' | mylowercase}}</h2>'

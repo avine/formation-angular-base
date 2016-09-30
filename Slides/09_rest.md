@@ -317,7 +317,7 @@ export class AppComponent {
 
     constructor(private http:Http) {
         http.get('people.json')
-            .flatMap((result:Response) => result.json())
+            .map((result:Response) => result.json())
             .filter(data => data.hasToBeDisplayed)
             .map(data => new MyObject(data.id, data.name))
             .subscribe((jsonObject:MyObject) => {
