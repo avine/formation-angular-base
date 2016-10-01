@@ -9,18 +9,17 @@ Pour ce faire, nous allons commencer par créer une classe et un service pour g�
 	- address de type `string`
 	- creditCard de type `string`
 
-- Dans le service `service\CustomerService.ts` rajouter une méthode `validate(customer)` qui doit :
-  - faire un `POST` sur `/basket/confirm` pour valider la commande d'un client
-  - retourner sur la page `home`
+- Dans le service `service\CustomerService.ts` rajouter une méthode `checkout(customer)` qui doit :
+  - faire un `POST` sur `/basket/confirm` pour persister la commande d'un client côté serveur
 
-Pour interargir avec ces nouvelles fonctionnalités, nous allons mettre à jour le composant `basket` créé précédemment. Il affichera :
+Pour interargir avec ces nouvelles fonctionnalités, nous allons utiliser le composant `basket` créé précédemment. Il affichera :
   - le panier de manière simplifiée (une liste avec le nom et le prix de chaque produit)
   - un formulaire permettant de saisir les informations du client.
 
 Ajoutez un lien dans le composant `Home` qui pointe vers la page `/basket`.
-
+  
 Ce formulaire devra respecter les contraintes suivantes :
-  - utiliser la directive `ngSubmit`
+  - Exécution de la méthode `checkout` lorsque l'évènement `ngSubmit` est émis. Après avoir reçu la réponse du serveur, redirigez l'utilisateur sur la page `home`
   - un champ `input[text]` pour saisir le nom du client qui devra
     - être lié sur la propriété `name` de l'objet `Customer`
     - être requis (grâce à l'attribut *required*)
@@ -46,11 +45,3 @@ Pour information, voici le template à utiliser pour ajouter un champ de formula
     <input type="text" id="name" class="form-control">
 </div>
 ```
-
-Pour pouvoir bénéficier du module `@angular/forms`, il est nécessaire de l'installer via *NPM*. En effet, ce module n'est pas disponible par défaut dans un projet généré par *angular-cli*.
-
-```shell
-npm install @angular/forms
-```
-
-La dernière chose à faire pour pouvoir utiliser ce module est de modifier la configuration de *SystemJS*, via le fichier *system-config.js*. Ajoutez la chaîne de caractères `@angular/forms` dans le tableau `barrels`.

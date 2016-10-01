@@ -6,6 +6,13 @@ Dans un premier temps, nous allons utiliser les `pipes` disponibles dans le fram
 
 - Dans le template du composant `product`, utiliser le `pipe` `currency` afin d'afficher le prix d'un produit avec la devise *euro* et avec deux chiffres après la virgule.
 
+Pour insérer le sigle de la devise après le prix d'un produit, vous allez devoir indiquer que votre application doit utilise la locale française. Pour cela, veuillez surcharger le
+provider `LOCALE_ID` dans la configuration des providers de vottre module. 
+
+```typescript
+{ provide: LOCALE_ID, useValue: 'fr-FR' }
+```
+
 - Dans le constructeur du service `ProductService`, injecter le pipe `uppercase` afin de transformer les propriétés `title` de chaque produit.
 
 Nous allons à présent créer notre propre `pipe`, qui va nous permettre de trier une collection de produit par sa propriété `title`.

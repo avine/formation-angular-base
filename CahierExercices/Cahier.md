@@ -10,4 +10,7 @@
 
 ### Installation
 
-Installer les technos demandées
+Installer les technos demandées : 
+
+* NodeJS / NPM
+* GIT

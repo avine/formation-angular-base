@@ -22,7 +22,6 @@ Notes :
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
-- [Bonnes Pratiques pour une migration heureuse](#/13)
 
 Notes :
 
@@ -102,7 +101,7 @@ Notes :
 
 ```typescript
 import {Component} from '@angular/core';
-import {MyLowerCasePipe} from './mylowercase';
+
 @Component({
 	selector: 'app',
 	template: '<h2>{{'Hello World' | mylowercase}}</h2>'
