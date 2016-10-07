@@ -6,7 +6,7 @@ Nous allons intégrer dans notre application le routeur proposé par défaut dan
   - le composant `home` aura la charge d'afficher le contenu de la page que nous avons implémenté dans les TPs précédents
   - le composant `basket` permettra d'afficher, pour l'instant, le contenu du panier de l'utilisateur (via le pipe `json`)
 
-- Ajoutez à votre application la configuration nécessaire pour le fonctionnement du router. Pour cela, nous allons utiliser la méthode `provideRouter` mis à disposition par le module `@angular/router`
+- Ajoutez à votre application la configuration nécessaire pour le fonctionnement du router. Pour cela, nous allons utiliser la méthode `forRoot` mis à disposition par le module `@angular/router`
 
 - Dans le template du composant `Application`, nous allons utiliser la directive `router-outlet` afin d'indiquer le point d'insertion des différentes pages de l'application.
 
