@@ -66,7 +66,7 @@ Notes :
 
 
 
-## Router - provideRouter
+## Router - forRoot
 
 - Méthode permettant d'enregistrer de nouvelles routes
 - Elle prend en paramètre un tableau de `RouterConfig`, qui correspond à un tableau de `Route`
@@ -250,7 +250,7 @@ Notes :
 
 ```typescript
 import {Component} from '@angular/core';
-import {APP_BASE_HREF} from '@angular/router';
+import {APP_BASE_HREF} from '@angular/common';
 
 @NgModule({
   providers: [{ provide: APP_BASE_HREF, useValue: '/my/app' }],
