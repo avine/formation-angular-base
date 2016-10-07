@@ -133,7 +133,7 @@ Notes :
 - L'état de la validation est stocké par l'objet `FormControl` dans la propriété `errors`
 ```html
 <input type="text" [(ngModel)]="contact.name" #name="ngModel" name="name" required>
-<span [hidden]="name.errors?.required">Name is not valid</span>
+<span [hidden]="!name.errors?.required">Name is not valid</span>
 ```
 
 Notes :
