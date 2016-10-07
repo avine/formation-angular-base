@@ -45,7 +45,7 @@ Développeur web
 3. Démarrer une application Angular 2
   - Commencer un nouveau projet
   - Angular-CLI
-  - SystemJS
+  - Webpack
 
 4. Tests
   - Jasmine
@@ -79,7 +79,7 @@ Développeur web
   - Observables
 
 10. Router
-  - L'annotation @Routes
+  - Configuration du Router
   - Directive RouterOutlet
   - Directive RouterLink
   - Stratégies URL
