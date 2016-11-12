@@ -13,7 +13,7 @@ export class AppComponent {
 
   constructor(private productService:ProductService, private customerService:CustomerService, @Inject('welcomeMsg') public title:string){
       this.productService.getProducts().subscribe(products => this.products = products);
-      this.customerService.getBasket().subscribe()
+      this.customerService.getBasket().subscribe();
   }
 
   getTotal(): number {
@@ -24,7 +24,7 @@ export class AppComponent {
       this.customerService.addProduct(event).subscribe(_ => {
         this.productService.decreaseStock(event.title);
       });
-      
+
   }
 
   isAvailable(title: string): boolean {
