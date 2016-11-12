@@ -172,7 +172,7 @@ Notes :
 - Ajout / Suppression d'elements HTML en fonction d'une condition
 - Trois directives disponibles :
 	- `ngSwitch` : élément container
-	- `NgSwitchCase` : élément à utiliser pour chaque valeur possible
+	- `ngSwitchCase` : élément à utiliser pour chaque valeur possible
 	- `ngSwitchDefault` : pour définir un template pour une valeur par défaut
 
 ```typescript

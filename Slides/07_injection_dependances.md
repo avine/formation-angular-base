@@ -180,11 +180,11 @@ describe('UserService', () => {
     TestBed.configureTestingModule({ providers: [UserService] });
   });
 
-  it('should return 1 user', async(inject([UserService]) => {
+  it('should return 1 user', async(inject([UserService], service => {
     service.getUsers().then(users => {
       expect(users.length).toBe(1);
     });
-  }));
+  })));
 });
 ```
 

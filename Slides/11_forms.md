@@ -187,7 +187,7 @@ Il est possible de créer ses propres validateurs avec une classe implémentant 
 export class PatternValidator implements Validator {
     @Input('pattern') pattern: string;
 
-    validate(c: Control): { [key: string]: any } {
+    validate(c: AbstractControl): { [key: string]: any } {
         if (c.value && c.value.match(new RegExp(this.pattern))) {
             return null;
         }

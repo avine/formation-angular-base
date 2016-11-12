@@ -12,7 +12,7 @@ export class AppComponent {
   public products:Product[];
 
   constructor(private productService:ProductService, private customerService:CustomerService, @Inject('welcomeMsg') public title:string){
-      this.products = this.productService.getProducts();
+      this.products = productService.getProducts();
   }
 
   getTotal(): number {

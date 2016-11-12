@@ -38,6 +38,6 @@ Même si nous n'avons pas encore abordé les concepts du framework, nous allons 
 <h1>This is my first component</h1>
 ```
 
-- La chaîne de caractère ci-dessus pourra être modifier par la variable `title` de la classe `Application`. Pour afficher cette variable dans le template, nous utiliserons la même syntaxe que AngularJS : `{{title}}`
+- La chaîne de caractère ci-dessus pourra être modifiée par la variable `title` de la classe `Application`. Pour afficher cette variable dans le template, nous utiliserons la même syntaxe que AngularJS : `{{title}}`
 
 - Vérifiez que vous obtenez bien la toute dernière version de votre application dans le navigateur.
