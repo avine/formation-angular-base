@@ -13,5 +13,4 @@ export class CustomerService {
   getTotal(): number {
     return this.products.reduce((previous, next) => previous + next.price, 0);
   }
-
 }

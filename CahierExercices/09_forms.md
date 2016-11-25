@@ -12,12 +12,12 @@ Pour ce faire, nous allons commencer par créer une classe et un service pour g�
 - Dans le service `service\CustomerService.ts` rajouter une méthode `checkout(customer)` qui doit :
   - faire un `POST` sur `/basket/confirm` pour persister la commande d'un client côté serveur
 
-Pour interargir avec ces nouvelles fonctionnalités, nous allons utiliser le composant `basket` créé précédemment. Il affichera :
+Pour interagir avec ces nouvelles fonctionnalités, nous allons utiliser le composant `basket` créé précédemment. Il affichera :
   - le panier de manière simplifiée (une liste avec le nom et le prix de chaque produit)
   - un formulaire permettant de saisir les informations du client.
 
 Ajoutez un lien dans le composant `Home` qui pointe vers la page `/basket`.
-  
+
 Ce formulaire devra respecter les contraintes suivantes :
   - Exécution de la méthode `checkout` lorsque l'évènement `ngSubmit` est émis. Après avoir reçu la réponse du serveur, redirigez l'utilisateur sur la page `home`
   - un champ `input[text]` pour saisir le nom du client qui devra

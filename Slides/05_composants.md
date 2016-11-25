@@ -74,12 +74,12 @@ Angular transformera la syntaxe d'interpolation en binding de propriétés
 - Utilisation de la syntaxe `[ attr.attribute-name ] = "expression"`
 
 ```html
-<td [colspan]="3">help</td>
+<td [colspan]="dynamicColspan">help</td>
 
 <!-- Template parse errors:
 Can't bind to 'colspan' since it isn't a known native property-->
 
-<button [attr.aria-label]="help">help</button>
+<button [attr.aria-label]="helpLabel">{{helpLabel}}</button>
 ```
 
 Notes :

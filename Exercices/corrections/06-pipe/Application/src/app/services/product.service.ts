@@ -19,7 +19,7 @@ export class ProductService {
     this.products = this.products.map(p => {
       p.title = uppercase.transform(p.title);
       return p;
-    })
+    });
   }
 
   getProducts(): Product[] {
