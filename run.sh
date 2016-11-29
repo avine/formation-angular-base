@@ -52,18 +52,59 @@ retrieveFormationVersion(){
   VERSION=`cat package.json | sed -n -e '/"zenika-formation-framework":/ s/^.*#tags\/\(.*\)".*/\1/p'`
   if [ ! -z $VERSION ]
   then
-    export DOCKER_IMAGE_VERSION=$VERSION
+    if [[ $VERSION == 0* ]]
+    then
+      export DOCKER_IMAGE_VERSION=$VERSION
+    else
+      export DOCKER_IMAGE_VERSION=v$VERSION
+    fi
   fi
 }
 
 getDockerAddress(){
+  case  "${Z_DOCKER_PROVIDER:-}"  in
+    machine|docker-machine)
+      getDockerAddressWhenMachine
+      ;;
+    boot2docker|b2d)
+      getDockerAddressWhenB2D
+      ;;
+    natif|native)
+      getDockerAddressWhenLocalhost
+      ;;
+    *)
+      getDockerAddressWhenAuto
+  esac
+}
+
+getDockerAddressWhenAuto(){
   if commandExists docker-machine; then
-    docker-machine ip $DOCKER_MACHINE_NAME
+    if [ -z "${DOCKER_MACHINE_NAME:-}" ]; then
+        getDockerAddressWhenLocalhost
+    else
+        getDockerAddressWhenMachine
+    fi
   elif commandExists boot2docker; then
-    echo `boot2docker ip`
+    getDockerAddressWhenB2D
   else
-    echo localhost
+    getDockerAddressWhenLocalhost
   fi
+}
+
+getDockerAddressWhenMachine(){
+  docker-machine ip $DOCKER_MACHINE_NAME
+}
+
+getDockerAddressWhenB2D(){
+  echo `boot2docker ip`
+}
+
+getDockerAddressWhenLocalhost(){
+  echo localhost
+}
+
+getContainerName(){
+  echo ${PWD##*/}
 }
 
 generatePdf(){
@@ -76,7 +117,7 @@ generatePdf(){
 }
 
 runContainer() {
-    local containerName=${PWD##*/}
+    local containerName=$(getContainerName)
     docker run -d -P \
         -v "$VOLUME_GRUNTFILE" -v "$VOLUME_SLIDES" -v "$VOLUME_PACKAGE" \
         -v "$VOLUME_CAHIEREXERCICES" -v "$VOLUME_PDF_PUBLISH" \
@@ -100,10 +141,10 @@ runDev(){
 }
 
 clean(){
-  local containerName=${PWD##*/}
-  if docker ps -a | grep -q "$containerName"; then
+  local containerName=$(getContainerName)
+  if docker ps -a --format "{{.ID}} {{.Names}}" | grep -q "$containerName"; then
     echo -e "${BLUE}Arret et suppression du conteneur existant ($containerName)${NC}"
-    docker stop "$containerName" 2>&1 >/dev/null
+    docker stop --time 1 "$containerName" 2>&1 >/dev/null
     docker rm "$containerName" 2>&1 >/dev/null
   else
     echo -e "${BLUE}Aucun conteneur identifié à nettoyer ($containerName)${NC}"
@@ -124,23 +165,23 @@ do
       generatePdf
       shift
       ;;
-	  dev)
+    dev)
         retrieveFormationVersion
-	    runDev
-	    shift
-	    ;;
-	  prod)
+      runDev
+      shift
+      ;;
+    prod)
         retrieveFormationVersion
-	    runProd
-	    shift
-	    ;;
-	  clean)
-	    clean
-	    shift
-	  ;;
-	  *)
-	    echo "Argument invalide '$arg'" >&2
-	    usage # unknown option
-	    ;;
+      runProd
+      shift
+      ;;
+    clean)
+      clean
+      shift
+    ;;
+    *)
+      echo "Argument invalide '$arg'" >&2
+      usage # unknown option
+      ;;
   esac
 done
