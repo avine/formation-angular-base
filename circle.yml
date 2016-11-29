@@ -1,9 +1,6 @@
-general:
-  branches:
-    only:
-      - master # devs, currents
-      - release # production
 machine:
+  node:
+    version: 6.9.1
   environment:
     CURRENT_BRANCH: $CIRCLE_BRANCH
 dependencies:
