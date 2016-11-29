@@ -9,8 +9,6 @@ machine:
 dependencies:
   pre:
     - npm install -g grunt-cli
-  post:
-    - node_modules/zenika-formation-framework/gcloud-install.sh
 test:
   pre:
     - grunt package
@@ -18,4 +16,4 @@ deployment:
   appengine:
     branch: [master, release]
     commands:
-      - node_modules/zenika-formation-framework/gcloud-deploy.sh
+      - npm run deploy
