@@ -136,27 +136,6 @@ Notes :
 
 
 
-## Fonctions - Surcharge
-
-- Une fonction peut retourner un type différent en fonction des paramètres
-- Permet d'indiquer au compilateur TypeScript quel est le type retourné en fonction des paramètres passés
-
-```typescript
-function fn(param: string): number;
-function fn(param: number): string;
-function fn(param: any): any {
-  if (typeof x === "number") {
-
-  } else {
-
-  }
-}
-```
-
-Notes :
-
-
-
 ## Arrays
 
 - Permet de manipuler un tableau d'objet
