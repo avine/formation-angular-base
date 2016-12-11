@@ -231,7 +231,7 @@ router.navigate(['foo']); //example.com#/foo
 - Possible de configurer l'implémentation à utiliser
 
 ```typescript
-import {HashLocationStrategy, LocationStrategy } from '@angular/router';
+import {HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
