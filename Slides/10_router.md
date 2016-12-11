@@ -76,8 +76,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent }, // path: '/'
-  { path: 'heroes',  component: HeroListComponent },
-  { path: 'hero/:id', component: HeroDetailComponent }
+  { path: 'contacts',  component: ContactsComponent },
+  { path: 'contact/:id', component: ContactComponent }
 ];
 
 @NgModule({
@@ -146,8 +146,8 @@ Notes :
   template: '
     <div>
       <h1>Hello {{message}}!</h1>
-        <a [routerLink]="['heroes']">Link 1</a>
-        <a [routerLink]="['hero', 1]">Link 2</a>
+        <a [routerLink]="['contacts']">Link 1</a>
+        <a [routerLink]="['contact', 1]">Link 2</a>
         <router-outlet></router-outlet>
     </div>'
 })
@@ -170,11 +170,11 @@ import { HeroListComponent }     from './hero-list.component';
 import { HeroDetailComponent }   from './hero-detail.component';
 
 export const routes = [
-  { path: 'heroes',  component: HeroListComponent, children: [
-    {path: 'details', component: DetailsCmp},
-    {path: 'movies', component: MoviesCmp}
+  { path: 'contact/:id',  component: ContactComponent, children: [
+    {path: 'edit', component: EditCmp},
+    {path: 'view', component: ViewCmp}
   ]},
-  { path: 'hero/:id', component: HeroDetailComponent }
+  { path: 'contacts', component: ContactsComponent }
 ];
 
 const routing = RouterModule.forRoot(routes);
@@ -219,13 +219,13 @@ Notes :
 	- Nécessite la définition de l'URL de base de votre application (`APP_BASE_HREF` ou `<base>`)
 
 ```typescript
-router.navigate(['foo']); //example.com/my/app/foo
+router.navigate(['contacts']); //example.com/my/app/contacts
 ```
 
 - `HashLocationStrategy`
 
 ```typescript
-router.navigate(['foo']); //example.com#/foo
+router.navigate(['contacts']); //example.com#/contacts
 ```
 
 - Possible de configurer l'implémentation à utiliser
@@ -269,7 +269,7 @@ Notes :
 ```typescript
 @Component({
   template: '
-    <a [routerLink]="['product', 3]"></a>
+    <a [routerLink]="['contact', 1]"></a>
     <router-outlet></router-outlet>'
 })
 class AppComponent { }
@@ -303,7 +303,7 @@ Notes :
 ```typescript
 @Component({
   template: '
-    <a [routerLink]="['product', 3]"></a>
+    <a [routerLink]="['contact', 1]"></a>
     <router-outlet></router-outlet>'
 })
 class AppComponent { }
