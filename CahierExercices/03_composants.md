@@ -12,7 +12,7 @@ Après avoir reçu du formateur le template principal de l'application, veuillez
 
 - Remplacez dans le composant `Application` le menu initial par le composant que vous venez de créer.
 
-- Le total de votre panier sera défini dans une variable `total` que nous allons initialiser dans le constructeur du composant.
+- Le total de votre panier sera défini dans une variable `total` que nous allons initialiser à 0 dans le constructeur du composant.
 
 - Dans un nouveau fichier `model\product.ts`, créez une nouvelle classe `Product` ayant les propriétés suivantes:
 	- title de type `string`
