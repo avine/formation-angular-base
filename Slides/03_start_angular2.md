@@ -63,7 +63,7 @@ import { Component } from '@angular/core'
     selector: 'app',
     template: `<p>Hello</p>`
 })
-class AppComponent { ... }
+export class AppComponent { ... }
 
 ```
 
