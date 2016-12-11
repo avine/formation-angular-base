@@ -362,7 +362,7 @@ Notes :
 
 ```typescript
 import {TestBed, inject} from '@angular/core/testing';
-import {Http, BaseRequestOptions, Response, ResponseOptions} from '@angular/http';
+import {Http, RequestOptions, Response, ResponseOptions} from '@angular/http';
 import {MockBackend} from '@angular/http/testing';
 import 'rxjs/add/operator/map';
 
@@ -375,9 +375,9 @@ describe('UserService', () => {
        BaseRequestOptions,
        {
          provide: Http,
-         useFactory: (backend: MockBackend, defaultsOptions: BaseRequestOptions) =>
+         useFactory: (backend: MockBackend, defaultsOptions: RequestOptions) =>
            new Http(backend, defaultsOptions),
-         deps: [MockBackend, BaseRequestOptions]
+         deps: [MockBackend, RequestOptions]
        }
      ]
    });
