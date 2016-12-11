@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 
 import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 
 import { Product } from '../model/product';
 import { Customer } from '../model/customer';
@@ -18,31 +20,24 @@ export class CustomerService {
 
   getBasket(): Observable<Product[]>{
     return this.http.get(this.API_URL + 'basket')
-              .map(res => res.json())
-              .map(products => {
-                this.products = products
-                return this.products;  
-              })
-    }
+                  .map(res => res.json())
+                  .do(products => this.products = products)
+ }
+
+  addProduct(product: Product): Observable<Response> {
+    let headers: Headers = new Headers()
+    headers.set('Content-Type', 'application/json');
+
+    return this.http.post(this.API_URL + 'basket', JSON.stringify(product), {headers})
+                  .do(products => this.products.push(product))
+    
+  }
 
   checkout(customer: Customer): Observable<Response> {
     let headers: Headers = new Headers()
     headers.set('Content-Type', 'application/json');
 
     return this.http.post(this.API_URL + 'basket/confirm', JSON.stringify(customer), {headers});
-  }
-  
-  
-  addProduct(product: Product): Observable<Product> {
-    let headers: Headers = new Headers()
-    headers.set('Content-Type', 'application/json');
-
-    return this.http.post(this.API_URL + 'basket', JSON.stringify(product), {headers})
-            .map(products => {
-              this.products.push(product);
-              return product;
-            })
-
   }
 
   getTotal(): number {
