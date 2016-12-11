@@ -268,7 +268,7 @@ Notes :
 - Utilisation de l'annotation `@Component`, héritant de `@Directive`
 - Toute la configuration de `@Directive` est disponible dans `@Component`
 - Possibilité de définir des paramètres et des évènements de la même façon
-- `@Component` fournit notamment les paramètres `template`, `templateUrl`, `styles`, `styleUrl` et `encapsulation`
+- `@Component` fournit notamment les paramètres `template`, `templateUrl`, `styles`, `styleUrls` et `encapsulation`
 
 ```typescript
 import {Input, Output, EventEmitter, Component} from '@angular/core'
