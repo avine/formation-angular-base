@@ -61,7 +61,7 @@ La directive `NgForm` est automatiquement associée à chaque balise `<form>`
 - Utilisable par l'écriture : `#myForm="ngForm"`
 
 ```html
-<form #myForm="ngForm" novalidate>
+<form #myForm="ngForm">
   <!-- disabled button if form is invalid -->
   <button type="submit" [disabled]="!myForm.valid">Save</button>
 </form>
@@ -79,11 +79,30 @@ Notes :
 <input type="text" [(ngModel)]="contact.name" name="name">
 ```
 
-- `ngSubmit` : Associe une méthode à la soumission du formulaire
+- `submit` : Associe une méthode à la soumission du formulaire
 
 ```html
-<form (ngSubmit)="saveForm()" novalidate>
+<form (submit)="saveForm()">
   <button type="submit">Save</button>
+</form>
+```
+
+Notes :
+
+
+
+## Validation : Désactiver la gestion native
+
+- Par défaut, les navigateurs effectuent les validations nativement
+ - Manque de cohérence visuelle avec l'application et entre navigateurs
+ - Interfère avec le mécanisme d'AngularJs
+- Solution : Désactiver la validation native et l'effectuer par Angular2
+- Attribut `novalidate` sur le formulaire
+  - Attribut standard HTML5
+
+```html
+<form novalidate>
+  …
 </form>
 ```
 
@@ -108,7 +127,7 @@ Notes :
 ## Exemple
 Exemple complet:
 ```html
-<form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm.value)">
+<form #myForm="ngForm" novalidate (submit)="onSubmit(myForm.value)">
   <input type="text" name="myName" [(ngModel)]="contact.name" #nameInput="ngModel" required>
   <span [hidden]="nameInput.valid">Error</span>
   <span [hidden]="nameInput.pristine">You changed the value</span>
@@ -134,25 +153,6 @@ Notes :
 ```html
 <input type="text" [(ngModel)]="contact.name" #name="ngModel" name="name" required>
 <span [hidden]="!name.errors?.required">Name is not valid</span>
-```
-
-Notes :
-
-
-
-## Validation : Désactiver la gestion native
-
-- Par défaut, les navigateurs effectuent les validations nativement
- - Manque de cohérence visuelle avec l'application et entre navigateurs
- - Interfère avec le mécanisme d'AngularJs
-- Solution : Désactiver la validation native et l'effectuer par Angular2
-- Attribut `novalidate` sur le formulaire
-  - Attribut standard HTML5
-
-```html
-<form novalidate>
-  …
-</form>
 ```
 
 Notes :

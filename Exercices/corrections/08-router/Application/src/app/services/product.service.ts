@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 
 import { Product } from '../model/product';
 
@@ -20,13 +21,12 @@ export class ProductService {
     return this.http.get(this.API_URL + 'products')
               .map(res => res.json())
               .map(products => {
-                this.products = products.map(product => {
+                return products.map(product => {
                   product.title = this.uppercase.transform(product.title);
                   return product;
                 });
-                return this.products;
-                
               })
+              .do(products => this.products = products);
   }
 
   isTheLast(title: string): boolean {
