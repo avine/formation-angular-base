@@ -34,17 +34,11 @@ Notes :
 	- Gestion des formulaires
 	- Routeur
 
-- Directives importées automatiquement : `CORE_DIRECTIVES`, `FORM_DIRECTIVES`
+- Importer le module correspondant pour les utiliser : 
+    - `CommonModule`
+    - `FormModule`
+    - `RouterModule`
 
-```typescript
-@Component({
-  selector: 'my-component',
-  templateUrl: 'myComponent.html'
-})
-export class MyComponent { ... }
-```
-
-- Ici `CORE_DIRECTIVES` contient NgClass, NgFor, NgIf, NgStyle, NgSwitch, NgSwitchCase, NgSwitchDefault
 
 Notes :
 
