@@ -12,10 +12,10 @@ Notes :
 
 - [Rappels](#/1)
 - [Présentation](#/2)
-- [Démarrer une application Angular2](#/3)
+- [Démarrer une application Angular](#/3)
 - [Tests](#/4)
 - [Template, Directives & Composants](#/5)
-- [Les directives Angular2](#/6)
+- [Les directives Angular](#/6)
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
@@ -27,7 +27,7 @@ Notes :
 
 
 
-## Formulaires et Angular2
+## Formulaires et Angular
 
 - Se base sur les mécanismes standards des formulaires HTML
 - Supporte les types de champs de saisie habituels et les validations natives
@@ -96,7 +96,7 @@ Notes :
 - Par défaut, les navigateurs effectuent les validations nativement
  - Manque de cohérence visuelle avec l'application et entre navigateurs
  - Interfère avec le mécanisme d'AngularJs
-- Solution : Désactiver la validation native et l'effectuer par Angular2
+- Solution : Désactiver la validation native et l'effectuer par Angular
 - Attribut `novalidate` sur le formulaire
   - Attribut standard HTML5
 
@@ -116,7 +116,7 @@ Notes :
  - L'état (dirty, valid, ...)
  - Les erreurs de validation
 
-- Angular2 crée un `FormControl` dès l'utilisation de la directive `ngModel`
+- Angular crée un `FormControl` dès l'utilisation de la directive `ngModel`
 - Il utilise la valeur de la propriété `name` comme libellé
 - On peut l'associer à une variable pour l'utiliser dans le template avec la syntaxe `#inputName="ngModel"`
 
@@ -161,7 +161,7 @@ Notes :
 
 ## Validation : État du formulaire et des champs
 
-- Angular2 expose 5 propriétés au niveau du formulaire et de chacun des champs de saisie
+- Angular expose 5 propriétés au niveau du formulaire et de chacun des champs de saisie
   - `valid` : Indique si l'élément passe le contrôle des validateurs
   - `pristine` / `dirty` : Indiquent si l'utilisateur a altéré l'élément
     - Un élément est considéré `dirty` dès qu'il subit une modification, même si la valeur initiale est restaurée ensuite

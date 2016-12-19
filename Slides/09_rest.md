@@ -12,10 +12,10 @@ Notes :
 
 - [Rappels](#/1)
 - [Présentation](#/2)
-- [Démarrer une application Angular2](#/3)
+- [Démarrer une application Angular](#/3)
 - [Tests](#/4)
 - [Template, Directives & Composants](#/5)
-- [Les directives Angular2](#/6)
+- [Les directives Angular](#/6)
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - **[Service HTTP](#/9)**
@@ -110,9 +110,9 @@ Notes  :
 
 
 
-## Les Observables dans Angular2
+## Les Observables dans Angular
 
-- Angular2 utilise ce système d'Observables à plusieurs endroits :
+- Angular utilise ce système d'Observables à plusieurs endroits :
     - requêtes HTTP
     - intéraction avec un formulaire
     - affichage des vues par le *router*
@@ -124,7 +124,7 @@ Notes :
 
 ## In Memory API
 
-- L'équipe d'Angular2 propose le module *angular2-in-memory-api* pour commencer à intégrer une API sans serveur
+- L'équipe d'Angular propose le module *angular2-in-memory-api* pour commencer à intégrer une API sans serveur
     - se base sur une implémentation *in-memory* du service `XHRBackend`
     - idéal pour commencer les développements
 
@@ -192,7 +192,7 @@ Notes :
 
 ## HTTP
 
-- *Angular2* fournit un ensemble de services pour pouvoir communiquer via des requêtes AJAX
+- *Angular* fournit un ensemble de services pour pouvoir communiquer via des requêtes AJAX
 - Services sont disponibles via le module `HttpModule` que nous devons importer dans notre module applicatif.
 - Se base sur le pattern `Observable` contrairement à AngularJS et ses `Promises`
   - Plus grande flexibilité grâce aux différents opérateurs de `RxJS` : `retry`, ...

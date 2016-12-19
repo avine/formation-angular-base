@@ -12,10 +12,10 @@ Notes :
 
 - [Rappels](#/1)
 - [Présentation](#/2)
-- [Démarrer une application Angular2](#/3)
+- [Démarrer une application Angular](#/3)
 - [Tests](#/4)
 - [Template, Directives & Composants](#/5)
-- [Les directives Angular2](#/6)
+- [Les directives Angular](#/6)
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
@@ -36,9 +36,9 @@ Notes :
 - Développement d'un nouveau Router
 	- Prise en compte des différents cas d'utilisation : authentification, login, permission, ...
 	- Etude des autres solutions : `ui-router`, `route-recognizer` et `durandal`
-	- 3e implémentation depuis le début de *Angular2*
-- Compatible avec *AngularJS* et *Angular2*
-- Permet de faciliter la migration d'une application *AngularJS* vers *Angular2*
+	- 3e implémentation depuis le début de *Angular*
+- Compatible avec *AngularJS* et *Angular*
+- Permet de faciliter la migration d'une application *AngularJS* vers *Angular*
 
 Notes :
 

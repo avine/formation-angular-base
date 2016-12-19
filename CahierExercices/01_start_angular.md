@@ -1,10 +1,10 @@
-## TP 1 : Démarrer une application Angular2
+## TP 1 : Démarrer une application Angular
 
-Dans ce premier TP, nous allons initier notre première application **Angular2**, qui sera réutilisée dans les TPs suivant.
+Dans ce premier TP, nous allons initier notre première application **Angular**, qui sera réutilisée dans les TPs suivant.
 
 L'initialisation de cette application se décomposera en plusieurs étapes :
 
-- Création d'un projet Angular2 avec `angular-cli`
+- Création d'un projet Angular avec `angular-cli`
 - Implémentation de la page principale
 - Création du composant principal
 - Lancement du serveur afin de tester

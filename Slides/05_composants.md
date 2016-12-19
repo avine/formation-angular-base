@@ -12,10 +12,10 @@ Notes :
 
 - [Rappels](#/1)
 - [Présentation](#/2)
-- [Démarrer une application Angular2](#/3)
+- [Démarrer une application Angular](#/3)
 - [Tests](#/4)
 - **[Template, Directives & Composants](#/5)**
-- [Les directives Angular2](#/6)
+- [Les directives Angular](#/6)
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
@@ -88,7 +88,7 @@ Notes :
 
 ## Les évènements
 
-- Permet d'associer une expression *Angular2* à un évènement
+- Permet d'associer une expression *Angular* à un évènement
     - défini dans la spécification HTML : `click`, `blur`, ...
     - créé spécialement pour l'application (avec une sémantique précise)
 
@@ -109,9 +109,9 @@ Notes :
 
 ## Les évènements
 
-- *Angular2* va créer un handler pour chaque évènement
+- *Angular* va créer un handler pour chaque évènement
 - Possibilité de récupérer le contexte de l'évènement, et de potentielles données via l'objet `$event`
-- Cet objet peut être utilisé dans l'expression *Angular2*
+- Cet objet peut être utilisé dans l'expression *Angular*
 - Tous les évènements natifs sont propagés vers les éléments parents
     - nous devons retourner une valeur `false` pour stopper cette propagation
 - Les évènements `EventEmitter` ne se propagent pas.
@@ -135,7 +135,7 @@ Notes :
        (input)="currentHero.firstName=$event.target.value"/>
 ```
 
-- *Angular2* fournit du sucre syntaxique afin d'éviter cette redondance de code
+- *Angular* fournit du sucre syntaxique afin d'éviter cette redondance de code
 - Première solution :
 
 ```html

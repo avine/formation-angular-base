@@ -14,7 +14,7 @@ Angular 2 est la toute nouvelle version du framework créé par Google. Cette no
 
 - Découvrir les fonctionnalités du framework Angular 2
 - Savoir développer une nouvelle application Web
-- Savoir concevoir une application Angular2 en TypeScript
+- Savoir concevoir une application Angular en TypeScript
 - Connaître les mécanismes avancés du framework
 
 
@@ -58,7 +58,7 @@ Développeur web
   - Directives
   - Composants
 
-6. Composants Angular2
+6. Composants Angular
   - ngStyle
   - ngClass
   - ngFor

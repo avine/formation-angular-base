@@ -1,6 +1,6 @@
-## TP4 : Les directives Angular2
+## TP4 : Les directives Angular
 
-Dans ce TP, nous allons utiliser les directives `ngFor`, `ngIf` et `ngClass` pour dynamiser notre page. Les autres directives d'Angular2 seront présentées lors du chapitre sur les formulaires.  
+Dans ce TP, nous allons utiliser les directives `ngFor`, `ngIf` et `ngClass` pour dynamiser notre page. Les autres directives d'Angular seront présentées lors du chapitre sur les formulaires.  
 
 - Grâce à la directive `ngFor`, itérez sur la liste des `products` afin d'afficher autant de composants `ProductComponent` qu'il y a d'éléments dans ce tableau.
 

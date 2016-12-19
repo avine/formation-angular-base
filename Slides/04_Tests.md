@@ -12,10 +12,10 @@ Notes :
 
 - [Rappels](#/1)
 - [Présentation](#/2)
-- [Démarrer une application Angular2](#/3)
+- [Démarrer une application Angular](#/3)
 - **[Tests](#/4)**
 - [Template, Directives & Composants](#/5)
-- [Les directives Angular2](#/6)
+- [Les directives Angular](#/6)
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
@@ -30,10 +30,10 @@ Notes :
 ## Concepts
 
 - Dans la documentation `Jasmine` est utilisé comme framework de tests
-- `Angular2` peut être également testé avec d'autres frameworks
+- `Angular` peut être également testé avec d'autres frameworks
 - Karma propose d’exécuter facilement les tests
   - Il a été développé par l'équipe d'`AngularJS`, il est donc mis en avant
-  - Il n'est pour autant ni indispensable ni lié à `Angular2`
+  - Il n'est pour autant ni indispensable ni lié à `Angular`
 - `Jasmine` et `Karma` sont intégrés dans une application générée par *angular-cli*.
 
 Notes :
