@@ -223,7 +223,7 @@ output: {
   - Création d'un fichier `vendor.ts` important toutes librairies utilisées
 
 ```typescript
-// Angular 2
+// Angular
 import '@angular/core';
 import '@angular/common';
 import '@angular/http';

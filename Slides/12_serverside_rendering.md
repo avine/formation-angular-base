@@ -59,7 +59,7 @@ Notes :
 ## Méchanisme
 
 - `AngularJS` fortement lié au DOM
-- `Angular 2` introduit une séparation du mécanisme de rendu
+- `Angular` introduit une séparation du mécanisme de rendu
 
 
 ![Angular Universal Architecture](ressources/angular-universal-architecture.png "Angular Universal Architecture")

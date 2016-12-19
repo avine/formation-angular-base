@@ -2,17 +2,17 @@ Domaine: Web
 
 Sous-domaine: Angular
 
-# Angular 2
+# Angular
 
 Durée: 3j
 
 ## Présentation
 
-Angular 2 est la toute nouvelle version du framework créé par Google. Cette nouvelle version amène de nombreuses fonctionnalités, permettant de développer des applications web plus rapidement et de meilleure qualité. Cette formation permettra d'appréhender et d'utiliser tous les nouveaux concepts novateurs introduits par l'équipe en charge du projet.
+Angular est la toute nouvelle version du framework créé par Google. Cette nouvelle version amène de nombreuses fonctionnalités, permettant de développer des applications web plus rapidement et de meilleure qualité. Cette formation permettra d'appréhender et d'utiliser tous les nouveaux concepts novateurs introduits par l'équipe en charge du projet.
 
 ## Objectifs
 
-- Découvrir les fonctionnalités du framework Angular 2
+- Découvrir les fonctionnalités du framework Angular
 - Savoir développer une nouvelle application Web
 - Savoir concevoir une application Angular en TypeScript
 - Connaître les mécanismes avancés du framework
@@ -38,11 +38,11 @@ Développeur web
 
 2. Présentation
   - Points négatifs AngularJS
-  - Points positifs Angular 2
-  - Points négatifs Angular 2
+  - Points positifs Angular
+  - Points négatifs Angular
   - Architecture
 
-3. Démarrer une application Angular 2
+3. Démarrer une application Angular
   - Commencer un nouveau projet
   - Angular-CLI
   - Webpack
