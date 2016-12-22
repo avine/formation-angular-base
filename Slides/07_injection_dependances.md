@@ -12,10 +12,10 @@ Notes :
 
 - [Rappels](#/1)
 - [Présentation](#/2)
-- [Démarrer une application Angular2](#/3)
+- [Démarrer une application Angular](#/3)
 - [Tests](#/4)
 - [Template, Directives & Composants](#/5)
-- [Les directives Angular2](#/6)
+- [Les directives Angular](#/6)
 - **[Injection de Dépendances](#/7)**
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
@@ -96,7 +96,7 @@ Notes :
 ## Dépendances des services
 
 - Nécessité d'ajouter l'annotation `@Injectable`
-- Utilisée pour que *Angular2* puisse générer les métadatas nécessaires pour l'injection de dépendances
+- Utilisée pour que *Angular* puisse générer les métadatas nécessaires pour l'injection de dépendances
 - Inutile pour les composants, car nous utilisons déjà `@Component`
 
 ```typescript

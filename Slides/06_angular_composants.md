@@ -1,4 +1,4 @@
-# Les directives<br>Angular2
+# Les directives<br>Angular
 
 <!-- .slide: class="page-title" -->
 
@@ -12,10 +12,10 @@ Notes :
 
 - [Rappels](#/1)
 - [Présentation](#/2)
-- [Démarrer une application Angular2](#/3)
+- [Démarrer une application Angular](#/3)
 - [Tests](#/4)
 - [Template, Directives & Composants](#/5)
-- **[Les directives Angular2](#/6)**
+- **[Les directives Angular](#/6)**
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
@@ -27,9 +27,9 @@ Notes :
 
 
 
-## Les directives Angular2
+## Les directives Angular
 
-- *Angular2* fournit une trentaine de directives :
+- *Angular* fournit une trentaine de directives :
 	- Manipulation de DOM
 	- Gestion des formulaires
 	- Routeur
@@ -44,7 +44,7 @@ Notes :
 
 
 
-## Les directives Angular2 - ngStyle
+## Les directives Angular - ngStyle
 
 - Directive permettant d'ajouter des définitions CSS
 - Nécessité de spécifier un objet JSON en tant que paramètre
@@ -73,7 +73,7 @@ Notes :
 
 
 
-## Les directives Angular2 - ngClass
+## Les directives Angular - ngClass
 
 - La directive `ngClass` ajoute ou enlève des classes CSS.
 - Trois syntaxes coexistent
@@ -88,7 +88,7 @@ Notes :
 
 
 
-## Les directives Angular2 - ngClass
+## Les directives Angular - ngClass
 
 - Exemple d'utilisation de la directive `ngClass`
 
@@ -116,14 +116,14 @@ Notes :
 
 
 
-## Les directives Angular2 - ngFor
+## Les directives Angular - ngFor
 
 - Permet de dupliquer un template pour chaque élément d'une collection
 - Correspond à la directive `ngRepeat` en *AngularJS*
 - Définition des éléments HTML à dupliquer dans un élément `<template>`
 - Utilisation de la propriété `ngForOf` pour définir l'expression permettant l'itération
 - Sauvegarde de la valeur en cours dans des variables de rendu (préfixées par `let-`)
-- Angular2 met à disposition quatre données supplémentaires : `index`, `last`, `even` et `odd`
+- Angular met à disposition quatre données supplémentaires : `index`, `last`, `even` et `odd`
 
 ```typescript
 <template ngFor let-item [ngForOf]="items" let-i="index"><li>...</li></template>
@@ -139,7 +139,7 @@ Notes :
 
 
 
-## Les directives Angular2 - ngIf
+## Les directives Angular - ngIf
 
 - Ajout / Suppression d'elements HTML en fonction d'une condition
 - Si l'expression retourne `true` le template sera inséré
@@ -160,7 +160,7 @@ Notes :
 
 
 
-## Les directives Angular2 - ngSwitch
+## Les directives Angular - ngSwitch
 
 - Ajout / Suppression d'elements HTML en fonction d'une condition
 - Trois directives disponibles :

@@ -12,10 +12,10 @@ Notes :
 
 - [Rappels](#/1)
 - [Présentation](#/2)
-- [Démarrer une application Angular2](#/3)
+- [Démarrer une application Angular](#/3)
 - [Tests](#/4)
 - [Template, Directives & Composants](#/5)
-- [Les composants Angular2](#/6)
+- [Les composants Angular](#/6)
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
@@ -31,7 +31,7 @@ Notes :
 
 - Bonnes pratiques tirées du *guideline* de John Papa
     - https://github.com/johnpapa/angular-styleguide
-- Permet de se rapprocher de la structure d'une application *Angular2*
+- Permet de se rapprocher de la structure d'une application *Angular*
 - Facile à mettre en place, et sans risque (si des tests unitaires existent)
 - Possilité d'automatiser la vérification grâce au plugin *eslint-plugin-angular*
     - https://github.com/Gillespie59/eslint-plugin-angular/
@@ -178,7 +178,7 @@ Notes :
 
 - Fonctionnalité disponible depuis *Angular 1.5*
 - Méthode utilitaire pour simplifier la création des composants
-- Permet d'utiliser le style Angular2 pour la création de vos composants
+- Permet d'utiliser le style Angular pour la création de vos composants
 - Suppression du code redondant : `scope`, `controllerAs` et `bindToController`
 
 ```js
@@ -309,7 +309,7 @@ Notes :
 
 ## Le nouveau Routeur
 
-- Routeur créé pour Angular2
+- Routeur créé pour Angular
 	- Version n'utilisant plus les méthodes de configuration
 	- Plus nécessaire de configurer les routes dans une méthode `config`
 
@@ -425,7 +425,7 @@ Notes :
 
 ## Cycle de vie des composants
 
-- Lifecycle identique à celui d'Angular2
+- Lifecycle identique à celui d'Angular
 - Méthodes à implémenter dans les contrôleurs :
 	- `canReactivate`, `canActivate` ou `canDeactivate`
 

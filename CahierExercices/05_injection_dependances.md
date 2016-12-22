@@ -1,6 +1,6 @@
 ## TP5 : Injection de Dépendances
 
-Nous allons à présent aborder les services et l'injection de dépendances dans une application Angular2.
+Nous allons à présent aborder les services et l'injection de dépendances dans une application Angular.
 
 Nous allons créer deux services :
 

@@ -1,9 +1,9 @@
 [
   "Cahier.md",
-  "01_start_angular2.md",
+  "01_start_angular.md",
   "02_tests.md",
   "03_composants.md",
-  "04_angular2_composants.md",
+  "04_angular_composants.md",
   "05_injection_dependances.md",
   "06_pipes.md",
   "07_rest.md",

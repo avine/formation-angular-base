@@ -8,7 +8,7 @@ Après avoir reçu du formateur le template principal de l'application, veuillez
 
 - Tout le code HTML situé entre les balises `body` doit être défini dans le template du composant `Application`
 
-- Créez un nouveau composant `menu\menu.component.ts` dans lequel vous allez implémenter le menu principal de l'application. Pour créer un nouveau composant Angular2, nous allons utiliser a commande `ng generate component menu`
+- Créez un nouveau composant `menu\menu.component.ts` dans lequel vous allez implémenter le menu principal de l'application. Pour créer un nouveau composant Angular, nous allons utiliser a commande `ng generate component menu`
 
 - Remplacez dans le composant `Application` le menu initial par le composant que vous venez de créer.
 

@@ -1,4 +1,4 @@
-# Démarrer une<br>application Angular2
+# Démarrer une<br>application Angular
 
 <!-- .slide: class="page-title" -->
 
@@ -12,10 +12,10 @@ Notes :
 
 - [Rappels](#/1)
 - [Présentation](#/2)
-- **[Démarrer une application Angular2](#/3)**
+- **[Démarrer une application Angular](#/3)**
 - [Tests](#/4)
 - [Template, Directives & Composants](#/5)
-- [Les composants Angular2](#/6)
+- [Les composants Angular](#/6)
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
@@ -223,7 +223,7 @@ output: {
   - Création d'un fichier `vendor.ts` important toutes librairies utilisées
 
 ```typescript
-// Angular 2
+// Angular
 import '@angular/core';
 import '@angular/common';
 import '@angular/http';
@@ -312,7 +312,7 @@ Notes :
 
 ### WebPack - Autres outils
 
-- L'optimisation d'une application *Angular2* peut être découpée en 4 phases:  
+- L'optimisation d'une application *Angular* peut être découpée en 4 phases:  
   - Offline compilation : *ngc*
   - Inline modules : *WebPack*
   - Tree-Shaking : *Rollup*

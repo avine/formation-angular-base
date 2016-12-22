@@ -12,10 +12,10 @@ Notes :
 
 - [Rappels](#/1)
 - **[Présentation](#/2)**
-- [Démarrer une application Angular2](#/3)
+- [Démarrer une application Angular](#/3)
 - [Tests](#/4)
 - [Template, Directives & Composants](#/5)
-- [Les composants Angular2](#/6)
+- [Les composants Angular](#/6)
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
@@ -72,7 +72,7 @@ app.directive('MyDirective', function(){
 });
 ```
 
-- Version *Angular2* :
+- Version *Angular* :
 
 ```typescript
 import { Component, Input} from '@angular/core'
@@ -102,7 +102,7 @@ app.service('Service', function(){
 });
 ```
 
-- Version Angular2
+- Version Angular
 
 ```typescript
 @Injectable()
@@ -118,7 +118,7 @@ Notes :
 
 
 
-## Angular2 - Points Positifs
+## Angular - Points Positifs
 
 - Création d'application modulaire
 - Utilisable avec plusieurs langages de programmation : `ES5`, `ES2015(ES6)`, `TypeScript` et `Dart`
@@ -137,7 +137,7 @@ Notes :
 
 
 
-## Angular2 - Points Négatifs
+## Angular - Points Négatifs
 
 - Nouvelle phase d'apprentissage du framework
 - Faible ecosystème pour l'instant
@@ -154,9 +154,9 @@ Notes :
 
 
 
-## Angular2 = Une Plateforme
+## Angular = Une Plateforme
 
-- Angular2 n'est pas qu'un simple framework
+- Angular n'est pas qu'un simple framework
 - Intégration Mobile
 - Outillage pour faciliter la phase de développement
 
@@ -168,7 +168,7 @@ Notes :
 
 ## Architecture
 
-- Architecture d'une application Angular2
+- Architecture d'une application Angular
 
 ![architecture](ressources/overview2.png "architecture")
 
@@ -192,7 +192,7 @@ Notes :
 
 ## Architecture - Exemple complet
 
-- Exemple complet utilisant les différentes briques d'une application Angular2
+- Exemple complet utilisant les différentes briques d'une application Angular
 
 ```typescript
 import {Component} from '@angular/core';

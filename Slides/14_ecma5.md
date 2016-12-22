@@ -12,10 +12,10 @@ Notes :
 
 - [Rappels](#/1)
 - [Présentation](#/2)
-- [Démarrer une application Angular2](#/3)
+- [Démarrer une application Angular](#/3)
 - [Tests](#/4)
 - [Template, Directives & Composants](#/5)
-- [Les composants Angular2](#/6)
+- [Les composants Angular](#/6)
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
@@ -27,9 +27,9 @@ Notes :
 
 
 
-## Angular2 en EcmaScript 5
+## Angular en EcmaScript 5
 
-- Possibilité de développer une application *Angular2* en *EcmaScript 5*
+- Possibilité de développer une application *Angular* en *EcmaScript 5*
 - Syntaxe un peu plus verbeuse que celle de *TypeScript*
 - Impossibilité d'utiliser les nouveautés de *EcmaScript 2015* et *TypeScript*
 - Remplacement des annotations par des appels à l'objet `ng`
@@ -45,7 +45,7 @@ Notes :
 
 
 
-## Angular2 en EcmaScript 5
+## Angular en EcmaScript 5
 
 - Initialisation de l'application via la méthode `bootstrap` du module `@angular/platform-browser-dynamic`
 - Écoute de l'événement `DOMContentLoaded`
@@ -63,7 +63,7 @@ Notes :
 
 
 
-## Angular2 en ES5 - Les composants
+## Angular en ES5 - Les composants
 
 - Création d'un composant via une fonction constructeur
 - Définition des annotations via la propriété `annotations`
@@ -75,7 +75,7 @@ var AppComponent = function() {};
 AppComponent.annotations = [
   new ng.core.Component({
     selector: 'app',
-    template: '<h1>Hello Angular2!</h1>'
+    template: '<h1>Hello Angular!</h1>'
   })
 ];
 ```
@@ -84,7 +84,7 @@ Notes :
 
 
 
-## Angular2 en ES5 - Les composants
+## Angular en ES5 - Les composants
 
 - API **fluide** mise à disposition par le framework
 - Chaînage des différentes annotations
@@ -106,7 +106,7 @@ Notes :
 
 
 
-## Angular2 en ES5
+## Angular en ES5
 
 - Syntaxe similaire pour les `services` et les `pipes`
 - Tous les composants du framework sont disponibles via le namespace `ng`
@@ -122,9 +122,9 @@ Notes :
 
 
 
-## Angular2 en ES5 - Exemple complet
+## Angular en ES5 - Exemple complet
 
-- Exemple complet d'un composant *Angular2* en *EcmaScript 5*
+- Exemple complet d'un composant *Angular* en *EcmaScript 5*
 
 ```javascript
 var Service = ng.core.
