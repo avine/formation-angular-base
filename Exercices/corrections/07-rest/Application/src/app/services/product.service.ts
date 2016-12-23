@@ -21,6 +21,9 @@ export class ProductService {
     return this.http.get(this.API_URL + 'products')
               .map(res => res.json())
               .map(products => {
+                return products.map(product => new Product(product.title, product.description, product.photo, product.price, product.stock));
+              })
+              .map(products => {
                 return products.map(product => {
                   product.title = this.uppercase.transform(product.title);
                   return product;
