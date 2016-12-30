@@ -127,7 +127,6 @@ Notes :
 
 ```typescript
 providers: [MyService]
-providers: [new Provider(MyService, {useClass: MyService})]
 providers: [{ provide: MyService, useClass: MyService }]
 providers: [{
   provide: ServerConfig,
