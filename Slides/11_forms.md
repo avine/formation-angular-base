@@ -99,10 +99,10 @@ Notes :
 - Solution : Désactiver la validation native et l'effectuer par Angular
 - Attribut `novalidate` sur le formulaire
   - Attribut standard HTML5
-
+  - Attribut ajouté automatiquement par *Angular*
+  
 ```html
 <form novalidate>
-  …
 </form>
 ```
 

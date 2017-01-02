@@ -20,6 +20,9 @@ export class CustomerService {
   getBasket(): Observable<Product[]>{
     return this.http.get(this.API_URL + 'basket')
                   .map(res => res.json())
+                  .map(products => {
+                    return products.map(product => new Product(product.title, product.description, product.photo, product.price, product.stock));
+                  })
                   .do(products => this.products = products)
  }
 
