@@ -33,7 +33,7 @@ Notes :
 - Possibilité d'un injecteur par composant contrairement à *AngularJS* (un unique injecteur global)
 - Les composants héritent de l'injecteur de leur parent
 - Nécessité de configurer les injecteurs
-    - de manière globale via `bootstrap`
+    - de manière globale via le module principal `@NgModule`
     - de manière locale via `@Component`
 - Les services sont injectés via la constructeur du parent et sont des singletons
 
@@ -43,7 +43,7 @@ Notes :
 
 ## Configuration globale de l'Injecteur
 
-- La méthode `bootstrap` peut prendre un second paramètre
+- L'annotation `@NgModule` a un paramètre `providers`
 - Ce paramètre est un tableau de `providers`
 
 ```typescript
@@ -123,12 +123,10 @@ Notes :
 ## Configurer les providers
 
 - Plusieurs syntaxes existent pour définir les providers
-- Ces syntaxes peuvent être utilisées via `bootstrap` ou `Component`
 - L'identifiant du provider peut être un objet, une chaîne de caractères ou un `OpaqueToken`
 
 ```typescript
 providers: [MyService]
-providers: [new Provider(MyService, {useClass: MyService})]
 providers: [{ provide: MyService, useClass: MyService }]
 providers: [{
   provide: ServerConfig,
