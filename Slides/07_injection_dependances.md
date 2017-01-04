@@ -48,20 +48,20 @@ Notes :
 
 ```typescript
 // fichier application.component.ts
-import {MyService} from './myservice'
+import { UserService } from './user.service'
 
 @Component({ ... })
 export class AppComponent {
-    constructor(service:MyService){
-        console.log(service.myMethod());
+    constructor(userService: UserService){
+        console.log(userService.getUser());
     }
 }
 
 // fichier app.module.ts
-import { MyService } from './services/myservice.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
-  providers: [MyService],
+  providers: [ UserService ],
 })
 export class AppModule { }
 ```
@@ -77,14 +77,14 @@ Notes :
 
 ```typescript
 // fichier application.component.ts
-import {MyService} from './myservice'
+import { UserService } from './user.service'
 
 @Component({
-    providers: [MyService]
+    providers: [ UserService ]
 })
 export class AppComponent {
-    constructor(service:MyService){
-        console.log(service.myMethod());
+    constructor(userService: UserService){
+        console.log(userService.getUser());
     }
 }
 ```
@@ -126,13 +126,19 @@ Notes :
 - L'identifiant du provider peut être un objet, une chaîne de caractères ou un `OpaqueToken`
 
 ```typescript
-providers: [MyService]
-providers: [{ provide: MyService, useClass: MyService }]
-providers: [{
-  provide: ServerConfig,
-  useFactory: (appService: AppService) => appService.getConfig();
-  deps: [AppService]
-}]
+export function serverConfigFactory(appService: AppService){
+    return appService.getConfig();
+}
+@NgModule({
+    UserService, 
+    { provide: LoginService, useClass: LoginService },
+    {
+        provide: ServerConfig,
+        useFactory: serverConfigFactory
+        deps: [AppService]
+    }
+})
+export class AppModule { }
 ```
 
 Notes :
