@@ -141,24 +141,33 @@ Notes :
 
 
 
-## Les Pipes impure
+## Les Pipes - pures et impures
 
 - Deux catégories de *Pipes* : pure et impure
-- *Pipes* sont pure par défaut
-- Un *Pipe* impure doit implémenter l'interface `PipeOnDestroy`
-- Exemple de *Pipes* impure : *AsyncPipe*
-- Pour définir un *Pipe* impure, nécessité de mettre la propriété `pure` à `false`
-- Permet d'indiquer au système de *Change Detection* de vérifier le résultat de ce *Pipe* après chaque cycle.
+- *Pipes* pures par défaut: exécuté seulement quand l'input du pipe subit un changement "pure"
+ - changement de référence
+ - changement d'une valeur primitive (boolean, number, string...)
+- Ceci optimise les performances du mécanisme de détection de changement
+- Mais, pas toujours le comportement souhaité :
+ - ajout/suppression d'un objet dans un tableau (la référence du tableau ne change pas)
+ - modification d'une propriété d'un objet
+
+Notes :
+
+
+
+## Les Pipes - impure
+
+- Exécuté à chaque cycle du système de *Change Detection*
+- Pour définir un *Pipe* impure, mettre la propriété `pure` à `false`
 
 ```typescript
 @Pipe({
-  name: 'fetch',
+  name: 'myImpurePipe',
   pure: false
 })
-class FetchPipe implements PipeOnDestroy {
+class MyImpurePipe {
   transform(value){ ... }
-
-  onDestroy(){ ... }
 }
 ```
 
@@ -166,8 +175,10 @@ Notes :
 
 
 
+
 ## Les Pipes - AsyncPipe
 
+- Exemple de pipe impure
 - *Pipe* recevant une `Promise` ou un `Observable` en entrée
 - Retournera la donnée émise
 
