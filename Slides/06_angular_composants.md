@@ -98,7 +98,7 @@ import {Component} from '@angular/core';
 @Component({
 	selector: 'toggle-button',
     template: `
-       <div class="button" [ngClass]="{disabled: isDisabled}"></divt>
+       <div class="button" [ngClass]="{'disabled': isDisabled}"></divt>
        <button (click)="toggle(!isDisabled)">Click me!</button>`,
     styles: [`
       .disabled {
