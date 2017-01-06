@@ -21,19 +21,27 @@ Cette API propose plusieurs points d'entrée :
 - Nous allons tout d'abord modifier le service `ProductService`. Dans la méthode `getProducts`, nous allons envoyer une requête `HTTP` vers l'API correspondante. Lors de la reception de la réponse, vous devez :
   - convertir en `json`,
   - mettre en majuscule les propriétés `title` de chaque produit
+  - stocker le résultat dans la propriété `products` de la classe
 
-- Vous devez également mettre en place un système de cache pour ces produits, également plus tard pour le panier utilisateur. Pour cela, vous pouvez réutiliser la variable de classe `products` et la méthode `Observable.of`.
+- Modifier le composant `AppComponent` en conséquence.
 
--  Il se peut que vous ayez des des erreurs dans votre navigateur à cause de la méthode `map`. *RxJS* n'inclut pas tous les opérateurs afin de réduire au maximum la taille de la librairie. Pour résoudre ce problème, vous devez ajouter l'import ci-dessous dans l'un de vos fichiers :
+- Il se peut que vous ayez des des erreurs dans votre navigateur à cause de la méthode `map`. *RxJS* n'inclut pas tous les opérateurs afin de réduire au maximum la taille de la librairie. Pour résoudre ce problème, vous devez importer les opérateurs que vous souhaitez utiliser.
+  - Créez un fichier `rxjs-operators.ts` à côté du fichier `app.module.ts`
+  - Importez-y l'opérateur 
+	```typescript
+	import 'rxjs/add/operator/map';
+	```
+  - Importez ce fichier dans `app.module.ts`
+	```typescript
+	import './rxjs-operators';
+	```
 
-```typescript
-import 'rxjs/add/operator/map';
-```
+- Vous devrez faire de même pour tous les opérateurs *RxJs* que vous utiliserez ensuite.
 
 - Nous allons à présent modifier, de la même façon, le service `CustomerService`.
   - Créez une méthode `getBasket` avec le même fonctionnement que le point précédent
   - Implémentez une méthode `addProduct` dans laquelle nous allons envoyer une méthode `POST` pour ajouter un produit au panier de l'utilisateur.
 
 
-- Modifiez le composant `product` afin d'utiliser la nouvelle version des services `CustomerService` et `ProductService`.
+- Modifiez le composant `AppComponent` afin d'utiliser la nouvelle version des services `CustomerService` et `ProductService`.
 
