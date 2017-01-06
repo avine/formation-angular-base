@@ -35,7 +35,7 @@ Notes :
 - Nécessité de configurer les injecteurs
     - de manière globale via le module principal `@NgModule`
     - de manière locale via `@Component`
-- Les services sont injectés via la constructeur du parent et sont des singletons
+- Les services sont injectés via la constructeur du parent et sont des singletons **au sein du même injecteur**
 
 Notes :
 
@@ -43,8 +43,8 @@ Notes :
 
 ## Configuration globale de l'Injecteur
 
-- L'annotation `@NgModule` a un paramètre `providers`
-- Ce paramètre est un tableau de `providers`
+- `@NgModule` a un paramètre `providers`: un tableau de `providers`
+- Les `providers` définit dans un `NgModule` sont injectables partout dans l'application
 
 ```typescript
 // fichier application.component.ts
@@ -70,10 +70,12 @@ Notes :
 
 
 
+
 ## Configuration locale de l'Injecteur
 
 - Possibilité de définir une propriété `providers` dans l'annotation `@Component`
 - Même syntaxe que la configuration globale
+- Les `providers` définit dans un `Component` sont injectables dans ce component et ses fils
 
 ```typescript
 // fichier application.component.ts
@@ -90,6 +92,7 @@ export class AppComponent {
 ```
 
 Notes :
+
 
 
 
@@ -161,6 +164,26 @@ class AppComponent {
 ```
 
 Notes :
+
+
+
+## Hiérarchie d'injecteurs
+
+ - Chaque composant peut définir un injecteur avec un certain nombre de providers
+ - Chaque provider fournit un singleton d'un service 
+ - Si un composant a besoin d'un service mais que son injecteur n'a pas de provider correspondant, il demande à l'injecteur de son parent
+
+
+
+## Hiérarchie d'injecteurs
+
+![hierarchie-injecteurs](ressources/hierarchical-injectors.png "hierarchie-injecteurs")
+
+Notes :
+  - Service Http définit comme singleton pour l'appli, il sera utilisé par AppComponent, Component2, Component4, Component5
+  - Si Component1 ou Component3 injecte Http, c'est un CustomHttp qui sera injecté (singleton pour Component1 et Component3)
+  - Si Component3 définit aussi le même tableau de provider que Component3, alors chacun aura une instance différente de CustomHttp
+
 
 
 
