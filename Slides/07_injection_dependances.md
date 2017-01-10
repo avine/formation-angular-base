@@ -48,7 +48,7 @@ Notes :
 
 ```typescript
 // fichier application.component.ts
-import {MyService} from './myservice'
+import {MyService} from '../services/myservice.service';
 
 @Component({ ... })
 export class AppComponent {
@@ -61,7 +61,7 @@ export class AppComponent {
 import { MyService } from './services/myservice.service';
 
 @NgModule({
-  providers: [MyService],
+  providers: [MyService]
 })
 export class AppModule { }
 ```
