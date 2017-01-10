@@ -45,13 +45,13 @@ Notes :
 ## Les Observables
 
 - Tout observable peut être, comme un tableau, utilisé par  des fonctions classiques :
-    - take(n) va piocher les n premiers éléments.
-    - map(fn) va appliquer la fonction fn sur chaque événement et retourner le résultat.
-    - filter(predicate) laissera passer les seuls événements qui répondent positivement au prédicat.
-    - reduce(fn) appliquera la fonction fn à chaque événement pour réduire le flux à une seule valeur unique.
-    - merge(s1, s2) fusionnera les deux flux.
-    - subscribe(fn) appliquera la fonction fn à chaque évènement qu’elle reçoit.
-    - debounce(ms) retardera l'exécution d'un observable
+    - `take(n)` va piocher les n premiers éléments.
+    - `map(fn)` va appliquer la fonction fn sur chaque événement et retourner le résultat.
+    - `filter(predicate)` laissera passer les seuls événements qui répondent positivement au prédicat.
+    - `reduce(fn)` appliquera la fonction fn à chaque événement pour réduire le flux à une seule valeur unique.
+    - `merge(s1, s2)` fusionnera les deux flux.
+    - `subscribe(fn)` appliquera la fonction fn à chaque évènement qu’elle reçoit.
+    - `debounce(ms)` retardera l'exécution d'un observable
 
 Notes :
 
