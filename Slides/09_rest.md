@@ -262,10 +262,9 @@ export class HttpService {
 
     save(contact){
       let headers = new Headers();
-      headers.set('Content-Type', 'application/json');
+      headers.set('Authorization', 'xxxxxxx');
 
-      return this.http.put('rest/contacts/' + contact.id,
-                                  JSON.stringify(contact), {'headers': headers});
+      return this.http.put('rest/contacts/' + contact.id, contact, {headers: headers});
     }
 }
 ```
