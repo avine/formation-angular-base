@@ -130,13 +130,15 @@ export function serverConfigFactory(appService: AppService){
     return appService.getConfig();
 }
 @NgModule({
-    UserService, 
-    { provide: LoginService, useClass: LoginService },
-    {
-        provide: ServerConfig,
-        useFactory: serverConfigFactory
-        deps: [AppService]
-    }
+    providers: [
+      UserService, 
+      { provide: LoginService, useClass: LoginService },
+      {
+          provide: ServerConfig,
+          useFactory: serverConfigFactory
+          deps: [AppService]
+      }
+    ]
 })
 export class AppModule { }
 ```
