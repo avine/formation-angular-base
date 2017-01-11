@@ -98,7 +98,7 @@ import {Component} from '@angular/core';
 @Component({
 	selector: 'toggle-button',
     template: `
-       <div class="button" [ngClass]="{disabled: isDisabled}"></divt>
+       <div class="button" [ngClass]="{'disabled': isDisabled}"></divt>
        <button (click)="toggle(!isDisabled)">Click me!</button>`,
     styles: [`
       .disabled {
@@ -123,7 +123,7 @@ Notes :
 - Définition des éléments HTML à dupliquer dans un élément `<template>`
 - Utilisation de la propriété `ngForOf` pour définir l'expression permettant l'itération
 - Sauvegarde de la valeur en cours dans des variables de rendu (préfixées par `let-`)
-- Angular met à disposition quatre données supplémentaires : `index`, `last`, `even` et `odd`
+- Angular met à disposition cinq données supplémentaires : `index`, `first`, `last`, `even` et `odd`
 
 ```typescript
 <template ngFor let-item [ngForOf]="items" let-i="index"><li>...</li></template>

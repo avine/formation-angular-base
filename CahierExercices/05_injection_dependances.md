@@ -9,6 +9,7 @@ Nous allons créer deux services :
 
 - Veuillez créer un service `service\ProductService.ts` dans lequel vous allez définir :
 	- un tableau `products` avec les valeurs définies dans le composant `AppComponent.ts`
+	- une méthode `getProducts()`: retournera le tableau `products`
 	- une méthode `isTheLast(produitTitle)` : retournera `true` si le stock d'un produit est égal à 1
 	- une méthode `isAvailable(produitTitle)` : retournera `true` si le stock d'un produit n'est pas égal à 0
 	- une méthode `decreaseStock(produitTitle)` : mettra à jour la propriété `stock` du produit spécifié en paramètre
