@@ -2,7 +2,8 @@ Domaine: Web
 
 Sous-domaine: Angular
 
-# Angular
+# Angular 2 et +
+## Développement d'applications riches avec Angular 2 et +
 
 Durée: 3j
 
