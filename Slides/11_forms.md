@@ -162,7 +162,7 @@ Notes :
 ## Validation : État du formulaire et des champs
 
 - Angular expose 5 propriétés au niveau du formulaire et de chacun des champs de saisie
-  - `valid` : Indique si l'élément passe le contrôle des validateurs
+  - `valid` / `invalid` : Indique si l'élément passe le contrôle des validateurs
   - `pristine` / `dirty` : Indiquent si l'utilisateur a altéré l'élément
     - Un élément est considéré `dirty` dès qu'il subit une modification, même si la valeur initiale est restaurée ensuite
   - `untouched` / `touched` : Indiquent si l'élément a été touché (focus)
