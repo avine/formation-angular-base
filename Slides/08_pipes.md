@@ -218,7 +218,7 @@ describe('MyLowerCasePipe', () => {
   beforeEach(() => { pipe = new MyLowerCasePipe(); });
 
   describe('transform', () => {
-    it('should return uppercase', () => {
+    it('should return lowercase', () => {
       var val = pipe.transform('SOMETHING');
       expect(val).toEqual('something');
     });
