@@ -126,7 +126,7 @@ Notes :
 ## Configurer les providers
 
 - Plusieurs syntaxes existent pour définir les providers
-- L'identifiant du provider peut être un objet, une chaîne de caractères ou un `OpaqueToken`
+- L'identifiant du provider peut être un objet, une chaîne de caractères ou un `InjectionToken`
 
 ```typescript
 export function serverConfigFactory(appService: AppService){
@@ -154,7 +154,7 @@ Notes :
 
 - Lorsque nous avons des objets à injecter, et non des classes
 - Possibilité de définir une chaîne de caractère comme identifiant
-- Utilisation de l'objet `OpaqueToken` de préférence
+- Utilisation de l'objet `InjectionToken` de préférence
 - Nécessité d'utiliser l'annotation `Inject` pour injecter ce genre de service
 
 ```typescript
