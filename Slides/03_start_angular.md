@@ -110,7 +110,7 @@ Notes :
 - Projet disponible sur *NPM*
 
 ```shell
-npm install -g angular-cli
+npm install -g @angular/cli
 ```
 
 - Plusieurs commandes disponibles
