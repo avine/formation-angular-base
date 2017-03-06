@@ -103,11 +103,11 @@ Notes :
 - Inutile pour les composants, car nous utilisons déjà `@Component`
 
 ```typescript
-import {Injectable} from '@angular/core';
-import {Logger} from './logger-service';
+import { Injectable } from '@angular/core';
+import { Logger } from './logger-service';
 
 @Injectable()
-export class MyService {
+export class UserService {
 
     constructor(public logger:Logger){
 
