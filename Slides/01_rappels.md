@@ -516,14 +516,6 @@ Notes :
 
   Les dépendances nécessaires au bon fonctionnement du module, mais pas installées lors d'un `npm install`
 
-- `optionalDependencies` **(rare)**
-
-  Des dépendances qui ne sont pas indispensables à l'utilisation du module; prend en compte que la récupération peut échouer
-
-- `bundledDependencies` **(rare)**
-
-  Des dépendances qui sont publiées et livrées avec le module
-
 Notes :
 - files : liste de fichiers sauf .npmignore
 - bundledDependencies ou bundleDependencies
