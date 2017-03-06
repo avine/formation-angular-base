@@ -53,7 +53,7 @@ Notes :
 ```html
 <button [disabled]="isUnchanged">Save</button>
 <button bind-disabled="isUnchanged">Save</button>
-
+<button data-bind-disabled="isUnchanged">Save</button>
 <hero-detail [hero]="currentHero"></hero-detail>
 
 <div [class.special]="isSpecial">Special</div>
@@ -101,6 +101,7 @@ Notes :
 <hero-detail (deleted)="onHeroDeleted()"></hero-detail>
 
 <button on-click="myMethod()"></button>
+<button data-on-click="myMethod()"></button>
 ```
 
 Notes :
