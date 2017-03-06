@@ -212,11 +212,11 @@ Notes :
   - La méthode du service retournera le résultat de la requête `HTTP`
 
 ```typescript
-import {Http} from '@angular/http';
-import {Injectable} from '@angular/core';
+import { Http } from '@angular/http';
+import { Injectable } from '@angular/core';
 
 @Injectable()
-export class HttpService {
+export class ContactService {
     constructor(private http:Http){ }
 
     getContacts() {
