@@ -164,7 +164,7 @@ Notes :
 - Pour faire de la manipulation de DOM, toujours utiliser le service `Renderer`
 
 ```typescript
-//<span myHighlight>Highlight me!</span>
+//<p myHighlight>Highlight me!</p>
 import {Directive, ElementRef, Renderer, Input} from '@angular/core';
 @Directive({
     selector: '[myHighlight]'
