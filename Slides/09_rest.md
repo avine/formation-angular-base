@@ -257,7 +257,7 @@ Notes :
 ```typescript
 import {Http, Headers} from '@angular/http';
 
-export class HttpService {
+export class ContactService {
     constructor(private http:Http){ }
 
     save(contact){
