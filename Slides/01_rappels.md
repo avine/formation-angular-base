@@ -119,7 +119,7 @@ Notes :
 - Une fonction peut prendre des paramètres
 
 ```typescript
-function fn(name: string, forename: string) { }
+function getFullName(name: string, forename: string) { }
 ```
 
 - Un paramètre peut être optionel
@@ -129,7 +129,7 @@ function fn(name: string, forename: string) { }
   - si pas défini, le paramètre aura la valeur `undefined`
 
 ```typescript
-function fn(name: string, forename?: string) { }
+function getFullName(name: string, forename?: string) { }
 ```
 
 Notes :
