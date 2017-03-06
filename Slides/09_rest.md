@@ -264,7 +264,7 @@ export class ContactService {
       let headers = new Headers();
       headers.set('Authorization', 'xxxxxxx');
 
-      return this.http.put('rest/contacts/' + contact.id, contact, {headers: headers});
+      return this.http.put('rest/contacts/' + contact.id, contact, {headers});
     }
 }
 ```
