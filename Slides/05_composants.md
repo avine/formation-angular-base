@@ -165,7 +165,7 @@ Notes :
 
 ```typescript
 //<p myHighlight>Highlight me!</p>
-import {Directive, ElementRef, Renderer } from '@angular/core';
+import { Directive, ElementRef, Renderer } from '@angular/core';
 @Directive({
     selector: '[myHighlight]'
 })
@@ -189,7 +189,7 @@ Notes :
 - Possibilité d'utiliser les décorateurs `HostListener` et `HostBinding`
 
 ```typescript
-import {Directive, ElementRef, Renderer } from '@angular/core';
+import { Directive, ElementRef, Renderer } from '@angular/core';
 @Directive({
     selector: '[myHighlight]',
     host: {
