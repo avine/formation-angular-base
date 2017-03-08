@@ -199,9 +199,9 @@ import { Directive, ElementRef, Renderer } from '@angular/core';
 })
 export class HighlightDirective {
     constructor(private el: ElementRef, private renderer: Renderer) { ... }
-    onMouseEnter() { this._highlight("yellow"); }
-    onMouseLeave() { this._highlight(null); }
-    private _highlight(color: string) { ... }
+    onMouseEnter() { this.highlight("yellow"); }
+    onMouseLeave() { this.highlight(null); }
+    private highlight(color: string) { ... }
 }
 ```
 
@@ -219,14 +219,14 @@ Notes :
 //<p [myHighlight]="color">Highlight me!</p>
 export class HighlightDirective {
     @Input('myHighlight') highlightColor: string;
-    private _defaultColor = 'red';
+    private defaultColor = 'red';
 
     constructor(private el: ElementRef, private renderer: Renderer) { }
 
-    onMouseEnter() { this._highlight(this.highlightColor || this._defaultColor); }
-    onMouseLeave() { this._highlight(null); }
+    onMouseEnter() { this.highlight(this.highlightColor || this.defaultColor); }
+    onMouseLeave() { this.highlight(null); }
 
-    private _highlight(color:string) {
+    private highlight(color:string) {
         this.renderer
             .setElementStyle(this.el.nativeElement, 'backgroundColor', color);
     }
@@ -253,7 +253,7 @@ export class HighlightDirective {
     constructor(private el: ElementRef, private renderer: Renderer) { }
     onMouseEnter() {
         this.hightLightEvent.emit(this.highlightColor);
-        this._highlight(this.highlightColor || this._defaultColor);
+        this.highlight(this.highlightColor || this.defaultColor);
     }
     ...
 }

@@ -107,9 +107,9 @@ Notes :
 @Directive({selector: 'router-outlet'})
 export class RouterOutlet {
   constructor(
-    private _elementRef: ElementRef,
-    private _loader: DynamicComponentLoader,
-    private _parentRouter: routerMod.Router,
+    private elementRef: ElementRef,
+    private loader: DynamicComponentLoader,
+    private parentRouter: routerMod.Router,
     @Attribute('name') nameAttr: string) {...}
 }
 ```
@@ -285,10 +285,10 @@ import { ActivatedRoute } from '@angular/router';
   template: '<main><router-outlet></router-outlet></main>'
 })
 export class ProductComponent {
-  constructor(private _route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this._route.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       let id = +params['id']; // (+) conversion 'id' string en number
       ...
     });
@@ -320,10 +320,10 @@ import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
   template: '<main><router-outlet></router-outlet></main>'
 })
 export class ProductComponent {
-  constructor(private _route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    const s: ActivatedRouteSnapshot = this._route.snapshot;
+    const s: ActivatedRouteSnapshot = this.route.snapshot;
     // Valeur initiale des paramètres
     let id = +s.params.id;
     ...
@@ -347,9 +347,9 @@ import { AuthService } from '../shared/auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private _authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
   canActivate(route: ActivatedRouteSnapshot) {
-    if(this._authService.isLoggedIn()) return true;
+    if(this.authService.isLoggedIn()) return true;
     this.router.navigate(['/login']);
     return false;
   }
