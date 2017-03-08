@@ -53,7 +53,7 @@ Notes :
 ```html
 <button [disabled]="isUnchanged">Save</button>
 <button bind-disabled="isUnchanged">Save</button>
-
+<button data-bind-disabled="isUnchanged">Save</button>
 <hero-detail [hero]="currentHero"></hero-detail>
 
 <div [class.special]="isSpecial">Special</div>
@@ -79,7 +79,7 @@ Angular transformera la syntaxe d'interpolation en binding de propriétés
 <!-- Template parse errors:
 Can't bind to 'colspan' since it isn't a known native property-->
 
-<button [attr.aria-label]="helpLabel">{{helpLabel}}</button>
+<td [attr.colspan]="dynamicColspan">help</td>
 ```
 
 Notes :
@@ -101,6 +101,7 @@ Notes :
 <hero-detail (deleted)="onHeroDeleted()"></hero-detail>
 
 <button on-click="myMethod()"></button>
+<button data-on-click="myMethod()"></button>
 ```
 
 Notes :
@@ -163,8 +164,8 @@ Notes :
 - Pour faire de la manipulation de DOM, toujours utiliser le service `Renderer`
 
 ```typescript
-//<span myHighlight>Highlight me!</span>
-import {Directive, ElementRef, Renderer, Input} from '@angular/core';
+//<p myHighlight>Highlight me!</p>
+import { Directive, ElementRef, Renderer } from '@angular/core';
 @Directive({
     selector: '[myHighlight]'
 })
@@ -188,7 +189,7 @@ Notes :
 - Possibilité d'utiliser les décorateurs `HostListener` et `HostBinding`
 
 ```typescript
-import {Directive, ElementRef, Renderer, Input} from '@angular/core';
+import { Directive, ElementRef, Renderer } from '@angular/core';
 @Directive({
     selector: '[myHighlight]',
     host: {
@@ -198,9 +199,9 @@ import {Directive, ElementRef, Renderer, Input} from '@angular/core';
 })
 export class HighlightDirective {
     constructor(private el: ElementRef, private renderer: Renderer) { ... }
-    onMouseEnter() { this._highlight("yellow"); }
-    onMouseLeave() { this._highlight(null); }
-    private _highlight(color: string) { ... }
+    onMouseEnter() { this.highlight("yellow"); }
+    onMouseLeave() { this.highlight(null); }
+    private highlight(color: string) { ... }
 }
 ```
 
@@ -218,14 +219,14 @@ Notes :
 //<p [myHighlight]="color">Highlight me!</p>
 export class HighlightDirective {
     @Input('myHighlight') highlightColor: string;
-    private _defaultColor = 'red';
+    private defaultColor = 'red';
 
     constructor(private el: ElementRef, private renderer: Renderer) { }
 
-    onMouseEnter() { this._highlight(this.highlightColor || this._defaultColor); }
-    onMouseLeave() { this._highlight(null); }
+    onMouseEnter() { this.highlight(this.highlightColor || this.defaultColor); }
+    onMouseLeave() { this.highlight(null); }
 
-    private _highlight(color:string) {
+    private highlight(color:string) {
         this.renderer
             .setElementStyle(this.el.nativeElement, 'backgroundColor', color);
     }
@@ -252,7 +253,7 @@ export class HighlightDirective {
     constructor(private el: ElementRef, private renderer: Renderer) { }
     onMouseEnter() {
         this.hightLightEvent.emit(this.highlightColor);
-        this._highlight(this.highlightColor || this._defaultColor);
+        this.highlight(this.highlightColor || this.defaultColor);
     }
     ...
 }

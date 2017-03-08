@@ -63,7 +63,7 @@ La directive `NgForm` est automatiquement associée à chaque balise `<form>`
 ```html
 <form #myForm="ngForm">
   <!-- disabled button if form is invalid -->
-  <button type="submit" [disabled]="!myForm.valid">Save</button>
+  <button type="submit" [disabled]="myForm.invalid">Save</button>
 </form>
 ```
 
@@ -127,17 +127,15 @@ Notes :
 ## Exemple
 Exemple complet:
 ```html
-<form #myForm="ngForm" novalidate (submit)="onSubmit(myForm.value)">
+<form #myForm="ngForm" novalidate (submit)="onSubmit()">
   <input type="text" name="myName" [(ngModel)]="contact.name" #nameInput="ngModel" required>
   <span [hidden]="nameInput.valid">Error</span>
   <span [hidden]="nameInput.pristine">You changed the value</span>
 
-  <button type="submit" [disabled]="!myForm.valid">
+  <button type="submit" [disabled]="myForm.invalid">
     Validate
   </button>
 </form>
-
-// myForm.value -> { myName: '' }
 ```
 
 Notes :

@@ -195,12 +195,12 @@ Notes :
 - Exemple complet utilisant les différentes briques d'une application Angular
 
 ```typescript
-import {Component} from '@angular/core';
-import {Http} from '@angular/http';
+import { Component } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Component({
     selector: 'app',
-    template: '{{value | MyPipe}}'
+    template: '{{value | uppercase}}'
 })
 export class MyComponent{
   value:string;

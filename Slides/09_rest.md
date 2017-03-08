@@ -212,11 +212,11 @@ Notes :
   - La méthode du service retournera le résultat de la requête `HTTP`
 
 ```typescript
-import {Http} from '@angular/http';
-import {Injectable} from '@angular/core';
+import { Http } from '@angular/http';
+import { Injectable } from '@angular/core';
 
 @Injectable()
-export class HttpService {
+export class ContactService {
     constructor(private http:Http){ }
 
     getContacts() {
@@ -257,14 +257,14 @@ Notes :
 ```typescript
 import {Http, Headers} from '@angular/http';
 
-export class HttpService {
+export class ContactService {
     constructor(private http:Http){ }
 
     save(contact){
       let headers = new Headers();
       headers.set('Authorization', 'xxxxxxx');
 
-      return this.http.put('rest/contacts/' + contact.id, contact, {headers: headers});
+      return this.http.put('rest/contacts/' + contact.id, contact, {headers});
     }
 }
 ```
