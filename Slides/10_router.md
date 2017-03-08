@@ -54,6 +54,7 @@ Notes :
 - Installation via *NPM* : `npm install --save @angular/router`
 
 ```typescript
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -72,7 +73,9 @@ Notes :
 - Elle prend en paramètre un tableau de `RouterConfig`, qui correspond à un tableau de `Route`
 
 ```typescript
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent, ContactsComponent, ContactComponent } from './pages';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent }, // path: '/'
@@ -146,13 +149,14 @@ Notes :
   template: '
     <div>
       <h1>Hello {{message}}!</h1>
-        <a [routerLink]="['contacts']">Link 1</a>
+        <a [routerLink]="'contacts'">Link 1</a>
         <a [routerLink]="['contact', 1]">Link 2</a>
+        <a [routerLink]="['contact', id]">Link 3</a>
         <router-outlet></router-outlet>
     </div>'
 })
 class AppComponent {
-
+  id: number = 2;
 }
 ```
 
@@ -165,16 +169,16 @@ Notes :
 - Imbrication de plusieurs `RouterOutlet` pour définir une hiérarchie de vues
 
 ```typescript
-import { RouterModule, RouterConfig } from '@angular/router';
-import { HeroListComponent }     from './hero-list.component';
-import { HeroDetailComponent }   from './hero-detail.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ContactComponent, EditComponent, ViewComponent } from './pages';
 
-export const routes = [
-  { path: 'contact/:id',  component: ContactComponent, children: [
-    {path: 'edit', component: EditCmp},
-    {path: 'view', component: ViewCmp}
-  ]},
-  { path: 'contacts', component: ContactsComponent }
+export const routes: Routes = [
+  { 
+    path: 'contact/:id',  component: ContactComponent, children: [
+      {path: 'edit', component: EditCmp},
+      {path: 'view', component: ViewCmp}
+    ]
+  }
 ];
 
 const routing = RouterModule.forRoot(routes);
