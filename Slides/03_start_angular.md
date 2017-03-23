@@ -14,8 +14,8 @@ Notes :
 - [Présentation](#/2)
 - **[Démarrer une application Angular](#/3)**
 - [Tests](#/4)
-- [Template, Directives & Composants](#/5)
-- [Les composants Angular](#/6)
+- [Template & Composants](#/5)
+- [Les directives](#/6)
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)

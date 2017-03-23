@@ -1,5 +1,4 @@
-# Les directives<br>Angular
-
+# Les Directives
 <!-- .slide: class="page-title" -->
 
 Notes :
@@ -14,14 +13,65 @@ Notes :
 - [Présentation](#/2)
 - [Démarrer une application Angular](#/3)
 - [Tests](#/4)
-- [Template, Directives & Composants](#/5)
-- **[Les directives Angular](#/6)**
+- [Template & Composants](#/5)
+- **[Les directives](#/6)**
 - [Injection de Dépendances](#/7)
 - [Les Pipes](#/8)
 - [Service HTTP](#/9)
 - [Router](#/10)
 - [Gestion des Formulaires](#/11)
 - [Server-side Rendering](#/12)
+
+Notes :
+
+
+
+## Les Directives
+
+- Portion de code permettant de définir l'apparence ou le fonctionnement d'un élément HTML
+- Création de directive personnalisée avec l'annotation `@Directive`
+- Pour faire de la manipulation de DOM, toujours utiliser le service `Renderer`
+- Peuvent accepter des paramètres (`Input`) et émettre des évènements (`Output`)
+
+```typescript
+//<p myHighlight>Highlight me!</p>
+import { Directive, ElementRef, Renderer } from '@angular/core';
+@Directive({
+    selector: '[myHighlight]'
+})
+export class HighlightDirective {
+    constructor(el: ElementRef, renderer: Renderer) {
+        //el.nativeElement.style.backgroundColor = 'yellow';
+        renderer.setElementStyle(el.nativeElement, 'backgroundColor', 'yellow');
+    }
+}
+```
+
+Notes :
+
+
+
+## Les Directives - Action utilisateur
+
+- Possibilité d'écouter les évènements de l'élément sur lequel est placé la directive
+- Utilisation de la propriété `host` de l'annotation `@Directive`
+- L'ajout d'handler programmatiquement est à éviter pour des problèmes de mémoire
+- Possibilité d'utiliser les décorateurs `HostListener` et `HostBinding`
+
+```typescript
+import { Directive, HostListener, HostBinding } from '@angular/core';
+
+@Directive({ selector: '[myHighlight]' })
+export class HighlightDirective {
+	@HostBinding('style.backgroundColor') color = 'red'; 
+
+    constructor() { ... }
+	
+	@HostListener('mouseenter') onMouseEnter() { this.color = 'blue'; }
+
+	@HostListener('mouseleave') onMouseLeave() { this.color = 'red'; }
+}
+```
 
 Notes :
 
