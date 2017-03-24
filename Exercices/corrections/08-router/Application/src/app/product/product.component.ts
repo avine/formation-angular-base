@@ -25,6 +25,6 @@ export class ProductComponent implements OnInit {
   }
 
   isTheLast(){
-    return this.productService.isTheLast(this.data.title);
+    return this.productService.isTheLast(this.data);
   }
 }

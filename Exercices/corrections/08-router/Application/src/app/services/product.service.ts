@@ -32,15 +32,15 @@ export class ProductService {
               .do(products => this.products = products);
   }
 
-  isTheLast(title: string): boolean {
-    return this.products.find((product) => { return product.title === title }).stock === 1;
+  isTheLast(product: Product): boolean {
+    return product.stock === 1;
   }
 
-  isAvailable(title: string): boolean {
-    return this.products.find((product) => { return product.title === title }).stock !== 0;
+  isAvailable(product: Product): boolean {
+    return product.stock !== 0;
   }
 
-  decreaseStock(title: string) {
-    this.products.find((product) => { return product.title === title }).stock -= 1;
+  decreaseStock(product: Product) {
+    product.stock -= 1;
   }
 }

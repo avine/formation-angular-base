@@ -14,6 +14,6 @@
 
     <div class="row text-center">
         <template ngFor let-product [ngForOf]="products | sort:'title'">
-            <app-product *ngIf="isAvailable(product.title)" [data]="product" (addToBasket)="updatePrice($event)"></app-product>
+            <app-product *ngIf="isAvailable(product)" [data]="product" (addToBasket)="updatePrice($event)"></app-product>
         </template>
     </div>
