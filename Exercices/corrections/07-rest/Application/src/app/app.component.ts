@@ -1,3 +1,4 @@
+import { Product } from './../../../../06-pipe/Application/src/app/model/product';
 import { Component, Inject } from '@angular/core';
 import { Product } from './model/product';
 import { ProductService } from './services/product.service';
@@ -22,12 +23,12 @@ export class AppComponent {
 
   updatePrice(event) {
       this.customerService.addProduct(event).subscribe(_ => {
-        this.productService.decreaseStock(event.title);
+        this.productService.decreaseStock(event);
       });
 
   }
 
-  isAvailable(title: string): boolean {
-    return this.productService.isAvailable(title);
+  isAvailable(product: Product): boolean {
+    return this.productService.isAvailable(product);
   }
 }
