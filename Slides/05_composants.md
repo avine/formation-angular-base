@@ -15,12 +15,12 @@ Notes :
 - [Démarrer une application Angular](#/3)
 - [Tests](#/4)
 - **[Template & Composants](#/5)**
-- [Les directives](#/6)
+- [Directives](#/6)
 - [Injection de Dépendances](#/7)
-- [Les Pipes](#/8)
+- [Pipes](#/8)
 - [Service HTTP](#/9)
 - [Router](#/10)
-- [Gestion des Formulaires](#/11)
+- [Formulaires](#/11)
 - [Server-side Rendering](#/12)
 
 Notes :
