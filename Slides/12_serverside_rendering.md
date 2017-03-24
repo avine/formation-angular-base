@@ -102,20 +102,25 @@ Elements notables du script de lancement du serveur
 
 ```typescript
 import 'angular2-universal-polyfills';
-import { createEngine, ExpressEngineConfig } from 'angular2-express-engine';
-import { MainModule } from './main.node';
+import { createEngine } from 'angular2-express-engine';
+import { NodeModule } from './main.node';
 
-app.engine('.html', createEngine({}));
+app.engine('.html', createEngine({
+  ngModule: NodeModule,
+  providers: [
+  ]
+}));
+
+app.set('views', __dirname);
+app.set('view engine', 'html');
 
 app.get('/*', (req, res) => {
 
-  const expressConfig : ExpressEngineConfig = {
-    req,
-    res,
-    ngModule: MainModule,
-    preboot: false,
-  };
-  res.render('index', expressConfig);
+  res.render('index', {
+    req, 
+    res, 
+    preboot: true
+  });
 });
 ```
 
