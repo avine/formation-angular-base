@@ -23,13 +23,13 @@ export class HomeComponent implements OnInit {
 
   updatePrice(event) {
       this.customerService.addProduct(event).subscribe(_ => {
-        this.productService.decreaseStock(event.title);
+        this.productService.decreaseStock(event);
       });
       
   }
 
-  isAvailable(title: string): boolean {
-    return this.productService.isAvailable(title);
+  isAvailable(product: Product): boolean {
+    return this.productService.isAvailable(product);
   }
 
   ngOnInit() {
