@@ -1,4 +1,3 @@
-import { Product } from './../../../../06-pipe/Application/src/app/model/product';
 import { Component, Inject } from '@angular/core';
 import { Product } from './model/product';
 import { ProductService } from './services/product.service';
