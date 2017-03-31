@@ -264,12 +264,12 @@ Notes :
 
 
 
-## Les Composants - Aggrégation
+## Les Composants - Projection
 
 - Permet d'insérer le contenu enfant défini lors de l'utilisation du composant
 - Correspond à la directive `ngTransclude` en *AngularJS*
 - Possibilité d'avoir plusieurs points d'insertion (utilisation de la propriété `select`)
-- La propriété `select` accepte comme valeur un sélecteur *CSS*
+- La propriété `select` accepte comme valeur un sélecteur *CSS* : classe, élément et attribut
 
 ```typescript
 //<post><h2>Title</h2><p>Content</p></post>
