@@ -11,8 +11,6 @@ import { Product } from '../model/product';
 @Injectable()
 export class ProductService {
 
-  private products: Product[];
-
   private API_URL: string = "http://localhost:8080/rest/";
 
   constructor(private uppercase:UpperCasePipe, private http:Http) { }
@@ -28,8 +26,7 @@ export class ProductService {
                   product.title = this.uppercase.transform(product.title);
                   return product;
                 });
-              })
-              .do(products => this.products = products);
+              });
   }
 
   isTheLast(product: Product): boolean {
