@@ -22,5 +22,8 @@
   "scripts": {
     "start": "grunt",
     "deploy": "zenika-formation-deploy"
+  },
+  "devDependencies": {
+    "@angular/cli": "1.0.0"
   }
 }

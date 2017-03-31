@@ -14,13 +14,13 @@ Notes :
 - [Présentation](#/2)
 - [Démarrer une application Angular](#/3)
 - [Tests](#/4)
-- [Template, Directives & Composants](#/5)
-- [Les directives Angular](#/6)
+- [Template & Composants](#/5)
+- [Directives](#/6)
 - [Injection de Dépendances](#/7)
-- [Les Pipes](#/8)
+- [Pipes](#/8)
 - [Service HTTP](#/9)
 - [Router](#/10)
-- **[Gestion des Formulaires](#/11)**
+- **[Formulaires](#/11)**
 - [Server-side Rendering](#/12)
 
 Notes :
@@ -36,6 +36,9 @@ Notes :
   - `textarea`
 
 - Il est possible de créer ses propres composants
+- Deux syntaxes disponibles :
+  - Syntaxe réactive
+  - Syntaxe HTML
 
 Notes :
 
@@ -52,26 +55,7 @@ Notes :
 
 
 
-## NgForm
-
-La directive `NgForm` est automatiquement associée à chaque balise `<form>`
-
-- Autorise l'utilisation du `(ngSubmit)`
-- Créée un `FormGroup` pour gérer les inputs contenus dans le formulaire
-- Utilisable par l'écriture : `#myForm="ngForm"`
-
-```html
-<form #myForm="ngForm">
-  <!-- disabled button if form is invalid -->
-  <button type="submit" [disabled]="myForm.invalid">Save</button>
-</form>
-```
-
-Notes :
-
-
-
-## Directives
+## Formulaires : Principe général
 
 - `ngModel` : Gère le binding entre la variable du contrôleur et le champ HTML
 
@@ -110,8 +94,8 @@ Notes :
 
 
 
-## FormControl
-- Un `FormControl` est une classe représentant un `input` qui contient :
+## Formulaires : FormControl
+- Un `FormControl` est une classe représentant un `input` contenant :
  - La valeur
  - L'état (dirty, valid, ...)
  - Les erreurs de validation
@@ -124,15 +108,14 @@ Notes :
 
 
 
-## Exemple
+## Formulaires : FormControl
 Exemple complet:
 ```html
-<form #myForm="ngForm" novalidate (submit)="onSubmit()">
+<form novalidate (submit)="saveForm()">
   <input type="text" name="myName" [(ngModel)]="contact.name" #nameInput="ngModel" required>
   <span [hidden]="nameInput.valid">Error</span>
-  <span [hidden]="nameInput.pristine">You changed the value</span>
 
-  <button type="submit" [disabled]="myForm.invalid">
+  <button type="submit">
     Validate
   </button>
 </form>
@@ -159,7 +142,7 @@ Notes :
 
 ## Validation : État du formulaire et des champs
 
-- Angular expose 5 propriétés au niveau du formulaire et de chacun des champs de saisie
+- Angular expose 6 propriétés au niveau du formulaire et de chacun des champs de saisie
   - `valid` / `invalid` : Indique si l'élément passe le contrôle des validateurs
   - `pristine` / `dirty` : Indiquent si l'utilisateur a altéré l'élément
     - Un élément est considéré `dirty` dès qu'il subit une modification, même si la valeur initiale est restaurée ensuite
@@ -196,6 +179,30 @@ export class PatternValidator implements Validator {
 
 ```html
 <input type="text" name="name" [(ngModel)]="contact.name" pattern="[a-z]{10}">
+```
+
+Notes :
+
+
+
+## NgForm
+
+La directive `NgForm` est automatiquement associée à chaque balise `<form>`
+
+- Autorise l'utilisation de l'évènement `ngSubmit`
+- Créée un `FormGroup` pour gérer les inputs contenus dans le formulaire
+- Instance de la directive utilisable dans le template : `#myForm="ngForm"`
+
+```html
+<form #myForm="ngForm" novalidate (submit)="onSubmit()">
+  <input type="text" name="myName" [(ngModel)]="contact.name" #nameInput="ngModel" required>
+  
+  <span [hidden]="nameInput.valid">Error</span>
+
+  <button type="submit" [disabled]="myForm.invalid">
+    Validate
+  </button>
+</form>
 ```
 
 Notes :

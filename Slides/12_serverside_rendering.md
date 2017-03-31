@@ -14,13 +14,13 @@ Notes :
 - [Présentation](#/2)
 - [Démarrer une application Angular](#/3)
 - [Tests](#/4)
-- [Template, Directives & Composants](#/5)
-- [Les directives Angular](#/6)
+- [Template & Composants](#/5)
+- [Directives](#/6)
 - [Injection de Dépendances](#/7)
-- [Les Pipes](#/8)
+- [Pipes](#/8)
 - [Service HTTP](#/9)
 - [Router](#/10)
-- [Gestion des Formulaires](#/11)
+- [Formulaires](#/11)
 - **[Server-side Rendering](#/12)**
 
 Notes :
@@ -102,20 +102,25 @@ Elements notables du script de lancement du serveur
 
 ```typescript
 import 'angular2-universal-polyfills';
-import { createEngine, ExpressEngineConfig } from 'angular2-express-engine';
-import { MainModule } from './main.node';
+import { createEngine } from 'angular2-express-engine';
+import { NodeModule } from './main.node';
 
-app.engine('.html', createEngine({}));
+app.engine('.html', createEngine({
+  ngModule: NodeModule,
+  providers: [
+  ]
+}));
+
+app.set('views', __dirname);
+app.set('view engine', 'html');
 
 app.get('/*', (req, res) => {
 
-  const expressConfig : ExpressEngineConfig = {
-    req,
-    res,
-    ngModule: MainModule,
-    preboot: false,
-  };
-  res.render('index', expressConfig);
+  res.render('index', {
+    req, 
+    res, 
+    preboot: true
+  });
 });
 ```
 

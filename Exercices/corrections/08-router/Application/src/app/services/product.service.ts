@@ -11,8 +11,6 @@ import { Product } from '../model/product';
 @Injectable()
 export class ProductService {
 
-  private products: Product[];
-
   private API_URL: string = "http://localhost:8080/rest/";
 
   constructor(private uppercase:UpperCasePipe, private http:Http) { }
@@ -28,19 +26,18 @@ export class ProductService {
                   product.title = this.uppercase.transform(product.title);
                   return product;
                 });
-              })
-              .do(products => this.products = products);
+              });
   }
 
-  isTheLast(title: string): boolean {
-    return this.products.find((product) => { return product.title === title }).stock === 1;
+  isTheLast(product: Product): boolean {
+    return product.stock === 1;
   }
 
-  isAvailable(title: string): boolean {
-    return this.products.find((product) => { return product.title === title }).stock !== 0;
+  isAvailable(product: Product): boolean {
+    return product.stock !== 0;
   }
 
-  decreaseStock(title: string) {
-    this.products.find((product) => { return product.title === title }).stock -= 1;
+  decreaseStock(product: Product) {
+    product.stock -= 1;
   }
 }
