@@ -194,15 +194,21 @@ Notes :
 - Ajout / Suppression d'elements HTML en fonction d'une condition
 - Si l'expression retourne `true` le template sera inséré
 
-```typescript
+```html
 <div *ngIf="condition">...</div>
 <template [ngIf]="condition"><div>...</div></template>
 ```
 
+- Possibilité de définir un clause `else`
+
+```html
+<div *ngIf="condition; else elseBlock">...</div>
+<ng-template #elseBlock>No data</ng-template>
+```
 - Pas de directives `ngShow` et `ngHide`
 - Utilisation de la propriété `hidden` (nécessite des polyfills)
 
-```typescript
+```html
 <div [hidden]="condition">...</div>
 ```
 
