@@ -170,13 +170,13 @@ Notes :
 
 - Permet de dupliquer un template pour chaque élément d'une collection
 - Correspond à la directive `ngRepeat` en *AngularJS*
-- Définition des éléments HTML à dupliquer dans un élément `<template>`
+- Définition des éléments HTML à dupliquer dans un élément `<ng-template>`
 - Utilisation de la propriété `ngForOf` pour définir l'expression permettant l'itération
 - Sauvegarde de la valeur en cours dans des variables de rendu (préfixées par `let-`)
 - Angular met à disposition cinq données supplémentaires : `index`, `first`, `last`, `even` et `odd`
 
 ```typescript
-<template ngFor let-item [ngForOf]="items" let-i="index"><li>...</li></template>
+<ng-template ngFor let-item [ngForOf]="items" let-i="index"><li>...</li></ng-template>
 ```
 
 - Seconde syntaxe disponible (également pour `ngIf` et `ngSwitch`)
@@ -196,7 +196,7 @@ Notes :
 
 ```html
 <div *ngIf="condition">...</div>
-<template [ngIf]="condition"><div>...</div></template>
+<ng-template [ngIf]="condition"><div>...</div></ng-template>
 ```
 
 - Possibilité de définir un clause `else`
