@@ -94,6 +94,34 @@ Notes :
 
 
 
+## Les Pipes - Enregistrement
+
+- Les pipes externes nécessaires à votre applications doivent :
+  - être définis dans un module importé par votre application (`ngModule`)
+  - être définis dans la propriété `declarations` du décorateur `ngModule` de votre application
+
+```typescript
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MyLowerCasePipe } from './mylowercase.pipe';
+
+@NgModule({
+  declarations: [
+    MyLowerCasePipe,
+  ],
+  imports: [
+    CommonModule,
+    FormsModule
+  ]
+})
+export class AppModule {}
+```
+
+Notes :
+
+
+
 ## Les Pipes - Utilisation
 
 - Les pipes externes nécessaires à votre applications doivent :

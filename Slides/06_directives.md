@@ -77,7 +77,35 @@ Notes :
 
 
 
-## Les directives Angular
+## Les Directives - Enregistrement
+
+- Les directives externes nécessaires à votre applications doivent :
+  - être définis dans un module importé par votre application (`ngModule`)
+  - être définis dans la propriété `declarations` du décorateur `ngModule` de votre application
+
+```typescript
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { HighlightDirective } from './highlight.directive';
+
+@NgModule({
+  declarations: [
+    HighlightDirective,
+  ],
+  imports: [
+    CommonModule,
+    FormsModule
+  ]
+})
+export class AppModule {}
+```
+
+Notes :
+
+
+
+## Les Directives Angular
 
 - *Angular* fournit une trentaine de directives :
 	- Manipulation de DOM
@@ -94,7 +122,7 @@ Notes :
 
 
 
-## Les directives Angular - ngStyle
+## Les Directives Angular - ngStyle
 
 - Directive permettant d'ajouter des définitions CSS
 - Nécessité de spécifier un objet JSON en tant que paramètre
@@ -123,7 +151,7 @@ Notes :
 
 
 
-## Les directives Angular - ngClass
+## Les Directives Angular - ngClass
 
 - La directive `ngClass` ajoute ou enlève des classes CSS.
 - Trois syntaxes coexistent
@@ -138,7 +166,7 @@ Notes :
 
 
 
-## Les directives Angular - ngClass
+## Les Directives Angular - ngClass
 
 - Exemple d'utilisation de la directive `ngClass`
 
@@ -166,7 +194,7 @@ Notes :
 
 
 
-## Les directives Angular - ngFor
+## Les Directives Angular - ngFor
 
 - Permet de dupliquer un template pour chaque élément d'une collection
 - Correspond à la directive `ngRepeat` en *AngularJS*
@@ -189,7 +217,7 @@ Notes :
 
 
 
-## Les directives Angular - ngIf
+## Les Directives Angular - ngIf
 
 - Ajout / Suppression d'elements HTML en fonction d'une condition
 - Si l'expression retourne `true` le template sera inséré
@@ -216,7 +244,7 @@ Notes :
 
 
 
-## Les directives Angular - ngSwitch
+## Les Directives Angular - ngSwitch
 
 - Ajout / Suppression d'elements HTML en fonction d'une condition
 - Trois directives disponibles :

@@ -243,7 +243,7 @@ Notes :
   - être définis dans la propriété `declarations` du décorateur `ngModule` de votre application
 
 ```typescript
-import { NgModule, ApplicationRef } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
