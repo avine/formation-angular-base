@@ -30,17 +30,17 @@ Notes :
 
 - Portion de code permettant de définir l'apparence ou le fonctionnement d'un élément HTML
 - Création de directive personnalisée avec l'annotation `@Directive`
-- Pour faire de la manipulation de DOM, toujours utiliser le service `Renderer`
+- Pour faire de la manipulation de DOM, toujours utiliser le service `Renderer2`
 - Peuvent accepter des paramètres (`Input`) et émettre des évènements (`Output`)
 
 ```typescript
 //<p myHighlight>Highlight me!</p>
-import { Directive, ElementRef, Renderer } from '@angular/core';
+import { Directive, ElementRef, Renderer2 } from '@angular/core';
 @Directive({
     selector: '[myHighlight]'
 })
 export class HighlightDirective {
-    constructor(el: ElementRef, renderer: Renderer) {
+    constructor(el: ElementRef, renderer: Renderer2) {
         //el.nativeElement.style.backgroundColor = 'yellow';
         renderer.setElementStyle(el.nativeElement, 'backgroundColor', 'yellow');
     }
