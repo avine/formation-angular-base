@@ -366,6 +366,51 @@ Notes :
 
 
 
+### Router - Lazy Loading
+
+- Diminution de la taille de l'application au rafrachissement de la page
+- Module chargé lorsque l'utilisateur visitera un de ses pages
+- Création de `chunk` via *Webpack* et *@angular/cli*
+- Chargement du module via la propriété `loadChildren`
+- Supprimer tous les imports des composants du module chargé à la demande
+- Plusieurs stratégies de chargement : `PreloadAllModules` et `NoPreloading` (stratégie par défaut)
+
+Notes :
+
+
+
+### Router - Lazy Loading
+
+- Chargement à la demande du module `AdminModule`
+
+```typescript
+const routes: Routes = [{
+    path: 'admin', loadChildren: './admin/admin.module#AdminModule'
+}];
+
+@NgModule({ imports: [RouterModule.forRoot(routes)] })
+export class AppModule { }
+```
+
+- Configuration des routes du module `Admin` via la méthode `forChild`
+
+```typescript
+@NgModule({
+  declarations: [AdminHomeComponent, AdminUsersComponent], 
+  imports: [
+      RouterModule.forChild([
+          {path: '', component: HomeComponent},
+          {path: 'users', component: AdminUsersComponent}
+      ])
+  ]  
+})
+export class AdminModule { }
+```
+
+Notes :
+
+
+
 <!-- .slide: class="page-questions" -->
 
 
