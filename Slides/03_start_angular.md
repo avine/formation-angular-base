@@ -32,16 +32,16 @@ Notes :
 - Gestion des dépendances via *NPM*
   - les différents modules *Angular* : `@angular/common`, `@angular/core`...
   - Webpack : gestion des modules
-  - RxJS : gestion de l'asynchrone
+  - RxJS : programmation réactive, dépendance forte d'Angular
 
 ```shell
 npm init
+
 npm install --save @angular/common @angular/core rxjs ...
 ```
 
 - Initialisation et Configuration d'un projet *TypeScript*
 - Configuration du système de gestion des modules (*Webpack*)
-- Installation des fichiers de définition (*typings*, *npm* pour *TypeScript 2.0*)
 - Nécessité d'utiliser un serveur Web
   - `Apache`, `serve`, `live-server`...
 
@@ -101,47 +101,52 @@ Notes :
 
 
 
-## Angular-CLI
+## Angular CLI
 
-- Projet en cours de développement
+- En retard sur la sortie d'Angular, il est maintenant en `1.0.0`
 - Basé sur le projet *Ember CLI*
 - Permet de créer le squelette d'une application
-  - TypeScript, WebPack, Karma, Protractor, Préprocesseurs CSS ...
+- Embarque automatiquement les technologies suivantes :
+
+  TypeScript, Webpack, Karma, Protractor, Préprocesseurs CSS ...
 - Projet disponible sur *NPM*
 
 ```shell
 npm install -g @angular/cli
 ```
 
-- Plusieurs commandes disponibles
+- Propose des commandes pour le cycle de vie de l'application
 
 ```shell
 ng new Application
 ng build (--dev / --prod)
 ng serve
-
-ng generate component Product (--inline-template) // => class ProductComponent{ ... }
-ng generate pipe UpperCase
-ng generate service User
-ng generate directive myNgIf
 ```
 
 Notes :
 
 
 
-## Angular-CLI
+## Angular CLI
 
-- D'autres commandes disponibles :
-  - `ng test`
-  - `ng e2e`
-  - `ng lint`
+- Nombreuses commandes disponibles
+- `ng generate` : Génère du code pour différents éléments d'Angular
+  - `ng generate component Product` :
+
+    Génère un nouveau composant avec template, style et test
+  - `ng generate pipe UpperCase` : Génère un nouveau pipe
+  - `ng generate service User` : Génère un nouveau service
+  - `ng generate directive myNgIf` : Génère une nouvelle directive
+
+- `ng test` : Lance les tests avec Karma
+- `ng e2e` : Lance les tests end-2-end avec Protractor
+- `ng lint` : Lance TSLint
 
 Notes :
 
 
 
-## WebPack
+## Webpack
 
 - Gestionnaire de modules
 - Supporte les différents systèmes de modules (*CommonJS*, *AMD*, *ES2015*, ...)
@@ -156,9 +161,10 @@ Notes :
 
 
 
-## WebPack  - Premier exemple
+## Webpack  - Premier exemple
 
-- Première utilisation de *WebPack*
+- Première utilisation de *Webpack*
+
 ```javascript
 //app.js
 document.write('welcome to my app');
@@ -166,18 +172,22 @@ console.log('app loaded');
 ```
 
 - Exécution de *WebPack* pour générer un fichier `bundle.js`
+
 ```shell
 webpack ./app.js bundle.js
 ```
 
 - Import de votre fichier `bundle.js` dans votre `index.html`
+
 ```html
-< html>
-  < body>
-    < script src="bundle.js">< /script>
-  </ body>
-</ html>
+<html>
+  <body>
+    <script src="bundle.js">< /script>
+  </body>
+</html>
 ```
+
+- L'ajout de la balise script peut également être réalisé avec un plugin
 
 Notes :
 
@@ -186,9 +196,9 @@ Notes :
 ## WebPack
 
 - Version avec un fichier de configuration
-  - solution à privilégier pour que tous les développeurs utilisent la même configuration
 
 ```javascript
+// ./webpack.config.js
 module.exports = {
   entry: "./app.js",
   output: {
@@ -196,6 +206,8 @@ module.exports = {
   }
 }
 ```
+
+- WebPack va lire le fichier de configuration automatiquement
 
 ```shell
 webpack
@@ -208,7 +220,7 @@ Notes :
 ## WebPack - Configuration
 
 - Possibilité de générer plusieurs fichiers
-  - Utilisation du placeholder `[name] `
+- Utilisation du placeholder `[name]`
 
 ```javascript
 entry: {
@@ -220,7 +232,7 @@ output: {
 }
 ```
 
-  - Création d'un fichier `vendor.ts` important toutes librairies utilisées
+  - Permet d'utiliser un fichier `vendor.ts` important toutes librairies utilisées
 
 ```typescript
 // Angular
@@ -239,8 +251,11 @@ Notes :
 
 ## WebPack - Configuration
 
-- Possibilité de regénérer le `bundle.js` à chaque modification des sources (`watch`)
-- Serveur web disponible (`webpack-dev-server`)
+- Système de recompilation automatique très performant
+  - Utilisation de l'option `webpack --watch`
+  - WebPack conserve le graph des modules en mémoire
+  - Regénère le `bundle` pour n'importe quel changement sur un des fichiers
+- Serveur web disponible `webpack-dev-server`
   - *Hot Reloading*
   - Mode *Watch* activée
   - Génération du fichier `bundle.js` en mémoire
@@ -265,7 +280,7 @@ resolve: {
 module: {
   loaders: [{
       test: /\.ts$/,
-      loaders: ['ts']
+      loaders: ['ts-loader']
   }]
 },
 output: {
@@ -297,26 +312,12 @@ module: {
 },
 plugins: [
   new webpack.optimize.CommonsChunkPlugin({name: ['app', 'vendor']}),
-
   new HtmlWebpackPlugin({template: 'src/index.html'})
 ]
 output: {
   filename: '[name].js'
 }
 ```
-
-Notes :
-
-
-
-
-### WebPack - Autres outils
-
-- L'optimisation d'une application *Angular* peut être découpée en 4 phases:  
-  - Offline compilation : *ngc*
-  - Inline modules : *WebPack*
-  - Tree-Shaking : *Rollup*
-  - Minification : *Uglify*
 
 Notes :
 
