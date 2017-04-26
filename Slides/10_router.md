@@ -29,16 +29,15 @@ Notes :
 
 ## Router
 
-- Module totalement différent du module `ngRoute`
-- `ngRoute` était un module trop simpliste
-	- Un seul `ngView` dans l'application
-	- Pas de vue imbriquée
-- Développement d'un nouveau Router
-	- Prise en compte des différents cas d'utilisation : authentification, login, permission, ...
-	- Etude des autres solutions : `ui-router`, `route-recognizer` et `durandal`
-	- 3e implémentation depuis le début de *Angular*
-- Compatible avec *AngularJS* et *Angular*
-- Permet de faciliter la migration d'une application *AngularJS* vers *Angular*
+- *Angular* fournit par défaut un routeur dans un module dédié
+- Fonctionnement très différent de `ngRoute` d'*AngularJS*
+- Phase de développement mouvementé : 2 refontes majeurs
+- `@angular/router` est maintenant fiable et recommandé
+- Propose de nombreuses fonctionnalités
+  - Gestion des routes imbriquées
+  - Possibilité d'avoir plusieurs points d'insertions par routes
+  - Système de **Guard** permettant de gérer l'autorisation à une route
+  - Gestion de routes avec chargement asynchrone
 
 Notes :
 
@@ -46,31 +45,23 @@ Notes :
 
 ## Router
 
-- Router orienté *composant*
+- `@angular/router` est orienté *composant*
+- Le principe est d'associer les composants à charger en fonction de l'URL
 - Association d'un composant principal avec une URL de votre application
-- Utilisation d'une méthode `RouterModule.forRoot` pour définir la configuration
-- Utilisation de la directive `RouterOutlet` pour définir le point d'insertion
+- Création de la configuration à partir de la fonction `RouterModule.forRoot`
+- Prend en argument un objet de configuration de type `RouterConfig`
+- Utilisation de la directive `RouterOutlet` pour définir un point d'insertion
 - Navigation entre les pages via la directive `RouterLink`
-- Installation via *NPM* : `npm install --save @angular/router`
-
-```typescript
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-
-@NgModule({
-  imports: [RouterModule],
-})
-export class AppModule { }
-```
 
 Notes :
 
 
 
-## Router - forRoot
+## Router
 
-- Méthode permettant d'enregistrer de nouvelles routes
-- Elle prend en paramètre un tableau de `Routes`, qui correspond à un tableau de `Route`
+- `RouterModule.forRoot(...)` rend un module à importer
+- Elle prend en paramètre un objet de type `Routes`
+- Correspond à un tableau de `Route`
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -86,7 +77,7 @@ export const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes)
-  ],
+  ]
 })
 export class AppModule { }
 ```
@@ -95,41 +86,22 @@ Notes :
 
 
 
-## Router - RouterOutlet
+## RouterOutlet
 
-- Directive à utiliser via l'attribut `router-outlet`
-- Permet de définir le point d'insertion  dans le composant principal
-- Le composant sera inséré en tant qu'enfant de l'élément sur lequel la directive `RouterOutlet` est utilisée
-- Possibilité de définir la vue via un attribut `name` (utilisé pour définir plusieurs vues au même niveau)
-- Possibilité de créer des vues enfant grâce à l'utilisation de `RouterOutlet` imbriquées
-
-```typescript
-@Directive({selector: 'router-outlet'})
-export class RouterOutlet {
-  constructor(
-    private elementRef: ElementRef,
-    private loader: DynamicComponentLoader,
-    private parentRouter: routerMod.Router,
-    @Attribute('name') nameAttr: string) {...}
-}
-```
-
-Notes :
-
-
-
-## Router - RouterOutlet
-
-- Exemple simple de la directive `RouterOutlet`
+- Directive à utiliser via la balise `router-outlet`
+- Permet de définir le point d'insertion dans un composant
+- Le composant sera inséré en tant qu'enfant de la directive
+- Possibilité de nommer le point d'insertion via un attribut `name`
+- Nommer les outlets sert lorsqu'on a plusieurs vue pour une même route
 
 ```typescript
 import { Component } from '@angular/core';
 
 @Component({
-  template: '
+  template: `
     <header><h1>Title</h1></header>
     <router-outlet></router-outlet>
-  '
+  `
 })
 class AppComponent { }
 ```
@@ -138,25 +110,27 @@ Notes :
 
 
 
-## Router - RouterLink
+## RouterLink
 
 - Permet de naviguer d'une route à une autre
-- Utilisation de la méthode `navigate` du service `Router`
-- La directive `RouterLink` s'attend à un tableau de noms de routes, suivi par d'éventuels paramètres
+- Utiliser des **vrais** liens avec l'attribut href fonctionne aussi
+- La directive utilise la méthode `navigate` du service `Router`
+- `RouterLink` prend un tableau de **segments** du chemin
 
 ```typescript
 @Component({
-  template: '
+  template: `
     <div>
-      <h1>Hello {{message}}!</h1>
+      <h1>Hello {{ message }}!</h1>
         <a [routerLink]="'contacts'">Link 1</a>
         <a [routerLink]="['contact', 1]">Link 2</a>
         <a [routerLink]="['contact', id]">Link 3</a>
         <router-outlet></router-outlet>
-    </div>'
+    </div>
+  `
 })
 class AppComponent {
-  id: number = 2;
+  public id: number = 2;
 }
 ```
 
@@ -164,7 +138,7 @@ Notes :
 
 
 
-## Router - RouterOutlet imbriquées
+## RouterOutlet imbriquées
 
 - Imbrication de plusieurs `RouterOutlet` pour définir une hiérarchie de vues
 
@@ -173,7 +147,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent, EditComponent, ViewComponent } from './pages';
 
 export const routes: Routes = [
-  { 
+  {
     path: 'contact/:id',  component: ContactComponent, children: [
       {path: 'edit', component: EditCmp},
       {path: 'view', component: ViewCmp}
@@ -182,48 +156,23 @@ export const routes: Routes = [
 ];
 
 const routing = RouterModule.forRoot(routes);
-
 ```
+
+- Le template du composant `ContactComponent` devra contenir un `router-outlet` pour pouvoir insérer les composants `EditCmp` ou `ViewCmp`
 
 Notes :
 
 
 
-## Router - RouterLink en détails
+## Stratégies pour le génération des URLs
 
-- Utilisation via un attribut `routerLink`
-- Configuration de la route désirée via ce même attribut `routerLink`
-- Attribut `href` généré par le service `Location`
-- Ajout de classes CSS si la route est active (directive `routerLinkActive`)
-
-```typescript
-@Directive({selector: '[routerLink]'})
-export class RouterLink implements OnChanges {
-	@Input() routerLink: any[]|string;
-	@HostBinding() href: string;
-
-	ngOnChanges(changes: {}): any { this.updateTargetUrlAndHref(); }
-
-	@HostListener('click', [])
-	onClick(): boolean {
-		...
-		this.router.navigateByUrl(this.urlTree);
-		return false;
-	}
-}
-```
-
-Notes :
-
-
-
-### Router - Stratégies pour le génération des URLs
+- *@angular/router* propose deux stratégies possible pour les URLs
+- Les configurations se font par le système d'injection de dépendances
 
 - `PathLocationStrategy` (stratégie par défaut)
-	- Nécessite la définition de l'URL de base de votre application (`APP_BASE_HREF` ou `<base>`)
 
 ```typescript
-router.navigate(['contacts']); //example.com/my/app/contacts
+router.navigate(['contacts']); //example.com/contacts
 ```
 
 - `HashLocationStrategy`
@@ -232,29 +181,32 @@ router.navigate(['contacts']); //example.com/my/app/contacts
 router.navigate(['contacts']); //example.com#/contacts
 ```
 
-- Possible de configurer l'implémentation à utiliser
-
-```typescript
-import {HashLocationStrategy, LocationStrategy } from '@angular/common';
-
-@NgModule({
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
-})
-export class AppModule { }
-```
+- `PathLocationStrategy` est la solution recommandée aujourd'hui
+  - Si votre application n'est pas déployé à la racine de votre domaine
+  - Nécessite d'ajouter un paramétrage : `APP_BASE_HREF`
 
 Notes :
 
 
 
-### Router - Configuration de l'URL de base de l'application
+## Stratégies pour le génération des URLs
 
-- Définition d'un nouveau *provider* pour la constante `APP_BASE_HREF`
-- Sera utilisé lors de la génération des différentes URLS
+- Configurer l'implémentation à utiliser
 
 ```typescript
-import {Component} from '@angular/core';
-import {APP_BASE_HREF} from '@angular/common';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
+@NgModule({
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }]
+})
+export class AppModule { }
+```
+
+- Configurer le contexte de l'application pour `PathLocationStrategy`
+
+```typescript
+import { Component } from '@angular/core';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   providers: [{ provide: APP_BASE_HREF, useValue: '/my/app' }],
@@ -266,31 +218,24 @@ Notes :
 
 
 
-### Router - Récupération des paramètres d'URL
+## Récupération des paramètres d'URL
 
-- Utilisation du service `ActivatedRoute` et **params** (`Observable`)
+- Utilisation du service `ActivatedRoute` et `params`
+- L'API est sous forme d'un flux de la valeur des paramètre au cours du temps
 
 ```typescript
-@Component({
-  template: '
-    <a [routerLink]="['contact', 1]"></a>
-    <router-outlet></router-outlet>'
-})
-class AppComponent { }
-```
-```typescript
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
-  template: '<main><router-outlet></router-outlet></main>'
+  template: "<main><router-outlet></router-outlet></main>"
 })
-export class ProductComponent {
-  constructor(private route: ActivatedRoute) {}
+export class ProductComponent implements OnInit {
+  constructor(private route: ActivatedRoute) { }
 
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      let id = +params['id']; // (+) conversion 'id' string en number
-      ...
+  public ngOnInit() {
+    this.route.params.subscribe((params: Params): void => {
+      const id = Number(params.id); // Les paramètres sont toujours des string
+      /* ... */
     });
   }
 }
@@ -300,18 +245,10 @@ Notes :
 
 
 
-### Router - Récupération des paramètres d'URL
+## Récupération des paramètres d'URL
 
-- Utilisation du service `ActivatedRoute` et `snapshot`
-
-```typescript
-@Component({
-  template: '
-    <a [routerLink]="['contact', 1]"></a>
-    <router-outlet></router-outlet>'
-})
-class AppComponent { }
-```
+- Si vous êtes sur que le paramètre ne pourra pas changer
+- La propriété `snapshot` donne les valeurs à un instant T
 
 ```typescript
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
@@ -320,13 +257,12 @@ import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
   template: '<main><router-outlet></router-outlet></main>'
 })
 export class ProductComponent {
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) { }
 
-  ngOnInit() {
-    const s: ActivatedRouteSnapshot = this.route.snapshot;
-    // Valeur initiale des paramètres
-    let id = +s.params.id;
-    ...
+  public ngOnInit(): void {
+    const snapshot: ActivatedRouteSnapshot = this.route.snapshot;
+    const id = Number(snapshot.params.id);
+    /* ... */
   }
 }
 ```
@@ -335,30 +271,31 @@ Notes :
 
 
 
-### Router - Cycle de Vie
+## Cycle de Vie
 
-- Possibilité d'intéragir avec le cycle de vie de la navigation (*Lifecycle Hooks*)
-- Interface `CanActivate` : interdire / autoriser l'accès à une route
+- Possibilité d'intéragir avec le cycle de vie de la navigation
+- Interface `CanActivate` permet d'interdire ou autoriser l'accès à une route
 
 ```typescript
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
-import { AuthService } from '../shared/auth.service';
+import {
+  CanActivate, Router, Routes, ActivatedRouteSnapshot
+} from '@angular/router';
+import { AuthService } from './auth.service';
+import { AdminComponent } from './admin.component';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
-  canActivate(route: ActivatedRouteSnapshot) {
+  constructor(private authService: AuthService, private router: Router) { }
+  public canActivate(route: ActivatedRouteSnapshot): boolean {
     if(this.authService.isLoggedIn()) return true;
-    this.router.navigate(['/login']);
+    this.router.navigate([ '/login' ]);
     return false;
   }
 }
 
-// fichier app/application.routes.ts
-import { AdminComponent, AuthGuard } from './admin/';
-export const AppRoutes: Routes = [
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] }
+export const routes: Routes = [
+  { path: 'admin', component: AdminComponent, canActivate: [ AuthGuard ] }
 ];
 ```
 
@@ -366,43 +303,46 @@ Notes :
 
 
 
-### Router - Lazy Loading
+## Lazy Loading
 
-- Diminution de la taille de l'application au rafrachissement de la page
-- Module chargé lorsque l'utilisateur visitera un de ses pages
-- Création de `chunk` via *Webpack* et *@angular/cli*
-- Chargement du module via la propriété `loadChildren`
-- Supprimer tous les imports des composants du module chargé à la demande
-- Plusieurs stratégies de chargement : `PreloadAllModules` et `NoPreloading` (stratégie par défaut)
+- Permet de diviser la taille du **bundle** JavaScript à charger pour démarrer
+- Chaque section du site est isolé dans un `NgModule` différent
+- Le module est chargé lorsque l'utilisateur visitera une de ses pages
+- Création automatique de `chunk` via *Webpack* grâce à *@angular/cli*
+- Configuration du router avec la propriété `loadChildren`
+- Bien séparer les éléments (composants, services) de chaque module
+- Plusieurs stratégies de chargement
+  - `PreloadAllModules` : Pré-charge les modules dès que possible
+  - `NoPreloading` : Chargement lors d'une navigation (stratégie par défaut)
 
 Notes :
 
 
 
-### Router - Lazy Loading
+### Lazy Loading
 
 - Chargement à la demande du module `AdminModule`
 
 ```typescript
 const routes: Routes = [{
-    path: 'admin', loadChildren: './admin/admin.module#AdminModule'
+  path: 'admin', loadChildren: './admin/admin.module#AdminModule'
 }];
 
-@NgModule({ imports: [RouterModule.forRoot(routes)] })
+@NgModule({ imports: [ RouterModule.forRoot(routes) ] })
 export class AppModule { }
 ```
 
-- Configuration des routes du module `Admin` via la méthode `forChild`
+- Configuration des routes d'`AdminModule` via la méthode `forChild`
 
 ```typescript
+const adminRoutes: Routes = [{
+  {path: '', component: HomeComponent},
+  {path: 'users', component: AdminUsersComponent}
+}];
+
 @NgModule({
-  declarations: [AdminHomeComponent, AdminUsersComponent], 
-  imports: [
-      RouterModule.forChild([
-          {path: '', component: HomeComponent},
-          {path: 'users', component: AdminUsersComponent}
-      ])
-  ]  
+  declarations: [ AdminHomeComponent, AdminUsersComponent ],
+  imports: [ RouterModule.forChild(adminRoutes) ]  
 })
 export class AdminModule { }
 ```
