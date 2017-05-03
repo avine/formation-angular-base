@@ -360,24 +360,16 @@ Notes :
 - Possibilité de définir une implémentation bouchonnée du service `Http`
 
 ```typescript
-import {TestBed, inject} from '@angular/core/testing';
-import {Http, RequestOptions, Response, ResponseOptions} from '@angular/http';
-import {MockBackend} from '@angular/http/testing';
-import 'rxjs/add/operator/map';
+import { HttpModule, Response, ResponseOptions, XHRBackend } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
+import { TestBed, async, inject } from '@angular/core/testing';
 
 describe('UserService', () => {
   beforeEach(() => {
    TestBed.configureTestingModule({
      providers: [
        UserService,
-       MockBackend,
-       BaseRequestOptions,
-       {
-         provide: Http,
-         useFactory: (backend: MockBackend, defaultsOptions: RequestOptions) =>
-           new Http(backend, defaultsOptions),
-         deps: [MockBackend, RequestOptions]
-       }
+       {provide: XHRBackend, useClass: MockBackend},
      ]
    });
 });
@@ -392,7 +384,11 @@ Notes :
 - Création d'un test avec cette implémentation bouchonnée
 
 ```typescript
-it('return return 1 user', inject([UserService, MockBackend],
+import { HttpModule, Response, ResponseOptions, XHRBackend } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
+import { TestBed, async, inject } from '@angular/core/testing';
+
+it('return return 1 user', async(inject([UserService, XHRBackend],
   (service, mockBackend) => {
       let mockedUsers = [new User()];
 
@@ -403,7 +399,7 @@ it('return return 1 user', inject([UserService, MockBackend],
       service.getUsers().subscribe(users => {
           expect(users.length).toBe(1);
       });
-  }));
+  })));
 ```
 
 Notes :
