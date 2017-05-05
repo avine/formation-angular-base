@@ -70,7 +70,7 @@ Notes :
 ## Router - forRoot
 
 - Méthode permettant d'enregistrer de nouvelles routes
-- Elle prend en paramètre un tableau de `RouterConfig`, qui correspond à un tableau de `Route`
+- Elle prend en paramètre un tableau de `Routes`, qui correspond à un tableau de `Route`
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -357,7 +357,7 @@ export class AuthGuard implements CanActivate {
 
 // fichier app/application.routes.ts
 import { AdminComponent, AuthGuard } from './admin/';
-export const AppRoutes: RouterConfig = [
+export const AppRoutes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] }
 ];
 ```
