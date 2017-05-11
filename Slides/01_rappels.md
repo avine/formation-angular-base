@@ -105,12 +105,10 @@ const variableArrowFunction = (arg: any): void => {  };
 ```
 
 - Peut retourner une valeur grâce au mot clé `return`
-- Accès aux variables définies en dehors du scope de la fonction
+- Possibilité d'avoird es paramètres optionnelles ou avec une valeur par défaut
 
 ```typescript
-let externalScope:number = 10;
-
-function add(localArg: number): number { return localArg + externalScope; }
+function getFullName(name: string = 'Dupont', forename?: string) { }
 ```
 
 Notes :
@@ -128,7 +126,7 @@ Notes :
 let list: number[] = [1, 2, 3];
 
 // Syntaxe utilisant le constructeur `Array`
-let list: Array<number> = [1, 2, 3];
+let list: Array<number> = new Array<number>(1, 2, 3);
 ```
 
 - Ces 2 syntaxes aboutiront au même code JavaScript
@@ -199,6 +197,22 @@ Notes :
 - Scope `protected` apparu en TypeScript 1.3
 - Possibilité de définir des propriétés et méthodes statiques : `static`
 - Possibilité de définir des propriétés en lecture seule : `readonly`
+- Raccourcis pour déclarer et initialiser des propriétés
+
+```typescript
+class Person {
+  constructor(public firstName: string) { }
+}
+
+// ===
+
+class Person {
+  public firstName: string;
+  constructor(firstName: string) {
+    this.firstName = firstName;
+  }
+}
+```
 
 Notes :
 

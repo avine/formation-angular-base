@@ -190,7 +190,7 @@ Notes :
 
 ## Pipes impures
 
-- Exécuté à chaque cycle du système de détéction de changement
+- Exécuté à chaque cycle du système de détection de changement
 - Plus consommateur qu'un pipe pure, n'utiliser que lorsque c'est nécessaire
 - Pour définir un *Pipe* impure, mettre la propriété `pure` à `false`
 

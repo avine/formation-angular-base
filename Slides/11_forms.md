@@ -29,7 +29,7 @@ Notes :
 
 ## Stratégies de gestion des formulaires
 
-- *Angular* fournit par défaut un module dédié à la gestion de formulaire dédié
+- *Angular* fournit par défaut un module dédié à la gestion de formulaire
 - Disponible via le module `FormsModule` dans `@angular/forms`
 - Le module propose deux stratégies différentes
 - *Template-driven forms*

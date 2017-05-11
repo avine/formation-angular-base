@@ -46,7 +46,7 @@ Notes :
 ## Configuration globale de l'injecteur
 
 - `@NgModule` a une propriété `providers` pour ajouter les services
-- Les services inscrits dans un module sont injectable dans tout les composants de ce module ou d'un module qui `import` ce module
+- Les services inscrits dans un module sont injectable dans tous les composants de ce module ou d'un module qui `import` ce module
 
 ```typescript
 // fichier application.component.ts
@@ -133,6 +133,8 @@ Notes :
 
   comment obtenir une instance de l'élément demandé
 
+- Il est impossible d'utiliser des interfaces dans l'identifiant du provider
+
 ```typescript
 export function serverConfigFactory(appService: AppService){
   return appService.getConfig();
@@ -142,7 +144,7 @@ export function serverConfigFactory(appService: AppService){
   providers: [
     UserService, // Le plus simple et le plus courant : une classe
     {
-      provide: ILoginService, // Pour un élément de ce type
+      provide: LoginService, // Pour un élément de ce type
       useClass: LoginServiceImpl // Utiliser cette classe (ou implémentation)
     },
     {

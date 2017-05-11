@@ -32,9 +32,28 @@ Notes :
 - Les composants sont les éléments de base d'Angular
 - Définit à partir d'une classe TypeScript avec l'annotation `@Component`
 - Sera activé par le selecteur *CSS* de la propriété `selector`
-- Le template est configuré de deux façon :
+- Le template est configuré de deux façons :
   - `template` : String literal (penser à la string multiline `` ` ``)
   - `templateUrl` : Url d'un fichier HTML (relatif au composant)
+
+Notes :
+
+
+
+## Composants
+
+- Pour définir un composant qui sera appelé de cette façon :
+
+```html
+<div>
+  <h1>My Product</h1>
+  <product></product>
+</div>
+
+<!-- attention, <product/> ne fonctionne pas -->
+```
+
+- Le composant *Angular* est implémenté ainsi
 
 ```typescript
 import { Component } from '@angular/core'
@@ -214,7 +233,7 @@ Notes :
 
 ## Évènements
 
-- *Angular* permet d'accéder à l'évènements via la variable `$event`
+- *Angular* permet d'accéder à l'évènement via la variable `$event`
 - Cet objet peut être utilisé dans l'expression
 - Tous les évènements natifs sont propagés vers les éléments parents
 
@@ -266,7 +285,7 @@ Notes :
 - Possibilité de surcharger le nom de l'évènement
 
   `@Output('myOtherName')`
-- Les noms de évènements sont sensible à la casse
+- Les noms de évènements sont sensibles à la casse
 
 ```typescript
 @Component({ selector: 'product-detail', /* ... */ })
@@ -290,8 +309,8 @@ Notes :
 
 
 ## Output
-
-- L'objet évènement transmis peut être ne n'importe quel type
+n
+- L'objet évènement transmis peut être de n'importe quel type
 - Il est spécifié dans le paramètre de la classe `EventEmitter`
 - Pour émettre un évènement, il faut passer un objet de cette classe
 

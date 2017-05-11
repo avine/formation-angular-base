@@ -274,7 +274,7 @@ Notes :
 ## Cycle de Vie
 
 - Possibilité d'intéragir avec le cycle de vie de la navigation
-- Interface `CanActivate` permet d'interdire ou autoriser l'accès à une route
+- Interface `CanActivate` permet d'interdire ou d'autoriser l'accès à une route
 
 ```typescript
 import { Injectable } from '@angular/core';

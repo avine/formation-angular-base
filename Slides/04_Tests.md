@@ -56,12 +56,12 @@ Notes :
 
 - Fonctions `describe` et `it` pour décrire la suite de tests
 - Système de *matchers* : `toBe`, `toBeUndefined`, `toBeTruthy`, `toThrow`, ...
-- Possibilité d'utiliser une librarie externe comme `Chai`
+- Possibilité d'utiliser une bibliothèque externe comme `Chai`
 
 ```javascript
-describe('True value:', function () {
+describe('True value', () => {
 
-  it('true should be equal to true', function () {
+  it('should be equal to true', () => {
 
      expect(true).toBe(true);
 
