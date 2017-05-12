@@ -105,7 +105,7 @@ const variableArrowFunction = (arg: any): void => {  };
 ```
 
 - Peut retourner une valeur grâce au mot clé `return`
-- Possibilité d'avoird es paramètres optionnelles ou avec une valeur par défaut
+- Possibilité d'avoir des paramètres optionnelles ou avec une valeur par défaut
 
 ```typescript
 function getFullName(name: string = 'Dupont', forename?: string) { }

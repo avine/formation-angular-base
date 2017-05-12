@@ -309,7 +309,7 @@ Notes :
 
 
 ## Output
-n
+
 - L'objet évènement transmis peut être de n'importe quel type
 - Il est spécifié dans le paramètre de la classe `EventEmitter`
 - Pour émettre un évènement, il faut passer un objet de cette classe
