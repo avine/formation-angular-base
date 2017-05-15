@@ -43,12 +43,12 @@ Notes :
 
 ## Angular Universal
 
-- Projet Angular officiel. Contrairement aux projets de Server Side Rendering pour `AngularJS`
+- Projet Angular officiel
+- Intégré au projet principal depuis Angular 4.0.0
 - Contient deux modules
-  - Le premier rend le code côté serveur
+  - Rendu d'une application Angular côté serveur (NodeJS)
   - Le deuxième enregistre les actions de l'utilisateur pour les rejouer une fois l'interface complètement chargée
 - Le terme Universal vient de l'idée de pouvoir proposer l'application dans d'autres environnements que celui du navigateur
-- Pas encore assez stable pour la mise en production
 
 ![Angular Universal Logo](ressources/angular-universal-logo.png "Angular Universal Logo")
 
@@ -71,11 +71,11 @@ Notes :
 ## Procédure de rendu
 
 - Le moteur de rendu (Express en NodeJS) va construire le HTML
-- Le plugin `Angular Universal` va réaliser le `bootstrap` de l'application
+- Le plugin *Angular Universal* va réaliser le `bootstrap` de l'application
 - La réponse des appels REST est attendue
 - La page complètement construite est retourné à l'utilisateur
-- La librairie `Preboot` de `Angular Universal` enregistre les actions de l'utilisateur
-- Le navigateur client termine de charger le code javascript
+- La librairie `Preboot` de *Angular Universal* enregistre les actions de l'utilisateur
+- Le navigateur client termine de charger le code JavaScript
 - La librairie `Preboot` rejoue les actions de l'utilisateur
 
 Notes :
@@ -86,9 +86,10 @@ Notes :
 ## Mise en place
 
 - Le plus simple est de reprendre le starter
-https://github.com/angular/universal-starter
 
-- Créer deux points d'entrées pour l'application
+  https://github.com/angular/universal-starter
+
+- Utilise deux points d'entrées pour l'application
   - Classique pour le client avec la fonction `bootstrap`
   - Pour le serveur avec la mise en place de `Express` et de `Angular Universal`
 
@@ -98,7 +99,7 @@ Notes :
 
 ## Rendu serveur
 
-Elements notables du script de lancement du serveur
+- Apperçu de la configuration d'*Angular* dans *Express*
 
 ```typescript
 import 'angular2-universal-polyfills';
@@ -107,20 +108,14 @@ import { NodeModule } from './main.node';
 
 app.engine('.html', createEngine({
   ngModule: NodeModule,
-  providers: [
-  ]
+  providers: []
 }));
 
 app.set('views', __dirname);
 app.set('view engine', 'html');
 
 app.get('/*', (req, res) => {
-
-  res.render('index', {
-    req, 
-    res, 
-    preboot: true
-  });
+  res.render('index', { req, res, preboot: true });
 });
 ```
 

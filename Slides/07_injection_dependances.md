@@ -29,22 +29,24 @@ Notes :
 
 ## Injecteurs
 
-- Élément utilisé pour injecter les services
-- Possibilité d'un injecteur par composant contrairement à *AngularJS* (un unique injecteur global)
+- Composants techniques utilisés pour injecter les services
+- Nombreux injecteurs qui collaborent
+
+  (Contrairement à *AngularJS* qui n'a qu'un unique injecteur global)
 - Les composants héritent de l'injecteur de leur parent
 - Nécessité de configurer les injecteurs
-    - de manière globale via le module principal `@NgModule`
-    - de manière locale via `@Component`
-- Les services sont injectés via la constructeur du parent et sont des singletons **au sein du même injecteur**
+  - de manière globale via le module principal `@NgModule`
+  - de manière locale via `@Component`
+- **Au sein du même injecteur** les services sont des *singletons*
 
 Notes :
 
 
 
-## Configuration globale de l'Injecteur
+## Configuration globale de l'injecteur
 
-- `@NgModule` a un paramètre `providers`: un tableau de `providers`
-- Les `providers` définit dans un `NgModule` sont injectables partout dans l'application
+- `@NgModule` a une propriété `providers` pour ajouter les services
+- Les services inscrits dans un module sont injectable dans tous les composants de ce module ou d'un module qui `import` ce module
 
 ```typescript
 // fichier application.component.ts
@@ -52,16 +54,18 @@ import { UserService } from './user.service'
 
 @Component({ ... })
 export class AppComponent {
-    constructor(userService: UserService){
-        console.log(userService.getUser());
-    }
+  constructor(userService: UserService){
+    console.log(userService.getUser());
+  }
 }
 
 // fichier app.module.ts
-import { UserService } from './services/user.service';
+import { AppComponent } from './application.components';
+import { UserService } from './user.service';
 
 @NgModule({
-  providers: [ UserService ],
+  declarations: [ AppComponent ],
+  providers: [ UserService ]
 })
 export class AppModule { }
 ```
@@ -73,21 +77,22 @@ Notes :
 
 ## Configuration locale de l'Injecteur
 
-- Possibilité de définir une propriété `providers` dans l'annotation `@Component`
+- Possibilité d'utiliser la propriété `providers` dans l'annotation `@Component`
 - Même syntaxe que la configuration globale
-- Les `providers` définit dans un `Component` sont injectables dans ce component et ses fils
+- Les services définit dans un `Component` sont injectables dans ce composant et ses fils
+- Déconseillé au profit de l'utilisation des `NgModule`
 
 ```typescript
 // fichier application.component.ts
 import { UserService } from './user.service'
 
 @Component({
-    providers: [ UserService ]
+  providers: [ UserService ]
 })
 export class AppComponent {
-    constructor(userService: UserService){
-        console.log(userService.getUser());
-    }
+  constructor(userService: UserService) {
+    console.log(userService.getUser());
+  }
 }
 ```
 
@@ -95,12 +100,12 @@ Notes :
 
 
 
+## Service
 
-## Dépendances des services
-
+- Un service *Angular* n'est rien de plus qu'une class TypeScript
+- Sans annotation, le service ne bénéficie pas de l'injection de dépendance
 - Nécessité d'ajouter l'annotation `@Injectable`
-- Utilisée pour que *Angular* puisse générer les métadatas nécessaires pour l'injection de dépendances
-- Inutile pour les composants, car nous utilisons déjà `@Component`
+- Inutile pour les composants, c'est implicite avec `@Component`
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -108,12 +113,11 @@ import { Logger } from './logger-service';
 
 @Injectable()
 export class UserService {
+    constructor(public logger: Logger) { }
 
-    constructor(public logger:Logger){
-
+    public myMethod(): void {
+      this.logger.log('myMethod called!');
     }
-    myMethod(){ ... }
-
 }
 ```
 
@@ -125,23 +129,30 @@ Notes :
 
 ## Configurer les providers
 
-- Plusieurs syntaxes existent pour définir les providers
-- L'identifiant du provider peut être un objet, une chaîne de caractères ou un `InjectionToken`
+- Un provider est une description pour l'injecteur :
+
+  comment obtenir une instance de l'élément demandé
+
+- Il est impossible d'utiliser des interfaces dans l'identifiant du provider
 
 ```typescript
 export function serverConfigFactory(appService: AppService){
-    return appService.getConfig();
+  return appService.getConfig();
 }
+
 @NgModule({
-    providers: [
-      UserService, 
-      { provide: LoginService, useClass: LoginService },
-      {
-          provide: ServerConfig,
-          useFactory: serverConfigFactory
-          deps: [AppService]
-      }
-    ]
+  providers: [
+    UserService, // Le plus simple et le plus courant : une classe
+    {
+      provide: LoginService, // Pour un élément de ce type
+      useClass: LoginServiceImpl // Utiliser cette classe (ou implémentation)
+    },
+    {
+      provide: ServerConfig, // Pour un élément de ce type
+      useFactory: serverConfigFactory, // Utiliser une fonction factory
+      deps: [ AppService ] // La factory peut elle même avoir des injections
+    }
+  ]
 })
 export class AppModule { }
 ```
@@ -152,22 +163,26 @@ Notes :
 
 ## Configurer les providers
 
-- Lorsque nous avons des objets à injecter, et non des classes
+- Par défaut l'injection se base sur les types des paramètres
+- Impossible pour des valeurs tel que des `string` ou `number`
 - Possibilité de définir une chaîne de caractère comme identifiant
-- Utilisation de l'objet `InjectionToken` de préférence
-- Nécessité d'utiliser l'annotation `Inject` pour injecter ce genre de service
+- Nécessité d'utiliser l'annotation `Inject` pour injecter ce genre de valeurs
 
 ```typescript
-let apiUrl: string = 'api.heroes.com';
-let env: string = 'dev';
+const apiUrl: string = 'api.heroes.com';
+const env: string = 'dev';
 
 @NgModule({
-  providers: [{provide: 'apiUrl', useValue:apiUrl},{provide: 'env', useValue:env}],
+  declareations: [ AppComponent ],
+  providers: [
+    { provide: 'apiUrl', useValue: apiUrl },
+    { provide: 'env', useValue: env }
+  ]
 })
 export class AppModule { }
 
 class AppComponent {
-    constructor(@Inject('apiUrl') api:string) { ... }
+  constructor( @Inject('apiUrl') api: string ) { ... }
 }
 ```
 
@@ -177,9 +192,16 @@ Notes :
 
 ## Hiérarchie d'injecteurs
 
- - Chaque composant peut définir un injecteur avec un certain nombre de providers
- - Chaque provider fournit un singleton d'un service 
- - Si un composant a besoin d'un service mais que son injecteur n'a pas de provider correspondant, il demande à l'injecteur de son parent
+- Chaque injecteur contient un certain nombre de providers
+- Chaque injecteur gère un singleton pour chaque provider
+- Lors d'une injection de dépendance
+  - L'injecteur local essaye de trouver un provider compatible
+  - S'il ne trouve pas, il transmet la demande à son parent
+  - Ainsi de suite jusqu'à l'injecteur principal de l'application
+  - Si aucun provider n'a pu être trouvé, *Angular* affiche une erreur
+- Ce mécanisme est très puissant mais peut être complexe
+  - Possibilité de faire des surchages locales à des services
+  - Mais peut aussi masquer le bon service par inadvertance
 
 
 
@@ -195,18 +217,41 @@ Notes :
 
 
 
-## Injection de Dépendances - Tests
+## Tests
 
-- Possibilité de bénéficier de l'injection de dépendance grâce à la méthode `inject`
-- Définition des services injectés dans les tests via la méthode `configureTestingModule` de l'objet `TestBed` (propriété `providers`)
-- Méthode `async` utilisée pour tester les services asynchrones (utilise le méchanisme de *Zone*)
+- Ajouter les `providers` du module de test de `TestBed`
+- Ne pas hésiter à surcharger "**mocker**" des services
+- Mécanisme puissant qui permet d'isoler l'élément que l'on veut tester
+- Deux fonctions utilitaires disponibles :
+  - `inject(tokens: any[], fn: Function)`
+
+    injecte des services à la fonction en paramètre
+  - `async(fn: Function)`
+
+    retarde automatiquement le test par rapport aux actions asynchrones
+
+    (fonctionne grâce à **ZoneJS**)
+
+
+
+## Tests
+
+- Exemple de test utilisant les providers
+- On suppose que `UserService` utilise `LoggerService`
 
 ```typescript
 import {TestBed, async, inject} from '@angular/core/testing';
 
+class LoggerServiceMock {}
+
 describe('UserService', () => {
   beforeEach(() => {
-    TestBed.configureTestingModule({ providers: [UserService] });
+    TestBed.configureTestingModule({
+      providers: [
+        UserService,
+        { provide: LoggerService, useClass: LoggerServiceMock }
+      ]
+    });
   });
 
   it('should return 1 user', async(inject([UserService], service => {

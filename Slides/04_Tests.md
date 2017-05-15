@@ -30,42 +30,43 @@ Notes :
 ## Concepts
 
 - Dans la documentation `Jasmine` est utilisé comme framework de tests
-- `Angular` peut être également testé avec d'autres frameworks
-- Karma propose d’exécuter facilement les tests
-  - Il a été développé par l'équipe d'`AngularJS`, il est donc mis en avant
+  - `Angular` peut être également testé avec d'autres frameworks
+- Pour éxecuter facilement les tests, on propose d'utiliser `Karma`
+  - Il a été développé par l'équipe d'`AngularJS`
   - Il n'est pour autant ni indispensable ni lié à `Angular`
-- `Jasmine` et `Karma` sont intégrés dans une application générée par *angular-cli*.
+- `Jasmine` et `Karma` sont les outils utilisés dans une application générée avec Angular CLI
 
 Notes :
 
 
 
-## Tests - Utilisation de Jasmine
+## Jasmine
 
 ![Jasmine](ressources/jasmine.svg)
 
 - Framework de Tests : http://jasmine.github.io/
 - Aucune dépendance vers d'autres frameworks
 - Ne nécessite pas d'élément du *DOM*
-- Essayer `Jasmine` en ligne : http://tryjasmine.com/
 
 Notes :
 
 
 
-## Tests - Structure d'un test Jasmine
+## Jasmine - Structure
 
-- Méthodes `describe` et `it` pour décrire la suite de tests
+- Fonctions `describe` et `it` pour décrire la suite de tests
 - Système de *matchers* : `toBe`, `toBeUndefined`, `toBeTruthy`, `toThrow`, ...
-- Possibilité d'utiliser les librairies `Chai` ou `SinonJS`
+- Possibilité d'utiliser une bibliothèque externe comme `Chai`
 
 ```javascript
-describe('True value:', function() {
-  it('true should be equal to true', function() {
+describe('True value', () => {
+
+  it('should be equal to true', () => {
 
      expect(true).toBe(true);
 
   });
+
 });
 ```
 
@@ -73,21 +74,21 @@ Notes :
 
 
 
-## Tests - Structure d'un test Jasmine
+## Jasmine - Hooks
 
-- Méthodes `beforeEach`, `afterEach`, `beforeAll`, `afterAll`
-- Exécution d'une fonction avant ou après chaque test
+- Fonctions `beforeEach`, `afterEach`, `beforeAll`, `afterAll`
+- Exécution d'une fonction avant ou après chaque ou tous les tests
 
 ```javascript
-describe('True value:', function() {
+describe('True value:', function () {
   let value;
 
-  beforeEach(function(){
+  beforeEach(function (){
     value = true;
   });
 
-  it('true should be equal to true', function() {
-     expect(value).toBe(true);
+  it('true should be equal to true', function () {
+    expect(value).toBe(true);
   });
 });
 ```
@@ -96,13 +97,12 @@ Notes :
 
 
 
-## Tests - Structure d'un test Jasmine
+## Jasmine - Spies
 
-- Possibilité de définir des *Spies* grâce à la méthode `spyOn`
-- Vérifier l'exécution de la méthode **espionnée**
-  - `toHaveBeenCalled`, `toHaveBeenCalledWith`
-  - `and.callThrough`, `and.returnValue`, `and.callFake`...
-  - `Spy.calls`
+- Jasmine propose un système de *Spies* inclu
+- Il est également possible d'utiliser une librairie externe comme *Sinon*
+- Création d'un spy : `jasmine.createSpy()` ou `spyOn(someObj)`
+- Matchers sur un spy :  `toHaveBeenCalled`, `toHaveBeenCalledWith`, `and.callThrough`, `and.returnValue`, `and.callFake`, `mySpy.calls`...
 
 ```javascript
 describe('Service objet:', function() {
@@ -112,6 +112,7 @@ describe('Service objet:', function() {
      service.foo();
      expect(service.foo).toHaveBeenCalled();
   });
+
 });
 ```
 
@@ -119,21 +120,23 @@ Notes :
 
 
 
-## Tests - Tests TypeScript
+## Jasmine - TypeScript
 
-- Possibilité d'écrire des tests en *TypeScript*
+- Possibilité d'écrire des tests *Jasmine* en *TypeScript*
 
 ```typescript
 class True {
-  returnTrue(){ return true; }
+  returnTrue() {
+    return true;
+  }
 }
 
 describe('True object:', () => {
   describe('returnTrue method:', () => {
-      it('should return true', () => {
-          let trueObject:True = new True();
-          expect(trueObject.returnTrue()).toBe(true);
-      });
+    it('should return true', () => {
+      let trueObject: True = new True();
+      expect(trueObject.returnTrue()).toBe(true);
+    });
   });
 });
 ```
@@ -144,7 +147,7 @@ Notes :
 
 ## Karma
 
-- Karma est un outil qui permet d'automatiser l’exécution des tests
+- *Karma* est un outil qui permet d'automatiser l’exécution des tests
 
 <figure>
     <img src="ressources/SchemaKarma.png" alt="Schema Karma" width="75%" />
@@ -154,11 +157,18 @@ Notes :
 
 
 
-## Tests - Automatisation de l'exécution des tests
+## Avec Angular CLI
 
-- Configuration automatiquement réalisée par `angular-cli`
-- Les fichiers de test sont automatiquement créés lors de la création d'un `Composant`/`Service`/`Pipe` via `angular-cli`
-- Ils se trouvent dans le même répertoire que l'élément à tester : *mon-service.spec.ts*
+- Configuration automatiquement réalisée par *Angular CLI*
+- Les outils suivants sont prèt à fonctionner ensemble :
+
+  *Webpack*, *TypeScript*, *Angular*, *Jasmine*, *Karma*
+- Les fichiers de test sont automatiquement créés avec `ng generate (...)`
+
+  `Composant` / `Service` / `Pipe`
+- Ils se trouvent dans le même répertoire que l'élément à tester
+
+  *mon-service.spec.ts*
 - Exécution des tests :
 
 ```shell

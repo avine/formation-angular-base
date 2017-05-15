@@ -32,13 +32,31 @@ Notes :
 - Framework créé par *Google* et annoncé en 2014
 - Réécriture total du framework
 - Reprend certains concepts d'*AngularJS*
-- 1e version *beta* annoncée le 23/10/2014
-- Version officielle sortie en 2016
+- Première version *beta* annoncée en octobre 2014
+- Version *finale* `2.0.0` officielle sortie en septembre 2016
+- Dernière version majeure `4.0.0` sortie en mars 2017
 - Programmation orientée *Composant*
 - Framework conçu pour être plus performant et optimisé pour les mobiles
 - http://angular.io/
 
 Notes :
+
+
+
+## Présentation - Numérotation
+
+- Numérotation à partir de 2.0.0 pour se démarquer d'AngularJS
+- Respect à partir de là de la norme *semver*
+- Les versions majeurs ne seront plus des réécritures comme de la 1 à la 2
+- Saut de la version 3.0.0 après le merge du projet *Router* déjà en 3.x
+- Plannification d'une version majeure tous les 6 mois dans le futur
+- Sortie de la version 4.0.0 en mars 2017
+  - Pas de grands bouleversements
+  - Nouveau moteur de compilation des templates
+  - Modularisation du système d'animation
+  - Intégration du projet Universal
+  - Passage à TypeScript 2.1+
+
 
 
 
@@ -93,10 +111,10 @@ Notes :
 - API pour créer des services en *AngularJS*
 
 ```javascript
-//provider, factory, constant et value
-app.service('Service', function(){
-  let vm = this;
-  vm.myMethod = function(){
+// provider, factory, constant et value
+app.service('Service', function (){
+  const vm = this;
+  vm.myMethod = function (){
 
   }
 });
@@ -107,11 +125,9 @@ app.service('Service', function(){
 ```typescript
 @Injectable()
 export class Service {
-
-  myMethod(){
+  myMethod() {
 
   }
-
 }
 ```
 Notes :
@@ -124,10 +140,10 @@ Notes :
 - Utilisable avec plusieurs langages de programmation : `ES5`, `ES2015(ES6)`, `TypeScript` et `Dart`
 - API plus simple que *AngularJS*
 - Seuls trois types d'éléments seront utilisés : `directive`, `pipe` et les `services`
-- Basé sur des standards : `Web Component`, `Decorator`, `ES2015`, `ES7`
+- Basé sur des standards : `Web Components`, `ES2015+`, `Decorator`
 - Nouvelle syntaxe utilisée dans les templates
 - Performance de l'API `Change Detection`
-- Le Projet `Universal`
+- Le Projet `Universal` (rendu côté serveur)
 - Librairie pour commencer la migration : `ngUpgrade`
 - Collaboration avec Microsoft et Ember
 
@@ -139,14 +155,15 @@ Notes :
 
 ## Angular - Points Négatifs
 
-- Nouvelle phase d'apprentissage du framework
-- Faible ecosystème pour l'instant
+- Nouvelle phase d'apprentissage du framework si habitué à AngularJS
+- Ecosystème encore jeune
 - Application AngularJS incompatible avec cette nouvelle version
-  - ngUpgrade permet de rendre compatible les directives, composant et services
+- ngUpgrade permet de réutiliser du code AngularJS mais pas de migrer
 - De nouveaux concepts à apprendre :
   - `Zone`
   - `Observable`
-  - `WebPack`...
+  - `Webpack`
+  - ...
 
 Notes :
 - utilisation de directives 1 dans 2 : https://angular.io/docs/ts/latest/guide/upgrade.html#!#using-angular-1-component-directives-from-angular-2-code
@@ -168,8 +185,6 @@ Notes :
 
 ## Architecture
 
-- Architecture d'une application Angular
-
 ![architecture](ressources/overview2.png "architecture")
 
 Notes :
@@ -178,15 +193,16 @@ Notes :
 
 ## Architecture
 
-- Modules : regroupement d'un ensemble de fonctionnalités sous un même namespace
-- Library Modules (*barrels*): `@angular/core`, `@angular/http`...
-- Les composants : Elément graphique composé d'un template et d'une classe
-- Métadata : Moyen d'indiquer à Angular comment utiliser la classe
-- Directives : composants sans template (*ngFor*, *ngIf*, ...)
-- Services : Code métier implémenté dans des classes qui seront injectées dans les différents composants
-- Pipe : Elément permettant de formatter une donnée (équivalent au *filter* d'AngularJS)
+- Metadata : Configuration pour décrire le fonctionnement d'un composant
+- Component : Classe TypeScript qui décrit son comportement
+- Template : Code HTML réalisant le rendu à l'aide du component
+- Modules : regroupement d'un ensemble de fonctionnalités
+- Injector : système d'injection de dépendance d'Angular
+- Directive : composant sans template (*ngFor*, *ngIf*, ...)
+- Service : Code métier implémenté dans des classes qui seront injectées dans les différents composants
 
 Notes :
+- Les définitions de ce slides sont liés au graphique du slide précédent
 
 
 

@@ -55,6 +55,7 @@ Notes :
 
 ## TypeScript - Fonctionnalités
 
+- Fonctionnalités *ES2015+*
 - Typage
 - Génériques
 - Classes / Interfaces  / Héritage
@@ -62,7 +63,6 @@ Notes :
 - Les fichiers de définitions
 - Mixins
 - Décorateurs
-- Fonctionnalités *ES2015*
 
 Notes :
 
@@ -78,11 +78,11 @@ let variableName2: variableType = value;
 const variableName3: variableType = value;
 ```
 
-- boolean : `let isDone: boolean = false;`
-- number : `let height: number = 6;`
-- string : `let name: string = 'Carl';`
-- array : `let names: string[] = ['Carl', 'Laurent'];`
-- any : `let notSure: any = 4;`
+- boolean : `const isDone: boolean = false;`
+- number : `const height: number = 6;`
+- string : `const name: string = 'Carl';`
+- array : `const names: string[] = ['Carl', 'Laurent'];`
+- any : `const notSure: any = 4;`
 
 Notes :
 
@@ -90,45 +90,25 @@ Notes :
 
 ## Fonctions
 
-- Comme en JavaScript, possibilité de créer des fonctions nommées ou anonymes
+- Comme en JavaScript : fonctions nommées, anonymes et arrow functions
+- Ajout du typage des arguments et de la valeur de retour
 
 ```typescript
-//Fonction nommée
-function  namedFunction():void { }
+// Fonction nommée
+function namedFunction(arg1: number, arg2: string): void { }
 
-//Fonction anonyme
-let variableAnonymousFunction = function(): void { }
+// Fonction anonyme
+const variableAnonymousFunction = function(arg: boolean): void { };
+
+// Arrow function
+const variableArrowFunction = (arg: any): void => {  };
 ```
 
 - Peut retourner une valeur grâce au mot clé `return`
-- Accès aux variables définies en dehors du scope de la fonction
+- Possibilité d'avoir des paramètres optionnelles ou avec une valeur par défaut
 
 ```typescript
-let externalScope:number = 10;
-
-function add(localArg: number): number { return localArg + externalScope; }
-```
-
-Notes :
-
-
-
-## Fonctions - Paramètres (Optionels)
-
-- Une fonction peut prendre des paramètres
-
-```typescript
-function getFullName(name: string, forename: string) { }
-```
-
-- Un paramètre peut être optionel
-  - utilisation du caractère `?`
-  - ordre de définition très important
-  - aucune implication dans le code JavaScript généré
-  - si pas défini, le paramètre aura la valeur `undefined`
-
-```typescript
-function getFullName(name: string, forename?: string) { }
+function getFullName(name: string = 'Dupont', forename?: string) { }
 ```
 
 Notes :
@@ -139,17 +119,14 @@ Notes :
 
 - Permet de manipuler un tableau d'objet
 
-- 2 syntaxes pour créer des tableaux
-  - Syntaxe Litérale
+- 2 syntaxes pour définir les tableaux : litérale ou par le constructeur
 
 ```typescript
+// Syntaxe Litérale
 let list: number[] = [1, 2, 3];
-```
 
-  - Syntaxe utilisant le constructeur `Array`
-
-```typescript
-let list: Array<number> = [1, 2, 3];
+// Syntaxe utilisant le constructeur `Array`
+let list: Array<number> = new Array<number>(1, 2, 3);
 ```
 
 - Ces 2 syntaxes aboutiront au même code JavaScript
@@ -158,7 +135,7 @@ Notes :
 
 
 
-## Type Enum
+## Enum
 
 - Possibilité de définir un type pour expliciter un ensemble de données numériques
 
@@ -192,11 +169,18 @@ Notes :
 - Système de *classes* et *interfaces* similaire à la programmation orientée objet
 - Le code javascript généré utilisera le système de `prototype`
 - Possibilité de définir un constructeur, des méthodes et des propriétés
-- Propriétés/méthodes acccessibles via l'objet `this`
+- Propriétés / méthodes acccessibles via l'objet `this` (toujours explicite)
 
 ```typescript
 class Person {
-   constructor() {}
+  public firstName: string;
+  public lastName: string;
+
+  constructor() {}
+
+  public sayHello() {
+    console.log(`Hello, I'm ${this.firstName} ${this.lastName}`);
+  }
 }
 
 let person = new Person();
@@ -206,97 +190,28 @@ Notes :
 
 
 
-## Classes - Méthodes
-
-- Méthodes ajoutées au `prototype` de l'objet
-
-- Version TypeScript
-
-```typescript
-class Person {
-   constructor() {}
-
-   sayHello(message: string) { }
-}
-```
-
-- Version JavaScript
-
-```javascript
-var Person = (function () {
-    function Person() { }
-    Person.prototype.sayHello = function (message) { };
-    return Person;
-})();
-```
-
-Notes :
-
-
-
-## Classes - Propriétés
+## Classes
 
 - Trois scopes disponibles : `public`, `private` et `protected`
 - Utilise le scope `public` par défaut
 - Scope `protected` apparu en TypeScript 1.3
-- Propriétés ajoutées sur l'objet en cours d'instanciation (`this`)
-- Possibilité de définir des propriétés statiques (`static`)
-  - Tous les types supportés : types primitifs, fonctions, ...
-  - Propriété ajoutée au constructeur de l'objet
-
-Notes :
-
-
-
-
-## Classes - Propriétés
-
-- Version TypeScript
+- Possibilité de définir des propriétés et méthodes statiques : `static`
+- Possibilité de définir des propriétés en lecture seule : `readonly`
+- Raccourcis pour déclarer et initialiser des propriétés
 
 ```typescript
 class Person {
-   firstName: string;
-   constructor(firstName: string){
-	   this.firstName = firstName;
-   }
+  constructor(public firstName: string) { }
 }
-```
 
-- Version JavaScript
+// ===
 
-```javascript
-var Person = (function () {
-    function Person(firstName) {
-        this.firstName = firstName;
-    }
-    return Person;
-})();
-```
-
-Notes :
-
-
-
-## Classes - Propriétés
-
-- Seconde version pour initialiser des propriétés
-- Version TypeScript
-
-```typescript
 class Person {
-   constructor(public firstName: string) { }
+  public firstName: string;
+  constructor(firstName: string) {
+    this.firstName = firstName;
+  }
 }
-```
-
-- Version JavaScript
-
-```javascript
-var Person = (function () {
-    function Person(firstName) {
-        this.firstName = firstName;
-    }
-    return Person;
-})();
 ```
 
 Notes :
@@ -306,8 +221,8 @@ Notes :
 ## Classes - Accesseurs
 
 - Possibilité de définir des accesseurs pour accéder à une propriété
-- Utiliser les mots clé *get* et *set*
-- Attention à l'espacement apres les mots clé
+- Utiliser les mots clé `get` et `set`
+- Attention à l'espacement après les mots clé
 - Nécessité de générer du code JavaScript compatible ES5
 - Le code JavaScript généré utilisera `Object.defineProperty`
 
@@ -364,23 +279,36 @@ Notes :
   - Vérification de la signature d'une fonction
   - Vérification de l'implémentation d'une classe
 
+```typescript
+// Les interfaces pour typer facilement
+interface Config {
+  someProperty: string
+}
+
+const config: Config = {
+  someProperty: 'myValue'
+};
+```
+
 Notes :
 
 
 
-## Interfaces - Implémentation d'une classe
+## Interfaces
 
-- Cas d'utilisation le plus connu des interfaces
+- Utilisation la plus connue : implémentation d'une classe
 - Vérification de l'implémentation d'une classe
 - Erreur de compilation tant que la classe ne respecte pas le contrat défini par l'interface
 
 ```typescript
 interface Musician {
-	play(): void;
+  play(): void;
 }
 
 class TrumpetPlay implements Musician {
-	play() {}
+  play(): void {
+    console.log('Play!');
+  }
 }
 ```
 
@@ -452,7 +380,9 @@ Notes :
   - `install` : télécharge le module et le place dans le répertoire courant dans `./node_modules`
   - `install -g` : installation globale, le module est placé dans le répertoire d'installation de Node.js
 
-    Permet de rendre accessible des commandes
+    Permet de rendre accessible des commandes dans la console
+
+    **Attention** : Ne rend pas une librairie accessible pour tous les projets
   - `update` : met à jour un module déjà installé
   - `remove` : supprime le module du projet
 
@@ -513,7 +443,7 @@ Notes :
 
 - `peerDependencies`
 
-  Les dépendances nécessaires au bon fonctionnement du module, mais pas installées lors d'un `npm install`
+  Les dépendances nécessaires au bon fonctionnement du module, mais pas installées lors d'un `npm install` (depuis NPM3)
 
 Notes :
 - files : liste de fichiers sauf .npmignore
