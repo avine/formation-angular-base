@@ -37,7 +37,7 @@ Notes :
 ```shell
 npm init
 
-npm install --save @angular/common @angular/core rxjs ...
+npm install @angular/common @angular/core rxjs ...
 ```
 
 - Initialisation et Configuration d'un projet *TypeScript*
