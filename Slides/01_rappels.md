@@ -398,7 +398,7 @@ Notes :
 - `npm` permet également de manipuler le module courant
   - `init` : initialise un fichier `package.json`
   - `docs` : génère la documentation du module en cours
-  - `install --save` ou `--save-dev` :
+  - `install <moduleName>` ou `install <moduleName> --save-dev` :
 
     Comme install mais référence automatiquement la dépendance dans le `package.json`
 
