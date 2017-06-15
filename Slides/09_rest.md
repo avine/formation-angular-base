@@ -223,14 +223,24 @@ interface RequestOptionsArgs {
 }
 ```
 
+Notes :
+
+
+
+## HTTP - Configuration
+
 - `Http` propose également de nombreux raccourcis
 
 ```typescript
 class Http {
   request(url: string|Request, options?: RequestOptionsArgs): Observable<Response>
+
   get(url: string, options?: RequestOptionsArgs): Observable<Response>
+
   post(url: string, body: any, options?: RequestOptionsArgs): Observable<Response>
+
   put(url: string, body: any, options?: RequestOptionsArgs): Observable<Response>
+
   delete(url: string, options?: RequestOptionsArgs): Observable<Response>
   /* ... */
 }
@@ -243,13 +253,14 @@ Notes :
 ## HTTP - Exemple
 
 - Requête HTTP de type `PUT` avec surcharge des `Headers`
-- Exemple avec la méthode `Http.request`
 
 ```typescript
+import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptionsArgs } from '@angular/http';
 import { Observable } from 'rxjs';
-import { Contact } from './model/contact.service';
+import { Contact } from './model/contact';
 
+Injectable()
 export class ContactService {
   constructor(private http: Http) { }
 
@@ -263,7 +274,6 @@ export class ContactService {
       body: contact,
       headers
     };
-
     return this.http.request(requestOptions);
   }
 }
@@ -282,7 +292,10 @@ import {Http, Response} from '@angular/http';
 import {Component} from '@angular/core';
 import 'rxjs/add/operator/map';
 
-@Component({selector: 'app', template: '{{ displayedData | json }}'})
+@Component({
+  selector: 'app', 
+  template: '{{ displayedData | json }}'
+})
 export class AppComponent {
   private displayedData: string;
 
@@ -318,8 +331,9 @@ export class AppComponent {
   constructor(private http: Http) {
     http.get('people.json')
       .map((result: Response): Person[] => result.json())
-      .flatMap((people: Person[]): Observable<Person> => Observable.from(people))
-      .filter((person: Person): boolean => person.hasToBeDisplayed)
+      .mergeMap((people: Person[]): Observable<Project[]> => {
+        return getProjectsByPeople(people);
+      })
       .subscribe((person: Person): void => {
         this.displayedData.push(person);
       });
