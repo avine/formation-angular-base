@@ -193,15 +193,16 @@ Notes :
 ## Validateurs
 
 - Un champ peut posséder un ou plusieurs validateurs
-  - Support des validateurs standards HTML5 : `required`, `min`, `max`, ...
+  - Support des validateurs standards HTML5 : `required`, `min`, `max`, `minlength`, `maxlength` et `pattern`
   - Possibilité d'ajouter des validateurs personnalisés
 
 - La propriété `valid` correspond à l'aggregation de l'état des validateurs
 - Possibilité d'avoir le détail avec la propriété `errors`
 
 ```html
-<input type="text" [(ngModel)]="contact.name" #name="ngModel" required>
-<span [hidden]="!name.errors?.required">Name is not valid</span>
+<input name="name" type="text" [(ngModel)]="contact.name" 
+      #nameInput="ngModel" required>
+<span [hidden]="!nameInput.errors?.required">Name is not valid</span>
 ```
 
 Notes :
@@ -250,7 +251,8 @@ Notes :
 
 ```html
 <form #myForm="ngForm" novalidate (submit)="onSubmit()">
-  <input type="text" name="myName" [(ngModel)]="contact.name" #nameInput="ngModel" required>
+  <input name="myName" type="text" [(ngModel)]="contact.name" 
+        #nameInput="ngModel" required>
 
   <span [hidden]="nameInput.valid">Error</span>
 
