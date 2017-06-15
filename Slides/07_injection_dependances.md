@@ -113,9 +113,9 @@ import { Logger } from './logger-service';
 
 @Injectable()
 export class UserService {
-    constructor(public logger: Logger) { }
+    constructor(private logger: Logger) { }
 
-    public myMethod(): void {
+    myMethod(): void {
       this.logger.log('myMethod called!');
     }
 }

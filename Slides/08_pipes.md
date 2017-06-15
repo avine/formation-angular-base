@@ -161,9 +161,9 @@ import { MyLowerCasePipe } from './mylowercase';
   providers: [ MyLowerCasePipe ]
 })
 class App {
-  public name: string;
+  name: string;
 
-  constructor(public lower: MyLowerCasePipe) {
+  constructor(private lower: MyLowerCasePipe) {
     this.name = lower.transform('Hello Angular');
   }
 }
@@ -221,7 +221,7 @@ Notes :
   template: '{{ promise | async }}'
 })
 class PipesAppComponent {
-  public promise: Promise;
+  promise: Promise;
 
   constructor() {
     this.promise = new Promise((resolve, reject) => {

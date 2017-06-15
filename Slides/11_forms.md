@@ -72,18 +72,18 @@ Notes :
   selector: 'contact-form',
   template: `
     <form (submit)="saveForm()">
-      <input type="text" [(ngModel)]="contact.name">
+      <input type="text" [(ngModel)]="contact.name" name="name">
       <button type="submit">Save</button>
     </form>
   `
 })
 export class ContactFormComponent implements OnInit {
-  public contact: Contact;
+  contact: Contact;
   constructor(private contactService: ContactService) { }
-  public ngOnInit(): void {
+  ngOnInit(): void {
     this.contactService.load().subscribe(contact => this.contact = contact);
   }
-  public saveForm(): void {
+  saveForm(): void {
     this.contactService.save(this.contact);
   }
 }
@@ -170,15 +170,16 @@ Notes :
   selector: 'contact-form',
   template: `
     <form novalidate (submit)="saveForm()">
-      <input type="text" [(ngModel)]="contact.name" #nameInput="ngModel" required>
+      <input name="name" type="text" [(ngModel)]="contact.name" 
+            #nameInput="ngModel" required>
       <span [hidden]="nameInput.valid">Error</span>
       <button type="submit">Save</button>
     </form>
   `
 })
 export class ContactFormComponent implements OnInit {
-  public contact: Contact;
-  public nameInput: FormControl;
+  contact: Contact;
+  nameInput: FormControl;
 
   constructor(private contactService: ContactService) { }
   /* ... */
