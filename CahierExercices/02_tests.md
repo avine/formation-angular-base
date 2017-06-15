@@ -6,10 +6,10 @@ Lors de la mise en place initiale de l'application dans le TP précédent, toute
 
 Nous allons vérifier que tout fonctionne correctement.
 
-- Lancez les tests via `angular-cli` et `karma`
+- Lancez les tests via `@angular/cli` et `karma`
 
 ```shell
 ng test
 ```
 
-- Vous pouvez jeter un coup d'oeil aux tests générés par angular-cli. Ils seront expliqués plus en détails dans les parties suivantes. 
+- Vous pouvez jeter un coup d'oeil aux tests générés par `@angular/cli`. Ils seront expliqués plus en détails dans les parties suivantes. 

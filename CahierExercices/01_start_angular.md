@@ -4,20 +4,20 @@ Dans ce premier TP, nous allons initier notre première application **Angular**,
 
 L'initialisation de cette application se décomposera en plusieurs étapes :
 
-- Création d'un projet Angular avec `angular-cli`
+- Création d'un projet Angular avec `@angular/cli`
 - Implémentation de la page principale
 - Création du composant principal
 - Lancement du serveur afin de tester
 
 ### Création du projet
 
-L'application, que nous allons implémenter, sera initialisée via l'outil `angular-cli`. Cet outil va automatiser :
+L'application, que nous allons implémenter, sera initialisée via l'outil `@angular/cli`. Cet outil va automatiser :
 
 - la création et la configuration du squelette de l'application
 - la gestion des dépendances
 
 
-- Téléchargez `angular-cli` en utilisant `NPM`. Ce module nécessite une version récente de *NodeJS*
+- Téléchargez `@angular/cli` en utilisant `NPM`. Ce module nécessite une version récente de *NodeJS*
 
 - Depuis votre console, créez un nouveau projet via la commande `ng new Application`
 

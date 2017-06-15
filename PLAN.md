@@ -45,7 +45,7 @@ Développeur web
 
 3. Démarrer une application Angular
   - Commencer un nouveau projet
-  - Angular-CLI
+  - @angular/cli
   - Webpack
 
 4. Tests
