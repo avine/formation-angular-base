@@ -120,7 +120,7 @@ Notes :
   - Sur chaque champ : `FormControl`
 - Le `FormGroup` est une aggrégation de l'état des chacun des `FormControl`
 - Un `AbstractControl` contient :
-  - L'état : `dirty` / `pristine`, `valid` / `valid`, `touched` / `untouched`
+  - L'état : `dirty` / `pristine`, `valid` / `invalid`, `touched` / `untouched`
   - Les erreurs de validation dans la propriété `errors`
 - Ces données sont mis à jour automatiquement
 - On peut s'en servir dans les templates ou dans le contrôleur
