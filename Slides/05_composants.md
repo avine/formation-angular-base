@@ -558,11 +558,11 @@ describe('TitleComponent', () => {
 
   it('should have a title', () => {
     const fixture = TestBed.createComponent(TitleComponent);
-    const {instance, element} = fixture;
+    const {componentInstance, debugElement} = fixture;
 
-    instance.title = 'Hello World';
+    componentInstance.title = 'Hello World';
     fixture.detectChanges();
-    expect(element.querySelector('h1').textContent).toBe('Hello World');
+    expect(debugElement.querySelector('h1').textContent).toBe('Hello World');
   });
 });
 ```

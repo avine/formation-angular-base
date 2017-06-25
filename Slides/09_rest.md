@@ -91,7 +91,7 @@ Notes :
 
 ## Exemple
 
-- Exmple complet d'utilisation des Observables
+- Exemple complet d'utilisation des Observables
 
 ```typescript
 function getDataFromNetwork(): Observable<SomeClass> {
@@ -212,14 +212,13 @@ Notes :
 
 ```typescript
 interface RequestOptionsArgs {
-  url: string
-  method: string|RequestMethod
-  search: string|URLSearchParams|{[key: string]: any | any[]}
-  params: string|URLSearchParams|{[key: string]: any | any[]}
-  headers: Headers
-  body: any
-  withCredentials: boolean
-  responseType: ResponseContentType
+  url?: string;
+  method?: string | RequestMethod;
+  search?: string | URLSearchParams;
+  headers?: Headers;
+  body?: any;
+  withCredentials?: boolean;
+  responseType?: ResponseContentType;
 }
 ```
 
