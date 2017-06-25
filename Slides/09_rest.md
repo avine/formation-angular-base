@@ -91,7 +91,7 @@ Notes :
 
 ## Exemple
 
-- Exmple complet d'utilisation des Observables
+- Exemple complet d'utilisation des Observables
 
 ```typescript
 function getDataFromNetwork(): Observable<SomeClass> {
