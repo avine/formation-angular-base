@@ -188,21 +188,21 @@ Notes :
 
 - Possibilité de surcharger le nom de la propriété avec
 
-  `@Input('myOtherName')`
+  `@Input('discount')`
 - Les noms de propriété sont sensible à la casse
 
 ```typescript
 @Component({ selector: 'product-detail', /* ... */ })
 export class ProductComponent {
   @Input() product: Product;
-  @Input('myOtherProperty') data: string;
+  @Input('discount') percentDiscount: number;
 }
 ```
 
 - Pour utiliser ce composant
 
 ```html
-<product-detail [product]="myProduct" [myOtherProperty]="'a string'">
+<product-detail [product]="myProduct" [discount]="10">
 </product-detail>
 ```
 
