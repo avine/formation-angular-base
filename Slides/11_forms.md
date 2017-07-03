@@ -61,10 +61,39 @@ Notes :
 
 
 
-## Binding
+## "Banana in the Box"
 
-- Le **binding** se fait à travers l'utilisation de la directive `ngModel`
-- Utilisation du **double binding** avec la syntaxe *Banana in the box*
+- Le *2-way data-binding* (par défaut dans AngularJS) est désactivé par défaut
+- On peut le reproduire avec les syntaxes qu'on a vu jusque là
+
+```html
+<input [value]="currentHero.firstName"
+       (input)="currentHero.firstName = $event.target.value"/>
+```
+
+- *Angular* fournit du sucre syntaxique pour ce besoin récurrent
+
+  (Utilise la directive `ngModel` qu'on verra en détail au chapitre *Formulaires*)
+- Première solution
+
+```html
+<input
+  [ngModel]="currentHero.firstName"
+  (ngModelChange)="currentHero.firstName=$event"/>
+```
+
+- Deuxième solution *Banana in the Box*
+
+```html
+<input [(ngModel)]="currentHero.firstName"/>
+```
+
+Notes :
+
+
+
+## Persistance des données
+
 - Écouter l'évènement `submit` du formulaire pour traiter le formulaire
 
 ```typescript
@@ -78,12 +107,15 @@ Notes :
   `
 })
 export class ContactFormComponent implements OnInit {
-  public contact: Contact;
+  contact: Contact;
+  
   constructor(private contactService: ContactService) { }
-  public ngOnInit(): void {
+  
+  ngOnInit(): void {
     this.contactService.load().subscribe(contact => this.contact = contact);
   }
-  public saveForm(): void {
+  
+  saveForm(): void {
     this.contactService.save(this.contact);
   }
 }
