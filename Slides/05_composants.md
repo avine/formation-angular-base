@@ -99,9 +99,12 @@ Notes :
 ```typescript
 @Component({
   selector: 'product',
-  template: `<p>{{ myMethode(myProp * 2) }}</p>`
+  template: `<p>{{ add(myProp, 2) }}</p>`
 })
-export class ProductComponent { /* ... */ }
+export class ProductComponent {
+  myProp = 1;
+  add(value1, value2) { return value1 + value2; }
+}
 ```
 
 Notes :
