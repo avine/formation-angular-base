@@ -42,8 +42,6 @@ npm install @angular/common @angular/core rxjs ...
 
 - Initialisation et Configuration d'un projet *TypeScript*
 - Configuration du système de gestion des modules (*Webpack*)
-- Nécessité d'utiliser un serveur Web
-  - `Apache`, `serve`, `live-server`...
 
 Notes :
 
