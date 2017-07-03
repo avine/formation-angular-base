@@ -320,23 +320,23 @@ Notes :
 ```typescript
 import { Http, Response } from '@angular/http';
 import { Component } from '@angular/core';
-import { Person } from './model/person';
+import { Project, Person } from './model/';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-@Component({selector: 'app',template: '{{ displayedData | json }}'})
+@Component({
+  selector: 'app',
+  template: `<ul>
+    <li *ngFor="project of (projects$ | async)">{{project.name}}</li>
+  </ul>`
+})
 export class AppComponent {
-  private displayedData: MyObject[] = [];
-
-  constructor(private http: Http) {
-    http.get('people.json')
-      .map((result: Response): Person[] => result.json())
-      .mergeMap((people: Person[]): Observable<Project[]> => {
-        return getProjectsByPeople(people);
-      })
-      .subscribe((person: Person): void => {
-        this.displayedData.push(person);
-      });
+  projects$: Observable<Project[]>
+  constructor(http: Http) {
+    this.projects$ = http.get('person.json')
+      .map((result: Response): Person => result.json())
+      .mergeMap((person: Person): Observable<Project[]> => getProjects(person))
   }
 }
 ```
