@@ -441,9 +441,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({ selector: 'user', /* ... */ })
 export class UserComponent implements OnInit {
-  @Input()
-  data = User;
-
+  
+  @Input() data: User;
   products: Product[];
 
   ngOnInit(): void {
