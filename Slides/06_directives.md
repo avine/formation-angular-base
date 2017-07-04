@@ -163,7 +163,7 @@ import { Component } from '@angular/core';
     </h1>
 
     <label>Size:
-      <input type="text" [value]="size" (change)="size = $event.target.value">
+      <input type="text" [value]="size" (input)="size = $event.target.value">
     </label>
   `
 })
