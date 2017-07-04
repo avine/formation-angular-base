@@ -4,7 +4,7 @@ import { Product } from '../model/product';
 @Injectable()
 export class CustomerService {
 
-  public products: Product[] = new Array<Product>();
+  products: Product[] = new Array<Product>();
 
   addProduct(product: Product): void {
     this.products.push(product);
