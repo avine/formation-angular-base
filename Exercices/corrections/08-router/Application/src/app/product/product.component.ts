@@ -10,7 +10,7 @@ import { ProductService } from '../services/product.service';
 export class ProductComponent implements OnInit {
 
   @Output() 
-  addToBasket: EventEmitter<Product> = new EventEmitter<Product>();
+  addToBasket = new EventEmitter<Product>();
 
   @Input()
   data: Product;

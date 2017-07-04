@@ -273,7 +273,7 @@ import { Product } from './model/Product'
 })
 export class ProductComponent {
     @Input() product: Product;
-    @Output() addToBasket: EventEmitter<Product> = new EventEmitter<Product>();
+    @Output() addToBasket = new EventEmitter<Product>();
 
     clickHandler(){ this.addToBasket.emit(this.product); }
 }
@@ -293,7 +293,7 @@ Notes :
 ```typescript
 @Component({ selector: 'product-detail', /* ... */ })
 export class ProductComponent {
-  @Output('add') addToBasket: EventEmitter<Product> = new EventEmitter<Product>();
+  @Output('add') addToBasket = new EventEmitter<Product>();
 }
 ```
 
@@ -320,7 +320,7 @@ Notes :
 ```typescript
 @Component({ selector: 'hello-component', /* ... */ })
 export class HelloComponent {
-  @Output() hello: EventEmitter<string> = new EventEmitter<string>();
+  @Output() hello = new EventEmitter<string>();
   constructor() { this.hello.emit('hello!'); }
 }
 ```
@@ -443,7 +443,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({ selector: 'hello-component', /* ... */ })
 export class HelloComponent implements OnInit {
   @Output()
-  hello: EventEmitter<string> = new EventEmitter<string>();
+  hello = new EventEmitter<string>();
 
   constructor() { }
 
