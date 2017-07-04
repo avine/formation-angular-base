@@ -7,7 +7,6 @@ import { UpperCasePipe } from '@angular/common';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProductComponent } from './product/product.component';
-import { FooterComponent } from './footer/footer.component';
 
 import { SortPipe } from './pipes/sort.pipe';
 
@@ -18,8 +17,7 @@ import { CustomerService } from './services/customer.service';
   declarations: [
     AppComponent, 
     MenuComponent, 
-    ProductComponent, 
-    FooterComponent, 
+    ProductComponent,
     SortPipe
   ],
   imports: [

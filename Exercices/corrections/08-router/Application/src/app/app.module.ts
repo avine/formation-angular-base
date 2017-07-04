@@ -8,7 +8,6 @@ import { UpperCasePipe } from '@angular/common';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProductComponent } from './product/product.component';
-import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { BasketComponent } from './basket/basket.component';
 
@@ -26,8 +25,7 @@ const routes: Routes = [
   declarations: [
     AppComponent, 
     MenuComponent, 
-    ProductComponent, 
-    FooterComponent, 
+    ProductComponent,
     BasketComponent,
     HomeComponent,
     SortPipe

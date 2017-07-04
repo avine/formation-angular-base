@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProductComponent } from './product/product.component';
-import { FooterComponent } from './footer/footer.component';
 
 import { ProductService } from './services/product.service';
 import { CustomerService } from './services/customer.service';
@@ -15,8 +14,7 @@ import { CustomerService } from './services/customer.service';
   declarations: [
     AppComponent, 
     MenuComponent, 
-    ProductComponent, 
-    FooterComponent
+    ProductComponent
   ],
   imports: [
     BrowserModule,
