@@ -432,7 +432,6 @@ Notes :
 ## Cycle de vie
 
 - Chaque composant a un cycle de vie bien définit
-- https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html
 - Il est possible d'exécuter du code à chacune de ces étapes
 - La plus utilisée est l'initialisation avec l'interface `OnInit`
 - L'utilisation d'`OnInit` est recommandé plutôt que dans le constructeur
@@ -440,16 +439,18 @@ Notes :
 ```typescript
 import { Component, OnInit } from '@angular/core';
 
-@Component({ selector: 'hello-component', /* ... */ })
-export class HelloComponent implements OnInit {
-  @Output()
-  hello = new EventEmitter<string>();
+@Component({ selector: 'user', /* ... */ })
+export class UserComponent implements OnInit {
+  @Input()
+  data = User;
 
-  constructor() { }
+  products: Product[];
 
   ngOnInit(): void {
-    this.hello.emit('hello!');
+    this.products = this.getProducts(this.data.id);
   }
+
+  getProducts(id){ ... }
 }
 ```
 
