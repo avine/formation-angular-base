@@ -112,9 +112,9 @@ Notes :
 
 ```javascript
 // provider, factory, constant et value
-app.service('Service', function (){
+app.service('UserService', function (){
   const vm = this;
-  vm.myMethod = function (){
+  vm.getUsers = function (){
 
   }
 });
@@ -124,9 +124,9 @@ app.service('Service', function (){
 
 ```typescript
 @Injectable()
-export class Service {
-  myMethod() {
-
+export class UserService {
+  getUsers(): User[] {
+    return [];
   }
 }
 ```

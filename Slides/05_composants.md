@@ -222,9 +222,9 @@ Notes :
 - Les méthodes et propriétés utilisées doivent être définies dans la classe
 
 ```html
-<button (click)="myMethod()"></button> <!-- évènement HTML -->
-<button on-click="myMethod()"></button> <!-- alternative sans () -->
-<button data-on-click="myMethod()"></button> <!-- html5 strict -->
+<button (click)="handler()"></button> <!-- évènement HTML -->
+<button on-click="handler()"></button> <!-- alternative sans () -->
+<button data-on-click="handler()"></button> <!-- html5 strict -->
 
 <!-- évènement d'un composant -->
 <hero-detail (deleted)="onHeroDeleted()"></hero-detail>

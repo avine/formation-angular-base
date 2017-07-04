@@ -115,8 +115,8 @@ import { Logger } from './logger-service';
 export class UserService {
     constructor(public logger: Logger) { }
 
-    myMethod(): void {
-      this.logger.log('myMethod called!');
+    getUsers(): void {
+      this.logger.log('getUsers called!');
     }
 }
 ```
