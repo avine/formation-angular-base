@@ -209,8 +209,8 @@ Notes :
   `
 })
 export class ContactFormComponent implements OnInit {
-  public contact: Contact;
-  public nameInput: FormControl;
+  contact: Contact;
+  nameInput: FormControl;
 
   constructor(private contactService: ContactService) { }
   /* ... */
