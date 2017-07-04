@@ -236,7 +236,7 @@ Notes :
 - Syntaxe finale pour une iterration sur le tableau `items`
 
 ```html
-<ng-template ngFor let-item [ngForOf]="items" let-i="index">
+<ng-template ngFor [ngForOf]="items" let-item let-i="index">
   <li> {{ item.label }} </li>
 </ng-template>
 ```
