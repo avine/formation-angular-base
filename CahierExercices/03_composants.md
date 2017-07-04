@@ -14,7 +14,9 @@ Après avoir reçu du formateur le template principal de l'application, veuillez
 
 - Le total de votre panier sera défini dans une variable `total` que nous allons initialiser à 0 dans le constructeur du composant.
 
-- Dans un nouveau fichier `model\product.ts`, créez une nouvelle classe `Product` ayant les propriétés suivantes:
+- Créez une classe `product.ts` dans un répertoire `model`. Pour créer cette nouvelle classe, vous pouvez utiliser la commande `ng generate class model/product`. 
+
+- Dans cette classe, définissez les propriétés suivantes:
 	- title de type `string`
 	- description de type `string`
 	- photo de type `string`
