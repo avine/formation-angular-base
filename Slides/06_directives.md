@@ -109,8 +109,7 @@ Notes :
 
 ```typescript
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
@@ -118,8 +117,7 @@ import { HighlightDirective } from './highlight.directive';
     HighlightDirective
   ],
   imports: [
-    CommonModule,
-    FormsModule
+    BrowserModule
   ]
 })
 export class AppModule {}
@@ -138,7 +136,7 @@ Notes :
 
 - Importer le module correspondant pour les utiliser :
   - `CommonModule`
-  - `FormModule`
+  - `FormsModule`
   - `RouterModule`
 
 

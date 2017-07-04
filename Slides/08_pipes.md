@@ -102,8 +102,7 @@ Notes :
 
 ```typescript
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { MyLowerCasePipe } from './mylowercase.pipe';
 
 @NgModule({
@@ -111,8 +110,7 @@ import { MyLowerCasePipe } from './mylowercase.pipe';
     MyLowerCasePipe
   ],
   imports: [
-    CommonModule,
-    FormsModule
+    BrowserModule
   ]
 })
 export class AppModule {}
