@@ -10,7 +10,7 @@ import { CustomerService } from '../services/customer.service';
 })
 export class HomeComponent implements OnInit {
 
-  public products:Product[];
+  products:Product[];
 
   constructor(private productService:ProductService, private customerService:CustomerService, @Inject('welcomeMsg') public title:string){
       this.productService.getProducts().subscribe(products => this.products = products);

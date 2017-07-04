@@ -14,7 +14,7 @@ export class CustomerService {
 
   private API_URL: string = "http://localhost:8080/rest/";
 
-  public products: Product[] = new Array<Product>();
+  products: Product[] = new Array<Product>();
 
   constructor(private http:Http){}
 

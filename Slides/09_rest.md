@@ -341,7 +341,7 @@ Notes :
 import { Http, BaseRequestOptions, RequestOptions } from '@angular/http';
 
 class MyOptions extends BaseRequestOptions {
-  public search: string = 'coreTeam=true';
+  search: string = 'coreTeam=true';
 }
 
 @NgModule({

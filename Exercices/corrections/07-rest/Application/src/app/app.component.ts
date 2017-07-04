@@ -9,7 +9,7 @@ import { CustomerService } from './services/customer.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public products:Product[];
+  products:Product[];
 
   constructor(private productService:ProductService, private customerService:CustomerService, @Inject('welcomeMsg') public title:string){
       this.productService.getProducts().subscribe(products => this.products = products);

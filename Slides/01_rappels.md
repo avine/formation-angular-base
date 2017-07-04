@@ -173,12 +173,12 @@ Notes :
 
 ```typescript
 class Person {
-  public firstName: string;
-  public lastName: string;
+  firstName: string;
+  lastName: string;
 
   constructor() {}
 
-  public sayHello() {
+  sayHello() {
     console.log(`Hello, I'm ${this.firstName} ${this.lastName}`);
   }
 }
@@ -207,7 +207,7 @@ class Person {
 // ===
 
 class Person {
-  public firstName: string;
+  firstName: string;
   constructor(firstName: string) {
     this.firstName = firstName;
   }
