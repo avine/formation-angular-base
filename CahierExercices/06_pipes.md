@@ -21,6 +21,6 @@ Nous allons à présent créer notre propre `pipe`, qui va nous permettre de tri
 
 - Implémenter la méthode de transformation, dans laquelle nous allons trier un tableau via la méthode `sort` du prototype `Array`
 
-- Utiliser votre `pipe` dans le template du `ng-for`
+- Utiliser votre `pipe` dans le template du `ngFor`
 
 - Nous allons à présent ajouter un paramètre à notre `pipe`. Ce paramètre permettra de définir la propriété sur laquelle le tri doit s'effectuer.
