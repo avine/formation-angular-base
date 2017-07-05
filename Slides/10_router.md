@@ -130,7 +130,7 @@ Notes :
   `
 })
 class AppComponent {
-  public id: number = 2;
+  id: number = 2;
 }
 ```
 
@@ -224,6 +224,7 @@ Notes :
 - L'API est sous forme d'un flux de la valeur des paramètre au cours du temps
 
 ```typescript
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
@@ -232,7 +233,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class ProductComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
-  public ngOnInit() {
+  ngOnInit() {
     this.route.params.subscribe((params: Params): void => {
       const id = Number(params.id); // Les paramètres sont toujours des string
       /* ... */
@@ -251,6 +252,7 @@ Notes :
 - La propriété `snapshot` donne les valeurs à un instant T
 
 ```typescript
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 
 @Component({
@@ -259,7 +261,7 @@ import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 export class ProductComponent {
   constructor(private route: ActivatedRoute) { }
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     const snapshot: ActivatedRouteSnapshot = this.route.snapshot;
     const id = Number(snapshot.params.id);
     /* ... */
@@ -287,7 +289,7 @@ import { AdminComponent } from './admin.component';
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) { }
-  public canActivate(route: ActivatedRouteSnapshot): boolean {
+  canActivate(route: ActivatedRouteSnapshot): boolean {
     if(this.authService.isLoggedIn()) return true;
     this.router.navigate([ '/login' ]);
     return false;

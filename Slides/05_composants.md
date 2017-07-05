@@ -317,7 +317,7 @@ Notes :
 ```typescript
 @Component({ selector: 'hello-component', /* ... */ })
 export class HelloComponent {
-  @Output() public hello: EventEmitter<string> = new EventEmitter<string>();
+  @Output() hello: EventEmitter<string> = new EventEmitter<string>();
   constructor() { this.hello.emit('hello!'); }
 }
 ```
@@ -471,11 +471,11 @@ import { Component, OnInit } from '@angular/core';
 @Component({ selector: 'hello-component', /* ... */ })
 export class HelloComponent implements OnInit {
   @Output()
-  public hello: EventEmitter<string> = new EventEmitter<string>();
+  hello: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     this.hello.emit('hello!');
   }
 }

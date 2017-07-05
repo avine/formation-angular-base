@@ -330,8 +330,6 @@ function identity<T>(arg: T): T {
 identity(5).toFixed(2); // Correct
 
 identity('hello').toFixed(2); // Incorrect
-
-identity(true);
 ```
 
 Notes :
