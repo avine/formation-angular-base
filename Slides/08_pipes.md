@@ -161,7 +161,7 @@ import { MyLowerCasePipe } from './mylowercase';
 class App {
   name: string;
 
-  constructor(public lower: MyLowerCasePipe) {
+  constructor(lower: MyLowerCasePipe) {
     this.name = lower.transform('Hello Angular');
   }
 }
@@ -251,11 +251,9 @@ describe('MyLowerCasePipe', () => {
     pipe = new MyLowerCasePipe();
   });
 
-  describe('transform', () => {
-    it('should return lowercase', () => {
-      var val = pipe.transform('SOMETHING');
-      expect(val).toEqual('something');
-    });
+  it('should return lowercase', () => {
+    var val = pipe.transform('SOMETHING');
+    expect(val).toEqual('something');
   });
 });
 ```
