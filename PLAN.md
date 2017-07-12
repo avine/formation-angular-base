@@ -93,7 +93,3 @@ Développeur web
 
 13. Server-side rendering
   - Angular Universal
-
-14. Bonnes pratiques pour une migration heureuse
-
-15. Support d'EcmaScript 5
