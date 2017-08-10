@@ -30,7 +30,7 @@ Notes :
 ## Présentation
 
 - Framework créé par *Google* et annoncé en 2014
-- Réécriture total du framework
+- Réécriture totale du framework
 - Reprend certains concepts d'*AngularJS*
 - Première version *beta* annoncée en octobre 2014
 - Version *finale* `2.0.0` officielle sortie en septembre 2016
@@ -49,11 +49,11 @@ Notes :
 - Respect à partir de là de la norme *semver*
 - Les versions majeurs ne seront plus des réécritures comme de la 1 à la 2
 - Saut de la version 3.0.0 après le merge du projet *Router* déjà en 3.x
-- Plannification d'une version majeure tous les 6 mois dans le futur
+- Planification d'une version majeure tous les 6 mois dans le futur
 - Sortie de la version 4.0.0 en mars 2017
   - Pas de grands bouleversements
   - Nouveau moteur de compilation des templates
-  - Modularisation du système d'animation
+  - Modularisation du système d'animations
   - Intégration du projet Universal
   - Passage à TypeScript 2.1+
 
@@ -63,7 +63,7 @@ Notes :
 ## Points négatifs d'AngularJS
 
 - Différences entre les directives et `ngController`
-- Two-way data-binding source de problèmes de performance
+- Two-way data-binding source de problèmes de performances
 - Hiérarchie des scopes
 - Pas de server-side rendering
 - Plusieurs syntaxes pour créer des services
@@ -149,15 +149,15 @@ Notes :
 
 Notes :
 - ES2015 et plus ES6 car maintenant il devrait y avoir une spécification chaque année.
-- Les prochaines itérations aurons moins de contenu
+- Les prochaines itérations auront moins de contenu
 
 
 
 ## Angular - Points Négatifs
 
 - Nouvelle phase d'apprentissage du framework si habitué à AngularJS
-- Ecosystème encore jeune
-- Application AngularJS incompatible avec cette nouvelle version
+- Écosystème encore jeune
+- Applications AngularJS incompatibles avec cette nouvelle version
 - ngUpgrade permet de réutiliser du code AngularJS mais pas de migrer
 - De nouveaux concepts à apprendre :
   - `Zone`
@@ -167,7 +167,7 @@ Notes :
 
 Notes :
 - utilisation de directives 1 dans 2 : https://angular.io/docs/ts/latest/guide/upgrade.html#!#using-angular-1-component-directives-from-angular-2-code
-- Les nouveaux concepts ne sont pas indispensables à connaitre. C'est un plus
+- Les nouveaux concepts ne sont pas indispensables à connaître. C'est un plus
 
 
 
@@ -197,7 +197,7 @@ Notes :
 - Component : Classe TypeScript qui décrit son comportement
 - Template : Code HTML réalisant le rendu à l'aide du component
 - Modules : regroupement d'un ensemble de fonctionnalités
-- Injector : système d'injection de dépendance d'Angular
+- Injector : système d'injection de dépendances d'Angular
 - Directive : composant sans template (*ngFor*, *ngIf*, ...)
 - Service : Code métier implémenté dans des classes qui seront injectées dans les différents composants
 
