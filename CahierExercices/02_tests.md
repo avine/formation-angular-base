@@ -12,4 +12,8 @@ Nous allons vérifier que tout fonctionne correctement.
 ng test
 ```
 
-- Vous pouvez jeter un coup d'oeil aux tests générés par `@angular/cli`. Ils seront expliqués plus en détails dans les parties suivantes. 
+Après les modifications réalisées au TP1, les premiers tests générés par `@angular/cli` vont échouer.
+
+Vous pouvez jeter un coup d'oeil aux tests générés par `@angular/cli`. Ils seront expliqués plus en détails dans les parties suivantes.
+
+- Corriger les tests générés en remplaçant la valeur du `title` dans les assertions par la valeur que vous avez utilisé.
