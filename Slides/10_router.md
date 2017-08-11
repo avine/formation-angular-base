@@ -225,6 +225,7 @@ Notes :
 - L'API est sous forme d'un flux de la valeur des paramètre au cours du temps
 
 ```typescript
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
@@ -252,6 +253,7 @@ Notes :
 - La propriété `snapshot` donne les valeurs à un instant T
 
 ```typescript
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 
 @Component({

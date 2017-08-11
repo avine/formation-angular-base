@@ -105,7 +105,7 @@ const variableArrowFunction = (arg: any): void => {  };
 ```
 
 - Peut retourner une valeur grâce au mot clé `return`
-- Possibilité d'avoir des paramètres optionnelles ou avec une valeur par défaut
+- Possibilité d'avoir des paramètres optionnels ou avec une valeur par défaut
 
 ```typescript
 function getFullName(name: string = 'Dupont', forename?: string) { }
@@ -117,9 +117,9 @@ Notes :
 
 ## Arrays
 
-- Permet de manipuler un tableau d'objet
+- Permet de manipuler un tableau d'objets
 
-- 2 syntaxes pour définir les tableaux : litérale ou par le constructeur
+- 2 syntaxes pour définir les tableaux : littérale ou par le constructeur
 
 ```typescript
 // Syntaxe Litérale
@@ -169,7 +169,7 @@ Notes :
 - Système de *classes* et *interfaces* similaire à la programmation orientée objet
 - Le code javascript généré utilisera le système de `prototype`
 - Possibilité de définir un constructeur, des méthodes et des propriétés
-- Propriétés / méthodes acccessibles via l'objet `this` (toujours explicite)
+- Propriétés / méthodes accessibles via l'objet `this` (toujours explicité)
 
 ```typescript
 class Person {
@@ -274,7 +274,7 @@ Notes :
 - Utilisées par le compilateur pour vérifier la cohérence des différents objets
 - Aucun impact sur le JavaScript généré
 - Système d'héritage entre interfaces
-- Plusieurs cas d'utilisation possible
+- Plusieurs cas d'utilisation possibles
   - Vérification des paramètres d'une fonction
   - Vérification de la signature d'une fonction
   - Vérification de l'implémentation d'une classe
@@ -330,8 +330,6 @@ function identity<T>(arg: T): T {
 identity(5).toFixed(2); // Correct
 
 identity('hello').toFixed(2); // Incorrect
-
-identity(true);
 ```
 
 Notes :
@@ -341,7 +339,7 @@ Notes :
 ## Génériques
 
 - Possibilité de définir une classe générique
-- Définition d'une liste de paramètres de type de manière globale
+- Définition d'une liste de paramètres de types de manière globale
 
 ```typescript
 class Log<T> {
@@ -380,7 +378,7 @@ Notes :
   - `install` : télécharge le module et le place dans le répertoire courant dans `./node_modules`
   - `install -g` : installation globale, le module est placé dans le répertoire d'installation de Node.js
 
-    Permet de rendre accessible des commandes dans la console
+    Permet de rendre accessibles des commandes dans la console
 
     **Attention** : Ne rend pas une librairie accessible pour tous les projets
   - `update` : met à jour un module déjà installé
@@ -410,7 +408,7 @@ Notes :
 
 - `npm` se base sur un fichier descripteur du projet
 - `package.json` décrit précisément le module
-- On y trouve différents types d'information
+- On y trouve différents types d'informations
   - Identification
     - `name` : l'identifiant du module (unique, url safe)
     - `version` : doit respecter [node-semver](https://github.com/isaacs/node-semver)
@@ -425,9 +423,9 @@ Notes :
   - ne pas démarrer par un point `.` ou un underscore `_`
   - des caractères non-url-safe
 - la version doit être `semver` (Semantic Versioning)
-  - Majeure, mineure et patch doivent être numérique
+  - Majeure, mineure et patch doivent être numériques
   - il est possible d'y adjoindre un complément informatif (date, numéro de build, ...) qui `ne servira pas` pour le filtrage
-  - il existe un outils `semver` permettant de vérifier les contraintes de version
+  - il existe un outil `semver` permettant de vérifier les contraintes de version
 
 
 

@@ -222,14 +222,24 @@ interface RequestOptionsArgs {
 }
 ```
 
+Notes :
+
+
+
+## HTTP - Configuration
+
 - `Http` propose également de nombreux raccourcis
 
 ```typescript
 class Http {
   request(url: string|Request, options?: RequestOptionsArgs): Observable<Response>
+
   get(url: string, options?: RequestOptionsArgs): Observable<Response>
+
   post(url: string, body: any, options?: RequestOptionsArgs): Observable<Response>
+
   put(url: string, body: any, options?: RequestOptionsArgs): Observable<Response>
+
   delete(url: string, options?: RequestOptionsArgs): Observable<Response>
   /* ... */
 }
@@ -242,13 +252,14 @@ Notes :
 ## HTTP - Exemple
 
 - Requête HTTP de type `PUT` avec surcharge des `Headers`
-- Exemple avec la méthode `Http.request`
 
 ```typescript
+import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptionsArgs } from '@angular/http';
 import { Observable } from 'rxjs';
-import { Contact } from './model/contact.service';
+import { Contact } from './model/contact';
 
+Injectable()
 export class ContactService {
   constructor(private http: Http) { }
 
@@ -262,7 +273,6 @@ export class ContactService {
       body: contact,
       headers
     };
-
     return this.http.request(requestOptions);
   }
 }
@@ -281,7 +291,10 @@ import {Http, Response} from '@angular/http';
 import {Component} from '@angular/core';
 import 'rxjs/add/operator/map';
 
-@Component({selector: 'app', template: '{{ displayedData | json }}'})
+@Component({
+  selector: 'app', 
+  template: '{{ displayedData | json }}'
+})
 export class AppComponent {
   private displayedData: string;
 
@@ -306,22 +319,23 @@ Notes :
 ```typescript
 import { Http, Response } from '@angular/http';
 import { Component } from '@angular/core';
-import { Person } from './model/person';
+import { Project, Person } from './model/';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-@Component({selector: 'app',template: '{{ displayedData | json }}'})
+@Component({
+  selector: 'app',
+  template: `<ul>
+    <li *ngFor="project of (projects$ | async)">{{project.name}}</li>
+  </ul>`
+})
 export class AppComponent {
-  private displayedData: MyObject[] = [];
-
-  constructor(private http: Http) {
-    http.get('people.json')
-      .map((result: Response): Person[] => result.json())
-      .flatMap((people: Person[]): Observable<Person> => Observable.from(people))
-      .filter((person: Person): boolean => person.hasToBeDisplayed)
-      .subscribe((person: Person): void => {
-        this.displayedData.push(person);
-      });
+  projects$: Observable<Project[]>
+  constructor(http: Http) {
+    this.projects$ = http.get('person.json')
+      .map((result: Response): Person => result.json())
+      .mergeMap((person: Person): Observable<Project[]> => getProjects(person))
   }
 }
 ```

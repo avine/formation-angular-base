@@ -30,9 +30,9 @@ Notes :
 ## Composants
 
 - Les composants sont les éléments de base d'Angular
-- Définit à partir d'une classe TypeScript avec l'annotation `@Component`
-- Sera activé par le selecteur *CSS* de la propriété `selector`
-- Le template est configuré de deux façons :
+- Définis à partir d'une classe TypeScript avec l'annotation `@Component`
+- Seront activés par le sélecteur *CSS* de la propriété `selector`
+- Un template est configuré de deux façons :
   - `template` : String literal (penser à la string multiline `` ` ``)
   - `templateUrl` : Url d'un fichier HTML (relatif au composant)
 
@@ -75,14 +75,14 @@ Notes :
 
 ## Templates
 
-- Les templates d'Angular sont compilés avant d'être executés
+- Les templates d'Angular sont compilés avant d'être exécutés
   - Soit à chaud  : *JIT* (Just In Time) par défaut
   - Soit au build : *AOT* (Ahead Of Time) `--aot` dans Angular CLI
 - La compilation permet de détecter des erreurs dans le template
-- Implique également que les templates doivent être syntaxiquement exact
+- Implique également que les templates doivent être syntaxiquement exacts
 - Fonctionnement très différent d'AngularJS
   - AngularJS ne compilait pas les templates
-  - Les templates d'AngularJS étaient du pure Web transmis au navigateur
+  - Les templates d'AngularJS étaient du pur Web transmis au navigateur
 
 
 
@@ -90,10 +90,10 @@ Notes :
 
 - Système d'interpolation grâce à la syntaxe `{{ expression }}`
 - L'expression doit retourner une valeur qui sera convertie en `string`
-- Angular définie une syntaxe précise pour ces expressions
+- Angular définit une syntaxe précise pour ces expressions
 - https://angular.io/docs/ts/latest/guide/template-syntax.html#!#template-expressions
 - La syntaxe est celle du JavaScript avec quelques exceptions
-- Toutes les propriétés du composants sont accessible directement
+- Toutes les propriétés du composant sont accessibles directement
 - Une expression ne doit pas modifier l'état de l'application
 
 ```typescript
@@ -128,7 +128,7 @@ Notes :
 <button [style.color]="isSpecial ? 'red' : 'green'">
 ```
 
-- Les propriétés sont **bindé**, la valeur sera mise à jour automatiquement si la valeur de l'expression change
+- Les propriétés sont **bindées**, la valeur sera mise à jour automatiquement si la valeur de l'expression change
 
 Notes :
 Indiquer qu'il n'y a pas de différences entre l'utilisation des propriétés et l'interpolation
@@ -189,7 +189,7 @@ Notes :
 - Possibilité de surcharger le nom de la propriété avec
 
   `@Input('discount')`
-- Les noms de propriété sont sensible à la casse
+- Les noms de propriétés sont sensible à la casse
 
 ```typescript
 @Component({ selector: 'product-detail', /* ... */ })
@@ -206,8 +206,8 @@ export class ProductComponent {
 </product-detail>
 ```
 
-- *Angular* vérifie les propriétés passés à un composant
-- Il refusera une propriété qui n'existe pas ou non annoté `@Input()`
+- *Angular* vérifie les propriétés passées à un composant
+- Il refusera une propriété qui n'existe pas ou non annotée `@Input()`
 
 Notes :
 
@@ -257,7 +257,7 @@ Notes :
 
 - Un composant peut envoyer des évènements
 - Annotation `@Output` sur une propriété de type `EventEmitter`
-- Le nom de la propriété sera celle de l'évènement à utiliser dans le template
+- Le nom de la propriété sera celui de l'évènement à utiliser dans le template
 
 ```typescript
 import { Input, Output, Component } from '@angular/core'
@@ -288,7 +288,7 @@ Notes :
 - Possibilité de surcharger le nom de l'évènement
 
   `@Output('myOtherName')`
-- Les noms de évènements sont sensibles à la casse
+- Les noms des évènements sont sensibles à la casse
 
 ```typescript
 @Component({ selector: 'product-detail', /* ... */ })
@@ -345,7 +345,7 @@ Notes :
 
 ## Déclaration
 
-- Utilisation des *NgModule* défini en détail plus loin dans la formation
+- Utilisation des *NgModule* définis en détail plus loin dans la formation
 - Pour qu'un composant soit accessible, il faut :
   - qu'il soit dans un autre *NgModule* listé dans la liste des `imports`
   - qu'il soit dans la liste des `declarations` de votre module
@@ -430,16 +430,17 @@ Notes :
 ## Cycle de vie
 
 - Chaque composant a un cycle de vie bien définit
+- https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html
 - Il est possible d'exécuter du code à chacune de ces étapes
 - La plus utilisée est l'initialisation avec l'interface `OnInit`
-- L'utilisation d'`OnInit` est recommandé plutôt que dans le constructeur
+- L'utilisation d'`OnInit` est recommandé plutôt que celle du constructeur
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
 
 @Component({ selector: 'user', /* ... */ })
 export class UserComponent implements OnInit {
-  
+
   @Input() data: User;
   products: Product[];
 
@@ -460,7 +461,7 @@ export class UserComponent implements OnInit {
 - Permet de créer un module *Angular* spécifique pour un test
 
   Utilisation de `TestBed.configureTestingModule({ ... })`
-- L'objectif est d'inclure le moins de chose possible pour isoler le test
+- L'objectif est d'inclure le moins de choses possibles pour isoler le test
 
 ```typescript
 import { TestBed } from '@angular/core/testing';
@@ -512,8 +513,8 @@ Notes :
 
 ## Tests
 
-- La méthode `detectChanges` permet de piloter la détection de changement
-- Attention, pas de détection de changement automatique
+- La méthode `detectChanges` permet de piloter la détection de changements
+- Attention, pas de détection de changements automatiques
 
 ```typescript
 import { TestBed } from '@angular/core/testing';

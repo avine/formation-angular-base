@@ -2,8 +2,8 @@ Domaine: Web
 
 Sous-domaine: Angular
 
-# Angular 2 et +
-## Développement d'applications riches avec Angular 2 et +
+# Angular
+## Développement d'applications riches avec Angular
 
 Durée: 3j
 
@@ -45,7 +45,7 @@ Développeur web
 
 3. Démarrer une application Angular
   - Commencer un nouveau projet
-  - Angular-CLI
+  - @angular/cli
   - Webpack
 
 4. Tests
@@ -93,7 +93,3 @@ Développeur web
 
 13. Server-side rendering
   - Angular Universal
-
-14. Bonnes pratiques pour une migration heureuse
-
-15. Support d'EcmaScript 5

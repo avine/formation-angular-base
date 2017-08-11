@@ -31,7 +31,7 @@ Notes :
 
 - Dans la documentation `Jasmine` est utilisé comme framework de tests
   - `Angular` peut être également testé avec d'autres frameworks
-- Pour éxecuter facilement les tests, on propose d'utiliser `Karma`
+- Pour exécuter facilement les tests, on propose d'utiliser `Karma`
   - Il a été développé par l'équipe d'`AngularJS`
   - Il n'est pour autant ni indispensable ni lié à `Angular`
 - `Jasmine` et `Karma` sont les outils utilisés dans une application générée avec Angular CLI
@@ -44,9 +44,9 @@ Notes :
 
 ![Jasmine](ressources/jasmine.svg)
 
-- Framework de Tests : http://jasmine.github.io/
+- Framework de tests : http://jasmine.github.io/
 - Aucune dépendance vers d'autres frameworks
-- Ne nécessite pas d'élément du *DOM*
+- Ne nécessite pas d'éléments du *DOM*
 
 Notes :
 
@@ -99,7 +99,7 @@ Notes :
 
 ## Jasmine - Spies
 
-- Jasmine propose un système de *Spies* inclu
+- Jasmine propose un système de *Spies* inclus
 - Il est également possible d'utiliser une librairie externe comme *Sinon*
 - Création d'un spy : `jasmine.createSpy()` ou `spyOn(someObj)`
 - Matchers sur un spy :  `toHaveBeenCalled`, `toHaveBeenCalledWith`, `and.callThrough`, `and.returnValue`, `and.callFake`, `mySpy.calls`...
@@ -159,11 +159,11 @@ Notes :
 
 ## Avec Angular CLI
 
-- Configuration automatiquement réalisée par *Angular CLI*
-- Les outils suivants sont prèt à fonctionner ensemble :
+- Configuration automatique réalisée par *Angular CLI*
+- Les outils suivants sont prèts à fonctionner ensemble :
 
   *Webpack*, *TypeScript*, *Angular*, *Jasmine*, *Karma*
-- Les fichiers de test sont automatiquement créés avec `ng generate (...)`
+- Les fichiers de tests sont automatiquement créés avec `ng generate (...)`
 
   `Composant` / `Service` / `Pipe`
 - Ils se trouvent dans le même répertoire que l'élément à tester

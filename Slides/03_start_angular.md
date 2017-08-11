@@ -150,7 +150,7 @@ Notes :
 - Supporte les différents systèmes de modules (*CommonJS*, *AMD*, *ES2015*, ...)
 - Disponible sur *NPM* : `npm install -g webpack`
 - Construit un graphe de toutes les dépendances de votre application
-- configuration via un fichier de configuration *JavaScript* (`webpack.config.js`)
+- Configuration via un fichier de configuration *JavaScript* (`webpack.config.js`)
   - loaders : *ES2015*, *TypeScript*, *CSS*, ...
   - preloaders: *JSHint*, ...
   - plugins: *Uglify*, ...
@@ -251,7 +251,7 @@ Notes :
 
 - Système de recompilation automatique très performant
   - Utilisation de l'option `webpack --watch`
-  - Webpack conserve le graph des modules en mémoire
+  - Webpack conserve le graphe des modules en mémoire
   - Regénère le `bundle` pour n'importe quel changement sur un des fichiers
 - Serveur web disponible `webpack-dev-server`
   - *Hot Reloading*
