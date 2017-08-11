@@ -120,17 +120,18 @@ Notes :
 ```typescript
 @Component({
   template: `
-    <div>
-      <h1>Hello {{ message }}!</h1>
-        <a [routerLink]="'contacts'">Link 1</a>
-        <a [routerLink]="['contact', 1]">Link 2</a>
-        <a [routerLink]="['contact', id]">Link 3</a>
-        <router-outlet></router-outlet>
-    </div>
+    <nav>
+      <ul>
+        <li><a [routerLink]="'contacts'">Link 1</a></li>
+        <li><a [routerLink]="['contact', 1]">Link 2</a></li>
+        <li><a [routerLink]="['contact', id]">Link </li>3</a>
+      </ul>
+    </nav>
+    <router-outlet></router-outlet>
   `
 })
 class AppComponent {
-  id: number = 2;
+  id = 2;
 }
 ```
 

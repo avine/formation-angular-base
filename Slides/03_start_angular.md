@@ -42,8 +42,6 @@ npm install @angular/common @angular/core rxjs ...
 
 - Initialisation et Configuration d'un projet *TypeScript*
 - Configuration du système de gestion des modules (*Webpack*)
-- Nécessité d'utiliser un serveur Web
-  - `Apache`, `serve`, `live-server`...
 
 Notes :
 
@@ -171,7 +169,7 @@ document.write('welcome to my app');
 console.log('app loaded');
 ```
 
-- Exécution de *WebPack* pour générer un fichier `bundle.js`
+- Exécution de *Webpack* pour générer un fichier `bundle.js`
 
 ```shell
 webpack ./app.js bundle.js
@@ -193,7 +191,7 @@ Notes :
 
 
 
-## WebPack
+## Webpack
 
 - Version avec un fichier de configuration
 
@@ -207,7 +205,7 @@ module.exports = {
 }
 ```
 
-- WebPack va lire le fichier de configuration automatiquement
+- Webpack va lire le fichier de configuration automatiquement
 
 ```shell
 webpack
@@ -217,7 +215,7 @@ Notes :
 
 
 
-## WebPack - Configuration
+## Webpack - Configuration
 
 - Possibilité de générer plusieurs fichiers
 - Utilisation du placeholder `[name]`
@@ -249,11 +247,11 @@ Notes :
 
 
 
-## WebPack - Configuration
+## Webpack - Configuration
 
 - Système de recompilation automatique très performant
   - Utilisation de l'option `webpack --watch`
-  - WebPack conserve le graphe des modules en mémoire
+  - Webpack conserve le graphe des modules en mémoire
   - Regénère le `bundle` pour n'importe quel changement sur un des fichiers
 - Serveur web disponible `webpack-dev-server`
   - *Hot Reloading*
@@ -264,9 +262,9 @@ Notes :
 
 
 
-### WebPack - Les Loaders
+### Webpack - Les Loaders
 
-- Permet d'indiquer à WebPack comment prendre en compte un fichier
+- Permet d'indiquer à Webpack comment prendre en compte un fichier
 - Plusieurs *loaders* existent : *ECMAScript2015*, *TypeScript*, *CoffeeScript*, *Style*, ...
 
 ```javascript
@@ -292,7 +290,7 @@ Notes :
 
 
 
-### WebPack - Les Plugins
+### Webpack - Les Plugins
 
 - Permet d'ajouter des fonctionnalités à votre workflow de build
 

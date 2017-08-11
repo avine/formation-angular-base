@@ -99,9 +99,12 @@ Notes :
 ```typescript
 @Component({
   selector: 'product',
-  template: `<p>{{ myMethode(myProp * 2) }}</p>`
+  template: `<p>{{ add(myProp, 2) }}</p>`
 })
-export class ProductComponent { /* ... */ }
+export class ProductComponent {
+  myProp = 1;
+  add(value1, value2) { return value1 + value2; }
+}
 ```
 
 Notes :
@@ -185,21 +188,21 @@ Notes :
 
 - Possibilité de surcharger le nom de la propriété avec
 
-  `@Input('myOtherName')`
-- Les noms de propriétés sont sensibles à la casse
+  `@Input('discount')`
+- Les noms de propriétés sont sensible à la casse
 
 ```typescript
 @Component({ selector: 'product-detail', /* ... */ })
 export class ProductComponent {
   @Input() product: Product;
-  @Input('myOtherProperty') data: string;
+  @Input('discount') percentDiscount: number;
 }
 ```
 
 - Pour utiliser ce composant
 
 ```html
-<product-detail [product]="myProduct" [myOtherProperty]="'a string'">
+<product-detail [product]="myProduct" [discount]="10">
 </product-detail>
 ```
 
@@ -219,9 +222,9 @@ Notes :
 - Les méthodes et propriétés utilisées doivent être définies dans la classe
 
 ```html
-<button (click)="myMethod()"></button> <!-- évènement HTML -->
-<button on-click="myMethod()"></button> <!-- alternative sans () -->
-<button data-on-click="myMethod()"></button> <!-- html5 strict -->
+<button (click)="handler()"></button> <!-- évènement HTML -->
+<button on-click="handler()"></button> <!-- alternative sans () -->
+<button data-on-click="handler()"></button> <!-- html5 strict -->
 
 <!-- évènement d'un composant -->
 <hero-detail (deleted)="onHeroDeleted()"></hero-detail>
@@ -270,7 +273,7 @@ import { Product } from './model/Product'
 })
 export class ProductComponent {
     @Input() product: Product;
-    @Output() addToBasket: EventEmitter<Product> = new EventEmitter<Product>();
+    @Output() addToBasket = new EventEmitter<Product>();
 
     clickHandler(){ this.addToBasket.emit(this.product); }
 }
@@ -290,7 +293,7 @@ Notes :
 ```typescript
 @Component({ selector: 'product-detail', /* ... */ })
 export class ProductComponent {
-  @Output('add') addToBasket: EventEmitter<Product> = new EventEmitter<Product>();
+  @Output('add') addToBasket = new EventEmitter<Product>();
 }
 ```
 
@@ -317,7 +320,7 @@ Notes :
 ```typescript
 @Component({ selector: 'hello-component', /* ... */ })
 export class HelloComponent {
-  @Output() hello: EventEmitter<string> = new EventEmitter<string>();
+  @Output() hello = new EventEmitter<string>();
   constructor() { this.hello.emit('hello!'); }
 }
 ```
@@ -340,37 +343,6 @@ Notes :
 
 
 
-## "Banana in the Box"
-
-- Le *2-way data-binding* (par défaut dans AngularJS) est désactivé par défaut
-- On peut le reproduire avec les syntaxes qu'on a vues jusque là
-
-```html
-<input [value]="currentHero.firstName"
-       (input)="currentHero.firstName = $event.target.value"/>
-```
-
-- *Angular* fournit du sucre syntaxique pour ce besoin récurrent
-
-  (Utilise la directive `ngModel` qu'on verra en détail au chapitre *Formulaires*)
-- Première solution
-
-```html
-<input
-  [ngModel]="currentHero.firstName"
-  (ngModelChange)="currentHero.firstName=$event"/>
-```
-
-- Deuxième solution *Banana in the Box*
-
-```html
-<input [(ngModel)]="currentHero.firstName"/>
-```
-
-Notes :
-
-
-
 ## Déclaration
 
 - Utilisation des *NgModule* définis en détail plus loin dans la formation
@@ -380,8 +352,7 @@ Notes :
 
 ```typescript
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -389,8 +360,7 @@ import { AppComponent } from './app.component';
     AppComponent,
   ],
   imports: [
-    CommonModule,
-    FormsModule
+    BrowserModule
   ]
 })
 export class AppModule {}
@@ -459,7 +429,7 @@ Notes :
 
 ## Cycle de vie
 
-- Chaque composant a un cycle de vie bien défini
+- Chaque composant a un cycle de vie bien définit
 - https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html
 - Il est possible d'exécuter du code à chacune de ces étapes
 - La plus utilisée est l'initialisation avec l'interface `OnInit`
@@ -468,16 +438,17 @@ Notes :
 ```typescript
 import { Component, OnInit } from '@angular/core';
 
-@Component({ selector: 'hello-component', /* ... */ })
-export class HelloComponent implements OnInit {
-  @Output()
-  hello: EventEmitter<string> = new EventEmitter<string>();
+@Component({ selector: 'user', /* ... */ })
+export class UserComponent implements OnInit {
 
-  constructor() { }
+  @Input() data: User;
+  products: Product[];
 
   ngOnInit(): void {
-    this.hello.emit('hello!');
+    this.products = this.getProducts(this.data.id);
   }
+
+  getProducts(id){ ... }
 }
 ```
 

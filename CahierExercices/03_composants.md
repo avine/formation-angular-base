@@ -14,7 +14,9 @@ Après avoir reçu du formateur le template principal de l'application, veuillez
 
 - Le total de votre panier sera défini dans une variable `total` que nous allons initialiser à 0 dans le constructeur du composant.
 
-- Dans un nouveau fichier `model\product.ts`, créez une nouvelle classe `Product` ayant les propriétés suivantes:
+- Créez une classe `product.ts` dans un répertoire `model`. Pour créer cette nouvelle classe, vous pouvez utiliser la commande `ng generate class model/product`. 
+
+- Dans cette classe, définissez les propriétés suivantes:
 	- title de type `string`
 	- description de type `string`
 	- photo de type `string`
@@ -27,5 +29,3 @@ Après avoir reçu du formateur le template principal de l'application, veuillez
 - Nous allons à présent externaliser le template utilisé pour afficher un produit dans un nouveau composant `ProductComponent`. Ce composant aura un paramètre `data` correspondant à un objet de type `Product`. Ajoutez ce composant dans le template.
 
 - Nous allons à présent émettre un évènement `addToBasket`, via le composant `ProductComponent`, lorsque l'utilisateur cliquera sur le bouton `Ajoutez au panier`. Cet évènement sera utilisé par le composant `Application` pour mettre à jour la variable `total` créée précédemment.
-
-- Pour terminer ce TP, nous allons créer un dernier composant, `footer` qui sera utilisé à la place de l'élément HTML `<footer>`. Ce composant devra avoir un point d'insertion (via le composant `ng-content`), grâce auquel nous spécifierons le texte à afficher.

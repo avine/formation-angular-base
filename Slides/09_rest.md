@@ -151,7 +151,7 @@ Notes :
 
 - *Angular* utilise énormément *RxJS* en interne
 - La dépendance est en mode **peer** c'est à dire qu'elle est à ajouter en plus
-- **Atention**, il faut la version *5+*, alors que la *4* est encore répendue
+- **Attention**, il faut la version *5+*, alors que la *4* est encore répendue
 - *Angular* expose des objets *RxJS* dans plusieurs cas :
   - Requêtes HTTP
   - Intéraction avec un formulaire

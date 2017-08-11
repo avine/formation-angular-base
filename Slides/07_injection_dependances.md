@@ -58,7 +58,9 @@ export class AppComponent {
     console.log(userService.getUser());
   }
 }
+```
 
+```typescript
 // fichier app.module.ts
 import { AppComponent } from './application.components';
 import { UserService } from './user.service';
@@ -115,8 +117,8 @@ import { Logger } from './logger-service';
 export class UserService {
     constructor(private logger: Logger) { }
 
-    myMethod(): void {
-      this.logger.log('myMethod called!');
+    getUsers(): void {
+      this.logger.log('getUsers called!');
     }
 }
 ```

@@ -102,8 +102,7 @@ Notes :
 
 ```typescript
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { MyLowerCasePipe } from './mylowercase.pipe';
 
 @NgModule({
@@ -111,8 +110,7 @@ import { MyLowerCasePipe } from './mylowercase.pipe';
     MyLowerCasePipe
   ],
   imports: [
-    CommonModule,
-    FormsModule
+    BrowserModule
   ]
 })
 export class AppModule {}
@@ -163,7 +161,7 @@ import { MyLowerCasePipe } from './mylowercase';
 class App {
   name: string;
 
-  constructor(private lower: MyLowerCasePipe) {
+  constructor(lower: MyLowerCasePipe) {
     this.name = lower.transform('Hello Angular');
   }
 }
@@ -253,11 +251,9 @@ describe('MyLowerCasePipe', () => {
     pipe = new MyLowerCasePipe();
   });
 
-  describe('transform', () => {
-    it('should return lowercase', () => {
-      var val = pipe.transform('SOMETHING');
-      expect(val).toEqual('something');
-    });
+  it('should return lowercase', () => {
+    var val = pipe.transform('SOMETHING');
+    expect(val).toEqual('something');
   });
 });
 ```
