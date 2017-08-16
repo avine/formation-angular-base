@@ -99,7 +99,7 @@ describe('AppComponent', () => {
     })
   );
 
-  it('should not display product with is not available',
+  it('should not display product which is not available',
     inject([ProductService], (productService: ProductService) => {
       const fixture = TestBed.createComponent(AppComponent);
       const app = fixture.debugElement.componentInstance;

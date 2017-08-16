@@ -6,16 +6,14 @@ import { Product } from '../model/product';
 @Injectable()
 export class ProductService {
 
-  private products: Product[];
+  private products: Product[] = [
+    new Product('Product1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 10, 2),
+    new Product('Product2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 20, 2),
+    new Product('Product3', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 30, 2),
+    new Product('Product4', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 40, 2)
+  ];
 
-  constructor(uppercase:UpperCasePipe) {
-    this.products = new Array<Product>();
-
-    this.products.push(new Product('1Product 1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 10, 2));
-    this.products.push(new Product('TProduct 2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 20, 2));
-    this.products.push(new Product('ZProduct 3', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 30, 2));
-    this.products.push(new Product('BProduct 4', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 40, 2));
-
+  constructor(uppercase: UpperCasePipe) {
     this.products = this.products.map(p => {
       p.title = uppercase.transform(p.title);
       return p;
@@ -37,4 +35,5 @@ export class ProductService {
   decreaseStock(product: Product) {
     product.stock -= 1;
   }
+
 }
