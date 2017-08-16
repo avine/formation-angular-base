@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+
 import { Product } from './model/product';
 import { ProductService } from './services/product.service';
 import { CustomerService } from './services/customer.service';
@@ -9,19 +10,23 @@ import { CustomerService } from './services/customer.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  products:Product[];
+  products: Product[];
 
-  constructor(private productService:ProductService, private customerService:CustomerService, @Inject('welcomeMsg') public title:string){
-      this.products = productService.getProducts();
+  constructor(
+    private productService: ProductService,
+    private customerService: CustomerService,
+    @Inject('welcomeMsg') public title: string
+  ) {
+    this.products = productService.getProducts();
   }
 
   getTotal(): number {
-      return this.customerService.getTotal();
+    return this.customerService.getTotal();
   }
 
   updatePrice(event) {
-      this.customerService.addProduct(event);
-      this.productService.decreaseStock(event);
+    this.customerService.addProduct(event);
+    this.productService.decreaseStock(event);
   }
 
   isAvailable(product: Product): boolean {

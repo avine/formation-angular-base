@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { Product } from '../model/product';
 
 @Injectable()
@@ -13,4 +14,5 @@ export class CustomerService {
   getTotal(): number {
     return this.products.reduce((previous, next) => previous + next.price, 0);
   }
+
 }
