@@ -1,11 +1,28 @@
-/* tslint:disable:no-unused-variable */
+import { RouterModule } from '@angular/router';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TestBed, async } from '@angular/core/testing';
 import { MenuComponent } from './menu.component';
 
-describe('Component: Menu', () => {
-  it('should create an instance', () => {
-    let component = new MenuComponent();
-    expect(component).toBeTruthy();
+describe('MenuComponent', () => {
+  let component: MenuComponent;
+  let fixture: ComponentFixture<MenuComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ MenuComponent ],
+      imports: [ RouterModule.forRoot([], {useHash: true}) ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(MenuComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should render the header', () => {
+    const brand = fixture.nativeElement.querySelector('.navbar-brand');
+    expect(brand.textContent).toContain('Zenika');
   });
 });
