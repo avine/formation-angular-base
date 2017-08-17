@@ -1,38 +1,39 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
-
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
 import { Product } from '../model/product';
 
-
 @Injectable()
 export class CustomerService {
 
-  private API_URL: string = "http://localhost:8080/rest/";
+  private API_URL = 'http://localhost:8080/rest/';
 
   products: Product[] = new Array<Product>();
-  
-  constructor(private http:Http){}
 
-  getBasket(): Observable<Product[]>{
+  constructor(
+    private http: Http
+  ) {}
+
+  getBasket(): Observable<Product[]> {
     return this.http.get(this.API_URL + 'basket')
-                  .map(res => res.json())
-                  .map(products => {
-                    return products.map(product => new Product(product.title, product.description, product.photo, product.price, product.stock));
-                  })
-                  .do(products => this.products = products)
+      .map(response => response.json())
+      .map(products => {
+        return products.map(product => {
+          return new Product(product.title, product.description, product.photo, product.price, product.stock);
+        });
+      })
+      .do(products => this.products = products);
  }
 
   addProduct(product: Product): Observable<Response> {
-    let headers: Headers = new Headers()
+    const headers: Headers = new Headers();
     headers.set('Content-Type', 'application/json');
 
     return this.http.post(this.API_URL + 'basket', JSON.stringify(product), {headers})
-                  .do(products => this.products.push(product))
-    
+      .do(() => this.products.push(product));
   }
 
   getTotal(): number {
