@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 import { HomeComponent } from './home.component';
-import { Product } from '../model/Product';
+import { Product } from '../model/product';
 import { ProductService } from '../services/product.service';
 import { CustomerService } from '../services/customer.service';
 
