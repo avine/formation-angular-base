@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
 import { ComponentFixture, TestBed, async, inject } from '@angular/core/testing';
-import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
@@ -50,7 +50,7 @@ describe('HomeComponent', () => {
         HomeComponent,
         SortPipe
       ],
-      imports: [ RouterModule.forRoot([], {useHash: true}) ],
+      imports: [RouterTestingModule],
       providers: [
         {provide: ProductService, useClass: ProductServiceMock},
         {provide: CustomerService, useClass: CustomerServiceMock},
