@@ -3,17 +3,17 @@
 <div class="container">
 
   <header class="jumbotron hero-spacer">
-      <h1>Bienvenue sur Zenika Ecommerce</h1>
-      <p>Votre panier s'élève à {{total}}€</p>
-      <p><a class="btn btn-primary btn-large">Voir mon panier</a></p>
+    <h1>Bienvenue sur Zenika Ecommerce</h1>
+    <p>Votre panier s'élève à {{total}}€</p>
+    <p><a class="btn btn-primary btn-large">Voir mon panier</a></p>
   </header>
 
   <hr>
 
   <div class="row">
-      <div class="col-lg-12">
-          <h2>Derniers Produits</h2>
-      </div>
+    <div class="col-lg-12">
+      <h2>Derniers Produits</h2>
+    </div>
   </div>
 
   <div class="row text-center">
@@ -21,13 +21,12 @@
     <app-product [data]="products[1]" (addToBasket)="updatePrice($event)"></app-product>
     <app-product [data]="products[2]" (addToBasket)="updatePrice($event)"></app-product>
     <app-product [data]="products[3]" (addToBasket)="updatePrice($event)"></app-product>
-    
   </div>
 
   <hr>
 
   <footer>
-      Copyright &copy; Your Website 2016
+    Copyright &copy; Your Website 2016
   </footer>
 
 </div>

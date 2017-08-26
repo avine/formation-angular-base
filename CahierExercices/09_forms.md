@@ -45,3 +45,21 @@ Pour information, voici le template à utiliser pour ajouter un champ de formula
     <input type="text" id="name" class="form-control">
 </div>
 ```
+
+### Tests
+
+- Dans les tests du composant `basket`, ajouter l'import du module `FormsModule` pour pouvoir gérer toutes les nouvelles directives utilisées.
+
+- Ajouter un test au niveau de la description du panier vérifiant que chaque ligne de la liste contient bien le titre et le prix des produits du panier.
+
+- Ajouter un test de l'activation de la classe `has-error` des champs de formulaire quand la valeur saisie n'est pas valide. Attention, pour que la validation de formulaire se déroule entièrement dans le cadre des tests, vous aurez besoin de toutes ces étapes :
+
+```typescript
+const waitValidation = async fixture => {
+  fixture.detectChanges();
+  await fixture.whenStable();
+  fixture.detectChanges();
+};
+```
+
+- Ajouter un dernier (!) test sur l'activation du bouton submit du formulaire. Changer les valeurs saisies pour changer l'état de validation du formulaire et vérifier que le bouton est actif quand le formulaire est valide et désactivé quand il est invalide.

@@ -24,3 +24,11 @@ Nous allons à présent créer notre propre `pipe`, qui va nous permettre de tri
 - Utiliser votre `pipe` dans le template du `ngFor`
 
 - Nous allons à présent ajouter un paramètre à notre `pipe`. Ce paramètre permettra de définir la propriété sur laquelle le tri doit s'effectuer.
+
+### Tests
+
+- Résoudre les nouvelles injections de dépendances afin que les tests existants fonctionnent.
+
+- Dans le test de `ProductService`, vérifier que les 4 produits initiaux ont bien des titres en majuscules.
+
+- Ajouter un test de `SortPipe`, passer un tableau de produit au pipe et vérifier que la valeur de retour est bien le tableau trié.

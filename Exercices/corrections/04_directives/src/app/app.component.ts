@@ -7,20 +7,17 @@ import { Product } from './model/product';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  total:number;
-  products: Product[];
+  total = 0;
+  products: Product[] = [
+    new Product('Product1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 10, 2),
+    new Product('Product2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 20, 2),
+    new Product('Product3', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 30, 2),
+    new Product('Product4', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 40, 2)
+  ];
 
-  constructor(){
-    this.total = 0;
+  constructor() {}
 
-    this.products = [];
-    this.products.push(new Product('Product1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 10, 2));
-    this.products.push(new Product('Product2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 20, 2));
-    this.products.push(new Product('Product3', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 30, 2));
-    this.products.push(new Product('Product4', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 40, 2));
-    
-  }
-  updatePrice(product:Product){
+  updatePrice(product: Product) {
     product.stock--;
     this.total += product.price;
   }
