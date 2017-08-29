@@ -15,7 +15,7 @@ Nous allons créer deux services :
 	- une méthode `decreaseStock(product)` : mettra à jour la propriété `stock` du produit spécifié en paramètre
 
 - Veuillez créer un service `services\CustomerService.ts` dans lequel vous allez définir :
-	- une méthode `addProduct(product)` : ajoutera le nouveau produit dans un tableau
+	- une méthode `addProduct(product)` : ajoutera le nouveau produit dans un tableau, ce tableau représente votre panier.
 	- une méthode `getTotal()` : calculera le montant total du panier.
 
 - Importez ces deux services dans votre composant `Application`, et modifiez l'implémentation de ce composant afin d'utiliser les différentes méthodes implémentées précédemment.
