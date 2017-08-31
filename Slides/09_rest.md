@@ -387,8 +387,7 @@ Notes :
 - `MockBackend` permet de programmer des requêtes et leurs réponses
 
 ```typescript
-import { Response, ResponseOptions, XHRBackend } from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed, async, inject } from '@angular/core/testing';
 
 /* ... */
