@@ -167,11 +167,11 @@ Notes :
 
 - *Angular* fournit un module dédié à la communication HTTP
 - Ce module contient un ensemble de service pour les requêtes HTTP
-- Le module `HttpModule` est à importer explicitement
+- Le module `HttpClientModule` est à importer explicitement
 - Se base sur le pattern `Observable`
   - Contrairement à AngularJS qui utilisait le pattern `Promises`
   - Plus grande flexibilité grâce aux différents opérateurs de `RxJS`
-- Le point d'entré est le service `Http` accessible via l'injection de dépendance
+- Le point d'entré est le service `HttpClient` accessible via l'injection de dépendance
 - Nombreuses configurations pour paramétrer ou transformer les requêtes
 - Bonne pratique : implémenter les appels REST dans les services
 
@@ -181,22 +181,23 @@ Notes :
 
 ## HTTP - Exemple
 
-- Exemple d'un service utilisant `Http`
-- Penser à `import` le `HttpModule` dans votre module
-- Import de la classe `Http` depuis le module `@angular/http`
+- Exemple d'un service utilisant `HttpClient`
+- Penser à `import` le `HttpClientModule` dans votre module
+- Import de la classe `HttpClient` depuis le module `@angular/common/http`
 - Injection du service via le constructeur
 - La méthode du service retournera l'observable de la requête `HTTP`
 
 ```typescript
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Person } from './model/person';
 
 @Injectable()
 export class ContactService {
-  constructor(private http: Http){ }
+  constructor(private http: HttpClient){ }
 
-  getContacts(): Observable<Response> {
+  getContacts(): Observable<Person[]> {
     return this.http.get('people.json');
   }
 }
@@ -208,15 +209,14 @@ Notes :
 
 ## HTTP - Configuration
 
-- La requête HTTP peut être configurée via un objet `RequestOptionsArgs`
+- La requête HTTP peut être configurée via un paramètre supplémentaire
 
 ```typescript
 interface RequestOptionsArgs {
-  url?: string;
-  method?: string | RequestMethod;
-  search?: string | URLSearchParams;
-  headers?: Headers;
   body?: any;
+  headers?: Headers;
+  observe?: 'body';
+  reportProgress?: boolean:
   withCredentials?: boolean;
   responseType?: ResponseContentType;
 }
@@ -228,19 +228,19 @@ Notes :
 
 ## HTTP - Configuration
 
-- `Http` propose également de nombreux raccourcis
+- `HttpClient` propose également de nombreux raccourcis
 
 ```typescript
-class Http {
-  request(url: string|Request, options?: RequestOptionsArgs): Observable<Response>
+class HttpClient {
+  request(url: string|Request, options?: RequestOptionsArgs): Observable<any>
 
-  get(url: string, options?: RequestOptionsArgs): Observable<Response>
+  get(url: string, options?: RequestOptionsArgs): Observable<any>
 
-  post(url: string, body: any, options?: RequestOptionsArgs): Observable<Response>
+  post(url: string, body: any, options?: RequestOptionsArgs): Observable<any>
 
-  put(url: string, body: any, options?: RequestOptionsArgs): Observable<Response>
+  put(url: string, body: any, options?: RequestOptionsArgs): Observable<any>
 
-  delete(url: string, options?: RequestOptionsArgs): Observable<Response>
+  delete(url: string, options?: RequestOptionsArgs): Observable<any>
   /* ... */
 }
 ```
@@ -255,25 +255,22 @@ Notes :
 
 ```typescript
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptionsArgs } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Contact } from './model/contact';
 
 Injectable()
 export class ContactService {
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   save(contact: Contact): Observable<Response> {
-    const headers = new Headers();
+    const headers = new HttpHeaders();
     headers.set('Authorization', 'xxxxxxx');
 
     const requestOptions: RequestOptionsArgs = {
-      url: `rest/contacts/${contact.id}`,
-      method: RequestMethod.Put,
-      body: contact,
       headers
     };
-    return this.http.request(requestOptions);
+    return this.http.put(`rest/contacts/${contact.id}`, contact, requestOptions);
   }
 }
 ```
@@ -287,9 +284,8 @@ Notes :
 - Exemple avec l'utilisation d'opérateurs *RxJS*
 
 ```typescript
-import {Http, Response} from '@angular/http';
+import {HttpHeaders} from '@angular/common/http';
 import {Component} from '@angular/core';
-import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app', 
@@ -298,9 +294,8 @@ import 'rxjs/add/operator/map';
 export class AppComponent {
   private displayedData: string;
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
     http.get('people.json')
-      .map((result: Response): any => result.json())
       .subscribe((jsonObject: any): void => {
         this.displayedData = jsonObject;
       });
@@ -317,11 +312,10 @@ Notes :
 - Exemple utilisant d'avantage d'opérateurs
 
 ```typescript
-import { Http, Response } from '@angular/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Project, Person } from './model/';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
 @Component({
@@ -334,7 +328,6 @@ export class AppComponent {
   projects$: Observable<Project[]>
   constructor(http: Http) {
     this.projects$ = http.get('person.json')
-      .map((result: Response): Person => result.json())
       .mergeMap((person: Person): Observable<Project[]> => getProjects(person))
   }
 }
@@ -346,24 +339,20 @@ Notes :
 
 ## HTTP - RequestOptions
 
-- Possibilité de surcharger les paramètres `HTTP` pour toutes les requêtes
-- Il faut surcharger `RequestOptions` dans l'injection de dépendances
-- Le service `Http` utilise `RequestOptions` par injection
-- *Angular* fournit la classe `BaseRequestOptions` de laquelle il faut partir
+- Possibilité de créer des intercepteurs
+- S'appliqueront sur les requêtes et les réponses
+- Enregistrement de l'intercepteurs via le token `HTTP_INTERCEPTORS` dans la configuration du module
 
 ```typescript
-import { Http, BaseRequestOptions, RequestOptions } from '@angular/http';
+@Injectable()
+export class HeaderInterceptor implements HttpInterceptor {
 
-class MyOptions extends BaseRequestOptions {
-  search: string = 'coreTeam=true';
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
+    const clone = req.clone({ setHeaders: {'Authorization': `token ${TOKEN}`} });
+    return next.handle(clone);
+  }
+
 }
-
-@NgModule({
-  providers: [
-    { provide: RequestOptions, useClass: MyOptions }
-  ]
-})
-export class AppModule { }
 ```
 
 Notes :
@@ -375,18 +364,14 @@ Notes :
 - *Angular* propose un **Mock** pour le système de requêtage : `MockBackend`
 
 ```typescript
-import { XHRBackend } from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 describe('UserService', () => {
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [
-        UserService,
-        { provide: XHRBackend, useClass: MockBackend },
-      ]
-    });
+    beforeEach(() => TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [UserService]
+    }));
   });
 
   /* ... */
@@ -408,18 +393,16 @@ import { TestBed, async, inject } from '@angular/core/testing';
 
 /* ... */
 
-it('return return 1 user', async(inject([ UserService, XHRBackend ],
-  (service, mockBackend) => {
-    const mockedUsers = [ new User() ];
-    const response = new Response(new ResponseOptions({ body: mockedUsers }));
+it('return return 1 user', async(inject([ UserService, HttpTestingController ],
+  (userService, http) => {
 
-    mockBackend.connections.subscribe(
-      connection => connection.mockRespond(response)
-    );
+    const mockedUsers = [{ name: 'Zenika' }];
 
-    service.getUsers().subscribe(users => {
+    userService.getUsers().subscribe((users: User[]) => {
       expect(users.length).toBe(1);
     });
+
+    http.expectOne('/api/users').flush(mockedUsers);
   }
 )));
 ```
