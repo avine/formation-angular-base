@@ -165,9 +165,9 @@ Notes :
 
 ## HTTP
 
-- *Angular* fournit un module dédié à la communication HTTP
+- *Angular* fournit un module `HttpClientModule` dédié à la communication HTTP
 - Ce module contient un ensemble de service pour les requêtes HTTP
-- Le module `HttpClientModule` est à importer explicitement
+- Avant *Angular 4.3*, utilisation du module `HttpModule`
 - Se base sur le pattern `Observable`
   - Contrairement à AngularJS qui utilisait le pattern `Promises`
   - Plus grande flexibilité grâce aux différents opérateurs de `RxJS`
@@ -337,13 +337,19 @@ Notes :
 
 
 
-## HTTP - RequestOptions
+## HTTP - Intercepteurs
 
 - Possibilité de créer des intercepteurs
 - S'appliqueront sur les requêtes et les réponses
-- Enregistrement de l'intercepteurs via le token `HTTP_INTERCEPTORS` dans la configuration du module
 
 ```typescript
+import { 
+  HttpInterceptor, 
+  HttpRequest, 
+  HttpHandler, 
+  HttpEvent } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+
 @Injectable()
 export class HeaderInterceptor implements HttpInterceptor {
 
@@ -359,12 +365,36 @@ Notes :
 
 
 
+## HTTP - Intercepteurs
+
+- Enregistrement de l'intercepteurs via le token `HTTP_INTERCEPTORS` dans la configuration du module
+
+```typescript
+import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HeaderInterceptor } from './header.interceptor';
+
+@NgModule({ 
+  providers: [{ 
+    provide: HTTP_INTERCEPTORS, 
+    useClass: HeaderInterceptor, 
+    multi: true, 
+  }], 
+}) 
+export class AppModule {}
+```
+
+Notes :
+
+
+
 ## HTTP - Tests
 
-- *Angular* propose un **Mock** pour le système de requêtage : `MockBackend`
+- *Angular* propose un module de test pour le système de requêtage : `HttpClientTestingModule`
 
 ```typescript
 import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('UserService', () => {
   beforeEach(() => {
@@ -384,7 +414,7 @@ Notes :
 
 ## HTTP - Tests
 
-- `MockBackend` permet de programmer des requêtes et leurs réponses
+- `HttpTestingController` permet de programmer des requêtes et leurs réponses
 
 ```typescript
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
