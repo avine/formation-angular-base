@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -14,13 +14,12 @@ export class CustomerService {
   products: Product[] = new Array<Product>();
 
   constructor(
-    private http: Http
+    private http: HttpClient
   ) {}
 
   getBasket(): Observable<Product[]> {
     return this.http.get(this.API_URL + 'basket')
-      .map(response => response.json())
-      .map(products => {
+      .map((products: any[]) => {
         return products.map(product => {
           return new Product(product.title, product.description, product.photo, product.price, product.stock);
         });
@@ -28,11 +27,8 @@ export class CustomerService {
       .do(products => this.products = products);
  }
 
-  addProduct(product: Product): Observable<Response> {
-    const headers: Headers = new Headers();
-    headers.set('Content-Type', 'application/json');
-
-    return this.http.post(this.API_URL + 'basket', JSON.stringify(product), {headers})
+  addProduct(product: Product): Observable<any> {
+    return this.http.post(this.API_URL + 'basket', product)
       .do(() => this.products.push(product));
   }
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UpperCasePipe } from '@angular/common';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -16,13 +16,12 @@ export class ProductService {
 
   constructor(
     private uppercase: UpperCasePipe,
-    private http: Http
+    private http: HttpClient
   ) {}
 
   getProducts(): Observable<Product[]> {
     return this.http.get(this.API_URL + 'products')
-      .map(response => response.json())
-      .map(products => {
+      .map((products: any[]) => {
         return products.map(product => {
           return new Product(product.title, product.description, product.photo, product.price, product.stock);
         });

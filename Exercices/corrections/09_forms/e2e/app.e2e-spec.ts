@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('zenika App', () => {
+describe('app App', () => {
   let page: AppPage;
 
   beforeEach(() => {

@@ -1,7 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { HttpModule, XHRBackend, Response, ResponseOptions } from '@angular/http';
-import { MockBackend, MockConnection } from '@angular/http/testing';
-
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { CustomerService } from './customer.service';
 import { Product } from '../model/product';
 
@@ -11,10 +9,9 @@ const product2 = new Product('', '', '', 666, 0);
 describe('CustomerService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule],
+      imports: [HttpClientTestingModule],
       providers: [
         CustomerService,
-        {provide: XHRBackend, useClass: MockBackend}
       ]
     });
   });
@@ -27,28 +24,24 @@ describe('CustomerService', () => {
   );
 
   it('should load the basket from the server on getBasket',
-    inject([CustomerService, XHRBackend], (service: CustomerService, mockBackend: MockBackend) => {
+    inject([CustomerService, HttpTestingController], (service: CustomerService, http: HttpTestingController) => {
       const mockedResponse = [
         new Product('abc', '', '', 0, 0),
         new Product('def', '', '', 0, 0)
       ];
-      const response = new Response(new ResponseOptions({ body: mockedResponse }));
-      mockBackend.connections.subscribe(connection => connection.mockRespond(response));
-
       service.getBasket().subscribe(() => {
         expect(service.products.length).toBe(2);
       });
+      http.expectOne('http://localhost:8080/rest/basket').flush(mockedResponse);
     })
   );
 
   it('should add products to the list when using addProduct',
-    inject([CustomerService, XHRBackend], (service: CustomerService, mockBackend: MockBackend) => {
-      const response = new Response(new ResponseOptions());
-      mockBackend.connections.subscribe(connection => connection.mockRespond(response));
-
+    inject([CustomerService, HttpTestingController], (service: CustomerService, http: HttpTestingController) => {
       service.addProduct(product1).subscribe(() => {
         expect(service.products).toEqual([product1]);
       });
+      http.expectOne('http://localhost:8080/rest/basket').flush({});
     })
   );
 

@@ -42,6 +42,38 @@ Notes :
 
 ## Composants
 
+- Les styles peuvent être configurés via deux propriétés : 
+  - `styles`
+
+```typescript
+@Component({
+  selector: 'app-root',
+  template: `
+    <h1>App Works</h1>`,
+  styles: [`
+    h1 { font-weight: normal; }
+  `]
+})
+export class AppComponent { }
+```
+  - `styleUrls`
+
+```typescript
+@Component({
+  selector: 'app-root',
+  template: `
+    <h1>App Works</h1>`,
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent { }
+```
+
+Notes : 
+
+
+
+## Composants
+
 - Pour définir un composant qui sera appelé de cette façon :
 
 ```html
