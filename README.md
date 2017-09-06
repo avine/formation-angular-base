@@ -7,9 +7,9 @@ Documentation du [framework](https://github.com/Zenika/zenika-formation-framewor
 
 Les supports peuvent être obtenus à ces adresses :
 
-Version release : https://zen-formation-angular2.appspot.com/ [![Circle CI](https://circleci.com/gh/Zenika/formation-angular2/tree/release.svg?style=svg&circle-token=2db9d589c3e04a16ec90df263f003eec7cf11eed)](https://circleci.com/gh/Zenika/formation-angular2/tree/release)
+Version release : https://formation-angular2-dot-zen-formations.appspot.com/ [![Circle CI](https://circleci.com/gh/Zenika/formation-angular2/tree/release.svg?style=svg&circle-token=2db9d589c3e04a16ec90df263f003eec7cf11eed)](https://circleci.com/gh/Zenika/formation-angular2/tree/release)
 
-Version courante : https://master-dot-zen-formation-angular2.appspot.com/ [![Circle CI](https://circleci.com/gh/Zenika/formation-angular2/tree/master.svg?style=svg&circle-token=2db9d589c3e04a16ec90df263f003eec7cf11eed)](https://circleci.com/gh/Zenika/formation-angular2/tree/master)
+Version courante : https://master-dot-formation-angular2-dot-zen-formations.appspot.com/ [![Circle CI](https://circleci.com/gh/Zenika/formation-angular2/tree/master.svg?style=svg&circle-token=2db9d589c3e04a16ec90df263f003eec7cf11eed)](https://circleci.com/gh/Zenika/formation-angular2/tree/master)
 
 
 ## Organisation
