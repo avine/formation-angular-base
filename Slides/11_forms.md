@@ -39,7 +39,7 @@ Notes :
 - *Reactive forms* (ou Model-driven forms)
   - Méthode programmatique depuis le contrôleur
   - Recommandé pour certains cas complexe
-- La suite de la formation traite uniquement des *Template-drive forms*
+- La suite de la formation traite uniquement des *Template-driven forms*
 
 Notes :
 

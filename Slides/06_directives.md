@@ -139,7 +139,6 @@ Notes :
   - `FormsModule`
   - `RouterModule`
 
-
 Notes :
 
 
@@ -148,7 +147,7 @@ Notes :
 
 - Directive permettant d'ajouter des propriétés CSS
 - Prend un objet avec les propriétés CSS comme clés
-- N'utiliser que pour dans des cas ou le pure CSS ne suffit pas
+- N'utiliser que pour dans des cas où le pure CSS ne suffit pas
 
 ```typescript
 import { Component } from '@angular/core';
