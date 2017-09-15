@@ -19,7 +19,6 @@ Cette API propose plusieurs points d'entrée :
 - `POST` sur `/basket` pour ajouter un nouveau produit au panier de l'utilisateur
 
 - Nous allons tout d'abord modifier le service `ProductService`. Dans la méthode `getProducts`, nous allons envoyer une requête `HTTP` vers l'API correspondante. Lors de la reception de la réponse, vous devez :
-  - convertir en `json`,
   - mettre en majuscule les propriétés `title` de chaque produit
   - stocker le résultat dans la propriété `products` de la classe
 
@@ -49,4 +48,4 @@ Cette API propose plusieurs points d'entrée :
 
 - Dans les tests de `app`, mettre à jour les tests pour s'adapter aux nouvelles signature des services. Dans les mock, utiliser `Observable.of` pour créer des observables à partir d'une valeur de retour (il faudra également `import 'rxjs/add/observable/of';`).
 
-- Dans les tests de `ProductService` et `CustomerService`, ajouter au module de test l'import de `HttpModule` et ajouter un provider `{provide: XHRBackend, useClass: MockBackend}`. Une fois cela fait, mettre à jour les tests en simulant les réponses du serveur et en prenant en compte les nouvelles signatures des méthodes.
+- Dans les tests de `ProductService` et `CustomerService`, ajouter au module de test l'import de `HttpClientTestingModule`. Une fois cela fait, mettre à jour les tests en simulant les réponses du serveur et en prenant en compte les nouvelles signatures des méthodes.

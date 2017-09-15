@@ -50,7 +50,7 @@ Notes :
 - Les *Pipes* disponibles par défaut sont directement utilisables
 - Possibilité de chaîner les pipes les uns à la suite des autres
 - Possibilité de passer des paramètres avec le caractère `:`
-- Les paramètres sont bindé et peuvent leur valeur peut changer
+- Les paramètres sont **bindés** et le résultat est recalculé à chaque changement
 - La syntaxe est la suivante
 
   `{{ myData | pipeName:pipeArg1:pipeArg2 | anotherPipe }}`

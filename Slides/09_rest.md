@@ -156,7 +156,7 @@ Notes :
   - Requêtes HTTP
   - Intéraction avec un formulaire
   - Affichage des vues par le *router*
-- *ngrx* est un projet qui propose d'étendre l'utilisation d'Rx ave Angular
+- *ngrx* est un projet qui propose d'étendre l'utilisation d'Rx avec Angular
   - *@ngrx/store*, *@ngrx/devtools*, *@ngrx/router*, ...
 
 Notes :
@@ -198,7 +198,7 @@ export class ContactService {
   constructor(private http: HttpClient){ }
 
   getContacts(): Observable<Person[]> {
-    return this.http.get('people.json');
+    return this.http.get<Person[]>('people.json');
   }
 }
 ```
@@ -263,7 +263,7 @@ Injectable()
 export class ContactService {
   constructor(private http: HttpClient) { }
 
-  save(contact: Contact): Observable<Response> {
+  save(contact: Contact): Observable<Contact> {
     const headers = new HttpHeaders();
     headers.set('Authorization', 'xxxxxxx');
 
@@ -321,13 +321,13 @@ import 'rxjs/add/operator/mergeMap';
 @Component({
   selector: 'app',
   template: `<ul>
-    <li *ngFor="project of (projects$ | async)">{{project.name}}</li>
+    <li *ngFor="let project of (projects$ | async)">{{project.name}}</li>
   </ul>`
 })
 export class AppComponent {
   projects$: Observable<Project[]>
-  constructor(http: Http) {
-    this.projects$ = http.get('person.json')
+  constructor(http: HttpClient) {
+    this.projects$ = http.get<Person[]>('person.json')
       .mergeMap((person: Person): Observable<Project[]> => getProjects(person))
   }
 }

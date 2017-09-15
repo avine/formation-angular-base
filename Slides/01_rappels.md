@@ -31,7 +31,7 @@ Notes :
 <img src="ressources/typescript-logo.png" height="300">
 
 - Langage créé par *Anders Hejlsberg* en 2012
-- Projet open-source maintenu par *Microsoft* (Version actuelle *2.1*)
+- Projet open-source maintenu par *Microsoft* (Version actuelle *2.5*)
 - Influencé par *JavaScript*, *Java* et *C#*
 - Alternatives : CoffeeScript, Dart, Haxe ou Flow
 

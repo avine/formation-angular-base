@@ -532,6 +532,7 @@ class TestBed implements Injector {
 class ComponentFixture {
   componentInstance : T
   nativeElement : any
+  debugElement : DebugElement
   elementRef : ElementRef
   detectChanges(checkNoChanges?: boolean) : void
 

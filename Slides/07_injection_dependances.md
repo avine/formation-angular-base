@@ -104,7 +104,7 @@ Notes :
 
 ## Service
 
-- Un service *Angular* n'est rien de plus qu'une class TypeScript
+- Un service *Angular* n'est rien de plus qu'une classe TypeScript
 - Sans annotation, le service ne bénéficie pas de l'injection de dépendance
 - Nécessité d'ajouter l'annotation `@Injectable`
 - Inutile pour les composants, c'est implicite avec `@Component`
