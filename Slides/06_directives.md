@@ -203,7 +203,7 @@ import { Component } from '@angular/core';
     <button (click)="toggle(!isHighlighted)">Click me!</button>
   `,
   styles: [
-    `.disabled { ... }`
+    `.highlight { ... }`
   ]
 })
 class ToggleButton {
