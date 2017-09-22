@@ -64,7 +64,7 @@ Notes :
 - `filter(fn)` : laisser passer les événements pour lesquels fn rend `true`
 - `map(fn)` : applique la fonction fn sur chaque élément et retourner le résultat
 - `merge(s1, s2)` : fusionne la source aux observables en argument
-- `flatMap(fn)` : applique fn comme map mais merge les valeurs qui sont des observables
+- `mergeMap(fn)` : applique fn comme map mais merge les valeurs qui sont des observables
 - `debounce(ms)` : retarde et filtre pour n'envoyer un élément que lorsqu'il n'y a pas eu de nouveaux éléments depuis le temps en argument
 - Ressource importante pour apprendre les opérateurs : http://rxmarbles.com/
 
@@ -105,7 +105,7 @@ function getDataFromAnotherRequest(arg: SomeClass): Observable<SomeOtherClass> {
 getDataFromNetwork()
   .debounce(300)
   .filter((rep1: SomeClass): boolean => rep1 !== null)
-  .flatMap((rep1: SomeClass): Observable<SomeOtherClass> => {
+  .mergeMap((rep1: SomeClass): Observable<SomeOtherClass> => {
     return getDataFromAnotherRequest(rep1);
   })
   .map((rep2: SomeOtherClass): string => `${rep2} transformed`)
@@ -288,7 +288,7 @@ import {HttpHeaders} from '@angular/common/http';
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app', 
+  selector: 'app',
   template: '{{ displayedData | json }}'
 })
 export class AppComponent {
@@ -343,10 +343,10 @@ Notes :
 - S'appliqueront sur les requêtes et les réponses
 
 ```typescript
-import { 
-  HttpInterceptor, 
-  HttpRequest, 
-  HttpHandler, 
+import {
+  HttpInterceptor,
+  HttpRequest,
+  HttpHandler,
   HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
@@ -374,13 +374,13 @@ import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderInterceptor } from './header.interceptor';
 
-@NgModule({ 
-  providers: [{ 
-    provide: HTTP_INTERCEPTORS, 
-    useClass: HeaderInterceptor, 
-    multi: true, 
-  }], 
-}) 
+@NgModule({
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HeaderInterceptor,
+    multi: true,
+  }],
+})
 export class AppModule {}
 ```
 
