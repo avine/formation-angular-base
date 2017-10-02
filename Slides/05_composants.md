@@ -42,7 +42,7 @@ Notes :
 
 ## Composants
 
-- Les styles peuvent être configurés via deux propriétés : 
+- Les styles peuvent être configurés via deux propriétés :
   - `styles`
 
 ```typescript
@@ -68,7 +68,7 @@ export class AppComponent { }
 export class AppComponent { }
 ```
 
-Notes : 
+Notes :
 
 
 
@@ -566,7 +566,8 @@ describe('TitleComponent', () => {
 
     componentInstance.title = 'Hello World';
     fixture.detectChanges();
-    expect(debugElement.querySelector('h1').textContent).toBe('Hello World');
+    const h1 = debugElement.nativeElement.querySelector('h1');
+    expect(h1.textContent).toBe('Hello World');
   });
 });
 ```
