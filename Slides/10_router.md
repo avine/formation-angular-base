@@ -103,7 +103,7 @@ import { Component } from '@angular/core';
     <router-outlet></router-outlet>
   `
 })
-class AppComponent { }
+export class AppComponent { }
 ```
 
 Notes :
@@ -130,7 +130,7 @@ Notes :
     <router-outlet></router-outlet>
   `
 })
-class AppComponent {
+export class AppComponent {
   id = 2;
 }
 ```
