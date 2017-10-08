@@ -292,7 +292,7 @@ import {Component} from '@angular/core';
   template: '{{ displayedData | json }}'
 })
 export class AppComponent {
-  private displayedData: string;
+  displayedData: string;
 
   constructor(private http: HttpClient) {
     http.get('people.json')
