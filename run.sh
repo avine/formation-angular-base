@@ -9,12 +9,17 @@ IFS=$'\n\t'
 # tout simplement. L'ajout du '/' avant $PWD permettra de doubler le '/' au debut
 # du chemin ce qui permet de compenser la suppression
 ###
-export VOLUME_SLIDES="/$PWD/Slides/:/data/Slides/"
-export VOLUME_CAHIEREXERCICES="/$PWD/CahierExercices:/data/CahierExercices"
-export VOLUME_GRUNTFILE="/$PWD/Gruntfile.js:/data/Gruntfile.js"
-export VOLUME_PACKAGE="/$PWD/package.json:/data/package.json"
-export VOLUME_PDF_GENERATE="/$PWD/PDF:/data/PDF"
-export VOLUME_PDF_PUBLISH="/$PWD/PDF:/data/node_modules/zenika-formation-framework/pdf"
+OS=$(uname -s)
+WIN=""
+if [ ${OS:0:5} == "MINGW" -o ${OS:0:6} == "CYGWIN" ]; then
+    WIN="/"
+fi
+export VOLUME_SLIDES="$WIN$PWD/Slides/:/data/Slides/"
+export VOLUME_CAHIEREXERCICES="$WIN$PWD/CahierExercices:/data/CahierExercices"
+export VOLUME_GRUNTFILE="$WIN$PWD/Gruntfile.js:/data/Gruntfile.js"
+export VOLUME_PACKAGE="$WIN$PWD/package.json:/data/package.json"
+export VOLUME_PDF_GENERATE="$WIN$PWD/PDF:/data/PDF"
+export VOLUME_PDF_PUBLISH="$WIN$PWD/PDF:/data/node_modules/zenika-formation-framework/pdf"
 # Docker image related informations
 export DOCKER_IMAGE_NAME="zenika/formation-framework"
 export DOCKER_IMAGE_VERSION="latest"
@@ -49,15 +54,10 @@ open-url() {
 }
 
 retrieveFormationVersion(){
-  VERSION=`cat package.json | sed -n -e '/"zenika-formation-framework":/ s/^.*#tags\/\(.*\)".*/\1/p'`
+  VERSION=`cat package.json | sed -n -e '/"zenika-formation-framework":/ s/.*"\^\([0-9]\+\).*".*/\1/p'`
   if [ ! -z $VERSION ]
   then
-    if [[ $VERSION == 0* ]]
-    then
-      export DOCKER_IMAGE_VERSION=$VERSION
-    else
-      export DOCKER_IMAGE_VERSION=v$VERSION
-    fi
+    export DOCKER_IMAGE_VERSION=v$VERSION
   fi
 }
 
@@ -117,17 +117,17 @@ generatePdf(){
 }
 
 runContainer() {
-    local containerName=$(getContainerName)
-    docker run -d -P \
-        -v "$VOLUME_GRUNTFILE" -v "$VOLUME_SLIDES" -v "$VOLUME_PACKAGE" \
-        -v "$VOLUME_CAHIEREXERCICES" -v "$VOLUME_PDF_PUBLISH" \
-        --name="$containerName" \
-        "$DOCKER_IMAGE_NAME":"$DOCKER_IMAGE_VERSION" \
-        $* > /dev/null
-    echo "  Nom de conteneur : $containerName"
-    local dockerPort=`docker ps -l | grep "$containerName" | sed 's/.*:\([0-9]*\)->8000.*/\1/'`
-    local dockerAddress=$(getDockerAddress)
-    open-url http://$dockerAddress:$dockerPort/
+  local containerName=$(getContainerName)
+  docker run -d -P \
+      -v "$VOLUME_GRUNTFILE" -v "$VOLUME_SLIDES" -v "$VOLUME_PACKAGE" \
+      -v "$VOLUME_CAHIEREXERCICES" -v "$VOLUME_PDF_PUBLISH" \
+      --name="$containerName" \
+      "$DOCKER_IMAGE_NAME":"$DOCKER_IMAGE_VERSION" \
+      $* > /dev/null
+  echo "  Nom de conteneur : $containerName"
+  local dockerPort=`docker ps -l | grep "$containerName" | sed 's/.*:\([0-9]*\)->8000.*/\1/'`
+  local dockerAddress=$(getDockerAddress)
+  open-url http://$dockerAddress:$dockerPort/
 }
 
 runProd(){
@@ -166,12 +166,12 @@ do
       shift
       ;;
     dev)
-        retrieveFormationVersion
+      retrieveFormationVersion
       runDev
       shift
       ;;
     prod)
-        retrieveFormationVersion
+      retrieveFormationVersion
       runProd
       shift
       ;;
