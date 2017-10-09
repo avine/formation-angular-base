@@ -102,21 +102,27 @@ Notes :
 - Apperçu de la configuration d'*Angular* dans *Express*
 
 ```typescript
-import 'angular2-universal-polyfills';
-import { createEngine } from 'angular2-express-engine';
-import { NodeModule } from './main.node';
+const express = require('express');
+const ngUniversal = require('@nguniversal/express-engine');
 
-app.engine('.html', createEngine({
-  ngModule: NodeModule,
-  providers: []
-}));
+const renderModuleFactory = 
+  require('@angular/platform-server').renderModuleFactory;
 
-app.set('views', __dirname);
-app.set('view engine', 'html');
+const appServer = require('./dist-server/main.bundle');
 
-app.get('/*', (req, res) => {
-  res.render('index', { req, res, preboot: true });
+const app = express();
+
+app.get('/', function angularRouter(req, res) {
+   res.render('index', { req, res });
 });
+
+app.use(express.static(`${__dirname}/dist`));
+
+app.engine('html', ngUniversal.ngExpressEngine({
+  bootstrap: appServer.AppServerModuleNgFactory
+}));
+app.set('view engine', 'html');
+app.set('views', 'dist');
 ```
 
 Notes :
