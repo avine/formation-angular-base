@@ -124,7 +124,7 @@ Notes :
       <ul>
         <li><a routerLink="contacts">Link 1</a></li>
         <li><a [routerLink]="['contact', 1]">Link 2</a></li>
-        <li><a [routerLink]="['contact', id]">Link </li>3</a>
+        <li><a [routerLink]="['contact', id]">Link 3</a></li>
       </ul>
     </nav>
     <router-outlet></router-outlet>
