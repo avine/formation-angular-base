@@ -34,7 +34,7 @@ Notes :
 - Reprend certains concepts d'*AngularJS*
 - Première version *beta* annoncée en octobre 2014
 - Version *finale* `2.0.0` officielle sortie en septembre 2016
-- Dernière version majeure `4.0.0` sortie en mars 2017
+- Dernière version majeure `5.0.0` sortie en novembre 2017
 - Programmation orientée *Composant*
 - Framework conçu pour être plus performant et optimisé pour les mobiles
 - http://angular.io/
@@ -80,12 +80,12 @@ Notes :
 
 ```javascript
 app.directive('MyDirective', function(){
-    return  {       
+    return  {
        restrict: 'AE',
        require: '?^^ngModel',
-       scope: { variable: '@' },  
+       scope: { variable: '@' },
        controller: function(...) {},
-       link: function(...) { ... }       
+       link: function(...) { ... }
     }
 });
 ```

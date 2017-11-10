@@ -6,12 +6,7 @@ Dans un premier temps, nous allons utiliser les `pipes` disponibles dans le fram
 
 - Dans le template du composant `product`, utiliser le `pipe` `currency` afin d'afficher le prix d'un produit avec la devise *euro* et avec deux chiffres après la virgule.
 
-Pour insérer le sigle de la devise après le prix d'un produit, vous allez devoir indiquer que votre application doit utilise la locale française. Pour cela, veuillez surcharger le
-provider `LOCALE_ID` de `@angular/core` dans la configuration des providers de votre module.
-
-```typescript
-{ provide: LOCALE_ID, useValue: 'fr-FR' }
-```
+- Pour spécifier la locale du projet, il faut relancer `ng serve` avec une nouvelle option : `ng serve --locale fr`
 
 - Dans le constructeur du service `ProductService`, injecter le pipe `uppercase` afin de transformer les propriétés `title` de chaque produit.
 

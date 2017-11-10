@@ -59,7 +59,7 @@ Notes :
 {{ myVar | date | uppercase}}
 <!-- FRIDAY, APRIL 15, 1988 -->
 
-{{ price | currency:'EUR':true }}
+{{ price | currency:'EUR':'symbol' }}
 <!-- 53.12€ -->
 ```
 
@@ -85,7 +85,7 @@ export class MyLowerCasePipe implements PipeTransform {
     }
     if (!isString(value)) {
       throw new Error('MyLowerCasePipe value should be a string');
-    }  
+    }
     return value.toLowerCase();
   }
 }
