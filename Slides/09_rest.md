@@ -190,7 +190,7 @@ Notes :
 ```typescript
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { Person } from './model/person';
 
 @Injectable()
@@ -256,7 +256,7 @@ Notes :
 ```typescript
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { Contact } from './model/contact';
 
 Injectable()
@@ -284,7 +284,7 @@ Notes :
 - Exemple avec l'utilisation d'opérateurs *RxJS*
 
 ```typescript
-import {HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Component} from '@angular/core';
 
 @Component({
@@ -312,7 +312,7 @@ Notes :
 - Exemple utilisant d'avantage d'opérateurs
 
 ```typescript
-import { HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Project, Person } from './model/';
 import { Observable } from 'rxjs/Observable';

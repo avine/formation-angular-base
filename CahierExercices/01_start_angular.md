@@ -19,14 +19,14 @@ L'application, que nous allons implémenter, sera initialisée via l'outil `@ang
 
 - Téléchargez `@angular/cli` en utilisant `NPM`. Ce module nécessite une version récente de *NodeJS*
 
-- Depuis votre console, créez un nouveau projet via la commande `ng new Application`
+- Depuis votre console, créez un nouveau projet via la commande `ng new Application --style=scss`
 
 - Regardez la structure de l'application tout juste créée
 	- dépendances installées
 	- configuration TypeScript
 	- les différents fichiers TypeScript
 
-- Une fois cette étape terminée, vous pouvez à présent lancer votre application en exécutant la commande `ng serve`. Cette commande va prendre en charge la compilation de vos sources et le lancement d'un serveur.
+- Une fois cette étape terminée, vous pouvez à présent lancer votre application en exécutant la commande `npm start`. Cette commande va prendre en charge la compilation de vos sources et le lancement d'un serveur.
 
 ### Modification de l'application
 
@@ -35,7 +35,7 @@ Même si nous n'avons pas encore abordé les concepts du framework, nous allons 
 - Le composant principal devra contenir le code HTML suivant :
 
 ```html
-<h1>This is my first component</h1>
+<h1>Welcome to app!</h1>
 ```
 
 - La chaîne de caractère ci-dessus pourra être modifiée par la variable `title` de la classe `Application`. Pour afficher cette variable dans le template, nous utiliserons la même syntaxe que AngularJS : `{{title}}`

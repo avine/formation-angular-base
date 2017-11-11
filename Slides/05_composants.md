@@ -292,7 +292,7 @@ Notes :
 - Le nom de la propriété sera celui de l'évènement à utiliser dans le template
 
 ```typescript
-import { Input, Output, Component } from '@angular/core'
+import { Input, Output, Component, EventEmitter } from '@angular/core'
 import { Product } from './model/Product'
 
 @Component({

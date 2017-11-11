@@ -6,13 +6,13 @@ Après avoir reçu du formateur le template principal de l'application, veuillez
 
 - Modifiez le fichier index.html créé dans les TPs précédent, afin d'intégrer le template envoyé par le formateur.
 
-- Tout le code HTML situé entre les balises `body` doit être défini dans le template du composant `Application`
+- Tout le code HTML situé entre les balises `body` doit être défini dans le template du composant `AppComponent`
 
 - Créez un nouveau composant `menu\menu.component.ts` dans lequel vous allez implémenter le menu principal de l'application. Pour créer un nouveau composant Angular, nous allons utiliser a commande `ng generate component menu`
 
-- Remplacez dans le composant `Application` le menu initial par le composant que vous venez de créer.
+- Remplacez dans le composant `AppComponent` le menu initial par le composant que vous venez de créer.
 
-- Le total de votre panier sera défini dans une variable `total` que nous allons initialiser à 0 dans le constructeur du composant.
+- Le total de votre panier sera défini dans un attribut `total` que nous allons initialiser à 0
 
 - Créez une classe `product.ts` dans un répertoire `model`. Pour créer cette nouvelle classe, vous pouvez utiliser la commande `ng generate class model/product`.
 
@@ -22,7 +22,7 @@ Après avoir reçu du formateur le template principal de l'application, veuillez
 	- photo de type `string`
 	- price de type `number`
 
-- Dans le constructeur du composant `Application`, instancier un nouveau tableau de `Product`. Et ajoutez les produits utilisés dans le template.
+- Dans le composant `AppComponent`, instancier un nouveau tableau de `Product` et ajoutez les produits utilisés dans le template.
 
 - Modifier le template pour utiliser ce tableau pour l'affichage des différents produits. Comme nous n'avons pas encore vu la directive `ngFor`, vous êtes obligé de copier/coller le template pour chaque élément du tableau.
 
