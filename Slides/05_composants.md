@@ -364,7 +364,7 @@ export class HelloComponent {
   selector: 'main',
   template: '<hello-component (hello)="myHandler($event)"></hello-component>'
 })
-export class HelloComponent {
+export class MainComponent {
   myHandler(value) {
     console.log(value); //-> 'hello!'
   }
