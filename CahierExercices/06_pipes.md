@@ -6,7 +6,7 @@ Dans un premier temps, nous allons utiliser les `pipes` disponibles dans le fram
 
 - Dans le template du composant `product`, utiliser le `pipe` `currency` afin d'afficher le prix d'un produit avec la devise *euro* et avec deux chiffres après la virgule.
 
-- Pour spécifier la locale du projet, il faut relancer `ng serve` avec une nouvelle option : `ng serve --locale fr`
+- Pour spécifier la locale du projet, il faut relancer `ng serve` avec une nouvelle option : `ng serve --aot --locale fr`
 
 - Dans le constructeur du service `ProductService`, injecter le pipe `uppercase` afin de transformer les propriétés `title` de chaque produit.
 
