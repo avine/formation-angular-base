@@ -10,8 +10,9 @@ dependencies:
     - npm install -g grunt-cli
 test:
   pre:
-    - grunt sed clean:dist copy:dist filerev-all
+    - grunt sed clean:dist filerev-all
     - ./run.sh pdf
+    - grunt copy:dist
 deployment:
   appengine:
     branch: [master]
