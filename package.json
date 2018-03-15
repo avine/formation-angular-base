@@ -21,6 +21,7 @@
   },
   "scripts": {
     "start": "grunt",
+    "pdf": "grunt pdf",
     "deploy": "zenika-formation-deploy"
   },
   "devDependencies": {

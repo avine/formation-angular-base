@@ -554,19 +554,20 @@ import { TestBed } from '@angular/core/testing';
 import { TitleComponent } from './title.component';
 
 describe('TitleComponent', () => {
+  let fixture
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ TitleComponent ]
     });
+    fixture = TestBed.createComponent(TitleComponent);
   });
 
   it('should have a title', () => {
-    const fixture = TestBed.createComponent(TitleComponent);
-    const {componentInstance, debugElement} = fixture;
+    const {componentInstance, nativeElement} = fixture;
 
     componentInstance.title = 'Hello World';
     fixture.detectChanges();
-    const h1 = debugElement.nativeElement.querySelector('h1');
+    const h1 = nativeElement.querySelector('h1');
     expect(h1.textContent).toBe('Hello World');
   });
 });

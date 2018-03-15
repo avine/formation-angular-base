@@ -23,20 +23,23 @@ app.get(context + '/products', function (req, res) {
   res.send(products);
 });
 
-var createHandler = function(req, res) {
+var createHandler = function (req, res) {
   basket.push(req.body);
-  products = products.map(product => {
-    if(product.title.toUpperCase() === req.body.title.toUpperCase()){
-      product.stock--;
-    }
-    return product;
-  })
+  products = products
+    .map(product => {
+      if (product.title.toUpperCase() === req.body.title.toUpperCase()) {
+        product.stock--;
+      }
+      return product;
+    })
+    .filter(product => product.stock > 0)
+
   res.send(201, req.body);
 }
 
 app.post(context + '/basket', createHandler);
 
-app.post(context + '/basket/confirm', (req, res)=> {
+app.post(context + '/basket/confirm', (req, res) => {
   basket = [];
   res.send(200, {});
 });

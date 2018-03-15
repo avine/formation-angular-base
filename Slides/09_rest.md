@@ -284,8 +284,8 @@ Notes :
 - Exemple avec l'utilisation d'opérateurs *RxJS*
 
 ```typescript
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Component} from '@angular/core';
+import {ContactService} from './contact.service';
 
 @Component({
   selector: 'app',
@@ -294,11 +294,10 @@ import {Component} from '@angular/core';
 export class AppComponent {
   displayedData: string;
 
-  constructor(private http: HttpClient) {
-    http.get('people.json')
-      .subscribe((jsonObject: any): void => {
-        this.displayedData = jsonObject;
-      });
+  constructor(private contactService: ContactService) {
+    contactService.getContacts().subscribe(contacts => {
+      this.displayedData = contacts;
+    });
   }
 }
 ```
