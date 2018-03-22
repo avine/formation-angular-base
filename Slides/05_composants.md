@@ -79,10 +79,10 @@ Notes :
 ```html
 <div>
   <h1>My Product</h1>
-  <product></product>
+  <app-product></app-product>
 </div>
 
-<!-- attention, <product/> ne fonctionne pas -->
+<!-- attention, <app-product/> ne fonctionne pas -->
 ```
 
 - Le composant *Angular* est implémenté ainsi
@@ -91,10 +91,10 @@ Notes :
 import { Component } from '@angular/core'
 
 @Component({
-  selector: 'product',
+  selector: 'app-product',
   template: `
     <article>
-      <h1>My Product</h1>
+      <span>Product name</span>
     </article>
   `
 })
@@ -409,15 +409,15 @@ Notes :
 - Correspond à la directive `ngTransclude` en *AngularJS*
 
 ```html
-<post>
+<app-post>
   <h2>Title</h2>
   <p>Content</p>
-</post>
+</app-post>
 ```
 
 ```typescript
 @Component({
-  selector: 'post',
+  selector: 'app-post',
   template: `
     <article>
       <ng-content></ng-content>
@@ -436,15 +436,15 @@ Notes :
 - La valeur doit être le sélecteur *CSS* de la section à utiliser
 
 ```html
-<post>
+<app-post>
   <h2>Title</h2>
   <p>Content</p>
-</post>
+</app-post>
 ```
 
 ```typescript
 @Component({
-  selector: 'post',
+  selector: 'app-post',
   template: `
     <article>
       <header><ng-content select="h2"></ng-content></header>

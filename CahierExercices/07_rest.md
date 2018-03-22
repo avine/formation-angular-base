@@ -7,7 +7,7 @@ Pour lancer le serveur REST, vous devez exécuter la commande suivante :
 ```shell
 cd server
 npm install
-node server.js
+npm start
 ```
 
 Le serveur sera disponible via l'URL `http://localhost:8080/rest/`.
@@ -18,9 +18,7 @@ Cette API propose plusieurs points d'entrée :
 - `GET` sur `/basket`  retournera le panier de l'utilisateur
 - `POST` sur `/basket` pour ajouter un nouveau produit au panier de l'utilisateur
 
-- Nous allons tout d'abord modifier le service `ProductService`. Dans la méthode `getProducts`, nous allons envoyer une requête `HTTP` vers l'API correspondante. Lors de la reception de la réponse, vous devez :
-  - mettre en majuscule les propriétés `title` de chaque produit
-  - stocker le résultat dans la propriété `products` de la classe
+- Nous allons tout d'abord modifier le service `ProductService`. Dans la méthode `getProducts`, nous allons envoyer une requête `HTTP` vers l'API correspondante. Lors de la reception de la réponse, vous devez mettre en majuscule les propriétés `title` de chaque produit
 
 - Modifier le composant `AppComponent` en conséquence.
 
