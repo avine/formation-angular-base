@@ -292,7 +292,7 @@ import {ContactService} from './contact.service';
   template: '{{ displayedData | json }}'
 })
 export class AppComponent {
-  displayedData: string;
+  displayedData: Array<Contact>;
 
   constructor(private contactService: ContactService) {
     contactService.getContacts().subscribe(contacts => {
@@ -396,12 +396,10 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('UserService', () => {
-  beforeEach(() => {
-    beforeEach(() => TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [UserService]
-    }));
-  });
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [HttpClientTestingModule],
+    providers: [UserService]
+  }));
 
   /* ... */
 });

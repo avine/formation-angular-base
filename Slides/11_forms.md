@@ -108,7 +108,7 @@ Notes :
 })
 export class ContactFormComponent implements OnInit {
   contact: Contact;
-  
+
   constructor(private contactService: ContactService) { }
 
   ngOnInit(): void {
@@ -201,7 +201,7 @@ Notes :
 @Component({
   selector: 'contact-form',
   template: `
-    <form novalidate (submit)="saveForm()">
+    <form (submit)="saveForm()">
       <input name="name" type="text" [(ngModel)]="contact.name"
             #nameInput="ngModel" required>
       <span [hidden]="nameInput.valid">Error</span>
@@ -282,7 +282,7 @@ Notes :
 - Instance de la directive utilisable dans le template : `#myForm="ngForm"`
 
 ```html
-<form #myForm="ngForm" novalidate (submit)="onSubmit()">
+<form #myForm="ngForm" (submit)="onSubmit()">
   <input name="myName" type="text" [(ngModel)]="contact.name"
         #nameInput="ngModel" required>
 
