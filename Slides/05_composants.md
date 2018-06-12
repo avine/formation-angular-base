@@ -123,7 +123,7 @@ Notes :
 - Système d'interpolation grâce à la syntaxe `{{ expression }}`
 - L'expression doit retourner une valeur qui sera convertie en `string`
 - Angular définit une syntaxe précise pour ces expressions
-- https://angular.io/docs/ts/latest/guide/template-syntax.html#!#template-expressions
+- https://angular.io/guide/template-syntax#!%23template-expressions
 - La syntaxe est celle du JavaScript avec quelques exceptions
 - Toutes les propriétés du composant sont accessibles directement
 - Une expression ne doit pas modifier l'état de l'application
@@ -462,7 +462,7 @@ Notes :
 ## Cycle de vie
 
 - Chaque composant a un cycle de vie bien définit
-- https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html
+- https://angular.io/guide/lifecycle-hooks
 - Il est possible d'exécuter du code à chacune de ces étapes
 - La plus utilisée est l'initialisation avec l'interface `OnInit`
 - L'utilisation d'`OnInit` est recommandé plutôt que celle du constructeur

@@ -101,7 +101,7 @@ Notes :
 
 ## Angular CLI
 
-- En retard sur la sortie d'Angular, il est maintenant en `1.0.0`
+- Depuis la version 6 d'angular, angular CLI suit maintenant les versions d'angular.
 - Basé sur le projet *Ember CLI*
 - Permet de créer le squelette d'une application
 - Embarque automatiquement les technologies suivantes :

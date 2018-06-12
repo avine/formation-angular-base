@@ -34,7 +34,7 @@ Notes :
 - Reprend certains concepts d'*AngularJS*
 - Première version *beta* annoncée en octobre 2014
 - Version *finale* `2.0.0` officielle sortie en septembre 2016
-- Dernière version majeure `5.0.0` sortie en novembre 2017
+- Dernière version majeure `6.0.0` sortie en mai 2018
 - Programmation orientée *Composant*
 - Framework conçu pour être plus performant et optimisé pour les mobiles
 - http://angular.io/
@@ -50,13 +50,18 @@ Notes :
 - Les versions majeurs ne seront plus des réécritures comme de la 1 à la 2
 - Saut de la version 3.0.0 après le merge du projet *Router* déjà en 3.x
 - Planification d'une version majeure tous les 6 mois dans le futur
-- Sortie de la version 4.0.0 en mars 2017
-  - Pas de grands bouleversements
-  - Nouveau moteur de compilation des templates
-  - Modularisation du système d'animations
-  - Intégration du projet Universal
-  - Passage à TypeScript 2.1+
 
+
+
+## Versions
+
+| Version | Date     | Description                                                         |
+| :------ | :------: | :------------------------------------------------------------------ |
+| 2.0.0   | Sep 2016 | Version finale                                                       |
+| 4.0.0   | Mar 2017 | Nouveau moteur de compilation des templates, Modularisation du système d'animations, Intégration du projet Universal, Passage à TypeScript 2.1+ |
+| 5.0.0   | Nov 2017 | Amélioration du build (AOT), HttpClient, TypeScript 2.3             |
+| 6.0.0   | Mai 2018 | Intégration CLI, Angular Element, Nouveau renderer experimental Ivy |
+| 7.0.0   | Oct 2018 | ?                                                                   |
 
 
 
@@ -137,7 +142,7 @@ Notes :
 ## Angular - Points Positifs
 
 - Création d'application modulaire
-- Utilisable avec plusieurs langages de programmation : `ES5`, `ES2015(ES6)`, `TypeScript` et `Dart`
+- Utilisable avec plusieurs langages de programmation : `TypeScript` et `Dart` (projet à part : https://webdev.dartlang.org/)
 - API plus simple que *AngularJS*
 - Seuls trois types d'éléments seront utilisés : `directive`, `pipe` et les `services`
 - Basé sur des standards : `Web Components`, `ES2015+`, `Decorator`
@@ -166,7 +171,7 @@ Notes :
   - ...
 
 Notes :
-- utilisation de directives 1 dans 2 : https://angular.io/docs/ts/latest/guide/upgrade.html#!#using-angular-1-component-directives-from-angular-2-code
+- utilisation de directives 1 dans 2 : https://angular.io/guide/upgrade#!%23using-angular-1-component-directives-from-angular-2-code
 - Les nouveaux concepts ne sont pas indispensables à connaître. C'est un plus
 
 
