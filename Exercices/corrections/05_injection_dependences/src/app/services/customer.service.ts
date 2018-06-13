@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { Product } from '../model/product';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CustomerService {
 
   products: Product[] = new Array<Product>();

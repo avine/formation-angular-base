@@ -1,8 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import { of } from 'rxjs/';
 
 import { Product } from '../model/product';
 import { BasketComponent } from './basket.component';
@@ -15,7 +14,7 @@ const testProducts = [
 
 class CustomerServiceMock {
   getBasket() {
-    return Observable.of();
+    return of();
   }
 }
 
