@@ -171,7 +171,7 @@ Notes :
   - ...
 
 Notes :
-- utilisation de directives 1 dans 2 : https://angular.io/guide/upgrade#!%23using-angular-1-component-directives-from-angular-2-code
+- utilisation de directives 1 dans 2 : https://angular.io/guide/upgrade#using-angularjs-component-directives-from-angular-code
 - Les nouveaux concepts ne sont pas indispensables à connaître. C'est un plus
 
 
