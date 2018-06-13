@@ -123,7 +123,7 @@ Notes :
 - Système d'interpolation grâce à la syntaxe `{{ expression }}`
 - L'expression doit retourner une valeur qui sera convertie en `string`
 - Angular définit une syntaxe précise pour ces expressions
-- https://angular.io/guide/template-syntax#!%23template-expressions
+- https://angular.io/guide/template-syntax#template-expressions
 - La syntaxe est celle du JavaScript avec quelques exceptions
 - Toutes les propriétés du composant sont accessibles directement
 - Une expression ne doit pas modifier l'état de l'application
