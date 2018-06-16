@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
 import { MenuComponent } from './menu/menu.component';
-import { ProductService } from './services/product.service';
-import { CustomerService } from './services/customer.service';
 
 @NgModule({
   declarations: [
@@ -17,8 +15,6 @@ import { CustomerService } from './services/customer.service';
     BrowserModule
   ],
   providers: [
-    ProductService,
-    CustomerService,
     {provide: 'welcomeMsg', useValue: 'Bienvenue sur Zenika Ecommerce'}
   ],
   bootstrap: [AppComponent]

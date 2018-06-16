@@ -3,7 +3,9 @@ import { UpperCasePipe } from '@angular/common';
 
 import { Product } from '../model/product';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ProductService {
 
   private products: Product[] = [

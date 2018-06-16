@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { UpperCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/do';
+import { Observable, pipe } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 import { Product } from '../model/product';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ProductService {
 
   private API_URL = 'http://localhost:8080/rest/';
@@ -21,17 +22,19 @@ export class ProductService {
 
   getProducts(): Observable<Product[]> {
     return this.http.get(this.API_URL + 'products')
-      .map((products: any[]) => {
-        return products.map(product => {
-          return new Product(product.title, product.description, product.photo, product.price, product.stock);
-        });
-      })
-      .map(products => {
-        return products.map(product => {
-          product.title = this.uppercase.transform(product.title);
-          return product;
-        });
-      });
+      .pipe(
+          map((products: any[]) => {
+          return products.map(product => {
+            return new Product(product.title, product.description, product.photo, product.price, product.stock);
+          });
+        }),
+        map(products => {
+          return products.map(product => {
+            product.title = this.uppercase.transform(product.title);
+            return product;
+          });
+        })
+      );
   }
 
   isTheLast(product: Product): boolean {
