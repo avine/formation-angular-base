@@ -1,4 +1,4 @@
-import { inject, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductComponent } from './product.component';
 import { Product } from '../model/product';
