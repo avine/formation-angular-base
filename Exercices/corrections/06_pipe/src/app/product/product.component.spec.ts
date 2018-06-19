@@ -15,6 +15,7 @@ class ProductServiceMock {
 describe('ProductComponent', () => {
   let component: ProductComponent;
   let fixture: ComponentFixture<ProductComponent>;
+  let productService : ProductService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -24,6 +25,7 @@ describe('ProductComponent', () => {
       ]
     })
     .compileComponents();
+    productService = TestBed.get(ProductService);
   });
 
   beforeEach(() => {
@@ -52,22 +54,22 @@ describe('ProductComponent', () => {
   });
 
   it('should not add "last" class if stock > 1',
-    inject([ProductService], (productService) => {
+    () => {
       spyOn(productService, 'isTheLast').and.returnValue(false);
       fixture.detectChanges();
       const thumbnail = fixture.nativeElement.querySelector('.thumbnail');
       expect(Array.prototype.includes.call(thumbnail.classList, 'last')).toBe(false);
       expect(productService.isTheLast).toHaveBeenCalled();
-    })
+    }
   );
 
   it('should not add "last" class if stock > 1',
-    inject([ProductService], (productService) => {
+    () => {
       spyOn(productService, 'isTheLast').and.returnValue(true);
       fixture.detectChanges();
       const thumbnail = fixture.nativeElement.querySelector('.thumbnail');
       expect(Array.prototype.includes.call(thumbnail.classList, 'last')).toBe(true);
       expect(productService.isTheLast).toHaveBeenCalled();
-    })
+    }
   );
 });

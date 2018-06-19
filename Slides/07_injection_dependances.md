@@ -225,9 +225,9 @@ Notes :
 - Ne pas hésiter à surcharger "**mocker**" des services
 - Mécanisme puissant qui permet d'isoler l'élément que l'on veut tester
 - Deux fonctions utilitaires disponibles :
-  - `inject(tokens: any[], fn: Function)`
+  - `TestBed.get(ClassName)`
 
-    injecte des services à la fonction en paramètre
+    Récupère l'instance du service donné en paramètre
   - `async(fn: Function)`
 
     retarde automatiquement le test par rapport aux actions asynchrones
@@ -257,7 +257,8 @@ describe('UserService', () => {
     });
   });
 
-  it('should return 1 user', async(inject([UserService], service => {
+  it('should return 1 user', async(()) => {
+    const service = TestBed.get(UserService);
     service.getUsers().then(users => {
       expect(users.length).toBe(1);
     });

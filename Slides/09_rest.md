@@ -415,13 +415,14 @@ Notes :
 
 ```typescript
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 
 /* ... */
 
-it('return return 1 user', async(inject([ UserService, HttpTestingController ],
-  (userService, http) => {
-
+it('return return 1 user', async(
+  () => {
+    const userService = TestBed.get(UserService);
+    const http = TestBed.get(HttpTestingController);
     const mockedUsers = [{ name: 'Zenika' }];
 
     userService.getUsers().subscribe((users: User[]) => {
