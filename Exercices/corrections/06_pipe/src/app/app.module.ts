@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
-import { UpperCasePipe } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
@@ -18,7 +17,6 @@ import { SortPipe } from './pipes/sort.pipe';
     BrowserModule
   ],
   providers: [
-    UpperCasePipe,
     {provide: 'welcomeMsg', useValue: 'Bienvenue sur Zenika Ecommerce'},
     {provide: LOCALE_ID, useValue: 'fr-FR'}
   ],

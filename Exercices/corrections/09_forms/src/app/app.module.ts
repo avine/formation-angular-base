@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
-import { UpperCasePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -33,7 +32,6 @@ const routes: Routes = [
     FormsModule
   ],
   providers: [
-    UpperCasePipe,
     {provide: 'welcomeMsg', useValue: 'Bienvenue sur Zenika Ecommerce'},
     {provide: LOCALE_ID, useValue: 'fr-FR'}
   ],

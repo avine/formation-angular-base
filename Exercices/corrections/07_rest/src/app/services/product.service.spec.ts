@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-import { UpperCasePipe } from '@angular/common';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { ProductService } from './product.service';
@@ -14,7 +13,6 @@ describe('ProductService', () => {
       imports: [HttpClientTestingModule],
       providers: [
         ProductService,
-        UpperCasePipe,
       ]
     });
     service = TestBed.get(ProductService);
@@ -29,9 +27,6 @@ describe('ProductService', () => {
       ];
       service.getProducts().subscribe(products => {
         expect(products.length).toBe(2);
-        products.forEach(product => {
-          expect(product.title).toBe(product.title.toUpperCase());
-        });
       });
       http.expectOne('http://localhost:8080/rest/products').flush(mockedResponse);
     }

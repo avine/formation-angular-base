@@ -8,8 +8,6 @@ Dans un premier temps, nous allons utiliser les `pipes` disponibles dans le fram
 
 - Pour spécifier la locale du projet, il faut relancer `ng serve` avec une nouvelle option : `ng serve --aot --locale fr`
 
-- Dans le constructeur du service `ProductService`, injecter le pipe `uppercase` afin de transformer les propriétés `title` de chaque produit.
-
 Nous allons à présent créer notre propre `pipe`, qui va nous permettre de trier une collection de produit par sa propriété `title`.
 
 - Créer un nouveau `pipe` grâce à `@angular/cli`
@@ -23,7 +21,5 @@ Nous allons à présent créer notre propre `pipe`, qui va nous permettre de tri
 ### Tests
 
 - Résoudre les nouvelles injections de dépendances afin que les tests existants fonctionnent.
-
-- Dans le test de `ProductService`, vérifier que les 4 produits initiaux ont bien des titres en majuscules.
 
 - Ajouter un test de `SortPipe`, passer un tableau de produit au pipe et vérifier que la valeur de retour est bien le tableau trié.

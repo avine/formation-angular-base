@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-import { UpperCasePipe } from '@angular/common';
 
 import { ProductService } from './product.service';
 import { Product } from '../model/product';
@@ -8,7 +7,7 @@ describe('ProductService', () => {
   let service : ProductService;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ProductService, UpperCasePipe]
+      providers: [ProductService]
     });
     service = TestBed.get(ProductService);
   });
@@ -17,9 +16,6 @@ describe('ProductService', () => {
     () => {
       expect(service).toBeTruthy();
       expect(service.getProducts().length).toBe(4);
-      service.getProducts().forEach(product => {
-        expect(product.title).toBe(product.title.toUpperCase());
-      });
     }
   );
 

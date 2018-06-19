@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { UpperCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Observable, pipe } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
@@ -16,7 +15,6 @@ export class ProductService {
   private products: Product[];
 
   constructor(
-    private uppercase: UpperCasePipe,
     private http: HttpClient
   ) {}
 
@@ -26,12 +24,6 @@ export class ProductService {
           map((products: any[]) => {
           return products.map(product => {
             return new Product(product.title, product.description, product.photo, product.price, product.stock);
-          });
-        }),
-        map(products => {
-          return products.map(product => {
-            product.title = this.uppercase.transform(product.title);
-            return product;
           });
         })
       );
