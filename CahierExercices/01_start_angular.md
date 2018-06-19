@@ -35,9 +35,9 @@ Même si nous n'avons pas encore abordé les concepts du framework, nous allons 
 - Le composant principal devra contenir le code HTML suivant :
 
 ```html
-<h1>Welcome to app!</h1>
+<h1>Welcome to {{ title }}!</h1>
 ```
 
-- La chaîne de caractère ci-dessus pourra être modifiée par la variable `title` de la classe `Application`. Pour afficher cette variable dans le template, nous utiliserons la même syntaxe que AngularJS : `{{title}}`
+- La variable `{{ title }}` sera remplacé par le contenu de la propriété `title` dans la classe `Application`. Modifier la valeur de cette propriété pour y mettre votre prénom.
 
-- Vérifiez que vous obtenez bien la toute dernière version de votre application dans le navigateur.
+- Vérifiez que vous obtenez bien la toute dernière version de votre application dans le navigateur avec le titre `Welcome to VotrePrénom`.
