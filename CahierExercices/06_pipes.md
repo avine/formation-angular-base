@@ -8,7 +8,20 @@ Dans un premier temps, nous allons utiliser les `pipes` disponibles dans le fram
 
 - Dans le template du composant `product`, utiliser le `pipe` `currency` afin d'afficher le prix d'un produit avec la devise *euro* et avec deux chiffres après la virgule.
 
-- Pour spécifier la locale du projet, il faut relancer `ng serve` avec une nouvelle option : `ng serve --aot --locale fr`
+- Ajoutez également le `pipe` `currency` pour l'affichage du total sur la page principale `app.component.html`
+
+- Pour spécifier la locale du projet, il faut ajouter dans `app.module.ts` les lignes suivantes :
+```typescript
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+// the second parameter 'fr' is optional
+registerLocaleData(localeFr, 'fr');
+```
+et dans la section `providers` du `@NgModule`:
+```typescript
+{provide: LOCALE_ID, useValue: 'fr-FR'}
+```
 
 Nous allons à présent créer notre propre `pipe`, qui va nous permettre de trier une collection de produit par sa propriété `title`.
 
