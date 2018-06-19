@@ -4,6 +4,8 @@ Nous allons à présent utiliser les `pipes`, afin de formatter le contenu de no
 
 Dans un premier temps, nous allons utiliser les `pipes` disponibles dans le framework : `uppercase` et `currency`.
 
+- Dans le templace du composant `produit`, utiliser le `pipe` `uppercase` afin d'afficher le titre en majuscule
+
 - Dans le template du composant `product`, utiliser le `pipe` `currency` afin d'afficher le prix d'un produit avec la devise *euro* et avec deux chiffres après la virgule.
 
 - Pour spécifier la locale du projet, il faut relancer `ng serve` avec une nouvelle option : `ng serve --aot --locale fr`
