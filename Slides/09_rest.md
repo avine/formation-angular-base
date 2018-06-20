@@ -84,7 +84,7 @@ observable.pipe(
 )
 ```
 - Attention, certains opérateurs ont été renommé entre la version 5 et 6 de RXJS (c'était des mot clés javascript) :
-- `do`, `catch`, `switch`, `finally` deviennent `tap`, `catchError`, `switchAll`, `finalize`
+- `do`, `catch`, `switch`, `finally` deviennent `tap`, `catchError`, `switchAll`, et `finalize`
 
 
 
@@ -120,14 +120,13 @@ function getDataFromAnotherRequest(arg: SomeClass): Observable<SomeOtherClass> {
 
 getDataFromNetwork()
   .pipe(
-    debounce(300)
-    filter((rep1: SomeClass): boolean => rep1 !== null)
-    mergeMap((rep1: SomeClass): Observable<SomeOtherClass> => {
+    filter((rep1) => rep1 !== null)
+    mergeMap((rep1) => {
       return getDataFromAnotherRequest(rep1);
     })
-    map((rep2: SomeOtherClass): string => `${rep2} transformed`)
+    map((rep2) => `${rep2} transformed`)
   )
-  .subscribe((value: string) => console.log(`next => ${value}`));
+  .subscribe((value) => console.log(`next => ${value}`));
 ```
 
 Notes :
@@ -169,7 +168,7 @@ Notes :
 
 - *Angular* utilise énormément *RxJS* en interne
 - La dépendance est en mode **peer** c'est à dire qu'elle est à ajouter en plus
-- **Attention**, il faut la version *6+* (depuis Angular 6), alors que la *4* et la *5* sont encore répandue
+- **Attention**, il faut la version *6+* (depuis Angular 6), alors que la *5* est encore répandue
 - *Angular* expose des objets *RxJS* dans plusieurs cas :
   - Requêtes HTTP
   - Intéraction avec un formulaire
