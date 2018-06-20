@@ -8,8 +8,7 @@ import { SortPipe } from './pipes/sort.pipe';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 
-// the second parameter 'fr' is optional
-registerLocaleData(localeFr, 'fr');
+registerLocaleData(localeFr);
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +21,7 @@ registerLocaleData(localeFr, 'fr');
   ],
   providers: [
     {provide: 'welcomeMsg', useValue: 'Bienvenue sur Zenika Ecommerce'},
-    {provide: LOCALE_ID, useValue: 'fr-FR'}
+    {provide: LOCALE_ID, useValue: navigator.language}
   ],
   bootstrap: [AppComponent]
 })

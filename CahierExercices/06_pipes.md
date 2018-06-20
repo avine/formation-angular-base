@@ -15,12 +15,11 @@ Dans un premier temps, nous allons utiliser les `pipes` disponibles dans le fram
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 
-// the second parameter 'fr' is optional
-registerLocaleData(localeFr, 'fr');
+registerLocaleData(localeFr);
 ```
 et dans la section `providers` du `@NgModule`:
 ```typescript
-{provide: LOCALE_ID, useValue: 'fr-FR'}
+{provide: LOCALE_ID, useValue: navigator.language}
 ```
 
 Nous allons à présent créer notre propre `pipe`, qui va nous permettre de trier une collection de produit par sa propriété `title`.

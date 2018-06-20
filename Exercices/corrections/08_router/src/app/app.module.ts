@@ -12,8 +12,7 @@ import { BasketComponent } from './basket/basket.component';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 
-// the second parameter 'fr' is optional
-registerLocaleData(localeFr, 'fr');
+registerLocaleData(localeFr);
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'basket', component: BasketComponent}
@@ -35,7 +34,7 @@ const routes: Routes = [
   ],
   providers: [
     {provide: 'welcomeMsg', useValue: 'Bienvenue sur Zenika Ecommerce'},
-    {provide: LOCALE_ID, useValue: 'fr-FR'}
+    {provide: LOCALE_ID, useValue: navigator.language}
   ],
   bootstrap: [AppComponent]
 })
