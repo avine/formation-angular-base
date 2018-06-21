@@ -6,7 +6,10 @@ import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
 import { MenuComponent } from './menu/menu.component';
 import { SortPipe } from './pipes/sort.pipe';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 
+registerLocaleData(localeFr);
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +23,7 @@ import { SortPipe } from './pipes/sort.pipe';
   ],
   providers: [
     {provide: 'welcomeMsg', useValue: 'Bienvenue sur Zenika Ecommerce'},
-    {provide: LOCALE_ID, useValue: 'fr-FR'}
+    {provide: LOCALE_ID, useValue: navigator.language}
   ],
   bootstrap: [AppComponent]
 })
