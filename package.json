@@ -12,7 +12,7 @@
   "dependencies": {
     "grunt": "^0.4.5",
     "gulp": "^3.9.0",
-    "zenika-formation-framework": "^3.0.0"
+    "zenika-formation-framework": "^3.3.1"
   },
   "config": {
     "deploy": {
@@ -25,6 +25,6 @@
     "deploy": "zenika-formation-deploy"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.0"
+    "@angular/cli": "6.0.8"
   }
 }
