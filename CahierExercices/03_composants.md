@@ -8,11 +8,11 @@ Après avoir reçu du formateur le template principal de l'application, veuillez
 
 - Tout le code HTML situé entre les balises `body` doit être défini dans le template du composant `AppComponent`
 
+- Le total de votre panier sera défini dans un attribut `total` à rajouter dans `AppComponent` que nous allons initialiser à 0
+
 - Créez un nouveau composant `menu\menu.component.ts` dans lequel vous allez implémenter le menu principal de l'application. Pour créer un nouveau composant Angular, nous allons utiliser a commande `ng generate component menu`
 
 - Remplacez dans le composant `AppComponent` le menu initial par le composant que vous venez de créer.
-
-- Le total de votre panier sera défini dans un attribut `total` que nous allons initialiser à 0
 
 - Créez une classe `product.ts` dans un répertoire `model`. Pour créer cette nouvelle classe, vous pouvez utiliser la commande `ng generate class model/product`.
 

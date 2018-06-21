@@ -42,7 +42,7 @@ Pour information, voici le template à utiliser pour ajouter un champ de formula
 ```html
 <div class="form-group has-error">
     <label class="control-label" for="name">Name</label>
-    <input type="text" id="name" class="form-control">
+    <input type="text" id="name" name="name" class="form-control">
 </div>
 ```
 

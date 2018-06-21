@@ -80,14 +80,14 @@ Notes :
 - Exécution d'une fonction avant ou après chaque ou tous les tests
 
 ```javascript
-describe('True value:', function () {
+describe('True value', function () {
   let value;
 
   beforeEach(function (){
     value = true;
   });
 
-  it('true should be equal to true', function () {
+  it('should be equal to true', function () {
     expect(value).toBe(true);
   });
 });
