@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
-import { ComponentFixture, TestBed, async, inject } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 
@@ -42,7 +42,8 @@ class SortPipe implements PipeTransform {
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
-
+  let customerService:CustomerService;
+  let productService:ProductService;
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -57,6 +58,8 @@ describe('HomeComponent', () => {
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
+    customerService = TestBed.get(CustomerService);
+    productService = TestBed.get(ProductService);
   });
 
   beforeEach(() => {
@@ -70,22 +73,22 @@ describe('HomeComponent', () => {
   });
 
   it('should have the title bound in the header',
-    inject([CustomerService], (customerService: CustomerService) => {
+    () => {
       const compiled = fixture.debugElement.nativeElement;
 
       fixture.detectChanges();
       expect(compiled.querySelector('header').textContent).toContain(welcomeMsg);
-    })
+    }
   );
 
   it('should have the total bound in the header',
-    inject([CustomerService], (customerService: CustomerService) => {
+    () => {
       const app = fixture.debugElement.componentInstance;
       const compiled = fixture.debugElement.nativeElement;
 
       fixture.detectChanges();
       expect(compiled.querySelector('header').textContent).toContain(customerService.getTotal());
-    })
+    }
   );
 
   it('should bind each product component with its product', () => {
@@ -100,7 +103,7 @@ describe('HomeComponent', () => {
   });
 
   it('should call addProduct and decreaseStock when updatePrice',
-    inject([ProductService, CustomerService], (productService: ProductService, customerService: CustomerService) => {
+    () => {
       const app = fixture.debugElement.componentInstance;
       const product = testProducts[0];
 
@@ -110,11 +113,11 @@ describe('HomeComponent', () => {
       app.updatePrice(product);
       expect(customerService.addProduct).toHaveBeenCalledWith(product);
       expect(productService.decreaseStock).toHaveBeenCalledWith(product);
-    })
+    }
   );
 
   it('should not display product which is not available',
-    inject([ProductService], (productService: ProductService) => {
+    () => {
       const app = fixture.debugElement.componentInstance;
       const compiled = fixture.debugElement.nativeElement;
 
@@ -129,6 +132,6 @@ describe('HomeComponent', () => {
       const products = compiled.querySelectorAll('app-product');
       expect(products.length).toBe(1);
       expect(products[0].data).toBe(app.products[1]);
-    })
+    }
   );
 });

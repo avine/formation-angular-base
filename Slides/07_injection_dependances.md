@@ -225,9 +225,9 @@ Notes :
 - Ne pas hésiter à surcharger "**mocker**" des services
 - Mécanisme puissant qui permet d'isoler l'élément que l'on veut tester
 - Deux fonctions utilitaires disponibles :
-  - `inject(tokens: any[], fn: Function)`
+  - `TestBed.get(ClassName)`
 
-    injecte des services à la fonction en paramètre
+    Récupère l'instance du service donné en paramètre
   - `async(fn: Function)`
 
     retarde automatiquement le test par rapport aux actions asynchrones
@@ -242,7 +242,7 @@ Notes :
 - On suppose que `UserService` utilise `LoggerService`
 
 ```typescript
-import {TestBed, async, inject} from '@angular/core/testing';
+import {TestBed, async} from '@angular/core/testing';
 import {UserService} from './user.service';
 
 class LoggerServiceMock {}
@@ -257,7 +257,8 @@ describe('UserService', () => {
     });
   });
 
-  it('should return 1 user', async(inject([UserService], service => {
+  it('should return 1 user', async(()) => {
+    const service = TestBed.get(UserService);
     service.getUsers().then(users => {
       expect(users.length).toBe(1);
     });
