@@ -2,7 +2,7 @@
   <div class="panel-heading">Basket</div>
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let product of basket">
-      {{product.title}} <span class="label label-primary pull-right">{{product.price}}€</span>
+      {{product.title}} <span class="label label-primary pull-right">{{product.price | currency:'EUR'}}</span>
     </li>
   </ul>
 </div>

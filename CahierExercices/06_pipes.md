@@ -4,11 +4,23 @@ Nous allons à présent utiliser les `pipes`, afin de formatter le contenu de no
 
 Dans un premier temps, nous allons utiliser les `pipes` disponibles dans le framework : `uppercase` et `currency`.
 
+- Dans le templace du composant `produit`, utiliser le `pipe` `uppercase` afin d'afficher le titre en majuscule
+
 - Dans le template du composant `product`, utiliser le `pipe` `currency` afin d'afficher le prix d'un produit avec la devise *euro* et avec deux chiffres après la virgule.
 
-- Pour spécifier la locale du projet, il faut relancer `ng serve` avec une nouvelle option : `ng serve --aot --locale fr`
+- Ajoutez également le `pipe` `currency` pour l'affichage du total sur la page principale `app.component.html`
 
-- Dans le constructeur du service `ProductService`, injecter le pipe `uppercase` afin de transformer les propriétés `title` de chaque produit.
+- Pour spécifier la locale du projet, il faut ajouter dans `app.module.ts` les lignes suivantes :
+```typescript
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr);
+```
+et dans la section `providers` du `@NgModule`:
+```typescript
+{provide: LOCALE_ID, useValue: navigator.language}
+```
 
 Nous allons à présent créer notre propre `pipe`, qui va nous permettre de trier une collection de produit par sa propriété `title`.
 
@@ -23,7 +35,5 @@ Nous allons à présent créer notre propre `pipe`, qui va nous permettre de tri
 ### Tests
 
 - Résoudre les nouvelles injections de dépendances afin que les tests existants fonctionnent.
-
-- Dans le test de `ProductService`, vérifier que les 4 produits initiaux ont bien des titres en majuscules.
 
 - Ajouter un test de `SortPipe`, passer un tableau de produit au pipe et vérifier que la valeur de retour est bien le tableau trié.

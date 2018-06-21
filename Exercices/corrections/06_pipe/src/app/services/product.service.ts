@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { UpperCasePipe } from '@angular/common';
 
 import { Product } from '../model/product';
 
@@ -15,11 +14,7 @@ export class ProductService {
     new Product('Product4', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'http://placehold.it/800x500', 40, 2)
   ];
 
-  constructor(uppercase: UpperCasePipe) {
-    this.products = this.products.map(p => {
-      p.title = uppercase.transform(p.title);
-      return p;
-    });
+  constructor() {
   }
 
   getProducts(): Product[] {
