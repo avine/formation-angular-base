@@ -78,9 +78,8 @@ Notes :
 
 - Le **Host** est l'élément du DOM qui porte la directive
 - Possibilité d'écouter les évènements de l'élément du Host
-  - Par l'utilisation de la propriété `host` de l'annotation `@Directive`
-  - Par l'utilisation les annotations `HostListener` et `HostBinding`
 - Éviter d'écouter des évènement via le DOM pour éviter les fuites mémoires
+- Utilisation les annotations `HostListener` et `HostBinding` :
 
 ```typescript
 import { Directive, HostListener, HostBinding } from '@angular/core';
@@ -94,6 +93,33 @@ export class HighlightDirective {
   @HostListener('mouseenter') onMouseEnter() { this.color = 'blue'; }
 
   @HostListener('mouseleave') onMouseLeave() { this.color = 'red'; }
+}
+```
+
+Notes :
+
+
+
+## Action utilisateur
+
+- Utilisation de la propriété `host` de l'annotation `@Directive`
+
+```typescript
+import { Directive } from '@angular/core';
+
+@Directive({
+  selector: '[myHighlight]',
+  host: {
+    '[style.backgroundColor]': 'color',
+    '(mouseenter)': 'highlight()',
+    '(mouseleave)': 'restoreColor()',
+  }
+})
+export class HighlightDirective {
+  color = ''
+
+  highlight() { this.color = 'yellow'; }
+  restoreColor() { this.color = ''; }
 }
 ```
 
