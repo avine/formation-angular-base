@@ -192,6 +192,24 @@ Notes :
 
 
 
+## Service providedIn
+
+- Depuis angular 6, il n'est plus nécessaire de déclarer dans un Module un service si on ajoute l'option `providedIn: 'root'` dans l'annotation `@Injectable`:
+
+```typescript
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+
+  constructor() { }
+}
+```
+
+- Si l'on peut ajouter le service dans un autre module, il suffit de donner le module voulu dans l'option `providedIn: MyModule`
+
+
+
 ## Hiérarchie d'injecteurs
 
 - Chaque injecteur contient un certain nombre de providers

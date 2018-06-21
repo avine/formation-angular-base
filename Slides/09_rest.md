@@ -29,7 +29,7 @@ Notes :
 
 ## RxJS
 
-- *Angular* a une dépendance forte sur la librairie *RxJS 5+*
+- *Angular* a une dépendance forte sur la librairie *RxJS 6+*
 - Elle est très utilisée dans le coeur du framework
 - *RxJS* est une librairie permettant de faire du **Reactive Programming**
 - C'est un nouveau paradigme de programmation très en vogue
@@ -60,15 +60,31 @@ Notes :
 
 - *RxJS* fourni une liste importante d'opérateurs pour les `Observable`
 - Ces opérateurs s'inspirent largement des transformations sur un tableau
-- `take(n)` : pioche les n premiers éléments et coupe le flux
-- `filter(fn)` : laisser passer les événements pour lesquels fn rend `true`
-- `map(fn)` : applique la fonction fn sur chaque élément et retourner le résultat
-- `merge(s1, s2)` : fusionne la source aux observables en argument
-- `mergeMap(fn)` : applique fn comme map mais merge les valeurs qui sont des observables
-- `debounce(ms)` : retarde et filtre pour n'envoyer un élément que lorsqu'il n'y a pas eu de nouveaux éléments depuis le temps en argument
+  - `take(n)` : pioche les n premiers éléments et coupe le flux
+  - `filter(fn)` : laisser passer les événements pour lesquels fn rend `true`
+  - `map(fn)` : applique la fonction fn sur chaque élément et retourner le résultat
+  - `merge(s1, s2)` : fusionne la source aux observables en argument
+  - `mergeMap(fn)` : applique fn comme map mais merge les valeurs qui sont des observables
+  - `debounce(ms)` : retarde et filtre pour n'envoyer un élément que lorsqu'il n'y a pas eu de nouveaux éléments depuis le temps en argument
 - Ressource importante pour apprendre les opérateurs : http://rxmarbles.com/
 
 Notes :
+
+
+
+## Observables pipe (RXJS 6)
+
+- Depuis rxjs 6, les opérateurs ne sont plus directement disponible dans l'objet Observable, mais en tant que fonction.
+- Il faut utiliser `pipe`, pour appeler les opérateurs :
+```typescript
+observable.pipe(
+    map(fn),
+    filter(fn),
+    ...
+)
+```
+- Attention, certains opérateurs ont été renommé entre la version 5 et 6 de RXJS (c'était des mot clés javascript) :
+- `do`, `catch`, `switch`, `finally` deviennent `tap`, `catchError`, `switchAll`, et `finalize`
 
 
 
@@ -103,13 +119,14 @@ function getDataFromAnotherRequest(arg: SomeClass): Observable<SomeOtherClass> {
 }
 
 getDataFromNetwork()
-  .debounce(300)
-  .filter((rep1: SomeClass): boolean => rep1 !== null)
-  .mergeMap((rep1: SomeClass): Observable<SomeOtherClass> => {
-    return getDataFromAnotherRequest(rep1);
-  })
-  .map((rep2: SomeOtherClass): string => `${rep2} transformed`)
-  .subscribe((value: string) => console.log(`next => ${value}`));
+  .pipe(
+    filter((rep1) => rep1 !== null)
+    mergeMap((rep1) => {
+      return getDataFromAnotherRequest(rep1);
+    })
+    map((rep2) => `${rep2} transformed`)
+  )
+  .subscribe((value) => console.log(`next => ${value}`));
 ```
 
 Notes :
@@ -151,7 +168,7 @@ Notes :
 
 - *Angular* utilise énormément *RxJS* en interne
 - La dépendance est en mode **peer** c'est à dire qu'elle est à ajouter en plus
-- **Attention**, il faut la version *5+*, alors que la *4* est encore répendue
+- **Attention**, il faut la version *6+* (depuis Angular 6), alors que la *5* est encore répandue
 - *Angular* expose des objets *RxJS* dans plusieurs cas :
   - Requêtes HTTP
   - Intéraction avec un formulaire

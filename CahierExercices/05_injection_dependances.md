@@ -7,14 +7,14 @@ Nous allons créer deux services :
 - ProductService : qui sera en charge de la gestion des produits,
 - CustomerService : qui sera en charge du panier de l'utilisateur.
 
-- Veuillez créer un service `services\ProductService.ts` dans lequel vous allez définir :
+- Veuillez créer un service `ProductService` en utilisant la commande `ng generate service services/Product` dans lequel vous allez définir :
 	- un tableau `products` avec les valeurs définies dans le composant `AppComponent.ts`
 	- une méthode `getProducts()`: retournera le tableau `products`
 	- une méthode `isTheLast(product)` : retournera `true` si le stock d'un produit est égal à 1
 	- une méthode `isAvailable(product)` : retournera `true` si le stock d'un produit n'est pas égal à 0
 	- une méthode `decreaseStock(product)` : mettra à jour la propriété `stock` du produit spécifié en paramètre
 
-- Veuillez créer un service `services\CustomerService.ts` dans lequel vous allez définir :
+- Veuillez créer un service `CustomerService`, en utilisant la commande `ng generate service services/Customer` dans lequel vous allez définir :
 	- une méthode `addProduct(product)` : ajoutera le nouveau produit dans un tableau, ce tableau représente votre panier.
 	- une méthode `getTotal()` : calculera le montant total du panier.
 
