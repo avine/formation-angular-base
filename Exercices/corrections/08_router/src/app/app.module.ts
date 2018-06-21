@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
-import { UpperCasePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -10,7 +9,10 @@ import { MenuComponent } from './menu/menu.component';
 import { SortPipe } from './pipes/sort.pipe';
 import { HomeComponent } from './home/home.component';
 import { BasketComponent } from './basket/basket.component';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 
+registerLocaleData(localeFr);
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'basket', component: BasketComponent}
@@ -31,9 +33,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    UpperCasePipe,
     {provide: 'welcomeMsg', useValue: 'Bienvenue sur Zenika Ecommerce'},
-    {provide: LOCALE_ID, useValue: 'fr-FR'}
+    {provide: LOCALE_ID, useValue: navigator.language}
   ],
   bootstrap: [AppComponent]
 })

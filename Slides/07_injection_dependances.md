@@ -193,6 +193,24 @@ Notes :
 
 
 
+## Service providedIn
+
+- Depuis angular 6, il n'est plus nécessaire de déclarer dans un Module un service si on ajoute l'option `providedIn: 'root'` dans l'annotation `@Injectable`:
+
+```typescript
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+
+  constructor() { }
+}
+```
+
+- Si l'on peut ajouter le service dans un autre module, il suffit de donner le module voulu dans l'option `providedIn: MyModule`
+
+
+
 ## Hiérarchie d'injecteurs
 
 - Chaque injecteur contient un certain nombre de providers
@@ -225,7 +243,10 @@ Notes :
 - Ajouter les `providers` du module de test de `TestBed`
 - Ne pas hésiter à surcharger "**mocker**" des services
 - Mécanisme puissant qui permet d'isoler l'élément que l'on veut tester
-- Une fonction utilitaire disponible :
+- Deux fonctions utilitaires disponibles :
+  - `TestBed.get(ClassName)`
+
+    Récupère l'instance du service donné en paramètre
   - `async(fn: Function)`
 
     retarde automatiquement le test par rapport aux actions asynchrones
@@ -253,8 +274,8 @@ describe('UserService', () => {
     });
   });
 
-  it('should return 1 user', async(() => {
-    const service = TestBed.get(UserService)
+  it('should return 1 user', async(()) => {
+    const service = TestBed.get(UserService);
     service.getUsers().then(users => {
       expect(users.length).toBe(1);
     });
