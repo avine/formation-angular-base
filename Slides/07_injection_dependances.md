@@ -117,8 +117,9 @@ import { Logger } from './logger-service';
 export class UserService {
     constructor(private logger: Logger) { }
 
-    getUsers(): void {
+    getUsers(): Promise<User> {
       this.logger.log('getUsers called!');
+      ...
     }
 }
 ```
@@ -263,24 +264,22 @@ Notes :
 import {TestBed, async} from '@angular/core/testing';
 import {UserService} from './user.service';
 
-class LoggerServiceMock {}
-
 describe('UserService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         UserService,
-        { provide: LoggerService, useClass: LoggerServiceMock }
+        { provide: LoggerService, useValue: { log: jasmine.createSpy() } }
       ]
     });
   });
 
-  it('should return 1 user', async(()) => {
+  it('should return 1 user', async(() => {
     const service = TestBed.get(UserService);
     service.getUsers().then(users => {
       expect(users.length).toBe(1);
     });
-  })));
+  }));
 });
 ```
 

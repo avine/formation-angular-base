@@ -58,7 +58,7 @@ Notes :
 import { Component } from '@angular/core'
 
 @Component({
-    selector: 'app',
+    selector: 'my-app',
     template: `<p>Hello</p>`
 })
 export class AppComponent { ... }
@@ -278,7 +278,7 @@ resolve: {
 module: {
   loaders: [{
       test: /\.ts$/,
-      loaders: ['ts-loader']
+      loaders: ['ts']
   }]
 },
 output: {

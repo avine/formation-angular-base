@@ -161,13 +161,11 @@ Notes :
 ## Angular - Points Négatifs
 
 - Nouvelle phase d'apprentissage du framework si habitué à AngularJS
-- Écosystème encore jeune
 - Applications AngularJS incompatibles avec cette nouvelle version
 - ngUpgrade permet de réutiliser du code AngularJS mais pas de migrer
 - De nouveaux concepts à apprendre :
   - `Zone`
   - `Observable`
-  - `Webpack`
   - ...
 
 Notes :
@@ -220,7 +218,7 @@ import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 
 @Component({
-    selector: 'app',
+    selector: 'my-app',
     template: '{{value | uppercase}}'
 })
 export class MyComponent{
