@@ -274,7 +274,7 @@ describe('UserService', () => {
     });
   });
 
-  it('should return 1 user', async(()) => {
+  it('should return 1 user', async(() => {
     const service = TestBed.get(UserService);
     service.getUsers().then(users => {
       expect(users.length).toBe(1);
