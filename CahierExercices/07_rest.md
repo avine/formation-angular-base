@@ -18,6 +18,8 @@ Cette API propose plusieurs points d'entrée :
 - `GET` sur `/basket`  retournera le panier de l'utilisateur
 - `POST` sur `/basket` pour ajouter un nouveau produit au panier de l'utilisateur
 
+- Il est nécessaire d'importer le module `HttpClientModule` dans le module `AppModule`
+
 - Nous allons tout d'abord modifier le service `ProductService`. Dans la méthode `getProducts`, nous allons envoyer une requête `HTTP` vers l'API correspondante.
 
 - A la reception de la requête, utiliser l'opérateur `map` pour construire des object Products.
