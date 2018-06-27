@@ -48,7 +48,7 @@ describe('ProductComponent', () => {
     expect(Array.prototype.includes.call(thumbnail.classList, 'last')).toBe(false);
   });
 
-  it('should not add "last" class if stock > 1', () => {
+  it('should add "last" class if stock == 1', () => {
     component.data.stock = 1;
     fixture.detectChanges();
     const thumbnail = fixture.nativeElement.querySelector('.thumbnail');

@@ -54,7 +54,7 @@ import { UserService } from './user.service'
 
 @Component({ ... })
 export class AppComponent {
-  constructor(userService: UserService){
+  constructor(private userService: UserService){
     console.log(userService.getUser());
   }
 }
@@ -92,7 +92,7 @@ import { UserService } from './user.service'
   providers: [ UserService ]
 })
 export class AppComponent {
-  constructor(userService: UserService) {
+  constructor(private userService: UserService) {
     console.log(userService.getUser());
   }
 }
@@ -185,7 +185,7 @@ const env: string = 'dev';
 export class AppModule { }
 
 class AppComponent {
-  constructor( @Inject('apiUrl') api: string ) { ... }
+  constructor( @Inject('apiUrl') private api: string ) { ... }
 }
 ```
 
