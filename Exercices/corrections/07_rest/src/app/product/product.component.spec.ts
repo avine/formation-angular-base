@@ -63,7 +63,7 @@ describe('ProductComponent', () => {
     }
   );
 
-  it('should not add "last" class if stock > 1',
+  it('should add "last" class if stock == 1',
     () => {
       spyOn(productService, 'isTheLast').and.returnValue(true);
       fixture.detectChanges();

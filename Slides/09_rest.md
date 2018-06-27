@@ -44,7 +44,7 @@ Notes :
 - Ils représentent un flux de données, on parle souvent de **stream**
 - Permet le traitement de tâches asynchrones similaires à des tableaux
 - Remplace l'utilisation des promesses qu'il y avait dans *AngularJS*
-- Apporte des avantages par rapport aux promessses
+- Apporte des avantages par rapport aux promesses
   - Permet d'avoir des traitements asynchrones retournant plusieurs données
   - Un Observable peut être *cancelable*
   - Propose de nombreux outils pour traiter les données
@@ -331,8 +331,8 @@ Notes :
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Project, Person } from './model/';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/mergeMap';
+import { Observable } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app',
@@ -344,7 +344,9 @@ export class AppComponent {
   projects$: Observable<Project[]>
   constructor(http: HttpClient) {
     this.projects$ = http.get<Person[]>('person.json')
-      .mergeMap((person: Person): Observable<Project[]> => getProjects(person))
+      .pipe(
+        mergeMap((person: Person): Observable<Project[]> => getProjects(person))
+      )
   }
 }
 ```
@@ -436,7 +438,7 @@ import { TestBed, async } from '@angular/core/testing';
 
 /* ... */
 
-it('return return 1 user', async(
+it('should return 1 user', async(
   () => {
     const userService = TestBed.get(UserService);
     const http = TestBed.get(HttpTestingController);

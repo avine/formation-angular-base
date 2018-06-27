@@ -12,6 +12,7 @@ Dans un premier temps, nous allons utiliser les `pipes` disponibles dans le fram
 
 - Pour spécifier la locale du projet, il faut ajouter dans `app.module.ts` les lignes suivantes :
 ```typescript
+import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 

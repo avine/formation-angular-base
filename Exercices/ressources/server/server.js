@@ -8,8 +8,9 @@ var server = http.createServer(app);
 
 var conf = require('./server.json');
 
-var products = require(conf.products);
+var products = loadProduct();
 var basket = [];
+var orderNumber = 0;
 
 var sessions = {};
 
@@ -22,6 +23,10 @@ app.use(cors);
 app.get(context + '/products', function (req, res) {
   res.send(products);
 });
+
+function loadProduct() {
+  return require(conf.products).map(product => ({...product}));
+}
 
 var createHandler = function (req, res) {
   basket.push(req.body);
@@ -40,8 +45,10 @@ var createHandler = function (req, res) {
 app.post(context + '/basket', createHandler);
 
 app.post(context + '/basket/confirm', (req, res) => {
+  console.log(`Commande n°${++orderNumber} : ${basket.reduce((total, item)=>total+item.price, 0)}€ ${req.body.name} ${req.body.address} ${req.body.creditCard}`);
   basket = [];
-  res.send(200, {});
+  products = loadProduct();
+  res.send(200, {orderNumber: orderNumber});
 });
 
 app.get(context + '/basket', function (req, res) {
