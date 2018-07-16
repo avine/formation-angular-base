@@ -207,7 +207,7 @@ Notes :
 ```typescript
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Person } from './model/person';
 
 @Injectable()
@@ -273,7 +273,7 @@ Notes :
 ```typescript
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Contact } from './model/contact';
 
 Injectable()
@@ -366,7 +366,7 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class HeaderInterceptor implements HttpInterceptor {
