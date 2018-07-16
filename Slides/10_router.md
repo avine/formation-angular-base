@@ -68,7 +68,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent, ContactsComponent, ContactComponent } from './pages';
 
-export const routes: Routes = [
+const routes: Routes = [
   { path: '', component: HomeComponent }, // path: '/'
   { path: 'contacts',  component: ContactsComponent },
   { path: 'contact/:id', component: ContactComponent }
@@ -147,7 +147,7 @@ Notes :
 import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent, EditComponent, ViewComponent } from './pages';
 
-export const routes: Routes = [
+const routes: Routes = [
   {
     path: 'contact/:id',  component: ContactComponent, children: [
       {path: 'edit', component: EditCmp},
@@ -297,7 +297,7 @@ export class AuthGuard implements CanActivate {
   }
 }
 
-export const routes: Routes = [
+const routes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [ AuthGuard ] }
 ];
 ```
