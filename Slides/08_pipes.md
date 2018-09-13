@@ -79,7 +79,7 @@ import { PipeTransform, Pipe } from '@angular/core';
 
 @Pipe({ name: 'mylowercase' })
 export class MyLowerCasePipe implements PipeTransform {
-  transform(value: string, param1:string, param2:string): string {
+  transform(value: any, param1:string, param2:string): string {
     if (isBlank(value)) {
       return value;
     }

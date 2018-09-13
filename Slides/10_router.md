@@ -184,7 +184,7 @@ router.navigate(['contacts']); //example.com#/contacts
 
 - `PathLocationStrategy` est la solution recommandée aujourd'hui
   - Si votre application n'est pas déployé à la racine de votre domaine
-  - Nécessite d'ajouter un paramétrage : `APP_BASE_HREF`
+  - Nécessite d'ajouter un paramétrage : `APP_BASE_HREF` ou alors la balise `<base href="/">` dans votre `index.html`
 
 Notes :
 
