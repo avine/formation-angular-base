@@ -120,10 +120,10 @@ function getDataFromAnotherRequest(arg: SomeClass): Observable<SomeOtherClass> {
 
 getDataFromNetwork()
   .pipe(
-    filter((rep1) => rep1 !== null)
+    filter((rep1) => rep1 !== null),
     mergeMap((rep1) => {
       return getDataFromAnotherRequest(rep1);
-    })
+    }),
     map((rep2) => `${rep2} transformed`)
   )
   .subscribe((value) => console.log(`next => ${value}`));
@@ -345,7 +345,9 @@ export class AppComponent {
   constructor(http: HttpClient) {
     this.projects$ = http.get<Person[]>('person.json')
       .pipe(
-        mergeMap((person: Person): Observable<Project[]> => getProjects(person))
+        mergeMap((persons: Person[]): Observable<Project[]> => {
+          return getProjects(persons)
+        })
       )
   }
 }
