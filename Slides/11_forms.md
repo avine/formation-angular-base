@@ -129,7 +129,7 @@ Notes :
 ## Validation
 
 - Par défaut, les navigateurs effectuent les validations nativement
-- *Angular* reprend certaines syntaxe mais va bien plus loin
+- *Angular* reprend certaines syntaxes mais va bien plus loin
 - Les mécanismes natifs vont donc rentrer en conflit avec *Angular*
 - **Solution** : Désactiver la validation native et l'effectuer par Angular
 - Attribut `novalidate` sur le formulaire
@@ -228,7 +228,7 @@ Notes :
   - Support des validateurs standards HTML5 : `required`, `min`, `max`, `minlength`, `maxlength` et `pattern`
   - Possibilité d'ajouter des validateurs personnalisés
 
-- La propriété `valid` correspond à l'aggregation de l'état des validateurs
+- La propriété `valid` correspond à l'agrégation de l'état des validateurs
 - Possibilité d'avoir le détail avec la propriété `errors`
 
 ```html
@@ -243,7 +243,7 @@ Notes :
 
 ## Création d'un validateur
 
-- Pour créer validateur personnalisé, implémenter la classe `Validator`
+- Pour créer un validateur personnalisé, implémenter la classe `Validator`
 
 ```javascript
 @Directive({

@@ -461,11 +461,11 @@ Notes :
 
 ## Cycle de vie
 
-- Chaque composant a un cycle de vie bien définit
+- Chaque composant a un cycle de vie bien défini
 - https://angular.io/guide/lifecycle-hooks
 - Il est possible d'exécuter du code à chacune de ces étapes
 - La plus utilisée est l'initialisation avec l'interface `OnInit`
-- L'utilisation d'`OnInit` est recommandé plutôt que celle du constructeur
+- L'utilisation d'`OnInit` est recommandée plutôt que celle du constructeur
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
