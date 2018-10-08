@@ -81,7 +81,7 @@ Notes :
 
 - Possibilité d'utiliser la propriété `providers` dans l'annotation `@Component`
 - Même syntaxe que la configuration globale
-- Les services définit dans un `Component` sont injectables dans ce composant et ses fils
+- Les services définis dans un `Component` sont injectables dans ce composant et ses fils
 - Déconseillé au profit de l'utilisation des `NgModule`
 
 ```typescript

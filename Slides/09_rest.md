@@ -74,7 +74,7 @@ Notes :
 
 ## Observables pipe (RXJS 6)
 
-- Depuis rxjs 6, les opérateurs ne sont plus directement disponible dans l'objet Observable, mais en tant que fonction.
+- Depuis rxjs 6, les opérateurs ne sont plus directement disponibles dans l'objet Observable, mais en tant que fonction.
 - Il faut utiliser `pipe`, pour appeler les opérateurs :
 ```typescript
 observable.pipe(
@@ -83,7 +83,7 @@ observable.pipe(
     ...
 )
 ```
-- Attention, certains opérateurs ont été renommé entre la version 5 et 6 de RXJS (c'était des mot clés javascript) :
+- Attention, certains opérateurs ont été renommés entre la version 5 et 6 de RXJS (c'était des mot clés javascript) :
 - `do`, `catch`, `switch`, `finally` deviennent `tap`, `catchError`, `switchAll`, et `finalize`
 
 
@@ -135,7 +135,7 @@ Notes :
 
 ## Création
 
-- Il existe de nombreux initialiseur à partir d'un tableau par exemple
+- Il existe de nombreux initialiseurs à partir d'un tableau par exemple
 - Possibilité également d'en créer un via le constructeur
 
 ```typescript

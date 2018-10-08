@@ -31,7 +31,7 @@ Notes :
 
 - *Angular* fournit par défaut un routeur dans un module dédié
 - Fonctionnement très différent de `ngRoute` d'*AngularJS*
-- Phase de développement mouvementé : 2 refontes majeurs
+- Phase de développement mouvementée : 2 refontes majeures
 - `@angular/router` est maintenant fiable et recommandé
 - Propose de nombreuses fonctionnalités
   - Gestion des routes imbriquées
@@ -92,7 +92,7 @@ Notes :
 - Permet de définir le point d'insertion dans un composant
 - Le composant sera inséré en tant qu'enfant de la directive
 - Possibilité de nommer le point d'insertion via un attribut `name`
-- Nommer les outlets sert lorsqu'on a plusieurs vue pour une même route
+- Nommer les outlets sert lorsqu'on a plusieurs vues pour une même route
 
 ```typescript
 import { Component } from '@angular/core';
@@ -183,7 +183,7 @@ router.navigate(['contacts']); //example.com#/contacts
 ```
 
 - `PathLocationStrategy` est la solution recommandée aujourd'hui
-  - Si votre application n'est pas déployé à la racine de votre domaine
+  - Si votre application n'est pas déployée à la racine de votre domaine
   - Nécessite d'ajouter un paramétrage : `APP_BASE_HREF` ou alors la balise `<base href="/">` dans votre `index.html`
 
 Notes :
@@ -222,7 +222,7 @@ Notes :
 ## Récupération des paramètres d'URL
 
 - Utilisation du service `ActivatedRoute` et `params`
-- L'API est sous forme d'un flux de la valeur des paramètre au cours du temps
+- L'API est sous forme d'un flux de la valeur des paramètres au cours du temps
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -249,7 +249,7 @@ Notes :
 
 ## Récupération des paramètres d'URL
 
-- Si vous êtes sur que le paramètre ne pourra pas changer
+- Si vous êtes sûr que le paramètre ne pourra pas changer
 - La propriété `snapshot` donne les valeurs à un instant T
 
 ```typescript
@@ -309,8 +309,8 @@ Notes :
 ## Lazy Loading
 
 - Permet de diviser la taille du **bundle** JavaScript à charger pour démarrer
-- Chaque section du site est isolé dans un `NgModule` différent
-- Le module est chargé lorsque l'utilisateur visitera une de ses pages
+- Chaque section du site est isolée dans un `NgModule` différent
+- Le module sera chargé lorsque l'utilisateur visitera une de ses pages
 - Création automatique de `chunk` via *Webpack* grâce à *@angular/cli*
 - Configuration du router avec la propriété `loadChildren`
 - Bien séparer les éléments (composants, services) de chaque module
