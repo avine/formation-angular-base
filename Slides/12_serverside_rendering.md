@@ -56,7 +56,7 @@ Notes :
 
 
 
-## Méchanisme
+## Mécanisme
 
 - `AngularJS` fortement lié au DOM
 - `Angular` introduit une séparation du mécanisme de rendu
