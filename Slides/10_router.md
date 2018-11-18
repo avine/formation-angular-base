@@ -282,7 +282,7 @@ Notes :
 ```typescript
 import { Injectable } from '@angular/core';
 import {
-  CanActivate, Router, Routes, ActivatedRouteSnapshot
+  CanActivate, Router, Routes, ActivatedRouteSnapshot, UrlTree
 } from '@angular/router';
 import { AuthService } from './auth.service';
 import { AdminComponent } from './admin.component';
@@ -290,10 +290,9 @@ import { AdminComponent } from './admin.component';
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) { }
-  canActivate(route: ActivatedRouteSnapshot): boolean {
+  canActivate(route: ActivatedRouteSnapshot): boolean | UrlTree {
     if(this.authService.isLoggedIn()) return true;
-    this.router.navigate([ '/login' ]);
-    return false;
+    return this.router.parseUrl( '/login' );
   }
 }
 
