@@ -61,7 +61,8 @@ Notes :
 | 4.0.0   | Mar 2017 | Nouveau moteur de compilation des templates, Modularisation du système d'animations, Intégration du projet Universal, Passage à TypeScript 2.1+ |
 | 5.0.0   | Nov 2017 | Amélioration du build (AOT), HttpClient, TypeScript 2.3             |
 | 6.0.0   | Mai 2018 | Intégration CLI, Angular Element, Nouveau renderer experimental Ivy |
-| 7.0.0   | Oct 2018 | ?                                                                   |
+| 7.0.0   | Oct 2018 | CLI Prompts, Virtual Scroll, Drag and Drop, Angular Element         |
+| 8.0.0   | Mar 2019 | ? (Intégration d'Ivy)                                               |
 
 
 
