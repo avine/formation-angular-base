@@ -309,7 +309,9 @@ module: {
   }]
 },
 plugins: [
-  new webpack.optimize.CommonsChunkPlugin({name: ['app', 'vendor']}),
+  new webpack.optimize.MinChunkSizePlugin({
+    minChunkSize: 10000
+  }),
   new HtmlWebpackPlugin({template: 'src/index.html'})
 ]
 output: {
