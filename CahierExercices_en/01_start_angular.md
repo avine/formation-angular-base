@@ -1,23 +1,23 @@
 ## TP 1: Start an Angular application
 
-In this first TP, we will initiate our first application ** Angular **, which will be reused in the following TPs.
+In this first TP, we will initiate our first application **Angular**, which will be reused in the following TPs.
 
 The initialization of this application will be broken down into several stages:
 
-- Creating an Angular project with `@ angular / cli`
+- Creating an Angular project with `@angular/cli`
 - Implementation of the main page
 - Creating the main component
 - Launch the server to test
 
 ### Creating the project
 
-The application, which we will implement, will be initialized via the `@ angular / cli` tool. This tool will automate:
+The application, which we will implement, will be initialized via the `@angular/cli` tool. This tool will automate:
 
 - creation and configuration of the skeleton of the application
 - dependency management
 
 
-- Download `@ angular / cli` using` NPM`. This module requires a recent version of * NodeJS *
+- Download `@angular/cli` using` NPM`. This module requires a recent version of * NodeJS *
 
 - From your console, create a new project using the command `ng new Application --style = scss`
 
