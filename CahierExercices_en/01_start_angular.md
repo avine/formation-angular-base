@@ -1,43 +1,43 @@
-## TP 1: Start an Angular application
+## Lab 1: Setup an Angular application
 
-In this first TP, we will initiate our first application **Angular**, which will be reused in the following TPs.
+For this first lab, we will setup our first **Angular** application, which will be used in the following labs.
 
-The initialization of this application will be broken down into several stages:
+The process to setup the application is composed of the following steps:
 
-- Creating an Angular project with `@angular/cli`
-- Implementation of the main page
-- Creating the main component
-- Launch the server to test
+- Create a new project with `@angular/cli`
+- Implement the main page
+- Create the main component
+- Run the server to test the application
 
-### Creating the project
+### Create the project
 
-The application, which we will implement, will be initialized via the `@angular/cli` tool. This tool will automate:
+We will use `@angular/cli` to setup an application that provides:
 
-- creation and configuration of the skeleton of the application
-- dependency management
+- Application scaffolding and configuration
+- Dependencies management
 
+Follow the steps: 
+- Download `@angular/cli` with `NPM`. This module needs a recent version of *NodeJS*
 
-- Download `@angular/cli` using` NPM`. This module requires a recent version of * NodeJS *
+- From the console, run `ng new Application` to create a new application
 
-- From your console, create a new project using the command `ng new Application --style = scss`
+- Take a look at the structure:
+	- Dependencies
+	- TypeScript configuration
+	- TypeScript files
 
-- Look at the structure of the application just created
-- dependencies installed
-- TypeScript configuration
-- the different TypeScript files
+- Once done, run the application with `ng serve` command. It compiles the sources first and then starts the server.
 
-- Once this step is complete, you can now launch your application by running the `npm start` command. This command will support the compilation of your sources and the launch of a server.
+### First component
 
-### Editing the application
+Even if we have not studied the main concepts, we will do some changes to take over the application structure.
 
-Even if we have not yet approached the concepts of the framework, we will make small modifications to take in hand the structure of our application.
+- The main component will have the following HTML code:
 
-- The main component must contain the following HTML code:
-
-```Html
-<h1> Welcome to {{title}}! </ h1>
+```html
+<h1>This is my first component</h1>
 ```
 
-- The `{{title}}` variable will be replaced by the contents of the `title` property in the` Application` class. Change the value of this property to include your first name.
+- The string above must be hold by the `title` variable from the `Application` class. To display that variable, use the following syntax: `{{title}}`
 
-- Check that you are getting the latest version of your application in the browser with the title `Welcome to YourName`.
+- Check the application has been updated correctly in the browser.title `Welcome to YourName`.
