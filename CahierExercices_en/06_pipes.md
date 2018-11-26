@@ -1,12 +1,12 @@
-## TP6: The Pipes
+## Lab 6: Pipes
 
-We will now use the `pipes`, in order to format the content of our application.
+We will now use `pipes`, to format the application content.
 
-At first, we will use the `pipes` available in the framework: `uppercase` and `currency`.
+We will start by using `pipes` provided by the framework: `uppercase` and `currency`.
 
-- In the templace of the `product` component, use `pipe` `uppercase` to display the title in uppercase
+- In the `ProductComponent` template, use the `uppercase` pipe to display the the title in uppercase.
 
-- In the `product` component template, use `pipe` `currency` in order to display the price of a product with the currency * euro * and with two digits after the decimal point.
+- In the `ProductComponent` template, use the `currency` pipe to display the price using the *euro* currency and two decimals.
 
 - Also add the `pipe` to the `currency` for displaying the total on the main page `app.component.html`
 
@@ -23,18 +23,20 @@ and in the `providers` section of `@NgModule`:
 {provide: LOCALE_ID, useValue: navigator.language}
 ```
 
-We will now create our own `pipe`, which will allow us to sort a product collection by its `title` property.
+We will now create a custom `pipe`, to sort the products by `title`.
 
-- Create a new `pipe` thanks to `@angular/cli`
+- Create a new `pipe` using `@angular/cli`
 
-- Implement the transformation method, in which we will sort an array via the `sort` of the `Array` prototype
+- Implement the `transform` method, to sort the array using the `sort` method of `Array`.
 
-- Use your `pipe` in the `ngFor` template
+- Use the `pipe` in the `ngFor` template part
 
-- We will now add a parameter to our `pipe`. This parameter will define the property on which sorting is to take place.
+- Add a parameter to the `pipe` to specify on which field to sort the products.
+
+- Bonus: write tests
 
 ### Tests
 
-- Resolve the new dependency injections so that the existing tests work.
+- Resolve dependencies injection issues to pass existing tests.
 
-- Add a `SortPipe` test, pass a product array to the pipe and check that the return value is the sorted array.
+- Add a test in the `SortPipe` pipe, by giving an array of products as input and by checking that the outputted array is sorted.
