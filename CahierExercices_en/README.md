@@ -2,7 +2,7 @@
 
 ## General explanations
 
-To write the notebook of TP, you have 2 solutions:
+To write the notebook of lab, you have 2 solutions:
 
 - write the whole notebook in the file `Cahier.md`.
 - make several Markdown files and list them in the `parts.json` file
