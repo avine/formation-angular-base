@@ -20,7 +20,7 @@
 - [Start an Angular application](#/3)
 - [Tests](#/4)
 - [Template & Components](#/5)
-- [Guidelines](#/6)
+- [Directives](#/6)
 - [Dependency Injection](#/7)
 - [Pipes](#/8)
 - [HTTP Service](#/9)

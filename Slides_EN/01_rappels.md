@@ -358,6 +358,12 @@ Notes:
 
 
 
+# Typescript Hands on
+
+<!-- .slide: class="page-title" -->
+
+
+
 ## NPM
 
 - Node includes a package management system: * npm *
