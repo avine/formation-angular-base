@@ -3,6 +3,7 @@ import { Component, Inject } from '@angular/core';
 import { Product } from './model/product';
 import { ProductService } from './services/product.service';
 import { CustomerService } from './services/customer.service';
+import { TestService } from './services/Test.service';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +16,11 @@ export class AppComponent {
   constructor(
     private productService: ProductService,
     private customerService: CustomerService,
+    private testService : TestService ,
     @Inject('welcomeMsg') public title: string
   ) {
     this.products = productService.getProducts();
+    console.log(testService.getTest());
   }
 
   getTotal(): number {
