@@ -34,7 +34,7 @@ Notes :
 - Reprend certains concepts d'*AngularJS*
 - Première version *beta* annoncée en octobre 2014
 - Version *finale* `2.0.0` officielle sortie en septembre 2016
-- Dernière version majeure `6.0.0` sortie en mai 2018
+- Dernière version majeure `7.0.0` sortie en octobre 2018
 - Programmation orientée *Composant*
 - Framework conçu pour être plus performant et optimisé pour les mobiles
 - http://angular.io/
