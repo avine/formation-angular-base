@@ -24,6 +24,10 @@ app.get(context + '/products', function (req, res) {
   res.send(products);
 });
 
+app.get(context + '/products/:id', function (req, res) {
+  res.send(products.find(product => product.id == req.params.id));
+});
+
 function loadProduct() {
   return require(conf.products).map(product => ({...product}));
 }
