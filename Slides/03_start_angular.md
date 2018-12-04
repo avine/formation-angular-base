@@ -170,7 +170,7 @@ Notes :
 <br/>
 
 - Configuration *bulletproff*  
-  - Réponds à tous les besoin que vous pouvez avoir sur un projet Angular
+  - Réponds à tous les besoins que vous pouvez avoir sur un projet Angular
   - Philosophie : n'utilisez pas le CLI si la configuration proposée ne réponds pas à vos besoin (très rare)
 
 Notes :
