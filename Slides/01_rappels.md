@@ -160,6 +160,12 @@ let c: Music = Music.Jazz;
 let style: string = Music[4]; //Jazz
 ```
 
+- Enum de type String
+
+```typescript
+enum Music { Rock = 'ROCK', Jazz = 'JAZZ', Blues = 'BLUES' };
+```
+
 Notes :
 
 
