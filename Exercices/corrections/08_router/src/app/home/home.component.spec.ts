@@ -9,8 +9,8 @@ import { ProductService } from '../services/product.service';
 import { CustomerService } from '../services/customer.service';
 
 const testProducts = [
-  new Product('', '', '', 0, 0),
-  new Product('', '', '', 0, 0)
+  new Product('', '', '', '', 0, 0),
+  new Product('', '', '', '', 0, 0)
 ];
 const welcomeMsg = 'test';
 
