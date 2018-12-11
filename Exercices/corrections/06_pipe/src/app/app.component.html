@@ -14,14 +14,14 @@
     <div class="col-lg-12">
       <h2>Derniers Produits</h2>
       Triez par :
-      <button (click)="sortBy='title'">Title</button>
-      <button (click)="sortBy='price'">Prix</button>
-      <button (click)="sortBy='stock'">Stock</button>
+      <button (click)="sortKey='title'">Title</button>
+      <button (click)="sortKey='price'">Prix</button>
+      <button (click)="sortKey='stock'">Stock</button>
     </div>
   </div>
 
   <div class="row text-center">
-    <ng-container *ngFor="let product of products | sort:sortBy">
+    <ng-container *ngFor="let product of products | sort:sortKey">
       <app-product *ngIf="isAvailable(product)" [data]="product" (addToBasket)="updatePrice($event)"></app-product>
     </ng-container>
   </div>
