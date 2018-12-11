@@ -23,9 +23,9 @@ export class CustomerService {
     return this.http.get(this.API_URL + 'basket')
       .pipe(
         map((products: any[]) => {
-        return products.map(product => {
-          return new Product(product.title, product.description, product.photo, product.price, product.stock);
-        });
+          return products.map(product => {
+            return new Product(product.id, product.title, product.description, product.photo, product.price, product.stock);
+          });
         }),
         tap(products => this.products = products)
       );
