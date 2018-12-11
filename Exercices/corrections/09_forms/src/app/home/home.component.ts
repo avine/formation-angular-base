@@ -11,6 +11,7 @@ import { CustomerService } from '../services/customer.service';
 })
 export class HomeComponent implements OnInit {
   products: Product[];
+  sortKey: keyof Product = "title";
 
   constructor(
     private productService: ProductService,

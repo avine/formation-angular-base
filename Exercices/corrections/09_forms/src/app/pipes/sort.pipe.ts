@@ -7,7 +7,7 @@ import { Product } from '../model/product';
 })
 export class SortPipe implements PipeTransform {
 
-  transform(value: Product[] = [], column: string): Product[] {
+  transform(value: Product[] = [], column: keyof Product): Product[] {
     return value.sort((p1, p2) => {
       if (p1[column] > p2[column]) {
         return 1;
