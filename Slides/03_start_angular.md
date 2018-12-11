@@ -29,7 +29,7 @@ Notes :
 
 ## Commencer un nouveau projet
 
-- Gestion des dépendances via *NPM*
+- Gestion des dépendances via *npm*
   - les différents modules *Angular* : `@angular/common`, `@angular/core`...
   - Webpack : gestion des modules
   - RxJS : programmation réactive, dépendance forte d'Angular
@@ -107,7 +107,7 @@ Notes :
 - Embarque automatiquement les technologies suivantes :
 
   TypeScript, Webpack, Karma, Protractor, Préprocesseurs CSS ...
-- Projet disponible sur *NPM*
+- Projet disponible sur *npm*
 
 ```shell
 npm install -g @angular/cli
@@ -148,7 +148,7 @@ Notes :
 
 - Gestionnaire de modules
 - Supporte les différents systèmes de modules (*CommonJS*, *AMD*, *ES2015*, ...)
-- Disponible sur *NPM* : `npm install -g webpack`
+- Disponible sur *npm* : `npm install -g webpack`
 - Construit un graphe de toutes les dépendances de votre application
 - Configuration via un fichier de configuration *JavaScript* (`webpack.config.js`)
   - loaders : *ES2015*, *TypeScript*, *CSS*, ...

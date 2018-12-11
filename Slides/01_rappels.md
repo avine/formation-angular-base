@@ -364,7 +364,7 @@ Notes :
 
 
 
-## NPM
+## npm
 
 - Node inclut un système de gestion des paquets : *npm*
 - Il existe pratiquement depuis la création de Node.js
