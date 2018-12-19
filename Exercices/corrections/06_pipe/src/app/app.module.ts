@@ -20,7 +20,8 @@ registerLocaleData(localeFr);
     BrowserModule
   ],
   providers: [
-    {provide: 'welcomeMsg', useValue: 'Bienvenue sur Zenika Ecommerce'},
+    {provide: 'welcomeMsg', useValue: '
+Welcome to Zenika Ecommerces'},
     {provide: LOCALE_ID, useValue: navigator.language}
   ],
   bootstrap: [AppComponent]
