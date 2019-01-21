@@ -16,14 +16,14 @@ describe('SortPipe', () => {
   it('should sort objects by property in argument', () => {
     const pipe = new SortPipe();
     const data = [
-      new Product('zyxw', '', '', 0, 0),
-      new Product('1234', '', '', 0, 0),
-      new Product('abcd', '', '', 0, 0)
+      new Product('', 'zyxw', '', '', 0, 0),
+      new Product('', '1234', '', '', 0, 0),
+      new Product('', 'abcd', '', '', 0, 0)
     ];
     const expected = [
-      new Product('1234', '', '', 0, 0),
-      new Product('abcd', '', '', 0, 0),
-      new Product('zyxw', '', '', 0, 0)
+      new Product('', '1234', '', '', 0, 0),
+      new Product('', 'abcd', '', '', 0, 0),
+      new Product('', 'zyxw', '', '', 0, 0)
     ];
     expect(pipe.transform(data, 'title')).toEqual(expected);
   });

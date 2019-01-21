@@ -12,6 +12,11 @@ Nous allons intégrer dans notre application le routeur proposé par défaut dan
 
 - Ajoutez la directive `routerLink` dans le composant `menu` afin de rediriger l'utilisateur vers les deux composants que nous venons de créer.
 
+### Bonus
+
+- Créer un Guard pour interdire l'accès à la page du panier si le panier est vide
+- Créer une page de détail d'un article (/product/:id), le serveur permet de récupérer un produit par son id (http://localhost:8080/rest/products/:id) (il faut également ajouter la propriété id à votre classe Product)
+
 ### Tests
 
 Le routing en lui même est une fonctionnalité du framework Angular. Ce n'est pas le rôle des tests de notre application que de vérifier que le router d'Angular fonctionne correctement. Nous allons donc simplement adapter nos tests pour qu'ils fonctionnent à nouveau.

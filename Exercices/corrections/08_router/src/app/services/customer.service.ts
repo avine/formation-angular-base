@@ -23,7 +23,7 @@ export class CustomerService {
       .pipe(
         map((products: any[]) => {
           return products.map(product => {
-            return new Product(product.title, product.description, product.photo, product.price, product.stock);
+            return new Product(product.id, product.title, product.description, product.photo, product.price, product.stock);
           });
         }),
         tap(products => this.products = products)
