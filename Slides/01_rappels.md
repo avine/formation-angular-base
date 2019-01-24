@@ -364,9 +364,9 @@ Notes :
 
 
 
-## NPM
+## npm
 
-- Node inclut un système de gestion des paquets : *npm*
+- Node.js inclut un système de gestion des paquets : *npm*
 - Il existe pratiquement depuis la création de Node.js
 - C'est un canal important pour la diffusion des modules
 
