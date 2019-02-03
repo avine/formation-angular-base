@@ -101,14 +101,15 @@ Notes :
   selector: 'contact-form',
   template: `
     <form (submit)="saveForm()">
-      <input type="text" [(ngModel)]="contact.name" name="name">
+      <label>
+        Name: 
+        <input type="text" [(ngModel)]="contact.name" name="name">
+      </label>
       <button type="submit">Save</button>
-    </form>
-  `
+    </form>`
 })
 export class ContactFormComponent implements OnInit {
-  contact: Contact;
-
+  contact: Contact = {};
   constructor(private contactService: ContactService) { }
 
   ngOnInit(): void {
@@ -202,19 +203,20 @@ Notes :
   selector: 'contact-form',
   template: `
     <form (submit)="saveForm()">
-      <input name="name" type="text" [(ngModel)]="contact.name"
-            #nameInput="ngModel" required>
+      <label>
+        Name: 
+        <input name="name" type="text" [(ngModel)]="contact.name"
+              #nameInput="ngModel" required 
+              [attr.aria-invalid]="!nameInput.valid">
+      </label>
       <span [hidden]="nameInput.valid">Error</span>
       <button type="submit">Save</button>
     </form>
   `
 })
 export class ContactFormComponent implements OnInit {
-  contact: Contact;
+  contact: Contact = {};
   nameInput: FormControl;
-
-  constructor(private contactService: ContactService) { }
-  /* ... */
 }
 ```
 
@@ -232,8 +234,12 @@ Notes :
 - Possibilité d'avoir le détail avec la propriété `errors`
 
 ```html
-<input name="name" type="text" [(ngModel)]="contact.name"
-      #nameInput="ngModel" required>
+<label>
+  Name:
+  <input name="name" type="text" [(ngModel)]="contact.name"
+      #nameInput="ngModel" required
+      [attr.aria-invalid]="!nameInput.valid">
+</label>
 <span [hidden]="!nameInput.errors?.required">Name is not valid</span>
 ```
 
@@ -283,9 +289,12 @@ Notes :
 
 ```html
 <form #myForm="ngForm" (submit)="onSubmit()">
-  <input name="myName" type="text" [(ngModel)]="contact.name"
-        #nameInput="ngModel" required>
-
+  <label>
+  Name:
+    <input name="myName" type="text" [(ngModel)]="contact.name"
+          #nameInput="ngModel" required
+          [attr.aria-invalid]="!nameInput.valid">
+  </label>
   <span [hidden]="nameInput.valid">Error</span>
 
   <button type="submit" [disabled]="myForm.invalid">
