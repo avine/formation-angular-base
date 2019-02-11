@@ -106,7 +106,8 @@ Notes :
         <input type="text" [(ngModel)]="contact.name" name="name">
       </label>
       <button type="submit">Save</button>
-    </form>`
+    </form>
+  `
 })
 export class ContactFormComponent implements OnInit {
   contact: Contact = {};
@@ -115,7 +116,6 @@ export class ContactFormComponent implements OnInit {
   ngOnInit(): void {
     this.contactService.load().subscribe(contact => this.contact = contact);
   }
-
   saveForm(): void {
     this.contactService.save(this.contact);
   }
@@ -205,9 +205,12 @@ Notes :
     <form (submit)="saveForm()">
       <label>
         Name: 
-        <input name="name" type="text" [(ngModel)]="contact.name"
-              #nameInput="ngModel" required 
-              [attr.aria-invalid]="!nameInput.valid">
+        <input name="name" 
+               type="text" 
+               required
+               [(ngModel)]="contact.name"
+               #nameInput="ngModel" 
+               [attr.aria-invalid]="!nameInput.valid">
       </label>
       <span [hidden]="nameInput.valid">Error</span>
       <button type="submit">Save</button>
@@ -236,9 +239,12 @@ Notes :
 ```html
 <label>
   Name:
-  <input name="name" type="text" [(ngModel)]="contact.name"
-      #nameInput="ngModel" required
-      [attr.aria-invalid]="!nameInput.valid">
+  <input name="name" 
+         type="text" 
+         required
+         [(ngModel)]="contact.name"
+         #nameInput="ngModel" 
+         [attr.aria-invalid]="!nameInput.valid">
 </label>
 <span [hidden]="!nameInput.errors?.required">Name is not valid</span>
 ```
