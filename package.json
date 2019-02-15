@@ -1,12 +1,12 @@
 {
-  "name": "formation-angular2",
-  "description": "Formation Angular 2",
+  "name": "formation-angular",
+  "description": "Formation Angular ",
   "version": "0.0.1",
   "author": "Zenika",
   "homepage": "https://www.zenika.com/Formation/notre-catalogue-formation.html",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Zenika/formation-angular2"
+    "url": "https://github.com/Zenika/formation-angular"
   },
   "private": true,
   "dependencies": {
@@ -16,7 +16,7 @@
   },
   "config": {
     "deploy": {
-      "name": "zen-formation-angular2"
+      "name": "zen-formation-angular"
     }
   },
   "scripts": {
