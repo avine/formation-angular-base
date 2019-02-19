@@ -131,7 +131,7 @@ Notes :
 ```typescript
 @Component({
   selector: 'product',
-  template: `<p>{{ add(myProp, 2) }}</p>`
+  template: `<p>{{ user?.firstName }}</p>`
 })
 export class ProductComponent {
   myProp = 1;
