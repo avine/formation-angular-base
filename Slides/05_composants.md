@@ -258,6 +258,9 @@ Notes :
 <button on-click="handler()"></button> <!-- alternative sans () -->
 <button data-on-click="handler()"></button> <!-- html5 strict -->
 
+<!-- pseudo events -->
+<input  (keyup.enter)="onEnter()">
+
 <!-- évènement d'un composant -->
 <hero-detail (deleted)="onHeroDeleted()"></hero-detail>
 ```
