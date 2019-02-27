@@ -4,6 +4,8 @@
 
 Notes :
 
+
+
 ## Sommaire
 
 <!-- .slide: class="toc" -->
@@ -23,6 +25,8 @@ Notes :
 
 Notes :
 
+
+
 ## Composants
 
 - Les composants sont les éléments de base d'Angular
@@ -33,6 +37,8 @@ Notes :
   - `templateUrl` : Url d'un fichier HTML (relatif au composant)
 
 Notes :
+
+
 
 ## Composants
 
@@ -56,7 +62,12 @@ Notes :
 export class AppComponent {}
 ```
 
-- `styleUrls`
+
+
+## Composants
+
+- Les styles peuvent être configurés via deux propriétés :
+  - `styleUrls`
 
 ```typescript
 @Component({
@@ -70,6 +81,8 @@ export class AppComponent {}
 ```
 
 Notes :
+
+
 
 ## Composants
 
@@ -102,6 +115,8 @@ export class ProductComponent {}
 
 Notes :
 
+
+
 ## Templates
 
 - Les templates d'Angular sont compilés avant d'être exécutés
@@ -112,6 +127,8 @@ Notes :
 - Fonctionnement très différent d'AngularJS
   - AngularJS ne compilait pas les templates
   - Les templates d'AngularJS étaient du pur Web transmis au navigateur
+
+
 
 ## Interpolation
 
@@ -137,6 +154,8 @@ export class ProductComponent {
 
 Notes :
 
+
+
 ## Propriétés
 
 - Syntaxe générique pour définir la valeur d'une propriété d'un élément _HTML_
@@ -153,7 +172,6 @@ Notes :
 <!-- html5 strict -->
 <hero-detail [hero]="currentHero"></hero-detail>
 <!-- propriété d'un composant -->
-
 <div [class.special]="isSpecial">Special</div>
 <!-- cas particuliers -->
 <button [style.color]="isSpecial ? 'red' : 'green'"></button>
@@ -164,6 +182,8 @@ Notes :
 Notes :
 Indiquer qu'il n'y a pas de différences entre l'utilisation des propriétés et l'interpolation
 Angular transformera la syntaxe d'interpolation en binding de propriétés
+
+
 
 ## Propriétés
 
@@ -183,6 +203,8 @@ Can't bind to 'colspan' since it isn't a known native property-->
 ```
 
 Notes :
+
+
 
 ## Input
 
@@ -208,6 +230,8 @@ export class ProductComponent {
 ```
 
 Notes :
+
+
 
 ## Input
 
@@ -236,6 +260,8 @@ export class ProductComponent {
 
 Notes :
 
+
+
 ## Évènements
 
 - Syntaxe générique pour écouter un évènement d'un élément _HTML_
@@ -261,6 +287,8 @@ Notes :
 
 Notes :
 
+
+
 ## Évènements
 
 - _Angular_ permet d'accéder à l'évènement via la variable `$event`
@@ -280,6 +308,8 @@ Notes :
 ```
 
 Notes :
+
+
 
 ## Output
 
@@ -311,6 +341,8 @@ export class ProductComponent {
 
 Notes :
 
+
+
 ## Output
 
 - Possibilité de surcharger le nom de l'évènement
@@ -336,6 +368,8 @@ export class ProductComponent {
 - Il refusera un évènement qui n'existe pas ou non annoté `@Output()`
 
 Notes :
+
+
 
 ## Output
 
@@ -369,6 +403,8 @@ export class MainComponent {
 
 Notes :
 
+
+
 ## Déclaration
 
 - Utilisation des _NgModule_ définis en détail plus loin dans la formation
@@ -389,6 +425,8 @@ export class AppModule {}
 ```
 
 Notes :
+
+
 
 ## Projection
 
@@ -417,6 +455,8 @@ export class PostComponent {}
 
 Notes :
 
+
+
 ## Projection
 
 - Possibilité d'avoir plusieurs points d'insertion avec la propriété `select`
@@ -444,6 +484,8 @@ export class PostComponent {}
 
 Notes :
 
+
+
 ## Cycle de vie
 
 - Chaque composant a un cycle de vie bien défini
@@ -468,6 +510,10 @@ export class UserComponent implements OnInit {
   getProducts(id){ ... }
 }
 ```
+
+Notes :
+
+
 
 ## Tests
 
@@ -496,6 +542,8 @@ TestBed.configureTestingModule({
 
 Notes :
 
+
+
 ## Tests
 
 - Le module créé permet de créer un composant
@@ -523,6 +571,8 @@ class ComponentFixture {
 ```
 
 Notes :
+
+
 
 ## Tests
 
@@ -555,6 +605,12 @@ describe("TitleComponent", () => {
 
 Notes :
 
+
+
 <!-- .slide: class="page-questions" -->
 
+
+
 <!-- .slide: class="page-tp3" -->
+
+
