@@ -139,10 +139,11 @@ Notes :
 - Possibilité également d'en créer un via le constructeur
 
 ```typescript
+import { Component, OnDestroy } from "@angular/core";
 import { Observable, Subscriber } from "rxjs";
 
 @Component({ ... })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   private subscriber: Subscriber;
 
   constructor() {
@@ -156,7 +157,7 @@ export class AppComponent {
     this.subscriber = source.subscribe(value => console.log(value));
   }
 
-  reset() { this.subscriber.unsubscribe(); }
+  ngOnDestroy() { this.subscriber.unsubscribe(); }
 }
 ```
 
