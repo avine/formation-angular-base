@@ -76,7 +76,10 @@ Notes :
 
 - Depuis rxjs 6, les opérateurs ne sont plus directement disponibles dans l'objet Observable, mais en tant que fonction.
 - Il faut utiliser `pipe`, pour appeler les opérateurs :
+
 ```typescript
+import { map, filter } from 'rxjs/operators';
+
 observable.pipe(
     map(fn),
     filter(fn),
