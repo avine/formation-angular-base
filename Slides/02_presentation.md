@@ -216,7 +216,7 @@ Notes :
 
 ```typescript
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'my-app',
@@ -224,7 +224,7 @@ import { Http } from '@angular/http';
 })
 export class MyComponent{
   value:string;
-  constructor(http:Http){
+  constructor(http: HttpClient){
   }
 }
 ```
