@@ -72,9 +72,19 @@ Notes :
 
 
 
-## Observables pipe (RXJS 6)
+## Marbles diagrams
 
-- Depuis rxjs 6, les opérateurs ne sont plus directement disponibles dans l'objet Observable, mais en tant que fonction.
+![filter](ressources/marble-filter.png "filter")
+
+![map](ressources/marble-map.png "map")
+
+Notes :
+
+
+
+## Observables pipe (RxJS 6)
+
+- Depuis RxJS 6, les opérateurs ne sont plus directement disponibles dans l'objet Observable, mais en tant que fonction.
 - Il faut utiliser `pipe`, pour appeler les opérateurs :
 ```typescript
 observable.pipe(
@@ -173,7 +183,7 @@ Notes :
   - Requêtes HTTP
   - Intéraction avec un formulaire
   - Affichage des vues par le *router*
-- *ngrx* est un projet qui propose d'étendre l'utilisation d'Rx avec Angular
+- *ngrx* est un projet qui propose d'étendre l'utilisation de RxJS avec Angular
   - *@ngrx/store*, *@ngrx/devtools*, *@ngrx/router*, ...
 
 Notes :
