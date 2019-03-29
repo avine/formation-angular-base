@@ -4,16 +4,16 @@
 
   <header class="jumbotron hero-spacer">
     <h1>{{title}}</h1>
-    <p>Votre panier s'élève à {{getTotal() | currency:'EUR'}}</p>
-    <p><a class="btn btn-primary btn-large">Voir mon panier</a></p>
+    <p>Your basket amounts to {{getTotal() | currency:'EUR'}}</p>
+    <p><a class="btn btn-primary btn-large">See my basket</a></p>
   </header>
 
   <hr>
 
   <div class="row">
     <div class="col-lg-12">
-      <h2>Derniers Produits</h2>
-      Triez par :
+      <h2>Latest Products</h2>
+      Sort by :
       <button (click)="sortKey='title'">Title</button>
       <button (click)="sortKey='price'">Prix</button>
       <button (click)="sortKey='stock'">Stock</button>

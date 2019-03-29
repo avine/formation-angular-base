@@ -18,6 +18,7 @@ export class AppComponent {
   constructor() {}
 
   updatePrice(product: Product) {
+    alert('1');
     this.total += product.price;
   }
 }

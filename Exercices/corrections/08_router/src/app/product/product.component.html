@@ -5,7 +5,7 @@
       <h3><a [routerLink]="['/product', data.id]">{{data.title | uppercase }} - {{data.price | currency:'EUR'}}</a></h3>
       <p>{{data.description}}</p>
       <p>
-        <button class="btn btn-primary" (click)="addToBasketClick()">Ajoutez au panier</button>
+        <button class="btn btn-primary" (click)="addToBasketClick()">Add to Cart</button>
       </p>
     </div>
   </div>
