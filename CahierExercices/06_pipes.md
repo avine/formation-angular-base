@@ -33,6 +33,10 @@ Nous allons à présent créer notre propre `pipe`, qui va nous permettre de tri
 
 - Nous allons à présent ajouter un paramètre à notre `pipe`. Ce paramètre permettra de définir la propriété sur laquelle le tri doit s'effectuer.
 
+### Bonus
+
+- Ajouter trois boutons pour permettre de modifier le tri à la volée par titre, prix ou stock
+
 ### Tests
 
 - Résoudre les nouvelles injections de dépendances afin que les tests existants fonctionnent.

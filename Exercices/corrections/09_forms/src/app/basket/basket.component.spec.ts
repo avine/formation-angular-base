@@ -8,8 +8,8 @@ import { BasketComponent } from './basket.component';
 import { CustomerService } from '../services/customer.service';
 
 const testProducts = [
-  new Product('test1', '', '', 0, 42),
-  new Product('test2', '', '', 0, 666)
+  new Product('', 'test1', '', '', 0, 42),
+  new Product('', 'test2', '', '', 0, 666)
 ];
 
 class CustomerServiceMock {

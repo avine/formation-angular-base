@@ -12,5 +12,5 @@
 
 Installer les technos demandées : 
 
-* NodeJS / NPM
+* NodeJS / npm
 * GIT

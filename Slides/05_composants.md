@@ -31,7 +31,7 @@ Notes :
 
 - Les composants sont les éléments de base d'Angular
 - Définis à partir d'une classe TypeScript avec l'annotation `@Component`
-- Seront activés par le sélecteur *CSS* de la propriété `selector`
+- Seront activés par le sélecteur _CSS_ de la propriété `selector`
 - Un template est configuré de deux façons :
   - `template` : String literal (penser à la string multiline `` ` ``)
   - `templateUrl` : Url d'un fichier HTML (relatif au composant)
@@ -47,25 +47,37 @@ Notes :
 
 ```typescript
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   template: `
-    <h1>App Works</h1>`,
-  styles: [`
-    h1 { font-weight: normal; }
-  `]
+    <h1>App Works</h1>
+  `,
+  styles: [
+    `
+      h1 {
+        font-weight: normal;
+      }
+    `
+  ]
 })
-export class AppComponent { }
+export class AppComponent {}
 ```
+
+
+
+## Composants
+
+- Les styles peuvent être configurés via deux propriétés :
   - `styleUrls`
 
 ```typescript
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   template: `
-    <h1>App Works</h1>`,
-  styleUrls: ['./app.component.css']
+    <h1>App Works</h1>
+  `,
+  styleUrls: ["./app.component.css"]
 })
-export class AppComponent { }
+export class AppComponent {}
 ```
 
 Notes :
@@ -85,20 +97,20 @@ Notes :
 <!-- attention, <app-product/> ne fonctionne pas -->
 ```
 
-- Le composant *Angular* est implémenté ainsi
+- Le composant _Angular_ est implémenté ainsi
 
 ```typescript
-import { Component } from '@angular/core'
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-product',
+  selector: "app-product",
   template: `
     <article>
       <span>Product name</span>
     </article>
   `
 })
-export class ProductComponent { }
+export class ProductComponent {}
 ```
 
 Notes :
@@ -108,8 +120,8 @@ Notes :
 ## Templates
 
 - Les templates d'Angular sont compilés avant d'être exécutés
-  - Soit à chaud  : *JIT* (Just In Time) par défaut
-  - Soit au build : *AOT* (Ahead Of Time) `--aot` dans Angular CLI
+  - Soit à chaud : _JIT_ (Just In Time) par défaut
+  - Soit au build : _AOT_ (Ahead Of Time) `--aot` dans Angular CLI
 - La compilation permet de détecter des erreurs dans le template
 - Implique également que les templates doivent être syntaxiquement exacts
 - Fonctionnement très différent d'AngularJS
@@ -130,12 +142,13 @@ Notes :
 
 ```typescript
 @Component({
-  selector: 'product',
-  template: `<p>{{ add(myProp, 2) }}</p>`
+  selector: "product",
+  template: `
+    <p>{{ user?.firstName }}</p>
+  `
 })
 export class ProductComponent {
-  myProp = 1;
-  add(value1, value2) { return value1 + value2; }
+  user: User;
 }
 ```
 
@@ -145,19 +158,23 @@ Notes :
 
 ## Propriétés
 
-- Syntaxe générique pour définir la valeur d'une propriété d'un élément *HTML*
-- Différent d'AngularJS, où nous utilisons les attributs *HTML*
+- Syntaxe générique pour définir la valeur d'une propriété d'un élément _HTML_
+- Différent d'AngularJS, où nous utilisons les attributs _HTML_
 - Utilisation de la syntaxe `[property-name]="expression"`
-- Syntaxe identique pour les propriétés des *éléments HTML standards*, les *composants* et les *directives* Angular et même les *Web Components*
+- Syntaxe identique pour les propriétés des _éléments HTML standards_, les _composants_ et les _directives_ Angular et même les _Web Components_
 
 ```html
-<button [disabled]="isUnchanged">Save</button> <!-- propriété HTML -->
-<button bind-disabled="isUnchanged">Save</button> <!-- alternative sans [] -->
-<button data-bind-disabled="isUnchanged">Save</button> <!-- html5 strict -->
-<hero-detail [hero]="currentHero"></hero-detail> <!-- propriété d'un composant -->
-
-<div [class.special]="isSpecial">Special</div> <!-- cas particuliers -->
-<button [style.color]="isSpecial ? 'red' : 'green'">
+<button [disabled]="isUnchanged">Save</button>
+<!-- propriété HTML -->
+<button bind-disabled="isUnchanged">Save</button>
+<!-- alternative sans [] -->
+<button data-bind-disabled="isUnchanged">Save</button>
+<!-- html5 strict -->
+<hero-detail [hero]="currentHero"></hero-detail>
+<!-- propriété d'un composant -->
+<div [class.special]="isSpecial">Special</div>
+<!-- cas particuliers -->
+<button [style.color]="isSpecial ? 'red' : 'green'"></button>
 ```
 
 - Les propriétés sont **bindées**, la valeur sera mise à jour automatiquement si la valeur de l'expression change
@@ -171,7 +188,7 @@ Angular transformera la syntaxe d'interpolation en binding de propriétés
 ## Propriétés
 
 - **Attention à la différence entre attribut et propriété**
-- Il existe des écarts entre les *propriétés du DOM* et les *attributs HTML*
+- Il existe des écarts entre les _propriétés du DOM_ et les _attributs HTML_
 - Angular propose alors un système appelé `Attribute Binding`
 - Cas les plus courants : `aria-*`, `colspan`, `rowspan`, `svg` par exemple
 - Utilisation de la syntaxe `[attr.attribute-name]="expression"`
@@ -196,11 +213,11 @@ Notes :
 - Le nom de la propriété sera celle à utiliser dans le template
 
 ```typescript
-import { Input, Component } from '@angular/core'
-import { Product } from './model/Product'
+import { Input, Component } from "@angular/core";
+import { Product } from "./model/Product";
 
 @Component({
-  selector: 'product-detail',
+  selector: "product-detail",
   template: `
     <article>
       <h1>{{ product.title }}</h1>
@@ -208,7 +225,7 @@ import { Product } from './model/Product'
   `
 })
 export class ProductComponent {
-    @Input() product: Product;
+  @Input() product: Product;
 }
 ```
 
@@ -221,24 +238,24 @@ Notes :
 - Possibilité de surcharger le nom de la propriété avec
 
   `@Input('discount')`
+
 - Les noms de propriétés sont sensible à la casse
 
 ```typescript
-@Component({ selector: 'product-detail', /* ... */ })
+@Component({ selector: "product-detail" /* ... */ })
 export class ProductComponent {
   @Input() product: Product;
-  @Input('discount') percentDiscount: number;
+  @Input("discount") percentDiscount: number;
 }
 ```
 
 - Pour utiliser ce composant
 
 ```html
-<product-detail [product]="myProduct" [discount]="10">
-</product-detail>
+<product-detail [product]="myProduct" [discount]="10"> </product-detail>
 ```
 
-- *Angular* vérifie les propriétés passées à un composant
+- _Angular_ vérifie les propriétés passées à un composant
 - Il refusera une propriété qui n'existe pas ou non annotée `@Input()`
 
 Notes :
@@ -247,16 +264,22 @@ Notes :
 
 ## Évènements
 
-- Syntaxe générique pour écouter un évènement d'un élément *HTML*
-- Différent d'AngularJS, où nous utilisons les attributs *HTML*
+- Syntaxe générique pour écouter un évènement d'un élément _HTML_
+- Différent d'AngularJS, où nous utilisons les attributs _HTML_
 - Utilisation de la syntaxe `(event-name)="expression"`
-- Syntaxe identique pour les évènements des *éléments HTML standards*, des *composants* et des *directives* Angular et même des *Web Components*
+- Syntaxe identique pour les évènements des _éléments HTML standards_, des _composants_ et des _directives_ Angular et même des _Web Components_
 - Les méthodes et propriétés utilisées doivent être définies dans la classe
 
 ```html
-<button (click)="handler()"></button> <!-- évènement HTML -->
-<button on-click="handler()"></button> <!-- alternative sans () -->
-<button data-on-click="handler()"></button> <!-- html5 strict -->
+<button (click)="handler()"></button>
+<!-- évènement HTML -->
+<button on-click="handler()"></button>
+<!-- alternative sans () -->
+<button data-on-click="handler()"></button>
+<!-- html5 strict -->
+
+<!-- pseudo events -->
+<input (keyup.enter)="onEnter()" />
 
 <!-- évènement d'un composant -->
 <hero-detail (deleted)="onHeroDeleted()"></hero-detail>
@@ -268,17 +291,20 @@ Notes :
 
 ## Évènements
 
-- *Angular* permet d'accéder à l'évènement via la variable `$event`
+- _Angular_ permet d'accéder à l'évènement via la variable `$event`
 - Cet objet peut être utilisé dans l'expression
 - Tous les évènements natifs sont propagés vers les éléments parents
 
   Possibilité de stopper la propagation en retournant `false` dans l'expression qui traite l'évènement
-- Les évènements provenant des composants *Angular* ne se propagent jamais
+
+- Les évènements provenant des composants _Angular_ ne se propagent jamais
 - Exemple d'utilisation de `$event` avec la reproduction d'un **double binding**
 
 ```html
-<input [value]="currentHero.firstName"
-       (input)="currentHero.firstName = $event.target.value"/>
+<input
+  [value]="currentHero.firstName"
+  (input)="currentHero.firstName = $event.target.value"
+/>
 ```
 
 Notes :
@@ -292,11 +318,11 @@ Notes :
 - Le nom de la propriété sera celui de l'évènement à utiliser dans le template
 
 ```typescript
-import { Input, Output, Component, EventEmitter } from '@angular/core'
-import { Product } from './model/Product'
+import { Input, Output, Component, EventEmitter } from "@angular/core";
+import { Product } from "./model/Product";
 
 @Component({
-  selector: 'product-detail',
+  selector: "product-detail",
   template: `
     <article>
       <button (click)="clickHandler()">Add</button>
@@ -304,10 +330,12 @@ import { Product } from './model/Product'
   `
 })
 export class ProductComponent {
-    @Input() product: Product;
-    @Output() addToBasket = new EventEmitter<Product>();
+  @Input() product: Product;
+  @Output() addToBasket = new EventEmitter<Product>();
 
-    clickHandler(){ this.addToBasket.emit(this.product); }
+  clickHandler() {
+    this.addToBasket.emit(this.product);
+  }
 }
 ```
 
@@ -320,23 +348,23 @@ Notes :
 - Possibilité de surcharger le nom de l'évènement
 
   `@Output('myOtherName')`
+
 - Les noms des évènements sont sensibles à la casse
 
 ```typescript
-@Component({ selector: 'product-detail', /* ... */ })
+@Component({ selector: "product-detail" /* ... */ })
 export class ProductComponent {
-  @Output('add') addToBasket = new EventEmitter<Product>();
+  @Output("add") addToBasket = new EventEmitter<Product>();
 }
 ```
 
 - Pour utiliser ce composant
 
 ```html
-<product-detail (add)="myHandler()">
-</product-detail>
+<product-detail (add)="myHandler()"> </product-detail>
 ```
 
-- *Angular* vérifie les évènements d'un composant
+- _Angular_ vérifie les évènements d'un composant
 - Il refusera un évènement qui n'existe pas ou non annoté `@Output()`
 
 Notes :
@@ -350,10 +378,12 @@ Notes :
 - Pour émettre un évènement, il faut passer un objet de cette classe
 
 ```typescript
-@Component({ selector: 'hello-component', /* ... */ })
+@Component({ selector: "hello-component" /* ... */ })
 export class HelloComponent {
   @Output() hello = new EventEmitter<string>();
-  constructor() { this.hello.emit('hello!'); }
+  constructor() {
+    this.hello.emit("hello!");
+  }
 }
 ```
 
@@ -361,7 +391,7 @@ export class HelloComponent {
 
 ```typescript
 @Component({
-  selector: 'main',
+  selector: "main",
   template: '<hello-component (hello)="myHandler($event)"></hello-component>'
 })
 export class MainComponent {
@@ -377,23 +407,19 @@ Notes :
 
 ## Déclaration
 
-- Utilisation des *NgModule* définis en détail plus loin dans la formation
+- Utilisation des _NgModule_ définis en détail plus loin dans la formation
 - Pour qu'un composant soit accessible, il faut :
-  - qu'il soit dans un autre *NgModule* listé dans la liste des `imports`
+  - qu'il soit dans un autre _NgModule_ listé dans la liste des `imports`
   - qu'il soit dans la liste des `declarations` de votre module
 
 ```typescript
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { AppComponent } from "./app.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule
-  ]
+  declarations: [AppComponent],
+  imports: [BrowserModule]
 })
 export class AppModule {}
 ```
@@ -406,7 +432,7 @@ Notes :
 
 - Permet de mettre du contenu HTML dans la balise d'un composant Angular
 - Le composant `ng-content` permet de réinserer le contenu dans le template
-- Correspond à la directive `ngTransclude` en *AngularJS*
+- Correspond à la directive `ngTransclude` en _AngularJS_
 
 ```html
 <app-post>
@@ -417,15 +443,16 @@ Notes :
 
 ```typescript
 @Component({
-  selector: 'app-post',
+  selector: "app-post",
   template: `
     <article>
       <ng-content></ng-content>
     </article>
   `
 })
-export class PostComponent { }
+export class PostComponent {}
 ```
+
 Notes :
 
 
@@ -433,7 +460,7 @@ Notes :
 ## Projection
 
 - Possibilité d'avoir plusieurs points d'insertion avec la propriété `select`
-- La valeur doit être le sélecteur *CSS* de la section à utiliser
+- La valeur doit être le sélecteur _CSS_ de la section à utiliser
 
 ```html
 <app-post>
@@ -444,7 +471,7 @@ Notes :
 
 ```typescript
 @Component({
-  selector: 'app-post',
+  selector: "app-post",
   template: `
     <article>
       <header><ng-content select="h2"></ng-content></header>
@@ -452,7 +479,7 @@ Notes :
     </article>
   `
 })
-export class PostComponent { }
+export class PostComponent {}
 ```
 
 Notes :
@@ -484,29 +511,32 @@ export class UserComponent implements OnInit {
 }
 ```
 
+Notes :
+
 
 
 ## Tests
 
-- `TestBed` est l'outil central pour les tests *Angular*
+- `TestBed` est l'outil central pour les tests _Angular_
 - On l'importe depuis le module `@angular/core/testing`
-- Permet de créer un module *Angular* spécifique pour un test
+- Permet de créer un module _Angular_ spécifique pour un test
 
   Utilisation de `TestBed.configureTestingModule({ ... })`
+
 - L'objectif est d'inclure le moins de choses possibles pour isoler le test
 
 ```typescript
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
 TestBed.configureTestingModule({
-    declarations: [ TitleComponent ],
-    imports: [
-      // HttpModule, FormsModule, etc.
-    ],
-    providers: [
-      // TitleService,
-      // { provide: TitleService, useClass: TitleServiceMock })
-    ]
+  declarations: [TitleComponent],
+  imports: [
+    // HttpModule, FormsModule, etc.
+  ],
+  providers: [
+    // TitleService,
+    // { provide: TitleService, useClass: TitleServiceMock })
+  ]
 });
 ```
 
@@ -523,18 +553,18 @@ Notes :
 
 ```typescript
 class TestBed implements Injector {
-  static configureTestingModule(moduleDef: TestModuleMetadata): typeof TestBed
-  createComponent(component: Type<T>) : ComponentFixture<T>
+  static configureTestingModule(moduleDef: TestModuleMetadata): typeof TestBed;
+  createComponent(component: Type<T>): ComponentFixture<T>;
 
   /* ... */
 }
 
 class ComponentFixture {
-  componentInstance : T
-  nativeElement : any
-  debugElement : DebugElement
-  elementRef : ElementRef
-  detectChanges(checkNoChanges?: boolean) : void
+  componentInstance: T;
+  nativeElement: any;
+  debugElement: DebugElement;
+  elementRef: ElementRef;
+  detectChanges(checkNoChanges?: boolean): void;
 
   /* ... */
 }
@@ -550,25 +580,25 @@ Notes :
 - Attention, pas de détection de changements automatiques
 
 ```typescript
-import { TestBed } from '@angular/core/testing';
-import { TitleComponent } from './title.component';
+import { TestBed } from "@angular/core/testing";
+import { TitleComponent } from "./title.component";
 
-describe('TitleComponent', () => {
-  let fixture
+describe("TitleComponent", () => {
+  let fixture;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ TitleComponent ]
+      declarations: [TitleComponent]
     });
     fixture = TestBed.createComponent(TitleComponent);
   });
 
-  it('should have a title', () => {
-    const {componentInstance, nativeElement} = fixture;
+  it("should have a title", () => {
+    const { componentInstance, nativeElement } = fixture;
 
-    componentInstance.title = 'Hello World';
+    componentInstance.title = "Hello World";
     fixture.detectChanges();
-    const h1 = nativeElement.querySelector('h1');
-    expect(h1.textContent).toBe('Hello World');
+    const h1 = nativeElement.querySelector("h1");
+    expect(h1.textContent).toBe("Hello World");
   });
 });
 ```
@@ -582,3 +612,5 @@ Notes :
 
 
 <!-- .slide: class="page-tp3" -->
+
+

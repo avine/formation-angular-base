@@ -31,7 +31,7 @@ Notes :
 <img src="ressources/typescript-logo.png" height="300">
 
 - Langage créé par *Anders Hejlsberg* en 2012
-- Projet open-source maintenu par *Microsoft* (Version actuelle *2.9*)
+- Projet open-source maintenu par *Microsoft* (Version actuelle *3.3*)
 - Influencé par *JavaScript*, *Java* et *C#*
 - Alternatives : CoffeeScript, Dart, Haxe ou Flow
 
@@ -158,6 +158,12 @@ let c: Music = Music.Jazz;
 
 ```typescript
 let style: string = Music[4]; //Jazz
+```
+
+- Enum de type String
+
+```typescript
+enum Music { Rock = 'ROCK', Jazz = 'JAZZ', Blues = 'BLUES' };
 ```
 
 Notes :
@@ -358,9 +364,9 @@ Notes :
 
 
 
-## NPM
+## npm
 
-- Node inclut un système de gestion des paquets : *npm*
+- Node.js inclut un système de gestion des paquets : *npm*
 - Il existe pratiquement depuis la création de Node.js
 - C'est un canal important pour la diffusion des modules
 

@@ -29,7 +29,7 @@ Notes :
 
 ## Commencer un nouveau projet
 
-- Gestion des dépendances via *NPM*
+- Gestion des dépendances via *npm*
   - les différents modules *Angular* : `@angular/common`, `@angular/core`...
   - Webpack : gestion des modules
   - RxJS : programmation réactive, dépendance forte d'Angular
@@ -107,7 +107,7 @@ Notes :
 - Embarque automatiquement les technologies suivantes :
 
   TypeScript, Webpack, Karma, Protractor, Préprocesseurs CSS ...
-- Projet disponible sur *NPM*
+- Projet disponible sur *npm*
 
 ```shell
 npm install -g @angular/cli
@@ -148,7 +148,7 @@ Notes :
 
 - Gestionnaire de modules
 - Supporte les différents systèmes de modules (*CommonJS*, *AMD*, *ES2015*, ...)
-- Disponible sur *NPM* : `npm install -g webpack`
+- Disponible sur *npm* : `npm install -g webpack`
 - Construit un graphe de toutes les dépendances de votre application
 - Configuration via un fichier de configuration *JavaScript* (`webpack.config.js`)
   - loaders : *ES2015*, *TypeScript*, *CSS*, ...
@@ -159,165 +159,19 @@ Notes :
 
 
 
-## Webpack  - Premier exemple
+## Angular CLI et Webpack
 
-- Première utilisation de *Webpack*
+- Angular CLI génère une configuration Webpack pour nous  
+  - Serveur web de dévéloppement
+  - Gestion de plusieurs types de fichiers (.ts, .html, .scss ...)
+  - Création des bundles .js
+  - Lien html - js
 
-```javascript
-//app.js
-document.write('welcome to my app');
-console.log('app loaded');
-```
+<br/>
 
-- Exécution de *Webpack* pour générer un fichier `bundle.js`
-
-```shell
-webpack ./app.js bundle.js
-```
-
-- Import de votre fichier `bundle.js` dans votre `index.html`
-
-```html
-<html>
-  <body>
-    <script src="bundle.js">< /script>
-  </body>
-</html>
-```
-
-- L'ajout de la balise script peut également être réalisé avec un plugin
-
-Notes :
-
-
-
-## Webpack
-
-- Version avec un fichier de configuration
-
-```javascript
-// ./webpack.config.js
-module.exports = {
-  entry: "./app.js",
-  output: {
-    filename: "bundle.js"
-  }
-}
-```
-
-- Webpack va lire le fichier de configuration automatiquement
-
-```shell
-webpack
-```
-
-Notes :
-
-
-
-## Webpack - Configuration
-
-- Possibilité de générer plusieurs fichiers
-- Utilisation du placeholder `[name]`
-
-```javascript
-entry: {
-  app: 'src/app.ts',
-  vendor: 'src/vendor.ts'
-},
-output: {
-  filename: '[name].js'
-}
-```
-
-  - Permet d'utiliser un fichier `vendor.ts` important toutes librairies utilisées
-
-```typescript
-// Angular
-import '@angular/core';
-import '@angular/common';
-import '@angular/http';
-import '@angular/router';
-// RxJS
-import 'rxjs';
-```
-
-Notes :
-
-
-
-
-## Webpack - Configuration
-
-- Système de recompilation automatique très performant
-  - Utilisation de l'option `webpack --watch`
-  - Webpack conserve le graphe des modules en mémoire
-  - Regénère le `bundle` pour n'importe quel changement sur un des fichiers
-- Serveur web disponible `webpack-dev-server`
-  - *Hot Reloading*
-  - Mode *Watch* activée
-  - Génération du fichier `bundle.js` en mémoire
-
-Notes :
-
-
-
-### Webpack - Les Loaders
-
-- Permet d'indiquer à Webpack comment prendre en compte un fichier
-- Plusieurs *loaders* existent : *ECMAScript2015*, *TypeScript*, *CoffeeScript*, *Style*, ...
-
-```javascript
-entry: {
-  app: 'src/app.ts',
-  vendor: 'src/vendor.ts'
-},
-resolve: {
-  extensions: ['', '.js', '.ts']
-},
-module: {
-  loaders: [{
-      test: /\.ts$/,
-      loaders: ['ts']
-  }]
-},
-output: {
-  filename: '[name].js'
-}
-```
-
-Notes :
-
-
-
-### Webpack - Les Plugins
-
-- Permet d'ajouter des fonctionnalités à votre workflow de build
-
-```javascript
-entry: {
-  app: 'src/app.ts',
-  vendor: 'src/vendor.ts'
-},
-resolve: {
-  extensions: ['', '.js', '.ts']
-},
-module: {
-  loaders: [{
-      test: /\.ts$/,
-      loaders: ['ts']
-  }]
-},
-plugins: [
-  new webpack.optimize.MinChunkSizePlugin({
-    minChunkSize: 10000
-  }),
-  new HtmlWebpackPlugin({template: 'src/index.html'})
-]
-output: {
-  filename: '[name].js'
-}
-```
+- Configuration *bulletproff*  
+  - Réponds à tous les besoins que vous pouvez avoir sur un projet Angular
+  - Philosophie : n'utilisez pas le CLI si la configuration proposée ne réponds pas à vos besoin (très rare)
 
 Notes :
 

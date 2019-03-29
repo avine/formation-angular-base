@@ -12,11 +12,15 @@ import { HomeComponent } from './home/home.component';
 import { BasketComponent } from './basket/basket.component';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { BasketGuard } from './basket.guard';
+import { ProductDetailComponent } from './product-detail/product-detail.component'
 
 registerLocaleData(localeFr);
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'basket', component: BasketComponent}
+  {path: 'home', component: HomeComponent},
+  {path: 'product/:id', component: ProductDetailComponent},
+  {path: 'basket', component: BasketComponent, canActivate: [BasketGuard]},
+  {path: '**', redirectTo: 'home'}
 ];
 
 @NgModule({
@@ -26,7 +30,8 @@ const routes: Routes = [
     MenuComponent,
     SortPipe,
     HomeComponent,
-    BasketComponent
+    BasketComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
