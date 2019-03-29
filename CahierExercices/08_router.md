@@ -1,26 +1,27 @@
-## TP8 : Router
+## Lab 8: Router
 
-Nous allons intégrer dans notre application le routeur proposé par défaut dans le framework.
+We will now integrate the default router provided by Angular.
 
-- Créez deux composants : `home` et `basket`
-  - le composant `home` aura la charge d'afficher le contenu de la page que nous avons implémenté dans les TPs précédents
-  - le composant `basket` permettra d'afficher, pour l'instant, le contenu du panier de l'utilisateur (via le pipe `json`)
+- Create two new components:
+  - The `home` component must display the page we developed during the previous labs.
+  - The `basket` component must display, for now, the basket by using the `json` pipe.
 
-- Ajoutez à votre application la configuration nécessaire pour le fonctionnement du router. Pour cela, nous allons utiliser la méthode `forRoot` mis à disposition par le module `@angular/router`
+- Configure the router by using the `forRoot` method from the `@angular/router` module.
 
-- Dans le template du composant `Application`, nous allons utiliser la directive `router-outlet` afin d'indiquer le point d'insertion des différentes pages de l'application.
+- In the `Application` component template, use the `router-outlet` directive to define the insertion point of the pages.
 
-- Ajoutez la directive `routerLink` dans le composant `menu` afin de rediriger l'utilisateur vers les deux composants que nous venons de créer.
+- Use the `routerLink` directive in the `menu` component to navigate through the application and the two new created components.
 
 ### Bonus
 
-- Créer un Guard pour interdire l'accès à la page du panier si le panier est vide
-- Créer une page de détail d'un article (/product/:id), le serveur permet de récupérer un produit par son id (http://localhost:8080/rest/products/:id) (il faut également ajouter la propriété id à votre classe Product)
+- Create a guard in order to avoid the access to the basket page if the `basket` is empty
+
+- Create a page in order see the detail of a product (/product/:id), the server has an endpoint to the information of an article via its id (http://localhost:8080/rest/products/:id) (You have to add an `id` property to your `Product` class)
 
 ### Tests
 
-Le routing en lui même est une fonctionnalité du framework Angular. Ce n'est pas le rôle des tests de notre application que de vérifier que le router d'Angular fonctionne correctement. Nous allons donc simplement adapter nos tests pour qu'ils fonctionnent à nouveau.
+Routing is a feature provided by Angular. It's not part of our tests to check the router is working well. We will only update the tests to pass them again.
 
-- La grande majorité de l'intelligence du composant `app` ayant été migré dans le composant `home`, l'ensemble des tests doivent également être migrés.
+- Most of the code of the `app` component has been moved to the `home` component, tests must be moved too.
 
-- Pour chaque composant utilisant des directives du module router, il est nécessaire d'importer le module pour que ces directives passent. Pour définir un routage minimaliste, utiliser l'import `RouterModule.forRoot([], {useHash: true})`.
+- For all components using directives provided by the router, import the router module in the tests modules. To create a minimalist routing, use: `RouterModule.forRoot([], {useHash: true})`.

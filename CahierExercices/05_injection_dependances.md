@@ -1,47 +1,49 @@
-## TP5 : Injection de Dépendances
+## Lab 5: Dependency injection
 
-Nous allons à présent aborder les services et l'injection de dépendances dans une application Angular.
+We will now create services and understand the dependency injection mechanism in an Angular application.
 
-Nous allons créer deux services :
+We will create two services:
 
-- ProductService : qui sera en charge de la gestion des produits,
-- CustomerService : qui sera en charge du panier de l'utilisateur.
+- ProductService: to manage products.
+- CustomerService: to manage the basket.
 
-- Veuillez créer un service `ProductService` en utilisant la commande `ng generate service services/Product` dans lequel vous allez définir :
-	- un tableau `products` avec les valeurs définies dans le composant `AppComponent.ts`
-	- une méthode `getProducts()`: retournera le tableau `products`
-	- une méthode `isTheLast(product)` : retournera `true` si le stock d'un produit est égal à 1
-	- une méthode `isAvailable(product)` : retournera `true` si le stock d'un produit n'est pas égal à 0
-	- une méthode `decreaseStock(product)` : mettra à jour la propriété `stock` du produit spécifié en paramètre
+- Create a service `services\ProductService.ts` (use angular-cli) with:
+	- The `products` array defined in the `AppComponent.ts` component
+	- A `getProducts()` method that returns the `products`.
+	- A `isTheLast(product)` method that returns `true` if the product stock value is equal to 1.
+	- A `isAvailable(product)` method that returns `true` if the product stock value is greater than 0.
+	- A `decreaseStock(product)` method to decrement the `stock` product value
 
-- Veuillez créer un service `CustomerService`, en utilisant la commande `ng generate service services/Customer` dans lequel vous allez définir :
-	- une méthode `addProduct(product)` : ajoutera le nouveau produit dans un tableau, ce tableau représente votre panier.
-	- une méthode `getTotal()` : calculera le montant total du panier.
+- Create a service `services\CustomerService.ts` with:
+	- A `addProduct(product)` method that adds a new product in the basket
+	- A `getTotal()` method that computes the basket price.
 
-- Importez ces deux services dans votre composant `Application`, et modifiez l'implémentation de ce composant afin d'utiliser les différentes méthodes implémentées précédemment.
+- Import those two services in the `Application` component, and change the component to use the services.
 
-- Pour terminer ce TP, nous allons externaliser le titre "Bienvenue sur Zenika Ecommerce" dans une variable injectable de type `String` en utilisant un provider de type `Value`
+- To conclude this lab, inject the title "Welcome to Zenika Ecommerce" as `String` by using a `Value` provider
+
+- Bonus: write tests
 
 ### Tests
 
-Avec l'ajout de dépendances à vos composant, les tests réalisés jusque là vont presque tous échouer. En effet, pour utiliser vos composant, il faudra maintenant qu'Angular sache comment résoudre les dépendances de chaque composant.
+Because of dependencies added to your components, tests fail. To use the components, Angular need to know how to resolve those dependencies for all components.
 
-Souvenez vous que le but de chaque test unitaire est de tester le code de l'élément qu'on est entrain de tester (composant ou service) sans jamais utiliser du code d'un autre élément. Il ne faut donc pas satisfaire les dépendances avec les vrais implémentations mais avec des mocks.
+Remember that the goal of a unit test is to test a unit in isolation: the unit doesn't depend on any external services/components. We need to use mocks instead of dependencies real implementations.
 
-De plus, l'ajout de service a déplacé certaines responsabilités. Certains tests réalisé jusque là dans les composant ne doivent pas être corrigé mais supprimés.
+Moreover, by using services, we introduced a 'separation of concerns'. Some tests previously done in the components must not be fixed but removed.
 
-- Dans les tests de `app`, créer une classe `ProductServiceMock` minimaliste qui remplacera `ProductService` ainsi qu'une classe `CustomerService`. Ajouter une propriété `providers` dans le module de test avec `ProductService` et `CustomerService` définie avec leur mock ainsi qu'une valeur pour `welcomeMsg`.
+- In the `app` component tests, create a minimalist class called `ProductServiceMock` that will replace `ProductService`. Repeat for `CustomerService`. Add the `providers` property in the test module with `ProductService` and `CustomerService` using their mock. Provide a value for `welcomeMsg`.
 
-- Dans les tests de `app`, supprimer les tests portant sur le calcul et la mise à jour du total du panier. Le composant n'a plus la responsabilité de ce calcul.
+- In the `app` component tests, remove tests about the computation of the basket price. This component doesn't hold the responsibility of that computation.
 
-- Dans les tests de `app`, utiliser la fonction `inject` d'Angular pour obtenir des instances des services et la fonction `spyOn` pour faire des espions Jasmine afin de refaire fonctionner les tests existants.
+- In the `app` component tests, use Angular `inject` function to get services instances and `spyOn` function to create Jasmine spies in order to pass tests.
 
-- Dans les tests de `app`, ajouter un test vérifiant la valeur de `welcomeMsg` provenant de l'injection de dépendance soit bien présent dans le header.
+- In the `app` component tests, add a test checking that `welcomeMsg` value is set in the header.
 
-- Dans les tests de `app`, ajouter un test vérifiant la bonne exécution de la fonction `updatePrice` en utilisant des espions pour les méthodes `addProduct` et `decreaseStock`.
+- In the `app` component tests, add a test checking that the `updatePrice` function is working well by using spies on the `addProduct` and `decreaseStock` functions.
 
-- Dans les tests de `app-product`, faire fonctionner les tests existants de la même façon que les tests de `app` (avec des mock et des spy).
+- In the `app-product` component tests, make existing tests pass like with the `app` component (by using mocks and spies).
 
-- Ajouter des tests au `CustomerService`. Un test pour vérifier que le panier est initialisé sans produit, un autre pour valider que `addProduct` ajoute bien le produit au panier et un dernier pour valider le calcul du prix total du panier.
+- Add tests in the `CustomerService` service. One to check that the basket is initialized without products, another to check that the `addProduct` function add a product in the basket and a last one to check the computation of the basket price.
 
-- Ajouter des tests au `ProductService`. Un pour vérifier qu'il y a bien 4 produits au départ, un validant le fonctionnement de la fonction `isTheLast` et un dernier pour la fonction `decreaseStock`.
+- Add tests in the `ProductService` service. One to check there are 4 products after initialization, another to check the `isTheLast` function and a last one to check the `decreaseStock` function.

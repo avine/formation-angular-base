@@ -1,34 +1,34 @@
-# Cahier de TP
+# Workbook
 
-## Explications générales
+## General explanations
 
-Pour écrire le cahier de TP, vous avez 2 solutions :
+To write the notebook of lab, you have 2 solutions:
 
-- écrire tout le cahier dans le fichier `Cahier.md`.
-- faire plusieurs fichiers Markdown et les lister dans le fichier `parts.json`
+- write the whole notebook in the file `Cahier.md`.
+- make several Markdown files and list them in the `parts.json` file
 
-### Saut de page
+### Page break
 
-Pour faire un saut de page, placer la ligne suivante :
+To make a page break, place the following line:
 
 ```html
 <div class="pb"></div>
 ```
 
-## Génération du PDF
+## PDF generation
 
-Pour générer le cahier de TP au format PDF, taper la commande suivante:
+To generate the PDF workbook, type the following command:
 ```
 grunt generateCahierExercice
 ```
 
-Il est possible de générer à la fois le cahier d'exercices et les slides au format PDF avec la commande `grunt pdf`
+It is possible to generate both the workbook and the slides in PDF format with the `grunt pdf` command
 
 ## Assets
 
-Mettre des assets est possible avec un lien relatif au fichier `.md`
+Put assets is possible with a relative link to the `.md` file
 
-Voici un exemple d'image :
+Here is a sample image:
 
 ```markdown
 ![Node.js](ressources/logo-zenika.jpg)

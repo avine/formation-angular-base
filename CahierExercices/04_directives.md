@@ -1,25 +1,25 @@
-## TP4 : Les directives Angular
+## Lab 4: Angular directives
 
-Dans ce TP, nous allons utiliser les directives `ngFor`, `ngIf` et `ngClass` pour dynamiser notre page. Les autres directives d'Angular seront présentées lors du chapitre sur les formulaires.
+In this lab, we will use `ngFor`, `ngIf` and `ngClass` to have a more dynamic application.  
 
-- Grâce à la directive `ngFor`, itérez sur la liste des `products` afin d'afficher autant de composants `ProductComponent` qu'il y a d'éléments dans ce tableau.
+- Use `ngFor` directive to iterate over the `products` arrays in the `ProductComponent` component.
 
-- Dans la classe `Product`, ajoutez une propriété `stock` de type `number`.
+- In the `Product` class, add a `stock` property with `number` type.
 
-- Initiez cette propriété pour tous les produits définis dans le composant `AppComponent`. Nous vous conseillons de mettre une valeur différente pour chaque produit, afin de pouvoir tester les différents cas définis ci-dessous.
+- Initialize that property for all products in the `AppComponent` component. Use a different value for each product.
 
-- Modifier la méthode `updatePrice` du composant `AppComponent` pour réduire le stock du produit dès que l'on clique sur `Ajouter au panier`.
+- Use the `ngIf` directive to display only the products with a `stock` value greater than 0. You might have to revise your use of `*ngFor`.
 
-- Grâce à la directive `ngIf`, affichez un produit, seulement si sa propriété `stock` est supérieure à 0. Vous serez peut-être obligé de revoir l'utilisation du `*ngFor` du point précédent.
-
-- Grâce à la directive `ngClass`, ajoutez une classe CSS `last`, sur l'élément utilisant la classe `thumbnail`, si la propriété `stock` d'un produit atteint 1. Cette classe ne sera utilisée que pour modifier la couleur de fond (`background-color: rgba(255, 0, 0, 0.4)`)
+- Use the `ngClass` directive to add the `last` CSS class, on the element with the `thumbnail` class, if the `stock` value is equal to 1. We will use that class to change the background color to (`background-color: rgba(255, 0, 0, 0.4)`)
 
 ### Tests
 
-- Corriger les tests existant en prenant en compte le changement de signature de la classe `Product` (ajout du champ stock). On constatera que le test du binding des produits fonctionne toujours alors que l'implémentation a changé (utilisation du `ngFor`).
+- Fix tests that fail because of the modifications done in the `Product` class (add the `stock` field). Notice that the binding tests of products still work whereas the implementation changed (by using `ngFor`).
 
-- Compléter le test de la méthode `updatePrice` pour vérifier que le stock du produit a bien été diminué.
+- Add a test on the `updatePrice` method to check that the `stock` has been decreased.
 
-- Ajouter un test dans `app` vérifiant qu'un produit sans stock n'est pas affiché. Pour ce faire, modifier le tableau `products` avec un nouveau tableau contenant deux produits, un au stock vide, l'autre non. Après avoir lancé `fixture.detectChanges()`, vérifier qu'il n'y a qu'une balise `app-product` et que sa propriété `data` est bien égale au produit ayant du stock.
+- In the `app` component, test that a product without `stock` is not displayed. Update the `products` array with a new array containing two products, one with `stock` and one without. After running `fixture.detectChanges()`, check that there is only one `app-product` component and that its `data` property is equal to the product with `stock`.
 
-- Ajouter deux tests dans `app-product`, un vérifiant que la class `last` n'est pas ajoutée si le stock est supérieur à 1, l'autre vérifiant qu'elle l'est si le stock est égal à 1.
+- In the `app-product` component, add two tests:
+  - Check that the `last` class is not added if the `stock` is greater than 1
+  - Check that the `last` class is added if the stock is `equal` to 1.

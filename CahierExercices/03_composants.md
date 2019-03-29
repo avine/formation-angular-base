@@ -1,51 +1,51 @@
-## TP3 : Composants
+## Lab 3: Components
 
-L'application que nous allons développer tout au long de cette formation, est une application d'e-commerce.
+We will develop an e-commerce application.
 
-Après avoir reçu du formateur le template principal de l'application, veuillez suivre les étapes suivantes :
+Once receiving the main application template by the trainer (just an `index.html` file), follow the steps:
 
-- Modifiez le fichier index.html créé dans les TPs précédent, afin d'intégrer le template envoyé par le formateur.
+- All HTML code below `body` tag must be used in the `Application` component template
 
-- Tout le code HTML situé entre les balises `body` doit être défini dans le template du composant `AppComponent`
+- Create a new component `menu\menu.component.ts` which will contain the application main menu. To create a new Angular component, run the `ng generate component menu` command.
 
-- Le total de votre panier sera défini dans un attribut `total` à rajouter dans `AppComponent` que nous allons initialiser à 0
+- Replace in the `Application` component the menu by the new component.
 
-- Créez un nouveau composant `menu\menu.component.ts` dans lequel vous allez implémenter le menu principal de l'application. Pour créer un nouveau composant Angular, nous allons utiliser la commande `ng generate component menu`
+- Initialize a `total` variable to 0 in the constructor to hold the total basket price
 
-- Remplacez dans le composant `AppComponent` le menu initial par le composant que vous venez de créer.
+- Create a `product.ts` class in the `model` folder. To create a new class, run the `ng generate class model/product` command.
 
-- Créez une classe `product.ts` dans un répertoire `model`. Pour créer cette nouvelle classe, vous pouvez utiliser la commande `ng generate class model/product`.
+- In this class, define the following properties:
+	- title of type `string`
+	- description of type `string`
+	- photo of type `string`
+	- price of type `number`
 
-- Dans cette classe, définissez les propriétés suivantes:
-	- title de type `string`
-	- description de type `string`
-	- photo de type `string`
-	- price de type `number`
+- In the `Application` component constructor, instantiate a new array of `Product` and add the products defined in the template.
 
-- Dans le composant `AppComponent`, instancier un nouveau tableau de `Product` et ajoutez les produits utilisés dans le template.
+- Update the template to display the array of products. As we don't know how to repeat template elements, duplicate the template for all elements.
 
-- Modifier le template pour utiliser ce tableau pour l'affichage des différents produits. Comme nous n'avons pas encore vu la directive `ngFor`, vous êtes obligé de copier/coller le template pour chaque élément du tableau.
+- Create a new component called `ProductComponent` to display a product. It will have one input called `data` with `Product` type. Use this new component in the `Application` component.
 
-- Nous allons à présent externaliser le template utilisé pour afficher un produit dans un nouveau composant `ProductComponent`. Ce composant aura un paramètre `data` correspondant à un objet de type `Product`. Ajoutez ce composant dans le template.
+- We will now emit an event called `addToBasket`, from the `ProductComponent` component, when a user clicks on the `Add to basket` button. This event will be used by the `Application` component to update the basket price using the `total` variable.
 
-- Nous allons à présent émettre un évènement `addToBasket`, via le composant `ProductComponent`, lorsque l'utilisateur cliquera sur le bouton `Ajoutez au panier`. Cet évènement sera utilisé par le composant `Application` pour mettre à jour la variable `total` créée précédemment.
+- Bonus: write tests
 
 ### Tests
 
-- Ajouter `schemas: [CUSTOM_ELEMENTS_SCHEMA]` dans le `configureTestingModule` du composant `App` pour qu'il n'échoue pas sur l'utilisation des composants `app-menu` et `app-product`.
+- Add `schemas: [CUSTOM_ELEMENTS_SCHEMA]` in `configureTestingModule` of `App` component to avoid the component to fail when using `app-menu` and `app-product` components.
 
-- Remplacer le test de la valeur de `title` par un test de la valeur de `total`
+- Replace the value test of `title` by a value test of `total`.
 
-- Remplacer le test du binding de `title` par un test du binding de `total` dans le `header`
+- Replace the binding test of `title` by a binding test of `total` in the `header`
 
-- Ajouter un test de la méthode `updatePrice`. L'appeler avec un produit créé pour l'occasion et vérifier que le total a été mis à jour.
+- Test the `updatePrice` method. Call it with a product created for that test and check that the `total` has been updated.
 
-- Ajouter un test du binding des produits dans les composants associés. Sélectionner les composants `app-product` et vérifier leur propriété `data`.
+- Test the binding of `products` in the `App` component. Select the `app-product` components and check their corresponding `data` property.
 
-- Ajouter un test au composant `app-product` pour le binding des champs `title` et `price`.
+- In the `app-product` component, test the binding of `title` and `price` properties.
 
-- Ajouter un test au composant `app-product` pour le binding de la propriété `src` de l'image.
+- In the `app-product` component, test the binding of the image `src` property.
 
-- Ajouter un test au composant `app-product` pour l'utilisation du bouton. Utiliser un `spy` sur la méthode `emit` de `addToBasket` pour intercepter et valider qu'elle a été appelé.
+- In the `app-product` component, test the click on the button. Use a `spy` on the `emit` method of `addToBasket` event to check that it has been called.
 
-- Ajouter un test au composant `app-menu` pour valider que le template fonctionne. Tester qu'un texte du template est bien présent, par exemple `Zenika` dans `.navbar-brand`.
+- In the `app-menu` component, test that the template work. For instance, check that `Zenika` value is in `.navbar-brand`.

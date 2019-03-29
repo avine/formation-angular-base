@@ -1,43 +1,43 @@
-## TP 1 : Démarrer une application Angular
+## Lab 1: Setup an Angular application
 
-Dans ce premier TP, nous allons initier notre première application **Angular**, qui sera réutilisée dans les TPs suivant.
+For this first lab, we will setup our first **Angular** application, which will be used in the following labs.
 
-L'initialisation de cette application se décomposera en plusieurs étapes :
+The process to setup the application is composed of the following steps:
 
-- Création d'un projet Angular avec `@angular/cli`
-- Implémentation de la page principale
-- Création du composant principal
-- Lancement du serveur afin de tester
+- Create a new project with `@angular/cli`
+- Implement the main page
+- Create the main component
+- Run the server to test the application
 
-### Création du projet
+### Create the project
 
-L'application, que nous allons implémenter, sera initialisée via l'outil `@angular/cli`. Cet outil va automatiser :
+We will use `@angular/cli` to setup an application that provides:
 
-- la création et la configuration du squelette de l'application
-- la gestion des dépendances
+- Application scaffolding and configuration
+- Dependencies management
 
+Follow the steps: 
+- Download `@angular/cli` with `npm`. This module needs a recent version of *NodeJS*
 
-- Téléchargez `@angular/cli` en utilisant `npm`. Ce module nécessite une version récente de *NodeJS*
+- From the console, run `ng new Application` to create a new application
 
-- Depuis votre console, créez un nouveau projet via la commande `ng new Application --style=scss`
+- Take a look at the structure:
+	- Dependencies
+	- TypeScript configuration
+	- TypeScript files
 
-- Regardez la structure de l'application tout juste créée
-	- dépendances installées
-	- configuration TypeScript
-	- les différents fichiers TypeScript
+- Once done, run the application with `ng serve` command. It compiles the sources first and then starts the server.
 
-- Une fois cette étape terminée, vous pouvez à présent lancer votre application en exécutant la commande `npm start`. Cette commande va prendre en charge la compilation de vos sources et le lancement d'un serveur.
+### First component
 
-### Modification de l'application
+Even if we have not studied the main concepts, we will do some changes to take over the application structure.
 
-Même si nous n'avons pas encore abordé les concepts du framework, nous allons faire des petites modifications afin de prendre en main la structure de notre application.
-
-- Le composant principal devra contenir le code HTML suivant :
+- The main component will have the following HTML code:
 
 ```html
-<h1>Welcome to {{ title }}!</h1>
+<h1>This is my first component</h1>
 ```
 
-- La variable `{{ title }}` sera remplacé par le contenu de la propriété `title` dans la classe `Application`. Modifier la valeur de cette propriété pour y mettre votre prénom.
+- The string above must be hold by the `title` variable from the `Application` class. To display that variable, use the following syntax: `{{title}}`
 
-- Vérifiez que vous obtenez bien la toute dernière version de votre application dans le navigateur avec le titre `Welcome to VotrePrénom`.
+- Check the application has been updated correctly in the browser.
