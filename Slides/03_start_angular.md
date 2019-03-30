@@ -1,4 +1,4 @@
-# Démarrer une<br>application Angular
+# Start an Angular application
 
 <!-- .slide: class="page-title" -->
 
@@ -6,62 +6,62 @@ Notes :
 
 
 
-## Sommaire
+## Summary
 
 <!-- .slide: class="toc" -->
 
-- [Rappels](#/1)
-- [Présentation](#/2)
-- **[Démarrer une application Angular](#/3)**
+- [Reminders](#/1)
+- [Presentation](#/2)
+- **[Start an Angular application](#/3)**
 - [Tests](#/4)
-- [Template & Composants](#/5)
+- [Template & Components](#/5)
 - [Directives](#/6)
-- [Injection de Dépendances](#/7)
+- [Dependency Injection](#/7)
 - [Pipes](#/8)
-- [Service HTTP](#/9)
+- [HTTP Service](#/9)
 - [Router](#/10)
-- [Formulaires](#/11)
+- [Forms](#/11)
 - [Server-side Rendering](#/12)
 
 Notes :
 
 
 
-## Commencer un nouveau projet
+## Start a new project
 
-- Gestion des dépendances via *npm*
-  - les différents modules *Angular* : `@angular/common`, `@angular/core`...
-  - Webpack : gestion des modules
-  - RxJS : programmation réactive, dépendance forte d'Angular
+- Dependency management via *npm*
+  - the different modules *Angular*: `@angular/common`, `@angular/core` ...
+  - Webpack: module management
+  - RxJS: reactive programming, strong dependence of Angular
 
-```shell
+```Shell
 npm init
 
 npm install @angular/common @angular/core rxjs ...
 ```
 
-- Initialisation et Configuration d'un projet *TypeScript*
-- Configuration du système de gestion des modules (*Webpack*)
+- Initializing and Configuring a Project *TypeScript*
+- Configuration of the module management system (*Webpack*)
 
 Notes :
 
 
 
-## Commencer un nouveau projet
+## Start a new project
 
-- Création du composant principal
-  - définir le sélecteur nécessaire pour utiliser le composant
-  - écrire le template
-  - implémenter la classe *TypeScript*
+- Creating the main component
+  - define the selector needed to use the component
+  - write the template
+  - implement the class *TypeScript*
 
 ```typescript
-import { Component } from '@angular/core'
+import {Component} from '@angular/core'
 
-@Component({
-    selector: 'my-app',
-    template: `<p>Hello</p>`
+@Component ({
+    selector: 'my-app',
+    template: `<p> Hello </p>`
 })
-export class AppComponent { ... }
+export class AppComponent {...}
 
 ```
 
@@ -69,29 +69,29 @@ Notes :
 
 
 
-## Commencer un nouveau projet
+## Start a new project
 
-- Création d'un module Angular
+- Creating an Angular module
 
 ```typescript
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { AppComponent } from './app.component';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {AppComponent} from './app.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+@NgModule ({
+  statements: [
+    AppComponent,
+  ]
+  imports: [
+    FormsModule
+  ]
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+platformBrowserDynamic().bootstrapModule(AppModule).
 
 ```
 
@@ -101,23 +101,23 @@ Notes :
 
 ## Angular CLI
 
-- Depuis la version 6 d'angular, angular CLI suit maintenant les versions d'angular.
-- Basé sur le projet *Ember CLI*
-- Permet de créer le squelette d'une application
-- Embarque automatiquement les technologies suivantes :
+- Since version 6 of angular, angular CLI now follows the angular versions.
+- Based on the project *Ember CLI*
+- Allows you to create the skeleton of an application
+- Automatically embeds the following technologies:
 
-  TypeScript, Webpack, Karma, Protractor, Préprocesseurs CSS ...
-- Projet disponible sur *npm*
+  TypeScript, Webpack, Karma, Protractor, CSS preprocessors ...
+- Project available on *npm*
 
-```shell
+```Shell
 npm install -g @angular/cli
 ```
 
-- Propose des commandes pour le cycle de vie de l'application
+- Offers commands for the application lifecycle
 
-```shell
+```Shell
 ng new Application
-ng build (--dev / --prod)
+ng build (--dev/--prod)
 ng serve
 ```
 
@@ -127,18 +127,18 @@ Notes :
 
 ## Angular CLI
 
-- Nombreuses commandes disponibles
-- `ng generate` : Génère du code pour différents éléments d'Angular
-  - `ng generate component Product` :
+- Many orders available
+- `ng generate`: Generates code for different elements of Angular
+  - `ng generate component Product`:
 
-    Génère un nouveau composant avec template, style et test
-  - `ng generate pipe UpperCase` : Génère un nouveau pipe
-  - `ng generate service User` : Génère un nouveau service
-  - `ng generate directive myNgIf` : Génère une nouvelle directive
+    Generate a new component with template, style and test
+  - `ng generate pipe UpperCase`: Generates a new pipe
+  - `ng generate service User`: Generates a new service
+  - `ng general directive myNgIf`: Generates a new directive
 
-- `ng test` : Lance les tests avec Karma
-- `ng e2e` : Lance les tests end-2-end avec Protractor
-- `ng lint` : Lance TSLint
+- `ng test`: Run tests with Karma
+- `ng e2e`: Run end-2-end tests with Protractor
+- `ng lint`: Lance TSLint
 
 Notes :
 
@@ -146,38 +146,180 @@ Notes :
 
 ## Webpack
 
-- Gestionnaire de modules
-- Supporte les différents systèmes de modules (*CommonJS*, *AMD*, *ES2015*, ...)
-- Disponible sur *npm* : `npm install -g webpack`
-- Construit un graphe de toutes les dépendances de votre application
-- Configuration via un fichier de configuration *JavaScript* (`webpack.config.js`)
-  - loaders : *ES2015*, *TypeScript*, *CSS*, ...
-  - preloaders: *JSHint*, ...
-  - plugins: *Uglify*, ...
+- Module Manager
+- Supports the different module systems (*CommonJS *, * AMD *, * ES2015*, ...)
+- Available on *npm*: `npm install -g webpack`
+- Build a graph of all the dependencies of your application
+- Configuration via a configuration file *JavaScript* (`webpack.config.js`)
+  - loaders: *ES2015 *, * TypeScript *, * CSS*, ...
+  - preloaders: *JSHint*, ...
+  - plugins: *Uglify*, ...
 
 Notes :
 
 
 
-## Angular CLI et Webpack
+## Webpack - First example
 
-- Angular CLI génère une configuration Webpack pour nous  
-  - Serveur web de dévéloppement
-  - Gestion de plusieurs types de fichiers (.ts, .html, .scss ...)
-  - Création des bundles .js
-  - Lien html - js
+- First use of *Webpack*
 
-<br/>
+```Javascript
+//app.js
+document.write('welcome to my app');
+console.log('app loaded');
+```
 
-- Configuration *bulletproff*  
-  - Réponds à tous les besoins que vous pouvez avoir sur un projet Angular
-  - Philosophie : n'utilisez pas le CLI si la configuration proposée ne réponds pas à vos besoin (très rare)
+- Running *Webpack* to generate a `bundle.js` file
+
+```Shell
+webpack ./app.js bundle.js
+```
+
+- Import your `bundle.js` file into your` index.html`
+
+```HTML
+<html>
+  <body>
+    <script src = "bundle.js"> </ script>
+  </body>
+</html>
+```
+
+- The addition of the script tag can also be realized with a plugin
 
 Notes :
 
 
 
-<!-- .slide: class="page-questions" -->
+## Webpack
+
+- Version with a configuration file
+
+```Javascript
+// ./webpack.config.js
+module.exports = {
+  entry: "./app.js",
+  output: {
+    filename: "bundle.js"
+  }
+}
+```
+
+- Webpack will read the configuration file automatically
+
+```Shell
+webpack
+```
+
+Notes :
+
+
+
+## Webpack - Configuration
+
+- Ability to generate multiple files
+- Using the placeholder `[name]`
+
+```Javascript
+entry: {
+  app: 'src/app.ts',
+  vendor: 'src/vendor.ts'
+}
+output: {
+  filename: '[name].js'
+}
+```
+
+  - Allows to use a `vendor.ts` file important all used libraries
+
+```typescript
+// Angular
+import '@angular/core';
+import '@angular/common';
+import '@angular/http';
+import '@angular/router';
+// RxJS
+import 'rxjs';
+```
+
+Notes :
+
+
+
+
+## Webpack - Configuration
+
+- High performance automatic recompilation system
+  - Using the `webpack --watch` option
+  - Webpack keeps the graph of the modules in memory
+  - Regenerates the `bundle` for any change on any of the files
+- Web server available `webpack-dev-server`
+  - *Hot Reloading*
+  - *Watch* mode enabled
+  - Generation of the `bundle.js` file in memory
+
+Notes :
+
+
+
+### Webpack - Loaders
+
+- Allows Webpack to indicate how to take into account a file
+- Several *loaders * exist: * ECMAScript2015 *, * TypeScript *, * CoffeeScript *, * Style*, ...
+
+```Javascript
+entry: {
+  app: 'src/app.ts',
+  vendor: 'src/vendor.ts'
+}
+resolve: {
+  extensions: ['', '.js', '.ts']
+}
+module: {
+  loaders: [{
+      test: /\.ts$/,
+      loaders: ['ts']
+  }]
+}
+output: {
+  filename: '[name].js'
+}
+```
+
+Notes :
+
+
+
+### Webpack - Plugins
+
+- Add features to your build workflow
+
+```Javascript
+entry: {
+  app: 'src/app.ts',
+  vendor: 'src/vendor.ts'
+}
+resolve: {
+  extensions: ['', '.js', '.ts']
+}
+module: {
+  loaders: [{
+      test: /\.ts$/,
+      loaders: ['ts']
+  }]
+}
+plugins: [
+  new webpack.optimize.MinChunkSizePlugin ({
+    minChunkSize: 10000
+  }),
+  new HtmlWebpackPlugin ({template: 'src/index.html'})
+]
+output: {
+  filename: '[name].js'
+}
+```
+
+Notes :
 
 
 

@@ -6,88 +6,88 @@ Notes :
 
 
 
-## Sommaire
+## Summary
 
 <!-- .slide: class="toc" -->
 
-- [Rappels](#/1)
-- [Présentation](#/2)
-- [Démarrer une application Angular](#/3)
+- [Reminders](#/1)
+- [Presentation](#/2)
+- [Start an Angular application](#/3)
 - [Tests](#/4)
-- [Template & Composants](#/5)
+- [Template & Components](#/5)
 - [Directives](#/6)
-- [Injection de Dépendances](#/7)
+- [Dependency Injection](#/7)
 - **[Pipes](#/8)**
-- [Service HTTP](#/9)
+- [HTTP Service](#/9)
 - [Router](#/10)
-- [Formulaires](#/11)
+- [Forms](#/11)
 - [Server-side Rendering](#/12)
 
 Notes :
 
 
 
-## Les Pipes
+## The Pipes
 
-- Mécanisme permettant la transformation d'une donnée avant son utilisation
-- Similaire aux filtres dans *AngularJS*
-- Utilisation avec le caractères `|` dans les expressions des templates
-- Possibilité d'écrire ses propres *Pipe*
-- Ajout de la notion de *Pipe* pure et impure
-- Pipes disponibles par défaut dans le framework `@angular/common`
-  - `LowerCasePipe` , `UpperCasePipe`
-  - `CurrencyPipe`, `DecimalPipe`, `PercentPipe`
-  - `DatePipe`, `JSONPipe`, `SlicePipe`
-  - `I18nPluralPipe`, `I18nSelectPipe`
-  - `AsyncPipe`
+- Mechanism allowing the transformation of a datum before its use
+- Similar to filters in *AngularJS*
+- Use with the `|` character in template expressions
+- Ability to write his own *Pipe*
+- Added the notion of *Pipe* pure and impure
+- Pipes available by default in the `@angular/common` framework
+  - `LowerCasePipe`, `UpperCasePipe`
+  - `CurrencyPipe`, `DecimalPipe`, `PercentPipe`
+  - `DatePipe`, `JSONPipe`, `SlicePipe`
+  - `I18nPluralPipe`, `I18nSelectPipe`
+  - `AsyncPipe`
 
 Notes :
 
 
 
-## Utilisation dans les Templates
+## Use in Templates
 
-- Les *Pipes* disponibles par défaut sont directement utilisables
-- Possibilité de chaîner les pipes les uns à la suite des autres
-- Possibilité de passer des paramètres avec le caractère `:`
-- Les paramètres sont **bindés** et le résultat est recalculé à chaque changement
-- La syntaxe est la suivante
+- The *Pipes* available by default are directly usable
+- Possibility to chain the pipes one after the other
+- Ability to pass parameters with the `:` character
+- The parameters are **bindés** and the result is recalculated with each change
+- The syntax is the following
 
-  `{{ myData | pipeName:pipeArg1:pipeArg2 | anotherPipe }}`
+  `{{ myData | pipeName:pipeArg1:pipeArg2 | anotherPipe }}`
 
-```html
-{{ myVar | date | uppercase}}
+```HTML
+{{myVar | date | uppercase}}
 <!-- FRIDAY, APRIL 15, 1988 -->
 
-{{ price | currency:'EUR':'symbol' }}
-<!-- 53.12€ -->
+{{price | currency: 'EUR': 'symbol'}}
+<!-- 53.12 € -->
 ```
 
 Notes :
 
 
 
-## Création
+## Creation
 
-- Définir une classe implémentant l'interface `PipeTransform`
-- Implémenter la méthode `transform`
-- Annoter la classe avec le décorateur `@Pipe`
+- Define a class implementing the `PipeTransform` interface
+- Implement the `transform` method
+- Annotate the class with the `@Pipe` decorator
 
 ```typescript
-import { isString, isBlank } from '@angular/core/src/facade/lang';
-import { PipeTransform, Pipe } from '@angular/core';
+import {isString, isBlank} from '@angular/core/src/facade/lang';
+import {PipeTransform, Pipe} from '@angular/core';
 
-@Pipe({ name: 'mylowercase' })
+@Pipe ({name: 'mylowercase'})
 export class MyLowerCasePipe implements PipeTransform {
-  transform(value: any, param1:string, param2:string): string {
-    if (isBlank(value)) {
-      return value;
-    }
-    if (!isString(value)) {
-      throw new Error('MyLowerCasePipe value should be a string');
-    }
-    return value.toLowerCase();
-  }
+  transform (value: any, param1: string, param2: string): string {
+    if (isBlank (value)) {
+      return value;
+    }
+    if (! isString (value)) {
+      throw new Error ('MyLowerCasePipe value should be a string');
+    }
+    return value.toLowerCase();
+  }
 }
 ```
 
@@ -95,23 +95,23 @@ Notes :
 
 
 
-## Déclarations
+## Statements
 
-- Se déclare comme les composants et les directives
-- Le pipe doit être ajouté au tableau `declarations`
+- declares itself as components and directives
+- The pipe must be added to the table `declarations`
 
 ```typescript
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { MyLowerCasePipe } from './mylowercase.pipe';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {MyLowerCasePipe} from './mylowercase.pipe';
 
-@NgModule({
-  declarations: [
-    MyLowerCasePipe
-  ],
-  imports: [
-    BrowserModule
-  ]
+@NgModule ({
+  statements: [
+    MyLowerCasePipe
+  ]
+  imports: [
+    BrowserModule
+  ]
 })
 export class AppModule {}
 ```
@@ -120,23 +120,23 @@ Notes :
 
 
 
-## Utilisation
+## Use
 
-- Toujours comme les composants et les directives
-- Un pipe est utilisable s'il a été déclaré dans le module ou un module importé
+- Always like components and guidelines
+- A pipe is usable if it has been declared in the module or an imported module
 
 ```typescript
 import {Component} from '@angular/core';
 
-@Component({
-  selector: 'app',
-  template: `
-    <h2>
-      {{'Hello World' | mylowercase}}
-    </h2>
-  `
+@Component ({
+  selector: 'app',
+  template: `
+    <h2>
+      {{'Hello World' | mylowercase}}
+    </h2>
+  `
 })
-export class App { }
+export class App {}
 ```
 
 Notes :
@@ -145,25 +145,25 @@ Notes :
 
 ## Injection
 
-- Il est possible d'utiliser un pipe depuis le code TypeScript
-- Utilisation de l'injection de dépendances pour utiliser un *Pipe*
-- Pas de service `$filter` comme dans *AngularJS*
-- Il faut ajouter le pipe dans les `providers` (composant ou module)
+- It is possible to use a pipe from TypeScript code
+- Using dependency injection to use a *Pipe*
+- No `$filter` service as in *AngularJS*
+- You have to add the pipe in `providers` (component or module)
 
 ```typescript
-import { Component } from '@angular/core`;
-import { MyLowerCasePipe } from './mylowercase';
+import {Component} from '@angular/core`;
+import {MyLowerCasePipe} from './mylowercase';
 
-@Component({
-  selector: 'app',
-  providers: [ MyLowerCasePipe ]
+@Component ({
+  selector: 'app',
+  providers: [MyLowerCasePipe]
 })
 class App {
-  name: string;
+  name: string;
 
-  constructor(lower: MyLowerCasePipe) {
-    this.name = lower.transform('Hello Angular');
-  }
+  constructor(lower: MyLowerCasePipe) {
+    this.name = lower.transform ('Hello Angular');
+  }
 }
 ```
 
@@ -171,34 +171,34 @@ Notes :
 
 
 
-## Pipes pures
+## Pure pipes
 
-- Fait référence à la notion de fonction pure
-- Les *Pipes* sont pure par défaut
-- Exécuter uniquement pour un changement de référence de la valeur
-- Ne sera pas réévalué pour une mutation sans changement de référence
-- Optimise les performances du mécanisme de détection de changement
-- N'est pas toujours le comportement souhaité :
- - Ajout / Suppression d'un objet dans un tableau
- - Modification d'une propriété d'un objet
+- Refers to the concept of pure function
+- *Pipes* are pure by default
+- Execute only for a reference change of the value
+- Will not be reevaluated for a mutation without reference change
+- Optimizes the performance of the change detection mechanism
+- Is not always the desired behavior:
+ - Add/Remove an object in a table
+ - Modifying a property of an object
 
 Notes :
 
 
 
-## Pipes impures
+## Impure pipes
 
-- Exécuté à chaque cycle du système de détection de changement
-- Plus consommateur qu'un pipe pure, n'utiliser que lorsque c'est nécessaire
-- Pour définir un *Pipe* impure, mettre la propriété `pure` à `false`
+- Executed at each cycle of the change detection system
+- More consumer than a pure pipe, use only when necessary
+- To set an impure *Pipe*, set the `pure` property to` false`
 
 ```typescript
-@Pipe({
-  name: 'myImpurePipe',
-  pure: false
+@Smoking pipe({
+  name: 'myImpurePipe',
+  pure: false
 })
 export class MyImpurePipe implements PipeTransform {
-  transform(value: any): any { ... }
+  transform (value: any): any {...}
 }
 ```
 
@@ -209,25 +209,25 @@ Notes :
 
 ## AsyncPipe
 
-- Fourni par *Angular* par défaut, exemple de pipe impure
-- *Pipe* recevant une `Promise` ou un `Observable` en entrée
-- La valeur doit pouvoir changer alors que la référence de la `Promise` ou de l'`Observable` n'a pas changée
+- Supplied by *Angular* by default, example of impure pipe
+- *Pipe* receiving a `Promise` or an `Observable` as input
+- The value must be able to change while the reference of `Promise` or `Observable` has not changed
 
 ```typescript
-@Component({
-  selector: 'pipes',
-  template: '{{ promise | async }}'
+@Component ({
+  selector: 'pipes',
+  template: '{{promise | async}} '
 })
 class PipesAppComponent {
-  promise: Promise;
+  promised: Promise;
 
-  constructor() {
-    this.promise = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve("Hey, this is the result of the promise");
-      }, 2000);
-    });
-  }
+  constructor() {
+    this.promise = new Promise ((resolve, reject) => {
+      setTimeout (() => {
+        resolve ("Hey, this is the result of the promise");
+      }, 2000);
+    });
+  }
 }
 ```
 
@@ -237,32 +237,28 @@ Notes :
 
 ## Tests
 
-- Un *Pipe* n'est rien d'autre qu'une fonction !
-- Instanciation du *Pipe* dans une méthode `beforeEach`
-- Appel de la méthode `transform` pour tester tous les cas possibles
+- A *Pipe* is nothing but a function!
+- Instantiation of *Pipe* in a `beforeEach` method
+- Call the `transform` method to test all possible cases
 
 ```typescript
-import { MyLowerCasePipe } from './app/mylowercase';
+import {MyLowerCasePipe} from './app/mylowercase';
 
 describe('MyLowerCasePipe', () => {
-  let pipe;
+  let pipe;
 
-  beforeEach(() => {
-    pipe = new MyLowerCasePipe();
-  });
+  beforeEach (() => {
+    pipe = new MyLowerCasePipe ();
+  });
 
-  it('should return lowercase', () => {
-    var val = pipe.transform('SOMETHING');
-    expect(val).toEqual('something');
-  });
+  it ('should return lowercase', () => {
+    var val = pipe.transform ('SOMETHING');
+    expect(val) .toEqual ('something');
+  });
 });
 ```
 
 Notes :
-
-
-
-<!-- .slide: class="page-questions" -->
 
 
 

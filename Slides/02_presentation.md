@@ -1,4 +1,4 @@
-# Présentation
+# Presentation
 
 <!-- .slide: class="page-title" -->
 
@@ -6,105 +6,105 @@ Notes :
 
 
 
-## Sommaire
+## Summary
 
 <!-- .slide: class="toc" -->
 
-- [Rappels](#/1)
-- **[Présentation](#/2)**
-- [Démarrer une application Angular](#/3)
+- [Reminders](#/1)
+- **[Presentation](#/2)**
+- [Start an Angular application](#/3)
 - [Tests](#/4)
-- [Template & Composants](#/5)
+- [Template & Components](#/5)
 - [Directives](#/6)
-- [Injection de Dépendances](#/7)
+- [Dependency Injection](#/7)
 - [Pipes](#/8)
-- [Service HTTP](#/9)
+- [HTTP Service](#/9)
 - [Router](#/10)
-- [Formulaires](#/11)
+- [Forms](#/11)
 - [Server-side Rendering](#/12)
 
 Notes :
 
 
 
-## Présentation
+## Presentation
 
-- Framework créé par *Google* et annoncé en 2014
-- Réécriture totale du framework
-- Reprend certains concepts d'*AngularJS*
-- Première version *beta* annoncée en octobre 2014
-- Version *finale* `2.0.0` officielle sortie en septembre 2016
-- Dernière version majeure `7.0.0` sortie en octobre 2018
-- Programmation orientée *Composant*
-- Framework conçu pour être plus performant et optimisé pour les mobiles
+- Framework created by *Google* and announced in 2014
+- Total rewriting of the framework
+- Resume certain concepts of *AngularJS*
+- First version *beta* announced in October 2014
+- Version *final* `2.0.0` official release in September 2016
+- Latest major release `7.0.0`
+- Component Oriented programming
+- Framework designed to be more efficient and optimized for mobile
 - http://angular.io/
 
 Notes :
 
 
 
-## Présentation - Numérotation
+## Presentation - Versioning
 
-- Numérotation à partir de 2.0.0 pour se démarquer d'AngularJS
-- Respect à partir de là de la norme *semver*
-- Les versions majeurs ne seront plus des réécritures comme de la 1 à la 2
-- Saut de la version 3.0.0 après le merge du projet *Router* déjà en 3.x
-- Planification d'une version majeure tous les 6 mois dans le futur
+- Versioning from 2.0.0 to stand out from AngularJS
+- Respect from there of the *semver* standard
+- Major versions will no longer be rewrites like 1 to 2
+- Skipping version 3.0.0 after the project merge *Router* already in 3.x
+- Planning a major release every 6 months in the future
 
 
 
 ## Versions
 
-| Version | Date     | Description                                                         |
-| :------ | :------: | :------------------------------------------------------------------ |
-| 2.0.0   | Sep 2016 | Version finale                                                       |
-| 4.0.0   | Mar 2017 | Nouveau moteur de compilation des templates, Modularisation du système d'animations, Intégration du projet Universal, Passage à TypeScript 2.1+ |
-| 5.0.0   | Nov 2017 | Amélioration du build (AOT), HttpClient, TypeScript 2.3             |
-| 6.0.0   | Mai 2018 | Intégration CLI, Angular Element, Nouveau renderer experimental Ivy |
-| 7.0.0   | Oct 2018 | CLI Prompts, Virtual Scroll, Drag and Drop, Angular Element         |
-| 8.0.0   | Mar 2019 | ? (Intégration d'Ivy)                                               |
+| Version | Date | Description |
+| : ------ | : ------: | : ------------------------------------------------- ----------------- |
+| 2.0.0 | Sep 2016 | Final version |
+| 4.0.0 | Mar 2017 | New template compilation engine, Modularization of the animation system, Integration of the Universal project, Switch to TypeScript 2.1+ |
+| 5.0.0 | Nov 2017 | Improvement of the build (AOT), HttpClient, TypeScript 2.3 |
+| 6.0.0 | May 2018 | CLI Integration, Angular Element, New experimental Ivy renderer |
+| 7.0.0 | Oct 2018 | CLI Prompts, Virtual Scroll, Drag and Drop, Angular Element |
+| 8.0.0 | Mar 2019 | ? (Integration of Ivy) |
 
 
 
-## Points négatifs d'AngularJS
+## AngularJS negative points
 
-- Différences entre les directives et `ngController`
-- Two-way data-binding source de problèmes de performances
-- Hiérarchie des scopes
-- Pas de server-side rendering
-- Plusieurs syntaxes pour créer des services
-- API des directives trop complexe
-- API mal conçue nécessitant l'utilisant de fix (`ngModelOptions`)
+- Differences between directives and `ngController`
+- Two-way data-binding causes performance problems
+- Hierarchy of scopes
+- No server-side rendering
+- Several syntaxes to create services
+- API directives too complex
+- poorly designed API requiring the use of fix (`ngModelOptions`)
 
 Notes :
 
 
 
-## Points négatifs d'AngularJS - directive
+## AngularJS negative points - directive
 
-- API des directives trop complexe
+- API directives too complex
 
-```javascript
-app.directive('MyDirective', function(){
-    return  {
-       restrict: 'AE',
-       require: '?^^ngModel',
-       scope: { variable: '@' },
-       controller: function(...) {},
-       link: function(...) { ... }
-    }
+```Javascript
+app.directive ('MyDirective', function() {
+    return {
+       restrict: 'AE',
+       require: '? ^^ ngModel',
+       scope: {variable: '@'},
+       controller: function (...) {},
+       link: function (...) {...}
+    }
 });
 ```
 
-- Version *Angular* :
+- *Angular* version:
 
 ```typescript
-import { Component, Input} from '@angular/core'
-@Component({
-  selector: 'my-directive'
+import {Component, Input} from '@angular/core'
+@Component ({
+  selector: 'my-directive'
 })
 export class MyDirective {
-  @Input() variable:string;
+  @Input() variable: string;
 }
 ```
 
@@ -112,84 +112,76 @@ Notes :
 
 
 
-## Points négatifs d'AngularJS - service
+## AngularJS Negative Points - Service
 
-- API pour créer des services en *AngularJS*
+- API to create *AngularJS* services
 
-```javascript
-// provider, factory, constant et value
-app.service('UserService', function (){
-  const vm = this;
-  vm.getUsers = function (){
+```Javascript
+// provider, factory, constant and value
+app.service ('UserService', function() {
+  const vm = this;
+  vm.getUsers = function() {
 
-  }
+  }
 });
 ```
 
-- Version Angular
+- Angular version
 
 ```typescript
 @Injectable()
 export class UserService {
-  getUsers(): User[] {
-    return [];
-  }
+  getUsers (): User [] {
+    return [];
+  }
 }
 ```
 Notes :
 
 
 
-## Angular - Points Positifs
+## Angular - Positive Points
 
-- Création d'application modulaire
-- Utilisable avec plusieurs langages de programmation : `TypeScript` et `Dart` (projet à part : https://webdev.dartlang.org/)
-- API plus simple que *AngularJS*
-- Seuls trois types d'éléments seront utilisés : `directive`, `pipe` et les `services`
-- Basé sur des standards : `Web Components`, `ES2015+`, `Decorator`
-- Nouvelle syntaxe utilisée dans les templates
-- Performance de l'API `Change Detection`
-- Le Projet `Universal` (rendu côté serveur)
-- Librairie pour commencer la migration : `ngUpgrade`
-- Collaboration avec Microsoft et Ember
-
-Notes :
-- ES2015 et plus ES6 car maintenant il devrait y avoir une spécification chaque année.
-- Les prochaines itérations auront moins de contenu
-
-
-
-## Angular - Points Négatifs
-
-- Nouvelle phase d'apprentissage du framework si habitué à AngularJS
-- Applications AngularJS incompatibles avec cette nouvelle version
-- ngUpgrade permet de réutiliser du code AngularJS mais pas de migrer
-- De nouveaux concepts à apprendre :
-  - `Zone`
-  - `Observable`
-  - ...
+- Modular application creation
+- Usable with several programming languages: `TypeScript` and` Dart` (separate project: https://webdev.dartlang.org/)
+- API simpler than *AngularJS*
+- Only three types of elements will be used: `directive`, `pipe` and `services`
+- Based on standards: `Web Components`, `ES2015 + `, `Decorator`
+- New syntax used in templates
+- Change Detection` API Performance
+- The `Universal` Project (server-side rendering)
+- Library to start the migration: `ngUpgrade`
+- Collaboration with Microsoft and Ember
 
 Notes :
-- utilisation de directives 1 dans 2 : https://angular.io/guide/upgrade#using-angularjs-component-directives-from-angular-code
-- Les nouveaux concepts ne sont pas indispensables à connaître. C'est un plus
+- ES2015 and more ES6 because now there should be a specification every year.
+- The next iterations will have less content
 
 
 
-## Angular = Une Plateforme
+## Angular - Negative Points
 
-- Angular n'est pas qu'un simple framework
-- Intégration Mobile
-- Outillage pour faciliter la phase de développement
-
-![plateforme](ressources/platform.png "plateforme")
+- New learning phase of the framework if used to AngularJS
+- AngularJS applications incompatible with this new version
+- ngUpgrade allows to reuse AngularJS code but not to migrate
+- New concepts to learn:
+  - `Zone`
+  - `Observable`
+  - ...
 
 Notes :
+- use of directives 1 in 2: https://angular.io/guide/upgrade#using-angularjs-component-directives-from-angular-code
+- New concepts are not essential to know. It's a plus
 
 
 
-## Architecture
+## Angular = A Platform
 
-![architecture](ressources/overview2.png "architecture")
+- Angular is not just a simple framework
+- Mobile Integration
+- Tools to facilitate the development phase
+
+![platform](resources/platform.png "platform")
 
 Notes :
 
@@ -197,40 +189,44 @@ Notes :
 
 ## Architecture
 
-- Metadata : Configuration pour décrire le fonctionnement d'un composant
-- Component : Classe TypeScript qui décrit son comportement
-- Template : Code HTML réalisant le rendu à l'aide du component
-- Modules : regroupement d'un ensemble de fonctionnalités
-- Injector : système d'injection de dépendances d'Angular
-- Directive : composant sans template (*ngFor*, *ngIf*, ...)
-- Service : Code métier implémenté dans des classes qui seront injectées dans les différents composants
+![architecture](resources/overview2.png "architecture")
 
 Notes :
-- Les définitions de ce slides sont liés au graphique du slide précédent
 
 
 
-## Architecture - Exemple complet
+## Architecture
 
-- Exemple complet utilisant les différentes briques d'une application Angular
+- Metadata: Configuration to describe the functioning of a component
+- Component: TypeScript class that describes its behavior
+- Template: HTML code rendering using the component
+- Modules: grouping a set of features
+- Injector: Angular dependency injection system
+- Directive: component without template (*ngFor *, *ngIf*, ...)
+- Service: Business code implemented in classes that will be injected into the different components
+
+Notes :
+- The definitions of this slides are related to the previous slide chart
+
+
+
+## Architecture - Complete example
+
+- Complete example using the different bricks of an Angular application
 
 ```typescript
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-@Component({
-    selector: 'my-app',
-    template: '{{value | uppercase}}'
+@Component ({
+    selector: 'my-app',
+    template: '{{value | uppercase}} '
 })
-export class MyComponent{
-  value:string;
-  constructor(http: HttpClient){
-  }
+export class MyComponent {
+  value: string;
+  constructor(http: HttpClient) {
+  }
 }
 ```
 
 Notes :
-
-
-
-<!-- .slide: class="page-questions" -->

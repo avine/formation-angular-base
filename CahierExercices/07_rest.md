@@ -1,6 +1,6 @@
 ## Lab 7: Communication with REST API
 
-The goal is to communicate with a REST server developed with NodeJS (given by the trainer), to get products and save the basket.
+The goal is to communicate with a REST server developed with Node.js (given by the trainer), to get products and save the basket.
 
 To run the server, do:
 

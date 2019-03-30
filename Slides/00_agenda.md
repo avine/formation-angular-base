@@ -2,44 +2,40 @@
 
 <!-- .slide: class="page-title" -->
 
-<!-- FIXME: by @ldez, voir l'issue #62 dans Github -->
+<!-- FIXME: by @ldez, see the issue # 62 in Github -->
 <style>
-  .toc {
-    font-size: 1.30rem !important;
-  }
+  .toc {
+    font-size: 1.30rem !important;
+  }
 </style>
 
 
 
-## Sommaire
+## Summary
 
-<!-- .slide: id="master-toc" class="toc" -->
+<!-- .slide: id = "master-toc" class="toc" -->
 
-- [Rappels](#/1)
-- [Présentation](#/2)
-- [Démarrer une application Angular](#/3)
+- [Reminders](#/1)
+- [Presentation](#/2)
+- [Start an Angular application](#/3)
 - [Tests](#/4)
-- [Template & Composants](#/5)
+- [Template & Components](#/5)
 - [Directives](#/6)
-- [Injection de Dépendances](#/7)
+- [Dependency Injection](#/7)
 - [Pipes](#/8)
-- [Service HTTP](#/9)
+- [HTTP Service](#/9)
 - [Router](#/10)
-- [Formulaires](#/11)
+- [Forms](#/11)
 - [Server-side Rendering](#/12)
 
 Notes :
 
 
 
-## Logistique
+## Logistics
 
-- Horaires
-- Déjeuner & pauses
-- Autres questions ?
+- Schedules
+- Lunch & breaks
+- Other questions ?
 
 Notes :
-
-
-
-<!-- .slide: class="page-questions" -->

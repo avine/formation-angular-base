@@ -1,4 +1,4 @@
-# Les Tests
+# The tests
 
 <!-- .slide: class="page-title" -->
 
@@ -6,21 +6,21 @@ Notes :
 
 
 
-## Sommaire
+## Summary
 
 <!-- .slide: class="toc" -->
 
-- [Rappels](#/1)
-- [Présentation](#/2)
-- [Démarrer une application Angular](#/3)
+- [Reminders](#/1)
+- [Presentation](#/2)
+- [Start an Angular application](#/3)
 - **[Tests](#/4)**
-- [Template & Composants](#/5)
+- [Template & Components](#/5)
 - [Directives](#/6)
-- [Injection de Dépendances](#/7)
+- [Dependency Injection](#/7)
 - [Pipes](#/8)
-- [Service HTTP](#/9)
+- [HTTP Service](#/9)
 - [Router](#/10)
-- [Formulaires](#/11)
+- [Forms](#/11)
 - [Server-side Rendering](#/12)
 
 Notes :
@@ -29,12 +29,12 @@ Notes :
 
 ## Concepts
 
-- Dans la documentation `Jasmine` est utilisé comme framework de tests
-  - `Angular` peut être également testé avec d'autres frameworks
-- Pour exécuter facilement les tests, on propose d'utiliser `Karma`
-  - Il a été développé par l'équipe d'`AngularJS`
-  - Il n'est pour autant ni indispensable ni lié à `Angular`
-- `Jasmine` et `Karma` sont les outils utilisés dans une application générée avec Angular CLI
+- In the `Jasmine` documentation is used as a test framework
+  - `Angular` can also be tested with other frameworks
+- To run the tests easily, we propose to use `Karma`
+  - It was developed by `AngularJS` team
+  - It is neither essential nor related to `Angular`
+- `Jasmine` and` Karma` are the tools used in an application generated with Angular CLI
 
 Notes :
 
@@ -42,11 +42,11 @@ Notes :
 
 ## Jasmine
 
-![Jasmine](ressources/jasmine.svg)
+![Jasmine](resources/jasmine.svg)
 
-- Framework de tests : http://jasmine.github.io/
-- Aucune dépendance vers d'autres frameworks
-- Ne nécessite pas d'éléments du *DOM*
+- Test framework: http://jasmine.github.io/
+- No dependency on other frameworks
+- Does not require *DOM* elements
 
 Notes :
 
@@ -54,18 +54,18 @@ Notes :
 
 ## Jasmine - Structure
 
-- Fonctions `describe` et `it` pour décrire la suite de tests
-- Système de *matchers* : `toBe`, `toBeUndefined`, `toBeTruthy`, `toThrow`, ...
-- Possibilité d'utiliser une bibliothèque externe comme `Chai`
+- `describe` and` it` functions to describe the test suite
+- *matchers* system: `toBe`, `toBeUndefined`, `toBeTruthy`, `toThrow`, ...
+- Ability to use an external library as `Chai`
 
-```javascript
+```Javascript
 describe('True value', () => {
 
-  it('should be equal to true', () => {
+  it ('should be equal to true', () => {
 
-     expect(true).toBe(true);
+     expect(true).toBe(true);
 
-  });
+  });
 
 });
 ```
@@ -76,20 +76,20 @@ Notes :
 
 ## Jasmine - Hooks
 
-- Fonctions `beforeEach`, `afterEach`, `beforeAll`, `afterAll`
-- Exécution d'une fonction avant ou après chaque ou tous les tests
+- `beforeEach`, `afterEach`, `beforeAll`, `afterAll`
+- Performing a function before or after each or all tests
 
-```javascript
-describe('True value', function () {
-  let value;
+```Javascript
+describe('True value', function() {
+  let value;
 
-  beforeEach(function (){
-    value = true;
-  });
+  beforeEach (function() {
+    value = true;
+  });
 
-  it('should be equal to true', function () {
-    expect(value).toBe(true);
-  });
+  it ('should be equal to true', function() {
+    expect(value).toBe(true);
+  });
 });
 ```
 
@@ -99,19 +99,19 @@ Notes :
 
 ## Jasmine - Spies
 
-- Jasmine propose un système de *Spies* inclus
-- Il est également possible d'utiliser une librairie externe comme *Sinon*
-- Création d'un spy : `jasmine.createSpy()` ou `spyOn(someObj)`
-- Matchers sur un spy :  `toHaveBeenCalled`, `toHaveBeenCalledWith`, `and.callThrough`, `and.returnValue`, `and.callFake`, `mySpy.calls`...
+- Jasmine offers a system of *Spies* included
+- It is also possible to use an external library like *Otherwise*
+- Create a spy: `jasmine.createSpy ()` or `spyOn (someObj)`
+- Spy matchers: `toHaveBeenCalled`, `toHaveBeenCalledWith`, `and.callThrough`, `and.returnValue`, `and.callFake`, `mySpy.calls` ...
 
-```javascript
-describe('Service objet:', function() {
+```Javascript
+describe('Object service:', function() {
 
-  it('checkout method should be called', function() {
-     spyOn(service, 'foo');
-     service.foo();
-     expect(service.foo).toHaveBeenCalled();
-  });
+  it ('checkout method should be called', function() {
+     spyOn (service, 'foo');
+     service.foo();
+     expect(service.foo).toHaveBeenCalled();
+  });
 
 });
 ```
@@ -122,22 +122,22 @@ Notes :
 
 ## Jasmine - TypeScript
 
-- Possibilité d'écrire des tests *Jasmine* en *TypeScript*
+- Ability to write tests *Jasmine * in * TypeScript*
 
 ```typescript
 class True {
-  returnTrue() {
-    return true;
-  }
+  returnTrue () {
+    return true;
+  }
 }
 
 describe('True object:', () => {
-  describe('returnTrue method:', () => {
-    it('should return true', () => {
-      let trueObject: True = new True();
-      expect(trueObject.returnTrue()).toBe(true);
-    });
-  });
+  describe('returnTrue method:', () => {
+    it ('should return true', () => {
+      const trueObject: True = new True ();
+      expect(trueObject.returnTrue()).toBe(true).
+    });
+  });
 });
 ```
 
@@ -147,39 +147,35 @@ Notes :
 
 ## Karma
 
-- *Karma* est un outil qui permet d'automatiser l’exécution des tests
+- *Karma* is a tool that automates the execution of tests
 
-<figure>
-    <img src="ressources/SchemaKarma.png" alt="Schema Karma" width="75%" />
-</figure>
+<Figure>
+    <img src = "resources/SchemaKarma.png" alt = "Schema Karma" width = "75%" />
+</ Figure>
 
 Notes :
 
 
 
-## Avec Angular CLI
+## With Angular CLI
 
-- Configuration automatique réalisée par *Angular CLI*
-- Les outils suivants sont prèts à fonctionner ensemble :
+- Automatic configuration by *Angular CLI*
+- The following tools are ready to work together:
 
-  *Webpack*, *TypeScript*, *Angular*, *Jasmine*, *Karma*
-- Les fichiers de tests sont automatiquement créés avec `ng generate (...)`
+  *Webpack *, * TypeScript *, * Angular *, * Jasmine *, * Karma*
+- The test files are automatically created with `ng generate (...)`
 
-  `Composant` / `Service` / `Pipe`
-- Ils se trouvent dans le même répertoire que l'élément à tester
+  `Component` /` Service`/`Pipe`
+- They are in the same directory as the item to be tested
 
-  *mon-service.spec.ts*
-- Exécution des tests :
+  *My*-service.spec.ts
+- Execution of tests:
 
-```shell
+```Shell
 ng test
 ```
 
 Notes :
-
-
-
-<!-- .slide: class="page-questions" -->
 
 
 

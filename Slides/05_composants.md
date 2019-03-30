@@ -1,4 +1,4 @@
-# Template & Composants
+# Template & Components
 
 <!-- .slide: class="page-title" -->
 
@@ -6,76 +6,64 @@ Notes :
 
 
 
-## Sommaire
+## Summary
 
 <!-- .slide: class="toc" -->
 
-- [Rappels](#/1)
-- [Présentation](#/2)
-- [Démarrer une application Angular](#/3)
+- [Reminders](#/1)
+- [Presentation](#/2)
+- [Start an Angular application](#/3)
 - [Tests](#/4)
-- **[Template & Composants](#/5)**
+- **[Template & Components](#/5)**
 - [Directives](#/6)
-- [Injection de Dépendances](#/7)
+- [Dependency Injection](#/7)
 - [Pipes](#/8)
-- [Service HTTP](#/9)
+- [HTTP Service](#/9)
 - [Router](#/10)
-- [Formulaires](#/11)
+- [Forms](#/11)
 - [Server-side Rendering](#/12)
 
 Notes :
 
 
 
-## Composants
+## Components
 
-- Les composants sont les éléments de base d'Angular
-- Définis à partir d'une classe TypeScript avec l'annotation `@Component`
-- Seront activés par le sélecteur _CSS_ de la propriété `selector`
-- Un template est configuré de deux façons :
-  - `template` : String literal (penser à la string multiline `` ` ``)
-  - `templateUrl` : Url d'un fichier HTML (relatif au composant)
+- The components are the basic elements of Angular
+- Defined from a TypeScript class with the `@Component` annotation
+- Will be enabled by the *CSS* selector of the `selector` property
+- A template is configured in two ways:
+  - `template`: String literal (think of the multiline string)
+  - `templateUrl`: Url of an HTML file (relative to the component)
 
 Notes :
 
 
 
-## Composants
+## Components
 
-- Les styles peuvent être configurés via deux propriétés :
-  - `styles`
+- Styles can be configured via two properties:
+  - `styles`
 
 ```typescript
-@Component({
-  selector: "app-root",
-  template: `
-    <h1>App Works</h1>
-  `,
-  styles: [
-    `
-      h1 {
-        font-weight: normal;
-      }
-    `
-  ]
+@Component ({
+  selector: 'app-root',
+  template: `
+    <h1> Works App <h1> `,
+  styles: [`
+    h1 {font-weight: normal; }
+  `]
 })
 export class AppComponent {}
 ```
-
-
-
-## Composants
-
-- Les styles peuvent être configurés via deux propriétés :
-  - `styleUrls`
+  - `styleUrls`
 
 ```typescript
-@Component({
-  selector: "app-root",
-  template: `
-    <h1>App Works</h1>
-  `,
-  styleUrls: ["./app.component.css"]
+@Component ({
+  selector: 'app-root',
+  template: `
+    <h1> Works App <h1> `,
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {}
 ```
@@ -84,31 +72,31 @@ Notes :
 
 
 
-## Composants
+## Components
 
-- Pour définir un composant qui sera appelé de cette façon :
+- To define a component that will be called this way:
 
-```html
+````HTML
 <div>
-  <h1>My Product</h1>
-  <app-product></app-product>
-</div>
+  <h1> My Product <h1>
+  <app-product> </ app-product>
+</ div>
 
-<!-- attention, <app-product/> ne fonctionne pas -->
+<!-- attention, <app-product /> does not work -->
 ```
 
-- Le composant _Angular_ est implémenté ainsi
+- The *Angular* component is implemented as well
 
 ```typescript
-import { Component } from "@angular/core";
+import {Component} from '@angular/core'
 
-@Component({
-  selector: "app-product",
-  template: `
-    <article>
-      <span>Product name</span>
-    </article>
-  `
+@Component ({
+  selector: 'app-product',
+  template: `
+    <article>
+      <span> Product name </ span>
+    </article>
+  `
 })
 export class ProductComponent {}
 ```
@@ -119,36 +107,34 @@ Notes :
 
 ## Templates
 
-- Les templates d'Angular sont compilés avant d'être exécutés
-  - Soit à chaud : _JIT_ (Just In Time) par défaut
-  - Soit au build : _AOT_ (Ahead Of Time) `--aot` dans Angular CLI
-- La compilation permet de détecter des erreurs dans le template
-- Implique également que les templates doivent être syntaxiquement exacts
-- Fonctionnement très différent d'AngularJS
-  - AngularJS ne compilait pas les templates
-  - Les templates d'AngularJS étaient du pur Web transmis au navigateur
+- Angular templates are compiled before being executed
+  - Hot: *JIT* (Just In Time) by default
+  - Either to build: *AOT* (Ahead Of Time) `--aot` in Angular CLI
+- The compilation makes it possible to detect errors in the template
+- Also implies that templates must be syntactically correct
+- Operation very different from AngularJS
+  - AngularJS did not compile the templates
+  - The AngularJS templates were pure Web transmitted to the browser
 
 
 
 ## Interpolation
 
-- Système d'interpolation grâce à la syntaxe `{{ expression }}`
-- L'expression doit retourner une valeur qui sera convertie en `string`
-- Angular définit une syntaxe précise pour ces expressions
+- interpolation system thanks to the syntax `{{expression}}`
+- The expression must return a value that will be converted to `string`
+- Angular defines a precise syntax for these expressions
 - https://angular.io/guide/template-syntax#template-expressions
-- La syntaxe est celle du JavaScript avec quelques exceptions
-- Toutes les propriétés du composant sont accessibles directement
-- Une expression ne doit pas modifier l'état de l'application
+- The syntax is that of JavaScript with some exceptions
+- All properties of the component are accessible directly
+- An expression must not change the state of the application
 
 ```typescript
-@Component({
-  selector: "product",
-  template: `
-    <p>{{ user?.firstName }}</p>
-  `
+@Component ({
+  selector: 'product',
+  template: `<p> {{user?.firstName}} </p>`
 })
 export class ProductComponent {
-  user: User;
+  user: User;
 }
 ```
 
@@ -156,50 +142,46 @@ Notes :
 
 
 
-## Propriétés
+## Properties
 
-- Syntaxe générique pour définir la valeur d'une propriété d'un élément _HTML_
-- Différent d'AngularJS, où nous utilisons les attributs _HTML_
-- Utilisation de la syntaxe `[property-name]="expression"`
-- Syntaxe identique pour les propriétés des _éléments HTML standards_, les _composants_ et les _directives_ Angular et même les _Web Components_
+- Generic syntax for setting the value of a property of an element *HTML*
+- Different from AngularJS, where we use *HTML* attributes
+- Using the syntax `[property-name]="expression"`
+- Same syntax for the properties of *standard HTML elements *, * components * and * Angular directives * and even * Web Components*
 
-```html
-<button [disabled]="isUnchanged">Save</button>
-<!-- propriété HTML -->
-<button bind-disabled="isUnchanged">Save</button>
-<!-- alternative sans [] -->
-<button data-bind-disabled="isUnchanged">Save</button>
-<!-- html5 strict -->
-<hero-detail [hero]="currentHero"></hero-detail>
-<!-- propriété d'un composant -->
-<div [class.special]="isSpecial">Special</div>
-<!-- cas particuliers -->
-<button [style.color]="isSpecial ? 'red' : 'green'"></button>
+```HTML
+<button [disabled]="isUnchanged"> Save </button> <!-- HTML property -->
+<button bind-disabled = "isUnchanged"> Save </button> <!-- alternative without [] -->
+<button data-bind-disabled = "isUnchanged"> Save </button> <!-- html5 strict -->
+<hero-detail [hero]="currentHero"> </ hero-detail> <!-- property of a component -->
+
+<div [class.special]="isSpecial"> Special </ div> <!-- special cases -->
+<button [style.color]="isSpecial? 'red': 'green'">
 ```
 
-- Les propriétés sont **bindées**, la valeur sera mise à jour automatiquement si la valeur de l'expression change
+- The properties are **bindées**, the value will be updated automatically if the value of the expression changes
 
 Notes :
-Indiquer qu'il n'y a pas de différences entre l'utilisation des propriétés et l'interpolation
-Angular transformera la syntaxe d'interpolation en binding de propriétés
+Indicate that there are no differences between the use of properties and interpolation
+Angular will transform interpolation syntax into property binding
 
 
 
-## Propriétés
+## Properties
 
-- **Attention à la différence entre attribut et propriété**
-- Il existe des écarts entre les _propriétés du DOM_ et les _attributs HTML_
-- Angular propose alors un système appelé `Attribute Binding`
-- Cas les plus courants : `aria-*`, `colspan`, `rowspan`, `svg` par exemple
-- Utilisation de la syntaxe `[attr.attribute-name]="expression"`
+- **Attention to the difference between attribute and property**
+- There are discrepancies between *DOM properties * and* HTML attributes
+- Angular then proposes a system called `Attribute Binding`
+- The most common cases: `aria- *`, `colspan`, `rowspan`, `svg` for example
+- Using the syntax `[attr.attribute-name]="expression"`
 
-```html
-<td [colspan]="dynamicColspan">help</td>
+```HTML
+<td [colspan]="dynamicColspan"> help </ td>
 
 <!-- Template parse errors:
-Can't bind to 'colspan' since it isn't a known native property-->
+Can not bind to 'colspan' since it is not a known native -->
 
-<td [attr.colspan]="dynamicColspan">help</td>
+<td [attr.colspan]="dynamicColspan"> help </ td>
 ```
 
 Notes :
@@ -208,24 +190,24 @@ Notes :
 
 ## Input
 
-- Un composant peut recevoir des paramètres
-- Annotation `@Input()` sur une propriété de la classe du composant
-- Le nom de la propriété sera celle à utiliser dans le template
+- A component can receive parameters
+- `Input() `annotation on a property of the component class
+- The name of the property will be the one to use in the template
 
 ```typescript
-import { Input, Component } from "@angular/core";
-import { Product } from "./model/Product";
+import {Input, Component} from '@angular/core'
+import {Product} from './model/Product'
 
-@Component({
-  selector: "product-detail",
-  template: `
-    <article>
-      <h1>{{ product.title }}</h1>
-    </article>
-  `
+@Component ({
+  selector: 'product-detail',
+  template: `
+    <article>
+      <h1> {{product.title}} <h1>
+    </article>
+  `
 })
 export class ProductComponent {
-  @Input() product: Product;
+    @Input() product: Product;
 }
 ```
 
@@ -235,76 +217,70 @@ Notes :
 
 ## Input
 
-- Possibilité de surcharger le nom de la propriété avec
+- Ability to overload the name of the property with
 
-  `@Input('discount')`
-
-- Les noms de propriétés sont sensible à la casse
+  `@Input('discount')`
+- Property names are case-sensitive
 
 ```typescript
-@Component({ selector: "product-detail" /* ... */ })
+@Component ({selector: 'product-detail',/*... */})
 export class ProductComponent {
-  @Input() product: Product;
-  @Input("discount") percentDiscount: number;
+  @Input() product: Product;
+  @Input('discount') percentDiscount: number;
 }
 ```
 
-- Pour utiliser ce composant
+- To use this component
 
-```html
-<product-detail [product]="myProduct" [discount]="10"> </product-detail>
+```HTML
+<product-detail [product]="myProduct" [discount]="10">
+</ Product-detail>
 ```
 
-- _Angular_ vérifie les propriétés passées à un composant
-- Il refusera une propriété qui n'existe pas ou non annotée `@Input()`
+- *Angular* checks properties passed to a component
+- It will refuse a property that does not exist or not annotated `@Input()`
 
 Notes :
 
 
 
-## Évènements
+## Events
 
-- Syntaxe générique pour écouter un évènement d'un élément _HTML_
-- Différent d'AngularJS, où nous utilisons les attributs _HTML_
-- Utilisation de la syntaxe `(event-name)="expression"`
-- Syntaxe identique pour les évènements des _éléments HTML standards_, des _composants_ et des _directives_ Angular et même des _Web Components_
-- Les méthodes et propriétés utilisées doivent être définies dans la classe
+- Generic syntax for listening to an event of an element *HTML*
+- Different from AngularJS, where we use *HTML* attributes
+- Using the syntax `(event-name)="expression"`
+- Identical syntax for events of *standard HTML elements *, * components * and * Angular directives * and even * Web Components*
+- The methods and properties used must be defined in the class
 
-```html
-<button (click)="handler()"></button>
-<!-- évènement HTML -->
-<button on-click="handler()"></button>
-<!-- alternative sans () -->
-<button data-on-click="handler()"></button>
-<!-- html5 strict -->
+````HTML
+<button (click)="handler ()"> </button> <!-- HTML event -->
+<button on-click = "handler ()"> </button> <!-- alternative without () -->
+<button data-on-click = "handler ()"> </button> <!-- html5 strict -->
 
 <!-- pseudo events -->
-<input (keyup.enter)="onEnter()" />
+<input  (keyup.enter)="onEnter()">
 
-<!-- évènement d'un composant -->
-<hero-detail (deleted)="onHeroDeleted()"></hero-detail>
+<!-- event of a component -->
+<hero-detail (deleted)="onHeroDeleted ()"> </ hero-detail>
 ```
 
 Notes :
 
 
 
-## Évènements
+## Events
 
-- _Angular_ permet d'accéder à l'évènement via la variable `$event`
-- Cet objet peut être utilisé dans l'expression
-- Tous les évènements natifs sont propagés vers les éléments parents
+- *Angular* provides access to the event via the variable `$event`
+- This object can be used in the expression
+- All native events are propagated to parent elements
 
-  Possibilité de stopper la propagation en retournant `false` dans l'expression qui traite l'évènement
+  Ability to stop the propagation by returning `false` in the expression that processes the event
+- Events from *Angular* components never propagate
+- Example of using `$event` with the reproduction of a **double binding**
 
-- Les évènements provenant des composants _Angular_ ne se propagent jamais
-- Exemple d'utilisation de `$event` avec la reproduction d'un **double binding**
-
-```html
-<input
-  [value]="currentHero.firstName"
-  (input)="currentHero.firstName = $event.target.value"
-/>
+````HTML
+<input [value]="currentHero.firstName"
+       (input)="currentHero.firstName = $event.target.value" />
 ```
 
 Notes :
@@ -313,29 +289,27 @@ Notes :
 
 ## Output
 
-- Un composant peut envoyer des évènements
-- Annotation `@Output` sur une propriété de type `EventEmitter`
-- Le nom de la propriété sera celui de l'évènement à utiliser dans le template
+- A component can send events
+- `@Output` annotation on an `EventEmitter` type property
+- The name of the property will be the name of the event to use in the template
 
 ```typescript
-import { Input, Output, Component, EventEmitter } from "@angular/core";
-import { Product } from "./model/Product";
+import {Input, Output, Component, EventEmitter} from '@angular/core'
+import {Product} from './model/Product'
 
-@Component({
-  selector: "product-detail",
-  template: `
-    <article>
-      <button (click)="clickHandler()">Add</button>
-    </article>
-  `
+@Component ({
+  selector: 'product-detail',
+  template: `
+    <article>
+      <button (click)="clickHandler ()"> Add </button>
+    </article>
+  `
 })
 export class ProductComponent {
-  @Input() product: Product;
-  @Output() addToBasket = new EventEmitter<Product>();
+    @Input() product: Product;
+    @Output() addToBasket = new EventEmitter <Product> ();
 
-  clickHandler() {
-    this.addToBasket.emit(this.product);
-  }
+    clickHandler () {this.addToBasket.emit (this.product); }
 }
 ```
 
@@ -345,27 +319,27 @@ Notes :
 
 ## Output
 
-- Possibilité de surcharger le nom de l'évènement
+- Ability to overload the name of the event
 
-  `@Output('myOtherName')`
-
-- Les noms des évènements sont sensibles à la casse
+  `@Output('myOtherName')`
+- Event names are case-sensitive
 
 ```typescript
-@Component({ selector: "product-detail" /* ... */ })
+@Component ({selector: 'product-detail',/*... */})
 export class ProductComponent {
-  @Output("add") addToBasket = new EventEmitter<Product>();
+  @Output('add') addToBasket = new EventEmitter <Product> ();
 }
 ```
 
-- Pour utiliser ce composant
+- To use this component
 
-```html
-<product-detail (add)="myHandler()"> </product-detail>
+```HTML
+<product-detail (add)="myHandler()">
+</ Product-detail>
 ```
 
-- _Angular_ vérifie les évènements d'un composant
-- Il refusera un évènement qui n'existe pas ou non annoté `@Output()`
+- *Angular* checks the events of a component
+- It will refuse an event that does not exist or not annotated `@Output()`
 
 Notes :
 
@@ -373,31 +347,29 @@ Notes :
 
 ## Output
 
-- L'objet évènement transmis peut être de n'importe quel type
-- Il est spécifié dans le paramètre de la classe `EventEmitter`
-- Pour émettre un évènement, il faut passer un objet de cette classe
+- The transmitted event object can be of any type
+- It is specified in the `EventEmitter` class parameter
+- To emit an event, you must pass an object of this class
 
 ```typescript
-@Component({ selector: "hello-component" /* ... */ })
+@Component ({selector: 'hello-component',/*... */})
 export class HelloComponent {
-  @Output() hello = new EventEmitter<string>();
-  constructor() {
-    this.hello.emit("hello!");
-  }
+  @Output() hello = new EventEmitter<string> ();
+  constructor() {this.hello.emit ('hello!'); }
 }
 ```
 
-- Côté réception de l'évènement, la variable `$event` correspond à cet objet
+- On the receipt side of the event, the `$event` variable corresponds to this object
 
 ```typescript
-@Component({
-  selector: "main",
-  template: '<hello-component (hello)="myHandler($event)"></hello-component>'
+@Component ({
+  selector: 'main',
+  template: '<hello-component (hello)="myHandler($event)"> </ hello-component>'
 })
 export class MainComponent {
-  myHandler(value) {
-    console.log(value); //-> 'hello!'
-  }
+  myHandler(value) {
+    console.log(value); // --> 'hello!'
+  }
 }
 ```
 
@@ -405,21 +377,25 @@ Notes :
 
 
 
-## Déclaration
+## Statement
 
-- Utilisation des _NgModule_ définis en détail plus loin dans la formation
-- Pour qu'un composant soit accessible, il faut :
-  - qu'il soit dans un autre _NgModule_ listé dans la liste des `imports`
-  - qu'il soit dans la liste des `declarations` de votre module
+- Use of *NgModule* defined in detail later in the training
+- For a component to be accessible, it is necessary:
+  - it's in another *NgModule* listed in the `imports` list
+  - that it is in the list of `declarations` of your module
 
 ```typescript
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { AppComponent } from "./app.component";
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppComponent} from './app.component';
 
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule]
+@NgModule ({
+  statements: [
+    AppComponent,
+  ]
+  imports: [
+    BrowserModule
+  ]
 })
 export class AppModule {}
 ```
@@ -430,54 +406,53 @@ Notes :
 
 ## Projection
 
-- Permet de mettre du contenu HTML dans la balise d'un composant Angular
-- Le composant `ng-content` permet de réinserer le contenu dans le template
-- Correspond à la directive `ngTransclude` en _AngularJS_
+- Allows to put HTML content in the tag of an Angular component
+- The `ng-content` component allows reinserting the content in the template
+- Corresponds to the `ngTransclude` directive in *AngularJS*
 
-```html
+```HTML
 <app-post>
-  <h2>Title</h2>
-  <p>Content</p>
+  <h2> Title </h2>
+  <p> Content </p>
 </app-post>
 ```
 
 ```typescript
-@Component({
-  selector: "app-post",
-  template: `
-    <article>
-      <ng-content></ng-content>
-    </article>
-  `
+@Component ({
+  selector: 'app-post',
+  template: `
+    <article>
+      <Ng-content> </ ng-content>
+    </article>
+  `
 })
 export class PostComponent {}
 ```
-
 Notes :
 
 
 
 ## Projection
 
-- Possibilité d'avoir plusieurs points d'insertion avec la propriété `select`
-- La valeur doit être le sélecteur _CSS_ de la section à utiliser
+- Ability to have multiple insertion points with the `select` property
+- The value must be the *CSS* selector of the section to use
 
-```html
+```HTML
 <app-post>
-  <h2>Title</h2>
-  <p>Content</p>
+  <h2> Title </h2>
+  <p> Content </p>
 </app-post>
 ```
 
 ```typescript
-@Component({
-  selector: "app-post",
-  template: `
-    <article>
-      <header><ng-content select="h2"></ng-content></header>
-      <section><ng-content select="p"></ng-content></section>
-    </article>
-  `
+@Component ({
+  selector: 'app-post',
+  template: `
+    <article>
+      <header> <ng-content select="h2"> </ ng-content> </header>
+      <section> <ng-content select="p"> </ ng-content> </section>
+    </article>
+  `
 })
 export class PostComponent {}
 ```
@@ -486,57 +461,54 @@ Notes :
 
 
 
-## Cycle de vie
+## Life cycle
 
-- Chaque composant a un cycle de vie bien défini
+- Each component has a definite life cycle
 - https://angular.io/guide/lifecycle-hooks
-- Il est possible d'exécuter du code à chacune de ces étapes
-- La plus utilisée est l'initialisation avec l'interface `OnInit`
-- L'utilisation d'`OnInit` est recommandée plutôt que celle du constructeur
+- It is possible to execute code at each of these stages
+- Most used is initialization with the `OnInit` interface
+- Use of OnInit is recommended rather than the manufacturer's
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-@Component({ selector: 'user', /* ... */ })
+@Component ({selector: 'user',/*... */})
 export class UserComponent implements OnInit {
 
-  @Input() data: User;
-  products: Product[];
+  @Input() data: User;
+  products: Product [];
 
-  ngOnInit(): void {
-    this.products = this.getProducts(this.data.id);
-  }
+  ngOnInit (): void {
+    this.products = this.getProducts(this.data.id);
+  }
 
-  getProducts(id){ ... }
+  getProducts (id) {...}
 }
 ```
-
-Notes :
 
 
 
 ## Tests
 
-- `TestBed` est l'outil central pour les tests _Angular_
-- On l'importe depuis le module `@angular/core/testing`
-- Permet de créer un module _Angular_ spécifique pour un test
+- `TestBed` is the central tool for *Angular* testing
+- We import it from the module `@angular/core/testing`
+- Allows you to create a specific *Angular* module for a test
 
-  Utilisation de `TestBed.configureTestingModule({ ... })`
-
-- L'objectif est d'inclure le moins de choses possibles pour isoler le test
+  Using `TestBed.configureTestingModule ({...})`
+- The goal is to include as few things as possible to isolate the test
 
 ```typescript
-import { TestBed } from "@angular/core/testing";
+import {TestBed} from '@angular/core/testing';
 
-TestBed.configureTestingModule({
-  declarations: [TitleComponent],
-  imports: [
-    // HttpModule, FormsModule, etc.
-  ],
-  providers: [
-    // TitleService,
-    // { provide: TitleService, useClass: TitleServiceMock })
-  ]
+TestBed.configureTestingModule ({
+    declarations: [TitleComponent],
+    imports: [
+      // HttpModule, FormsModule, etc.
+    ]
+    providers: [
+      // TitleService,
+      // {provide: TitleService, useClass: TitleServiceMock})
+    ]
 });
 ```
 
@@ -546,27 +518,27 @@ Notes :
 
 ## Tests
 
-- Le module créé permet de créer un composant
-- Ce composant se présente sous la forme d'un `ComponentFixture`
-  - Contient une référence vers l'instance de la classe TypeScript
-  - Contient une référence vers l'élément du DOM où il est rattaché
+- The module created makes it possible to create a component
+- This component is in the form of a `ComponentFixture`
+  - Contains a reference to the instance of the TypeScript class
+  - Contains a reference to the DOM element where it is attached
 
 ```typescript
 class TestBed implements Injector {
-  static configureTestingModule(moduleDef: TestModuleMetadata): typeof TestBed;
-  createComponent(component: Type<T>): ComponentFixture<T>;
+  static configureTestingModule (moduleDef: TestModuleMetadata): typeof TestBed
+  createComponent (component: Type<T>): ComponentFixture<T>
 
-  /* ... */
+  / *... */
 }
 
 class ComponentFixture {
-  componentInstance: T;
-  nativeElement: any;
-  debugElement: DebugElement;
-  elementRef: ElementRef;
-  detectChanges(checkNoChanges?: boolean): void;
+  componentInstance: T
+  nativeElement: any
+  debugElement: DebugElement
+  elementRef: ElementRef
+  detectChanges (checkNoChanges ?: boolean): void
 
-  /* ... */
+  / *... */
 }
 ```
 
@@ -576,41 +548,35 @@ Notes :
 
 ## Tests
 
-- La méthode `detectChanges` permet de piloter la détection de changements
-- Attention, pas de détection de changements automatiques
+- The `detectChanges` method allows to control the detection of changes
+- Warning, no detection of automatic changes
 
 ```typescript
-import { TestBed } from "@angular/core/testing";
-import { TitleComponent } from "./title.component";
+import {TestBed} from '@angular/core/testing';
+import {TitleComponent} from './title.component';
 
-describe("TitleComponent", () => {
-  let fixture;
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [TitleComponent]
-    });
-    fixture = TestBed.createComponent(TitleComponent);
-  });
+describe('TitleComponent', () => {
+  let fixture
+  beforeEach (() => {
+    TestBed.configureTestingModule ({
+      declarations: [TitleComponent]
+    });
+    fixture = TestBed.createComponent (TitleComponent);
+  });
 
-  it("should have a title", () => {
-    const { componentInstance, nativeElement } = fixture;
+  it ('should have a title', () => {
+    const {componentInstance, nativeElement} = fixture;
 
-    componentInstance.title = "Hello World";
-    fixture.detectChanges();
-    const h1 = nativeElement.querySelector("h1");
-    expect(h1.textContent).toBe("Hello World");
-  });
+    componentInstance.title = 'Hello World';
+    fixture.detectChanges ();
+    const h1 = nativeElement.querySelector ('h1');
+    expect(h1.textContent) .toBe('Hello World');
+  });
 });
 ```
 
 Notes :
-
-
-
-<!-- .slide: class="page-questions" -->
 
 
 
 <!-- .slide: class="page-tp3" -->
-
-

@@ -12,5 +12,5 @@
 
 Install the requested technologies:
 
-* NodeJS / npm
+* Node.js / npm
 * GIT

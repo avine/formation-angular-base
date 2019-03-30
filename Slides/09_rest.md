@@ -1,4 +1,4 @@
-# Service HTTP
+# HTTP service
 
 <!-- .slide: class="page-title" -->
 
@@ -6,21 +6,21 @@ Notes :
 
 
 
-## Sommaire
+## Summary
 
 <!-- .slide: class="toc" -->
 
-- [Rappels](#/1)
-- [Présentation](#/2)
-- [Démarrer une application Angular](#/3)
+- [Reminders](#/1)
+- [Presentation](#/2)
+- [Start an Angular application](#/3)
 - [Tests](#/4)
-- [Template & Composants](#/5)
+- [Template & Components](#/5)
 - [Directives](#/6)
-- [Injection de Dépendances](#/7)
+- [Dependency Injection](#/7)
 - [Pipes](#/8)
-- **[Service HTTP](#/9)**
+- **[HTTP Service](#/9)**
 - [Router](#/10)
-- [Formulaires](#/11)
+- [Forms](#/11)
 - [Server-side Rendering](#/12)
 
 Notes :
@@ -29,28 +29,28 @@ Notes :
 
 ## RxJS
 
-- *Angular* a une dépendance forte sur la librairie *RxJS 6+*
-- Elle est très utilisée dans le coeur du framework
-- *RxJS* est une librairie permettant de faire du **Reactive Programming**
-- C'est un nouveau paradigme de programmation très en vogue
-- Il en existe de nombreuses implémentations : http://reactivex.io/
-- Documentaion pour *RxJS* : https://github.com/ReactiveX/rxjs
+- *Angular * has a strong dependency on the library * RxJS 6 +*
+- It is very used in the heart of the framework
+- *RxJS * is a library for ** Reactive Programming**
+- It's a new paradigm of programming very fashionable
+- There are many implementations: http://reactivex.io/
+- Documentaion for *RxJS*: https://github.com/ReactiveX/rxjs
 
 
 
 ## Observables
 
-- Les `Observable` sont la notion centrale dans la librairie *RxJS*
-- Ils représentent un flux de données, on parle souvent de **stream**
-- Permet le traitement de tâches asynchrones similaires à des tableaux
-- Remplace l'utilisation des promesses qu'il y avait dans *AngularJS*
-- Apporte des avantages par rapport aux promesses
-  - Permet d'avoir des traitements asynchrones retournant plusieurs données
-  - Un Observable peut être *cancelable*
-  - Propose de nombreux outils pour traiter les données
-- Utilisable pour tous les traitements asynchrones
+- `Observable` are the central notion in the library *RxJS*
+- They represent a flow of data, we often speak of **stream**
+- Allows the processing of asynchronous tasks similar to tables
+- Replaces the use of promises that were in *AngularJS*
+- Provides advantages over promises
+  - Allows you to have asynchronous processing that returns multiple data
+  - An Observable can be *cancelable*
+  - Offers many tools to process data
+- Usable for all asynchronous processing
 
-  Requêtes HTTP, WebSocket, gestion des événements
+  HTTP requests, WebSocket, event management
 
 Notes :
 
@@ -58,15 +58,15 @@ Notes :
 
 ## Observables
 
-- *RxJS* fourni une liste importante d'opérateurs pour les `Observable`
-- Ces opérateurs s'inspirent largement des transformations sur un tableau
-  - `take(n)` : pioche les n premiers éléments et coupe le flux
-  - `filter(fn)` : laisser passer les événements pour lesquels fn rend `true`
-  - `map(fn)` : applique la fonction fn sur chaque élément et retourner le résultat
-  - `merge(s1, s2)` : fusionne la source aux observables en argument
-  - `mergeMap(fn)` : applique fn comme map mais merge les valeurs qui sont des observables
-  - `debounce(ms)` : retarde et filtre pour n'envoyer un élément que lorsqu'il n'y a pas eu de nouveaux éléments depuis le temps en argument
-- Ressource importante pour apprendre les opérateurs : http://rxmarbles.com/
+- *RxJS* provided an important list of operators for `Observable`
+- These operators are largely inspired by transformations on a board
+  - `take(n)`: draws the first n elements and cuts the flow
+  - `filter(fn)`: pass events for which fn makes `true`
+  - `map(fn)`: apply the function fn on each element and return the result
+  - `merge(s1, s2)`: merges source with observables as argument
+  - `mergeMap(fn)`: apply fn as map but merge values ​​that are observables
+  - `debounce(ms)`: delay and filter to send an element only when there have been no new elements since the argument time
+- Important resource for learning operators: http://rxmarbles.com/
 
 Notes :
 
@@ -74,103 +74,102 @@ Notes :
 
 ## Marbles diagrams
 
-![filter](ressources/marble-filter.png "filter")
+![filter](resources/marble-filter.png "filter")
 
-![map](ressources/marble-map.png "map")
+![map](resources/marble-map.png "map")
 
 Notes :
+ 
+ 
 
+## Observables pipe (RXJS 6)
 
-
-## Observables pipe (RxJS 6)
-
-- Depuis RxJS 6, les opérateurs ne sont plus directement disponibles dans l'objet Observable, mais en tant que fonction.
-- Il faut utiliser `pipe`, pour appeler les opérateurs :
-
+- Since rxjs 6, operators are no longer directly available in the Observable object, but as a function.
+- You have to use `pipe`, to call the operators:
 ```typescript
 import { map, filter } from 'rxjs/operators';
 
 observable.pipe(
-    map(fn),
-    filter(fn),
-    ...
+    map(fn),
+    filter(fn),
+    ...
 )
 ```
-- Attention, certains opérateurs ont été renommés entre la version 5 et 6 de RXJS (c'était des mot clés javascript) :
-- `do`, `catch`, `switch`, `finally` deviennent `tap`, `catchError`, `switchAll`, et `finalize`
+- Attention, some operators have been renamed between version 5 and 6 of RXJS (it was javascript keywords):
+- `do`, `catch`, `switch`, `finally` become `tap`, `catchError`, `switchAll`, and` finalize`
 
 
 
 ## Subscriptions
 
-- Pour écouter le résultat d'un flux, il faut utiliser la méthode `subscribe`
-- **Attention**
-  - `subscribe` n'est pas un opérateur, il ne peux pas être chaîné
-  - Il rend un objet `subscription` qui permet de stopper l'écoute
-  - Un observable qui n'a pas été **subscribed** ne **démarre** pas
-  - Un observable ne peut être écouté qu'une seule fois
-- `subscribe` prend trois fonctions en arguments, tous optionnels
-  - `next` : Appelé pour chaque élément dans le flux
-  - `error` : Appelé pour chaque erreur dans le flux
-  - `complete` : Appelé lors de la fermeture du flux
+- To listen to the result of a stream, use the `subscribe` method
+- **Warning**
+  - `subscribe` is not an operator, it can not be chained
+  - It makes a `subscription` object that allows you to stop listening
+  - An observable that has not been **subscribed ** does not ** start**
+  - An observable can only be listened to once
+- `subscribe` takes three functions in arguments, all optional
+  - `next`: Called for each element in the stream
+  - `error`: Called for each error in the stream
+  - `complete`: Called when closing the stream
 
 Notes :
 
 
 
-## Exemple
+## Example
 
-- Exemple complet d'utilisation des Observables
+- Complete example of using Observables
 
 ```typescript
-function getDataFromNetwork(): Observable<SomeClass> {
-  /* ... */
+function getDataFromNetwork(): Observable <SomeClass> {
+  / *... */
 }
 
-function getDataFromAnotherRequest(arg: SomeClass): Observable<SomeOtherClass> {
-  /* ... */
+function getDataFromAnotherRequest(arg: SomeClass): Observable <SomeOtherClass> {
+  / *... */
 }
 
-getDataFromNetwork()
-  .pipe(
-    filter((rep1) => rep1 !== null),
-    mergeMap((rep1) => {
-      return getDataFromAnotherRequest(rep1);
-    }),
-    map((rep2) => `${rep2} transformed`)
-  )
-  .subscribe((value) => console.log(`next => ${value}`));
+getDataFromNetwork ()
+  .pipe(
+    filter((rep1) => rep1! == null),
+    mergeMap((rep1) => {
+      return getDataFromAnotherRequest (rep1);
+    }),
+    map((rep2) => `$(rep2} transformed`)
+  )
+  .subscribe((value) => console.log(`next => $(value}`));
 ```
 
 Notes :
 
 
 
-## Création
+## Creation
 
-- Il existe de nombreux initialiseurs à partir d'un tableau par exemple
-- Possibilité également d'en créer un via le constructeur
+- There are many initializers from a table for example
+- Possibility also to create one via the manufacturer
 
 ```typescript
 import { Component, OnDestroy } from "@angular/core";
-import { Observable, Subscriber } from "rxjs";
+import {Observable, Subscriber} from "rxjs";
 
-@Component({ ... })
+@Component ({...})
 export class AppComponent implements OnDestroy {
-  private subscriber: Subscriber;
+  private subscriber: Subscriber;
 
-  constructor() {
-    const source = new Observable(observer => {
-      const interval = setInterval(() => observer.next('TICK'), 1000);
-      return () => {
-        observer.complete();
-        clearInterval(interval);
-      };
-    });
-    this.subscriber = source.subscribe(value => console.log(value));
-  }
+  constructor() {
+    const source = new Observable(observe => {
+      const interval = setInterval(() => observe.next('TICK'), 1000);
+      return () => {
+        observer.complete();
+        clearInterval(interval);
+      };
+    });
+    this.subscriber = source.subscribe(value => console.log(value));
+  }
 
-  ngOnDestroy() { this.subscriber.unsubscribe(); }
+  ngOnDestroy() { this.subscriber.unsubscribe(); }
 }
 ```
 
@@ -178,17 +177,17 @@ Notes :
 
 
 
-## RxJS et Angular
+## RxJS and Angular
 
-- *Angular* utilise énormément *RxJS* en interne
-- La dépendance est en mode **peer** c'est à dire qu'elle est à ajouter en plus
-- **Attention**, il faut la version *6+* (depuis Angular 6), alors que la *5* est encore répandue
-- *Angular* expose des objets *RxJS* dans plusieurs cas :
-  - Requêtes HTTP
-  - Intéraction avec un formulaire
-  - Affichage des vues par le *router*
-- *ngrx* est un projet qui propose d'étendre l'utilisation de RxJS avec Angular
-  - *@ngrx/store*, *@ngrx/devtools*, *@ngrx/router*, ...
+- *Angular * uses a lot * RxJS* internally
+- The dependency is in **peer mode** that is to say it is to be added in addition
+- **Attention **, you need version * 6 + * (since Angular 6), while * 5* is still widespread
+- *Angular * exposes * RxJS* objects in several cases:
+  - HTTP requests
+  - Interaction with a form
+  - View views by the *router*
+- *ngrx* is a project that proposes to extend the use of Rx with Angular
+  - *@ngrx/store *, * @ngrx/devtools *, * @ngrx/router*, ...
 
 Notes :
 
@@ -196,41 +195,41 @@ Notes :
 
 ## HTTP
 
-- *Angular* fournit un module `HttpClientModule` dédié à la communication HTTP
-- Ce module contient un ensemble de service pour les requêtes HTTP
-- Avant *Angular 4.3*, utilisation du module `HttpModule`
-- Se base sur le pattern `Observable`
-  - Contrairement à AngularJS qui utilisait le pattern `Promises`
-  - Plus grande flexibilité grâce aux différents opérateurs de `RxJS`
-- Le point d'entré est le service `HttpClient` accessible via l'injection de dépendance
-- Nombreuses configurations pour paramétrer ou transformer les requêtes
-- Bonne pratique : implémenter les appels REST dans les services
+- *Angular* provides a `HttpClientModule` module dedicated to HTTP communication
+- This module contains a service set for HTTP requests
+- Before *Angular 4.3*, using the `HttpModule` module
+- Based on the `Observable` pattern
+  - Unlike AngularJS who used the `Promises` pattern
+  - Greater flexibility thanks to the different operators of `RxJS`
+- The entry point is the `HttpClient` service accessible via the dependency injection
+- Numerous configurations to configure or transform requests
+- Best practice: Implementing REST calls in services
 
 Notes :
 
 
 
-## HTTP - Exemple
+## HTTP - Example
 
-- Exemple d'un service utilisant `HttpClient`
-- Penser à `import` le `HttpClientModule` dans votre module
-- Import de la classe `HttpClient` depuis le module `@angular/common/http`
-- Injection du service via le constructeur
-- La méthode du service retournera l'observable de la requête `HTTP`
+- Example of a service using `HttpClient`
+- Think about importing `HttpClientModule` into your module
+- Import the `HttpClient` class from the` @angular/common/http` module
+- Injection of the service via the constructor
+- The service method will return the observable of the request to HTTP
 
 ```typescript
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Person } from './model/person';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Person} from './model/person';
 
 @Injectable()
 export class ContactService {
-  constructor(private http: HttpClient){ }
+  constructor(private http: HttpClient) {}
 
-  getContacts(): Observable<Person[]> {
-    return this.http.get<Person[]>('people.json');
-  }
+  getContacts (): Observable <Person []> {
+    return this.http.get<Person []>('people.json');
+  }
 }
 ```
 
@@ -240,16 +239,16 @@ Notes :
 
 ## HTTP - Configuration
 
-- La requête HTTP peut être configurée via un paramètre supplémentaire
+- The HTTP request can be configured via an additional parameter
 
 ```typescript
 interface RequestOptionsArgs {
-  body?: any;
-  headers?: Headers;
-  observe?: 'body';
-  reportProgress?: boolean:
-  withCredentials?: boolean;
-  responseType?: ResponseContentType;
+  body ?: any;
+  headers ?: Headers;
+  observe ?: 'body';
+  reportProgress ?: boolean:
+  withCredentials ?: boolean;
+  responseType ?: ResponseContentType;
 }
 ```
 
@@ -259,20 +258,20 @@ Notes :
 
 ## HTTP - Configuration
 
-- `HttpClient` propose également de nombreux raccourcis
+- `HttpClient` also offers many shortcuts
 
 ```typescript
 class HttpClient {
-  request(url: string|Request, options?: RequestOptionsArgs): Observable<any>
+  request (url: string | Request, options ?: RequestOptionsArgs): Observable<any>
 
-  get(url: string, options?: RequestOptionsArgs): Observable<any>
+  get (url: string, options ?: RequestOptionsArgs): Observable<any>
 
-  post(url: string, body: any, options?: RequestOptionsArgs): Observable<any>
+  post (url: string, body: any, options ?: RequestOptionsArgs): Observable<any>
 
-  put(url: string, body: any, options?: RequestOptionsArgs): Observable<any>
+  put (url: string, body: any, options ?: RequestOptionsArgs): Observable<any>
 
-  delete(url: string, options?: RequestOptionsArgs): Observable<any>
-  /* ... */
+  delete (url: string, options ?: RequestOptionsArgs): Observable<any>
+  / *... */
 }
 ```
 
@@ -280,29 +279,29 @@ Notes :
 
 
 
-## HTTP - Exemple
+## HTTP - Example
 
-- Requête HTTP de type `PUT` avec surcharge des `Headers`
+HTTP request of `PUT` type with overload of` Headers`
 
 ```typescript
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Contact } from './model/contact';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Contact} from './model/contact';
 
 Injectable()
 export class ContactService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  save(contact: Contact): Observable<Contact> {
-    const headers = new HttpHeaders();
-    headers.set('Authorization', 'xxxxxxx');
+  save(contact: Contact): Observable<Contact> {
+    const headers = new HttpHeaders ();
+    headers.set ('Authorization', 'xxxxxxx');
 
-    const requestOptions: RequestOptionsArgs = {
-      headers
-    };
-    return this.http.put(`rest/contacts/${contact.id}`, contact, requestOptions);
-  }
+    const requestOptions: RequestOptionsArgs = {
+      headers
+    };
+    return this.http.put(`rest/contacts/$(contact.id}`, contact, requestOptions);
+  }
 }
 ```
 
@@ -310,26 +309,26 @@ Notes :
 
 
 
-## HTTP - Exemple
+## HTTP - Example
 
-- Exemple avec l'utilisation d'opérateurs *RxJS*
+- Example with the use of operators *RxJS*
 
 ```typescript
 import {Component} from '@angular/core';
 import {ContactService} from './contact.service';
 
-@Component({
-  selector: 'app',
-  template: '{{ displayedData | json }}'
+@Component ({
+  selector: 'app',
+  template: '{{displayedData | json}} '
 })
 export class AppComponent {
-  displayedData: Array<Contact>;
+  displayedData: Array <Contact>;
 
-  constructor(private contactService: ContactService) {
-    contactService.getContacts().subscribe(contacts => {
-      this.displayedData = contacts;
-    });
-  }
+  constructor(private contactService: ContactService) {
+    contactService.getContacts ().subscribe(contacts => {
+      this.displayedData = contacts;
+    });
+  }
 }
 ```
 
@@ -337,33 +336,33 @@ Notes :
 
 
 
-## HTTP - Exemple
+## HTTP - Example
 
-- Exemple utilisant d'avantage d'opérateurs
+- Example using more operators
 
 ```typescript
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { Project, Person } from './model/';
-import { Observable } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Component} from '@angular/core';
+import {Project, Person} from './model/';
+import {Observable} from 'rxjs';
+import {mergeMap} from 'rxjs/operators';
 
-@Component({
-  selector: 'app',
-  template: `<ul>
-    <li *ngFor="let project of (projects$ | async)">{{project.name}}</li>
-  </ul>`
+@Component ({
+  selector: 'app',
+  template: `<ul>
+    <li *ngFor = "let project of (projects $ | async)"> {{project.name}} </ li>
+  </ Ul> `
 })
 export class AppComponent {
-  projects$: Observable<Project[]>
-  constructor(http: HttpClient) {
-    this.projects$ = http.get<Person[]>('person.json')
-      .pipe(
-        mergeMap((persons: Person[]): Observable<Project[]> => {
-          return getProjects(persons)
-        })
-      )
-  }
+  projects$: Observable <Project []>
+  constructor(http: HttpClient) {
+    this.projects$ = http.get <Person []>('person.json')
+      .pipe(
+        mergeMap((persons: Person []): Observable<Project[]> = {
+          return getProjects(persons)
+        })
+      )
+  }
 }
 ```
 
@@ -371,26 +370,28 @@ Notes :
 
 
 
-## HTTP - Intercepteurs
+## HTTP - Interceptors
 
-- Possibilité de créer des intercepteurs
-- S'appliqueront sur les requêtes et les réponses
+- Possibility of creating interceptors
+- Will apply on queries and responses
 
 ```typescript
 import {
-  HttpInterceptor,
-  HttpRequest,
-  HttpHandler,
-  HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs';
+  HttpInterceptor,
+  HttpRequest,
+  HttpHandler,
+  HttpEvent} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class HeaderInterceptor implements HttpInterceptor {
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
-    const clone = req.clone({ setHeaders: {'Authorization': `token ${TOKEN}`} });
-    return next.handle(clone);
-  }
+  intercept (req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const clone = req.clone({
+        setHeaders: {'Authorization': `token $(TOKEN}`}
+    });
+    return next.handle(clone);
+  }
 
 }
 ```
@@ -399,21 +400,21 @@ Notes :
 
 
 
-## HTTP - Intercepteurs
+## HTTP - Interceptors
 
-- Enregistrement de l'intercepteurs via le token `HTTP_INTERCEPTORS` dans la configuration du module
+- Recording the interceptors via the `HTTP_INTERCEPTORS` token in the module configuration
 
 ```typescript
-import { NgModule } from '@angular/core';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HeaderInterceptor } from './header.interceptor';
+import {NgModule} from '@angular/core';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HeaderInterceptor} from './header.interceptor';
 
-@NgModule({
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: HeaderInterceptor,
-    multi: true,
-  }],
+@NgModule ({
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HeaderInterceptor,
+    multi: true,
+  }],
 })
 export class AppModule {}
 ```
@@ -424,19 +425,19 @@ Notes :
 
 ## HTTP - Tests
 
-- *Angular* propose un module de test pour le système de requêtage : `HttpClientTestingModule`
+- *Angular* offers a test module for the querying system: `HttpClientTestingModule`
 
 ```typescript
-import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('UserService', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [HttpClientTestingModule],
-    providers: [UserService]
-  }));
+  beforeEach (() => TestBed.configureTestingModule ({
+    imports: [HttpClientTestingModule],
+    providers: [UserService]
+  }));
 
-  /* ... */
+  / *... */
 });
 ```
 
@@ -446,34 +447,30 @@ Notes :
 
 ## HTTP - Tests
 
-- `HttpTestingController` permet de programmer des requêtes et leurs réponses
+- `HttpTestingController` allows to program queries and their answers
 
 ```typescript
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { TestBed, async } from '@angular/core/testing';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {TestBed, async} from '@angular/core/testing';
 
-/* ... */
+/ *... */
 
-it('should return 1 user', async(
-  () => {
-    const userService = TestBed.get(UserService);
-    const http = TestBed.get(HttpTestingController);
-    const mockedUsers = [{ name: 'Zenika' }];
+it ('should return 1 user', async (
+  () => {
+    const userService = TestBed.get (UserService);
+    const http = TestBed.get (HttpTestingController);
+    const mockedUsers = [{name: 'Zenika'}];
 
-    userService.getUsers().subscribe((users: User[]) => {
-      expect(users.length).toBe(1);
-    });
+    userService.getUsers (). subscribe ((users: User []) => {
+      expect(users.length) .toBe(1);
+    });
 
-    http.expectOne('/api/users').flush(mockedUsers);
-  }
+    http.expectOne ('/ API/users') flush (mockedUsers).
+  }
 )));
 ```
 
 Notes :
-
-
-
-<!-- .slide: class="page-questions" -->
 
 
 

@@ -1,4 +1,4 @@
-# Gestion des Formulaires
+# Forms
 
 <!-- .slide: class="page-title" -->
 
@@ -6,56 +6,56 @@ Notes :
 
 
 
-## Sommaire
+## Summary
 
 <!-- .slide: class="toc" -->
 
-- [Rappels](#/1)
-- [Présentation](#/2)
-- [Démarrer une application Angular](#/3)
+- [Reminders](#/1)
+- [Presentation](#/2)
+- [Start an Angular application](#/3)
 - [Tests](#/4)
-- [Template & Composants](#/5)
+- [Template & Components](#/5)
 - [Directives](#/6)
-- [Injection de Dépendances](#/7)
+- [Dependency Injection](#/7)
 - [Pipes](#/8)
-- [Service HTTP](#/9)
+- [HTTP Service](#/9)
 - [Router](#/10)
-- **[Formulaires](#/11)**
+- **[Forms](#/11)**
 - [Server-side Rendering](#/12)
 
 Notes :
 
 
 
-## Stratégies de gestion des formulaires
+## Forms Management Strategies
 
-- *Angular* fournit par défaut un module dédié à la gestion de formulaire
-- Disponible via le module `FormsModule` dans `@angular/forms`
-- Le module propose deux stratégies différentes
+- *Angular* provides by default a module dedicated to form management
+- Available via the `FormsModule` module in` @angular/forms`
+- The module proposes two different strategies
 - *Template-driven forms*
-  - Contrôle du formulaire depuis les templates
-  - Binding automatique de variables contenant l'état du formulaire
-  - *Solution recommandée et par défaut*
-- *Reactive forms* (ou Model-driven forms)
-  - Méthode programmatique depuis le contrôleur
-  - Recommandé pour certains cas complexe
-- La suite de la formation traite uniquement des *Template-driven forms*
+  - Form control from the templates
+  - Automatic Binding of Variables Containing the State of the Form
+  - *Recommended and default solution*
+- *Reactive forms* (or Model-driven forms)
+  - Programmatic method from the controller
+  - Recommended for some complex cases
+- The rest of the training only deals with *Template-driven forms*
 
 Notes :
 
 
 
-## Principe général
+## General principle
 
-- S'appuie ou reproduit les mécanismes standards des formulaires HTML
-- Supporte les types de champs de saisie habituels et les validations natives
-  - `input[text]`, `input[radio]`, `input[checkbox]`, `input[email]`, `input[number]`, `input[url]`
-  - `select`
-  - `textarea`
-  - Il est possible de créer ses propres composants
-- Utiliser les fonctionnalité d'`@angular/forms` apporte
-  - Le **binding** de vos données aux champs de formulaire
-  - La gestion de l'état et de la validation des champs
+- Supports or replicates the standard mechanisms of HTML forms
+- Supports the usual types of input fields and native validations
+  - `input [text]`, `input [radio]`, `input [checkbox]`, `input [email]`, `input [number]`, `input [url]`
+  - `select`
+  - `textarea`
+  - It is possible to create its own components
+- Using the `@angular/forms` feature brings
+  - The **binding** of your data to the form fields
+  - The management of the state and the validation of the fields
 
 Notes :
 
@@ -63,62 +63,64 @@ Notes :
 
 ## "Banana in the Box"
 
-- Le *2-way data-binding* (par défaut dans AngularJS) est désactivé par défaut
-- On peut le reproduire avec les syntaxes qu'on a vu jusque là
+- *2-way data-binding* (default in AngularJS) is disabled by default
+- We can reproduce it with the syntaxes we've seen so far
 
-```html
+```HTML
 <input [value]="currentHero.firstName"
-       (input)="currentHero.firstName = $event.target.value"/>
+       (input)="currentHero.firstName = $event.target.value" />
 ```
 
-- *Angular* fournit du sucre syntaxique pour ce besoin récurrent
+- *Angular* provides syntactic sugar for this recurring need
 
-  (Utilise la directive `ngModel` qu'on verra en détail au chapitre *Formulaires*)
-- Première solution
+  (Use the `ngModel` directive which will be discussed in detail in *Forms*)
+- First solution
 
-```html
+```HTML
 <input
-  [ngModel]="currentHero.firstName"
-  (ngModelChange)="currentHero.firstName=$event"/>
+  [NgModel]="currentHero.firstName"
+  (NgModelChange)="currentHero.firstName = $event" />
 ```
 
-- Deuxième solution *Banana in the Box*
+- Second solution *Banana in the Box*
 
-```html
-<input [(ngModel)]="currentHero.firstName"/>
+```HTML
+<input [(ngModel)]="currentHero.firstName" />
 ```
 
 Notes :
 
 
 
-## Persistance des données
+## Persistence of data
 
-- Écouter l'évènement `submit` du formulaire pour traiter le formulaire
+- Listen to the `submit` event of the form to process the form
 
 ```typescript
-@Component({
-  selector: 'contact-form',
-  template: `
-    <form (submit)="saveForm()">
-      <label>
-        Name: 
-        <input type="text" [(ngModel)]="contact.name" name="name">
+@Component ({
+  selector: 'contact-form',
+  template: `
+    <form (submit)="saveForm()">
+      <label>
+        Name:
+        <input type="text" [(ngModel)]="contaxt.name" name="name">
       </label>
-      <button type="submit">Save</button>
-    </form>
-  `
+      <button type="submit"> Save </button>
+    </form>
+  `
 })
 export class ContactFormComponent implements OnInit {
-  contact: Contact = {};
-  constructor(private contactService: ContactService) { }
+  contact: Contact;
 
-  ngOnInit(): void {
-    this.contactService.load().subscribe(contact => this.contact = contact);
-  }
-  saveForm(): void {
-    this.contactService.save(this.contact);
-  }
+  constructor(private contactService: ContactService) {}
+
+  ngOnInit (): void {
+    this.contactService.load(). subscribe (contact => this.contact = contact);
+  }
+
+  saveForm(): void {
+    this.contactService.save(this.contact);
+  }
 }
 
 ```
@@ -129,16 +131,16 @@ Notes :
 
 ## Validation
 
-- Par défaut, les navigateurs effectuent les validations nativement
-- *Angular* reprend certaines syntaxes mais va bien plus loin
-- Les mécanismes natifs vont donc rentrer en conflit avec *Angular*
-- **Solution** : Désactiver la validation native et l'effectuer par Angular
-- Attribut `novalidate` sur le formulaire
-  - Attribut standard HTML5
-  - Attribut ajouté automatiquement par *Angular*
+- By default, browsers perform natively validations
+- *Angular* takes some syntax but goes much further
+- Native mechanisms will therefore conflict with *Angular*
+- **Solution**: Disable native validation and perform it by Angular
+- `novalidate` attribute on the form
+  - HTML5 standard attribute
+  - Attribute added automatically by *Angular*
 
-```html
-<form novalidate>
+```HTML
+<novalidate form>
 </form>
 ```
 
@@ -148,47 +150,33 @@ Notes :
 
 ## Validation
 
-- Pour gérer la validation *Angular* va gérer un objet `AbstractControl`
-  - Sur le formulaire : `FormGroup`
-  - Sur chaque champ : `FormControl`
-- Le `FormGroup` est une aggrégation de l'état des chacun des `FormControl`
-- Un `AbstractControl` contient :
-  - L'état : `dirty` / `pristine`, `valid` / `invalid`, `touched` / `untouched`
-  - Les erreurs de validation dans la propriété `errors`
-- Ces données sont mis à jour automatiquement
-- On peut s'en servir dans les templates ou dans le contrôleur
+- To manage the validation *Angular* will manage an object `AbstractControl`
+  - On the form: `FormGroup`
+  - On each field: `FormControl`
+- The `FormGroup` is an aggregation of the state of each of `FormControl`
+- An `AbstractControl` contains:
+  - The state: `dirty` /` pristine`, `valid` /` invalid`, `touched` /` untouched`
+  - Validation errors in the `errors` property
+- These data are updated automatically
+- It can be used in templates or in the controller
 
 Notes :
 
 
 
-## État du formulaire et des champs
+## State of the form and fields
 
-- Angular expose 6 propriétés dans un `AbstractControl`
-  - `valid` / `invalid` : Indique si l'élément passe le contrôle des validateurs
-  - `pristine` / `dirty` : Indiquent si l'utilisateur a altéré l'élément
+- Angular exposes 6 properties in an `AbstractControl`
+  - `valid` /` invalid`: Indicates whether the element passes validator control
+  - `pristine` /` dirty`: Indicate if the user tampered with the item
 
-    Un élément est considéré `dirty` dès qu'il subit une modification, même si la valeur initiale est restaurée ensuite
-  - `untouched` / `touched` : Indiquent si l'élément a été touché
+    An element is considered `dirty` as soon as it undergoes a modification, even if the initial value is restored afterwards
+  - `untouched` /` touched`: Indicates if the item has been hit
 
-    Un élément est considéré `touched` dès que le focus a été pris
-- La directive `NgControlStatus` (activée par défaut) gère des classes CSS
+    An element is considered `touched` as soon as the focus has been taken
+- The `NgControlStatus` directive (enabled by default) handles CSS classes
 
-  `ng-valid`, `ng-invalid`, `ng-pristine`, `ng-dirty`, `ng-untouched`, `ng-touched`
-
-Notes :
-
-
-
-## FormControl
-
-- Angular crée un `FormControl` dès l'utilisation de la directive `ngModel`
-- `FormControl` permet également d'accéder à la valeur du champ via la propriété `value`
-- On peut l'associer à une propriété du composant
-- Nouvelle syntaxe dans le template : **Template reference variables**
-- Associe une référence d'une directive à une variable du composant
-- Syntaxe générique : `#myPropertyName="role"`
-- Pour ngModel : `#myFormControl="ngModel"`
+  `ng-valid`, `ng-invalid`, `ng-pristine`, `ng-dirty`, `ng-untouched`, `ng-touched`
 
 Notes :
 
@@ -196,30 +184,46 @@ Notes :
 
 ## FormControl
 
-- Exemple avec un `FormControl`
+- Angular creates a `FormControl` when using the` ngModel` directive
+- `FormControl` also provides access to the field value via the `value` property
+- It can be associated with a property of the component
+- New syntax in the template: **Template reference variables**
+- Associates a reference of a directive with a component variable
+- Generic syntax: `#myPropertyName="role"`
+- For ngModel: `#myFormControl="ngModel"`
+
+Notes :
+
+
+
+## FormControl
+
+- Example with a `FormControl`
 
 ```typescript
-@Component({
-  selector: 'contact-form',
-  template: `
-    <form (submit)="saveForm()">
+@Component ({
+  selector: 'contact-form',
+  template: `
+    <form (submit)="saveForm()">
       <label>
-        Name: 
-        <input name="name" 
-               type="text" 
-               required
-               [(ngModel)]="contact.name"
-               #nameInput="ngModel" 
-               [attr.aria-invalid]="!nameInput.valid">
+          Name :
+          <input name="name" 
+                 type="text" 
+                 required 
+                 [(ngModel)]="contact.name"
+                #nameInput="ngModel">
       </label>
-      <span [hidden]="nameInput.valid">Error</span>
-      <button type="submit">Save</button>
-    </form>
-  `
+      <span [hidden]="nameInput.valid"> Error </ span>
+      <button type="submit"> Save </button>
+    </form>
+  `
 })
 export class ContactFormComponent implements OnInit {
-  contact: Contact = {};
-  nameInput: FormControl;
+  contact: Contact = {};
+  nameInput: FormControl;
+
+  constructor(private contactService: ContactService) {}
+  / *... */
 }
 ```
 
@@ -227,59 +231,58 @@ Notes :
 
 
 
-## Validateurs
+## Validators
 
-- Un champ peut posséder un ou plusieurs validateurs
-  - Support des validateurs standards HTML5 : `required`, `min`, `max`, `minlength`, `maxlength` et `pattern`
-  - Possibilité d'ajouter des validateurs personnalisés
+- A field may have one or more validators
+  - Support for HTML5 standard validators: `required`, `min`, `max`, `minlength`, `maxlength` and` pattern`
+  - Ability to add custom validators
 
-- La propriété `valid` correspond à l'agrégation de l'état des validateurs
-- Possibilité d'avoir le détail avec la propriété `errors`
+- The `valid` property is the aggregation of the status of the validators
+- Possibility to have the detail with the `errors` property
 
-```html
+```HTML
 <label>
   Name:
   <input name="name" 
-         type="text" 
+         type="text" [(ngModel)]="contact.name"
          required
-         [(ngModel)]="contact.name"
          #nameInput="ngModel" 
          [attr.aria-invalid]="!nameInput.valid">
 </label>
-<span [hidden]="!nameInput.errors?.required">Name is not valid</span>
+<span [name]="! nameInput.errors? .required"> Name is not valid </ span>
 ```
 
 Notes :
 
 
 
-## Création d'un validateur
+## Creating a validator
 
-- Pour créer un validateur personnalisé, implémenter la classe `Validator`
+- To create a custom validator, implement the `Validator` class
 
-```javascript
-@Directive({
-  selector: '[pattern][ngModel]',
-  providers: [
-    { provide: NG_VALIDATORS, useExisting: PatternValidator, multi: true }
-  ]
+```Javascript
+@Directive ({
+  selector: '[pattern] [ngModel]',
+  providers: [
+    {provide: NG_VALIDATORS, useExisting: PatternValidator, multi: true}
+  ]
 })
 export class PatternValidator implements Validator {
-  @Input('pattern') pattern: string;
+  @Input('pattern') pattern: string;
 
-  validate(control: AbstractControl): { [key: string]: any } {
-    if (control.value && control.value.match(new RegExp(this.pattern))) {
-      return null;
-    }
-    return { pattern: true };
-  }
+  validate (control: AbstractControl): {[key: string]: any} {
+    if (control.value && control.value.match (new RegExp (this.pattern))) {
+      return null;
+    }
+    return {pattern: true};
+  }
 }
 ```
 
-- Pour utiliser le validateur
+- To use the validator
 
-```html
-<input type="text" name="name" [(ngModel)]="contact.name" pattern="[a-z]{10}">
+```HTML
+<input type="text" name="name" [(ngModel)]="contact.name" pattern="[a-z] {10}">
 ```
 
 Notes :
@@ -288,32 +291,29 @@ Notes :
 
 ## NgForm
 
-- La directive `NgForm` est automatiquement associée à chaque balise `<form>`
-- Autorise l'utilisation de l'évènement `ngSubmit`
-- Créée un `FormGroup` pour gérer les inputs contenus dans le formulaire
-- Instance de la directive utilisable dans le template : `#myForm="ngForm"`
+- The `NgForm` directive is automatically associated with each `<form>` tag
+- Allow use of the `ngSubmit` event
+- Created a `FormGroup` to handle the inputs contained in the form
+- Instance of the directive usable in the template: `#myForm="ngForm"`
 
-```html
-<form #myForm="ngForm" (submit)="onSubmit()">
-  <label>
-  Name:
+```HTML
+<form # myForm = "ngForm" (submit)="onSubmit()">
+  <label>
+    Name:
     <input name="myName" type="text" [(ngModel)]="contact.name"
           #nameInput="ngModel" required
           [attr.aria-invalid]="!nameInput.valid">
   </label>
-  <span [hidden]="nameInput.valid">Error</span>
 
-  <button type="submit" [disabled]="myForm.invalid">
-    Save
-  </button>
+  <span [hidden]="nameInput.valid"> Error </ span>
+
+  <button type="submit" [disabled]="myForm.invalid">
+    Save
+  </button>
 </form>
 ```
 
 Notes :
-
-
-
-<!-- .slide: class="page-questions" -->
 
 
 

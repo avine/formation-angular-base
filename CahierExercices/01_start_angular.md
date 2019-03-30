@@ -17,7 +17,7 @@ We will use `@angular/cli` to setup an application that provides:
 - Dependencies management
 
 Follow the steps: 
-- Download `@angular/cli` with `npm`. This module needs a recent version of *NodeJS*
+- Download `@angular/cli` with `npm`. This module needs a recent version of *Node.js*
 
 - From the console, run `ng new Application` to create a new application
 

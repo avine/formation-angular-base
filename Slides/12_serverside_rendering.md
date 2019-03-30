@@ -6,36 +6,36 @@ Notes :
 
 
 
-## Sommaire
+## Summary
 
 <!-- .slide: class="toc" -->
 
-- [Rappels](#/1)
-- [Présentation](#/2)
-- [Démarrer une application Angular](#/3)
+- [Reminders](#/1)
+- [Presentation](#/2)
+- [Start an Angular application](#/3)
 - [Tests](#/4)
-- [Template & Composants](#/5)
+- [Template & Components](#/5)
 - [Directives](#/6)
-- [Injection de Dépendances](#/7)
+- [Dependency Injection](#/7)
 - [Pipes](#/8)
-- [Service HTTP](#/9)
+- [HTTP Service](#/9)
 - [Router](#/10)
-- [Formulaires](#/11)
+- [Forms](#/11)
 - **[Server-side Rendering](#/12)**
 
 Notes :
 
 
 
-## Besoin
+## Need
 
-- Indexation par les moteurs de recherche (SEO)
-- Prévisualisation (comme dans le partage facebook)
-- Amélioration progressive
-  - Proposer une version simple pour tous
-  - Enrichir l'expérience en fonction du client
+- Indexing by search engines (SEO)
+- Preview (as in facebook share)
+- Progressive improvement
+  - Propose a simple version for everyone
+  - Enrich the experience according to the customer
 
-- *Accélérer le chargement de l'application*
+- *Speed ​​up application loading*
 
 Notes :
 
@@ -43,90 +43,86 @@ Notes :
 
 ## Angular Universal
 
-- Projet Angular officiel
-- Intégré au projet principal depuis Angular 4.0.0
-- Contient deux modules
-  - Rendu d'une application Angular côté serveur (NodeJS)
-  - Le deuxième enregistre les actions de l'utilisateur pour les rejouer une fois l'interface complètement chargée
-- Le terme Universal vient de l'idée de pouvoir proposer l'application dans d'autres environnements que celui du navigateur
+- Official Angular Project
+- Integrated with the main project since Angular 4.0.0
+- Contains two modules
+  - Rendering an Angular Server Side Application (Node.js)
+  - The second records the actions of the user to replay them once the interface is fully loaded
+- The term Universal comes from the idea of ​​being able to offer the application in environments other than that of the browser
 
-![Angular Universal Logo](ressources/angular-universal-logo.png "Angular Universal Logo")
-
-Notes :
-
-
-
-## Mécanisme
-
-- `AngularJS` fortement lié au DOM
-- `Angular` introduit une séparation du mécanisme de rendu
-
-
-![Angular Universal Architecture](ressources/angular-universal-architecture.png "Angular Universal Architecture")
+![Angular Universal Logo](resources/angular-universal-logo.png "Angular Universal Logo")
 
 Notes :
 
 
 
-## Procédure de rendu
+## Mechanism
 
-- Le moteur de rendu (Express en NodeJS) va construire le HTML
-- Le plugin *Angular Universal* va réaliser le `bootstrap` de l'application
-- La réponse des appels REST est attendue
-- La page complètement construite est retourné à l'utilisateur
-- La librairie `Preboot` de *Angular Universal* enregistre les actions de l'utilisateur
-- Le navigateur client termine de charger le code JavaScript
-- La librairie `Preboot` rejoue les actions de l'utilisateur
-
-Notes :
-- Uniquement Express pour l'instant. L'équipe de développement évoque le souhait que d'autre moteur propose cela (Apache...)
+- `AngularJS` strongly linked to the DOM
+- `Angular` introduces a separation of the rendering mechanism
 
 
-
-## Mise en place
-
-- Le plus simple est de reprendre le starter
-
-  https://github.com/angular/universal-starter
-
-- Utilise deux points d'entrées pour l'application
-  - Classique pour le client avec la fonction `bootstrap`
-  - Pour le serveur avec la mise en place de `Express` et de `Angular Universal`
+![Angular Universal Architecture](resources/angular-universal-architecture.png "Angular Universal Architecture")
 
 Notes :
 
 
 
-## Rendu serveur
+## Rendering procedure
 
-- Apperçu de la configuration d'*Angular* dans *Express*
+- The rendering engine (Express in Node.js) will build the HTML
+- *Angular Universal plugin* will realize the bootstrap of the application
+- The answer of the REST calls is expected
+- The completely constructed page is returned to the user
+- *Angular Universal* `Preboot` library records user actions
+- The client browser finishes loading the JavaScript code
+- `Preboot` library replays user actions
+
+Notes :
+- Only Express for now. The development team evokes the wish that other engine proposes this (Apache ...)
+
+
+
+## Setting up
+
+- The easiest way is to take back the starter
+
+  https://github.com/angular/universal-starter
+
+- Uses two entry points for the application
+  - Classic for the client with the `bootstrap` function
+  - For the server with the setting up of `Express` and `Angular Universal`
+
+Notes :
+
+
+
+## Server rendering
+
+- Preview of *Angular * configuration in * Express*
 
 ```typescript
-const express = require('express');
-const ngUniversal = require('@nguniversal/express-engine');
+const express = require ('express');
+const ngUniversal = require ('@nguniversal/express-engine');
 
-const renderModuleFactory = 
-  require('@angular/platform-server').renderModuleFactory;
+const renderModuleFactory =
+  require ('@angular/platform-server') renderModuleFactory.
 
-const appServer = require('./dist-server/main.bundle');
+const appServer = require ('./ dist-server/main.bundle');
 
-const app = express();
+const app = express ();
 
-app.get('/', function angularRouter(req, res) {
-   res.render('index', { req, res });
+app.get ('/', function angularRouter (req, res) {
+   res.render ('index', {req, res});
 });
 
-app.use(express.static(`${__dirname}/dist`));
+app.use (express.static ( `dirname $(__}/dist`));
 
-app.engine('html', ngUniversal.ngExpressEngine({
-  bootstrap: appServer.AppServerModuleNgFactory
+app.engine ('html', ngUniversal.ngExpressEngine ({
+  bootstrap: appServer.AppServerModuleNgFactory
 }));
-app.set('view engine', 'html');
-app.set('views', 'dist');
+app.set ('view engine', 'html');
+app.set ('views', 'dist');
 ```
 
 Notes :
-
-
-
-<!-- .slide: class="page-questions" -->
