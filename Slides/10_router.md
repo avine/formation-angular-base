@@ -327,7 +327,8 @@ Notes :
 
 ```typescript
 const routes: Routes = [{
-  path: 'admin', loadChildren: './admin/admin.module#AdminModule'
+  path: 'admin', 
+  loadChildren: () => import('./search/admin.module').then(mod => mod.AdminModule)
 }];
 
 @NgModule ({imports: [RouterModule.forRoot(routes)]})
