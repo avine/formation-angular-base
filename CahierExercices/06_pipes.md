@@ -4,9 +4,9 @@ We will now use `pipes`, to format the application content.
 
 We will start by using `pipes` provided by the framework: `uppercase` and `currency`.
 
-- In the `ProductComponent` template, use the `uppercase` pipe to display the the title in uppercase.
+- In the `ProductComponent` template, use the `uppercase` pipe to display the title in uppercase.
 
-- In the `ProductComponent` template, use the `currency` pipe to display the price using the *euro* currency and two decimals.
+- In the `ProductComponent` template, use the `currency` pipe to display the price using the *dollar* currency and two decimals.
 
 - Also add the `pipe` to the `currency` for displaying the total on the main page `app.component.html`
 
@@ -14,6 +14,7 @@ We will start by using `pipes` provided by the framework: `uppercase` and `curre
 ```typescript
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
+
 import localeFr from '@angular/common/locales/fr';
 
 registerLocaleData(localeFr);
@@ -32,8 +33,6 @@ We will now create a custom `pipe`, to sort the products by `title`.
 - Use the `pipe` in the `ngFor` template part
 
 - Add a parameter to the `pipe` to specify on which field to sort the products.
-
-- Bonus: write tests
 
 ### Bonus
 

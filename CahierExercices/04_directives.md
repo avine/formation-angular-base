@@ -2,11 +2,13 @@
 
 In this lab, we will use `ngFor`, `ngIf` and `ngClass` to have a more dynamic application.  
 
-- Use `ngFor` directive to iterate over the `products` arrays in the `ProductComponent` component.
+- Use `ngFor` directive to iterate over the `products` arrays in the `AppComponent` component to display `ProductComponent` components.
 
 - In the `Product` class, add a `stock` property with `number` type.
 
 - Initialize that property for all products in the `AppComponent` component. Use a different value for each product.
+
+- Change `updatePrice` method of `AppComponent` to decrease product stock when user click on `Add to basket`
 
 - Use the `ngIf` directive to display only the products with a `stock` value greater than 0. You might have to revise your use of `*ngFor`.
 

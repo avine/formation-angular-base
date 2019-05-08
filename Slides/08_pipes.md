@@ -50,7 +50,7 @@ Notes :
 - The *Pipes* available by default are directly usable
 - Possibility to chain the pipes one after the other
 - Ability to pass parameters with the `:` character
-- The parameters are **bindés** and the result is recalculated with each change
+- The parameters are **binded** and the result is recalculated on every change
 - The syntax is the following
 
   `{{ myData | pipeName:pipeArg1:pipeArg2 | anotherPipe }}`
@@ -60,7 +60,7 @@ Notes :
 <!-- FRIDAY, APRIL 15, 1988 -->
 
 {{price | currency: 'EUR': 'symbol'}}
-<!-- 53.12 € -->
+<!-- 53.12€ -->
 ```
 
 Notes :
@@ -95,9 +95,9 @@ Notes :
 
 
 
-## Statements
+## Declarations
 
-- declares itself as components and directives
+- Declares itself as components and directives
 - The pipe must be added to the table `declarations`
 
 ```typescript
@@ -106,7 +106,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {MyLowerCasePipe} from './mylowercase.pipe';
 
 @NgModule ({
-  statements: [
+  declarations: [
     MyLowerCasePipe
   ]
   imports: [
@@ -122,7 +122,7 @@ Notes :
 
 ## Use
 
-- Always like components and guidelines
+- Just as components and directives
 - A pipe is usable if it has been declared in the module or an imported module
 
 ```typescript
@@ -147,7 +147,6 @@ Notes :
 
 - It is possible to use a pipe from TypeScript code
 - Using dependency injection to use a *Pipe*
-- No `$filter` service as in *AngularJS*
 - You have to add the pipe in `providers` (component or module)
 
 ```typescript
@@ -162,7 +161,7 @@ class App {
   name: string;
 
   constructor(lower: MyLowerCasePipe) {
-    this.name = lower.transform ('Hello Angular');
+    this.name = lower.transform('Hello Angular');
   }
 }
 ```
@@ -189,16 +188,16 @@ Notes :
 ## Impure pipes
 
 - Executed at each cycle of the change detection system
-- More consumer than a pure pipe, use only when necessary
-- To set an impure *Pipe*, set the `pure` property to` false`
+- Less efficient than a pure pipe, use only when necessary
+- To set an impure *Pipe*, set the `pure` property to `false`
 
 ```typescript
-@Smoking pipe({
+@Pipe({
   name: 'myImpurePipe',
   pure: false
 })
 export class MyImpurePipe implements PipeTransform {
-  transform (value: any): any {...}
+  transform(value: any): any {...}
 }
 ```
 
@@ -247,13 +246,13 @@ import {MyLowerCasePipe} from './app/mylowercase';
 describe('MyLowerCasePipe', () => {
   let pipe;
 
-  beforeEach (() => {
+  beforeEach(() => {
     pipe = new MyLowerCasePipe ();
   });
 
-  it ('should return lowercase', () => {
-    var val = pipe.transform ('SOMETHING');
-    expect(val) .toEqual ('something');
+  it('should return lowercase', () => {
+    var val = pipe.transform('SOMETHING');
+    expect(val).toEqual('something');
   });
 });
 ```

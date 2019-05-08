@@ -1,4 +1,4 @@
-# The tests
+# Tests
 
 <!-- .slide: class="page-title" -->
 
@@ -34,7 +34,7 @@ Notes :
 - To run the tests easily, we propose to use `Karma`
   - It was developed by `AngularJS` team
   - It is neither essential nor related to `Angular`
-- `Jasmine` and` Karma` are the tools used in an application generated with Angular CLI
+- `Jasmine` and `Karma` are the tools used in an application generated with Angular CLI
 
 Notes :
 
@@ -54,7 +54,7 @@ Notes :
 
 ## Jasmine - Structure
 
-- `describe` and` it` functions to describe the test suite
+- `describe` and `it` functions to describe the test suite
 - *matchers* system: `toBe`, `toBeUndefined`, `toBeTruthy`, `toThrow`, ...
 - Ability to use an external library as `Chai`
 
@@ -101,7 +101,7 @@ Notes :
 
 - Jasmine offers a system of *Spies* included
 - It is also possible to use an external library like *Otherwise*
-- Create a spy: `jasmine.createSpy ()` or `spyOn (someObj)`
+- Create a spy: `jasmine.createSpy()` or `spyOn(someObj)`
 - Spy matchers: `toHaveBeenCalled`, `toHaveBeenCalledWith`, `and.callThrough`, `and.returnValue`, `and.callFake`, `mySpy.calls` ...
 
 ```Javascript
@@ -122,7 +122,7 @@ Notes :
 
 ## Jasmine - TypeScript
 
-- Ability to write tests *Jasmine * in * TypeScript*
+- Ability to write tests *Jasmine* in *TypeScript*
 
 ```typescript
 class True {
@@ -151,7 +151,7 @@ Notes :
 
 <Figure>
     <img src = "resources/SchemaKarma.png" alt = "Schema Karma" width = "75%" />
-</ Figure>
+</Figure>
 
 Notes :
 
@@ -162,13 +162,12 @@ Notes :
 - Automatic configuration by *Angular CLI*
 - The following tools are ready to work together:
 
-  *Webpack *, * TypeScript *, * Angular *, * Jasmine *, * Karma*
+  *Webpack*, *TypeScript*, *Angular*, *Jasmine*, *Karma*
 - The test files are automatically created with `ng generate (...)`
-
-  `Component` /` Service`/`Pipe`
+  `Component`/`Service`/`Pipe`
 - They are in the same directory as the item to be tested
 
-  *My*-service.spec.ts
+  *My-service.spec.ts*
 - Execution of tests:
 
 ```Shell

@@ -143,12 +143,12 @@ Notes :
 ## Angular - Positive Points
 
 - Modular application creation
-- Usable with several programming languages: `TypeScript` and` Dart` (separate project: https://webdev.dartlang.org/)
+- Usable with several programming languages: `TypeScript` and `Dart` (separate project: https://webdev.dartlang.org/)
 - API simpler than *AngularJS*
 - Only three types of elements will be used: `directive`, `pipe` and `services`
-- Based on standards: `Web Components`, `ES2015 + `, `Decorator`
+- Based on standards: `Web Components`, `ES2015 +`, `Decorator`
 - New syntax used in templates
-- Change Detection` API Performance
+- `Change Detection` API Performance
 - The `Universal` Project (server-side rendering)
 - Library to start the migration: `ngUpgrade`
 - Collaboration with Microsoft and Ember

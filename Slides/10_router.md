@@ -30,13 +30,13 @@ Notes :
 ## Router
 
 - *Angular* by default provides a router in a dedicated module
-- Very different operation of `ngRoute` from *AngularJS*
+- Very different than `ngRoute` from *AngularJS*
 - Phase of turbulent development: 2 major redesigns
 - `@angular/router` is now reliable and recommended
 - Offers many features
-  - Management of nested roads
-  - Possibility to have several points of insertions by roads
-  - **Guard** system to manage the authorization to a road
+  - Management of nested routes
+  - Possibility to have several points of insertions by routes
+  - **Guard** system to manage the authorization to a route
   - Management of routes with asynchronous loading
 
 Notes :
@@ -45,7 +45,7 @@ Notes :
 
 ## Router
 
-- `@angular/router` is oriented *component*
+- `@angular/router` is *component* oriented
 - The principle is to associate the components to be loaded according to the URL
 - Association of a main component with a URL of your application
 - Creating the configuration from the `RouterModule.forRoot` function
@@ -59,9 +59,9 @@ Notes :
 
 ## Router
 
-- `RouterModule.forRoot (...)` makes a module to import
-- It takes as parameter an object of type `Roads`
-- Matches an array of `Road`
+- `RouterModule.forRoot(...)` makes a module to import
+- It takes as parameter an object of type `Routes`
+- Matches an array of `Route`
 
 ```typescript
 import {NgModule} from '@angular/core';
@@ -76,7 +76,7 @@ const routes: Routes = [
 
 @NgModule ({
   imports: [
-    RouterModule.forRoot(roads)
+    RouterModule.forRoot(routes)
   ]
 })
 export class AppModule {}
@@ -92,15 +92,15 @@ Notes :
 - Set the insertion point in a component
 - The component will be inserted as a child of the directive
 - Ability to name the insertion point via a `name` attribute
-- Naming outlets is useful when you have multiple views for the same road
+- Naming outlets is useful when you have multiple views for the same route
 
 ```typescript
 import {Component} from '@angular/core';
 
 @Component ({
   template: `
-    <header> <h1> Title <h1> </header>
-    <toute-outlet> </router-outlet>
+    <header><h1> Title </h1></header>
+    <toute-outlet></router-outlet>
   `
 })
 export class AppComponent {}
@@ -112,20 +112,20 @@ Notes :
 
 ## RouterLink
 
-- Allows you to navigate from one road to another
+- Allows you to navigate from one route to another
 - Using **true** links with the href attribute also works
-- The directive uses the `route` method of the` Router` service
+- The directive uses the `route` method of the `Router` service
 - `RouterLink` takes an array of **segments** of the path
 
 ```typescript
 @Component ({
   template: `
     <nav>
-      <Ul>
-        <li> <a routerLink="contacts"> Link 1 </a> </ li>
-        <li> <a [routerLink]="['contact', 1]"> Link 2 </a> </ li>
-        <li> <a [routerLink]="['contact', id]"> Link 3 </a> </ li>
-      </ Ul>
+      <ul>
+        <li><a routerLink="contacts"> Link 1 </a></li>
+        <li><a [routerLink]="['contact', 1]"> Link 2 </a></li>
+        <li><a [routerLink]="['contact', id]"> Link 3 </a></li>
+      </ul>
     </nav>
     <route-outlet> </router-outlet>
   `
@@ -149,7 +149,7 @@ import {ContactComponent, EditComponent, ViewComponent} from './pages';
 
 const routes: Routes = [
   {
-    path: 'contact /: id', component: ContactComponent, children: [
+    path: 'contact/:id', component: ContactComponent, children: [
       {path: 'edit', component: EditCmp},
       {path: 'view', component: ViewCmp}
     ]
@@ -159,7 +159,7 @@ const routes: Routes = [
 const routing = RouterModule.forRoot(routes);
 ```
 
-- The `ContactComponent` component template must contain a` router-outlet` in order to insert the `EditCmp` or` ViewCmp` components
+- The `ContactComponent` component template must contain a `router-outlet` in order to insert the `EditCmp` or `ViewCmp` components
 
 Notes :
 
@@ -173,18 +173,18 @@ Notes :
 - `PathLocationStrategy` (default policy)
 
 ```typescript
-router.navigate([ 'contacts']); //example.com/contacts
+router.navigate(['contacts']); //example.com/contacts
 ```
 
 - `HashLocationStrategy`
 
 ```typescript
-router.navigate([ 'contacts']); //example.com#/contacts
+router.navigate(['contacts']); //example.com#/contacts
 ```
 
 - `PathLocationStrategy` is the recommended solution today
   - If your application is not deployed to the root of your domain
-  - Need to add a parameter: `APP_BASE_HREF` or the <`base href='/'>` tag in your `index.html`
+  - Need to add a parameter: `APP_BASE_HREF` or the `<base href='/'>` tag in your `index.html`
 
 Notes :
 
@@ -210,7 +210,7 @@ import {Component} from '@angular/core';
 import {APP_BASE_HREF} from '@angular/common';
 
 @NgModule ({
-  providers: [{provide: APP_BASE_HREF, useValue: '/ my/app'}],
+  providers: [{provide: APP_BASE_HREF, useValue: '/my/app'}],
 })
 export class AppModule {}
 ```
@@ -234,7 +234,7 @@ import {ActivatedRoute, Params} from '@angular/router';
 export class ProductComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
-  ngOnInit () {
+  ngOnInit() {
     this.route.params.subscribe((params: Params): void => {
       const id = Number(params.id); // The parameters are always string
       / *... */
@@ -262,7 +262,7 @@ import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 export class ProductComponent {
   constructor(private route: ActivatedRoute) {}
 
-  ngOnInit (): void {
+  ngOnInit(): void {
     const snapshot: ActivatedRouteSnapshot = this.route.snapshot;
     const id = Number(snapshot.params.id);
     / *... */
@@ -277,7 +277,7 @@ Notes :
 ## Life cycle
 
 - Ability to interact with the life cycle of the navigation
-- CanActivate interface allows to prohibit or to authorize the access to a road
+- CanActivate interface allows to prohibit or to authorize the access to a route
 
 ```typescript
 import {Injectable} from '@angular/core';
@@ -290,7 +290,8 @@ import {AdminComponent} from './admin.component';
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
-  canActivate (route: ActivatedRouteSnapshot): boolean | UrlTree {
+
+  canActivate(route: ActivatedRouteSnapshot): boolean | UrlTree {
     if (this.authService.isLoggedIn()) return true;
     return this.router.parseUrl('/ login');
   }
@@ -308,9 +309,9 @@ Notes :
 ## Lazy Loading
 
 - Allows to divide the size of the **bundle** JavaScript to load to start
-- Each section of the site is isolated in a different `` NgModule``
+- Each section of the site is isolated in a different ``NgModule``
 - The module will be loaded when the user will visit one of its pages
-- Automatic creation of `chunk` via *Webpack * thanks to * @angular/cli*
+- Automatic creation of `chunk` via *Webpack* thanks to *@angular/cli*
 - Configuring the router with the `loadChildren` property
 - Separate the elements (components, services) of each module
 - Several loading strategies
@@ -334,10 +335,10 @@ const routes: Routes = [{
 export class AppModule {}
 ```
 
-- Configuring `AdminModule` routes through the` forChild` method
+- Configuring `AdminModule` routes through the `forChild` method
 
 ```typescript
-const adminRoutes: Roads = [{
+const adminRoutes: Routes = [{
   {path: '', component: HomeComponent},
   {path: 'users', component: AdminUsersComponent}
 }];

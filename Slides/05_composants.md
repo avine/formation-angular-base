@@ -49,7 +49,7 @@ Notes :
 @Component ({
   selector: 'app-root',
   template: `
-    <h1> Works App <h1> `,
+    <h1>Works App</h1> `,
   styles: [`
     h1 {font-weight: normal; }
   `]
@@ -62,7 +62,7 @@ export class AppComponent {}
 @Component ({
   selector: 'app-root',
   template: `
-    <h1> Works App <h1> `,
+    <h1>Works App</h1> `,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {}
@@ -78,9 +78,9 @@ Notes :
 
 ````HTML
 <div>
-  <h1> My Product <h1>
-  <app-product> </ app-product>
-</ div>
+  <h1>My Product</h1>
+  <app-product> </app-product>
+</div>
 
 <!-- attention, <app-product /> does not work -->
 ```
@@ -94,7 +94,7 @@ import {Component} from '@angular/core'
   selector: 'app-product',
   template: `
     <article>
-      <span> Product name </ span>
+      <span>Product name</span>
     </article>
   `
 })
@@ -120,13 +120,13 @@ Notes :
 
 ## Interpolation
 
-- interpolation system thanks to the syntax `{{expression}}`
+- Interpolation system thanks to the syntax `{{expression}}`
 - The expression must return a value that will be converted to `string`
 - Angular defines a precise syntax for these expressions
 - https://angular.io/guide/template-syntax#template-expressions
-- The syntax is that of JavaScript with some exceptions
+- The syntax is the same that in JavaScript with some exceptions
 - All properties of the component are accessible directly
-- An expression must not change the state of the application
+- An expression in template must not change the state of the application
 
 ```typescript
 @Component ({
@@ -147,19 +147,19 @@ Notes :
 - Generic syntax for setting the value of a property of an element *HTML*
 - Different from AngularJS, where we use *HTML* attributes
 - Using the syntax `[property-name]="expression"`
-- Same syntax for the properties of *standard HTML elements *, * components * and * Angular directives * and even * Web Components*
+- Same syntax for the properties of *standard HTML elements*, *components* and *Angular directives* and even *Web Components*
 
 ```HTML
-<button [disabled]="isUnchanged"> Save </button> <!-- HTML property -->
-<button bind-disabled = "isUnchanged"> Save </button> <!-- alternative without [] -->
-<button data-bind-disabled = "isUnchanged"> Save </button> <!-- html5 strict -->
-<hero-detail [hero]="currentHero"> </ hero-detail> <!-- property of a component -->
+<button [disabled]="isUnchanged">Save</button> <!-- HTML property -->
+<button bind-disabled="isUnchanged">Save</button> <!-- alternative without [] -->
+<button data-bind-disabled="isUnchanged">Save</button> <!-- html5 strict -->
+<hero-detail [hero]="currentHero"></hero-detail> <!-- property of a component -->
 
-<div [class.special]="isSpecial"> Special </ div> <!-- special cases -->
+<div [class.special]="isSpecial">Special</ div> <!-- special cases -->
 <button [style.color]="isSpecial? 'red': 'green'">
 ```
 
-- The properties are **bindées**, the value will be updated automatically if the value of the expression changes
+- The properties are **binded**, the value will be updated automatically if the value of the expression changes
 
 Notes :
 Indicate that there are no differences between the use of properties and interpolation
@@ -169,30 +169,29 @@ Angular will transform interpolation syntax into property binding
 
 ## Properties
 
-- **Attention to the difference between attribute and property**
-- There are discrepancies between *DOM properties * and* HTML attributes
+- **Attention to the difference between property and attribute**
+- There are gaps between *DOM propertie* and *HTML attributes*
 - Angular then proposes a system called `Attribute Binding`
 - The most common cases: `aria- *`, `colspan`, `rowspan`, `svg` for example
 - Using the syntax `[attr.attribute-name]="expression"`
 
 ```HTML
-<td [colspan]="dynamicColspan"> help </ td>
+<td [colspan]="dynamicColspan">help</td>
 
 <!-- Template parse errors:
 Can not bind to 'colspan' since it is not a known native -->
 
-<td [attr.colspan]="dynamicColspan"> help </ td>
+<td [attr.colspan]="dynamicColspan">help</td>
 ```
 
 Notes :
 
 
 
-## Input
+## Input: receive parameters
 
-- A component can receive parameters
-- `Input() `annotation on a property of the component class
-- The name of the property will be the one to use in the template
+- `Input()` annotation on a property of the component class
+- The name of the property will be what you will use in the template
 
 ```typescript
 import {Input, Component} from '@angular/core'
@@ -202,7 +201,7 @@ import {Product} from './model/Product'
   selector: 'product-detail',
   template: `
     <article>
-      <h1> {{product.title}} <h1>
+      <h1>{{product.title}}</h1>
     </article>
   `
 })
@@ -226,15 +225,14 @@ Notes :
 @Component ({selector: 'product-detail',/*... */})
 export class ProductComponent {
   @Input() product: Product;
-  @Input('discount') percentDiscount: number;
+  @Input('percentDiscount') discount: number;
 }
 ```
 
 - To use this component
 
 ```HTML
-<product-detail [product]="myProduct" [discount]="10">
-</ Product-detail>
+<product-detail [product]="myProduct" [percentDiscount]="10"></product-detail>
 ```
 
 - *Angular* checks properties passed to a component
@@ -249,19 +247,19 @@ Notes :
 - Generic syntax for listening to an event of an element *HTML*
 - Different from AngularJS, where we use *HTML* attributes
 - Using the syntax `(event-name)="expression"`
-- Identical syntax for events of *standard HTML elements *, * components * and * Angular directives * and even * Web Components*
+- Identical syntax for events of *standard HTML elements*, *components* and *Angular directives* and even *Web Components*
 - The methods and properties used must be defined in the class
 
 ````HTML
-<button (click)="handler ()"> </button> <!-- HTML event -->
-<button on-click = "handler ()"> </button> <!-- alternative without () -->
-<button data-on-click = "handler ()"> </button> <!-- html5 strict -->
+<button (click)="handler()"></button> <!-- HTML event -->
+<button on-click="handler()"></button> <!-- alternative without () -->
+<button data-on-click="handler()"></button> <!-- html5 strict -->
 
 <!-- pseudo events -->
-<input  (keyup.enter)="onEnter()">
+<input (keyup.enter)="onEnter()">
 
 <!-- event of a component -->
-<hero-detail (deleted)="onHeroDeleted ()"> </ hero-detail>
+<hero-detail (deleted)="onHeroDeleted()"></hero-detail>
 ```
 
 Notes :
@@ -287,9 +285,8 @@ Notes :
 
 
 
-## Output
+## Output: Send events
 
-- A component can send events
 - `@Output` annotation on an `EventEmitter` type property
 - The name of the property will be the name of the event to use in the template
 
@@ -301,15 +298,15 @@ import {Product} from './model/Product'
   selector: 'product-detail',
   template: `
     <article>
-      <button (click)="clickHandler ()"> Add </button>
+      <button (click)="clickHandler()">Add</button>
     </article>
   `
 })
 export class ProductComponent {
     @Input() product: Product;
-    @Output() addToBasket = new EventEmitter <Product> ();
+    @Output() addToBasket = new EventEmitter<Product>();
 
-    clickHandler () {this.addToBasket.emit (this.product); }
+    clickHandler () {this.addToBasket.emit(this.product); }
 }
 ```
 
@@ -327,15 +324,14 @@ Notes :
 ```typescript
 @Component ({selector: 'product-detail',/*... */})
 export class ProductComponent {
-  @Output('add') addToBasket = new EventEmitter <Product> ();
+  @Output('add') addToBasket = new EventEmitter<Product>();
 }
 ```
 
 - To use this component
 
 ```HTML
-<product-detail (add)="myHandler()">
-</ Product-detail>
+<product-detail (add)="myHandler()"></product-detail>
 ```
 
 - *Angular* checks the events of a component
@@ -355,7 +351,7 @@ Notes :
 @Component ({selector: 'hello-component',/*... */})
 export class HelloComponent {
   @Output() hello = new EventEmitter<string> ();
-  constructor() {this.hello.emit ('hello!'); }
+  constructor() {this.hello.emit('hello!'); }
 }
 ```
 
@@ -364,7 +360,7 @@ export class HelloComponent {
 ```typescript
 @Component ({
   selector: 'main',
-  template: '<hello-component (hello)="myHandler($event)"> </ hello-component>'
+  template: '<hello-component (hello)="myHandler($event)"></hello-component>'
 })
 export class MainComponent {
   myHandler(value) {
@@ -377,12 +373,12 @@ Notes :
 
 
 
-## Statement
+## Declarations
 
 - Use of *NgModule* defined in detail later in the training
-- For a component to be accessible, it is necessary:
-  - it's in another *NgModule* listed in the `imports` list
-  - that it is in the list of `declarations` of your module
+- For a component to be accessible, it should either:
+  - be declared in another *NgModule* listed in the `imports` list of your `NgModule`
+  - be in the list of `declarations` of your module
 
 ```typescript
 import {NgModule} from '@angular/core';
@@ -390,7 +386,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 
 @NgModule ({
-  statements: [
+  declarations: [
     AppComponent,
   ]
   imports: [
@@ -412,8 +408,8 @@ Notes :
 
 ```HTML
 <app-post>
-  <h2> Title </h2>
-  <p> Content </p>
+  <h2>Title</h2>
+  <p>Content</p>
 </app-post>
 ```
 
@@ -422,7 +418,7 @@ Notes :
   selector: 'app-post',
   template: `
     <article>
-      <Ng-content> </ ng-content>
+      <ng-content></ng-content>
     </article>
   `
 })
@@ -439,8 +435,8 @@ Notes :
 
 ```HTML
 <app-post>
-  <h2> Title </h2>
-  <p> Content </p>
+  <h2>Title</h2>
+  <p>Content</p>
 </app-post>
 ```
 
@@ -449,8 +445,8 @@ Notes :
   selector: 'app-post',
   template: `
     <article>
-      <header> <ng-content select="h2"> </ ng-content> </header>
-      <section> <ng-content select="p"> </ ng-content> </section>
+      <header><ng-content select="h2"> </ng-content> </header>
+      <section><ng-content select="p"> </ng-content> </section>
     </article>
   `
 })
@@ -463,11 +459,11 @@ Notes :
 
 ## Life cycle
 
-- Each component has a definite life cycle
+- Each component have his own life cycle
 - https://angular.io/guide/lifecycle-hooks
 - It is possible to execute code at each of these stages
 - Most used is initialization with the `OnInit` interface
-- Use of OnInit is recommended rather than the manufacturer's
+- *Use of OnInit is recommended* rather than the constructor
 
 ```typescript
 import {Component, OnInit} from '@angular/core';

@@ -32,8 +32,8 @@ Notes :
 <img src="resources/typescript-logo.png" height="300">
 
 - Language created by *Anders Hejlsberg* in 2012
-- Open-source project maintained by *Microsoft* (Current version*3.3*)
-- Influenced by *JavaScript *, *Java * and* C #*
+- Open-source project maintained by *Microsoft* (Current version *3.3*)
+- Influenced by *JavaScript*, *Java* and *C#*
 - Alternatives: CoffeeScript, Dart, Haxe or Flow
 
 Notes :
@@ -82,7 +82,7 @@ const variableName3: boolean = value;
 - boolean: `const isDone: boolean = false;`
 - number: `const height: number = 6;`
 - string: `const name: string = 'Carl';`
-- array: `const names: string [] = ['Carl', 'Lawrence'];`
+- array: `const names: string [] = ['Carl', 'Laurent'];`
 - any: `const notSure: any = 4;`
 
 Notes :
@@ -109,7 +109,7 @@ const variableArrowFunction = (arg: any): void => {};
 - Possibility to have optional parameters or with a default value
 
 ```typescript
-function getFullName(name: string = 'Dupont', forename ?: string) {}
+function getFullName(name: string = 'Dupont', forename?: string) {}
 ```
 
 Notes :
@@ -170,7 +170,7 @@ Notes :
 - System of *classes *and* interfaces* similar to object-oriented programming
 - The generated javascript code will use the `prototype` system
 - Ability to define a constructor, methods and properties
-- Properties/methods accessible via the `this` object (always explained)
+- Properties/methods accessible via the `this` object (always explicit)
 
 ```typescript
 class Person {
@@ -252,7 +252,7 @@ Notes :
 - Inheritance system between classes via the keyword `extends`
 - If undefined constructor, execute that of the parent class
 - Ability to call the implementation of the parent class via `super`
-- Access the properties of the parent class if `public` or` protected`
+- Access the properties of the parent class if `public` or `protected`
 
 ```typescript
 class Person {
@@ -321,7 +321,7 @@ Notes :
 
 - Functionality to create reusable components
 - Inspiration of generics available in Java or C #
-- Need to define one (or more) type parameter (s) on function/variable/class/generic interface
+- Need to define one (or more) type parameter(s) on function/variable/class/generic interface
 
 ```typescript
 function identity<T>(arg: T): T {
@@ -359,11 +359,6 @@ Notes :
 
 
 
-# Typescript Hands on
-
-<!-- .slide: class="page-title" -->
-
-
 
 ## npm
 
@@ -382,7 +377,7 @@ Notes :
 - `npm` is a command line tool (written with Node.js)
 - It allows to download the modules available on [npmjs.org](npmjs.org)
 - The most common orders:
-  - `install`: download the module and place it in the current directory in`./node_modules`
+  - `install`: download the module and place it in the current directory in `./node_modules`
   - `install -g`: global installation, the module is placed in the installation directory of Node.js
 
     Make commands accessible in the console
@@ -401,7 +396,7 @@ Notes :
 - A Node.js module is one (or more) script (s)
 - The configuration file is named `package.json`
 - `npm` also allows to manipulate the current module
-  - `init`: initialize a` package.json` file
+  - `init`: initialize a `package.json` file
   - `docs`: generates the documentation for the current module
   - `install <moduleName>` or `install <moduleName> --save-dev`:
 
@@ -421,7 +416,7 @@ Notes :
     - `version`: must respect [node-semver](https://github.com/isaacs/node-semver)
   - Description: `description`, `authors`, ...
   - Dependencies: `dependencies`, `devDependencies`, ...
-  - Lifecycle: `` main`` scripts, `` test``, ...
+  - Lifecycle scripts: `start`, `test`, ...
 
 Notes :
 
@@ -463,7 +458,7 @@ Notes :
 Notes :
 - \ *: any version (dangerous)
 - It is possible to give a URL, a path or a repository git in version
-- you can conjugate `and` or` or` to define complex version ranges
+- you can conjugate `and` or `or` to define complex version ranges
 
 
 

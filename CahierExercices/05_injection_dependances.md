@@ -22,8 +22,6 @@ We will create two services:
 
 - To conclude this lab, inject the title "Welcome to Zenika Ecommerce" as `String` by using a `Value` provider
 
-- Bonus: write tests
-
 ### Tests
 
 Because of dependencies added to your components, tests fail. To use the components, Angular need to know how to resolve those dependencies for all components.
