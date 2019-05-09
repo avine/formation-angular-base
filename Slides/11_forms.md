@@ -302,10 +302,11 @@ Notes :
     Name:
     <input name="myName" type="text" [(ngModel)]="contact.name"
            #nameInput="ngModel" required
-           [attr.aria-invalid]="!nameInput.valid">
+           [attr.aria-invalid]="!nameInput.valid"
+          />
   </label>
 
-  <span [hidden]="nameInput.valid"> Error </ span>
+  <span [hidden]="nameInput.valid"> Error </span>
 
   <button type="submit" [disabled]="myForm.invalid">
     Save

@@ -285,7 +285,7 @@ Notes :
 
 
 
-## Output: Send events
+## Output: Emit events
 
 - `@Output` annotation on an `EventEmitter` type property
 - The name of the property will be the name of the event to use in the template
@@ -463,7 +463,7 @@ Notes :
 - https://angular.io/guide/lifecycle-hooks
 - It is possible to execute code at each of these stages
 - Most used is initialization with the `OnInit` interface
-- *Use of OnInit is recommended* rather than the constructor
+- *Use of OnInit is recommended* rather than the `constructor`
 
 ```typescript
 import {Component, OnInit} from '@angular/core';
