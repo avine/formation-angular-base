@@ -103,7 +103,7 @@ Notes :
     <form (submit)="saveForm()">
       <label>
         Name:
-        <input type="text" [(ngModel)]="contaxt.name" name="name">
+        <input type="text" [(ngModel)]="contaxt.name" name="name" />
       </label>
       <button type="submit"> Save </button>
     </form>
@@ -211,7 +211,8 @@ Notes :
                  type="text" 
                  required 
                  [(ngModel)]="contact.name"
-                 #nameInput="ngModel">
+                 #nameInput="ngModel"
+                />
       </label>
       <span [hidden]="nameInput.valid"> Error </ span>
       <button type="submit"> Save </button>
@@ -247,7 +248,8 @@ Notes :
          type="text" [(ngModel)]="contact.name"
          required
          #nameInput="ngModel" 
-         [attr.aria-invalid]="!nameInput.valid">
+         [attr.aria-invalid]="!nameInput.valid"
+        />
 </label>
 <span [name]="!nameInput.errors?.required"> Name is not valid </ span>
 ```
@@ -282,7 +284,7 @@ export class PatternValidator implements Validator {
 - To use the validator
 
 ```HTML
-<input type="text" name="name" [(ngModel)]="contact.name" pattern="[a-z] {10}">
+<input type="text" name="name" [(ngModel)]="contact.name" pattern="[a-z] {10}" />
 ```
 
 Notes :
