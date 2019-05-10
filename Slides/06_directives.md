@@ -10,7 +10,7 @@ Notes :
 <!-- .slide: class="toc" -->
 
 - [Reminders](#/1)
-- [Presentation](#/2)
+- [Introduction](#/2)
 - [Start an Angular application](#/3)
 - [Tests](#/4)
 - [Template & Components](#/5)
