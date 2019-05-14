@@ -100,7 +100,7 @@ Notes :
 ## Jasmine - Spies
 
 - Jasmine offers a system of *Spies* included
-- It is also possible to use an external library like *Otherwise*
+- It is also possible to use an external library like *Sinon*
 - Create a spy: `jasmine.createSpy()` or `spyOn(someObj)`
 - Spy matchers: `toHaveBeenCalled`, `toHaveBeenCalledWith`, `and.callThrough`, `and.returnValue`, `and.callFake`, `mySpy.calls` ...
 

@@ -46,7 +46,7 @@ Notes :
 - Added new features to the language *JavaScript*
 - ES3/ES5/ES2015 support
 - Some features have no impact on the generated JavaScript
-- Any program *JavaScript *is a program* TypeScript*
+- Any program *JavaScript* is a *TypeScript program*
 
 <img src="resources/typescript-javascript.png" height="300">
 
