@@ -11,7 +11,7 @@ Notes :
 <!-- .slide: class="toc" -->
 
 - [Reminders](#/1)
-- [Presentation](#/2)
+- [Introduction](#/2)
 - **[Start an Angular application](#/3)**
 - [Tests](#/4)
 - [Template & Components](#/5)
@@ -80,7 +80,7 @@ import {FormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 
 @NgModule ({
-  statements: [
+  declarations: [
     AppComponent,
   ]
   imports: [
@@ -147,11 +147,11 @@ Notes :
 ## Webpack
 
 - Module Manager
-- Supports the different module systems (*CommonJS *, * AMD *, * ES2015*, ...)
+- Supports the different module systems (*CommonJS*, *AMD*, *ES2015*, ...)
 - Available on *npm*: `npm install -g webpack`
 - Build a graph of all the dependencies of your application
 - Configuration via a configuration file *JavaScript* (`webpack.config.js`)
-  - loaders: *ES2015 *, * TypeScript *, * CSS*, ...
+  - loaders: *ES2015*, *TypeScript*, *CSS*, ...
   - preloaders: *JSHint*, ...
   - plugins: *Uglify*, ...
 
@@ -175,7 +175,7 @@ console.log('app loaded');
 webpack ./app.js bundle.js
 ```
 
-- Import your `bundle.js` file into your` index.html`
+- Import your `bundle.js` file into your `index.html`
 
 ```HTML
 <html>
@@ -265,7 +265,7 @@ Notes :
 ### Webpack - Loaders
 
 - Allows Webpack to indicate how to take into account a file
-- Several *loaders * exist: * ECMAScript2015 *, * TypeScript *, * CoffeeScript *, * Style*, ...
+- Several *loaders* exist: *ECMAScript2015*, *TypeScript*, *CoffeeScript*, *Style*, ...
 
 ```Javascript
 entry: {

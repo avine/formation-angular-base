@@ -28,8 +28,6 @@ Once receiving the main application template by the trainer (just an `index.html
 
 - We will now emit an event called `addToBasket`, from the `ProductComponent` component, when a user clicks on the `Add to basket` button. This event will be used by the `Application` component to update the basket price using the `total` variable.
 
-- Bonus: write tests
-
 ### Tests
 
 - Add `schemas: [CUSTOM_ELEMENTS_SCHEMA]` in `configureTestingModule` of `App` component to avoid the component to fail when using `app-menu` and `app-product` components.

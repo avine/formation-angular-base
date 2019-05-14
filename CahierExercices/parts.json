@@ -1,10 +1,10 @@
 [
-  "Cahier.md",
+  "Notebook.md",
   "01_start_angular.md",
   "02_tests.md",
-  "03_composants.md",
+  "03_components.md",
   "04_directives.md",
-  "05_injection_dependances.md",
+  "05_dependency_injection.md",
   "06_pipes.md",
   "07_rest.md",
   "08_router.md",

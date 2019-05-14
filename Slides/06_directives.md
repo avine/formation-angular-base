@@ -10,7 +10,7 @@ Notes :
 <!-- .slide: class="toc" -->
 
 - [Reminders](#/1)
-- [Presentation](#/2)
+- [Introduction](#/2)
 - [Start an Angular application](#/3)
 - [Tests](#/4)
 - [Template & Components](#/5)
@@ -29,9 +29,9 @@ Notes :
 ## Directives
 
 - Schematically the directives are components without template
-- Technically components inherit guidelines
+- Technically components inherit from directives
 - Interferes with the appearance or operation of an HTML element
-- *Angular* offers several directives in its different modules
+- *Angular* offers several directives from different modules
 - Creating a custom directive with the `@Directive` annotation
 - Can accept parameters (`Input`) and output events (` Output`)
 - Directives are where to do DOM manipulation
@@ -57,7 +57,7 @@ import {Directive, ElementRef, Renderer2} from '@angular/core';
 export class HighlightDirective {
   constructor(element: ElementRef, renderer: Renderer2) {
     //element.nativeElement.style.backgroundColor = 'yellow';
-    renderer.setElementStyle (element.nativeElement, 'backgroundColor', 'yellow');
+    renderer.setElementStyle(element.nativeElement, 'backgroundColor', 'yellow');
   }
 }
 ```
@@ -79,7 +79,7 @@ Notes :
 - The **Host** is the DOM element that carries the directive
 - Ability to listen to the events of the Host element
 - Avoid listening to events via the DOM to avoid memory leaks
-- Using the `HostListener` and` HostBinding` annotations:
+- Using the `HostListener` and `HostBinding` annotations:
 
 ```typescript
 import {Directive, HostListener, HostBinding} from '@angular/core';
@@ -102,7 +102,7 @@ Notes :
 
 ## User Action
 
-- Using the `host` property of the` @Directive` annotation
+- Using the `host` property of the `@Directive` annotation
 
 ```typescript
 import {Directive} from '@angular/core';
@@ -127,7 +127,7 @@ Notes :
 
 
 
-## Statement
+## Declaration
 
 - Works like components
   - in another *NgModule* listed in the `imports` list
@@ -139,7 +139,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {HighlightDirective} from './highlight.directive';
 
 @NgModule ({
-  statements: [
+  declarations: [
     HighlightDirective
   ]
   imports: [
@@ -185,9 +185,9 @@ import {Component} from '@angular/core';
       title
     <h1>
 
-    <Label> Size:
-      <input type = "text" [value]="size" (input)="size = $event.target.value">
-    </ Label>
+    <label> Size:
+      <input type="text" [value]="size" (input)="size = $event.target.value">
+    </label>
   `
 })
 export class NgStyleExample {
@@ -204,9 +204,9 @@ Notes :
 - The `ngClass` directive adds or removes CSS classes.
 - Can be used in addition to the standard class attribute
 - Three syntaxes coexist
-  - `[ngClass]= "'class class1'"`
-  - `[ngClass]= "['class', 'class1']"`
-  - `[ngClass]= "{'class': isClass, 'class1': isClass1}"`
+  - `[ngClass]="'class class1'"`
+  - `[ngClass]="['class', 'class1']"`
+  - `[ngClass]="{'class': isClass, 'class1': isClass1}"`
 
 - The 3rd syntax is the most common
 - It allows to express everything from the template
@@ -225,8 +225,8 @@ import {Component} from '@angular/core';
 @Component ({
   selector: 'toggle-button',
   template: `
-    <div [ngClass]="{'highlight': isHighlighted}"> </ div>
-    <button (click)="toggle (! isHighlighted)"> Click me! </button>
+    <div [ngClass]="{'highlight': isHighlighted}"></div>
+    <button (click)="toggle(!isHighlighted)">Click me!</button>
   `,
   styles: [
     `.highlight {...}`
@@ -259,8 +259,8 @@ Notes :
 - Final syntax for an iterration on the array `items`
 
 ```HTML
-<ng-template ngFor [ngForOf]="items" let-item let-i = "index">
-  <li> {{item.label}} </ li>
+<ng-template ngFor [ngForOf]="items" let-item let-i="index">
+  <li>{{item.label}}</li>
 </ng-template>
 ```
 
@@ -273,12 +273,12 @@ Notes :
 - The complete syntax for a ngFor is quite tedious
 - *Angular* offers an easier alternative to read
 - This syntax is almost always preferred to the complete syntax
-- *Angular * calls the system ** Microsyntax**
+- *Angular* calls the system **Microsyntax**
 - This is purely syntactic sugar, the behavior is identical
-- Add ```before` ngFor` to indicate microsyntax
+- Add `*` before `ngFor` to indicate microsyntax
 
 ```HTML
-<li *ngFor = "let item of items; let i = index">
+<li *ngFor="let item of items; let i = index">
   {{item.label}}
 </li>
 ```
@@ -295,7 +295,7 @@ Notes :
 - If the expression returns `true` the template will be inserted
 
 ```HTML
-<div *ngIf = "condition"> ... </ div>
+<div *ngIf="condition"> ... </ div>
 <ng-template [ngIf]="condition">
   <div> ... </ div>
 </ng-template>
@@ -304,7 +304,7 @@ Notes :
 - Ability to define an 'else` clause
 
 ```HTML
-<div *ngIf = "condition; else elseBlock"> ... </ div>
+<div *ngIf="condition; else elseBlock"> ... </ div>
 <ng-template #elseBlock> No data </ ​​ng-template>
 ```
 - No `ngShow` and` ngHide` directives like in *AngularJS*
@@ -328,11 +328,11 @@ Notes :
 
 ```HTML
 <div [ngSwitch]="value">
-<p *ngSwitchCase = "'init'"> increment to start </p>
-<p *ngSwitchCase = "0"> 0, increment again </p>
-<p *ngSwitchCase = "1"> 1, stop incrementing </p>
-<p *ngSwitchDefault> & gt; 1, STOP! </p>
-</ div>
+  <p *ngSwitchCase="'init'"> increment to start </p>
+  <p *ngSwitchCase="0"> 0, increment again </p>
+  <p *ngSwitchCase="1"> 1, stop incrementing </p>
+  <p *ngSwitchDefault> & gt; 1, STOP! </p>
+</div>
  ```
 
 Notes :

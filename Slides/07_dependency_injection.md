@@ -11,7 +11,7 @@ Notes :
 <!-- .slide: class="toc" -->
 
 - [Reminders](#/1)
-- [Presentation](#/2)
+- [Introduction](#/2)
 - [Start an Angular application](#/3)
 - [Tests](#/4)
 - [Template & Components](#/5)
@@ -37,15 +37,15 @@ Notes :
 - Need to configure the injectors
   - globally via the `@NgModule` main module
   - locally via `@Component`
-- **Within the same injector ** the services are * singletons*
+- **Within the same injector** the services are *singletons*
 
 Notes :
 
 
 
-## Global configuration of the injector
+## Injector's Global configuration
 
-- `@NgModule` has a` providers` property to add services
+- `@NgModule` has a `providers` property to add services
 - The services registered in a module are injectable in all the components of this module or of a module which `import` this module
 
 ```typescript
@@ -55,7 +55,7 @@ import {UserService} from './user.service'
 @Component ({...})
 export class AppComponent {
   constructor(private userService: UserService) {
-    console.log(userService.getUser ());
+    console.log(userService.getUser());
   }
 }
 ```
@@ -77,9 +77,9 @@ Notes :
 
 
 
-## Local configuration of the injector
+## Injector's Local configuration
 
-- Ability to use the `providers` property in the` @Component` annotation
+- Ability to use the `providers` property in the `@Component` annotation
 - Same syntax as the global configuration
 - The services defined in a `Component` are injectable in this component and its threads
 - Not recommended for the use of `NgModule`
@@ -93,7 +93,7 @@ import {UserService} from './user.service'
 })
 export class AppComponent {
   constructor(private userService: UserService) {
-    console.log(userService.getUser ());
+    console.log(userService.getUser());
   }
 }
 ```
@@ -117,8 +117,8 @@ import {Logger} from './logger-service';
 export class UserService {
     constructor(private logger: Logger) {}
 
-    getUsers (): Promise <User> {
-      this.logger.log ('getUsers called!');
+    getUsers(): Promise<User> {
+      this.logger.log('getUsers called!');
       ...
     }
 }
@@ -139,8 +139,8 @@ Notes :
 - It is impossible to use interfaces in the provider identifier
 
 ```typescript
-export function serverConfigFactory (appService: AppService) {
-  return appService.getConfig ();
+export function serverConfigFactory(appService: AppService) {
+  return appService.getConfig();
 }
 
 @NgModule ({
@@ -149,7 +149,7 @@ export function serverConfigFactory (appService: AppService) {
     {
       provide: LoginService, // For an element of this type
       useClass: LoginServiceImpl // Use this class (or implementation)
-    }
+    },
     {
       provide: ServerConfig, // for an element of this type
       useFactory: serverConfigFactory, // use a factory function
@@ -176,7 +176,7 @@ const apiUrl: string = 'api.heroes.com';
 const env: string = 'dev';
 
 @NgModule ({
-  declareations: [AppComponent],
+  declarations: [AppComponent],
   providers: [
     {provide: 'apiUrl', useValue: apiUrl},
     {provide: 'env', useValue: env}
@@ -215,13 +215,13 @@ export class UserService {
 
 - Each injector contains a number of providers
 - Each injector manages a singleton for each provider
-- During an injection of dependence
+- During an injection of dependency
   - The local injector tries to find a compatible provider
   - If he does not find, he transmits the request to his parent
   - So on until the main injector of the application
   - If no provider could be found, *Angular* displays an error
 - This mechanism is very powerful but can be complex
-  - Possibility of local overloads to services
+  - Possibility of local overrides to services
   - But can also mask the good service inadvertently
 
 
@@ -241,7 +241,7 @@ Notes :
 ## Tests
 
 - Add the `providers` of the TestBed test module
-- Do not hesitate to overload "**mocker**" services
+- Do not hesitate to overload "**mock**" services
 - Powerful mechanism that isolates the element that we want to test
 - Two utilities available:
   - `TestBed.get (ClassName)`
@@ -258,7 +258,7 @@ Notes :
 ## Tests
 
 - Test example using the providers
-- Suppose `UserService` uses` LoggerService`
+- Suppose `UserService` uses `LoggerService`
 
 ```typescript
 import {TestBed, async} from '@angular/core/testing';
@@ -274,10 +274,10 @@ describe('UserService', () => {
     });
   });
 
-  it ('should return 1 user', async (() => {
+  it ('should return 1 user', async(() => {
     const service = TestBed.get (UserService);
-    service.getUsers (). then (users => {
-      expect(users.length) .toBe(1);
+    service.getUsers().then(users => {
+      expect(users.length).toBe(1);
     });
   }));
 });

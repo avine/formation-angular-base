@@ -11,7 +11,7 @@ Notes :
 <!-- .slide: class="toc" -->
 
 - [Reminders](#/1)
-- [Presentation](#/2)
+- [Introduction](#/2)
 - [Start an Angular application](#/3)
 - [Tests](#/4)
 - [Template & Components](#/5)
@@ -29,9 +29,9 @@ Notes :
 
 ## RxJS
 
-- *Angular * has a strong dependency on the library * RxJS 6 +*
+- *Angular* has a strong dependency on the library *RxJS 6 +*
 - It is very used in the heart of the framework
-- *RxJS * is a library for ** Reactive Programming**
+- *RxJS* is a library for **Reactive Programming**
 - It's a new paradigm of programming very fashionable
 - There are many implementations: http://reactivex.io/
 - Documentaion for *RxJS*: https://github.com/ReactiveX/rxjs
@@ -58,7 +58,7 @@ Notes :
 
 ## Observables
 
-- *RxJS* provided an important list of operators for `Observable`
+- *RxJS* provides an important list of operators for `Observable`
 - These operators are largely inspired by transformations on a board
   - `take(n)`: draws the first n elements and cuts the flow
   - `filter(fn)`: pass events for which fn makes `true`
@@ -96,7 +96,7 @@ observable.pipe(
 )
 ```
 - Attention, some operators have been renamed between version 5 and 6 of RXJS (it was javascript keywords):
-- `do`, `catch`, `switch`, `finally` become `tap`, `catchError`, `switchAll`, and` finalize`
+- `do`, `catch`, `switch`, `finally` become `tap`, `catchError`, `switchAll`, and `finalize`
 
 
 
@@ -106,7 +106,7 @@ observable.pipe(
 - **Warning**
   - `subscribe` is not an operator, it can not be chained
   - It makes a `subscription` object that allows you to stop listening
-  - An observable that has not been **subscribed ** does not ** start**
+  - An observable that has not been **subscribed** does not **start**
   - An observable can only be listened to once
 - `subscribe` takes three functions in arguments, all optional
   - `next`: Called for each element in the stream
@@ -122,11 +122,11 @@ Notes :
 - Complete example of using Observables
 
 ```typescript
-function getDataFromNetwork(): Observable <SomeClass> {
+function getDataFromNetwork(): Observable<SomeClass> {
   / *... */
 }
 
-function getDataFromAnotherRequest(arg: SomeClass): Observable <SomeOtherClass> {
+function getDataFromAnotherRequest(arg: SomeClass): Observable<SomeOtherClass> {
   / *... */
 }
 
@@ -134,7 +134,7 @@ getDataFromNetwork ()
   .pipe(
     filter((rep1) => rep1! == null),
     mergeMap((rep1) => {
-      return getDataFromAnotherRequest (rep1);
+      return getDataFromAnotherRequest(rep1);
     }),
     map((rep2) => `$(rep2} transformed`)
   )
@@ -152,7 +152,7 @@ Notes :
 
 ```typescript
 import { Component, OnDestroy } from "@angular/core";
-import {Observable, Subscriber} from "rxjs";
+import { Observable, Subscriber } from "rxjs";
 
 @Component ({...})
 export class AppComponent implements OnDestroy {
@@ -179,15 +179,15 @@ Notes :
 
 ## RxJS and Angular
 
-- *Angular * uses a lot * RxJS* internally
+- *Angular* uses a lot *RxJS* internally
 - The dependency is in **peer mode** that is to say it is to be added in addition
-- **Attention **, you need version * 6 + * (since Angular 6), while * 5* is still widespread
-- *Angular * exposes * RxJS* objects in several cases:
+- **Attention**, you need version *6 +* (since Angular 6), while *5* is still widespread
+- *Angular* exposes *RxJS* objects in several cases:
   - HTTP requests
   - Interaction with a form
   - View views by the *router*
 - *ngrx* is a project that proposes to extend the use of Rx with Angular
-  - *@ngrx/store *, * @ngrx/devtools *, * @ngrx/router*, ...
+  - *@ngrx/store*, *@ngrx/devtools*, *@ngrx/router*, ...
 
 Notes :
 
@@ -213,7 +213,7 @@ Notes :
 
 - Example of a service using `HttpClient`
 - Think about importing `HttpClientModule` into your module
-- Import the `HttpClient` class from the` @angular/common/http` module
+- Import the `HttpClient` class from the `@angular/common/http` module
 - Injection of the service via the constructor
 - The service method will return the observable of the request to HTTP
 
@@ -227,7 +227,7 @@ import {Person} from './model/person';
 export class ContactService {
   constructor(private http: HttpClient) {}
 
-  getContacts (): Observable <Person []> {
+  getContacts(): Observable<Person[]> {
     return this.http.get<Person []>('people.json');
   }
 }
@@ -243,12 +243,12 @@ Notes :
 
 ```typescript
 interface RequestOptionsArgs {
-  body ?: any;
-  headers ?: Headers;
-  observe ?: 'body';
-  reportProgress ?: boolean:
-  withCredentials ?: boolean;
-  responseType ?: ResponseContentType;
+  body?: any;
+  headers?: Headers;
+  observe?: 'body';
+  reportProgress?: boolean:
+  withCredentials?: boolean;
+  responseType?: ResponseContentType;
 }
 ```
 
@@ -262,15 +262,15 @@ Notes :
 
 ```typescript
 class HttpClient {
-  request (url: string | Request, options ?: RequestOptionsArgs): Observable<any>
+  request(url: string | Request, options?: RequestOptionsArgs): Observable<any>
 
-  get (url: string, options ?: RequestOptionsArgs): Observable<any>
+  get(url: string, options?: RequestOptionsArgs): Observable<any>
 
-  post (url: string, body: any, options ?: RequestOptionsArgs): Observable<any>
+  post(url: string, body: any, options?: RequestOptionsArgs): Observable<any>
 
-  put (url: string, body: any, options ?: RequestOptionsArgs): Observable<any>
+  put(url: string, body: any, options?: RequestOptionsArgs): Observable<any>
 
-  delete (url: string, options ?: RequestOptionsArgs): Observable<any>
+  delete(url: string, options?: RequestOptionsArgs): Observable<any>
   / *... */
 }
 ```
@@ -281,7 +281,7 @@ Notes :
 
 ## HTTP - Example
 
-HTTP request of `PUT` type with overload of` Headers`
+HTTP request of `PUT` type with overload of `Headers`
 
 ```typescript
 import {Injectable} from '@angular/core';
@@ -295,7 +295,7 @@ export class ContactService {
 
   save(contact: Contact): Observable<Contact> {
     const headers = new HttpHeaders ();
-    headers.set ('Authorization', 'xxxxxxx');
+    headers.set('Authorization', 'xxxxxxx');
 
     const requestOptions: RequestOptionsArgs = {
       headers
@@ -322,10 +322,10 @@ import {ContactService} from './contact.service';
   template: '{{displayedData | json}} '
 })
 export class AppComponent {
-  displayedData: Array <Contact>;
+  displayedData: Array<Contact>;
 
   constructor(private contactService: ContactService) {
-    contactService.getContacts ().subscribe(contacts => {
+    contactService.getContacts().subscribe(contacts => {
       this.displayedData = contacts;
     });
   }
@@ -349,16 +349,17 @@ import {mergeMap} from 'rxjs/operators';
 
 @Component ({
   selector: 'app',
-  template: `<ul>
-    <li *ngFor = "let project of (projects $ | async)"> {{project.name}} </ li>
-  </ Ul> `
+  template: `
+  <ul>
+    <li *ngFor="let project of (projects $ | async)"> {{project.name}} </li>
+  </ul> `
 })
 export class AppComponent {
-  projects$: Observable <Project []>
+  projects$: Observable<Project[]>
   constructor(http: HttpClient) {
-    this.projects$ = http.get <Person []>('person.json')
+    this.projects$ = http.get<Person[]>('person.json')
       .pipe(
-        mergeMap((persons: Person []): Observable<Project[]> = {
+        mergeMap(((persons: Person []): Observable<Project[]>) => {
           return getProjects(persons)
         })
       )
@@ -380,13 +381,14 @@ import {
   HttpInterceptor,
   HttpRequest,
   HttpHandler,
-  HttpEvent} from '@angular/common/http';
+  HttpEvent
+} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 @Injectable()
 export class HeaderInterceptor implements HttpInterceptor {
 
-  intercept (req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const clone = req.clone({
         setHeaders: {'Authorization': `token $(TOKEN}`}
     });
@@ -450,22 +452,25 @@ Notes :
 - `HttpTestingController` allows to program queries and their answers
 
 ```typescript
-import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController
+} from '@angular/common/http/testing';
 import {TestBed, async} from '@angular/core/testing';
 
 / *... */
 
 it ('should return 1 user', async (
   () => {
-    const userService = TestBed.get (UserService);
-    const http = TestBed.get (HttpTestingController);
+    const userService = TestBed.get(UserService);
+    const http = TestBed.get(HttpTestingController);
     const mockedUsers = [{name: 'Zenika'}];
 
-    userService.getUsers (). subscribe ((users: User []) => {
-      expect(users.length) .toBe(1);
+    userService.getUsers().subscribe((users: User []) => {
+      expect(users.length).toBe(1);
     });
 
-    http.expectOne ('/ API/users') flush (mockedUsers).
+    http.expectOne('/api/users').flush(mockedUsers)
   }
 )));
 ```

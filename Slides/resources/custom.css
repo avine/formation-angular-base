@@ -1,3 +1,6 @@
 .blue {
 	color: blue;
 }
+.reveal h2 {
+  padding-bottom: 0 !important;
+}

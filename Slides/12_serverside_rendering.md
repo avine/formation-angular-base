@@ -11,7 +11,7 @@ Notes :
 <!-- .slide: class="toc" -->
 
 - [Reminders](#/1)
-- [Presentation](#/2)
+- [Introduction](#/2)
 - [Start an Angular application](#/3)
 - [Tests](#/4)
 - [Template & Components](#/5)
@@ -99,30 +99,29 @@ Notes :
 
 ## Server rendering
 
-- Preview of *Angular * configuration in * Express*
+- Preview of *Angular* configuration in *Express*
 
 ```typescript
-const express = require ('express');
-const ngUniversal = require ('@nguniversal/express-engine');
+const express = require('express');
+const ngUniversal = require('@nguniversal/express-engine');
 
-const renderModuleFactory =
-  require ('@angular/platform-server') renderModuleFactory.
+const renderModuleFactory = require('@angular/platform-server').renderModuleFactory;
 
-const appServer = require ('./ dist-server/main.bundle');
+const appServer = require('./ dist-server/main.bundle');
 
-const app = express ();
+const app = express();
 
-app.get ('/', function angularRouter (req, res) {
-   res.render ('index', {req, res});
+app.get('/', function angularRouter(req, res) {
+   res.render('index', {req, res});
 });
 
-app.use (express.static ( `dirname $(__}/dist`));
+app.use(express.static(`dirname$(__}/dist`));
 
-app.engine ('html', ngUniversal.ngExpressEngine ({
+app.engine('html', ngUniversal.ngExpressEngine({
   bootstrap: appServer.AppServerModuleNgFactory
 }));
-app.set ('view engine', 'html');
-app.set ('views', 'dist');
+app.set('view engine', 'html');
+app.set('views', 'dist');
 ```
 
 Notes :

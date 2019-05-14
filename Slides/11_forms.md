@@ -11,7 +11,7 @@ Notes :
 <!-- .slide: class="toc" -->
 
 - [Reminders](#/1)
-- [Presentation](#/2)
+- [Introduction](#/2)
 - [Start an Angular application](#/3)
 - [Tests](#/4)
 - [Template & Components](#/5)
@@ -30,7 +30,7 @@ Notes :
 ## Forms Management Strategies
 
 - *Angular* provides by default a module dedicated to form management
-- Available via the `FormsModule` module in` @angular/forms`
+- Available via the `FormsModule` module in `@angular/forms`
 - The module proposes two different strategies
 - *Template-driven forms*
   - Form control from the templates
@@ -103,7 +103,7 @@ Notes :
     <form (submit)="saveForm()">
       <label>
         Name:
-        <input type="text" [(ngModel)]="contaxt.name" name="name">
+        <input type="text" [(ngModel)]="contaxt.name" name="name" />
       </label>
       <button type="submit"> Save </button>
     </form>
@@ -114,8 +114,8 @@ export class ContactFormComponent implements OnInit {
 
   constructor(private contactService: ContactService) {}
 
-  ngOnInit (): void {
-    this.contactService.load(). subscribe (contact => this.contact = contact);
+  ngOnInit(): void {
+    this.contactService.load().subscribe(contact => this.contact = contact);
   }
 
   saveForm(): void {
@@ -155,7 +155,7 @@ Notes :
   - On each field: `FormControl`
 - The `FormGroup` is an aggregation of the state of each of `FormControl`
 - An `AbstractControl` contains:
-  - The state: `dirty` /` pristine`, `valid` /` invalid`, `touched` /` untouched`
+  - The state: `dirty`/`pristine`, `valid`/`invalid`, `touched`/`untouched`
   - Validation errors in the `errors` property
 - These data are updated automatically
 - It can be used in templates or in the controller
@@ -167,11 +167,11 @@ Notes :
 ## State of the form and fields
 
 - Angular exposes 6 properties in an `AbstractControl`
-  - `valid` /` invalid`: Indicates whether the element passes validator control
-  - `pristine` /` dirty`: Indicate if the user tampered with the item
+  - `valid`/`invalid`: Indicates whether the element passes validator control
+  - `pristine`/`dirty`: Indicate if the user tampered with the item
 
     An element is considered `dirty` as soon as it undergoes a modification, even if the initial value is restored afterwards
-  - `untouched` /` touched`: Indicates if the item has been hit
+  - `untouched`/`touched`: Indicates if the item has been hit
 
     An element is considered `touched` as soon as the focus has been taken
 - The `NgControlStatus` directive (enabled by default) handles CSS classes
@@ -184,7 +184,7 @@ Notes :
 
 ## FormControl
 
-- Angular creates a `FormControl` when using the` ngModel` directive
+- Angular creates a `FormControl` when using the `ngModel` directive
 - `FormControl` also provides access to the field value via the `value` property
 - It can be associated with a property of the component
 - New syntax in the template: **Template reference variables**
@@ -211,7 +211,8 @@ Notes :
                  type="text" 
                  required 
                  [(ngModel)]="contact.name"
-                #nameInput="ngModel">
+                 #nameInput="ngModel"
+                />
       </label>
       <span [hidden]="nameInput.valid"> Error </ span>
       <button type="submit"> Save </button>
@@ -234,7 +235,7 @@ Notes :
 ## Validators
 
 - A field may have one or more validators
-  - Support for HTML5 standard validators: `required`, `min`, `max`, `minlength`, `maxlength` and` pattern`
+  - Support for HTML5 standard validators: `required`, `min`, `max`, `minlength`, `maxlength` and `pattern`
   - Ability to add custom validators
 
 - The `valid` property is the aggregation of the status of the validators
@@ -247,9 +248,10 @@ Notes :
          type="text" [(ngModel)]="contact.name"
          required
          #nameInput="ngModel" 
-         [attr.aria-invalid]="!nameInput.valid">
+         [attr.aria-invalid]="!nameInput.valid"
+        />
 </label>
-<span [name]="! nameInput.errors? .required"> Name is not valid </ span>
+<span [name]="!nameInput.errors?.required"> Name is not valid </ span>
 ```
 
 Notes :
@@ -270,8 +272,8 @@ Notes :
 export class PatternValidator implements Validator {
   @Input('pattern') pattern: string;
 
-  validate (control: AbstractControl): {[key: string]: any} {
-    if (control.value && control.value.match (new RegExp (this.pattern))) {
+  validate(control: AbstractControl): {[key: string]: any} {
+    if (control.value && control.value.match(new RegExp (this.pattern))) {
       return null;
     }
     return {pattern: true};
@@ -282,7 +284,7 @@ export class PatternValidator implements Validator {
 - To use the validator
 
 ```HTML
-<input type="text" name="name" [(ngModel)]="contact.name" pattern="[a-z] {10}">
+<input type="text" name="name" [(ngModel)]="contact.name" pattern="[a-z] {10}" />
 ```
 
 Notes :
@@ -297,15 +299,16 @@ Notes :
 - Instance of the directive usable in the template: `#myForm="ngForm"`
 
 ```HTML
-<form # myForm = "ngForm" (submit)="onSubmit()">
+<form #myForm="ngForm" (submit)="onSubmit()">
   <label>
     Name:
     <input name="myName" type="text" [(ngModel)]="contact.name"
-          #nameInput="ngModel" required
-          [attr.aria-invalid]="!nameInput.valid">
+           #nameInput="ngModel" required
+           [attr.aria-invalid]="!nameInput.valid"
+          />
   </label>
 
-  <span [hidden]="nameInput.valid"> Error </ span>
+  <span [hidden]="nameInput.valid"> Error </span>
 
   <button type="submit" [disabled]="myForm.invalid">
     Save
