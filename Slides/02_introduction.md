@@ -34,7 +34,7 @@ Notes :
 - Resume certain concepts of *AngularJS*
 - First version *beta* announced in October 2014
 - Version *final* `2.0.0` official release in September 2016
-- Latest major release `7.0.0`
+- Latest major release `8.0.0`
 - Component Oriented programming
 - Framework designed to be more efficient and optimized for mobile
 - http://angular.io/
@@ -62,7 +62,7 @@ Notes :
 | 5.0.0 | Nov 2017 | Improvement of the build (AOT), HttpClient, TypeScript 2.3 |
 | 6.0.0 | May 2018 | CLI Integration, Angular Element, New experimental Ivy renderer |
 | 7.0.0 | Oct 2018 | CLI Prompts, Virtual Scroll, Drag and Drop, Angular Element |
-| 8.0.0 | Mar 2019 | ? (Integration of Ivy) |
+| 8.0.0 | May 2019 | Diffential Loading, Dynamic Import, Builders API, Ivy, Bazel |
 
 
 
