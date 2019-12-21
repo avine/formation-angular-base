@@ -26,6 +26,7 @@
 - [HTTP Service](#/9)
 - [Router](#/10)
 - [Forms](#/11)
+- [Server-side Rendering](#/12)
 
 Notes :
 

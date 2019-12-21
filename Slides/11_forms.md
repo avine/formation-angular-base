@@ -78,8 +78,8 @@ Notes :
 
 ```HTML
 <input
-  [NgModel]="currentHero.firstName"
-  (NgModelChange)="currentHero.firstName = $event" />
+  [ngModel]="currentHero.firstName"
+  (ngModelChange)="currentHero.firstName = $event" />
 ```
 
 - Second solution *Banana in the Box*

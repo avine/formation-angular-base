@@ -29,7 +29,7 @@ Notes :
 
 ## Concepts
 
-- In the `Jasmine` documentation is used as a test framework
+- In the documentation `Jasmine` is used as a test framework
   - `Angular` can also be tested with other frameworks
 - To run the tests easily, we propose to use `Karma`
   - It was developed by `AngularJS` team
