@@ -134,11 +134,11 @@ Notes :
     Generate a new component with template, style and test
   - `ng generate pipe UpperCase`: Generates a new pipe
   - `ng generate service User`: Generates a new service
-  - `ng general directive myNgIf`: Generates a new directive
+  - `ng generate directive myNgIf`: Generates a new directive
 
 - `ng test`: Run tests with Karma
 - `ng e2e`: Run end-2-end tests with Protractor
-- `ng lint`: Lance TSLint
+- `ng lint`: Run TSLint
 
 Notes :
 

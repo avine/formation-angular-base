@@ -4,6 +4,8 @@ We will develop an e-commerce application.
 
 Once receiving the main application template by the trainer (just an `index.html` file), follow the steps:
 
+- All code in `head` tag must be added in the `head` of your app's `index.html`
+
 - All HTML code below `body` tag must be used in the `Application` component template
 
 - Create a new component `menu\menu.component.ts` which will contain the application main menu. To create a new Angular component, run the `ng generate component menu` command.
@@ -31,6 +33,8 @@ Once receiving the main application template by the trainer (just an `index.html
 ### Tests
 
 - Add `schemas: [CUSTOM_ELEMENTS_SCHEMA]` in `configureTestingModule` of `App` component to avoid the component to fail when using `app-menu` and `app-product` components.
+
+- set the `data` prop with a Product in `Product` test comoponent to avoid error.
 
 - Replace the value test of `title` by a value test of `total`.
 

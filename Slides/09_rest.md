@@ -159,8 +159,8 @@ export class AppComponent implements OnDestroy {
   private subscriber: Subscriber;
 
   constructor() {
-    const source = new Observable(observe => {
-      const interval = setInterval(() => observe.next('TICK'), 1000);
+    const source = new Observable(observer => {
+      const interval = setInterval(() => observer.next('TICK'), 1000);
       return () => {
         observer.complete();
         clearInterval(interval);
