@@ -26,7 +26,7 @@ Once receiving the main application template by the trainer (just an `index.html
 
 - Update the template to display the array of products. As we don't know how to repeat template elements, duplicate the template for all elements.
 
-- Create a new component called `ProductComponent` to display a product. It will have one input called `data` with `Product` type. Use this new component in the `Application` component.
+- Create a new component called `ProductComponent` to display a product. It will have one input called `data` with `Product` type. Use this new component in the `Application` component with the selector `app-product`.
 
 - We will now emit an event called `addToBasket`, from the `ProductComponent` component, when a user clicks on the `Add to basket` button. This event will be used by the `Application` component to update the basket price using the `total` variable.
 
@@ -34,7 +34,7 @@ Once receiving the main application template by the trainer (just an `index.html
 
 - Add `schemas: [CUSTOM_ELEMENTS_SCHEMA]` in `configureTestingModule` of `App` component to avoid the component to fail when using `app-menu` and `app-product` components.
 
-- set the `data` prop with a Product in `Product` test comoponent to avoid error.
+- set the `data` prop with a Product in `Product` test component to avoid error.
 
 - Replace the value test of `title` by a value test of `total`.
 

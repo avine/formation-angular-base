@@ -179,7 +179,7 @@ Notes :
 import {Component} from '@angular/core';
 
 @Component ({
-  selector: 'ngStyle-example',
+  selector: 'znk-example',
   template: `
     <h1 [ngStyle]="{'font-size': size}">
       title
@@ -190,7 +190,7 @@ import {Component} from '@angular/core';
     </label>
   `
 })
-export class NgStyleExample {
+export class ExampleComponent {
   size = '20px';
 }
 ```
@@ -232,7 +232,7 @@ import {Component} from '@angular/core';
     `.highlight {...}`
   ]
 })
-class ToggleButton {
+export class ToggleButton {
   isHighlighted = false;
 
   toggle(newState) {
@@ -301,13 +301,13 @@ Notes :
 </ng-template>
 ```
 
-- Ability to define an 'else` clause
+- Ability to define an 'else' clause
 
 ```HTML
 <div *ngIf="condition; else elseBlock"> ... </ div>
 <ng-template #elseBlock> No data </ ​​ng-template>
 ```
-- No `ngShow` and` ngHide` directives like in *AngularJS*
+- No `ngShow` and `ngHide` directives like in *AngularJS*
 - Using the `hidden` property (requires polyfills)
 
 ```HTML

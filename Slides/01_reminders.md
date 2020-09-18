@@ -32,7 +32,7 @@ Notes :
 <img src="resources/typescript-logo.png" height="300">
 
 - Language created by *Anders Hejlsberg* in 2012
-- Open-source project maintained by *Microsoft* (Current version *3.7*)
+- Open-source project maintained by *Microsoft* (Current version *4.0*)
 - Influenced by *JavaScript*, *Java* and *C#*
 - Alternatives: CoffeeScript, Dart, Haxe or Flow
 
@@ -180,7 +180,7 @@ class Person {
   constructor() {}
 
   sayHello() {
-    console.log(`Hello, I'm $(this.firstName} $(this.lastName}`);
+    console.log(`Hello, I'm ${this.firstName} ${this.lastName}`);
   }
 }
 
@@ -247,7 +247,7 @@ Notes :
 
 
 
-## Classes - Legacy
+## Classes - Inheritance
 
 - Inheritance system between classes via the keyword `extends`
 - If undefined constructor, execute that of the parent class

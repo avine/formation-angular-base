@@ -132,13 +132,11 @@ function getDataFromAnotherRequest(arg: SomeClass): Observable<SomeOtherClass> {
 
 getDataFromNetwork ()
   .pipe(
-    filter((rep1) => rep1! == null),
-    mergeMap((rep1) => {
-      return getDataFromAnotherRequest(rep1);
-    }),
-    map((rep2) => `$(rep2} transformed`)
+    filter((rep1: SomeClass) => rep1 !== null),
+    mergeMap((rep1: SomeClass) => getDataFromAnotherRequest(rep1)),
+    map((rep2: SomeOtherClass) => `$(rep2} transformed`)
   )
-  .subscribe((value) => console.log(`next => $(value}`));
+  .subscribe((value: SomeOtherClass) => console.log(`next => $(value}`));
 ```
 
 Notes :
@@ -341,7 +339,7 @@ Notes :
 - Example using more operators
 
 ```typescript
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Component} from '@angular/core';
 import {Project, Person} from './model/';
 import {Observable} from 'rxjs';
@@ -351,7 +349,7 @@ import {mergeMap} from 'rxjs/operators';
   selector: 'app',
   template: `
   <ul>
-    <li *ngFor="let project of (projects $ | async)"> {{project.name}} </li>
+    <li *ngFor="let project of (projects$ | async)"> {{project.name}} </li>
   </ul> `
 })
 export class AppComponent {
@@ -359,9 +357,8 @@ export class AppComponent {
   constructor(http: HttpClient) {
     this.projects$ = http.get<Person[]>('person.json')
       .pipe(
-        mergeMap(((persons: Person []): Observable<Project[]>) => {
-          return getProjects(persons)
-        })
+        mergeMap((persons: Person []): Observable<Project[]> => 
+            getProjects(persons))
       )
   }
 }

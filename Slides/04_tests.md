@@ -108,7 +108,7 @@ Notes :
 describe('Object service:', function() {
 
   it ('checkout method should be called', function() {
-     spyOn (service, 'foo');
+     spyOn(service, 'foo');
      service.foo();
      expect(service.foo).toHaveBeenCalled();
   });
@@ -135,7 +135,7 @@ describe('True object:', () => {
   describe('returnTrue method:', () => {
     it ('should return true', () => {
       const trueObject: True = new True ();
-      expect(trueObject.returnTrue()).toBe(true).
+      expect(trueObject.returnTrue()).toBe(true);
     });
   });
 });
