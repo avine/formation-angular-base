@@ -40,8 +40,7 @@ const routes: Routes = [
     FormsModule
   ],
   providers: [
-    {provide: 'welcomeMsg', useValue: '
-Welcome to Zenika Ecommerces'},
+    {provide: 'welcomeMsg', useValue: 'Welcome to Zenika Ecommerces'},
     {provide: LOCALE_ID, useValue: navigator.language}
   ],
   bootstrap: [AppComponent]
