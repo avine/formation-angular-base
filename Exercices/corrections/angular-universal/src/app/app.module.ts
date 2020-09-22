@@ -1,5 +1,3 @@
-import { WindowModule } from '@ng-toolkit/universal';
-import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -14,11 +12,11 @@ import {HttpClientModule} from '@angular/common/http';
     ProductsComponent
   ],
   imports: [
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
-    CommonModule,
-    WindowModule
   ],
-  providers: []
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

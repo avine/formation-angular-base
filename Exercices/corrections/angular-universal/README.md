@@ -1,9 +1,6 @@
 # Application de démo pour du SSR (server side rendering)
 
-Utilisation de @ng-toolkit : [https://github.com/maciejtreder/ng-toolkit](https://github.com/maciejtreder/ng-toolkit)
-
-Réalisé à partir de : [https://www.youtube.com/watch?v=hxG9nuvnh-A](https://www.youtube.com/watch?v=hxG9nuvnh-A)
-- `ng add @ng-toolkit/universal`
+- `ng add  ng add @nguniversal/express-engine`
 
 L'application est basique et affiche la liste des produits en provenance du serveur 
 utilisé dans les TPs.
@@ -22,24 +19,24 @@ ou
 
 Possibilité de faire un double déploiement :  l'un avec SSR, l'autre sans SSR :
 
-`yarn all` (ou `npm run all`)
+`npm start && npm run dev:ssr`
 
 > *La phase de build et de déploiement est un peu longue.*
 
-Les 2 applications sont alors disponibles, sur les ports 4200 et 4201 :
+Les 2 applications sont alors disponibles, sur les ports 4200 et 4000 :
 - Sans SSR : [http://localhost:4200/products](http://localhost:4200/products)
-- Avec SSR : [http://localhost:4201/products](http://localhost:4201/products)
+- Avec SSR : [http://localhost:4000/products](http://localhost:4200/products)
 
 
 ##### Déploiement uniquement avec SSR 
 
 Exécuter les commandes suivantes :
 
-`yarn build:prod` (ou `npm run build:prod`) 
+`yarn build:ssr` (ou `npm run build:ssr`) 
 
-`yarn server` (ou `npm run server`)
+`yarn dev:ssr` (ou `npm run dev:ssr`)
  
- Application ensuite disponible à l'URL : [http://localhost:4201/products](http://localhost:4201/products)
+ Application ensuite disponible à l'URL : [http://localhost:4000/products](http://localhost:4000/products)
 
 ##### Déploiement uniquement sans SSR
 
