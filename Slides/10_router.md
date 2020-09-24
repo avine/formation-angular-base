@@ -71,7 +71,7 @@ import {HomeComponent, ContactsComponent, ContactComponent} from './pages';
 const routes: Routes = [
   {path: '', component: HomeComponent}, // path: '/'
   {path: 'contacts', component: ContactsComponent},
-  {path: 'contact /: id', component: ContactComponent}
+  {path: 'contact/:id', component: ContactComponent}
 ];
 
 @NgModule ({
@@ -100,7 +100,7 @@ import {Component} from '@angular/core';
 @Component ({
   template: `
     <header><h1> Title </h1></header>
-    <toute-outlet></router-outlet>
+    <router-outlet></router-outlet>
   `
 })
 export class AppComponent {}
@@ -293,7 +293,7 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot): boolean | UrlTree {
     if (this.authService.isLoggedIn()) return true;
-    return this.router.parseUrl('/ login');
+    return this.router.parseUrl('/login');
   }
 }
 
@@ -340,7 +340,7 @@ export class AppModule {}
 
 ```typescript
 const adminRoutes: Routes = [{
-  {path: '', component: HomeComponent},
+  {path: '', component: AdminHomeComponent},
   {path: 'users', component: AdminUsersComponent}
 }];
 

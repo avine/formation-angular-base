@@ -251,7 +251,7 @@ Notes :
          [attr.aria-invalid]="!nameInput.valid"
         />
 </label>
-<span [name]="!nameInput.errors?.required"> Name is not valid </ span>
+<span [hidden]="!nameInput.errors?.required"> Name is not valid </span>
 ```
 
 Notes :

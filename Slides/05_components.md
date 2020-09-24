@@ -506,6 +506,7 @@ TestBed.configureTestingModule ({
       // TitleService,
       // {provide: TitleService, useClass: TitleServiceMock})
     ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 });
 ```
 

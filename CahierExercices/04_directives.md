@@ -12,7 +12,7 @@ In this lab, we will use `ngFor`, `ngIf` and `ngClass` to have a more dynamic ap
 
 - Use the `ngIf` directive to display only the products with a `stock` value greater than 0. You might have to revise your use of `*ngFor`.
 
-- Use the `ngClass` directive to add the `last` CSS class, on the element with the `thumbnail` class, if the `stock` value is equal to 1. We will use that class to change the background color to (`background-color: rgba(255, 0, 0, 0.4)`).
+- Create a CSS class `last` and use the `ngClass` directive to add it on the element with the `thumbnail` class if the `stock` value is equal to 1. This class will change the background color (`background-color: rgba(255, 0, 0, 0.4)`).
 
 ### Tests
 

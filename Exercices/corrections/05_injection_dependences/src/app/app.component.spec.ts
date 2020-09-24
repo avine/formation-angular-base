@@ -44,8 +44,8 @@ describe('AppComponent', () => {
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
-    customerService = TestBed.get(CustomerService);
-    productService = TestBed.get(ProductService);
+    customerService = TestBed.inject(CustomerService);
+    productService = TestBed.inject(ProductService);
   });
 
   it('should create the app', () => {

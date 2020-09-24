@@ -17,7 +17,7 @@ To interact with this new feature, use the `basket` component created in the pre
 Add a link in the `Home` component to navigate to the `/basket` page.
 
 The form must:
-  - Execute the `checkout` method when the `ngSubmit` event is emitted. After receiving the server response, redirect the user to the `home` page.
+  - Execute the `checkout` method when the `ngSubmit` event is emitted. After receiving the server response, redirect the user to the `home` page (see `navigate` method from `Router`).
   - Have an `input[text]` field to fill the client name that:
     - is bound to the `name` property of the `Customer` object
     - is required (by using the *required* attribute)
@@ -38,9 +38,9 @@ The form must:
 Use the following template to add a field in the form:
 
 ```html
-<div class="form-group has-error">
+<div class="form-group"> <!-- CSS class has-error will be inserted here-->
     <label class="control-label" for="name">Name</label>
-    <input type="text" id="name" class="form-control">
+    <input type="text" id="name" name="name" class="form-control">
 </div>
 ```
 
@@ -50,7 +50,7 @@ Use the following template to add a field in the form:
 
 - Add a test to check that the basket display the title and the price of all the products.
 
-- Add a test to check that the `has-error` class is added on invalid fields. Be aware,to make sure that form validation happen, do:
+- Add a test to check that the `has-error` class is added on invalid fields. Be aware,to make sure that form validation happen, use the following function and wait for it to complete:
 
 ```typescript
 const waitValidation = async fixture => {

@@ -35,7 +35,7 @@ Moreover, by using services, we introduced a 'separation of concerns'. Some test
 
 - In the `app` component tests, remove tests about the computation of the basket price. This component doesn't hold the responsibility of that computation.
 
-- In the `app` component tests, use `TestBed.get` function to get services instances and `spyOn` function to create Jasmine spies in order to pass tests.
+- In the `app` component tests, use `TestBed.inject` function to get services instances and `spyOn` function to create Jasmine spies in order to pass tests.
 
 - In the `app` component tests, add a test checking that `welcomeMsg` value is set in the header.
 

@@ -12,7 +12,7 @@ describe('CustomerService', () => {
     TestBed.configureTestingModule({
       providers: [CustomerService]
     });
-    service = TestBed.get(CustomerService);
+    service = TestBed.inject(CustomerService);
   });
 
   it('should be created with no product',

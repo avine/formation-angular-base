@@ -58,8 +58,8 @@ describe('HomeComponent', () => {
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
-    customerService = TestBed.get(CustomerService);
-    productService = TestBed.get(ProductService);
+    customerService = TestBed.inject(CustomerService);
+    productService = TestBed.inject(ProductService);
   });
 
   beforeEach(() => {

@@ -9,7 +9,7 @@ describe('ProductService', () => {
     TestBed.configureTestingModule({
       providers: [ProductService]
     });
-    service = TestBed.get(ProductService);
+    service = TestBed.inject(ProductService);
   });
 
   it('should be created with 4 products',

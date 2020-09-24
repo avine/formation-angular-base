@@ -208,6 +208,8 @@ export class UserService {
 ```
 
 - If you can add the service in another module, just give the module you want in the `providedIn: MyModule` option
+- Since Angular 9 two more options are available: `any` and `plateform`
+
 
 
 
@@ -244,12 +246,12 @@ Notes :
 - Do not hesitate to overload "**mock**" services
 - Powerful mechanism that isolates the element that we want to test
 - Two utilities available:
-  - `TestBed.get (ClassName)`
+  - `TestBed.inject (ClassName)`
 
     Retrieves the service instance given as parameter
   - `async (fn: Function)`
 
-    automatically retards the test against asynchronous actions
+    Automatically retards the test against asynchronous actions
 
     (works thanks to **ZoneJS**)
 
@@ -275,7 +277,7 @@ describe('UserService', () => {
   });
 
   it ('should return 1 user', async(() => {
-    const service = TestBed.get (UserService);
+    const service = TestBed.inject (UserService);
     service.getUsers().then(users => {
       expect(users.length).toBe(1);
     });

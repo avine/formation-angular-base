@@ -27,7 +27,7 @@ describe('ProductComponent', () => {
       ]
     })
     .compileComponents();
-    productService = TestBed.get(ProductService);
+    productService = TestBed.inject(ProductService);
   });
 
   beforeEach(() => {
