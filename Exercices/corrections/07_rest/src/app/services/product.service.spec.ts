@@ -19,7 +19,7 @@ describe('ProductService', () => {
     http = TestBed.get(HttpTestingController);
   });
 
-  it('should be created with 4 products',
+  it('should be created with 2 products',
     () => {
       const mockedResponse = [
         new Product('abc', '', '', 0, 0),

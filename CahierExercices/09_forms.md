@@ -2,12 +2,12 @@
 
 We will create a new view to checkout the basket.
 
-- Create a file `model\customer.ts`, containing a `Customer` class with:
+- Create a file `model/customer.ts`, containing a `Customer` class with:
 	- name with `string` type
 	- address with `string` type
 	- creditCard with `string` type
 
-- In the `service\CustomerService.ts` service, add a method `checkout(customer)`:
+- In the `service/customer.service.ts` service, add a method `checkout(customer)`:
   - It must call `/basket/confirm` using the `POST` HTTP method to save the command server-side.
 
 To interact with this new feature, use the `basket` component created in the previous lab. It will display:

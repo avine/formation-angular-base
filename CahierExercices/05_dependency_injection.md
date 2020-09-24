@@ -7,16 +7,17 @@ We will create two services:
 - ProductService: to manage products.
 - CustomerService: to manage the basket.
 
-- Create a service `services\ProductService.ts` (use angular-cli) with:
+- Create a service `services/product.service.ts` (use angular-cli) with:
 	- The `products` array defined in the `AppComponent.ts` component
 	- A `getProducts()` method that returns the `products`.
 	- A `isTheLast(product)` method that returns `true` if the product stock value is equal to 1.
 	- A `isAvailable(product)` method that returns `true` if the product stock value is greater than 0.
 	- A `decreaseStock(product)` method to decrement the `stock` product value
 
-- Create a service `services\CustomerService.ts` with:
-	- A `addProduct(product)` method that adds a new product in the basket
-	- A `getTotal()` method that computes the basket price.
+- Create a service `services/customer.service.ts` with:
+	- A basket as an empty array of `products`
+    - A `addProduct(product)` method that adds a new product in the basket
+	- A `getTotal()` method that computes the basket price
 
 - Import those two services in the `Application` component, and change the component to use the services.
 
@@ -34,7 +35,7 @@ Moreover, by using services, we introduced a 'separation of concerns'. Some test
 
 - In the `app` component tests, remove tests about the computation of the basket price. This component doesn't hold the responsibility of that computation.
 
-- In the `app` component tests, use Angular `inject` function to get services instances and `spyOn` function to create Jasmine spies in order to pass tests.
+- In the `app` component tests, use `TestBed.get` function to get services instances and `spyOn` function to create Jasmine spies in order to pass tests.
 
 - In the `app` component tests, add a test checking that `welcomeMsg` value is set in the header.
 

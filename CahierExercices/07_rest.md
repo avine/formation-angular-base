@@ -21,7 +21,7 @@ Here are the available entry points:
 - It is required to import the `HttpClientModule` module into the `AppModule` module
 
 - First update the `ProductService` service. In the `getProducts` method, send a `http` request to the server. When the server responds:
-  - use the `map` operator to build object products
+  - use the `map` operator to build object products (even though we could do simpler)
 
 - Update the `AppComponent` component consequently.
 

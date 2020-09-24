@@ -218,7 +218,7 @@ Notes :
   template: '{{promise | async}} '
 })
 class PipesAppComponent {
-  promised: Promise;
+  promise: Promise;
 
   constructor() {
     this.promise = new Promise ((resolve, reject) => {

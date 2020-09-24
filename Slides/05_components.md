@@ -139,7 +139,7 @@ export class ProductComponent {
 ```
 
 Notes :
-
+The 'Elvis operator' (optional chaining) is now part of ES2020 & Typescript 3.8
 
 
 ## Properties
@@ -183,6 +183,7 @@ Can not bind to 'colspan' since it is not a known native -->
 
 <td [attr.colspan]="dynamicColspan">help</td>
 ```
+
 
 Notes :
 
@@ -363,7 +364,7 @@ export class HelloComponent {
   template: '<hello-component (hello)="myHandler($event)"></hello-component>'
 })
 export class MainComponent {
-  myHandler(value) {
+  myHandler(value: string) {
     console.log(value); // --> 'hello!'
   }
 }
@@ -566,7 +567,7 @@ describe('TitleComponent', () => {
     componentInstance.title = 'Hello World';
     fixture.detectChanges ();
     const h1 = nativeElement.querySelector ('h1');
-    expect(h1.textContent) .toBe('Hello World');
+    expect(h1.textContent).toBe('Hello World');
   });
 });
 ```
