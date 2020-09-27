@@ -108,8 +108,8 @@ Notes :
 ## Templates
 
 - Angular templates are compiled before being executed
-  - Hot: *JIT* (Just In Time) by default
-  - Either to build: *AOT* (Ahead Of Time) `--aot` in Angular CLI
+  - Hot: *JIT* (Just In Time) `--no-aot` in Angular CLI
+  - Either to build: *AOT* (Ahead Of Time) by default since Angular 9
 - The compilation makes it possible to detect errors in the template
 - Also implies that templates must be syntactically correct
 - Operation very different from AngularJS
