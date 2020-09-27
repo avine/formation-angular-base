@@ -222,10 +222,11 @@ import { HttpClient } from '@angular/common/http';
 
 @Component ({
     selector: 'my-app',
-    template: '{{value | uppercase}} '
+    template: '<div *ngIf="condition">{{value | uppercase}}</div> '
 })
 export class MyComponent {
   value: string;
+  condition: boolean;
   constructor(http: HttpClient) {
   }
 }
