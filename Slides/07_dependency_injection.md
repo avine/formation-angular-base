@@ -246,7 +246,7 @@ Notes :
 - Do not hesitate to overload "**mock**" services
 - Powerful mechanism that isolates the element that we want to test
 - Two utilities available:
-  - `TestBed.inject (ClassName)`
+  - `TestBed.inject (ClassName)` (`TestBed.get` is deprecated since Angular 9)
 
     Retrieves the service instance given as parameter
   - `async (fn: Function)`

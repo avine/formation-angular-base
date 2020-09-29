@@ -21,7 +21,7 @@ The form must:
   - Have an `input[text]` field to fill the client name that:
     - is bound to the `name` property of the `Customer` object
     - is required (by using the *required* attribute)
-    - has the `has-error` CSS class if invalid
+    - has the `has-error` CSS class if invalid (see in following template where to place it)
   - Have a `textarea` field to fill the client address that:
     - is bound to the `address` property of the `Customer` object
     - is required (by using the *required* attribute)
@@ -38,9 +38,9 @@ The form must:
 Use the following template to add a field in the form:
 
 ```html
-<div class="form-group"> <!-- CSS class has-error will be inserted here-->
+<div class="form-group has-error">
     <label class="control-label" for="name">Name</label>
-    <input type="text" id="name" name="name" class="form-control">
+    <input type="text" id="name" name="inputName" class="form-control">
 </div>
 ```
 
@@ -50,7 +50,7 @@ Use the following template to add a field in the form:
 
 - Add a test to check that the basket display the title and the price of all the products.
 
-- Add a test to check that the `has-error` class is added on invalid fields. Be aware,to make sure that form validation happen, use the following function and wait for it to complete:
+- Add a test to check that the `has-error` class is added on invalid fields. To make sure that form validation happen, use the following function and wait for it to complete:
 
 ```typescript
 const waitValidation = async fixture => {

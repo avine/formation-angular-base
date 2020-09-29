@@ -134,9 +134,9 @@ getDataFromNetwork ()
   .pipe(
     filter((rep1: SomeClass) => rep1 !== null),
     mergeMap((rep1: SomeClass) => getDataFromAnotherRequest(rep1)),
-    map((rep2: SomeOtherClass) => `$(rep2} transformed`)
+    map((rep2: SomeOtherClass) => `${rep2} transformed`)
   )
-  .subscribe((value: string) => console.log(`next => $(value}`));
+  .subscribe((value: string) => console.log(`next => ${value}`));
 ```
 
 Notes :
@@ -298,7 +298,7 @@ export class ContactService {
     const requestOptions: RequestOptionsArgs = {
       headers
     };
-    return this.http.put(`rest/contacts/$(contact.id}`, contact, requestOptions);
+    return this.http.put(`rest/contacts/${contact.id}`, contact, requestOptions);
   }
 }
 ```
@@ -387,7 +387,7 @@ export class HeaderInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const clone = req.clone({
-        setHeaders: {'Authorization': `token $(TOKEN}`}
+        setHeaders: {'Authorization': `token ${TOKEN}`}
     });
     return next.handle(clone);
   }
