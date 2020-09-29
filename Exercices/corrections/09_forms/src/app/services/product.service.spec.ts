@@ -15,8 +15,8 @@ describe('ProductService', () => {
         ProductService,
       ]
     });
-    service = TestBed.get(ProductService);
-    http = TestBed.get(HttpTestingController);
+    service = TestBed.inject(ProductService);
+    http = TestBed.inject(HttpTestingController);
   });
 
   it('should be created with 4 products',

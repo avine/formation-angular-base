@@ -9,7 +9,7 @@ describe('ProductService', () => {
     TestBed.configureTestingModule({
       providers: [ProductService]
     });
-    service = TestBed.get(ProductService);
+    service = TestBed.inject(ProductService);
   });
 
   it('should be created with 4 products',
@@ -27,14 +27,14 @@ describe('ProductService', () => {
     }
   ));
 
-  
+
   [{stock: 0, isAvailable: false}, {stock: 1, isAvailable: true}, {stock: 2, isAvailable: true}, {stock: 100, isAvailable: true}].forEach(({stock, isAvailable}) =>
   it(`should isAvailable return ${isAvailable} if stock is ${stock}`,
     () => {
       const product = new Product('', '', '', 0, stock);
       expect(service.isAvailable(product)).toBe(isAvailable);
     }
-  );
+  ));
 
   it('should decreaseStock decrease product stock of 1',
     () => {

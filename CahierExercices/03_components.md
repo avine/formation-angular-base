@@ -8,7 +8,7 @@ Once receiving the main application template by the trainer (just an `index.html
 
 - All HTML code below `body` tag must be used in the `Application` component template
 
-- Create a new component `menu\menu.component.ts` which will contain the application main menu. To create a new Angular component, run the `ng generate component menu` command.
+- Create a new component `menu\menu.component.ts` which will contain the application main menu (`<nav>...</nav>` part). To create a new Angular component, run the `ng generate component menu` command.
 
 - Replace in the `Application` component the menu by the new component.
 

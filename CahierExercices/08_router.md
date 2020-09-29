@@ -3,7 +3,7 @@
 We will now integrate the default router provided by Angular.
 
 - Create two new components:
-  - The `home` component must display the page we developed during the previous labs.
+  - The `home` component must display the page we developed during the previous labs (aside from the menu and footer).
   - The `basket` component must display, for now, the basket by using the `json` pipe.
 
 - Configure the router by using the `forRoot` method from the `@angular/router` module.

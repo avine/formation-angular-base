@@ -6,7 +6,7 @@ We will start by using `pipes` provided by the framework: `uppercase` and `curre
 
 - In the `ProductComponent` template, use the `uppercase` pipe to display the title in uppercase.
 
-- In the `ProductComponent` template, use the `currency` pipe to display the price using the *dollar* currency and two decimals.
+- In the `ProductComponent` template, use the `currency` pipe to display the price using the *euro* currency and two decimals.
 
 - Also add the `pipe` to the `currency` for displaying the total on the main page `app.component.html`
 
@@ -40,6 +40,6 @@ We will now create a custom `pipe`, to sort the products by `title`.
 
 ### Tests
 
-- Resolve dependencies injection issues to pass existing tests.
+- Resolve dependencies injection issues to pass existing tests. Declare a mock for the pipe created previously.
 
 - Add a test in the `SortPipe` pipe, by giving an array of products as input and by checking that the outputted array is sorted.

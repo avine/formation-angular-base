@@ -16,8 +16,8 @@ describe('CustomerService', () => {
         CustomerService,
       ]
     });
-    service = TestBed.get(CustomerService);
-    http = TestBed.get(HttpTestingController);
+    service = TestBed.inject(CustomerService);
+    http = TestBed.inject(HttpTestingController);
   });
 
   it('should be created with no product',
