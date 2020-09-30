@@ -1,11 +1,11 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
 import { Product } from './model/product';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
@@ -14,19 +14,19 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
-  it('should create the app', async(() => {
+  it('should create the app', waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
 
-  it('should have a total starting at 0', async(() => {
+  it('should have a total starting at 0', waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.total).toEqual(0);
   }));
 
-  it('should have the total bound in the header', async(() => {
+  it('should have the total bound in the header', waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     const compiled = fixture.debugElement.nativeElement;
@@ -36,7 +36,7 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('header').textContent).toContain(42);
   }));
 
-  it('should update price with the product price', async(() => {
+  it('should update price with the product price', waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
 
@@ -47,7 +47,7 @@ describe('AppComponent', () => {
     expect(product.stock).toBe(1);
   }));
 
-  it('should bind each product component with its product', async(() => {
+  it('should bind each product component with its product', waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     const compiled = fixture.debugElement.nativeElement;
@@ -59,7 +59,7 @@ describe('AppComponent', () => {
     });
   }));
 
-  it('should not display product with an empty stock', async(() => {
+  it('should not display product with an empty stock', waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     const compiled = fixture.debugElement.nativeElement;
