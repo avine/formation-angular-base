@@ -1,4 +1,4 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { of } from 'rxjs';
 
@@ -15,15 +15,14 @@ describe('BasketComponent', () => {
   let component: BasketComponent;
   let fixture: ComponentFixture<BasketComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ BasketComponent ],
       imports: [ RouterModule.forRoot([], {useHash: true}) ],
       providers: [
         {provide: CustomerService, useClass: CustomerServiceMock }
       ]
-    })
-    .compileComponents();
+    });
   }));
 
   beforeEach(() => {

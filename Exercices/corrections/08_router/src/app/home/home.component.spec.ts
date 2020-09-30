@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 
@@ -57,7 +57,7 @@ describe('HomeComponent', () => {
         {provide: 'welcomeMsg', useValue: welcomeMsg}
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    }).compileComponents();
+    });
     customerService = TestBed.inject(CustomerService);
     productService = TestBed.inject(ProductService);
   });

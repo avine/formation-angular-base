@@ -11,17 +11,16 @@ describe('ProductDetailComponent', () => {
   let fixture: ComponentFixture<ProductDetailComponent>;
   let productService;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ ProductDetailComponent ],
       imports: [ RouterTestingModule ],
       providers: [
         {provide: ProductService, useValue: jasmine.createSpyObj('ProductService', {'getProduct': of(new Product('', '', '', '', 0, 0))})}
       ]
-    })
-    .compileComponents();
+    });
     productService = TestBed.inject(ProductService);
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ProductDetailComponent);

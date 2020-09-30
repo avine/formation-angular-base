@@ -1,4 +1,4 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { of } from 'rxjs/';
@@ -28,7 +28,7 @@ describe('BasketComponent', () => {
   let component: BasketComponent;
   let fixture: ComponentFixture<BasketComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ BasketComponent ],
       imports: [
@@ -38,14 +38,14 @@ describe('BasketComponent', () => {
       providers: [
         {provide: CustomerService, useClass: CustomerServiceMock}
       ]
-    }).compileComponents();
-  }));
+    });
+  });
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     fixture = TestBed.createComponent(BasketComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }));
+  });
 
   it('should be created', () => {
     expect(component).toBeTruthy();

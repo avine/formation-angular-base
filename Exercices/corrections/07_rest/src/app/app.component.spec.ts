@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
 import { AppComponent } from './app.component';
@@ -53,7 +53,7 @@ describe('AppComponent', () => {
         {provide: 'welcomeMsg', useValue: welcomeMsg}
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    }).compileComponents();
+    });
     customerService = TestBed.inject(CustomerService);
     productService = TestBed.inject(ProductService);
   });
