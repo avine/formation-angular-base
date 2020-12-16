@@ -23,8 +23,7 @@ describe('ProductComponent', () => {
       providers: [
         {provide: ProductService, useClass: ProductServiceMock}
       ]
-    })
-    .compileComponents();
+    });
     productService = TestBed.inject(ProductService);
   });
 

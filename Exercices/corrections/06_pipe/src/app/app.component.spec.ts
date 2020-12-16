@@ -49,7 +49,7 @@ describe('AppComponent', () => {
         {provide: 'welcomeMsg', useValue: welcomeMsg}
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    }).compileComponents();
+    });
     customerService = TestBed.inject(CustomerService);
     productService = TestBed.inject(ProductService);
   });

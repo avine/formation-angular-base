@@ -263,7 +263,7 @@ Notes :
 - Suppose `UserService` uses `LoggerService`
 
 ```typescript
-import {TestBed, async} from '@angular/core/testing';
+import {TestBed, waitForAsync} from '@angular/core/testing';
 import {UserService} from './user.service';
 
 describe('UserService', () => {
@@ -276,7 +276,7 @@ describe('UserService', () => {
     });
   });
 
-  it ('should return 1 user', async(() => {
+  it ('should return 1 user', waitForAsync(() => {
     const service = TestBed.inject (UserService);
     service.getUsers().then(users => {
       expect(users.length).toBe(1);
@@ -286,7 +286,8 @@ describe('UserService', () => {
 ```
 
 Notes :
-
+`async` is deprecated for `waitForAsync`
+https://angular.io/guide/testing-components-scenarios#waitForAsync
 
 
 <!-- .slide: class="page-tp5" -->

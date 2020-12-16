@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { of } from 'rxjs/';
@@ -18,10 +18,6 @@ class CustomerServiceMock {
   }
 }
 
-const includes = (classList, value) => {
-  return Array.prototype.includes.call(classList, value);
-};
-
 const waitValidation = async fixture => {
   fixture.detectChanges();
   await fixture.whenStable();
@@ -32,7 +28,7 @@ describe('BasketComponent', () => {
   let component: BasketComponent;
   let fixture: ComponentFixture<BasketComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ BasketComponent ],
       imports: [
@@ -42,14 +38,14 @@ describe('BasketComponent', () => {
       providers: [
         {provide: CustomerService, useClass: CustomerServiceMock}
       ]
-    }).compileComponents();
-  }));
+    });
+  });
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     fixture = TestBed.createComponent(BasketComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }));
+  });
 
   it('should be created', () => {
     expect(component).toBeTruthy();
@@ -72,26 +68,26 @@ describe('BasketComponent', () => {
 
     const nameFormGroup = fixture.nativeElement.querySelectorAll('.form-group')[0];
 
-    expect(includes(nameFormGroup.classList, 'has-error')).toBe(false);
+    expect(nameFormGroup.classList.contains('has-error')).toBe(false);
 
     component.customer.name = '';
     await waitValidation(fixture);
 
-    expect(includes(nameFormGroup.classList, 'has-error')).toBe(true);
+    expect(nameFormGroup.classList.contains('has-error')).toBe(true);
   });
 
   it('should add has-error class when address is invalid', async () => {
     component.customer.address = 'something';
     await waitValidation(fixture);
 
-    const addressFormGroup = fixture.nativeElement.querySelectorAll('.form-group')[1];
+    const addressFormGroup = fixture.nativeElement.querySelector('.form-group:nth-child(2)');
 
-    expect(includes(addressFormGroup.classList, 'has-error')).toBe(false);
+    expect(addressFormGroup.classList.contains('has-error')).toBe(false);
 
     component.customer.address = '';
     await waitValidation(fixture);
 
-    expect(includes(addressFormGroup.classList, 'has-error')).toBe(true);
+    expect(addressFormGroup.classList.contains('has-error')).toBe(true);
   });
 
   it('should add has-error class when creditCard is invalid', async () => {
@@ -100,12 +96,12 @@ describe('BasketComponent', () => {
 
     const creditCardFormGroup = fixture.nativeElement.querySelectorAll('.form-group')[2];
 
-    expect(includes(creditCardFormGroup.classList, 'has-error')).toBe(true);
+    expect(creditCardFormGroup.classList.contains('has-error')).toBe(true);
 
     component.customer.creditCard = '123-456';
     await waitValidation(fixture);
 
-    expect(includes(creditCardFormGroup.classList, 'has-error')).toBe(false);
+    expect(creditCardFormGroup.classList.contains('has-error')).toBe(false);
   });
 
   it('should add disable submit button when form is invalid', async () => {

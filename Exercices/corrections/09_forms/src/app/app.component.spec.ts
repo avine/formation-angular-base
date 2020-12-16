@@ -10,7 +10,7 @@ describe('AppComponent', () => {
       declarations: [ AppComponent ],
       imports: [ RouterModule.forRoot([], {useHash: true}) ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
-    }).compileComponents();
+    });
   });
 
   it('should create the app', () => {

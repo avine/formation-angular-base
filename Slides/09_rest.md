@@ -453,11 +453,11 @@ import {
   HttpClientTestingModule,
   HttpTestingController
 } from '@angular/common/http/testing';
-import {TestBed, async} from '@angular/core/testing';
+import {TestBed, waitForAsync} from '@angular/core/testing';
 
 / *... */
 
-it ('should return 1 user', async (
+it ('should return 1 user', waitForAsync (
   () => {
     const userService = TestBed.inject(UserService);
     const http = TestBed.inject(HttpTestingController);
