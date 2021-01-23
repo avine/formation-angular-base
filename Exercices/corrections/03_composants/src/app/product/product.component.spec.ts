@@ -13,7 +13,7 @@ describe('ProductComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ProductComponent ]
     });
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ProductComponent);
