@@ -230,7 +230,7 @@ output: {
 }
 ```
 
-  - Allows to use a `vendor.ts` file important all used libraries
+  - Allows to use a `vendor.ts` file importing all used libraries
 
 ```typescript
 // Angular

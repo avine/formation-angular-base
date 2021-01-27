@@ -453,7 +453,7 @@ Notes :
   - `version`: must be exactly this version
   - `~`, `^`: approximately, compatible
   - `major.minor.x`:` x` acts as a wildcard
-  - [And many others](https://www.npmjs.org/doc/misc/semver.html#ranges): `>`, `<`, `> =`, `min-max` .. .
+  - [And many others](https://docs.npmjs.com/cli/v6/using-npm/semver#ranges): `>`, `<`, `> =`, `min-max` .. .
 
 Notes :
 - \ *: any version (dangerous)

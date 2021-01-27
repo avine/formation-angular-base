@@ -34,7 +34,7 @@ Notes :
 - Resume certain concepts of *AngularJS*
 - First version *beta* announced in October 2014
 - Version *final* `2.0.0` official release in September 2016
-- Latest major release `10.0.0`
+- Latest major release `11.0.0`
 - Component Oriented programming
 - Framework designed to be more efficient and optimized for mobile
 - http://angular.io/
@@ -64,7 +64,15 @@ Notes :
 | 7.0.0 | Oct 2018 | CLI Prompts, Virtual Scroll, Drag and Drop, Angular Element |
 | 8.0.0 | May 2019 | Differential Loading, Dynamic Import, Builders API, Ivy, Bazel |
 | 9.0.0 | Feb 2020 | Ivy by default, ProvidedIn scope |
+
+
+
+## Versions
+
+| Version | Date | Description |
+| : ------ | : ------: | : ------------------------------------------------- ----------------- |
 | 10.0.0 | June 2020 | Optional Stricter Settings, New Default Browser Configuration, TypeScript 3.9 |
+| 11.0.0 | Nov 2020 | TypeScript 4.0, Remove deprecated support for IE 9, 10, and IE mobile |
 
 
 

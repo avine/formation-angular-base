@@ -23,7 +23,7 @@ describe('BasketComponent', () => {
         {provide: CustomerService, useClass: CustomerServiceMock }
       ]
     });
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BasketComponent);

@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Basket</div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let product of basket">
+      {{product.title}} <span class="label label-primary pull-right">{{product.price | currency:'EUR'}}</span>
+    </li>
+  </ul>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Order</div>
+  <div class="panel-body">
+    <form (ngSubmit)="checkout()" [formGroup]="customerForm" novalidate>
+      <div class="form-group" [class.has-error]="!name.valid">
+        <label class="control-label" for="name">Name</label>
+        <input type="text" id="name" class="form-control" formControlName="name" name="name" required>
+      </div>
+
+      <div class="form-group" [class.has-error]="!address.valid">
+        <label class="control-label" for="address">Address</label>
+        <textarea id="address" class="form-control" formControlName="address" name="address" required></textarea>
+      </div>
+
+      <div class="form-group" [class.has-error]="!creditCard.valid">
+        <label class="control-label" for="creditCard">Credit card number</label>
+        <input id="creditCard" class="form-control" formControlName="creditCard" name="creditCard">
+        <span class="help-block" [hidden]="creditCard.valid">Invalid pattern. Example : 123-456</span>
+      </div>
+
+      <div class="col-xs-12">
+        <button type="submit" class="btn btn-success pull-right" [disabled]="!customerForm.valid">
+          Validate
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

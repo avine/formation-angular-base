@@ -44,6 +44,40 @@ Use the following template to add a field in the form:
 </div>
 ```
 
+
+### Bonus
+We could also create this form using reactive form instead of template driven form.
+To refactor previously created template driven form, you must:
+  - Update `AppModule` to import `ReactiveFormsModule` from `@angular/forms`
+  - In basket component, create a new `FormGroup` using `FormBuilder`, for example:
+    ```typescript
+    customerForm: FormGroup;
+
+    constructor(private fb: FormBuilder) {}
+
+    ngOnInit() {
+      this.customerForm = this.fb.group({
+        name: this.fb.control('')
+      })
+    }
+    ```
+  - Add Validators such as `Validators.required` (for all fields) or `Validators.pattern(/^[0-9]{3}-[0-9]{3}$/)`  (to validate credit card number) to these `FormControls`.
+  - Create getters to simplify syntax when accessing FormControls from template, for example:
+    ```typescript
+      get name() { return this.customerForm.get('name'); }
+    ```
+  - In BasketComponent template:
+    - use `formGroup` and `formControlName` directives to bind inputs to the programmically created FormGroup.
+    - Delete unused inputs' template reference variables (like `#name="ngModel"`).
+  - Add a listener on `ngSubmit` event on form element as submit event is listened by `FormGroup` directive which then emits a ngSubmit event.
+  - Update checkout function to use `customerForm` value and delete previously used Customer attribute (and all its references).
+  - Fix tests
+    - In BasketComponent tests, import ReactiveFormsModule
+    - Then fix errors by replacing component.customer affectations by setting the value from the FormGroup created in ngOnInit:
+      ```typescript
+        component.customerForm.get('name').setValue('something');
+      ```
+
 ### Tests
 
 - In the `basket` component tests, import the `FormsModule` module to use forms directives.
