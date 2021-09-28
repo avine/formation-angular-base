@@ -22,7 +22,9 @@
   "scripts": {
     "start": "grunt",
     "pdf": "grunt pdf",
-    "deploy": "zenika-formation-deploy"
+    "deploy": "zenika-formation-deploy",
+    "sensei-start": "docker run -it --rm -p 8080:8080 -v $(pwd):/training-material zenika/sensei",
+    "sensei-pdf": "docker run -it --rm -p 8080:8080 -v $(pwd):/training-material --cap-add SYS_ADMIN zenika/sensei pdf"
   },
   "devDependencies": {
     "@angular/cli": "~10.1.1",
