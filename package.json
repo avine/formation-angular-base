@@ -6,7 +6,7 @@
   "homepage": "https://www.zenika.com/Formation/notre-catalogue-formation.html",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Zenika/formation-angular"
+    "url": "https://github.com/Zenika-Training/formation-angular"
   },
   "private": true,
   "dependencies": {
