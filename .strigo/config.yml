@@ -1,0 +1,24 @@
+---
+
+version: 2.1
+classes:
+  - exercises:
+      - title: Start Angular
+        file: ../CahierExercices/01_start_angular.md
+      - title: Tests
+        file: ../CahierExercices/02_tests.md
+      - title: Components
+        file: ../CahierExercices/03_components.md
+      - title: Directives
+        file: ../CahierExercices/04_directives.md
+      - title: Dependency injection
+        file: ../CahierExercices/05_dependency_injection.md
+      - title: pipes
+        file: ../CahierExercices/06_pipes.md
+      - title: rest
+        file: ../CahierExercices/07_rest.md
+      - title: Router
+        file: ../CahierExercices/08_router.md
+      - title: Template driven Forms
+        file: ../CahierExercices/09_form.md
+
