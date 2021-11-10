@@ -1,220 +1,175 @@
-# Write or edit slides
+# Rédiger ou éditer des slides
 
-## Principles
+## Principes
 
-The framework used is [Reveal.js](https://github.com/hakimel/reveal.js).
+Le framework utilisé est [Reveal.js](https://github.com/hakimel/reveal.js).
 
-The Reveal framework, customized for Zenika training, is imported and installed in training via `npm`.
+Le framework Reveal, customisé pour les formations Zenika, est utilisé au travers de l'outil [sensei](https://github.com/Zenika/sensei).
 
-Only the content of the slides are therefore in this directory.
+Seul le contenu des slides se trouvent donc dans ce répertoire.
 
-There are 2 types of files. On the one hand, `slides.json` allows you to specify which chapters to include. On the other hand, chapters are written in markdown files.
+Il y a 2 types de fichiers. D'une part, `slides.json` permet d'indiquer les chapitre à inclure. D'autre part, les chapitres sont écrits dans des fichiers markdown.
 
-## Markdown Inclusion
+## Inclusion du Markdown
 
-To change the list of loaded files, edit `slides.json`. This file contains a list of the paths of the markdown files to include. The path must be relative to the `slides.json` file, itself to be located at the root of the` Slides` directory.
+Pour modifier la liste de fichiers chargés, éditer `slides.json`. Ce fichier contient une liste des chemins des fichiers markdown à inclure. Le chemin doit être relatif au fichier `slides.json`, lui même devant être situé à la racine du répertoire `Slides`.
 
-Example:
+Exemple :
 
-```Json
+```json
 [
-  "Premier_fichier.md"
-  "Chapter2/second_fichier.md"
+  "premier_fichier.md",
+  "chapitre2/second_fichier.md"
 ]
 ```
 
-## Content
+## Contenu
 
-### Drafting rules
+### Règles de rédaction
 
-- The content is exploded in the markdown files, one per chapter of the training.
-- The training begins with a zero chapter, which contains at least a title page with the title of the training, a page that presents the training plan, and an invitation page for questions. It is possible to add reminders about schedules and other practical information.
-- All chapters start with a title page with the title of the chapter and a page that shows the training plan. The current game highlighted.
-- All chapters end with a page asking questions, then possibly a page that announces a TP.
+- Le contenu est éclaté dans les fichiers markdown, un par chapitre de la formation.
+- La formation commence par un chapitre zéro, qui contient au minimum une page de titre avec le titre de la formation, une page qui présente le plan de la formation, et une page d'invitation aux questions. On peut éventuellement ajouter des rappels concernant les horaires et autres informations pratiques.
+- Tous les chapitres débutent par une page de titre avec le titre du chapitre et une page qui reprend le plan de la formation. La partie en cours en mise en évidence.
+- Tous les chapitres se terminent par une page invitant aux questions, puis éventuellement par une page qui annonce un TP.
 
 ### Markdown
 
-- The [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown) is supported
-- Each slide must be separated by 3 white lines.
+- Le [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown) est supporté
+- Chaque slides doit être séparées par 3 lignes blanches.
 
-#### Special pages
+#### Pages spéciales
 
-Some recurring pages of the formations are realized thanks to classes css.
+Certaines pages récurrentes des formations sont réalisée grâce à des classes css.
 
-##### Title pages
+##### Pages de titre
 
-The title pages are composed of a first level title of a Zenika background.
+Les pages de titre sont composées d'un titre de premier niveau d'un fond Zenika.
 
-```Markdown
-# Title of the chapter
+```markdown
+# Titre du chapitre
 
 <!-- .slide: class="page-title" -->
 ```
 
-##### Question pages
+##### Pages de questions
 
-Questions pages have no title.
+Les pages de questions n'ont pas de titre.
 
-```Markdown
+```markdown
 <!-- .slide: class="page-questions" -->
 ```
 
-##### TP Pages
+##### Pages de TP
 
-The pages of TP have no title, just use the class corresponding to the TP number (from 1 to 15).
+Les pages de TP n'ont pas de titre, il suffit d'utiliser la classe correspondante au numéro de TP (de 1 à 15).
 
-```Markdown
+```markdown
 <!-- .slide: class="page-tp1" -->
 ```
 
-#### Plan Pages
+Il est aussi possible d'utiliser un label de TP personnalisé.
 
-- Emphasis on the current game in the plan slides is a double emphasis: `**Current game**`.
-- The links between slides being possible, it is interesting to put on the slides of plan. An inter-slides link is in the format `#/<chapter>/<slide>` knowing that chapters and slides are numbered from scratch, and that the slide number is optional (zero by default).
-
-```Markdown
-## Plan
-
-- [Part 1](#/1)
-- **[Part 2](#/2)**
-- [Part 3](#/3)
+```markdown
+<!-- .slide: class="page-tp" data-label="TP 2 : celui qui vient après le TP1" -->
 ```
 
-#### Standard pages
+#### Pages de plan
 
-- Standard slides start with a second level title.
-- The important words are to emphasize with simple emphasis: `*important word*`.
+- L'emphase sur la partie en cours dans les slides de plan est une emphase double : `**Partie en cours**`.
+- Les liens entre slides étant possibles, il est intéressant d'un mettre sur les slides de plan. Un lien inter-slides est au format `#/<chapitre>/<slide>` sachant que les chapitres et les slides sont numérotés à partir de zéro, et que le numéro de slide est facultatif (zéro par défaut).
+
+```markdown
+## Plan
+
+- [Partie 1](#/1)
+- **[Partie 2](#/2)**
+- [Partie 3](#/3)
+```
+
+#### Pages standards
+
+- Les slides standards commencent par un titre de second niveau.
+- Les mots importants sont à emphaser avec emphase simple : `*mot important*`.
 
 #### Code
 
-- For inline code, use the standard Markdown syntax, and for code blocks, use the GFM blocks with language specification.
+- Pour le code inline, utiliser la syntaxe Markdown classique, et pour les blocs de code, utiliser les blocs GFM avec spécification du langage.
 
-<Pre> <code>
-```Javascript
-function (arg) {return 'of javascript in color!'; }
+````
+```javascript
+function(arg) { return 'du javascript en couleur !'; }
 ```
-</ Code> </ pre>
+````
 
-- There is no return to the automatic line in the blocks of code, so check that the lines fit well in the width of the slide.
-- If a line of code begins with a continuous sequence of spaces that are too long, the line is put on the line. It is therefore necessary to indent with 2 spaces only.
+- Si une ligne de code commence par une suite continue d'espaces trop longue, la ligne est mise à la ligne. Il est donc nécessaire d'indenter avec 2 espaces seulement.
 
 #### Images
 
-- For images, write classic HTML. The size can be changed via the `width` attribute, and the position by changing the margins. The `.with-border` class activates a thin black border around the image.
+- Pour les images, écrire du HTML classique. La taille peut être modifié via l'attribut `width`, et la position en modifiant les marges. La classe `.with-border` active une fine bordure noire autour de l'image.
 
-```HTML
+```html
 <img
-  src = "resources/image.png"
-  alt = "An image"
-  width = "90%"
-  style = "margin-top: 10%"
-  class="with-border" />
+  src="ressources/image.png"
+  alt="Une image"
+  width="90%"
+  style="margin-top: 10%"
+  class="with-border"/>
 ```
 
-- To add a caption to an image, you can use the HTML5 `figure` and` figcaption` elements.
+- Pour ajouter une légende à une image, on peut utiliser les éléments HTML5 `figure` et `figcaption`.
 
-```HTML
-<Figure>
-    <img
-      src = "resources/image.png"
-      alt = "An image" />
-    <figcaption> A superb representation of something </ figcaption>
-</ Figure>
+```html
+<figure>
+    <img
+      src="ressources/image.png"
+      alt="Une image"/>
+    <figcaption>Une superbe représentation de quelque chose</figcaption>
+</figure>
 ```
 
-- The image path must be relative to the root of the Slides directory.
+- Le chemin de l'image doit être relatif à la racine du répertoire Slides.
 
 #### Fragments
 
-It can be said that slide elements should be revealed only as the trainer presses the button. You have to use the `fragment` class.
+On peut indiquer que des éléments de slides ne doivent être révélés qu'au fur et à mesure que le formateur appuie sur le bouton. Il faut utiliser la classe `fragment`.
 
-```Markdown
-- item that does not appear right away <!-- .element: class="fragment" -->
+```markdown
+<!-- .element: class="fragment" -->
+- item qui n'apparaît pas tout de suite
 ```
 
-#### Advanced Features
+#### Fonctionnalités avancées
 
-If need be, one can add HTML attributes to the current slide or to an element thanks to the syntaxes `<!-- .slide: ... -->` and `<!-- .element: ... - > `. This can be useful to give a particular style to an element, for example to position it.
+Si besoin, on peut ajouter des attributs HTML à la slide en cours ou à un élément grâce aux syntaxes `<!-- .slide: ... -->` et `<!-- .element: ... -->`.
+Cela peut être utile pour donner un style particulier à un élément, par exemple pour le positionner.
 
-#### Miscellaneous
+#### Divers
 
-Other examples can be found directly in the model slides.
+D'autres exemples peuvent être trouvés directement dans les slides modèle.
 
-# Consult the slides
+# Consulter les slides
 
-## Launch
+## Lancement
 
-- Go to the root of the training
-- Start the server with `grunt` or` grunt displaySlides` in a console
-- The slides are launched directly on your favorite browser (works well in Chrome, should work also under FF)
-- If the browser does not open, go to `http: // localhost: 8000`
-- You will arrive on the chapter zero, slide one, that is to say the front page of the formation
-- If port 8000 is a problem on your machine, you can choose the port by adding the option `--port = 9999`
-
-## Launch with Docker
-
-- Go to the root of the training
-- Start the server with docker `docker run -it $ PWD:/data --net = host --rm dockerfile/nodejs - bower - grunt grunt`
-- Go to `http: // localhost: 8000`
-
-If there is a problem starting the server, you can restore a normal situation by copying the contents of the .md file to the html file, adding a `<script>` tag, as follows:
-
-Replace
-```HTML
-<!-- Slides will be inserted here -->
-```
-
-By
-```HTML
-<section
-  data-markdown = "00_agenda.md"
-  data-vertical = "^ \ r? \ n \ r? \ n \ r? \ n"
-  data-notes = "^ Notes :">
-  <script type = "text/template">
-    # Title of the training
-
-    ...
-  </ Script>
-</ Section>
-```
-*Note:* Changes in chapter files (`* .md`), `slides.json`, and resources are taken into account if the server was started with `grunt`.
+Voir le fichier [`README.md`](../README.md) à la racine du dépôt.
 
 ## Navigation
 
-- Space allows to go to the next slide
-- Up and down arrows to navigate within the chapter
-- Left and right arrows to navigate between chapters
-- Plan slides are made of links to jump directly to the different chapters
-- The small arrow on the bottom left returns to the slide Master plan (chapter zero, slide two)
-- The previous and next functions of the browser works normally
+- Espace permet d'aller au slide suivant
+- Flèches haut et bas pour naviguer au sein du chapitre
+- Flèches gauche et droite pour naviguer entre les chapitres
+- Les slides Plan sont faites de liens pour sauter directement aux différents chapitres
+- Les fonctions précédent et suivant du navigateur fonctionne normalement
 
-## Keyboard shortcuts
+## Raccourcis clavier
 
-- `space` goes to the next slide
-- `up/down/left/right` navigate through the slides
-- `o gives access to a view with hindsight on the slides
-- `s` activates the presenter mode: a new window opens with slide in progress, next slide, elapsed time, notes
-- "b" "turn off" the presentation, so that the participants focus on the presenter
-- `alt` +` clic` zooms in/out on part of the slide
+- `espace` passe au slide suivant
+- `haut/bas/gauche/droite` navigue dans les slides
+- `o` donne accès à une vue avec du recul sur les slides
+- `s` active le mode présentateur : une nouvelle fenêtre s'ouvre avec slide en cours, slide suivante, temps écoulé, notes
+- `b` "éteint" la présentation, afin que les participants se concentre sur le présentateur
+- `alt` + `clic` (`ctrl` + `clic` sous Linux) permet de zoomer / dézoomer sur une partie de la slide
 
-## Export to PDF
+## Exporter en PDF
 
-### Manually
-
-- Open slides in Chrome
-- Add `? Print-pdf` at the end of the URL (` http: // localhost: 8000? Print-pdf`)
-- P-control to bring print options
-- To select :
-  - Destination: Save as PDF
-  - Layout: Landscape
-  - Margins: None
-- Save the PDF
-
-### Automatically
-
-`grunt generateSlidesPDF`
-
-- It is useless to launch the server in advance, it is done automatically
-- It is possible to use a different port thanks to `--port = 9999`
-
-: boom: Attention rendering automatically generated pdf is bad at the moment, so it is more than preferable to use the manual method
+Voir le fichier [`README.md`](../README.md) à la racine du dépôt.

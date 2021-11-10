@@ -30,10 +30,10 @@ Notes :
 ## Concepts
 
 - In the documentation `Jasmine` is used as a test framework
-  - `Angular` can also be tested with other frameworks
+  - `Angular` can also be tested with other frameworks
 - To run the tests easily, we propose to use `Karma`
-  - It was developed by `AngularJS` team
-  - It is neither essential nor related to `Angular`
+  - It was developed by `AngularJS` team
+  - It is neither essential nor related to `Angular`
 - `Jasmine` and `Karma` are the tools used in an application generated with Angular CLI
 
 Notes :
@@ -58,7 +58,7 @@ Notes :
 - *matchers* system: `toBe`, `toBeUndefined`, `toBeTruthy`, `toThrow`, ...
 - Ability to use an external library as `Chai`
 
-```Javascript
+```typescript
 describe('True value', () => {
 
   it ('should be equal to true', () => {
@@ -79,7 +79,7 @@ Notes :
 - `beforeEach`, `afterEach`, `beforeAll`, `afterAll`
 - Performing a function before or after each or all tests
 
-```Javascript
+```typescript
 describe('True value', function() {
   let value;
 
@@ -104,7 +104,7 @@ Notes :
 - Create a spy: `jasmine.createSpy()` or `spyOn(someObj)`
 - Spy matchers: `toHaveBeenCalled`, `toHaveBeenCalledWith`, `and.callThrough`, `and.returnValue`, `and.callFake`, `mySpy.calls` ...
 
-```Javascript
+```typescript
 describe('Object service:', function() {
 
   it ('checkout method should be called', function() {
@@ -150,7 +150,7 @@ Notes :
 - *Karma* is a tool that automates the execution of tests
 
 <Figure>
-    <img src = "resources/SchemaKarma.png" alt = "Schema Karma" width = "75%" />
+<img src = "resources/SchemaKarma.png" alt = "Schema Karma" width = "60%" />
 </Figure>
 
 Notes :
@@ -161,13 +161,12 @@ Notes :
 
 - Automatic configuration by *Angular CLI*
 - The following tools are ready to work together:
-
-  *Webpack*, *TypeScript*, *Angular*, *Jasmine*, *Karma*
+  - *Webpack*, *TypeScript*, *Angular*, *Jasmine*, *Karma*
 - The test files are automatically created with `ng generate (...)`
-  `Component`/`Service`/`Pipe`
+  - `Component`/`Service`/`Pipe`
 - They are in the same directory as the item to be tested
 
-  *My-service.spec.ts*
+*My-service.spec.ts*
 - Execution of tests:
 
 ```Shell

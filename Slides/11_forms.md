@@ -33,12 +33,12 @@ Notes :
 - Available via the `FormsModule` module in `@angular/forms`
 - The module proposes two different strategies
 - *Template-driven forms*
-  - Form control from the templates
-  - Automatic Binding of Variables Containing the State of the Form
-  - *Recommended and default solution*
+  - Form control from the templates
+  - Automatic Binding of Variables Containing the State of the Form
+  - *Recommended and default solution*
 - *Reactive forms* (or Model-driven forms)
-  - Programmatic method from the controller
-  - Recommended for some complex cases
+  - Programmatic method from the controller
+  - Recommended for some complex cases
 - The rest of the training only deals with *Template-driven forms*
 
 Notes :
@@ -49,13 +49,13 @@ Notes :
 
 - Supports or replicates the standard mechanisms of HTML forms
 - Supports the usual types of input fields and native validations
-  - `input [text]`, `input [radio]`, `input [checkbox]`, `input [email]`, `input [number]`, `input [url]`
-  - `select`
-  - `textarea`
-  - It is possible to create its own components
+  - `input [text]`, `input [radio]`, `input [checkbox]`, `input [email]`, `input [number]`, `input [url]`
+  - `select`
+  - `textarea`
+  - It is possible to create its own components
 - Using the `@angular/forms` feature brings
-  - The **binding** of your data to the form fields
-  - The management of the state and the validation of the fields
+  - The **binding** of your data to the form fields
+  - The management of the state and the validation of the fields
 
 Notes :
 
@@ -66,7 +66,7 @@ Notes :
 - *2-way data-binding* (default in AngularJS) is disabled by default
 - We can reproduce it with the syntaxes we've seen so far
 
-```HTML
+```html
 <input [value]="currentHero.firstName"
        (input)="currentHero.firstName = $event.target.value" />
 ```
@@ -74,17 +74,16 @@ Notes :
 - *Angular* provides syntactic sugar for this recurring need
 
   (Use the `ngModel` directive which will be discussed in detail in *Forms*)
-- First solution
 
-```HTML
+- First solution
+```html
 <input
   [ngModel]="currentHero.firstName"
   (ngModelChange)="currentHero.firstName = $event" />
 ```
 
 - Second solution *Banana in the Box*
-
-```HTML
+```html
 <input [(ngModel)]="currentHero.firstName" />
 ```
 
@@ -101,10 +100,7 @@ Notes :
   selector: 'contact-form',
   template: `
     <form (submit)="saveForm()">
-      <label>
-        Name:
-        <input type="text" [(ngModel)]="contaxt.name" name="name" />
-      </label>
+      <label> Name: <input type="text" [(ngModel)]="contaxt.name" name="name" /></label>
       <button type="submit"> Save </button>
     </form>
   `
@@ -136,10 +132,10 @@ Notes :
 - Native mechanisms will therefore conflict with *Angular*
 - **Solution**: Disable native validation and perform it by Angular
 - `novalidate` attribute on the form
-  - HTML5 standard attribute
-  - Attribute added automatically by *Angular*
+  - HTML5 standard attribute
+  - Attribute added automatically by *Angular*
 
-```HTML
+```html
 <novalidate form>
 </form>
 ```
@@ -151,12 +147,12 @@ Notes :
 ## Validation
 
 - To manage the validation *Angular* will manage an object `AbstractControl`
-  - On the form: `FormGroup`
-  - On each field: `FormControl`
+  - On the form: `FormGroup`
+  - On each field: `FormControl`
 - The `FormGroup` is an aggregation of the state of each of `FormControl`
 - An `AbstractControl` contains:
-  - The state: `dirty`/`pristine`, `valid`/`invalid`, `touched`/`untouched`
-  - Validation errors in the `errors` property
+  - The state: `dirty`/`pristine`, `valid`/`invalid`, `touched`/`untouched`
+  - Validation errors in the `errors` property
 - These data are updated automatically
 - It can be used in templates or in the controller
 
@@ -167,16 +163,16 @@ Notes :
 ## State of the form and fields
 
 - Angular exposes 6 properties in an `AbstractControl`
-  - `valid`/`invalid`: Indicates whether the element passes validator control
-  - `pristine`/`dirty`: Indicate if the user tampered with the item
+  - `valid`/`invalid`: Indicates whether the element passes validator control
+  - `pristine`/`dirty`: Indicate if the user tampered with the item
 
-    An element is considered `dirty` as soon as it undergoes a modification, even if the initial value is restored afterwards
-  - `untouched`/`touched`: Indicates if the item has been hit
+- An element is considered `dirty` as soon as it undergoes a modification, even if the initial value is restored afterwards
+  - `untouched`/`touched`: Indicates if the item has been hit
+  
+- An element is considered `touched` as soon as the focus has been taken
+  - The `NgControlStatus` directive (enabled by default) handles CSS classes
 
-    An element is considered `touched` as soon as the focus has been taken
-- The `NgControlStatus` directive (enabled by default) handles CSS classes
-
-  `ng-valid`, `ng-invalid`, `ng-pristine`, `ng-dirty`, `ng-untouched`, `ng-touched`
+ `ng-valid`, `ng-invalid`, `ng-pristine`, `ng-dirty`, `ng-untouched`, `ng-touched`
 
 Notes :
 
@@ -205,14 +201,9 @@ Notes :
   selector: 'contact-form',
   template: `
     <form (submit)="saveForm()">
-      <label>
-          Name :
-          <input name="name" 
-                 type="text" 
-                 required 
-                 [(ngModel)]="contact.name"
-                 #nameInput="ngModel"
-                />
+      <label> Name :
+      <input name="name" type="text" required 
+             [(ngModel)]="contact.name" #nameInput="ngModel"/>
       </label>
       <span [hidden]="nameInput.valid"> Error </ span>
       <button type="submit"> Save </button>
@@ -235,13 +226,13 @@ Notes :
 ## Validators
 
 - A field may have one or more validators
-  - Support for HTML5 standard validators: `required`, `min`, `max`, `minlength`, `maxlength` and `pattern`
-  - Ability to add custom validators
+  - Support for HTML5 standard validators: `required`, `min`, `max`, `minlength`, `maxlength` and `pattern`
+  - Ability to add custom validators
 
 - The `valid` property is the aggregation of the status of the validators
 - Possibility to have the detail with the `errors` property
 
-```HTML
+```html
 <label>
   Name:
   <input name="name" 
@@ -262,7 +253,7 @@ Notes :
 
 - To create a custom validator, implement the `Validator` class
 
-```Javascript
+```ts
 @Directive ({
   selector: '[pattern] [ngModel]',
   providers: [
@@ -282,8 +273,7 @@ export class PatternValidator implements Validator {
 ```
 
 - To use the validator
-
-```HTML
+```html
 <input type="text" name="name" [(ngModel)]="contact.name" pattern="[a-z] {10}" />
 ```
 
@@ -298,7 +288,7 @@ Notes :
 - Created a `FormGroup` to handle the inputs contained in the form
 - Instance of the directive usable in the template: `#myForm="ngForm"`
 
-```HTML
+```html
 <form #myForm="ngForm" (submit)="onSubmit()">
   <label>
     Name:

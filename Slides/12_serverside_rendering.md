@@ -32,10 +32,10 @@ Notes :
 - Indexing by search engines (SEO)
 - Preview (as in facebook share)
 - Progressive improvement
-  - Propose a simple version for everyone
-  - Enrich the experience according to the customer
+  - Propose a simple version for everyone
+  - Enrich the experience according to the customer
 
-- *Speed ​​up application loading*
+- *Speed up application loading*
 
 Notes :
 
@@ -46,8 +46,8 @@ Notes :
 - Official Angular Project
 - Integrated with the main project since Angular 4.0.0
 - Contains two modules
-  - Rendering an Angular Server Side Application (Node.js)
-  - The second records the actions of the user to replay them once the interface is fully loaded
+  - Rendering an Angular Server Side Application (Node.js)
+  - The second records the actions of the user to replay them once the interface is fully loaded
 - The term Universal comes from the idea of ​​being able to offer the application in environments other than that of the browser
 
 ![Angular Universal Logo](resources/angular-universal-logo.png "Angular Universal Logo")
@@ -90,8 +90,8 @@ Notes :
   https://github.com/angular/universal-starter
 
 - Uses two entry points for the application
-  - Classic for the client with the `bootstrap` function
-  - For the server with the setting up of `Express` and `Angular Universal`
+  - Classic for the client with the `bootstrap` function
+  - For the server with the setting up of `Express` and `Angular Universal`
 
 Notes :
 
@@ -125,3 +125,7 @@ app.set('views', 'dist');
 ```
 
 Notes :
+
+
+
+<!-- .slide: class="page-questions" -->

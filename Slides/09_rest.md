@@ -45,9 +45,9 @@ Notes :
 - Allows the processing of asynchronous tasks similar to tables
 - Replaces the use of promises that were in *AngularJS*
 - Provides advantages over promises
-  - Allows you to have asynchronous processing that returns multiple data
-  - An Observable can be *cancelable*
-  - Offers many tools to process data
+  - Allows you to have asynchronous processing that returns multiple data
+  - An Observable can be *cancelable*
+  - Offers many tools to process data
 - Usable for all asynchronous processing
 
   HTTP requests, WebSocket, event management
@@ -60,12 +60,12 @@ Notes :
 
 - *RxJS* provides an important list of operators for `Observable`
 - These operators are largely inspired by transformations on a board
-  - `take(n)`: draws the first n elements and cuts the flow
-  - `filter(fn)`: pass events for which fn makes `true`
-  - `map(fn)`: apply the function fn on each element and return the result
-  - `merge(s1, s2)`: merges source with observables as argument
-  - `mergeMap(fn)`: apply fn as map but merge values ​​that are observables
-  - `debounce(ms)`: delay and filter to send an element only when there have been no new elements since the argument time
+  - `take(n)`: draws the first n elements and cuts the flow
+  - `filter(fn)`: pass events for which fn makes `true`
+  - `map(fn)`: apply the function fn on each element and return the result
+  - `merge(s1, s2)`: merges source with observables as argument
+  - `mergeMap(fn)`: apply fn as map but merge values that are observables
+  - `debounce(ms)`: delay and filter to send an element only when there have been no new elements since the argument time
 - Important resource for learning operators: http://rxmarbles.com/
 
 Notes :
@@ -104,14 +104,14 @@ observable.pipe(
 
 - To listen to the result of a stream, use the `subscribe` method
 - **Warning**
-  - `subscribe` is not an operator, it can not be chained
-  - It makes a `subscription` object that allows you to stop listening
-  - An observable that has not been **subscribed** does not **start**
-  - An observable can only be listened to once
+  - `subscribe` is not an operator, it can not be chained
+  - It makes a `subscription` object that allows you to stop listening
+  - An observable that has not been **subscribed** does not **start**
+  - An observable can only be listened to once
 - `subscribe` takes three functions in arguments, all optional
-  - `next`: Called for each element in the stream
-  - `error`: Called for each error in the stream
-  - `complete`: Called when closing the stream
+  - `next`: Called for each element in the stream
+  - `error`: Called for each error in the stream
+  - `complete`: Called when closing the stream
 
 Notes :
 
@@ -181,11 +181,11 @@ Notes :
 - The dependency is in **peer mode** that is to say it is to be added in addition
 - **Attention**, you need version *6 +* (since Angular 6), while *5* is still widespread
 - *Angular* exposes *RxJS* objects in several cases:
-  - HTTP requests
-  - Interaction with a form
-  - View views by the *router*
+  - HTTP requests
+  - Interaction with a form
+  - View views by the *router*
 - *ngrx* is a project that proposes to extend the use of Rx with Angular
-  - *@ngrx/store*, *@ngrx/devtools*, *@ngrx/router*, ...
+  - *@ngrx/store*, *@ngrx/devtools*, *@ngrx/router*, ...
 
 Notes :
 
@@ -197,8 +197,8 @@ Notes :
 - This module contains a service set for HTTP requests
 - Before *Angular 4.3*, using the `HttpModule` module
 - Based on the `Observable` pattern
-  - Unlike AngularJS who used the `Promises` pattern
-  - Greater flexibility thanks to the different operators of `RxJS`
+  - Unlike AngularJS who used the `Promises` pattern
+  - Greater flexibility thanks to the different operators of `RxJS`
 - The entry point is the `HttpClient` service accessible via the dependency injection
 - Numerous configurations to configure or transform requests
 - Best practice: Implementing REST calls in services
@@ -287,7 +287,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Contact} from './model/contact';
 
-Injectable()
+@Injectable()
 export class ContactService {
   constructor(private http: HttpClient) {}
 

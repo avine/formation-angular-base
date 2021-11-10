@@ -35,11 +35,11 @@ Notes :
 - Ability to write his own *Pipe*
 - Added the notion of *Pipe* pure and impure
 - Pipes available by default in the `@angular/common` framework
-  - `LowerCasePipe`, `UpperCasePipe`
-  - `CurrencyPipe`, `DecimalPipe`, `PercentPipe`
-  - `DatePipe`, `JSONPipe`, `SlicePipe`
-  - `I18nPluralPipe`, `I18nSelectPipe`
-  - `AsyncPipe`
+  - `LowerCasePipe`, `UpperCasePipe`
+  - `CurrencyPipe`, `DecimalPipe`, `PercentPipe`
+  - `DatePipe`, `JSONPipe`, `SlicePipe`
+  - `I18nPluralPipe`, `I18nSelectPipe`
+  - `AsyncPipe`
 
 Notes :
 
@@ -55,7 +55,7 @@ Notes :
 
   `{{ myData | pipeName:pipeArg1:pipeArg2 | anotherPipe }}`
 
-```HTML
+```html
 {{myVar | date | uppercase}}
 <!-- FRIDAY, APRIL 15, 1988 -->
 
@@ -178,8 +178,8 @@ Notes :
 - Will not be reevaluated for a mutation without reference change
 - Optimizes the performance of the change detection mechanism
 - Is not always the desired behavior:
- - Add/Remove an object in a table
- - Modifying a property of an object
+  - Add/Remove an object in a table
+  - Modifying a property of an object
 
 Notes :
 

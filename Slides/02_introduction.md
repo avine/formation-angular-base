@@ -73,6 +73,7 @@ Notes :
 | : ------ | : ------: | : ------------------------------------------------- ----------------- |
 | 10.0.0 | June 2020 | Optional Stricter Settings, New Default Browser Configuration, TypeScript 3.9 |
 | 11.0.0 | Nov 2020 | TypeScript 4.0, Remove deprecated support for IE 9, 10, and IE mobile |
+| 12.0.0 | May 2021 | Stylish improvements, nullish coalescing, Webpack 5 support, TypeScript 4.2 |
 
 
 
@@ -94,7 +95,7 @@ Notes :
 
 - API directives too complex
 
-```Javascript
+```typescript
 app.directive ('MyDirective', function() {
     return {
        restrict: 'AE',
@@ -126,7 +127,7 @@ Notes :
 
 - API to create *AngularJS* services
 
-```Javascript
+```typescript
 // provider, factory, constant and value
 app.service ('UserService', function() {
   const vm = this;
@@ -175,9 +176,9 @@ Notes :
 - AngularJS applications incompatible with this new version
 - ngUpgrade allows to reuse AngularJS code but not to migrate
 - New concepts to learn:
-  - `Zone`
-  - `Observable`
-  - ...
+  - `Zone`
+  - `Observable`
+  - ...
 
 Notes :
 - use of directives 1 in 2: https://angular.io/guide/upgrade#using-angularjs-component-directives-from-angular-code
@@ -207,13 +208,13 @@ Notes :
 
 ## Architecture
 
-- Metadata: Configuration to describe the functioning of a component
-- Component: TypeScript class that describes its behavior
-- Template: HTML code rendering using the component
-- Modules: grouping a set of features
-- Injector: Angular dependency injection system
-- Directive: component without template (*ngFor *, *ngIf*, ...)
-- Service: Business code implemented in classes that will be injected into the different components
+- `Metadata`: Configuration to describe the functioning of a component
+- `Component`: TypeScript class that describes its behavior
+- `Template`: HTML code rendering using the component
+- `Modules`: grouping a set of features
+- `Injector`: Angular dependency injection system
+- `Directive`: component without template (*ngFor *, *ngIf*, ...)
+- `Service`: Business code implemented in classes that will be injected into the different components
 
 Notes :
 - The definitions of this slides are related to the previous slide chart

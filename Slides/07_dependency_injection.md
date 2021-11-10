@@ -30,13 +30,12 @@ Notes :
 ## Injectors
 
 - Technical components used to inject the services
-- Many injectors collaborating
+- Many injectors collaborating (Unlike *AngularJS* which has only one global injector)
 
-  (Unlike *AngularJS* which has only one global injector)
 - Components inherit the injector from their parent
 - Need to configure the injectors
-  - globally via the `@NgModule` main module
-  - locally via `@Component`
+  - globally via the `@NgModule` main module
+  - locally via `@Component`
 - **Within the same injector** the services are *singletons*
 
 Notes :
@@ -50,9 +49,8 @@ Notes :
 
 ```typescript
 // application.component.ts file
-import {UserService} from './user.service'
+import ...
 
-@Component ({...})
 export class AppComponent {
   constructor(private userService: UserService) {
     console.log(userService.getUser());
@@ -62,8 +60,7 @@ export class AppComponent {
 
 ```typescript
 // app.module.ts file
-import {AppComponent} from './application.components';
-import {UserService} from './user.service';
+import ...
 
 @NgModule ({
   declarations: [AppComponent],
@@ -134,7 +131,7 @@ Notes :
 
 - A provider is a description for the injector:
 
-  how to get an instance of the requested element
+    - How to get an instance of the requested element
 
 - It is impossible to use interfaces in the provider identifier
 
@@ -149,8 +146,7 @@ export function serverConfigFactory(appService: AppService) {
     {
       provide: LoginService, // For an element of this type
       useClass: LoginServiceImpl // Use this class (or implementation)
-    },
-    {
+    }, {
       provide: ServerConfig, // for an element of this type
       useFactory: serverConfigFactory, // use a factory function
       deps: [AppService] // The factory can even have injections
@@ -218,13 +214,13 @@ export class UserService {
 - Each injector contains a number of providers
 - Each injector manages a singleton for each provider
 - During an injection of dependency
-  - The local injector tries to find a compatible provider
-  - If he does not find, he transmits the request to his parent
-  - So on until the main injector of the application
-  - If no provider could be found, *Angular* displays an error
+  - The local injector tries to find a compatible provider
+  - If he does not find, he transmits the request to his parent
+  - So on until the main injector of the application
+  - If no provider could be found, *Angular* displays an error
 - This mechanism is very powerful but can be complex
-  - Possibility of local overrides to services
-  - But can also mask the good service inadvertently
+  - Possibility of local overrides to services
+  - But can also mask the good service inadvertently
 
 
 
@@ -246,14 +242,10 @@ Notes :
 - Do not hesitate to overload "**mock**" services
 - Powerful mechanism that isolates the element that we want to test
 - Two utilities available:
-  - `TestBed.inject (ClassName)` (`TestBed.get` is deprecated since Angular 9)
-
-    Retrieves the service instance given as parameter
-  - `async (fn: Function)`
-
-    Automatically retards the test against asynchronous actions
-
-    (works thanks to **ZoneJS**)
+  - `TestBed.inject (ClassName)` (`TestBed.get` is deprecated since Angular 9)
+    - Retrieves the service instance given as parameter
+  - `waitForAsync(fn: Function)`
+    - Automatically retards the test against asynchronous actions (works thanks to **ZoneJS**)
 
 
 

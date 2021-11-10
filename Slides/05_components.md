@@ -33,8 +33,8 @@ Notes :
 - Defined from a TypeScript class with the `@Component` annotation
 - Will be enabled by the *CSS* selector of the `selector` property
 - A template is configured in two ways:
-  - `template`: String literal (think of the multiline string)
-  - `templateUrl`: Url of an HTML file (relative to the component)
+  - `template`: String literal (think of the multiline string)
+  - `templateUrl`: Url of an HTML file (relative to the component)
 
 Notes :
 
@@ -43,8 +43,7 @@ Notes :
 ## Components
 
 - Styles can be configured via two properties:
-  - `styles`
-
+  - `styles`
 ```typescript
 @Component ({
   selector: 'app-root',
@@ -55,9 +54,8 @@ Notes :
   `]
 })
 export class AppComponent {}
-```
-  - `styleUrls`
-
+``` 
+  - `styleUrls`
 ```typescript
 @Component ({
   selector: 'app-root',
@@ -76,12 +74,11 @@ Notes :
 
 - To define a component that will be called this way:
 
-````HTML
+```html
 <div>
   <h1>My Product</h1>
   <app-product> </app-product>
 </div>
-
 <!-- attention, <app-product /> does not work -->
 ```
 
@@ -108,13 +105,13 @@ Notes :
 ## Templates
 
 - Angular templates are compiled before being executed
-  - Hot: *JIT* (Just In Time) `--no-aot` in Angular CLI
-  - Either to build: *AOT* (Ahead Of Time) by default since Angular 9
+  - Hot: *JIT* (Just In Time) `--no-aot` in Angular CLI
+  - Either to build: *AOT* (Ahead Of Time) by default since Angular 9
 - The compilation makes it possible to detect errors in the template
 - Also implies that templates must be syntactically correct
 - Operation very different from AngularJS
-  - AngularJS did not compile the templates
-  - The AngularJS templates were pure Web transmitted to the browser
+  - AngularJS did not compile the templates
+  - The AngularJS templates were pure Web transmitted to the browser
 
 
 
@@ -142,6 +139,7 @@ Notes :
 The 'Elvis operator' (optional chaining) is now part of ES2020 & Typescript 3.8
 
 
+
 ## Properties
 
 - Generic syntax for setting the value of a property of an element *HTML*
@@ -149,7 +147,7 @@ The 'Elvis operator' (optional chaining) is now part of ES2020 & Typescript 3.8
 - Using the syntax `[property-name]="expression"`
 - Same syntax for the properties of *standard HTML elements*, *components* and *Angular directives* and even *Web Components*
 
-```HTML
+```html
 <button [disabled]="isUnchanged">Save</button> <!-- HTML property -->
 <button bind-disabled="isUnchanged">Save</button> <!-- alternative without [] -->
 <button data-bind-disabled="isUnchanged">Save</button> <!-- html5 strict -->
@@ -175,7 +173,7 @@ Angular will transform interpolation syntax into property binding
 - The most common cases: `aria- *`, `colspan`, `rowspan`, `svg` for example
 - Using the syntax `[attr.attribute-name]="expression"`
 
-```HTML
+```html
 <td [colspan]="dynamicColspan">help</td>
 
 <!-- Template parse errors:
@@ -232,7 +230,7 @@ export class ProductComponent {
 
 - To use this component
 
-```HTML
+```html
 <product-detail [product]="myProduct" [percentDiscount]="10"></product-detail>
 ```
 
@@ -251,7 +249,7 @@ Notes :
 - Identical syntax for events of *standard HTML elements*, *components* and *Angular directives* and even *Web Components*
 - The methods and properties used must be defined in the class
 
-````HTML
+```html
 <button (click)="handler()"></button> <!-- HTML event -->
 <button on-click="handler()"></button> <!-- alternative without () -->
 <button data-on-click="handler()"></button> <!-- html5 strict -->
@@ -277,7 +275,7 @@ Notes :
 - Events from *Angular* components never propagate
 - Example of using `$event` with the reproduction of a **double binding**
 
-````HTML
+```html
 <input [value]="currentHero.firstName"
        (input)="currentHero.firstName = $event.target.value" />
 ```
@@ -331,7 +329,7 @@ export class ProductComponent {
 
 - To use this component
 
-```HTML
+```html
 <product-detail (add)="myHandler()"></product-detail>
 ```
 
@@ -407,7 +405,7 @@ Notes :
 - The `ng-content` component allows reinserting the content in the template
 - Corresponds to the `ngTransclude` directive in *AngularJS*
 
-```HTML
+```html
 <app-post>
   <h2>Title</h2>
   <p>Content</p>
@@ -434,7 +432,7 @@ Notes :
 - Ability to have multiple insertion points with the `select` property
 - The value must be the *CSS* selector of the section to use
 
-```HTML
+```html
 <app-post>
   <h2>Title</h2>
   <p>Content</p>

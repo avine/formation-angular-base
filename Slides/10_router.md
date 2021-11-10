@@ -34,10 +34,10 @@ Notes :
 - Phase of turbulent development: 2 major redesigns
 - `@angular/router` is now reliable and recommended
 - Offers many features
-  - Management of nested routes
-  - Possibility to have several points of insertions by routes
-  - **Guard** system to manage the authorization to a route
-  - Management of routes with asynchronous loading
+  - Management of nested routes
+  - Possibility to have several points of insertions by routes
+  - **Guard** system to manage the authorization to a route
+  - Management of routes with asynchronous loading
 
 Notes :
 
@@ -183,8 +183,8 @@ router.navigate(['contacts']); //example.com#/contacts
 ```
 
 - `PathLocationStrategy` is the recommended solution today
-  - If your application is not deployed to the root of your domain
-  - Need to add a parameter: `APP_BASE_HREF` or the `<base href='/'>` tag in your `index.html`
+  - If your application is not deployed to the root of your domain
+  - Need to add a parameter: `APP_BASE_HREF` or the `<base href='/'>` tag in your `index.html`
 
 Notes :
 
@@ -315,8 +315,8 @@ Notes :
 - Configuring the router with the `loadChildren` property
 - Separate the elements (components, services) of each module
 - Several loading strategies
-  - `PreloadAllModules`: Pre-load the modules as soon as possible
-  - `NoPreloading`: Loading during a navigation (default strategy)
+  - `PreloadAllModules`: Pre-load the modules as soon as possible
+  - `NoPreloading`: Loading during a navigation (default strategy)
 
 Notes :
 

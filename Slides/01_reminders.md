@@ -204,9 +204,7 @@ Notes :
 class Person {
   constructor(public firstName: string) {}
 }
-
 // ===
-
 class Person {
   firstName: string;
   constructor(firstName: string) {
@@ -217,6 +215,7 @@ class Person {
 
 Notes : 
 readonly does not mean immutable
+
 
 
 ## Classes - Accessors
@@ -276,9 +275,9 @@ Notes :
 - No impact on the generated JavaScript
 - Inheritance system between interfaces
 - Several possible use cases
-  - Checking the parameters of a function
-  - Checking the signature of a function
-  - Checking the implementation of a class
+  - Checking the parameters of a function
+  - Checking the signature of a function
+  - Checking the implementation of a class
 
 ```typescript
 // The interfaces for typing easily
@@ -377,14 +376,14 @@ Notes :
 - `npm` is a command line tool (written with Node.js)
 - It allows to download the modules available on [npmjs.org](npmjs.org)
 - The most common orders:
-  - `install`: download the module and place it in the current directory in `./node_modules`
-  - `install -g`: global installation, the module is placed in the installation directory of Node.js
+  - `install`: download the module and place it in the current directory in `./node_modules`
+  - `install -g`: global installation, the module is placed in the installation directory of Node.js
 
     Make commands accessible in the console
 
-    **Attention**: Does not make a bookstore accessible for all projects
-  - `update`: update an already installed module
-  - `remove`: delete the project module
+**Attention**: Does not make a bookstore accessible for all projects
+  - `update`: update an already installed module
+  - `remove`: delete the project module
 
 Notes :
 
@@ -396,9 +395,9 @@ Notes :
 - A Node.js module is one (or more) script (s)
 - The configuration file is named `package.json`
 - `npm` also allows to manipulate the current module
-  - `init`: initialize a `package.json` file
-  - `docs`: generates the documentation for the current module
-  - `install <moduleName>` or `install <moduleName> --save-dev`:
+  - `init`: initialize a `package.json` file
+  - `docs`: generates the documentation for the current module
+  - `install <moduleName>` or `install <moduleName> --save-dev`:
 
     Like install but automatically reference the dependency in `package.json`
 
@@ -411,12 +410,12 @@ Notes :
 - `npm` is based on a project descriptor file
 - `package.json` precisely describes the module
 - There are different types of information
-  - Identification
-    - `name`: the identifier of the module (unique, url safe)
-    - `version`: must respect [node-semver](https://github.com/isaacs/node-semver)
-  - Description: `description`, `authors`, ...
-  - Dependencies: `dependencies`, `devDependencies`, ...
-  - Lifecycle scripts: `start`, `test`, ...
+  - Identification
+    - `name`: the identifier of the module (unique, url safe)
+    - `version`: must respect [node-semver](https://github.com/isaacs/node-semver)
+  - Description: `description`, `authors`, ...
+  - Dependencies: `dependencies`, `devDependencies`, ...
+  - Lifecycle scripts: `start`, `test`, ...
 
 Notes :
 
@@ -445,15 +444,15 @@ Notes :
 ## package.json: versions
 
 - The modules must follow the standard [semver](https://www.npmjs.org/doc/misc/semver.html)
-  - Structure: `MAJOR.MINOR.PATCH`
-  - `MAJOR`: Incompatible API Changes
-  - `MINOR`: Added retro-compatible feature
-  - `PATCH`: Bug fixes
+  - Structure: `MAJOR.MINOR.PATCH`
+  - `MAJOR`: Incompatible API Changes
+  - `MINOR`: Added retro-compatible feature
+  - `PATCH`: Bug fixes
 - To specify the version of a dependency
-  - `version`: must be exactly this version
-  - `~`, `^`: approximately, compatible
-  - `major.minor.x`:` x` acts as a wildcard
-  - [And many others](https://docs.npmjs.com/cli/v6/using-npm/semver#ranges): `>`, `<`, `> =`, `min-max` .. .
+  - `version`: must be exactly this version
+  - `~`, `^`: approximately, compatible
+  - `major.minor.x`:` x` acts as a wildcard
+  - [And many others](https://docs.npmjs.com/cli/v6/using-npm/semver#ranges): `>`, `<`, `> =`, `min-max` .. .
 
 Notes :
 - \ *: any version (dangerous)
@@ -465,13 +464,13 @@ Notes :
 ## Publish a module npm
 
 - It is of course advisable to follow all good practices
-  - Use the recommended numbering
-  - Have unit tests
-  - Have a minimum of information in the `package.json`
+  - Use the recommended numbering
+  - Have unit tests
+  - Have a minimum of information in the `package.json`
 - There is no validation authority
 - You must find a name available
 - Next only requires the `npm` command
-  - `npm adduser`: register his account
-  - `npm publish`: upload a module on [npmjs.org](https://www.npmjs.org/)
+  - `npm adduser`: register his account
+  - `npm publish`: upload a module on [npmjs.org](https://www.npmjs.org/)
 
 Notes :

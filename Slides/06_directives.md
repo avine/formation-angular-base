@@ -35,8 +35,8 @@ Notes :
 - Creating a custom directive with the `@Directive` annotation
 - Can accept parameters (`Input`) and output events (` Output`)
 - Directives are where to do DOM manipulation
-  - Components can do it too, but it's bad practice
-  - Always use the `Renderer2` service, not with native code
+  - Components can do it too, but it's bad practice
+  - Always use the `Renderer2` service, not with native code
 
 Notes :
 - Specify that we use the native API mainly to allow server-side rendering
@@ -64,7 +64,7 @@ export class HighlightDirective {
 
 - Use in a template as follows
 
-```HTML
+```html
 <p myHighlight>
   Highlight me!
 </p>
@@ -130,8 +130,8 @@ Notes :
 ## Declaration
 
 - Works like components
-  - in another *NgModule* listed in the `imports` list
-  - in the list of `declarations` of your module
+  - in another *NgModule* listed in the `imports` list
+  - in the list of `declarations` of your module
 
 ```typescript
 import {NgModule} from '@angular/core';
@@ -156,14 +156,14 @@ Notes :
 ## Angular Directives
 
 - *Angular* provides about thirty directives:
-  - Manipulation of DOM
-  - Forms Management
-  - Router
+  - Manipulation of DOM
+  - Forms Management
+  - Router
 
 - Import the corresponding module to use them:
-  - `CommonModule`
-  - `FormsModule`
-  - `RouterModule`
+  - `CommonModule`
+  - `FormsModule`
+  - `RouterModule`
 
 Notes :
 
@@ -204,9 +204,9 @@ Notes :
 - The `ngClass` directive adds or removes CSS classes.
 - Can be used in addition to the standard class attribute
 - Three syntaxes coexist
-  - `[ngClass]="'class class1'"`
-  - `[ngClass]="['class', 'class1']"`
-  - `[ngClass]="{'class': isClass, 'class1': isClass1}"`
+  - `[ngClass]="'class class1'"`
+  - `[ngClass]="['class', 'class1']"`
+  - `[ngClass]="{'class': isClass, 'class1': isClass1}"`
 
 - The 3rd syntax is the most common
 - It allows to express everything from the template
@@ -252,13 +252,13 @@ Notes :
 - Using the `ngForOf` property to set the collection
 - We create a variable from the template for the iterator
 
-  New syntax to create a `let-myVarName` variable
+New syntax to create a `let-myVarName` variable
 - Angular provides five additional data
 
-  `index`, `first`, `last`, `even` and `odd`
+`index`, `first`, `last`, `even` and `odd`
 - Final syntax for an iterration on the array `items`
 
-```HTML
+```html
 <ng-template ngFor [ngForOf]="items" let-item let-i="index">
   <li>{{item.label}}</li>
 </ng-template>
@@ -277,7 +277,7 @@ Notes :
 - This is purely syntactic sugar, the behavior is identical
 - Add `*` before `ngFor` to indicate microsyntax
 
-```HTML
+```html
 <li *ngFor="let item of items; let i = index">
   {{item.label}}
 </li>
@@ -294,7 +294,7 @@ Notes :
 - Add/Remove HTML elements based on a condition
 - If the expression returns `true` the template will be inserted
 
-```HTML
+```html
 <div *ngIf="condition"> ... </ div>
 <ng-template [ngIf]="condition">
   <div> ... </ div>
@@ -303,14 +303,14 @@ Notes :
 
 - Ability to define an 'else' clause
 
-```HTML
+```html
 <div *ngIf="condition; else elseBlock"> ... </ div>
 <ng-template #elseBlock> No data </ ​​ng-template>
 ```
 - No `ngShow` and `ngHide` directives like in *AngularJS*
 - Using the `hidden` property (requires polyfills)
 
-```HTML
+```html
 <div [hidden]="condition"> ... </ div>
 ```
 
@@ -322,18 +322,18 @@ Notes :
 
 - Add/Remove HTML elements based on a condition
 - Three directives available:
-- `ngSwitch`: container element
-- `ngSwitchCase`: element to use for each possible value
-- `ngSwitchDefault`: to define a template for a default value
+  - `ngSwitch`: container element
+  - `ngSwitchCase`: element to use for each possible value
+  - `ngSwitchDefault`: to define a template for a default value
 
-```HTML
+```html
 <div [ngSwitch]="value">
   <p *ngSwitchCase="'init'"> increment to start </p>
   <p *ngSwitchCase="0"> 0, increment again </p>
   <p *ngSwitchCase="1"> 1, stop incrementing </p>
   <p *ngSwitchDefault> & gt; 1, STOP! </p>
 </div>
- ```
+```
 
 Notes :
 
