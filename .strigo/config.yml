@@ -1,6 +1,5 @@
 ---
 
-version: 2.1
 classes:
   - exercises:
       - title: Start Angular
@@ -20,5 +19,5 @@ classes:
       - title: Router
         file: ../CahierExercices/08_router.md
       - title: Template driven Forms
-        file: ../CahierExercices/09_form.md
+        file: ../CahierExercices/09_forms.md
 
