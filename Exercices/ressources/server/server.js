@@ -1,8 +1,8 @@
 var _ = require('underscore');
 var express = require('express');
 var http = require('http');
-var uuid = require('node-uuid');
-var cors = require('./cors');
+var bodyParser = require('body-parser')
+var cors = require('cors');
 var app = express();
 var server = http.createServer(app);
 
@@ -12,15 +12,12 @@ var products = loadProduct();
 var basket = [];
 var orderNumber = 0;
 
-var sessions = {};
-
 var context = '/rest';
-var authHeader = 'Auth-Token';
 
-app.use(express.bodyParser());
-app.use(cors);
+app.use(bodyParser.json());
+app.use(cors());
 
-app.get(context + '/products', function (req, res) {
+app.get(context + '/products', function (_req, res) {
   res.send(products);
 });
 
@@ -43,7 +40,7 @@ var createHandler = function (req, res) {
     })
     .filter(product => product.stock > 0)
 
-  res.send(201, req.body);
+  res.status(201).send(req.body);
 }
 
 app.post(context + '/basket', createHandler);
@@ -52,12 +49,12 @@ app.post(context + '/basket/confirm', (req, res) => {
   console.log(`Commande n°${++orderNumber} : ${basket.reduce((total, item)=>total+item.price, 0)}€ ${req.body.name} ${req.body.address} ${req.body.creditCard}`);
   basket = [];
   products = loadProduct();
-  res.send(200, {orderNumber: orderNumber});
+  res.status(200).send({orderNumber: orderNumber});
 });
 
-app.get(context + '/basket', function (req, res) {
+app.get(context + '/basket', function (_req, res) {
   res.send(basket);
 });
 
 server.listen(conf.port);
-console.log('Express server listening on port', server.address().port);
+console.log(`Express server listening on http://localhost:${server.address().port}`);
