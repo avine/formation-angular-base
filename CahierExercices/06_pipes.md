@@ -11,6 +11,7 @@ We will start by using `pipes` provided by the framework: `uppercase` and `curre
 - Also add the `pipe` to the `currency` for displaying the total on the main page `app.component.html`
 
 - To specify the project locale, add the following lines to `app.module.ts`:
+
 ```typescript
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
@@ -19,7 +20,9 @@ import localeFr from '@angular/common/locales/fr';
 
 registerLocaleData(localeFr);
 ```
+
 and in the `providers` section of `@NgModule`:
+
 ```typescript
 {provide: LOCALE_ID, useValue: navigator.language}
 ```

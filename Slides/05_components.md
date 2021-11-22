@@ -305,7 +305,7 @@ export class ProductComponent {
     @Input() product: Product;
     @Output() addToBasket = new EventEmitter<Product>();
 
-    clickHandler () {this.addToBasket.emit(this.product); }
+    clickHandler () { this.addToBasket.emit(this.product); }
 }
 ```
 
@@ -502,7 +502,7 @@ TestBed.configureTestingModule ({
     ]
     providers: [
       // TitleService,
-      // {provide: TitleService, useClass: TitleServiceMock})
+      // {provide: TitleService, useClass: TitleServiceMock},
     ]
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 });
@@ -561,11 +561,9 @@ describe('TitleComponent', () => {
   });
 
   it ('should have a title', () => {
-    const {componentInstance, nativeElement} = fixture;
-
-    componentInstance.title = 'Hello World';
+    fixture.componentInstance.title = 'Hello World';
     fixture.detectChanges ();
-    const h1 = nativeElement.querySelector ('h1');
+    const h1 = fixture.nativeElement.querySelector ('h1');
     expect(h1.textContent).toBe('Hello World');
   });
 });

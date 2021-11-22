@@ -260,7 +260,7 @@ New syntax to create a `let-myVarName` variable
 
 ```html
 <ng-template ngFor [ngForOf]="items" let-item let-i="index">
-  <li>{{item.label}}</li>
+  <li>{{i}}: {{item.label}}</li>
 </ng-template>
 ```
 
@@ -279,7 +279,7 @@ Notes :
 
 ```html
 <li *ngFor="let item of items; let i = index">
-  {{item.label}}
+  {{i}}: {{item.label}}
 </li>
 ```
 

@@ -34,7 +34,7 @@ Notes :
 - *RxJS* is a library for **Reactive Programming**
 - It's a new paradigm of programming very fashionable
 - There are many implementations: http://reactivex.io/
-- Documentaion for *RxJS*: https://github.com/ReactiveX/rxjs
+- Documentation for *RxJS*: https://github.com/ReactiveX/rxjs
 
 
 
@@ -219,14 +219,41 @@ Notes :
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Person} from './model/person';
+import {Contact} from './model/contact';
 
 @Injectable()
 export class ContactService {
   constructor(private http: HttpClient) {}
 
-  getContacts(): Observable<Person[]> {
-    return this.http.get<Person []>('people.json');
+  getContacts(): Observable<Contact[]> {
+    return this.http.get<Contact[]>('people.json');
+  }
+}
+```
+
+Notes :
+
+
+
+## HTTP - Example
+
+- Example with the use of operators *RxJS*
+
+```typescript
+import {Component} from '@angular/core';
+import {ContactService} from './contact.service';
+
+@Component ({
+  selector: 'app',
+  template: '{{displayedData | json}} '
+})
+export class AppComponent {
+  displayedData: Array<Contact>;
+
+  constructor(private contactService: ContactService) {
+    contactService.getContacts().subscribe(contacts => {
+      this.displayedData = contacts;
+    });
   }
 }
 ```
@@ -309,33 +336,6 @@ Notes :
 
 ## HTTP - Example
 
-- Example with the use of operators *RxJS*
-
-```typescript
-import {Component} from '@angular/core';
-import {ContactService} from './contact.service';
-
-@Component ({
-  selector: 'app',
-  template: '{{displayedData | json}} '
-})
-export class AppComponent {
-  displayedData: Array<Contact>;
-
-  constructor(private contactService: ContactService) {
-    contactService.getContacts().subscribe(contacts => {
-      this.displayedData = contacts;
-    });
-  }
-}
-```
-
-Notes :
-
-
-
-## HTTP - Example
-
 - Example using more operators
 
 ```typescript
@@ -348,9 +348,7 @@ import {mergeMap} from 'rxjs/operators';
 @Component ({
   selector: 'app',
   template: `
-  <ul>
-    <li *ngFor="let project of (projects$ | async)"> {{project.name}} </li>
-  </ul> `
+  <ul><li *ngFor="let project of (projects$ | async)"> {{project.name}}</li></ul>`
 })
 export class AppComponent {
   projects$: Observable<Project[]>

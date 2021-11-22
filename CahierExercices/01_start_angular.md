@@ -32,7 +32,8 @@ Follow the steps:
 
 Even if we have not studied the main concepts, we will do some changes to take over the application structure.
 
-- The main component will have the following HTML code:
+- The main component will have a placeholder HTML code
+- Replace the html by this html code
 
 ```html
 <h1>This is my first component</h1>

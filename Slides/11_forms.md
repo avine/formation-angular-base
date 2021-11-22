@@ -100,7 +100,7 @@ Notes :
   selector: 'contact-form',
   template: `
     <form (submit)="saveForm()">
-      <label> Name: <input type="text" [(ngModel)]="contaxt.name" name="name" /></label>
+      <label> Name: <input type="text" [(ngModel)]="contact.name" name="name" /></label>
       <button type="submit"> Save </button>
     </form>
   `
@@ -136,7 +136,7 @@ Notes :
   - Attribute added automatically by *Angular*
 
 ```html
-<novalidate form>
+<form novalidate>
 </form>
 ```
 
@@ -212,7 +212,7 @@ Notes :
 })
 export class ContactFormComponent implements OnInit {
   contact: Contact = {};
-  nameInput: FormControl;
+  @ViewChild("nameInput") nameInput: FormControl;
 
   constructor(private contactService: ContactService) {}
   / *... */
