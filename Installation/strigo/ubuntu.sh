@@ -1,68 +1,119 @@
 #!/bin/bash
 
-# to check the logs for this installation
-# cat /var/log/cloud-init-output.log
+set -ev
 
-# installation de google chrome pour karma/protractor
-sudo sh -c 'echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo apt-get update
+apt-get install -y curl
 
-sudo apt-get install -y google-chrome-stable
+#############
+# needed for cypress
+apt-get install xvfb
 
-# augmente le nombre de watchers disponibles
-echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
-sudo sysctl -p
 
-# Configure and launch code-server
-curl -fsSLo /tmp/code-server.deb https://github.com/cdr/code-server/releases/download/v3.7.1/code-server_3.7.1_amd64.deb
+#####################
+###### chrome.sh
+
+# Set up the repository
+echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+
+# Install Chrome
+apt-get update
+apt-get install -y google-chrome-stable
+
+#####################
+###### nvm.sh
+
+# https://github.com/nvm-sh/nvm
+
+# Define NVM_DIR before cf. install.sh nvm script
+export NVM_DIR="/home/ubuntu/.nvm" && mkdir -p $NVM_DIR && chown ubuntu $NVM_DIR
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+
+# Append to ubuntu profile
+echo 'export NVM_DIR="$HOME/.nvm"' >> /home/ubuntu/.bashrc
+echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm' >> /home/ubuntu/.bashrc
+
+# Dot source the files to ensure that variables are available within the current shell
+. /home/ubuntu/.nvm/nvm.sh
+. /home/ubuntu/.profile
+. /home/ubuntu/.bashrc
+
+# Install node lts
+nvm install --lts
+
+
+#####################
+###### code-server.sh
+
+# Define these 2 variables if you want to customize the default installation,
+# then copy-paste the remainder of the script:
+# - the version of code-server to install
+# code_server_version=3.7.2
+# - the code-server extensions to install (space-separated names)
+code_server_extensions="ms-vscode.vscode-typescript-tslint-plugin eg2.vscode-npm-script coenraads.bracket-pair-colorizer-2"
+# Note: install code-server after installing docker if you plan to use a docker extension
+# - the JSON content of code-server settings (here, to make the terminal a JSON shell)
+# (see https://code.visualstudio.com/docs/editor/integrated-terminal#_shell-arguments)
+# code_server_settings='{ "terminal.integrated.shellArgs.linux": ["-l"]}'
+
+# https://github.com/cdr/code-server/blob/master/doc/install.md#debian-ubuntu
+
+
+# Install code-server
+code_server_version=${code_server_version:-3.9.2}
+curl -fsSLo /tmp/code-server.deb "https://github.com/cdr/code-server/releases/download/v${code_server_version}/code-server_${code_server_version}_amd64.deb"
 apt-get install -y /tmp/code-server.deb
+
+# Setup code-server
 mkdir --parent /home/ubuntu/.config/code-server/
-cat <<EOF > /home/ubuntu/.config/code-server/config.yaml
-bind-addr: {{ .STRIGO_RESOURCE_0_DNS }}:9999
+cat << EOF > /home/ubuntu/.config/code-server/config.yaml
+bind-addr: {{ .STRIGO_RESOURCE_DNS }}:9999
 auth: password
 password: '{{ .STRIGO_WORKSPACE_ID }}'
 disable-telemetry: true
 EOF
 chown -R ubuntu: /home/ubuntu/.config/
+
+# Enable and start code-server
 systemctl enable --now code-server@ubuntu
 
-code-server --install-extension ms-vscode.vscode-typescript-tslint-plugin
-code-server --install-extension eg2.vscode-npm-script
-code-server --install-extension coenraads.bracket-pair-colorizer-2
+# Install extensions, if any
+if [[ ${code_server_extensions} && ${code_server_extensions-_} ]]; then
+  code_server_extensions_array=($code_server_extensions)
+  for code_server_extension in ${code_server_extensions_array[@]}; do
+    sudo -iu ubuntu code-server code-server --install-extension ${code_server_extension}
+  done
+fi
 
-# Insert script into init file
-touch /home/ubuntu/nvm_init.sh
-cat <<EOF >/home/ubuntu/nvm_init.sh
-#!/bin/bash
+# Adds user settings, if any
+if [[ ${code_server_settings} && ${code_server_settings-_} ]]; then
+  echo ${code_server_settings} > /home/ubuntu/.local/share/code-server/User/settings.json
+  chown ubuntu:ubuntu /home/ubuntu/.local/share/code-server/User/settings.json
+fi
 
-# NVM installation
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
-[ -s "/home/ubuntu/.nvm/nvm.sh" ] && \. "/home/ubuntu/.nvm/nvm.sh"  # This loads nvm
-[ -s "/home/ubuntu/.nvm/bash_completion" ] && \. "/home/ubuntu/.nvm/bash_completion"  # This loads nvm bash_completion
+###############################
+#### increase-watchers-limit.sh
+# Increase filesystem watches for `autoreload` (https://www.npmjs.com/package/autoreload#troubleshooting)
+echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf
+sysctl -p
 
-# Install latest node lts
-nvm install --lts
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-EOF
+################
+###### strigo.sh
 
-sudo chown ubuntu:ubuntu /home/ubuntu/nvm_init.sh
-sudo chmod u+x /home/ubuntu/nvm_init.sh
+# Force hostname
+hostnamectl set-hostname {{ .STRIGO_RESOURCE_NAME }}
+sed --in-place "0,/^127.0.0.1/s/$/ {{ .STRIGO_RESOURCE_NAME }}/" /etc/hosts
 
-# Execute script as ubuntu
-su ubuntu -c "/home/ubuntu/nvm_init.sh"
-
-# Add Strigo context in env
+# Inject Strigo context
 cat <<\EOF > /etc/profile.d/00_strigo_context.sh
 # Strigo context
 export INSTANCE_NAME={{ .STRIGO_RESOURCE_NAME }}
-export PUBLIC_DNS={{ .STRIGO_RESOURCE_0_DNS }}
+export PUBLIC_DNS={{ .STRIGO_RESOURCE_DNS }}
 export PUBLIC_IP=$(curl --silent ifconfig.co)
-export PRIVATE_DNS={{ .STRIGO_RESOURCE_0_DNS }}
-export PRIVATE_IP=$(dig +short {{ .STRIGO_RESOURCE_0_DNS }})
+export PRIVATE_DNS={{ .STRIGO_RESOURCE_DNS }}
+export PRIVATE_IP=$(dig +short {{ .STRIGO_RESOURCE_DNS }})
 export HOSTNAME={{ .STRIGO_RESOURCE_NAME }}
 EOF
 

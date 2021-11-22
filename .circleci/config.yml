@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   training-material: zenika/training-material@volatile
+  training-resource: zenika-training/training-resource@volatile
   ztraining2strigo: zenika-training/ztraining2strigo@volatile
 
 workflows:
@@ -27,9 +28,30 @@ workflows:
           filters:
             branches:
               only:
-                - wait-for-strigo-fix
+                - main
+                - master
     jobs:
       - training-material/build
+      - training-resource/publish:
+          name: Publish Slides on Drive
+          requires:
+            - training-material/build
+          source: dist/pdf/Zenika-formation-angular-Slides.pdf
+          file-id: 1RJXMvZPpxkC2RQUUelcaXfsHmnj6xgCF
+          context: training-deploy-zenika
+      - training-resource/publish:
+          name: Publish Workbook on Drive
+          requires:
+            - training-material/build
+          source: dist/pdf/Zenika-formation-angular-Workbook.pdf
+          file-id: 1rYEB1ZYKbVedYAyHTEv_c5h9icSr1bPy
+          context: training-deploy-zenika
+      - training-resource/publish:
+          name: Publish ressources on Drive
+          source: Exercices/ressources
+          file-id: 1ZLHSSp-ViU1NzDEZzdJ9wLw7507C8T0f
+          compression-mode: zip
+          context: training-deploy-zenika
       - ztraining2strigo/update:
           requires:
             - training-material/build
