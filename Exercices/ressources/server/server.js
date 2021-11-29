@@ -25,6 +25,12 @@ app.get(context + '/products/:id', function (req, res) {
   res.send(products.find(product => product.id == req.params.id));
 });
 
+app.get('/reset', function (_req, res) {
+  basket = [];
+  products = loadProduct();
+  res.status(200).send("reset ok");
+});
+
 function loadProduct() {
   return require(conf.products).map(product => ({...product}));
 }
@@ -46,7 +52,7 @@ var createHandler = function (req, res) {
 app.post(context + '/basket', createHandler);
 
 app.post(context + '/basket/confirm', (req, res) => {
-  console.log(`Commande n°${++orderNumber} : ${basket.reduce((total, item)=>total+item.price, 0)}€ ${req.body.name} ${req.body.address} ${req.body.creditCard}`);
+  console.log(`Order n°${++orderNumber} : ${basket.reduce((total, item)=>total+item.price, 0)}€ ${req.body.name} ${req.body.address} ${req.body.creditCard}`);
   basket = [];
   products = loadProduct();
   res.status(200).send({orderNumber: orderNumber});
