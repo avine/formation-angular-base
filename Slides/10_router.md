@@ -30,7 +30,6 @@ Notes :
 ## Router
 
 - *Angular* by default provides a router in a dedicated module
-- Very different than `ngRoute` from *AngularJS*
 - Phase of turbulent development: 2 major redesigns
 - `@angular/router` is now reliable and recommended
 - Offers many features

@@ -30,7 +30,6 @@ Notes :
 ## The Pipes
 
 - Mechanism allowing the transformation of a datum before its use
-- Similar to filters in *AngularJS*
 - Use with the `|` character in template expressions
 - Ability to write his own *Pipe*
 - Added the notion of *Pipe* pure and impure
