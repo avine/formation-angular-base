@@ -109,9 +109,6 @@ Notes :
   - Either to build: *AOT* (Ahead Of Time) by default since Angular 9
 - The compilation makes it possible to detect errors in the template
 - Also implies that templates must be syntactically correct
-- Operation very different from AngularJS
-  - AngularJS did not compile the templates
-  - The AngularJS templates were pure Web transmitted to the browser
 
 
 
@@ -143,7 +140,6 @@ The 'Elvis operator' (optional chaining) is now part of ES2020 & Typescript 3.8
 ## Properties
 
 - Generic syntax for setting the value of a property of an element *HTML*
-- Different from AngularJS, where we use *HTML* attributes
 - Using the syntax `[property-name]="expression"`
 - Same syntax for the properties of *standard HTML elements*, *components* and *Angular directives* and even *Web Components*
 
@@ -244,7 +240,6 @@ Notes :
 ## Events
 
 - Generic syntax for listening to an event of an element *HTML*
-- Different from AngularJS, where we use *HTML* attributes
 - Using the syntax `(event-name)="expression"`
 - Identical syntax for events of *standard HTML elements*, *components* and *Angular directives* and even *Web Components*
 - The methods and properties used must be defined in the class
@@ -403,7 +398,6 @@ Notes :
 
 - Allows to put HTML content in the tag of an Angular component
 - The `ng-content` component allows reinserting the content in the template
-- Corresponds to the `ngTransclude` directive in *AngularJS*
 
 ```html
 <app-post>

@@ -32,7 +32,6 @@ Notes :
 - In the documentation `Jasmine` is used as a test framework
   - `Angular` can also be tested with other frameworks
 - To run the tests easily, we propose to use `Karma`
-  - It was developed by `AngularJS` team
   - It is neither essential nor related to `Angular`
 - `Jasmine` and `Karma` are the tools used in an application generated with Angular CLI
 

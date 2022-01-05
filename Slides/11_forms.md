@@ -63,7 +63,7 @@ Notes :
 
 ## "Banana in the Box"
 
-- *2-way data-binding* (default in AngularJS) is disabled by default
+- *2-way data-binding* is disabled by default
 - We can reproduce it with the syntaxes we've seen so far
 
 ```html

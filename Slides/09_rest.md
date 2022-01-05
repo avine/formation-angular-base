@@ -43,7 +43,6 @@ Notes :
 - `Observable` are the central notion in the library *RxJS*
 - They represent a flow of data, we often speak of **stream**
 - Allows the processing of asynchronous tasks similar to tables
-- Replaces the use of promises that were in *AngularJS*
 - Provides advantages over promises
   - Allows you to have asynchronous processing that returns multiple data
   - An Observable can be *cancelable*
@@ -197,7 +196,6 @@ Notes :
 - This module contains a service set for HTTP requests
 - Before *Angular 4.3*, using the `HttpModule` module
 - Based on the `Observable` pattern
-  - Unlike AngularJS who used the `Promises` pattern
   - Greater flexibility thanks to the different operators of `RxJS`
 - The entry point is the `HttpClient` service accessible via the dependency injection
 - Numerous configurations to configure or transform requests

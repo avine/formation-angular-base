@@ -31,7 +31,6 @@ Notes :
 
 - Framework created by *Google* and announced in 2014
 - Total rewriting of the framework
-- Resume certain concepts of *AngularJS*
 - First version *beta* announced in October 2014
 - Version *final* `2.0.0` official release in September 2016
 - Latest major release `13.0.0`
@@ -45,7 +44,7 @@ Notes :
 
 ## Presentation - Versioning
 
-- Versioning from 2.0.0 to stand out from AngularJS
+- Versioning from 2.0.0 to stand out from AngularJS (latest AngularJS being 1.8.2)
 - Respect from there of the *semver* standard
 - Major versions will no longer be rewrites like 1 to 2
 - Skipping version 3.0.0 after the project merge *Router* already in 3.x
@@ -77,85 +76,11 @@ Notes :
 | 13.0.0 | Nov 2021 | Ivy only remove Old View Engine, Cli Cache, RxJS v7, TypeScript 4.4 |
 
 
-## AngularJS negative points
-
-- Differences between directives and `ngController`
-- Two-way data-binding causes performance problems
-- Hierarchy of scopes
-- No server-side rendering
-- Several syntaxes to create services
-- API directives too complex
-- poorly designed API requiring the use of fix (`ngModelOptions`)
-
-Notes :
-
-
-
-## AngularJS negative points - directive
-
-- API directives too complex
-
-```typescript
-app.directive ('MyDirective', function() {
-    return {
-       restrict: 'AE',
-       require: '? ^^ ngModel',
-       scope: {variable: '@'},
-       controller: function (...) {},
-       link: function (...) {...}
-    }
-});
-```
-
-- *Angular* version:
-
-```typescript
-import {Component, Input} from '@angular/core'
-@Component ({
-  selector: 'my-directive'
-})
-export class MyDirective {
-  @Input() variable: string;
-}
-```
-
-Notes :
-
-
-
-## AngularJS Negative Points - Service
-
-- API to create *AngularJS* services
-
-```typescript
-// provider, factory, constant and value
-app.service ('UserService', function() {
-  const vm = this;
-  vm.getUsers = function() {
-
-  }
-});
-```
-
-- Angular version
-
-```typescript
-@Injectable()
-export class UserService {
-  getUsers (): User [] {
-    return [];
-  }
-}
-```
-Notes :
-
-
 
 ## Angular - Positive Points
 
 - Modular application creation
 - Usable with several programming languages: `TypeScript` and `Dart` (separate project: https://webdev.dartlang.org/)
-- API simpler than *AngularJS*
 - Only three types of elements will be used: `directive`, `pipe` and `services`
 - Based on standards: `Web Components`, `ES2015 +`, `Decorator`
 - New syntax used in templates
@@ -172,17 +97,13 @@ Notes :
 
 ## Angular - Negative Points
 
-- New learning phase of the framework if used to AngularJS
-- AngularJS applications incompatible with this new version
-- ngUpgrade allows to reuse AngularJS code but not to migrate
 - New concepts to learn:
   - `Zone`
   - `Observable`
   - ...
 
 Notes :
-- use of directives 1 in 2: https://angular.io/guide/upgrade#using-angularjs-component-directives-from-angular-code
-- New concepts are not essential to know. It's a plus
+- New concepts are essential to know (especially Observables).
 
 
 

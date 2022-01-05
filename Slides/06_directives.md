@@ -247,7 +247,6 @@ Notes :
 ## ngFor
 
 - Can duplicate a template for each element of a collection
-- Corresponds to the `ngRepeat` directive in *AngularJS*
 - Definition of the content to duplicate in a `<ng-template>` element
 - Using the `ngForOf` property to set the collection
 - We create a variable from the template for the iterator
@@ -307,7 +306,6 @@ Notes :
 <div *ngIf="condition; else elseBlock"> ... </ div>
 <ng-template #elseBlock> No data </ ​​ng-template>
 ```
-- No `ngShow` and `ngHide` directives like in *AngularJS*
 - Using the `hidden` property (requires polyfills)
 
 ```html
