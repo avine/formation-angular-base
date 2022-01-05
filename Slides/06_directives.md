@@ -306,7 +306,7 @@ Notes :
 <div *ngIf="condition; else elseBlock"> ... </ div>
 <ng-template #elseBlock> No data </ ​​ng-template>
 ```
-- Using the `hidden` property (requires polyfills)
+- Using the `hidden` attribute
 
 ```html
 <div [hidden]="condition"> ... </ div>
