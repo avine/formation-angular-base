@@ -30,6 +30,7 @@ Notes :
 ## Injectors
 
 - Technical components used to inject the services
+- Many injectors collaborating
 - Components inherit the injector from their parent
 - Need to configure the injectors
   - globally via the `@NgModule` main module
