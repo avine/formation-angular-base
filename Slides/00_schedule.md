@@ -15,8 +15,8 @@
 
 <!-- .slide: id = "master-toc" class="toc" -->
 
-- [Reminders](#/1)
-- [Introduction](#/2)
+- [Introduction](#/1)
+- [Reminders](#/2)
 - [Start an Angular application](#/3)
 - [Tests](#/4)
 - [Template & Components](#/5)
@@ -26,7 +26,6 @@
 - [HTTP Service](#/9)
 - [Router](#/10)
 - [Forms](#/11)
-- [Server-side Rendering](#/12)
 
 Notes :
 
