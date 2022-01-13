@@ -54,7 +54,7 @@ Notes :
 ## Versions
 
 | Version | Date | Description |
-| : ------ | : ------: | : ------------------------------------------------- ----------------- |
+| :------ | :------: | :------------------------------------------------------------------ |
 | 2.0.0 | Sep 2016 | Final version |
 | 4.0.0 | Mar 2017 | New template compilation engine, Modularization of the animation system, Universal project, TypeScript 2.1+ |
 | 5.0.0 | Nov 2017 | Improvement of the build (AOT), HttpClient, TypeScript 2.3 |
@@ -68,7 +68,7 @@ Notes :
 ## Versions
 
 | Version | Date | Description |
-| : ------ | : ------: | : ------------------------------------------------- ----------------- |
+| :------ | :------: | :------------------------------------------------------------------ |
 | 10.0.0 | June 2020 | Optional Stricter Settings, New Default Browser Configuration, TypeScript 3.9 |
 | 11.0.0 | Nov 2020 | TypeScript 4.0, Remove deprecated support for IE 9, 10, and IE mobile |
 | 12.0.0 | May 2021 | Stylish improvements, nullish coalescing, Webpack 5 support, TypeScript 4.2 |
