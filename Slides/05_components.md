@@ -370,8 +370,8 @@ Notes :
 
 - Use of *NgModule* defined in detail later in the training
 - For a component to be accessible, it should either:
-  - be declared in another *NgModule* listed in the `imports` list of your `NgModule`
-  - be in the list of `declarations` of your module
+  - be declared in another *NgModule* listed in the `imports` list of your `NgModule`
+  - be in the list of `declarations` of your module
 
 ```typescript
 import {NgModule} from '@angular/core';
@@ -509,15 +509,14 @@ Notes :
 
 - The module created makes it possible to create a component
 - This component is in the form of a `ComponentFixture`
-  - Contains a reference to the instance of the TypeScript class
-  - Contains a reference to the DOM element where it is attached
+  - Contains a reference to the instance of the TypeScript class
+  - Contains a reference to the DOM element where it is attached
 
 ```typescript
 class TestBed implements Injector {
   static configureTestingModule (moduleDef: TestModuleMetadata): typeof TestBed
   createComponent (component: Type<T>): ComponentFixture<T>
-
-  / *... */
+  /*... */
 }
 
 class ComponentFixture {
@@ -526,8 +525,7 @@ class ComponentFixture {
   debugElement: DebugElement
   elementRef: ElementRef
   detectChanges (checkNoChanges ?: boolean): void
-
-  / *... */
+  /*... */
 }
 ```
 
