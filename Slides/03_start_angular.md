@@ -115,7 +115,7 @@ npm install -g @angular/cli
 
 ```Shell
 ng new Application
-ng build (--dev/--prod)
+ng build (--configuration=development/--configuration=production)
 ng serve
 ```
 

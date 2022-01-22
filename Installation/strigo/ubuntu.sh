@@ -2,12 +2,26 @@
 
 set -ev
 
-apt-get install -y curl
+apt remove -y unattended-upgrades
 
-#############
-# needed for cypress
-apt-get install xvfb
+apt-get update
 
+#####################
+###### Training ressources
+workspace_archive_file_id="1m2GypdxNoTMUCiP2y8aUN3Ta1xFPkDQl"
+corrections_archive_file_id="1nFv9y9S_YaOQ-Cs4ewiwEhOFuZGx57cv"
+
+# fetch from gdrive
+# Archive must be in .tar.xz format
+
+cd ~ubuntu
+curl -fsSL "https://drive.google.com/uc?export=download&id=${workspace_archive_file_id}" | tar xJf -  # ressources
+curl -fsSL "https://drive.google.com/uc?export=download&id=${corrections_archive_file_id}" | tar xJf -  # correction
+chown -R ubuntu ressources corrections
+
+# hide corrections
+
+mv corrections .corrections
 
 #####################
 ###### chrome.sh
@@ -19,6 +33,7 @@ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
 # Install Chrome
 apt-get update
 apt-get install -y google-chrome-stable
+
 
 #####################
 ###### nvm.sh
@@ -42,6 +57,7 @@ echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm' >> /hom
 # Install node lts
 nvm install --lts
 
+chown ubuntu:ubuntu -R /home/ubuntu/.nvm/
 
 #####################
 ###### code-server.sh
