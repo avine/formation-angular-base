@@ -72,16 +72,15 @@ Notes :
 - Annotate the class with the `@Pipe` decorator
 
 ```typescript
-import {isString, isBlank} from '@angular/core/src/facade/lang';
 import {PipeTransform, Pipe} from '@angular/core';
 
 @Pipe ({name: 'mylowercase'})
 export class MyLowerCasePipe implements PipeTransform {
   transform (value: any, param1: string, param2: string): string {
-    if (isBlank (value)) {
+    if (!value.length) {
       return value;
     }
-    if (! isString (value)) {
+    if (typeof value !== 'string') {
       throw new Error ('MyLowerCasePipe value should be a string');
     }
     return value.toLowerCase();

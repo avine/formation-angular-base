@@ -241,7 +241,7 @@ Notes :
          [attr.aria-invalid]="!nameInput.valid"
         />
 </label>
-<span [hidden]="!nameInput.errors?.required"> Name is not valid </span>
+<span [hidden]="!nameInput.errors?.['required']"> Name is not valid </span>
 ```
 
 Notes :
@@ -254,13 +254,13 @@ Notes :
 
 ```ts
 @Directive ({
-  selector: '[pattern] [ngModel]',
+  selector: '[mypattern] [ngModel]',
   providers: [
     {provide: NG_VALIDATORS, useExisting: PatternValidator, multi: true}
   ]
 })
 export class PatternValidator implements Validator {
-  @Input('pattern') pattern: string;
+  @Input('mypattern') pattern: string;
 
   validate(control: AbstractControl): {[key: string]: any} {
     if (control.value && control.value.match(new RegExp (this.pattern))) {
@@ -273,7 +273,7 @@ export class PatternValidator implements Validator {
 
 - To use the validator
 ```html
-<input type="text" name="name" [(ngModel)]="contact.name" pattern="[a-z] {10}" />
+<input type="text" name="name" [(ngModel)]="contact.name" mypattern="[a-z] {10}" />
 ```
 
 Notes :
