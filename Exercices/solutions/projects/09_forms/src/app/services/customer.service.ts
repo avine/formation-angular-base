@@ -1,0 +1,48 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+
+import { Product } from '../model/product';
+import { Customer } from '../model/customer';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class CustomerService {
+  private API_URL = 'http://localhost:8080/rest/';
+
+  products: Product[] = new Array<Product>();
+
+  constructor(private http: HttpClient) {}
+
+  getBasket(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.API_URL + 'basket').pipe(
+      map((products) => {
+        return products.map((product) => {
+          return new Product(
+            product.id,
+            product.title,
+            product.description,
+            product.photo,
+            product.price,
+            product.stock
+          );
+        });
+      }),
+      tap((products) => (this.products = products))
+    );
+  }
+
+  addProduct(product: Product): Observable<any> {
+    return this.http.post(this.API_URL + 'basket', product).pipe(tap(() => this.products.push(product)));
+  }
+
+  getTotal(): number {
+    return this.products.reduce((previous, next) => previous + next.price, 0);
+  }
+
+  checkout(customer: Customer): Observable<any> {
+    return this.http.post(this.API_URL + 'basket/confirm', customer);
+  }
+}
