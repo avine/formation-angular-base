@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -14,16 +15,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title '02_tests'`, () => {
+  it('should have as title "This is my first component"', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('02_tests');
+    expect(app.title).toEqual('This is my first component');
   });
 
-  it('should render title', () => {
+  it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('02_tests app is running!');
+    expect(compiled.querySelector('h1')?.textContent).toContain('This is my first component');
   });
 });
