@@ -5,7 +5,7 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        "project": ["projects/09_forms_bonus/tsconfig.app.json", "projects/09_forms_bonus/tsconfig.spec.json"],
+        "project": ["projects/01_start_angular/tsconfig.app.json", "projects/01_start_angular/tsconfig.spec.json"],
         "createDefaultProgram": true
       },
       "rules": {

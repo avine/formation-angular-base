@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "start:01": "ng serve",
+    "start:01": "ng serve --project 01_start_angular",
     "start:02": "ng serve --project 02_tests",
     "start:03": "ng serve --project 03_composants",
     "start:04": "ng serve --project 04_directives",
@@ -19,8 +19,7 @@
     "start:07": "ng serve --project 07_rest",
     "start:08": "ng serve --project 08_router",
     "start:09": "ng serve --project 09_forms",
-    "start:09-bonus": "ng serve --project 09_forms_bonus",
-    "test:01": "ng test",
+    "test:01": "ng test --project 01_start_angular",
     "test:02": "ng test --project 02_tests",
     "test:03": "ng test --project 03_composants",
     "test:04": "ng test --project 04_directives",
@@ -28,8 +27,7 @@
     "test:06": "ng test --project 06_pipe",
     "test:07": "ng test --project 07_rest",
     "test:08": "ng test --project 08_router",
-    "test:09": "ng test --project 09_forms",
-    "test:09-bonus": "ng test --project 09_forms_bonus"
+    "test:09": "ng test --project 09_forms"
   },
   "private": true,
   "dependencies": {

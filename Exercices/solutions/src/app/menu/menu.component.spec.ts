@@ -9,8 +9,8 @@ describe('MenuComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ MenuComponent ],
-      imports: [ RouterModule.forRoot([], {useHash: true}) ]
+      declarations: [MenuComponent],
+      imports: [RouterModule.forRoot([], { useHash: true })],
     });
   });
 
