@@ -22,13 +22,8 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -89,23 +84,15 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
@@ -129,13 +116,8 @@
             "main": "projects/02_tests/src/main.ts",
             "polyfills": "projects/02_tests/src/polyfills.ts",
             "tsConfig": "projects/02_tests/tsconfig.app.json",
-            "assets": [
-              "projects/02_tests/src/favicon.ico",
-              "projects/02_tests/src/assets"
-            ],
-            "styles": [
-              "projects/02_tests/src/styles.css"
-            ],
+            "assets": ["projects/02_tests/src/favicon.ico", "projects/02_tests/src/assets"],
+            "styles": ["projects/02_tests/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -196,23 +178,15 @@
             "polyfills": "projects/02_tests/src/polyfills.ts",
             "tsConfig": "projects/02_tests/tsconfig.spec.json",
             "karmaConfig": "projects/02_tests/karma.conf.js",
-            "assets": [
-              "projects/02_tests/src/favicon.ico",
-              "projects/02_tests/src/assets"
-            ],
-            "styles": [
-              "projects/02_tests/src/styles.css"
-            ],
+            "assets": ["projects/02_tests/src/favicon.ico", "projects/02_tests/src/assets"],
+            "styles": ["projects/02_tests/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/02_tests/**/*.ts",
-              "projects/02_tests/**/*.html"
-            ]
+            "lintFilePatterns": ["projects/02_tests/**/*.ts", "projects/02_tests/**/*.html"]
           }
         }
       }
@@ -236,13 +210,8 @@
             "main": "projects/03_composants/src/main.ts",
             "polyfills": "projects/03_composants/src/polyfills.ts",
             "tsConfig": "projects/03_composants/tsconfig.app.json",
-            "assets": [
-              "projects/03_composants/src/favicon.ico",
-              "projects/03_composants/src/assets"
-            ],
-            "styles": [
-              "projects/03_composants/src/styles.css"
-            ],
+            "assets": ["projects/03_composants/src/favicon.ico", "projects/03_composants/src/assets"],
+            "styles": ["projects/03_composants/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -303,23 +272,15 @@
             "polyfills": "projects/03_composants/src/polyfills.ts",
             "tsConfig": "projects/03_composants/tsconfig.spec.json",
             "karmaConfig": "projects/03_composants/karma.conf.js",
-            "assets": [
-              "projects/03_composants/src/favicon.ico",
-              "projects/03_composants/src/assets"
-            ],
-            "styles": [
-              "projects/03_composants/src/styles.css"
-            ],
+            "assets": ["projects/03_composants/src/favicon.ico", "projects/03_composants/src/assets"],
+            "styles": ["projects/03_composants/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/03_composants/**/*.ts",
-              "projects/03_composants/**/*.html"
-            ]
+            "lintFilePatterns": ["projects/03_composants/**/*.ts", "projects/03_composants/**/*.html"]
           }
         }
       }
@@ -343,13 +304,8 @@
             "main": "projects/04_directives/src/main.ts",
             "polyfills": "projects/04_directives/src/polyfills.ts",
             "tsConfig": "projects/04_directives/tsconfig.app.json",
-            "assets": [
-              "projects/04_directives/src/favicon.ico",
-              "projects/04_directives/src/assets"
-            ],
-            "styles": [
-              "projects/04_directives/src/styles.css"
-            ],
+            "assets": ["projects/04_directives/src/favicon.ico", "projects/04_directives/src/assets"],
+            "styles": ["projects/04_directives/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -410,23 +366,15 @@
             "polyfills": "projects/04_directives/src/polyfills.ts",
             "tsConfig": "projects/04_directives/tsconfig.spec.json",
             "karmaConfig": "projects/04_directives/karma.conf.js",
-            "assets": [
-              "projects/04_directives/src/favicon.ico",
-              "projects/04_directives/src/assets"
-            ],
-            "styles": [
-              "projects/04_directives/src/styles.css"
-            ],
+            "assets": ["projects/04_directives/src/favicon.ico", "projects/04_directives/src/assets"],
+            "styles": ["projects/04_directives/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/04_directives/**/*.ts",
-              "projects/04_directives/**/*.html"
-            ]
+            "lintFilePatterns": ["projects/04_directives/**/*.ts", "projects/04_directives/**/*.html"]
           }
         }
       }
@@ -454,9 +402,7 @@
               "projects/05_injection_dependences/src/favicon.ico",
               "projects/05_injection_dependences/src/assets"
             ],
-            "styles": [
-              "projects/05_injection_dependences/src/styles.css"
-            ],
+            "styles": ["projects/05_injection_dependences/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -521,9 +467,7 @@
               "projects/05_injection_dependences/src/favicon.ico",
               "projects/05_injection_dependences/src/assets"
             ],
-            "styles": [
-              "projects/05_injection_dependences/src/styles.css"
-            ],
+            "styles": ["projects/05_injection_dependences/src/styles.css"],
             "scripts": []
           }
         },
@@ -557,13 +501,8 @@
             "main": "projects/06_pipe/src/main.ts",
             "polyfills": "projects/06_pipe/src/polyfills.ts",
             "tsConfig": "projects/06_pipe/tsconfig.app.json",
-            "assets": [
-              "projects/06_pipe/src/favicon.ico",
-              "projects/06_pipe/src/assets"
-            ],
-            "styles": [
-              "projects/06_pipe/src/styles.css"
-            ],
+            "assets": ["projects/06_pipe/src/favicon.ico", "projects/06_pipe/src/assets"],
+            "styles": ["projects/06_pipe/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -624,23 +563,15 @@
             "polyfills": "projects/06_pipe/src/polyfills.ts",
             "tsConfig": "projects/06_pipe/tsconfig.spec.json",
             "karmaConfig": "projects/06_pipe/karma.conf.js",
-            "assets": [
-              "projects/06_pipe/src/favicon.ico",
-              "projects/06_pipe/src/assets"
-            ],
-            "styles": [
-              "projects/06_pipe/src/styles.css"
-            ],
+            "assets": ["projects/06_pipe/src/favicon.ico", "projects/06_pipe/src/assets"],
+            "styles": ["projects/06_pipe/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/06_pipe/**/*.ts",
-              "projects/06_pipe/**/*.html"
-            ]
+            "lintFilePatterns": ["projects/06_pipe/**/*.ts", "projects/06_pipe/**/*.html"]
           }
         }
       }
@@ -664,13 +595,8 @@
             "main": "projects/07_rest/src/main.ts",
             "polyfills": "projects/07_rest/src/polyfills.ts",
             "tsConfig": "projects/07_rest/tsconfig.app.json",
-            "assets": [
-              "projects/07_rest/src/favicon.ico",
-              "projects/07_rest/src/assets"
-            ],
-            "styles": [
-              "projects/07_rest/src/styles.css"
-            ],
+            "assets": ["projects/07_rest/src/favicon.ico", "projects/07_rest/src/assets"],
+            "styles": ["projects/07_rest/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -731,23 +657,15 @@
             "polyfills": "projects/07_rest/src/polyfills.ts",
             "tsConfig": "projects/07_rest/tsconfig.spec.json",
             "karmaConfig": "projects/07_rest/karma.conf.js",
-            "assets": [
-              "projects/07_rest/src/favicon.ico",
-              "projects/07_rest/src/assets"
-            ],
-            "styles": [
-              "projects/07_rest/src/styles.css"
-            ],
+            "assets": ["projects/07_rest/src/favicon.ico", "projects/07_rest/src/assets"],
+            "styles": ["projects/07_rest/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/07_rest/**/*.ts",
-              "projects/07_rest/**/*.html"
-            ]
+            "lintFilePatterns": ["projects/07_rest/**/*.ts", "projects/07_rest/**/*.html"]
           }
         }
       }
@@ -771,13 +689,8 @@
             "main": "projects/08_router/src/main.ts",
             "polyfills": "projects/08_router/src/polyfills.ts",
             "tsConfig": "projects/08_router/tsconfig.app.json",
-            "assets": [
-              "projects/08_router/src/favicon.ico",
-              "projects/08_router/src/assets"
-            ],
-            "styles": [
-              "projects/08_router/src/styles.css"
-            ],
+            "assets": ["projects/08_router/src/favicon.ico", "projects/08_router/src/assets"],
+            "styles": ["projects/08_router/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -838,23 +751,15 @@
             "polyfills": "projects/08_router/src/polyfills.ts",
             "tsConfig": "projects/08_router/tsconfig.spec.json",
             "karmaConfig": "projects/08_router/karma.conf.js",
-            "assets": [
-              "projects/08_router/src/favicon.ico",
-              "projects/08_router/src/assets"
-            ],
-            "styles": [
-              "projects/08_router/src/styles.css"
-            ],
+            "assets": ["projects/08_router/src/favicon.ico", "projects/08_router/src/assets"],
+            "styles": ["projects/08_router/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/08_router/**/*.ts",
-              "projects/08_router/**/*.html"
-            ]
+            "lintFilePatterns": ["projects/08_router/**/*.ts", "projects/08_router/**/*.html"]
           }
         }
       }
@@ -878,13 +783,8 @@
             "main": "projects/09_forms/src/main.ts",
             "polyfills": "projects/09_forms/src/polyfills.ts",
             "tsConfig": "projects/09_forms/tsconfig.app.json",
-            "assets": [
-              "projects/09_forms/src/favicon.ico",
-              "projects/09_forms/src/assets"
-            ],
-            "styles": [
-              "projects/09_forms/src/styles.css"
-            ],
+            "assets": ["projects/09_forms/src/favicon.ico", "projects/09_forms/src/assets"],
+            "styles": ["projects/09_forms/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -945,23 +845,15 @@
             "polyfills": "projects/09_forms/src/polyfills.ts",
             "tsConfig": "projects/09_forms/tsconfig.spec.json",
             "karmaConfig": "projects/09_forms/karma.conf.js",
-            "assets": [
-              "projects/09_forms/src/favicon.ico",
-              "projects/09_forms/src/assets"
-            ],
-            "styles": [
-              "projects/09_forms/src/styles.css"
-            ],
+            "assets": ["projects/09_forms/src/favicon.ico", "projects/09_forms/src/assets"],
+            "styles": ["projects/09_forms/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/09_forms/**/*.ts",
-              "projects/09_forms/**/*.html"
-            ]
+            "lintFilePatterns": ["projects/09_forms/**/*.ts", "projects/09_forms/**/*.html"]
           }
         }
       }
@@ -985,13 +877,8 @@
             "main": "projects/09_forms_bonus/src/main.ts",
             "polyfills": "projects/09_forms_bonus/src/polyfills.ts",
             "tsConfig": "projects/09_forms_bonus/tsconfig.app.json",
-            "assets": [
-              "projects/09_forms_bonus/src/favicon.ico",
-              "projects/09_forms_bonus/src/assets"
-            ],
-            "styles": [
-              "projects/09_forms_bonus/src/styles.css"
-            ],
+            "assets": ["projects/09_forms_bonus/src/favicon.ico", "projects/09_forms_bonus/src/assets"],
+            "styles": ["projects/09_forms_bonus/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -1052,23 +939,15 @@
             "polyfills": "projects/09_forms_bonus/src/polyfills.ts",
             "tsConfig": "projects/09_forms_bonus/tsconfig.spec.json",
             "karmaConfig": "projects/09_forms_bonus/karma.conf.js",
-            "assets": [
-              "projects/09_forms_bonus/src/favicon.ico",
-              "projects/09_forms_bonus/src/assets"
-            ],
-            "styles": [
-              "projects/09_forms_bonus/src/styles.css"
-            ],
+            "assets": ["projects/09_forms_bonus/src/favicon.ico", "projects/09_forms_bonus/src/assets"],
+            "styles": ["projects/09_forms_bonus/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/09_forms_bonus/**/*.ts",
-              "projects/09_forms_bonus/**/*.html"
-            ]
+            "lintFilePatterns": ["projects/09_forms_bonus/**/*.ts", "projects/09_forms_bonus/**/*.html"]
           }
         }
       }
