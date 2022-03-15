@@ -1,0 +1,26 @@
+<header class="jumbotron hero-spacer">
+  <h1>{{ title }}</h1>
+  <p>Your basket amounts to {{ getTotal() | currency: 'EUR' }}</p>
+  <p><a class="btn btn-primary btn-large" [routerLink]="['/basket']">See my basket</a></p>
+</header>
+
+<hr />
+
+<div class="row">
+  <div class="col-lg-12">
+    <h2>Latest Products</h2>
+    Sort by :
+    <button (click)="sortKey = 'title'" class="btn btn-primary">Title</button>
+    &nbsp;
+    <button (click)="sortKey = 'price'" class="btn btn-primary">Prix</button>
+    &nbsp;
+    <button (click)="sortKey = 'stock'" class="btn btn-primary">Stock</button>
+  </div>
+</div>
+<br />
+
+<div class="row text-center">
+  <ng-container *ngFor="let product of products | sort: sortKey">
+    <app-product *ngIf="isAvailable(product)" [data]="product" (addToBasket)="updatePrice($event)"></app-product>
+  </ng-container>
+</div>
