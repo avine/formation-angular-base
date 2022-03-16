@@ -2,26 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
 
-## Development server
+## About the labs
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+`npm start` and `npm test` serve and test the final lab.
 
-## Code scaffolding
+To serve and test the other labs, run the commands `npm run start:XX` and `npm run test:XX` respectively.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Example with the lab 1:
 
-## Build
+```bash
+npm run start:01 # serve lab 1
+npm run test:01 # test lab 1
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The final lab is located in the `/src` folder (main application).
+The other labs are located in the `/projects` folder and were generated with the command: `ng generate application XXX`.
