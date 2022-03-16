@@ -53,16 +53,16 @@ describe('ProductComponent', () => {
   it('should not add "last" class if stock > 1', () => {
     spyOn(productService, 'isTheLast').and.returnValue(false);
     fixture.detectChanges();
-    const thumbnail = fixture.nativeElement.querySelector('.thumbnail');
-    expect(Array.prototype.includes.call(thumbnail.classList, 'last')).toBe(false);
+    const card = fixture.nativeElement.querySelector('.card');
+    expect(Array.prototype.includes.call(card.classList, 'last')).toBe(false);
     expect(productService.isTheLast).toHaveBeenCalled();
   });
 
   it('should add "last" class if stock == 1', () => {
     spyOn(productService, 'isTheLast').and.returnValue(true);
     fixture.detectChanges();
-    const thumbnail = fixture.nativeElement.querySelector('.thumbnail');
-    expect(Array.prototype.includes.call(thumbnail.classList, 'last')).toBe(true);
+    const card = fixture.nativeElement.querySelector('.card');
+    expect(Array.prototype.includes.call(card.classList, 'last')).toBe(true);
     expect(productService.isTheLast).toHaveBeenCalled();
   });
 });
