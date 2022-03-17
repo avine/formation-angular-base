@@ -1,0 +1,24 @@
+import { Product } from '../model/product';
+import { SortPipe } from './sort.pipe';
+
+describe('SortPipe', () => {
+  it('create an instance', () => {
+    const pipe = new SortPipe();
+    expect(pipe).toBeTruthy();
+  });
+
+  it('should sort objects by property in argument', () => {
+    const pipe = new SortPipe();
+    const data = [
+      new Product('zyxw', '', '', 0, 0),
+      new Product('1234', '', '', 0, 0),
+      new Product('abcd', '', '', 0, 0),
+    ];
+    const expected = [
+      new Product('1234', '', '', 0, 0),
+      new Product('abcd', '', '', 0, 0),
+      new Product('zyxw', '', '', 0, 0),
+    ];
+    expect(pipe.transform(data, 'title')).toEqual(expected);
+  });
+});
