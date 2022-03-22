@@ -171,13 +171,13 @@ Notes :
 - `PathLocationStrategy` (default policy)
 
 ```typescript
-router.navigate(['contacts']); //example.com/contacts
+router.navigate(['contacts']); http://example.com/contacts
 ```
 
 - `HashLocationStrategy`
 
 ```typescript
-router.navigate(['contacts']); //example.com#/contacts
+router.navigate(['contacts']); http://example.com/#/contacts
 ```
 
 - `PathLocationStrategy` is the recommended solution today

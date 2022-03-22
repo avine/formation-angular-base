@@ -336,4 +336,23 @@ Notes :
 
 
 
+
+
+## Multiple directives on one element
+
+- If you use multiple directives with template (ie *ngFor and *ngIf) on the same element,
+  you must use the `ng-container`
+
+```html
+<ng-container *ngFor="let item of items">
+  <p *ngIf="item.price > 0">{{item.label}}</p>
+</ng-container>
+```
+
+- ng-container is a container element that is not rendered, no DOM element is created.
+
+Notes :
+
+
+
 <!-- .slide: class="page-tp4" -->

@@ -43,6 +43,7 @@
           class="form-control"
           [(ngModel)]="customer.creditCard"
           name="creditCard"
+          required
           pattern="^[0-9]{3}-[0-9]{3}$"
           #creditCard="ngModel"
         />

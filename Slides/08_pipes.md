@@ -33,9 +33,9 @@ Notes :
 - Ability to write his own *Pipe*
 - Added the notion of *Pipe* pure and impure
 - Pipes available by default in the `@angular/common` framework
-  - `LowerCasePipe`, `UpperCasePipe`
+  - `LowerCasePipe`, `UpperCasePipe`, `TitleCasePipe`
   - `CurrencyPipe`, `DecimalPipe`, `PercentPipe`
-  - `DatePipe`, `JSONPipe`, `SlicePipe`
+  - `DatePipe`, `JSONPipe`, `SlicePipe`, `KeyValuePipe`
   - `I18nPluralPipe`, `I18nSelectPipe`
   - `AsyncPipe`
 

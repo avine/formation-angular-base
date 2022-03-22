@@ -11,10 +11,14 @@ You just need to put the content of the [`ubuntu.sh`](./ubuntu.sh) file in the P
 
 ## Notes for Strigo (Headless server ubuntu)
 
+Corrections is in the directory `/home/ubuntu/.corrections`
+Ressources (index.html and server) is in the directory `/home/ubuntu/ressources`s
+
 - replace ng start script with ```ng serve --host 0.0.0.0 --disableHostCheck true```
-- replace in karma.conf.js
-``browsers: ['ChromeHeadless'],`` with ``browsers: ['ChromeHeadless'],``
-- replace in protractor.conf.js 
+### Tests :
+  - replace in karma.conf.js
+``browsers: ['Chrome'],`` with ``browsers: ['ChromeHeadless'],``
+  - replace in protractor.conf.js
 ```
 capabilities: {
     browserName: 'chrome',
@@ -29,3 +33,34 @@ capabilities: {
    }
   },
 ```
+
+or open the http://dynamic-url.strigo.io:9876/ in your browser (dynamic url is the one you can find in the lab interface)
+### Chapter 7 http :
+
+- Create a file proxy.conf.json in the root of the project :
+```json
+{
+  "/rest/*": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}
+```
+- Change the start script to : ```ng serve --host 0.0.0.0 --disableHostCheck true --proxy-config proxy.conf.json```
+- In service use the API_URL to `/rest/` (no need to add http://localhost:8080)
+
+### Télécharger un zip de son code
+
+```bash
+sudo apt install zip
+DIR_NAME="application"
+ZIP_NAME="formation"
+mkdir $ZIP_NAME
+rsync -av --progress ./$DIR_NAME ./$ZIP_NAME/ --exclude node_modules --exclude .git --exclude .angular
+zip -r $ZIP_NAME.zip $ZIP_NAME
+echo "http://${PUBLIC_DNS}:8080/$ZIP_NAME.zip"
+npx http-server -p 8080
+```
+

@@ -88,3 +88,7 @@ Le build et le déploiement sont réalisés par [CircleCI](https://circleci.com)
 Il n'y a, à priori, aucune raison d'éditer ce fichier à l'initialisation, mais une
 mise à jour de sensei peut requérir une mise à jour de ce fichier.
 Elle est alors décrite dans le changelog de sensei.
+
+## Remote
+
+See /Installation/strigo/README.md
