@@ -55,46 +55,46 @@ describe('BasketComponent', () => {
     });
   });
 
-  it('should add has-error class when name is invalid', async () => {
+  it('should add is-invalid class when name is invalid', async () => {
     component.customerForm.get('name')?.setValue('something');
     await waitValidation(fixture);
 
-    const nameFormGroup = fixture.nativeElement.querySelectorAll('.form-group')[0];
+    const nameFormGroup = fixture.nativeElement.querySelectorAll('.form-control')[0];
 
-    expect(nameFormGroup.classList.contains('has-error')).toBe(false);
+    expect(nameFormGroup.classList.contains('is-invalid')).toBe(false);
 
     component.customerForm.get('name')?.setValue('');
     await waitValidation(fixture);
 
-    expect(nameFormGroup.classList.contains('has-error')).toBe(true);
+    expect(nameFormGroup.classList.contains('is-invalid')).toBe(true);
   });
 
-  it('should add has-error class when address is invalid', async () => {
+  it('should add is-invalid class when address is invalid', async () => {
     component.customerForm.get('address')?.setValue('something');
     await waitValidation(fixture);
 
-    const addressFormGroup = fixture.nativeElement.querySelector('.form-group:nth-child(2)');
+    const addressFormGroup = fixture.nativeElement.querySelectorAll('.form-control')[1];
 
-    expect(addressFormGroup.classList.contains('has-error')).toBe(false);
+    expect(addressFormGroup.classList.contains('is-invalid')).toBe(false);
 
     component.customerForm.get('address')?.setValue('');
     await waitValidation(fixture);
 
-    expect(addressFormGroup.classList.contains('has-error')).toBe(true);
+    expect(addressFormGroup.classList.contains('is-invalid')).toBe(true);
   });
 
-  it('should add has-error class when creditCard is invalid', async () => {
+  it('should add is-invalid class when creditCard is invalid', async () => {
     component.customerForm.get('creditCard')?.setValue('something');
     await waitValidation(fixture);
 
-    const creditCardFormGroup = fixture.nativeElement.querySelectorAll('.form-group')[2];
+    const creditCardFormGroup = fixture.nativeElement.querySelectorAll('.form-control')[2];
 
-    expect(creditCardFormGroup.classList.contains('has-error')).toBe(true);
+    expect(creditCardFormGroup.classList.contains('is-invalid')).toBe(true);
 
     component.customerForm.get('creditCard')?.setValue('123-456');
     await waitValidation(fixture);
 
-    expect(creditCardFormGroup.classList.contains('has-error')).toBe(false);
+    expect(creditCardFormGroup.classList.contains('is-invalid')).toBe(false);
   });
 
   it('should add disable submit button when form is invalid', async () => {

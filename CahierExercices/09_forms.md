@@ -21,16 +21,19 @@ The form must:
   - Have an `input[text]` field to fill the client name that:
     - is bound to the `name` property of the `Customer` object
     - is required (by using the *required* attribute)
-    - has the `has-error` CSS class if invalid (see in following template where to place it)
+    - has the `is-invalid` CSS class if invalid (see in following template where to place it)
+    - has the `is-valid` CSS class if valid (place it on same level that is-invalid class)
   - Have a `textarea` field to fill the client address that:
     - is bound to the `address` property of the `Customer` object
     - is required (by using the *required* attribute)
-    - has the `has-error` CSS class if invalid
+    - has the `is-invalid` CSS class if invalid
+    - has the `is-valid` CSS class if valid
   - Have an `input[text]` field to fill the credit card information that:
     - is bound to the `creditCard` property of the `Customer` object
     - is required (by using the *required* attribute)
     - has the pattern attribute to `^[0-9]{3}-[0-9]{3}$` that validates for instance `123-456`
-    - has the `has-error` CSS class if invalid
+    - has the `is-invalid` CSS class if invalid
+    - has the `is-valid` CSS class if valid
     - displays `Invalid pattern. Example: 123-456` message if the pattern is not met
   - Have a `button[submit]` button to validate the form that:
     - must be disabled if the form is invalid
@@ -38,9 +41,9 @@ The form must:
 Use the following template to add a field in the form:
 
 ```html
-<div class="form-group has-error">
-    <label class="control-label" for="name">Name</label>
-    <input type="text" id="name" name="inputName" class="form-control">
+<div class="mb-2">
+    <label class="form-label" for="name">Name</label>
+    <input id="name" class="form-control is-invalid" name="name" type="text">
 </div>
 ```
 
@@ -84,7 +87,7 @@ To refactor previously created template driven form, you must:
 
 - Add a test to check that the basket display the title and the price of all the products.
 
-- Add a test to check that the `has-error` class is added on invalid fields. To make sure that form validation happen, use the following function and wait for it to complete:
+- Add a test to check that the `is-invalid` class is added on invalid fields. To make sure that form validation happen, use the following function and wait for it to complete:
 
 ```typescript
 const waitValidation = async fixture => {

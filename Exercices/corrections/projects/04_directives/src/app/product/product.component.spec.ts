@@ -43,14 +43,14 @@ describe('ProductComponent', () => {
   it('should not add "last" class if stock > 1', () => {
     component.data.stock = 2;
     fixture.detectChanges();
-    const thumbnail = fixture.nativeElement.querySelector('.thumbnail');
-    expect(Array.prototype.includes.call(thumbnail.classList, 'last')).toBe(false);
+    const card = fixture.nativeElement.querySelector('.card');
+    expect(Array.prototype.includes.call(card.classList, 'last')).toBe(false);
   });
 
   it('should add "last" class if stock == 1', () => {
     component.data.stock = 1;
     fixture.detectChanges();
-    const thumbnail = fixture.nativeElement.querySelector('.thumbnail');
-    expect(Array.prototype.includes.call(thumbnail.classList, 'last')).toBe(true);
+    const card = fixture.nativeElement.querySelector('.card');
+    expect(Array.prototype.includes.call(card.classList, 'last')).toBe(true);
   });
 });

@@ -1,7 +1,7 @@
 <app-menu></app-menu>
 
 <div class="container">
-  <header class="jumbotron hero-spacer">
+  <header class="p-5 mb-4 bg-light rounded-3">
     <h1>{{ title }}</h1>
     <p>Your basket amounts to {{ getTotal() }}€</p>
     <p><a class="btn btn-primary btn-large">See my basket</a></p>
@@ -17,7 +17,12 @@
 
   <div class="row text-center">
     <ng-container *ngFor="let product of products">
-      <app-product *ngIf="isAvailable(product)" [data]="product" (addToBasket)="updatePrice($event)"></app-product>
+      <app-product
+        class="col-md-3 col-sm-6"
+        *ngIf="isAvailable(product)"
+        [data]="product"
+        (addToBasket)="updatePrice($event)"
+      ></app-product>
     </ng-container>
   </div>
 
