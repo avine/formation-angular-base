@@ -5,10 +5,20 @@ orbs:
   training-resource: zenika-training/training-resource@volatile
   ztraining2strigo: zenika-training/ztraining2strigo@volatile
 
+parameters:
+  force-update:
+    description: Force an update on manually triggered pipelines
+    type: boolean
+    default: false
 workflows:
   version: 2
 
   build-and-deploy:
+    when:
+      not:
+        or:
+          - equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
+          - << pipeline.parameters.force-update >>
     jobs:
       - training-material/build
       - training-material/deploy:
@@ -22,14 +32,14 @@ workflows:
           context: training-deploy-zenika
 
   build-and-update:
-    triggers:
-      - schedule:
-          cron: "0 0 * * 6"
-          filters:
-            branches:
-              only:
-                - main
-                - master
+    when:
+      or:
+        - and:
+            - equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
+            - equal: [ "Weekly Deploy", << pipeline.schedule.name >> ]
+        - and:
+            - equal: [ api, << pipeline.trigger_source >> ]  # 'api' is the value for manual trigger through API or UI
+            - << pipeline.parameters.force-update >>
     jobs:
       - training-material/build
       - training-resource/publish:
@@ -49,8 +59,14 @@ workflows:
       - training-resource/publish:
           name: Publish ressources on Drive
           source: Exercices/ressources
-          file-id: 1ZLHSSp-ViU1NzDEZzdJ9wLw7507C8T0f
-          compression-mode: zip
+          file-id: 1m2GypdxNoTMUCiP2y8aUN3Ta1xFPkDQl
+          compression-mode: tar.xz
+          context: training-deploy-zenika
+      - training-resource/publish:
+          name: Publish corrections on Drive
+          source: Exercices/corrections
+          file-id: 1nFv9y9S_YaOQ-Cs4ewiwEhOFuZGx57cv
+          compression-mode: tar.xz
           context: training-deploy-zenika
       - ztraining2strigo/update:
           requires:
