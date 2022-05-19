@@ -229,7 +229,7 @@ import {ActivatedRoute, Params} from '@angular/router';
 @Component ({
   template: "<main> <router-outlet> </router-outlet> </main>"
 })
-export class ProductComponent implements OnInit {
+export class ContactComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -257,7 +257,7 @@ import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 @Component ({
   template: '<main> <router-outlet> </router-outlet> </main>'
 })
-export class ProductComponent {
+export class ContactComponent {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {

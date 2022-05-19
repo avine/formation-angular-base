@@ -14,6 +14,8 @@ We will now integrate the default router provided by Angular.
 
 ### Bonus
 
+- Display the list of products in the basket in the `basket` component.
+
 - Create a guard in order to avoid the access to the basket page if the `basket` is empty
 
 - Create a page in order see the detail of a product (/product/:id), the server has an endpoint to the information of an article via its id (http://localhost:8080/rest/products/:id) (You have to add an `id` property to your `Product` class)
