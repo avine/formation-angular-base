@@ -28,13 +28,35 @@
         "image_user": "ubuntu"
       },
       "init_scripts": [
+        {
+          "script": "ubuntu-20.04-apt-lock-fix.sh"
+        },
+        {
+          "script": "strigo.sh"
+        },
+        {
+          "script": "chrome.sh"
+        },
+        {
+          "script": "nvm.sh"
+        },
+        {
+          "script": "increase-watchers-limit.sh"
+        },
+        {
+          "script": "code-server.sh",
+          "env": {
+            "code_server_extensions": "ms-vscode.vscode-typescript-tslint-plugin eg2.vscode-npm-script coenraads.bracket-pair-colorizer-2",
+            "code_server_settings": "{\"telemetry.enableTelemetry\": false, \"files.exclude\": { \"**/.*\": true }}"
+          }
+        },
         "Installation/strigo/ubuntu.sh"
       ],
       "post_launch_scripts": [],
       "webview_links": [
         {
           "name": "vscode",
-          "url": "http://instance.autolab.strigo.io:9999"
+          "url": "http://instance.autolab.strigo.io:9999?folder=/home/ubuntu"
         },
         {
           "name": "angular web",
