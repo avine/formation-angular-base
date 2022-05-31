@@ -15,7 +15,23 @@
       "name": "Windows",
       "instance_type": "t3.xlarge",
       "image": "windows-server-2016",
-      "init_scripts": [],
+      "is_windows": true,
+      "init_scripts": [
+        {
+          "script": "strigo.ps1"
+        },
+        {
+          "script": "keyboard.ps1"
+        },
+        {
+          "script": "chocolatey.ps1"
+        },
+        {
+          "script": "vscode.ps1"
+        },
+        "Installation/strigo/win_get-logiciels.ps1",
+        "Installation/strigo/win_get-materials.ps1"
+      ],
       "post_launch_scripts": [],
       "webview_links": []
     },

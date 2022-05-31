@@ -68,6 +68,24 @@ workflows:
           file-id: 1nFv9y9S_YaOQ-Cs4ewiwEhOFuZGx57cv
           compression-mode: tar.xz
           context: training-deploy-zenika
+      - training-resource/publish:
+          name: Publish ressources on Drive
+          source: Exercices/ressources
+          file-id: 1ZLHSSp-ViU1NzDEZzdJ9wLw7507C8T0f
+          compression-mode: zip
+          context: training-deploy-zenika
+      - training-resource/publish:
+          name: Publish corrections on Drive
+          source: Exercices/corrections
+          file-id: 1LgElgvJoERvWlYN7AXy-o3iEcBQrgchK
+          compression-mode: zip
+          context: training-deploy-zenika
+      - training-resource/publish:
+          name: Publish workspaces on Drive
+          source: Exercices/workspaces
+          file-id: 1z454JPFe8W1DRfzqtPF6nEvzRHlAe9CE
+          compression-mode: zip
+          context: training-deploy-zenika
       - ztraining2strigo/update:
           requires:
             - training-material/build
