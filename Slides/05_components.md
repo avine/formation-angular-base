@@ -101,6 +101,34 @@ Notes :
 
 
 
+## Components
+
+- As stylesheet, template can be defined inline or inside another file, example with previous component :
+
+  `product.component.html`
+
+```html
+<article>
+  <span>Product name</span>
+</article>
+```
+
+  `product.component.ts`
+
+```typescript
+import {Component} from '@angular/core'
+
+@Component ({
+  selector: 'app-product',
+  templateUrl: './product.component.html'
+})
+export class ProductComponent {}
+```
+
+Notes : 
+
+
+
 ## Templates
 
 - Angular templates are compiled before being executed
@@ -163,7 +191,7 @@ Angular will transform interpolation syntax into property binding
 ## Properties
 
 - **Attention to the difference between property and attribute**
-- There are gaps between *DOM propertie* and *HTML attributes*
+- There are gaps between *DOM properties* and *HTML attributes*
 - Angular then proposes a system called `Attribute Binding`
 - The most common cases: `aria- *`, `colspan`, `rowspan`, `svg` for example
 - Using the syntax `[attr.attribute-name]="expression"`
@@ -176,7 +204,6 @@ Can not bind to 'colspan' since it is not a known native -->
 
 <td [attr.colspan]="dynamicColspan">help</td>
 ```
-
 
 Notes :
 
@@ -210,9 +237,9 @@ Notes :
 
 ## Input
 
-- Ability to overload the name of the property with
+- Ability to overload the name of the property with `@Input('discount')`
 
-  `@Input('discount')`
+  `** WARNING: overload property name isn't a best practice **`
 - Property names are case-sensitive
 
 ```typescript
@@ -309,9 +336,9 @@ Notes :
 
 ## Output
 
-- Ability to overload the name of the event
+- Ability to overload the name of the event `@Output('myOtherName')`
 
-  `@Output('myOtherName')`
+  `** WARNING: overload property name isn't a best practice **`
 - Event names are case-sensitive
 
 ```typescript

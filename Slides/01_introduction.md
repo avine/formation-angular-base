@@ -77,6 +77,7 @@ Notes :
 
 
 
+
 ## Angular - Positive Points
 
 - Modular application creation
@@ -142,13 +143,13 @@ Notes :
 
 
 
-## Architecture - Complete example
+## Architecture - Component example
 
-- Complete example using the different bricks of an Angular application
+- Example of component using native Angular service.
 
 ```typescript
-import {Component} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component ({
     selector: 'my-app',
