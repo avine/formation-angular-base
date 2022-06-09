@@ -43,7 +43,7 @@ Notes :
 
 - Compilation phase needed to generate *JavaScript*
 - Added new features to the language *JavaScript*
-- ES3/ES5/ES2015 support
+- Support all versions of JS (ES3 / ES5 / ES2015 / ...)
 - Some features have no impact on the generated JavaScript
 - Any program *JavaScript* is a *TypeScript program*
 
