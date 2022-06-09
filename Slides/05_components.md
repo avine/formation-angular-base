@@ -146,7 +146,7 @@ Notes :
 - Angular defines a precise syntax for these expressions
 - https://angular.io/guide/template-syntax#template-expressions
 - The syntax is the same that in JavaScript with some exceptions
-- All properties of the component are accessible directly
+- All public or protected properties of the component are accessible directly
 - An expression in template must not change the state of the application
 
 ```typescript
@@ -155,7 +155,7 @@ Notes :
   template: `<p> {{user?.firstName}} </p>`
 })
 export class ProductComponent {
-  user: User;
+  protected user: User;
 }
 ```
 
