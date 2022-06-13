@@ -32,7 +32,7 @@ Notes :
 - Total rewriting of the framework
 - First version *beta* announced in October 2014
 - Version *final* `2.0.0` official release in September 2016
-- Latest major release `13.0.0`
+- Latest major release `14.0.0`
 - Component Oriented programming
 - Framework designed to be more efficient and optimized for mobile
 - http://angular.io/
@@ -73,6 +73,7 @@ Notes :
 | 11.0.0 | Nov 2020 | TypeScript 4.0, Remove deprecated support for IE 9, 10, and IE mobile |
 | 12.0.0 | May 2021 | Stylish improvements, nullish coalescing, Webpack 5 support, TypeScript 4.2 |
 | 13.0.0 | Nov 2021 | Ivy only remove Old View Engine, Cli Cache, RxJS v7, TypeScript 4.4 |
+| 14.0.0 | June 2022 | Strictly Typed Reactive Forms, Standalone Components with Optional NgModule |
 
 
 
@@ -147,17 +148,16 @@ Notes :
 
 ```typescript
 import {Component} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
 @Component ({
     selector: 'my-app',
-    template: '<div *ngIf="condition">{{value | uppercase}}</div> '
+    template: '<div *ngIf="condition">{{value | uppercase}}</div>'
 })
 export class MyComponent {
   value: string;
   condition: boolean;
-  constructor(http: HttpClient) {
-  }
+  constructor(http: HttpClient) {}
 }
 ```
 
