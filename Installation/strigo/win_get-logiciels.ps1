@@ -6,3 +6,4 @@
 choco install --no-progress dotnetfx
 choco install --no-progress git
 choco install --no-progress nodejs-lts
+choco install --no-progress webstorm --version=2021.2.2

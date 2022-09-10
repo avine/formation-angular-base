@@ -14,7 +14,7 @@ You just need to put the content of the [`ubuntu.sh`](./ubuntu.sh) file in the P
 Corrections is in the directory `/home/ubuntu/.corrections`
 Ressources (index.html and server) is in the directory `/home/ubuntu/ressources`s
 
-- replace ng start script with ```ng serve --host 0.0.0.0 --disableHostCheck true```
+- replace ng start script with ```ng serve --host 0.0.0.0 --disable-host-check true```
 ### Tests :
   - replace in karma.conf.js
 ``browsers: ['Chrome'],`` with ``browsers: ['ChromeHeadless'],``
@@ -48,7 +48,7 @@ or open the http://dynamic-url.strigo.io:9876/ in your browser (dynamic url is t
   }
 }
 ```
-- Change the start script to : ```ng serve --host 0.0.0.0 --disableHostCheck true --proxy-config proxy.conf.json```
+- Change the start script to : ```ng serve --host 0.0.0.0 --disable-host-check true --proxy-config proxy.conf.json```
 - In service use the API_URL to `/rest/` (no need to add http://localhost:8080)
 
 ### Télécharger un zip de son code

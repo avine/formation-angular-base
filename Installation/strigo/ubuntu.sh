@@ -34,5 +34,5 @@ echo "-------enjoy the session--------"
 echo
 EOF
 
-# Force restart tmux session to reload terminal
-killall -9 /home/ubuntu/.strigo/tmux
+# Force restart session to reload terminal
+loginctl terminate-user ubuntu

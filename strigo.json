@@ -14,7 +14,7 @@
     {
       "name": "Windows",
       "instance_type": "t3.xlarge",
-      "image": "windows-server-2016",
+      "image": "windows-server-2019",
       "is_windows": true,
       "init_scripts": [
         {
@@ -66,13 +66,34 @@
             "code_server_settings": "{\"telemetry.enableTelemetry\": false, \"files.exclude\": { \"**/.*\": true }}"
           }
         },
-        "Installation/strigo/ubuntu.sh"
+        "Installation/strigo/ubuntu.sh",
+        {
+          "script": "tls-certificate.sh",
+          "env": {
+            "ZEROSSL_EAB_KID": "d3GmAeDzGx3v9UI3ZUgOlQ",
+            "ZEROSSL_EAB_HMAC_KEY": "Nn90w7WR3RUjsrdlB0IJnes94SWhcuAyvndk0YPczKw7dJDS4esHz42Ng4tM4kEDQzaBzccNLyKqc4WD9xb_EQ"
+          }
+        },
+        {
+          "script": "projector.sh",
+          "env": {
+            "projector_ide_name": "WebStorm 2021.2.2",
+            "projector_password": "angular",
+            "projector_port":"9998",
+            "projector_tls_key_path":"/etc/letsencrypt/live/labs.strigo.io/privkey.pem",
+            "projector_tls_cert_path":"/etc/letsencrypt/live/labs.strigo.io/fullchain.pem"
+          }
+        }
       ],
       "post_launch_scripts": [],
       "webview_links": [
         {
           "name": "vscode",
           "url": "http://instance.autolab.strigo.io:9999?folder=/home/ubuntu"
+        },
+        {
+          "name": "webstorm",
+          "url": "https://instance.autolab.strigo.io:9998?notSecureWarning=false&token=angular"
         },
         {
           "name": "angular web",
