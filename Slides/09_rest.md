@@ -152,7 +152,7 @@ import { Observable, Subscriber } from "rxjs";
 
 @Component ({...})
 export class AppComponent implements OnDestroy {
-  private subscriber: Subscriber;
+  private subscriber!: Subscriber;
 
   constructor() {
     const source = new Observable(observer => {
@@ -245,7 +245,7 @@ import {ContactService} from './contact.service';
   template: '{{displayedData | json}} '
 })
 export class AppComponent {
-  displayedData: Array<Contact>;
+  displayedData!: Array<Contact>;
 
   constructor(private contactService: ContactService) {
     contactService.getContacts().subscribe(contacts => {
@@ -348,7 +348,7 @@ import {mergeMap} from 'rxjs/operators';
   <ul><li *ngFor="let project of (projects$ | async)"> {{project.name}}</li></ul>`
 })
 export class AppComponent {
-  projects$: Observable<Project[]>
+  projects$!: Observable<Project[]>
   constructor(http: HttpClient) {
     this.projects$ = http.get<Person[]>('person.json')
       .pipe(

@@ -211,7 +211,7 @@ Notes :
 })
 export class ContactFormComponent implements OnInit {
   contact: Contact = {};
-  @ViewChild("nameInput") nameInput: FormControl;
+  @ViewChild("nameInput") nameInput!: FormControl;
 
   constructor(private contactService: ContactService) {}
   / *... */
@@ -260,7 +260,7 @@ Notes :
   ]
 })
 export class PatternValidator implements Validator {
-  @Input('mypattern') pattern: string;
+  @Input('mypattern') pattern!: string;
 
   validate(control: AbstractControl): {[key: string]: any} {
     if (control.value && control.value.match(new RegExp (this.pattern))) {

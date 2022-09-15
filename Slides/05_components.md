@@ -200,7 +200,7 @@ import {Product} from './model/Product'
   `
 })
 export class ProductComponent {
-    @Input() product: Product;
+    @Input() product!: Product;
 }
 ```
 
@@ -218,8 +218,8 @@ Notes :
 ```typescript
 @Component ({selector: 'product-detail',/*... */})
 export class ProductComponent {
-  @Input() product: Product;
-  @Input('percentDiscount') discount: number;
+  @Input() product!: Product;
+  @Input('percentDiscount') discount!: number;
 }
 ```
 
@@ -296,7 +296,7 @@ import {Product} from './model/Product'
   `
 })
 export class ProductComponent {
-    @Input() product: Product;
+    @Input() product!: Product;
     @Output() addToBasket = new EventEmitter<Product>();
 
     clickHandler () { this.addToBasket.emit(this.product); }
@@ -463,7 +463,7 @@ import {Component, OnInit} from '@angular/core';
 @Component ({selector: 'user',/*... */})
 export class UserComponent implements OnInit {
 
-  @Input() data: User;
+  @Input() data!: User;
   products: Product [];
 
   ngOnInit (): void {
