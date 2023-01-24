@@ -13,10 +13,10 @@ Angular est la toute nouvelle version du framework créé par Google. Cette nouv
 
 ## Objectifs
 
-- Découvrir les fonctionnalités du framework Angular
-- Savoir développer une nouvelle application Web
-- Savoir concevoir une application Angular en TypeScript
-- Connaître les mécanismes avancés du framework
+- Identifier les fonctionnalités du framework Angular
+- Développer une nouvelle application Web
+- Concevoir une application Angular en TypeScript
+- Déterminer les mécanismes avancés du framework
 
 
 ## Pédagogie
@@ -90,6 +90,3 @@ Développeur web
 11. Gestion des Formulaires
   - Directives
   - Validation
-
-13. Server-side rendering
-  - Angular Universal
