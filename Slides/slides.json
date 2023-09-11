@@ -3,12 +3,13 @@
   "01_introduction.md",
   "02_reminders.md",
   "03_start_angular.md",
-  "04_tests.md",
-  "05_components.md",
+  "04_components.md",
+  "05_tests.md",
   "06_directives.md",
-  "07_dependency_injection.md",
+  "07_services.md",
   "08_pipes.md",
-  "09_rest.md",
+  "09_http.md",
   "10_router.md",
-  "11_forms.md"
+  "11_forms.md",
+  "99_thankyou.md"
 ]

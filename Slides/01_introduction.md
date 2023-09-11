@@ -1,8 +1,6 @@
-# Presentation
+# Introduction
 
 <!-- .slide: class="page-title" -->
-
-Notes :
 
 
 
@@ -12,13 +10,13 @@ Notes :
 
 - **[Introduction](#/1)**
 - [Reminders](#/2)
-- [Start an Angular application](#/3)
-- [Tests](#/4)
-- [Template & Components](#/5)
+- [Getting started with Angular](#/3)
+- [Components](#/4)
+- [Unit testing](#/5)
 - [Directives](#/6)
-- [Dependency Injection](#/7)
+- [Services](#/7)
 - [Pipes](#/8)
-- [HTTP Service](#/9)
+- [Http](#/9)
 - [Router](#/10)
 - [Forms](#/11)
 
@@ -26,141 +24,171 @@ Notes :
 
 
 
-## Presentation
+## Angular - History
 
 - Framework created by *Google* and announced in 2014
-- Total rewriting of the framework
-- First version *beta* announced in October 2014
-- Version *final* `2.0.0` official release in September 2016
-- Latest major release `14.0.0`
-- Component Oriented programming
-- Framework designed to be more efficient and optimized for mobile
-- http://angular.io/
+- Total rewrite of *AngularJS*, although some concepts remain
+- First release of *Angular 2* in September 2016
+- Last major version `16` released in May 2023
+- Component oriented framework
+- Documentation: http://angular.io/
+
+<img src="resources/angular-logo.png" height="200">
 
 Notes :
 
 
 
-## Presentation - Versioning
+## Angular - Versions 1/2
 
-- Versioning from 2.0.0 to stand out from AngularJS (latest AngularJS being 1.8.2)
-- Respect from there of the *semver* standard
-- Major versions will no longer be rewrites like 1 to 2
-- Skipping version 3.0.0 after the project merge *Router* already in 3.x
-- Planning a major release every 6 months in the future
+- Major release every 6 months
 
-
-
-## Versions
-
-| Version | Date | Description |
-| :------ | :------: | :------------------------------------------------------------------ |
-| 2.0.0 | Sep 2016 | Final version |
-| 4.0.0 | Mar 2017 | New template compilation engine, Modularization of the animation system, Universal project, TypeScript 2.1+ |
-| 5.0.0 | Nov 2017 | Improvement of the build (AOT), HttpClient, TypeScript 2.3 |
-| 6.0.0 | May 2018 | CLI Integration, Angular Element, New experimental Ivy renderer |
-| 7.0.0 | Oct 2018 | CLI Prompts, Virtual Scroll, Drag and Drop, Angular Element |
-| 8.0.0 | May 2019 | Differential Loading, Dynamic Import, Builders API, Ivy, Bazel |
-| 9.0.0 | Feb 2020 | Ivy by default, ProvidedIn scope |
-
-
-
-## Versions
-
-| Version | Date | Description |
-| :------ | :------: | :------------------------------------------------------------------ |
-| 10.0.0 | June 2020 | Optional Stricter Settings, New Default Browser Configuration, TypeScript 3.9 |
-| 11.0.0 | Nov 2020 | TypeScript 4.0, Remove deprecated support for IE 9, 10, and IE mobile |
-| 12.0.0 | May 2021 | Stylish improvements, nullish coalescing, Webpack 5 support, TypeScript 4.2 |
-| 13.0.0 | Nov 2021 | Ivy only remove Old View Engine, Cli Cache, RxJS v7, TypeScript 4.4 |
-| 14.0.0 | June 2022 | Strictly Typed Reactive Forms, Standalone Components with Optional NgModule |
-
-
-
-
-## Angular - Positive Points
-
-- Modular application creation
-- Usable with several programming languages: `TypeScript` and `Dart` (separate project: https://webdev.dartlang.org/)
-- Only three types of elements will be used: `directive`, `pipe` and `services`
-- Based on standards: `Web Components`, `ES2015 +`, `Decorator`
-- New syntax used in templates
-- `Change Detection` API Performance
-- The `Universal` Project (server-side rendering)
-- Library to start the migration: `ngUpgrade`
-- Collaboration with Microsoft and Ember
+| Version | Date    | Description                                                                                                 |
+| ------- | ------- | ----------------------------------------------------------------------------------------------------------- |
+| 2.0.0   | 2016/09 | Final version                                                                                               |
+| 4.0.0   | 2017/03 | New template compilation engine, Modularization of the animation system, Universal project, TypeScript 2.1+ |
+| 5.0.0   | 2017/11 | Improvement of the build (AOT), HttpClient, TypeScript 2.3                                                  |
+| 6.0.0   | 2018/05 | CLI Integration, Angular Element, New experimental Ivy renderer                                             |
+| 7.0.0   | 2018/10 | CLI Prompts, Virtual Scroll, Drag and Drop, Angular Element                                                 |
+| 8.0.0   | 2019/05 | Differential Loading, Dynamic Import, Builders API, Ivy, Bazel                                              |
+| 9.0.0   | 2020/02 | Ivy by default, ProvidedIn scope                                                                            |
 
 Notes :
-- ES2015 and more ES6 because now there should be a specification every year.
-- The next iterations will have less content
 
 
 
-## Angular - Negative Points
+## Angular - Versions 2/2
 
-- New concepts to learn:
-  - `Zone`
-  - `Observable`
-  - ...
+| Version | Date    | Description                                                                                                        |
+| ------- | ------- | ------------------------------------------------------------------------------------------------------------------ |
+| 10.0.0  | 2020/06 | Optional Stricter Settings, New Default Browser Configuration, TypeScript 3.9                                      |
+| 11.0.0  | 2020/11 | TypeScript 4.0, Remove deprecated support for IE 9, 10, and IE mobile                                              |
+| 12.0.0  | 2021/05 | Stylish improvements, nullish coalescing, Webpack 5 support, TypeScript 4.2                                        |
+| 13.0.0  | 2021/11 | Ivy only remove Old View Engine, Cli Cache, RxJS v7, TypeScript 4.4                                                |
+| 14.0.0  | 2022/06 | Strictly Typed Reactive Forms, Standalone Components with Optional NgModule                                        |
+| 15.0.0  | 2022/12 | Standalone API stable, Directive Composition API, Image Directive, Functional Router Guards                        |
+| 16.0.0  | 2023/05 | Angular Signals, Bind router Information to Component Inputs, Required Component Inputs, Non-Destructive Hydration |
+
+Notes :
+
+
+
+## Angular - Pros
+
+👍 Maintained by Google
+
+👍 Component-based architecture
+
+👍 Use plain HTML templates
+
+👍 Two-way data binding
+
+👍 Efficient testing
+
+👍 Easy upgrade to new versions
+
+👍 Powerful CLI
+
+Notes :
+
+
+
+## Angular - Cons
+
+👎 Steep learning curve
+
+👎 Requires new concepts to learn (`Zone`, `Observable`, ...)
 
 Notes :
 - New concepts are essential to know (especially Observables).
 
 
 
-## Angular = A Platform
+## Angular - Framework
 
-- Angular is not just a simple framework
-- Mobile Integration
-- Tools to facilitate the development phase
+- Angular, unlike Vue or React, is a complete Framework
 
-![platform](resources/platform.png "platform")
+![Angular as a platform](resources/platform.png)
 
 Notes :
 
 
 
-## Architecture
+## Angular - Architecture 1/2
 
-![architecture](resources/overview2.png "architecture")
+![Angular architecture](resources/angular-architecture.png)
 
 Notes :
 
 
 
-## Architecture
+## Angular - Architecture 2/2
 
-- `Metadata`: Configuration to describe the functioning of a component
-- `Component`: TypeScript class that describes its behavior
-- `Template`: HTML code rendering using the component
-- `Modules`: grouping a set of features
-- `Injector`: Angular dependency injection system
-- `Directive`: component without template (*ngFor *, *ngIf*, ...)
-- `Service`: Business code implemented in classes that will be injected into the different components
+- Main part
+  - `Component`: TypeScript class that describes the component behavior
+  - `Template`: HTML code that describes the end-user view
+  - `Metadata`: Links the template and the component
+
+- Other parts
+  - `Directive`: Additional behavior that can be used in the component's template (`ngFor`, `ngIf`, ...)
+  - `Pipe`: Transform strings, currency amounts, dates, and other data for display
+  - `Service`: Business code implemented in classes that can be injected into the components, directives, other services, ...
+  - `Injector`: Angular dependency injection system
+  - `Module`: Grouping a set of features
 
 Notes :
 - The definitions of this slides are related to the previous slide chart
 
 
 
-## Architecture - Component example
+## Angular - Component example
 
-- Example of component using native Angular service.
+<div>
 
-```typescript
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+```ts
+import { Component, Input, Output } from '@angular/core';
 
-@Component ({
-    selector: 'my-app',
-    template: '<div *ngIf="condition">{{value | uppercase}}</div>'
+// Usage: <app-likes [numberOfLikes]="3" [like]="false" (likeChange)="likeChanged($event)" />
+@Component({
+  selector: 'app-likes',
+  template: `
+    <button (click)="toggleLike()">
+      {{ numberOfLikes + (like ? 1 : 0) }}
+      <i class="icon" [class.liked]="like"> ❤ </i>
+    </button>
+  `,
 })
-export class MyComponent {
-  value: string;
-  condition: boolean;
-  constructor(http: HttpClient) {}
+export class LikesComponent {
+  @Input() public numberOfLikes = 0;
+  @Input() public like = false;
+  @Output() public likeChange = new EventEmitter<boolean>();
+
+  protected toggleLike() {
+    this.like = !this.like;
+    this.likeChange.emit(this.like);
+  }
 }
 ```
 
+<div>
+
 Notes :
-- httpClient is here for injection example
+Describe this slide in a few words (everything will be detailed during the training).
+
+
+
+## Vanilla JS - Component example
+
+- Open the file `Exercises/resources/likes-component-vanilla-js/index.html` in Chrome
+- Understand the basics of:
+  - *DOM creation*
+  - *DOM manipulation*
+  - *Event handling*
+- Don't be afraid, it's not that hard! 😱
+- Appreciate the abstraction layer provided by the Angular framework 😍
+
+Notes :
+
+
+
+<!-- .slide: class="page-questions" -->

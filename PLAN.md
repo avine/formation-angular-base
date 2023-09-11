@@ -37,10 +37,9 @@ Développeur web
   - TypeScript
   - Outillage
 
-2. Présentation
-  - Points négatifs AngularJS
-  - Points positifs Angular
+2. Introduction
   - Points négatifs Angular
+  - Points positifs Angular
   - Architecture
 
 3. Démarrer une application Angular
@@ -48,18 +47,18 @@ Développeur web
   - @angular/cli
   - Webpack
 
-4. Tests
-  - Jasmine
-  - Karma
-
-5. Composants
+4. Composants
   - Syntaxe des templates
   - Propriétés
   - Evènements
   - Directives
   - Composants
 
-6. Composants Angular
+5. Tests unitaire
+  - Jasmine
+  - Karma
+
+6. Directives
   - ngStyle
   - ngClass
   - ngFor
@@ -67,7 +66,8 @@ Développeur web
   - ngSwitch
   - ngNonBindable
 
-7. Injection de Dépendances
+7. Services
+  - Injection de dépendances
   - Injecteurs
   - Providers
 
@@ -75,8 +75,8 @@ Développeur web
   - Création
   - Utilisation
 
-9. Communication avec une API REST
-  - Http
+9. Http
+  - Utilisation
   - Observables
 
 10. Router

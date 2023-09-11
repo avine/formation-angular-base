@@ -1,6 +1,6 @@
 {
-  "name": "Angular",
-  "id": "4Ny9GMv3NeQ6Gbemg",
+  "name": "Angular - Improved",
+  "id": "64d9e832411634e932577403",
   "description": [
     "Formation Angular"
   ],
@@ -29,77 +29,11 @@
         {
           "script": "vscode.ps1"
         },
-        "Installation/strigo/win_get-logiciels.ps1",
-        "Installation/strigo/win_get-materials.ps1"
+        "Installation/strigo/win-get-programs.ps1",
+        "Installation/strigo/win-get-materials.ps1"
       ],
       "post_launch_scripts": [],
       "webview_links": []
-    },
-    {
-      "name": "Ubuntu",
-      "instance_type": "t3.medium",
-      "image": {
-        "ec2_region": "eu-west-3",
-        "image_id": "ami-075e79cd8a12dc363",
-        "image_user": "ubuntu"
-      },
-      "init_scripts": [
-        {
-          "script": "ubuntu-20.04-apt-lock-fix.sh"
-        },
-        {
-          "script": "strigo.sh"
-        },
-        {
-          "script": "chrome.sh"
-        },
-        {
-          "script": "nvm.sh"
-        },
-        {
-          "script": "increase-watchers-limit.sh"
-        },
-        {
-          "script": "code-server.sh",
-          "env": {
-            "code_server_extensions": "ms-vscode.vscode-typescript-tslint-plugin eg2.vscode-npm-script coenraads.bracket-pair-colorizer-2",
-            "code_server_settings": "{\"telemetry.enableTelemetry\": false, \"files.exclude\": { \"**/.*\": true }}"
-          }
-        },
-        "Installation/strigo/ubuntu.sh",
-        {
-          "script": "tls-certificate.sh",
-          "env": {
-            "ZEROSSL_EAB_KID": "d3GmAeDzGx3v9UI3ZUgOlQ",
-            "ZEROSSL_EAB_HMAC_KEY": "Nn90w7WR3RUjsrdlB0IJnes94SWhcuAyvndk0YPczKw7dJDS4esHz42Ng4tM4kEDQzaBzccNLyKqc4WD9xb_EQ"
-          }
-        },
-        {
-          "script": "projector.sh",
-          "env": {
-            "projector_ide_name": "WebStorm 2021.2.2",
-            "projector_password": "angular",
-            "projector_port":"9998",
-            "projector_tls_key_path":"/etc/letsencrypt/live/labs.strigo.io/privkey.pem",
-            "projector_tls_cert_path":"/etc/letsencrypt/live/labs.strigo.io/fullchain.pem"
-          }
-        }
-      ],
-      "post_launch_scripts": [],
-      "webview_links": [
-        {
-          "name": "vscode",
-          "url": "http://instance.autolab.strigo.io:9999?folder=/home/ubuntu"
-        },
-        {
-          "name": "webstorm",
-          "url": "https://instance.autolab.strigo.io:9998?notSecureWarning=false&token=angular"
-        },
-        {
-          "name": "angular web",
-          "url": "http://instance.autolab.strigo.io:4200"
-        }
-      ]
     }
   ]
 }

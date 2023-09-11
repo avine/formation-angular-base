@@ -1,8 +1,6 @@
-# Start an Angular application
+# Getting started with Angular
 
 <!-- .slide: class="page-title" -->
-
-Notes :
 
 
 
@@ -12,13 +10,13 @@ Notes :
 
 - [Introduction](#/1)
 - [Reminders](#/2)
-- **[Start an Angular application](#/3)**
-- [Tests](#/4)
-- [Template & Components](#/5)
+- **[Getting started with Angular](#/3)**
+- [Components](#/4)
+- [Unit testing](#/5)
 - [Directives](#/6)
-- [Dependency Injection](#/7)
+- [Services](#/7)
 - [Pipes](#/8)
-- [HTTP Service](#/9)
+- [Http](#/9)
 - [Router](#/10)
 - [Forms](#/11)
 
@@ -26,299 +24,334 @@ Notes :
 
 
 
-## Start a new project
+## Hands on!
 
-- Dependency management via *npm*
-  - the different modules *Angular*: `@angular/common`, `@angular/core` ...
-  - Webpack: module management
-  - RxJS: reactive programming, strong dependence of Angular
+For this section, let's start with *Lab 1*, then return to the slides.
 
-```Shell
-npm init
-
-npm install @angular/common @angular/core rxjs ...
-```
-
-- Initializing and Configuring a Project *TypeScript*
-- Configuration of the module management system (*Webpack*)
-
-Notes :
-
-
-
-## Start a new project
-
-- Creating the main component
-  - define the selector needed to use the component
-  - write the template
-  - implement the class *TypeScript*
-
-```typescript
-import {Component} from '@angular/core'
-
-@Component ({
-    selector: 'my-app',
-    template: `<p> Hello </p>`
-})
-export class AppComponent {...}
-
-```
-
-Notes :
-
-
-
-## Start a new project
-
-- Creating an Angular module
-
-```typescript
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {AppComponent} from './app.component';
-
-@NgModule ({
-  declarations: [
-    AppComponent,
-  ]
-  imports: [
-    FormsModule
-  ]
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule {}
-
-platformBrowserDynamic().bootstrapModule(AppModule);
-
-```
-
-Notes :
-
-
-
-## Angular CLI
-
-- Since version 6 of angular, angular CLI now follows the angular versions.
-- Based on the project *Ember CLI*
-- Allows you to create the skeleton of an application
-- Automatically embeds the following technologies:
-  - TypeScript, Webpack, Karma, Protractor, CSS preprocessors ...
-- Project available on *npm*
-
-```Shell
-npm install -g @angular/cli
-```
-
-- Offers commands for the application lifecycle
-
-```Shell
-ng new Application
-ng build (--configuration=development/--configuration=production)
-ng serve
-```
-
-Notes :
-
-
-
-## Angular CLI
-
-- Many orders available
-  - `ng generate`: Generates code for different elements of Angular
-  - `ng generate component Product`:
-
-- Generate a new component with template, style and test
-  - `ng generate pipe UpperCase`: Generates a new pipe
-  - `ng generate service User`: Generates a new service
-  - `ng generate directive myNgIf`: Generates a new directive
-
-  - `ng test`: Run tests with Karma
-  - `ng e2e`: Run end-2-end tests with Protractor
-  - `ng lint`: Run TSLint
-
-Notes :
-
-
-
-## Webpack
-
-- Module Manager
-- Supports the different module systems (*CommonJS*, *AMD*, *ES2015*, ...)
-- Available on *npm*: `npm install -g webpack`
-- Build a graph of all the dependencies of your application
-- Configuration via a configuration file *JavaScript* (`webpack.config.js`)
-  - loaders: *ES2015*, *TypeScript*, *CSS*, ...
-  - preloaders: *JSHint*, ...
-  - plugins: *Uglify*, ...
-
-Notes :
-
-
-
-## Webpack - First example
-
-- First use of *Webpack*
-
-```typescript
-//app.js
-document.write('welcome to my app');
-console.log('app loaded');
-```
-
-- Running *Webpack* to generate a `bundle.js` file
-
-```Shell
-webpack ./app.js bundle.js
-```
-
-- Import your `bundle.js` file into your `index.html`
-
-```html
-<html>
-  <body>
-    <script src = "bundle.js"> </ script>
-  </body>
-</html>
-```
-
-- The addition of the script tag can also be realized with a plugin
-
-Notes :
-
-
-
-## Webpack
-
-- Version with a configuration file
-
-```typescript
-// ./webpack.config.js
-module.exports = {
-  entry: "./app.js",
-  output: {
-    filename: "bundle.js"
-  }
-}
-```
-
-- Webpack will read the configuration file automatically
-
-```Shell
-webpack
-```
-
-Notes :
-
-
-
-## Webpack - Configuration
-
-- Ability to generate multiple files
-- Using the placeholder `[name]`
-
-```typescript
-entry: {
-  app: 'src/app.ts',
-  vendor: 'src/vendor.ts'
-}
-output: {
-  filename: '[name].js'
-}
-```
-
-- Allows to use a `vendor.ts` file importing all used libraries
-
-```typescript
-// Angular
-import '@angular/core';
-import '@angular/common';
-import '@angular/http';
-import '@angular/router';
-// RxJS
-import 'rxjs';
-```
-
-Notes :
-
-
-
-
-## Webpack - Configuration
-
-- High performance automatic recompilation system
-  - Using the `webpack --watch` option
-  - Webpack keeps the graph of the modules in memory
-  - Regenerates the `bundle` for any change on any of the files
-- Web server available `webpack-dev-server`
-  - *Hot Reloading*
-  - *Watch* mode enabled
-  - Generation of the `bundle.js` file in memory
-
-Notes :
-
-
-
-### Webpack - Loaders
-
-- Allows Webpack to indicate how to take into account a file
-- Several *loaders* exist: *ECMAScript2015*, *TypeScript*, *CoffeeScript*, *Style*, ...
-
-```typescript
-entry: {
-  app: 'src/app.ts',
-  vendor: 'src/vendor.ts'
-}
-resolve: {
-  extensions: ['', '.js', '.ts']
-}
-module: {
-  loaders: [{
-      test: /\.ts$/,
-      loaders: ['ts']
-  }]
-}
-output: {
-  filename: '[name].js'
-}
-```
-
-Notes :
-
-
-
-### Webpack - Plugins
-
-- Add features to your build workflow
-
-```typescript
-entry: {
-  app: 'src/app.ts',
-  vendor: 'src/vendor.ts'
-}
-resolve: {
-  extensions: ['', '.js', '.ts']
-}
-module: {
-  loaders: [{
-      test: /\.ts$/,
-      loaders: ['ts']
-  }]
-}
-plugins: [
-  new webpack.optimize.MinChunkSizePlugin ({
-    minChunkSize: 10000
-  }),
-  new HtmlWebpackPlugin ({template: 'src/index.html'})
-]
-output: {
-  filename: '[name].js'
-}
-```
+You are about to:
+- Setting up your environment
+- Creating and running your Angular application
+- Taking control of your application
 
 Notes :
 
 
 
 <!-- .slide: class="page-tp1" -->
+
+
+
+## File structure
+
+Back to slides, let's see how the application folder is structured:
+
+- package.json
+- tsconfig.json
+- angular.json
+- src/app/*
+
+This section will give you the big picture of how Angular works!
+
+Notes :
+
+
+
+## File structure - package.json
+
+The presence of the `package.json` file makes this folder an NPM package powered by the Node.js runtime.
+
+- Scripts can be run using the shell command `npm run <scriptName>`
+
+```json
+{
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  }
+}
+```
+
+Notes :
+
+
+
+## File structure - package.json
+
+- Dependencies of the Angular framework are scoped under `@angular/*`
+
+```json
+{
+  "dependencies": {
+    "@angular/animations": "...",
+    "@angular/common": "...",
+    "@angular/compiler": "...",
+    "@angular/core": "...",
+    "@angular/forms": "...",
+    "@angular/platform-browser": "...",
+    "@angular/platform-browser-dynamic": "...",
+    "@angular/router": "..."
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "...",
+    "@angular/cli": "...",
+    "@angular/compiler-cli": "..."
+  }
+}
+```
+
+Notes :
+
+
+
+## File structure - package.json
+
+- Angular also depends on some third-party libraries
+
+```json
+{
+  "dependencies": {
+    "rxjs": "...",
+    "tslib": "...",
+    "zone.js": "..."
+  },
+  "devDependencies": {
+    "@types/jasmine": "...",
+    "jasmine-core": "...",
+
+    "karma": "...",
+    "karma-chrome-launcher": "...",
+    "karma-coverage": "...",
+    "karma-jasmine": "...",
+    "karma-jasmine-html-reporter": "...",
+
+    "typescript": "..."
+  }
+}
+```
+
+Notes :
+
+
+
+## File structure - tsconfig.json
+
+- TypeScript is a primary language for Angular application development
+
+- Browsers can't execute TypeScript directly
+
+- Typescript must be "transpiled" into JavaScript using the `tsc` compiler
+
+- The compiler requires some configuration described in the `tsconfig.json` file
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    ...
+  },
+  "angularCompilerOptions": {
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    ...
+  }
+}
+```
+
+Notes :
+
+
+
+## File structure - angular.json
+
+- Provides workspace-wide and project-specific configuration defaults
+- These are used for build and development tools provided by the *Angular CLI*
+
+```json
+{
+  "projects": {
+    "zenika-ng-website": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {},
+        "serve": {},
+        "test": {},
+        ...
+      }
+    }
+    ...
+  }
+}
+```
+
+Notes :
+
+
+
+## File structure - angular.json
+
+- The build `"options"` in the architect section are frequently used
+
+```json
+{
+  "projects": {
+    "zenika-ng-website": {
+      "architect": {
+        "build": {
+          "options": {
+             "outputPath": "dist/zenika-ng-website",
+              "index": "src/index.html",
+              "main": "src/main.ts",
+              "polyfills": ["zone.js"],
+              "tsConfig": "tsconfig.app.json",
+              "assets": ["src/favicon.ico", "src/assets"],
+              "styles": ["src/styles.css"],
+              "scripts": []
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+Notes :
+
+
+
+## File structure - src/app/*
+
+- `index.html`: final document of the Single Page Application (SPA)
+- `main.ts`: entry point of the app
+- `app/app.module.ts`: main module of the app
+- `app/app.component.*`: main component of the app (the one used to bootstrap the app)
+- `styles.css`: global styles of the app
+- `assets/*`: resources of the app (images, pdf, ...)
+
+When running the `ng build` shell command all these files are compiled and combined to produce the final application bundle ready for production
+(mainly `HTML`, `CSS` and `JavaScript` files).
+
+```shell
+ng build
+```
+
+Under the hood, the command uses a bundler called `Webpack`.
+
+Notes :
+
+
+
+## Webpack
+
+- Static module bundler
+- Supports the different module systems (*CommonJS*, *AMD*, *ES2015*, ...)
+- Available on NPM: `npm install -g webpack`
+- Build a graph of all the dependencies of your application
+- Uses a configuration file: `webpack.config.js`
+  - `Entry`: indicates which module webpack should use to begin building out its internal dependency graph
+  - `Output`: tells webpack where to emit the bundles it creates
+  - `Loaders`: allow webpack to process any type of file like '.css', '.ts' (out of the box, only '.js' and '.json' are supported)
+  - `Plugins`: perform tasks on multiple files at once like bundle optimization (whereas loaders operate at file level)
+
+Notes :
+
+
+
+## Webpack - Configuration example
+
+<div>
+
+```js
+// webpack.config.js
+module.exports = {
+  entry: './src/index.ts',
+
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+
+  module: {
+    rules: [{ test: /\.tsx?$/, use: 'ts-loader', exclude: /node_modules/ }],
+  },
+
+  plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
+};
+```
+
+</div>
+
+Notes :
+
+
+
+## Angular CLI
+
+The Angular CLI is a command-line interface tool that you use to:
+- Initialize
+- Develop
+- Scaffold
+- Maintain applications
+
+It is usually installed globally on your system:
+
+```shell
+npm install -g @angular/cli
+```
+
+Here are some of the commands available:
+
+```shell
+ng new my-app-name
+ng serve
+ng test
+ng build
+```
+
+Notes :
+
+
+
+## Angular CLI - Generate
+
+The `generate` (or simply `g`) command is often used to quickly scaffold the different parts of an Angular application.
+
+```shell
+# Generate components
+ng generate component menu
+ng g c product
+
+# Generate services
+ng generate service catalog
+ng g s basket
+
+# Generate pipes
+ng generate pipe sort-array
+
+# And many more...
+```
+
+You can easily get help for each type of CLI command.
+
+```shell
+ng --help
+ng generate --help
+ng generate component --help
+```
+
+Notes :
+
+
+
+<!-- .slide: class="page-questions" -->

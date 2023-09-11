@@ -1,0 +1,40 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 2rem;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1 {
+  margin: 0 0 2rem 0;
+  font-weight: 500;
+}
+
+button {
+  box-shadow:
+    0 0.125rem 0.25rem rgba(0 0 0 / 0.15),
+    0 -0.125rem 0.25rem rgba(0 0 0 / 0.1) inset,
+    0 0.125rem 0.25rem rgba(255 255 255 / 0.75) inset;
+  border-radius: 99px;
+  border: 1px solid #abbfdd;
+  background-color: #cfe2ff;
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.icon {
+  transition: color ease 0.1s;
+
+  &.liked {
+    color: #dc3545;
+  }
+}

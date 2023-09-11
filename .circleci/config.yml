@@ -10,6 +10,7 @@ parameters:
     description: Force an update on manually triggered pipelines
     type: boolean
     default: false
+
 workflows:
   version: 2
 
@@ -17,7 +18,7 @@ workflows:
     when:
       not:
         or:
-          - equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
+          - equal: [scheduled_pipeline, << pipeline.trigger_source >>]
           - << pipeline.parameters.force-update >>
     jobs:
       - training-material/build
@@ -35,58 +36,36 @@ workflows:
     when:
       or:
         - and:
-            - equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
-            - equal: [ "Weekly Deploy", << pipeline.schedule.name >> ]
+            - equal: [scheduled_pipeline, << pipeline.trigger_source >>]
+            - equal: ["Weekly Deploy", << pipeline.schedule.name >>]
         - and:
-            - equal: [ api, << pipeline.trigger_source >> ]  # 'api' is the value for manual trigger through API or UI
+            - equal: [api, << pipeline.trigger_source >>] # 'api' is the value for manual trigger through API or UI
             - << pipeline.parameters.force-update >>
     jobs:
       - training-material/build
+      - ztraining2strigo/update:
+          requires:
+            - training-material/build
+          context: strigo-api
       - training-resource/publish:
           name: Publish Slides on Drive
           requires:
             - training-material/build
           source: dist/pdf/Zenika-formation-angular-Slides.pdf
-          file-id: 1RJXMvZPpxkC2RQUUelcaXfsHmnj6xgCF
+          file-id: 1CyiRK3RNVXJ0MrmWFpm9CgVrCTI9OO1x
+          compression-mode: zip
           context: training-deploy-zenika
       - training-resource/publish:
           name: Publish Workbook on Drive
           requires:
             - training-material/build
           source: dist/pdf/Zenika-formation-angular-Workbook.pdf
-          file-id: 1rYEB1ZYKbVedYAyHTEv_c5h9icSr1bPy
-          context: training-deploy-zenika
-      - training-resource/publish:
-          name: Publish ressources on Drive
-          source: Exercices/ressources
-          file-id: 1m2GypdxNoTMUCiP2y8aUN3Ta1xFPkDQl
-          compression-mode: tar.xz
-          context: training-deploy-zenika
-      - training-resource/publish:
-          name: Publish corrections on Drive
-          source: Exercices/corrections
-          file-id: 1nFv9y9S_YaOQ-Cs4ewiwEhOFuZGx57cv
-          compression-mode: tar.xz
-          context: training-deploy-zenika
-      - training-resource/publish:
-          name: Publish ressources on Drive
-          source: Exercices/ressources
-          file-id: 1ZLHSSp-ViU1NzDEZzdJ9wLw7507C8T0f
+          file-id: 1_ez91dUN-px9XP5EuD5eP2Z_onZN6eQL
           compression-mode: zip
           context: training-deploy-zenika
       - training-resource/publish:
-          name: Publish corrections on Drive
-          source: Exercices/corrections
-          file-id: 1LgElgvJoERvWlYN7AXy-o3iEcBQrgchK
+          name: Publish Exercises on format zip on Drive
+          source: Exercises
+          file-id: 14LPgxgG4Nyy38w74R4URNtUlqUt07Qor
           compression-mode: zip
           context: training-deploy-zenika
-      - training-resource/publish:
-          name: Publish workspaces on Drive
-          source: Exercices/workspaces
-          file-id: 1z454JPFe8W1DRfzqtPF6nEvzRHlAe9CE
-          compression-mode: zip
-          context: training-deploy-zenika
-      - ztraining2strigo/update:
-          requires:
-            - training-material/build
-          context: strigo-api

@@ -2,8 +2,6 @@
 
 <!-- .slide: class="page-title" -->
 
-Notes :
-
 
 
 ## Summary
@@ -12,13 +10,13 @@ Notes :
 
 - [Introduction](#/1)
 - **[Reminders](#/2)**
-- [Start an Angular application](#/3)
-- [Tests](#/4)
-- [Template & Components](#/5)
+- [Getting started with Angular](#/3)
+- [Components](#/4)
+- [Unit testing](#/5)
 - [Directives](#/6)
-- [Dependency Injection](#/7)
+- [Services](#/7)
 - [Pipes](#/8)
-- [HTTP Service](#/9)
+- [Http](#/9)
 - [Router](#/10)
 - [Forms](#/11)
 
@@ -26,26 +24,78 @@ Notes :
 
 
 
-## Introduction
+## HTML
 
-<img src="resources/typescript-logo.png" height="300">
+- Basic HTML document is made of:
+  - *Tags*
+  - *Attributes*
 
-- Language created by *Anders Hejlsberg* in 2012
-- Open-source project maintained by *Microsoft* (Current version *4.7*)
-- Influenced by *JavaScript*, *Java* and *C#*
-- Alternatives: CoffeeScript, Dart, Haxe or Flow
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello world!</title>
+  </head>
+
+  <body>
+    <h1>Hello world!</h1> <!-- Tag with content -->
+
+    <img src="/path/to/image.jpg" alt="Awesome image" /> <!-- Self closing tag -->
+  </body>
+</html>
+```
 
 Notes :
 
 
 
-## Introduction
+## CSS
 
-- Compilation phase needed to generate *JavaScript*
-- Added new features to the language *JavaScript*
-- Support all versions of JS (ES3 / ES5 / ES2015 / ...)
-- Some features have no impact on the generated JavaScript
-- Any program *JavaScript* is a *TypeScript program*
+- Basic CSS file is made of:
+  - *Selectors*
+  - *Rules* (any number of *property*/*value* pairs)
+
+- The following HTML fragment (`*.html`)...
+
+```html
+<my-tag class="my-class" my-attr>My content</my-tag>
+```
+
+- ...can be styled using the following (`*.css`)
+
+```css
+my-tag { border: 1px solid green; } /* Tag selector */
+
+.my-class { background-color: lightgreen; } /* Class selector */
+
+[my-attr] { color: yellow; } /* Attribute selector */
+```
+
+Notes :
+
+
+
+## Typescript
+
+- Language created by *Anders Hejlsberg* in 2012
+- Open-source project maintained by *Microsoft*
+- Influenced by *Java* and *C#*
+
+<br />
+<img src="resources/typescript-logo.webp" height="250">
+
+Notes :
+
+
+
+## Typescript
+
+- TypeScript is a superset of *JavaScript*
+- Compiles to *JavaScript*
+- Supports all versions of JavaScript
+- Almost every *JavaScript* program is a *TypeScript* program
 
 <img src="resources/typescript-javascript.png" height="300">
 
@@ -55,212 +105,122 @@ Notes :
 
 ## TypeScript - Features
 
-- Features *ES2015 +*
-- Typing
-- Generic
-- Classes/Interfaces/Legacy
-- Modular development
-- Definition files
-- Mixins
+- Types
+- Interfaces
+- Generics
 - Decorators
+- Definitions files
+- ...
 
 Notes :
 
 
 
-## Primitive types
+## Typescript - Basic types
 
-- To declare a variable:
+Two ways to define variables: `const` and `let` (don't use `var`)
 
-```typescript
-var variableName: string = value;
-let variableName2: number = value;
-const variableName3: boolean = value;
+```ts
+const alwaysTrue: boolean = true;
+let age: number = 32;
+age = 33;
 ```
 
-- boolean: `const isDone: boolean = false;`
-- number: `const height: number = 6;`
-- string: `const name: string = 'Carl';`
-- array: `const names: string [] = ['Carl', 'Laurent'];`
-- any: `const notSure: any = 4;`
+There are several places where type inference is used to provide type information when there is no explicit type annotation:
 
-Notes :
-
-
-
-## Features
-
-- As in JavaScript: named, anonymous and arrow functions
-- Added typing of arguments and return value
-
-```typescript
-// named function
-function namedFunction(arg1: number, arg2: string): void {}
-
-// Anonymous function
-const variableAnonymousFunction = function(arg: boolean): void {};
-
-// Arrow function
-const variableArrowFunction = (arg: any): void => {};
+```ts
+const alwaysTrue = true; // is still of type boolean
+let age = 32;            // is still of type number
+age = 33;
 ```
 
-- Can return a value thanks to the keyword `return`
-- Possibility to have optional parameters or with a default value
+Some other types:
 
-```typescript
-function getFullName(name: string = 'Dupont', forename?: string) {}
+```ts
+const name: string = 'Carl';
+const names1: string[] = ['Carl', 'Laurent'];
+const names2: Array<string> = ['Carl', 'Laurent'];
+const notSure: any = 4; // <-- should be avoided
 ```
 
 Notes :
 
 
 
-## Arrays
+## Typescript - Functions
 
-- Allows to manipulate an array of objects
+- As in JavaScript: *named*, *anonymous* and *arrow* functions
+- TypeScript allows typing for arguments and return value
 
-- 2 syntaxes to define the arrays: literal or by the constructor
+```ts
+function sayHello(message: string): void {}
 
-```typescript
-// Syntax Literal
-const list: number [] = [1, 2, 3];
+const sayHello = function(message: string): void {};
 
-// Syntax using the `Array` constructor
-const list: Array<number> = new Array<number>(1, 2, 3);
+const sayHello = (message: string): void => {};
 ```
 
-- These 2 syntaxes will lead to the same JavaScript code
+- Define default value parameter with `=`
+- Define optional parameter with `?`
+- Use `return` keyword to return a value
 
-Notes :
-
-
-
-## Enum
-
-- Ability to define a type to explain a set of numeric data
-
-```typescript
-enum Music {Rock, Jazz, Blues};
-
-const c: Music = Music.Jazz;
-```
-
-- Numeric value defaults to `0`
-- Ability to overload numerical values
-
-```typescript
-enum Music {Rock = 2, Jazz = 4, Blues = 8};
-
-const c: Music = Music.Jazz;
-```
-
-- Retrieving the string associated with the numeric value
-
-```typescript
-const style: string = Music[4]; //Jazz
+```ts
+function getFullName(lastName: string = 'Dupont', firstName?: string) {
+  return firstName ? `${firstName} ${lastName}` : lastName;
+}
 ```
 
 Notes :
+Default value parameter have their value replaced only when equals to undefined (null is a valid value)
 
 
 
-## Classes
+## Typescript - Classes
 
-- System of *classes *and* interfaces* similar to object-oriented programming
-- The generated javascript code will use the `prototype` system
-- Ability to define a constructor, methods and properties
-- Properties/methods accessible via the `this` object (always explicit)
+- *Classes* and *Interfaces* are similar to those in Object Oriented Programming
+- Classes are composed of one constructor, properties and methods
+- Explicitly defining a constructor is optional
+- Properties and methods are accessible with `this` operator
 
-```typescript
+```ts
 class Person {
-  firstName: string;
-  lastName: string;
+  name = '';
 
-  constructor() {}
+  constructor() {} // this is optional
 
-  sayHello() {
-    console.log(`Hello, I'm ${this.firstName} ${this.lastName}`);
-  }
+  sayHello() {
+    console.log(`Hello, I'm ${this.name}!`);
+  }
 }
 
-const person = new Person ();
+const person = new Person();
+person.name = 'Carl';
+person.sayHello(); // --> Hello, I'm Carl!
 ```
 
 Notes :
 
 
 
-## Classes
+## Typescript - Classes
 
-- Three scopes available: `public`, `private` and `protected`
-- Use default `public` scope
-- Scope `protected` appeared in TypeScript 1.3
-- Possibility of defining static properties and methods: `static`
-- Ability to set read-only properties: `readonly`
-- Shortcuts to declare and initialize properties
+- 3 scopes: `public`, `protected` and `private`
+  - `public` is the default scope
+  - `private` scope alternative: using standard JavaScript private field (using hash `#` prefix)
 
-```typescript
-class Person {
-  constructor(public firstName: string) {}
-}
-// ===
-class Person {
-  firstName: string;
-  constructor(firstName: string) {
-    this.firstName = firstName;
-  }
-}
-```
+```ts
+class Demo {
+  prop1 = 1;
+  protected prop2 = true;
+  private prop3 = 'Secret';
 
-Notes : 
-readonly does not mean immutable
+  #prop4 = 'Big secret'; // <-- standard JavaScript private field
 
+  method1() {}
+  protected method1() {}
+  private method3() {}
 
-
-## Classes - Accessors
-
-- Ability to define accessors to access a property
-- Use the `get` and `set` keywords
-- Watch out for spacing after keywords
-- Need to generate ES5 compatible JavaScript code
-- The generated JavaScript code will use `Object.defineProperty`
-
-```typescript
-class Person {
-   private _secret: string;
-   get secret (): string {
-      return this._secret.toLowerCase();
-   }
-   set secret (value: string) {
-      this._secret = value;
-   }
-}
-
-const person = new Person ();
-person.secret = 'Test';
-console.log(person.secret); // => 'test'
-```
-
-Notes :
-
-
-
-## Classes - Inheritance
-
-- Inheritance system between classes via the keyword `extends`
-- If undefined constructor, execute that of the parent class
-- Ability to call the implementation of the parent class via `super`
-- Access the properties of the parent class if `public` or `protected`
-
-```typescript
-class Person {
-   constructor() {}
-   speak() {}
- }
-
-class Child extends Person {
- constructor() {super ()}
- speak() {super.speak(); }
+  #method4() {} // <-- standard JavaScript private field
 }
 ```
 
@@ -268,88 +228,109 @@ Notes :
 
 
 
-## Interfaces
+## Typescript - Classes
 
-- Used by the compiler to check the consistency of different objects
-- No impact on the generated JavaScript
-- Inheritance system between interfaces
-- Several possible use cases
-  - Checking the parameters of a function
-  - Checking the signature of a function
-  - Checking the implementation of a class
+- TypeScript provides a shortcut to link constructor arguments to class properties:
 
-```typescript
-// The interfaces for typing easily
-interface Config {
-  someProperty: string
+```ts
+class Person {
+  constructor(public firstName: string) {}
 }
+```
 
-const config: Config = {
-  someProperty: 'myValue'
-};
+Which is equivalent to:
+
+```ts
+class Person {
+  public firstName: string;
+
+  constructor(firstName: string) {
+    this.firstName = firstName;
+  }
+}
 ```
 
 Notes :
 
 
 
-## Interfaces
+## Typescript - Classes
 
-- Best known use: class implementation
-- Checking the implementation of a class
-- Compilation error as long as the class does not respect the contract defined by the interface
+- Possibility to have "getter" and "setter":
 
-```typescript
+```ts
+class Person {
+  constructor(public firstName: string, public lastName: string) {}
+
+  get fullName(): string {
+    return `${this.firstName} ${this.lastName}`;
+  }
+
+  set fullName(value: string): void {
+    const [firstName, lastName] = value.split(' ');
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+}
+
+const person = new Person('John', 'Doe');
+console.log(person.fullName); // --> John Doe
+
+person.fullName = 'Jean Dupont';
+console.log(person.firstName); // --> Jean
+console.log(person.lastName); // --> Dupont
+```
+
+Notes :
+
+
+
+## Typescript - Interfaces
+
+- Can be used to define object shape:
+
+```ts
+interface Person { name: string; age: number; }
+
+const person: Person = { name: 'John Doe', age: 33 };
+```
+
+- Can be used on classes with the `implements` keyword:
+
+```ts
 interface Musician {
-  play(): void;
+  play(): void;
 }
-
-class TrumpetPlay implements Musician {
-  play(): void {
-    console.log('Play!');
-  }
+class TrumpetPlayer implements Musician {
+  play(): void {
+    console.log('I play trumpet!');
+  }
 }
 ```
+
+- Compiler throw an error while the interface contract is not respected
+- Have no impact on generated JavaScript
 
 Notes :
 
 
 
-## Generics
+## Typescript - Generics
 
-- Functionality to create reusable components
-- Inspiration of generics available in Java or C #
-- Need to define one (or more) type parameter(s) on function/variable/class/generic interface
+- Similar to generics in *Java* or *C#*
+- Generic functions/variables/classes/interfaces need typing at instantiation
 
-```typescript
-function identity<T>(arg: T): T {
-    return arg;
+```ts
+class Log<T> {
+  log(value: T) {
+    console.log(value);
+  }
 }
 
-identity(5).toFixed(2); // OK
+const numericLog = new Log<number>();
 
-identity('hello').toFixed(2); // Incorrect
-```
+numericLog.log(5); // Correct
 
-Notes :
-
-
-
-## Generics
-
-- Ability to define a generic class
-- Defining a list of type parameters globally
-
-```typescript
-class Log<T>{
-    log(value: T) {
-        console.log(value);
-    }
-}
-
-const numericLog = new Log <number> ();
-
-numericLog.log(5); // OK
 numericLog.log('hello'); // Incorrect
 ```
 
@@ -357,119 +338,159 @@ Notes :
 
 
 
+## NPM - Node Package Manager
 
-## npm
+- Included in Node.js
+- The main way to share modules in JavaScript
+- The most popular package manager of all time!
 
-- Node.js includes a package management system: *npm*
-- There is practically since the creation of Node.js
-- It is an important channel for the diffusion of the modules
+<br />
 
-![npm](resources/npm-logo.png "npm")
-
-Notes :
-
-
-
-## npm install
-
-- `npm` is a command line tool (written with Node.js)
-- It allows to download the modules available on [npmjs.org](npmjs.org)
-- The most common orders:
-  - `install`: download the module and place it in the current directory in `./node_modules`
-  - `install -g`: global installation, the module is placed in the installation directory of Node.js
-
-    Make commands accessible in the console
-
-**Attention**: Does not make a bookstore accessible for all projects
-  - `update`: update an already installed module
-  - `remove`: delete the project module
+<img src="resources/npm-logo.png" height="200">
 
 Notes :
 
 
 
-## npm init
+## NPM - Commands
 
-- `npm` also manages the project description
-- A Node.js module is one (or more) script (s)
-- The configuration file is named `package.json`
-- `npm` also allows to manipulate the current module
-  - `init`: initialize a `package.json` file
-  - `docs`: generates the documentation for the current module
-  - `install <moduleName>` or `install <moduleName> --save-dev`:
+- Set up a folder as an npm package by creating a `package.json` file
 
-    Like install but automatically reference the dependency in `package.json`
+```shell
+npm init
+```
+
+- Download a module and install it in `./node_modules` directory
+
+```shell
+npm install <packageName>
+```
+
+- Install a module globally on your system (mostly used to install CLI tools)
+
+```shell
+npm install -g <packageName>
+```
+
+- Update/delete a package
+
+```shell
+npm update <packageName>
+npm remove <packageName>
+```
+
+Notes :
+
+
+
+## NPM - package.json
+
+- npm generate a `package.json` file which describes the project:
+  - `name`: package name
+  - `version`: package version
+  - `scripts`: commands that can be run from the command line
+  - Dependencies: `dependencies`, `devDependencies`, `peerDependencies`
+  - ...
+
+```json
+{
+  "name": "<packageName",
+  "version": "1.2.3",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
+}
+```
 
 Notes :
 
 
 
-## package.json
+## NPM - package.json | Scripts
 
-- `npm` is based on a project descriptor file
-- `package.json` precisely describes the module
-- There are different types of information
-  - Identification
-    - `name`: the identifier of the module (unique, url safe)
-    - `version`: must respect [node-semver](https://github.com/isaacs/node-semver)
-  - Description: `description`, `authors`, ...
-  - Dependencies: `dependencies`, `devDependencies`, ...
-  - Lifecycle scripts: `start`, `test`, ...
+- Scripts are defined in the `"scripts"` section of the file:
+
+```json
+{
+  "scripts": {
+    "start": "<shellCommand>",
+    "test": "<shellCommand>",
+    "my-awesome-script": "<shellCommand>",
+  }
+}
+```
+
+- And can be run with the command `npm run <scriptName>`:
+
+```shell
+npm run start             # alias: `npm start`
+npm run test              # alias: `npm test`
+npm run my-awesome-script
+```
+
+Notes :
+
+
+
+## NPM - package.json | Dependencies
+
+- `dependencies`:
+  - Required to run your project
+
+- `devDependencies`:
+  - Required to develop your project
+  - Installed with the option: `npm install --save-dev <packageName>`
+
+- `peerDependencies`: 
+  - Needed for some modules to work but not installed with `npm install`
+  - Typically used for libraries
 
 Notes :
 
 
 
-## package.json: dependencies
+## NPM - package.json | Versioning
 
-- `dependencies`
+`package.json` versions must follow the [semver](https://github.com/isaacs/node-semver) (semantic versioning) standard
 
-  The list of dependencies needed for execution
+```json
+{
+  "name": "<packageName>",
+  "version": "<major>.<minor>.<patch>"
+}
+```
 
-- `devDependencies`
+- `major`: Might introduce breaking changes
+- `minor`: Can add new features but in a retro-compatible way
+- `patch`: Bug fixes
 
-  Dependencies for developments (build, test ...)
+Example: 
 
-- `peerDependencies`
-
-  The dependencies necessary for the proper functioning of the module, but not installed during an `npm install` (since npm3)
-
-Notes :
-- files: list of files except .npmignore
-- bundledDependencies or bundleDependencies
-
-
-
-## package.json: versions
-
-- The modules must follow the standard [semver](https://www.npmjs.org/doc/misc/semver.html)
-  - Structure: `MAJOR.MINOR.PATCH`
-  - `MAJOR`: Incompatible API Changes
-  - `MINOR`: Added retro-compatible feature
-  - `PATCH`: Bug fixes
-- To specify the version of a dependency
-  - `version`: must be exactly this version
-  - `~`, `^`: approximately, compatible
-  - `major.minor.x`:` x` acts as a wildcard
-  - [And many others](https://docs.npmjs.com/cli/v6/using-npm/semver#ranges): `>`, `<`, `> =`, `min-max` .. .
+```json
+{
+  "name": "my-awesome-package",
+  "version": "1.2.3"
+}
+```
 
 Notes :
-- \ *: any version (dangerous)
+
+
+
+## NPM - package.json | Versioning
+
+Allowing a range of versions when installing a package
+
+- `1.2.3`: Install the exact version
+- `~1.2.3`: Install any patch like `1.2.4`, `1.2.5`, ..., `1.2.9`
+- `^1.2.3`: Install any minor version like `1.2.3`, `1.3.0`, ..., `1.9.0`
+- `1.2.x`: `x` acts as a wildcard (equivalent to `~1.2.0`)
+
+There are [many other ways](https://docs.npmjs.com/about-semantic-versioning) to set the version range using `<`, `>`, `>=`, `min-max` ...
+
+Notes :
 - It is possible to give a URL, a path or a repository git in version
-- you can conjugate `and` or `or` to define complex version ranges
 
 
 
-## Publish a module npm
-
-- It is of course advisable to follow all good practices
-  - Use the recommended numbering
-  - Have unit tests
-  - Have a minimum of information in the `package.json`
-- There is no validation authority
-- You must find a name available
-- Next only requires the `npm` command
-  - `npm adduser`: register his account
-  - `npm publish`: upload a module on [npmjs.org](https://www.npmjs.org/)
-
-Notes :
+<!-- .slide: class="page-questions" -->

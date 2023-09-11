@@ -1,0 +1,31 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+
+import { BasketService } from '../basket/basket.service';
+import { BasketStubService } from '../basket/basket.service.stub';
+import { ApiService } from '../shared/services/api.service';
+import { ApiStubService } from '../shared/services/api.service.stub';
+import { CheckoutFormComponent } from './checkout-form.component';
+
+describe('CheckoutFormComponent', () => {
+  let component: CheckoutFormComponent;
+  let fixture: ComponentFixture<CheckoutFormComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [FormsModule],
+      providers: [
+        { provide: ApiService, useClass: ApiStubService },
+        { provide: BasketService, useClass: BasketStubService },
+      ],
+      declarations: [CheckoutFormComponent],
+    });
+    fixture = TestBed.createComponent(CheckoutFormComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

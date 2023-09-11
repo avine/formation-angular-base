@@ -2,22 +2,22 @@
 
 classes:
   - exercises:
-      - title: Start Angular
-        file: ../CahierExercices/01_start_angular.md
-      - title: Tests
-        file: ../CahierExercices/02_tests.md
+      - title: Getting started with Angular
+        file: ../Workbook/01_start_angular.md
       - title: Components
-        file: ../CahierExercices/03_components.md
+        file: ../Workbook/02_components.md
+      - title: Unit testing
+        file: ../Workbook/03_tests.md
       - title: Directives
-        file: ../CahierExercices/04_directives.md
-      - title: Dependency injection
-        file: ../CahierExercices/05_dependency_injection.md
-      - title: pipes
-        file: ../CahierExercices/06_pipes.md
-      - title: rest
-        file: ../CahierExercices/07_rest.md
+        file: ../Workbook/04_directives.md
+      - title: Services
+        file: ../Workbook/05_services.md
+      - title: Pipes
+        file: ../Workbook/06_pipes.md
+      - title: Http
+        file: ../Workbook/07_http.md
       - title: Router
-        file: ../CahierExercices/08_router.md
-      - title: Template driven Forms
-        file: ../CahierExercices/09_forms.md
+        file: ../Workbook/08_router.md
+      - title: Forms
+        file: ../Workbook/09_forms.md
 

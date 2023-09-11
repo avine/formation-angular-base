@@ -2,28 +2,21 @@
 
 <!-- .slide: class="page-title" -->
 
-<!-- FIXME: by @ldez, see the issue # 62 in Github -->
-<style>
-  .toc {
-    font-size: 1.30rem !important;
-  }
-</style>
-
 
 
 ## Summary
 
-<!-- .slide: id = "master-toc" class="toc" -->
+<!-- .slide: id="master-toc" class="toc" -->
 
 - [Introduction](#/1)
 - [Reminders](#/2)
-- [Start an Angular application](#/3)
-- [Tests](#/4)
-- [Template & Components](#/5)
+- [Getting started with Angular](#/3)
+- [Components](#/4)
+- [Unit testing](#/5)
 - [Directives](#/6)
-- [Dependency Injection](#/7)
+- [Services](#/7)
 - [Pipes](#/8)
-- [HTTP Service](#/9)
+- [Http](#/9)
 - [Router](#/10)
 - [Forms](#/11)
 
@@ -38,3 +31,7 @@ Notes :
 - Other questions ?
 
 Notes :
+
+
+
+<!-- .slide: class="page-questions" -->

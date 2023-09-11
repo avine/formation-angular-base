@@ -2,8 +2,6 @@
 
 <!-- .slide: class="page-title" -->
 
-Notes :
-
 
 
 ## Summary
@@ -12,13 +10,13 @@ Notes :
 
 - [Introduction](#/1)
 - [Reminders](#/2)
-- [Start an Angular application](#/3)
-- [Tests](#/4)
-- [Template & Components](#/5)
+- [Getting started with Angular](#/3)
+- [Components](#/4)
+- [Unit testing](#/5)
 - [Directives](#/6)
-- [Dependency Injection](#/7)
+- [Services](#/7)
 - **[Pipes](#/8)**
-- [HTTP Service](#/9)
+- [Http](#/9)
 - [Router](#/10)
 - [Forms](#/11)
 
@@ -26,65 +24,45 @@ Notes :
 
 
 
-## The Pipes
+## Pipes
 
-- Mechanism allowing the transformation of a datum before its use
-- Use with the `|` character in template expressions
-- Ability to write his own *Pipe*
-- Added the notion of *Pipe* pure and impure
-- Pipes available by default in the `@angular/common` framework
+- Transform strings, currency amounts, dates, and other data for display
+- Simple functions to use in template expressions
+- Accept an input value and return a transformed value
+- You can write your own custom pipe
+- Angular provides a good number of pipes for common use-cases (`@angular/common`)
   - `LowerCasePipe`, `UpperCasePipe`, `TitleCasePipe`
   - `CurrencyPipe`, `DecimalPipe`, `PercentPipe`
-  - `DatePipe`, `JSONPipe`, `SlicePipe`, `KeyValuePipe`
-  - `I18nPluralPipe`, `I18nSelectPipe`
+  - `DatePipe`, `JsonPipe`, `SlicePipe`, `KeyValuePipe`
   - `AsyncPipe`
 
 Notes :
 
 
 
-## Use in Templates
+## Pipes - Usage in template
 
-- The *Pipes* available by default are directly usable
-- Possibility to chain the pipes one after the other
-- Ability to pass parameters with the `:` character
-- The parameters are **binded** and the result is recalculated on every change
-- The syntax is the following
+- Are applied using the "`|`" symbol
+- Can be chained
+- Additional parameters can be passed using the "`:`" symbol
 
-  `{{ myData | pipeName:pipeArg1:pipeArg2 | anotherPipe }}`
+```ts
+import { Component } from '@angular/core';
 
-```html
-{{myVar | date | uppercase}}
-<!-- FRIDAY, APRIL 15, 1988 -->
+@Component({
+  selector: 'app-root',
+  template: `
+    <p>{{ date | date }}</p> <!-- 29 août 2023 -->
 
-{{price | currency: 'EUR': 'symbol'}}
-<!-- 53.12€ -->
-```
+    <p>{{ date | date | uppercase }}</p> <!-- 29 AOÛT 2023 -->
 
-Notes :
+    <p>{{ price | currency : 'EUR' : 'symbol' }}</p> <!-- 123,46 € -->
+  `,
+})
+export class AppComponent {
+  date = new Date();
 
-
-
-## Creation
-
-- Define a class implementing the `PipeTransform` interface
-- Implement the `transform` method
-- Annotate the class with the `@Pipe` decorator
-
-```typescript
-import {PipeTransform, Pipe} from '@angular/core';
-
-@Pipe ({name: 'mylowercase'})
-export class MyLowerCasePipe implements PipeTransform {
-  transform (value: any, param1: string, param2: string): string {
-    if (!value.length) {
-      return value;
-    }
-    if (typeof value !== 'string') {
-      throw new Error ('MyLowerCasePipe value should be a string');
-    }
-    return value.toLowerCase();
-  }
+  price = 123.456789;
 }
 ```
 
@@ -92,23 +70,96 @@ Notes :
 
 
 
-## Declarations
+## Pipes - Custom
 
-- Declares itself as components and directives
-- The pipe must be added to the table `declarations`
+- Can be generated using Angular CLI: `ng generate pipe <pipeName>`
+- Use the `@Pipe` decorator on a class
+- Class must implement the `PipeTransform` interface (i.e. the `transform` method)
 
-```typescript
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {MyLowerCasePipe} from './mylowercase.pipe';
+```ts
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({ name: 'joinArray' })
+export class JoinArrayPipe implements PipeTransform {
+  transform(value: Array<string | number>, separator = ' '): unknown {
+    return value.join(separator);
+  }
+}
+```
+
+- Usage example:
+
+```html
+<p>List: {{ ['apple', 'orange', 'banana'] | joinArray : ', ' }}.</p>
+
+<!-- List: apple, orange, banana. -->
+```
+
+Notes :
+
+
+
+## Pipes - Custom | Declaration
+
+- Declared like Components and Directives in the Module's `declarations` array
+- Can be used in all components of the module in which they are declared
+
+```ts
+import { Component, NgModule } from '@angular/core';
+import { JoinArrayPipe } from './pipes/join-array.pipe';
 
 @NgModule ({
-  declarations: [
-    MyLowerCasePipe
-  ]
-  imports: [
-    BrowserModule
-  ]
+  declarations: [AppComponent, JoinArrayPipe]
+})
+export class AppModule {}
+
+@Component({
+  selector: 'app-root',
+  template: `{{ appList | joinArray }}`,
+})
+export class AppComponent {
+  appList = ['apple', 'orange', 'banana'];
+}
+```
+
+Notes :
+
+
+
+## Pipes - Configuration
+
+Some Angular pipes can be configured to suit your needs.
+
+Here's an example with the `CurrencyPipe`
+
+Depending on the locale:
+  - should display `$3.50` for United States
+  - should display `3,50 $` for France
+
+You may also need to configure the default symbol to be `€` instead of `$`:
+  - should display `€3.50` for United States
+  - should display `3,50 €` for France
+
+Notes :
+
+
+
+## Pipes - Configuration | CurrencyPipe
+
+- Here's the configuration to display the currency in EUR for France (`3,50 €`)
+
+```ts
+import { NgModule, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
+
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr); // <-- Defines how to format currency, date, ... in french
+
+@NgModule({
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr' },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },
+  ],
 })
 export class AppModule {}
 ```
@@ -117,48 +168,25 @@ Notes :
 
 
 
-## Use
+## Pipes - Usage in class
 
-- Just as components and directives
-- A pipe is usable if it has been declared in the module or an imported module
+- Can be instantiated directly in TypeScript code (using `new` operator)
+- Can also be injected like any provider...
+  - ...but must be provided in the `providers` array (Component or NgModule)
+  - The injected pipe will respect the configuration, if any
 
-```typescript
-import {Component} from '@angular/core';
+```ts
+import { Component } from '@angular/core';
+import { CurrencyPipe, UpperCasePipe } from '@angular/common';
 
-@Component ({
-  selector: 'app',
-  template: `
-    <h2>
-      {{'Hello World' | mylowercase}}
-    </h2>
-  `
-})
-export class App {}
-```
+@Component ({ selector: 'app-root', providers: [CurrencyPipe] })
+class AppComponent {
+  constructor(currencyPipe: CurrencyPipe) {
 
-Notes :
+    const upperCasePipe = new UpperCasePipe();
+    console.log(upperCasePipe.transform('Hello World!')); // <-- HELLO WORLD!
 
-
-
-## Injection
-
-- It is possible to use a pipe from TypeScript code
-- Using dependency injection to use a *Pipe*
-- You have to add the pipe in `providers` (component or module)
-
-```typescript
-import {Component} from '@angular/core`;
-import {MyLowerCasePipe} from './mylowercase';
-
-@Component ({
-  selector: 'app',
-  providers: [MyLowerCasePipe]
-})
-class App {
-  name: string;
-
-  constructor(lower: MyLowerCasePipe) {
-    this.name = lower.transform('Hello Angular');
+    console.log(currencyPipe.transform(123.456789)); // <-- 123.46 €
   }
 }
 ```
@@ -167,34 +195,21 @@ Notes :
 
 
 
-## Pure pipes
+## Pipes - Pure
 
 - Refers to the concept of pure function
-- *Pipes* are pure by default
-- Execute only for a reference change of the value
-- Will not be reevaluated for a mutation without reference change
+- Angular will only re-evaluate the pipe if the input value **reference** has changed
 - Optimizes the performance of the change detection mechanism
-- Is not always the desired behavior:
-  - Add/Remove an object in a table
-  - Modifying a property of an object
+- Pipes are pure by default
 
-Notes :
+```ts
+import { Pipe, PipeTransform } from '@angular/core';
 
-
-
-## Impure pipes
-
-- Executed at each cycle of the change detection system
-- Less efficient than a pure pipe, use only when necessary
-- To set an impure *Pipe*, set the `pure` property to `false`
-
-```typescript
-@Pipe({
-  name: 'myImpurePipe',
-  pure: false
-})
-export class MyImpurePipe implements PipeTransform {
-  transform(value: any): any {...}
+@Pipe({ name: 'fancy', pure: true })
+export class FancyPipe implements PipeTransform {
+  transform(value: string): string {
+    return `Fancy ${value}`;
+  }
 }
 ```
 
@@ -202,28 +217,26 @@ Notes :
 
 
 
+## Pipes - Impure
 
-## AsyncPipe
+- Angular always re-evaluate the pipe even if the input value **reference** has not changed
+- Suitable when the input value is an `Array` or `Object` that may be mutated over time
 
-- Supplied by *Angular* by default, example of impure pipe
-- *Pipe* receiving a `Promise` or an `Observable` as input
-- The value must be able to change while the reference of `Promise` or `Observable` has not changed
+Example: because Angular's `JsonPipe` is defined as `impure`, after clicking on the button, the mutated object will be properly displayed in the UI.
 
-```typescript
-@Component ({
-  selector: 'pipes',
-  template: '{{promise | async}} '
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <pre>{{ data | json }}</pre>
+    
+    <button (click)=" data.msg = 'Bye' ">Mutate</button>
+  `,
 })
-class PipesAppComponent {
-  promise: Promise;
-
-  constructor() {
-    this.promise = new Promise ((resolve, reject) => {
-      setTimeout (() => {
-        resolve ("Hey, this is the result of the promise");
-      }, 2000);
-    });
-  }
+export class AppComponent {
+  data = { msg: 'Hello' };
 }
 ```
 
@@ -231,30 +244,64 @@ Notes :
 
 
 
-## Tests
+## Pipes - Impure
 
-- A *Pipe* is nothing but a function!
-- Instantiation of *Pipe* in a `beforeEach` method
+- Let's take another look at the custom pipe shown above
+- It should be defined as `impure` because its input is an `Array` that may be mutated
+
+```ts
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({ name: 'joinArray', pure: false }) // <-- Should be impure!
+export class JoinArrayPipe implements PipeTransform {
+  transform(value: Array<string | number>, separator = ' '): unknown {
+    return value.join(separator);
+  }
+}
+
+@Component({
+  selector: 'app-root',
+  template: `{{ appList | joinArray }}
+    <button (click)=" appList.push('kiwi') ">Mutate</button>`, // <-- Mutation
+})
+export class AppComponent {
+  appList = ['apple', 'orange', 'banana'];
+}
+```
+
+Notes :
+
+
+
+## Pipes - Testing
+
+- A Pipe is nothing but a function!
+- Instantiate the pipe in a `beforeEach` hook
 - Call the `transform` method to test all possible cases
 
-```typescript
-import {MyLowerCasePipe} from './app/mylowercase';
+```ts
+import { JoinArrayPipe } from './pipes/join-array.pipe';
 
-describe('MyLowerCasePipe', () => {
+describe('JoinArrayPipe', () => {
   let pipe;
 
   beforeEach(() => {
-    pipe = new MyLowerCasePipe ();
+    pipe = new JoinArrayPipe ();
   });
 
-  it('should return lowercase', () => {
-    var val = pipe.transform('SOMETHING');
-    expect(val).toEqual('something');
+  it('should works', () => {
+    var output = pipe.transform(['apple', 'orange', 'banana'], ', ');
+
+    expect(output).toEqual('apple, orange, banana');
   });
 });
 ```
 
 Notes :
+
+
+
+<!-- .slide: class="page-questions" -->
 
 
 

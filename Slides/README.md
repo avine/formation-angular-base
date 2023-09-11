@@ -109,7 +109,7 @@ function(arg) { return 'du javascript en couleur !'; }
 
 ```html
 <img
-  src="ressources/image.png"
+  src="resources/image.png"
   alt="Une image"
   width="90%"
   style="margin-top: 10%"
@@ -121,7 +121,7 @@ function(arg) { return 'du javascript en couleur !'; }
 ```html
 <figure>
     <img
-      src="ressources/image.png"
+      src="resources/image.png"
       alt="Une image"/>
     <figcaption>Une superbe représentation de quelque chose</figcaption>
 </figure>
