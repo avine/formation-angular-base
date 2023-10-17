@@ -100,7 +100,7 @@ export class AppComponent {
 
 #### `sort-products.pipe.spec.ts`
 
-- It should not sort products when key undefined
+- It should not sort products when key is undefined
 
 - It should sort products by price
 

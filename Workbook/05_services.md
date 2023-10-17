@@ -77,9 +77,9 @@ xdescribe('AppComponent', () => { /* ... */ });
 
 #### `basket.service.spec.ts`
 
-- It should update the items when product added
+- It should update the items when a product is added
 
-- It should update the total when product added
+- It should update the total when a product is added
 
 #### `menu.component.spec.ts`
 
