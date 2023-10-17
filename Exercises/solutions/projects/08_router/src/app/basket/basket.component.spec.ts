@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-
-import { ApiService } from '../shared/services/api.service';
-import { ApiStubService } from '../shared/services/api.service.stub';
 import { BasketComponent } from './basket.component';
+import { BasketService } from './basket.service';
+import { BasketStubService } from './basket.service.stub';
 
 describe('BasketComponent', () => {
   let component: BasketComponent;
@@ -13,7 +12,7 @@ describe('BasketComponent', () => {
     TestBed.configureTestingModule({
       declarations: [BasketComponent],
       imports: [RouterTestingModule],
-      providers: [{ provide: ApiService, useClass: ApiStubService }],
+      providers: [{ provide: BasketService, useClass: BasketStubService }],
     });
 
     fixture = TestBed.createComponent(BasketComponent);

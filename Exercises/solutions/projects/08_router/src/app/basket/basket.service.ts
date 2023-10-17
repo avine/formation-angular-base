@@ -1,48 +1,42 @@
-import { map, Observable, of, ReplaySubject, tap } from 'rxjs';
-
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import { ApiService } from '../shared/services/api.service';
+import { of, tap } from 'rxjs';
 import { BasketItem } from './basket.types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BasketService {
-  itemsSnapshot: BasketItem[] | undefined = undefined;
+  private _items?: BasketItem[];
 
-  // Let's use a `ReplaySubject` (look at the `CatalogService` to see the usage of `BehaviorSubject`)
-  private _items$ = new ReplaySubject<BasketItem[]>(1);
+  get items(): BasketItem[] | undefined {
+    return this._items;
+  }
 
-  items$ = this._items$.asObservable();
+  get total(): number | undefined {
+    return this._items?.reduce((total, { price }) => total + price, 0);
+  }
 
-  total$ = this._items$.pipe(map((items) => items.reduce((total, { price }) => total + price, 0)));
-
-  constructor(private apiService: ApiService) {}
+  constructor(private httpClient: HttpClient) {}
 
   /**
    *  @param refresh Fetch the items from the API server even if they have already been fetched and stored in the service
    */
-  dispatchItems(refresh = false): Observable<void> {
-    if (!refresh && this.itemsSnapshot) {
-      return of(undefined);
+  fetchItems(refresh = false) {
+    if (!refresh && this._items) {
+      return of(this._items);
     }
-    return this.apiService.fetchBasket().pipe(
-      tap((items) => {
-        this.itemsSnapshot = items;
-        this._items$.next(this.itemsSnapshot);
-      }),
-      map(() => undefined),
-    );
+    return this.httpClient
+      .get<BasketItem[]>('http://localhost:8080/api/basket')
+      .pipe(tap((items) => (this._items = items)));
   }
 
-  addItem(productId: string): Observable<void> {
-    return this.apiService.addToBasket(productId).pipe(
+  addItem(productId: string) {
+    return this.httpClient.post<BasketItem>('http://localhost:8080/api/basket', { productId }).pipe(
       tap((item) => {
-        this.itemsSnapshot = [...(this.itemsSnapshot ?? []), item];
-        this._items$.next(this.itemsSnapshot);
+        this._items ??= [];
+        this._items.push(item);
       }),
-      map(() => undefined),
     );
   }
 }

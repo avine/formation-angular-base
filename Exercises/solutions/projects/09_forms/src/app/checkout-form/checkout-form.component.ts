@@ -1,7 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-
 import { BasketService } from '../basket/basket.service';
-import { ApiService } from '../shared/services/api.service';
 import { CheckoutDetails } from './checkout-form.types';
 
 @Component({
@@ -16,22 +15,24 @@ export class CheckoutFormComponent {
   protected checkoutError = false;
 
   constructor(
-    private apiService: ApiService,
+    private httpClient: HttpClient,
     private basketService: BasketService,
   ) {}
 
   protected checkout(checkoutDetails: CheckoutDetails) {
     this.checkoutInProgress = true;
 
-    this.apiService.checkoutBasket(checkoutDetails).subscribe({
-      next: ({ orderNumber }) => {
-        this.orderNumber = orderNumber;
-        this.basketService.clearBasket();
-      },
-      error: () => {
-        this.checkoutInProgress = false;
-        this.checkoutError = true;
-      },
-    });
+    this.httpClient
+      .post<{ orderNumber: number }>('http://localhost:8080/api/basket/checkout', checkoutDetails)
+      .subscribe({
+        next: ({ orderNumber }) => {
+          this.orderNumber = orderNumber;
+          this.basketService.clearBasket();
+        },
+        error: () => {
+          this.checkoutInProgress = false;
+          this.checkoutError = true;
+        },
+      });
   }
 }

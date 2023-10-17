@@ -1,8 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
 import { BasketService } from '../basket/basket.service';
-import { ApiService } from '../shared/services/api.service';
 import { CheckoutDetails } from './checkout-reactive-form.types';
 
 @Component({
@@ -23,7 +22,7 @@ export class CheckoutReactiveFormComponent implements OnDestroy {
   subscription = this.checkoutForm.valueChanges.subscribe(() => (this.checkoutError = false));
 
   constructor(
-    private apiService: ApiService,
+    private httpClient: HttpClient,
     private basketService: BasketService,
   ) {}
 
@@ -34,15 +33,19 @@ export class CheckoutReactiveFormComponent implements OnDestroy {
   protected checkout() {
     this.checkoutForm.disable();
 
-    this.apiService.checkoutBasket(this.checkoutForm.value as CheckoutDetails).subscribe({
-      next: ({ orderNumber }) => {
-        this.orderNumber = orderNumber;
-        this.basketService.clearBasket();
-      },
-      error: () => {
-        this.checkoutForm.enable();
-        this.checkoutError = true;
-      },
-    });
+    const checkoutDetails = this.checkoutForm.value as CheckoutDetails;
+
+    this.httpClient
+      .post<{ orderNumber: number }>('http://localhost:8080/api/basket/checkout', checkoutDetails)
+      .subscribe({
+        next: ({ orderNumber }) => {
+          this.orderNumber = orderNumber;
+          this.basketService.clearBasket();
+        },
+        error: () => {
+          this.checkoutForm.enable();
+          this.checkoutError = true;
+        },
+      });
   }
 }

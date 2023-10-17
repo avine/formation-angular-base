@@ -1,8 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
 import { Product } from '../product/product.types';
-import { ApiService } from '../shared/services/api.service';
 import { PRODUCT_DETAILS_PARAM_KEY } from './product-details.config';
 
 @Component({
@@ -12,12 +11,16 @@ import { PRODUCT_DETAILS_PARAM_KEY } from './product-details.config';
 export class ProductDetailsComponent {
   protected product?: Product;
 
+  protected hasError = false;
+
   constructor(
-    private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
+    private httpClient: HttpClient,
   ) {
-    this.apiService
-      .fetchProduct(this.activatedRoute.snapshot.params[PRODUCT_DETAILS_PARAM_KEY])
-      .subscribe((product) => (this.product = product));
+    const productId = this.activatedRoute.snapshot.params[PRODUCT_DETAILS_PARAM_KEY];
+    this.httpClient.get<Product>(`http://localhost:8080/api/products/${productId}`).subscribe({
+      next: (product) => (this.product = product),
+      error: () => (this.hasError = true),
+    });
   }
 }

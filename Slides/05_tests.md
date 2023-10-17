@@ -72,7 +72,7 @@ describe('boolean variable', () => {
     value = !value;
 
     // Then
-    expect(value).toBe(false);
+    expect(value).toBe(false); // equivalent to `expect(value).toBeFalse();`
   });
 });
 ```
@@ -100,7 +100,7 @@ describe('boolean variable', () => {
     value = !value;
 
     // Then
-    expect(value).toBe(false);
+    expect(value).not.toBeTrue(); // <-- notice the usage of `.not`
   });
 });
 ```

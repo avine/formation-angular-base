@@ -56,7 +56,7 @@ We want to be able to sort the displayed products by `price` or `stock`.
 
 - Generate the pipe `src/app/sort-products/sort-products.pipe.ts` using Angular CLI
   - Implement the `transform` method that returns the sorted array of products
-  - Add a parameter to the pipe to specify on which property (`price` or `stock`) to sort the products
+  - Add an optional parameter to the pipe to specify on which property (`price` or `stock`) to sort the products
 
 - Once your finished, use your pipe to sort the products in the `AppComponent` template
 
@@ -76,7 +76,7 @@ import { SelectProductKey } from './select-product-key/select-product-key.types'
 
 @Component({ /* ... */ })
 export class AppComponent {
-  productKey: SelectProductKey = 'price';
+  productKey: SelectProductKey = undefined;
 }
 ```
 
@@ -92,28 +92,19 @@ export class AppComponent {
 
 #### `app.component.spec.ts`
 
-- Create a `SortProductsStubPipe` and declare it in the `TestBed` configuration
+- It should display the products sorted by price
 
-```ts
-import { Pipe, PipeTransform } from '@angular/core';
-
-@Pipe({ name: 'sortProducts' })
-export class SortProductsStubPipe implements PipeTransform {
-  transform<T>(value: T): T {
-    return value;
-  }
-}
-```
+- It should display the products sorted by stock
 
 - It should display the basket total with currency
 
 #### `sort-products.pipe.spec.ts`
 
-- It should sort products by price (default)
+- It should not sort products when key undefined
+
+- It should sort products by price
 
 - It should sort products by title
-
-- Add a test in the `SortProductsPipe` pipe, by giving an array of products as input and by checking that the outputted array is sorted
 
 #### `product.component.spec.ts`
 

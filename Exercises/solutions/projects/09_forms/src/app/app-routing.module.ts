@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { BasketEmptyComponent } from './basket-empty/basket-empty.component';
 import { BasketComponent } from './basket/basket.component';
 import { basketGuard } from './basket/basket.guard';

@@ -1,7 +1,4 @@
-import { map } from 'rxjs';
-
 import { Component } from '@angular/core';
-
 import { BasketService } from '../basket/basket.service';
 
 @Component({
@@ -9,7 +6,9 @@ import { BasketService } from '../basket/basket.service';
   templateUrl: './menu.component.html',
 })
 export class MenuComponent {
-  numberOfItems$ = this.basketService.items$.pipe(map(({ length }) => length));
+  get numberOfItems() {
+    return this.basketService.items?.length;
+  }
 
   constructor(private basketService: BasketService) {}
 }

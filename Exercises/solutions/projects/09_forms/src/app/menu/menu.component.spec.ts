@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BasketService } from '../basket/basket.service';
 import { BasketStubService } from '../basket/basket.service.stub';
 import { BasketItem } from '../basket/basket.types';
@@ -23,17 +22,17 @@ describe('MenuComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display the number of items', async () => {
+  it('should display the number of items', () => {
     // Given
-    let numberOfItems = (fixture.nativeElement as HTMLElement).querySelector('span')?.textContent;
+    let numberOfItems = (fixture.nativeElement as HTMLElement).querySelector('.badge')?.textContent;
     expect(numberOfItems).toContain(0);
 
     // When
-    (TestBed.inject(BasketService) as unknown as BasketStubService).items$.next([{} as BasketItem, {} as BasketItem]);
+    (TestBed.inject(BasketService) as BasketStubService).items = [{} as BasketItem, {} as BasketItem];
     fixture.detectChanges();
 
     // Then
-    numberOfItems = (fixture.nativeElement as HTMLElement).querySelector('span')?.textContent;
+    numberOfItems = (fixture.nativeElement as HTMLElement).querySelector('.badge')?.textContent;
     expect(numberOfItems).toContain(2);
   });
 });

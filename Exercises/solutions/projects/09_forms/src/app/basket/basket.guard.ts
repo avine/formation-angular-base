@@ -1,14 +1,10 @@
-import { map, Observable } from 'rxjs';
-
 import { inject } from '@angular/core';
 import { CanMatchFn } from '@angular/router';
-
+import { map, Observable } from 'rxjs';
 import { BasketService } from './basket.service';
 
 export const basketGuard: CanMatchFn = (): Observable<boolean> => {
-  const basketService = inject(BasketService);
-
-  basketService.dispatchItems().subscribe();
-
-  return basketService.items$.pipe(map(({ length }) => length > 0));
+  return inject(BasketService)
+    .fetchItems()
+    .pipe(map(({ length }) => length > 0));
 };

@@ -2,10 +2,9 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-
-import { ApiService } from '../shared/services/api.service';
-import { ApiStubService } from '../shared/services/api.service.stub';
 import { BasketComponent } from './basket.component';
+import { BasketService } from './basket.service';
+import { BasketStubService } from './basket.service.stub';
 
 describe('BasketComponent', () => {
   let component: BasketComponent;
@@ -15,7 +14,7 @@ describe('BasketComponent', () => {
     TestBed.configureTestingModule({
       declarations: [BasketComponent],
       imports: [RouterTestingModule, FormsModule],
-      providers: [{ provide: ApiService, useClass: ApiStubService }],
+      providers: [{ provide: BasketService, useClass: BasketStubService }],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     });
 

@@ -1,5 +1,4 @@
 import { Component, Inject } from '@angular/core';
-
 import { APP_TITLE } from './app.token';
 import { BasketService } from './basket/basket.service';
 import { CatalogService } from './catalog/catalog.service';

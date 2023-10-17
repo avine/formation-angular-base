@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { BasketService } from '../basket/basket.service';
 
 @Component({

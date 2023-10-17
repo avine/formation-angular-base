@@ -3,14 +3,12 @@ import { HttpClientModule } from '@angular/common/http';
 import localeFr from '@angular/common/locales/fr';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { appTitleProvider } from './app.token';
 import { BasketEmptyComponent } from './basket-empty/basket-empty.component';
 import { BasketComponent } from './basket/basket.component';
 import { CatalogComponent } from './catalog/catalog.component';
-import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductComponent } from './product/product.component';
@@ -31,7 +29,6 @@ registerLocaleData(localeFr);
     BasketEmptyComponent,
     BasketComponent,
     CatalogComponent,
-    FooterComponent,
     MenuComponent,
     ProductDetailsComponent,
     ProductComponent,

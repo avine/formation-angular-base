@@ -13,7 +13,7 @@ First, let's start a local server to see what to app looks like.
 npx serve .
 ```
 
-- Open Chrome and visit: `http://127.0.0.1:8080/`. You should see the 4 products available in the catalog.
+- Open Chrome and visit: `http://127.0.0.1:3000/`. You should see the 4 products available in the catalog.
 
 - Next, copy/paste the content of `design/assets` into `src/assets`
 
@@ -58,51 +58,23 @@ npm i bootstrap
 }
 ```
 
-<div class="pb"></div>
-
-### Adding the styles globally or locally
-
-Choose one of the following techniques:
-
-- Copy the styles in `src/styles.css`
-
-```css
-app-root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-```
-
-- Or copy them in `src/app/app.component.css` (but using the `:host{}` syntax)
-
-```css
-:host {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-```
-
 ### Adding the HTML code
 
-- Copy/paste the inner content of the tag `<app-root><!-- THIS --></app-root>` to `src/app/app.component.html`
+- Copy/paste the inner content of the tag `<body> <!-- ONLY WHAT'S INSIDE --> </body>` to `src/app/app.component.html`
 
 - Before continuing, serve your app using `ng serve` to see if the result is equivalent to that of the designers
 
-### Creating the "menu" and "footer" components
+### Creating the "menu" component
 
 - Create a menu component with the shell command `ng generate component menu` and move the corresponding code into it
 
 - Once done, add the component `<app-menu />` to `src/app/app.component.html`
 
-- Do the same for the footer
-
 <div class="pb"></div>
 
 ### Creating the "product" component
 
-- Create a product component with the shell command `ng g c product`
+- Create a product component with the shell command `ng g c product` and move the corresponding code into it
 
 - Add a file `product.types.ts` in the same folder (`src/app/product/`) and define the product interface
 
@@ -124,7 +96,7 @@ export interface Product {
 - Use the properties of the `product` object in the template to display the `title`, `description`, ...
 
 ```html
-<a class="card-link">{{ product.title }}</a>
+... <a class="card-link">{{ product.title }}</a> ...
 ```
 
 - The event emitter should emit the product when the user clicks on the button "Ajoutez au panier"
@@ -135,7 +107,7 @@ export interface Product {
 Currently, the products are hard-coded in the template `src/app/app.component.html`.
 Let's give the `AppComponent` class, data ownership.
 
-- In `src/app/app.component.ts`, define a `products: Products[] = [];` property
+- In `src/app/app.component.ts`, define a `products: Product[] = [];` property
 
 - Fill the array with the content of the file `Exercises/design/products.json`
 

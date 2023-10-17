@@ -1,8 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
-import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProductComponent } from './product/product.component';
 
@@ -12,7 +10,7 @@ describe('AppComponent (first approach - with explicit dependency declaration)',
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent, FooterComponent, MenuComponent, ProductComponent],
+      declarations: [AppComponent, MenuComponent, ProductComponent],
     });
 
     fixture = TestBed.createComponent(AppComponent);

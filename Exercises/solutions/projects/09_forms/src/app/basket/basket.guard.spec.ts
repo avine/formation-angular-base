@@ -1,8 +1,6 @@
-import { firstValueFrom, Observable } from 'rxjs';
-
 import { TestBed } from '@angular/core/testing';
 import { CanMatchFn, Route } from '@angular/router';
-
+import { firstValueFrom, Observable, of } from 'rxjs';
 import { basketGuard } from './basket.guard';
 import { BasketService } from './basket.service';
 import { BasketStubService } from './basket.service.stub';
@@ -28,12 +26,12 @@ describe('basketGuard', () => {
     expect(executeGuard).toBeTruthy();
   });
 
-  it('should dispatch items', () => {
-    const dispatchItemsSpy = spyOn(basketService, 'dispatchItems').and.callThrough();
+  it('should fetch items', () => {
+    const fetchItemsSpy = spyOn(basketService, 'fetchItems').and.callThrough();
 
     executeGuard();
 
-    expect(dispatchItemsSpy).toHaveBeenCalled();
+    expect(fetchItemsSpy).toHaveBeenCalled();
   });
 
   it('should return false when the basket is empty', async () => {
@@ -42,7 +40,7 @@ describe('basketGuard', () => {
   });
 
   it('should return true when the basket is not empty', async () => {
-    (basketService as unknown as BasketStubService).items$.next([{} as BasketItem]);
+    spyOn(basketService, 'fetchItems').and.returnValue(of([{} as BasketItem]));
 
     const result = await firstValueFrom(executeGuard());
     expect(result).toBeTrue();

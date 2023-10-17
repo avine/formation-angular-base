@@ -1,7 +1,4 @@
-import { zip } from 'rxjs';
-
 import { Component, Inject, OnInit } from '@angular/core';
-
 import { APP_TITLE } from '../app.token';
 import { BasketService } from '../basket/basket.service';
 import { Product } from '../product/product.types';
@@ -13,15 +10,19 @@ import { CatalogService } from './catalog.service';
   templateUrl: './catalog.component.html',
 })
 export class CatalogComponent implements OnInit {
-  products$ = this.catalogService.products$;
+  get products() {
+    return this.catalogService.products;
+  }
 
-  hasProductsInStock$ = this.catalogService.hasProductsInStock$;
+  get hasProductsInStock() {
+    return this.catalogService.hasProductsInStock;
+  }
 
-  total$ = this.basketService.total$;
+  get total() {
+    return this.basketService.total;
+  }
 
-  productKey: SelectProductKey = 'price';
-
-  hasError = false;
+  productKey: SelectProductKey = undefined;
 
   constructor(
     private catalogService: CatalogService,
@@ -30,9 +31,8 @@ export class CatalogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    zip(this.catalogService.dispatchProducts(), this.basketService.dispatchItems()).subscribe({
-      error: () => (this.hasError = true),
-    });
+    this.catalogService.fetchProducts().subscribe();
+    this.basketService.fetchItems().subscribe();
   }
 
   addToBasket({ id }: Product) {

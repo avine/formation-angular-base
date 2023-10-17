@@ -1,22 +1,20 @@
-import { BehaviorSubject, Observable, of } from 'rxjs';
-
 import { Injectable } from '@angular/core';
-
+import { of } from 'rxjs';
 import { BasketService } from './basket.service';
 import { BasketItem } from './basket.types';
 
 @Injectable()
 export class BasketStubService implements Partial<BasketService> {
-  items$ = new BehaviorSubject<BasketItem[]>([]);
+  items: BasketItem[] = [];
 
-  total$ = new BehaviorSubject(0);
+  total = 0;
 
-  dispatchItems(): Observable<void> {
-    return of(undefined);
+  fetchItems() {
+    return of([] as BasketItem[]);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  addItem(productId: string): Observable<void> {
-    return of(undefined);
+  addItem(productId: string) {
+    return of({ id: productId, title: 'TITLE', price: 1 } as BasketItem);
   }
 }

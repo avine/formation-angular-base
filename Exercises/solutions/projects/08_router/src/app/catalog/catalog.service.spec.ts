@@ -1,100 +1,72 @@
-import { firstValueFrom, of } from 'rxjs';
-
-import { TestBed, waitForAsync } from '@angular/core/testing';
-
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
 import { Product } from '../product/product.types';
-import { ApiService } from '../shared/services/api.service';
-import { ApiStubService } from '../shared/services/api.service.stub';
 import { CatalogService } from './catalog.service';
 
 describe('CatalogService', () => {
   let service: CatalogService;
+  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [{ provide: ApiService, useClass: ApiStubService }],
-    });
+    TestBed.configureTestingModule({ imports: [HttpClientTestingModule] });
     service = TestBed.inject(CatalogService);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
+
+  function fetchProductsController(response: Product[]) {
+    const req = httpTestingController.expectOne('http://localhost:8080/api/products');
+    expect(req.request.method).toEqual('GET');
+    req.flush(response);
+
+    httpTestingController.verify(); // assert that there are no outstanding requests
+  }
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  /* ----- Using "waitForAsync" technique ----- */
-  it('should call "ApiService.fetchProducts" when dispatching products', waitForAsync(() => {
-    // Given
-    const fetchProductsSpy = spyOn(TestBed.inject(ApiService), 'fetchProducts').and.callThrough();
-    // When
-    service.dispatchProducts().subscribe(() => {
-      // Then
-      expect(fetchProductsSpy).toHaveBeenCalled();
+  it('should fetch products', () => {
+    const response: Product[] = [{ id: 'ID_1' } as Product, { id: 'ID_2' } as Product];
+
+    service.fetchProducts().subscribe((products) => expect(products).toEqual(response));
+
+    fetchProductsController(response);
+  });
+
+  it('should fill products after fetching', () => {
+    const response: Product[] = [{ id: 'ID_1' } as Product, { id: 'ID_2' } as Product];
+
+    service.fetchProducts().subscribe(() => expect(service.products).toEqual(response));
+
+    fetchProductsController(response);
+  });
+
+  it('should decrease the product stock', () => {
+    const response: Product[] = [{ id: 'ID_1', stock: 1 } as Product];
+
+    service.fetchProducts().subscribe(() => {
+      expect(service.products?.[0].stock).toBe(1);
+
+      service.decreaseStock('ID_1');
+      expect(service.products?.[0].stock).toBe(0);
     });
-  }));
 
-  /* ----- Using "async/await" technique ----- */
-  it('should have "products$" and "productsSnapshot" producing values', async () => {
-    // Given
-    expect(service.productsSnapshot).toBeUndefined();
-    expect(await firstValueFrom(service.products$)).toBeUndefined();
-
-    // When
-    await firstValueFrom(service.dispatchProducts());
-
-    // Then
-    expect(service.productsSnapshot).toHaveSize(3);
-    expect(await firstValueFrom(service.products$)).toHaveSize(3);
+    fetchProductsController(response);
   });
 
-  it('should have "hasProductsInStock$" emitting true', async () => {
-    // Given
-    spyOn(TestBed.inject(ApiService), 'fetchProducts').and.returnValue(of([{ stock: 1 } as Product]));
-    expect(await firstValueFrom(service.hasProductsInStock$)).toBeUndefined();
+  it('should not decrease the product stock when stock is empty', () => {
+    const response: Product[] = [{ id: 'ID_1', stock: 1 } as Product];
 
-    // When
-    await firstValueFrom(service.dispatchProducts());
+    service.fetchProducts().subscribe(() => {
+      expect(service.products?.[0].stock).toBe(1);
 
-    // Then
-    expect(await firstValueFrom(service.hasProductsInStock$)).toBeTrue();
-  });
+      expect(service.decreaseStock('ID_1')).toBeTrue();
+      expect(service.products?.[0].stock).toBe(0);
 
-  it('should have "hasProductsInStock$" emitting false', async () => {
-    // Given
-    spyOn(TestBed.inject(ApiService), 'fetchProducts').and.returnValue(of([{ stock: 0 } as Product]));
-    expect(await firstValueFrom(service.hasProductsInStock$)).toBeUndefined();
+      expect(service.decreaseStock('ID_1')).toBeFalse();
+      expect(service.products?.[0].stock).toBe(0);
+    });
 
-    // When
-    await firstValueFrom(service.dispatchProducts());
-
-    // Then
-    expect(await firstValueFrom(service.hasProductsInStock$)).toBeFalse();
-  });
-
-  it('should decrease the product stock', async () => {
-    // Given
-    await firstValueFrom(service.dispatchProducts());
-    let products = (await firstValueFrom(service.products$)) as Product[];
-    expect(products[0].stock).toBe(2);
-
-    // When
-    expect(service.decreaseStock('ID_1')).toBeTrue();
-
-    // Then
-    products = (await firstValueFrom(service.products$)) as Product[];
-    expect(products[0].stock).toBe(1);
-  });
-
-  it('should not decrease the product stock when stock is empty', async () => {
-    // Given
-    await firstValueFrom(service.dispatchProducts());
-    let products = (await firstValueFrom(service.products$)) as Product[];
-    expect(products[2].stock).toBe(0);
-
-    // When
-    expect(service.decreaseStock('ID_3')).toBeFalse();
-
-    // Then
-    products = (await firstValueFrom(service.products$)) as Product[];
-    expect(products[2].stock).toBe(0);
+    fetchProductsController(response);
   });
 });

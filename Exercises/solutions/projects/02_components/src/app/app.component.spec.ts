@@ -1,7 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AppComponent } from './app.component';
-import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProductComponent } from './product/product.component';
 
@@ -11,7 +9,7 @@ describe('AppComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent, FooterComponent, MenuComponent, ProductComponent],
+      declarations: [AppComponent, MenuComponent, ProductComponent],
     });
 
     fixture = TestBed.createComponent(AppComponent);

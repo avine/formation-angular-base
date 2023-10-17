@@ -61,7 +61,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   date = new Date();
-
   price = 123.456789;
 }
 ```

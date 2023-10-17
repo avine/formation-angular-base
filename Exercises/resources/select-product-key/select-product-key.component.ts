@@ -9,7 +9,7 @@ import { SelectProductKey } from './select-product-key.types';
 export class SelectProductKeyComponent {
   static uid = 1;
 
-  @Input() productKey: SelectProductKey = 'price';
+  @Input() productKey: SelectProductKey;
 
   @Output() productKeyChange = new EventEmitter<SelectProductKey>();
 
@@ -20,8 +20,8 @@ export class SelectProductKeyComponent {
     { key: 'stock', label: 'Stock' },
   ];
 
-  protected onChange(productKey: SelectProductKey) {
-    this.productKey = productKey;
+  protected onClick(productKey: SelectProductKey) {
+    this.productKey = this.productKey !== productKey ? productKey : undefined;
     this.productKeyChange.emit(this.productKey);
   }
 }

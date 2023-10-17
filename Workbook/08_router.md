@@ -44,11 +44,9 @@ export class AppRoutingModule {}
 ```html
 <app-menu />
 
-<main class="py-4 container flex-grow-1">
+<main class="py-4 container">
   <router-outlet />
 </main>
-
-<app-footer />
 ```
 
 ### `RouterLink`
@@ -188,7 +186,7 @@ Remember the route for this component is `'product/:id'`.
 
 <div class="pb"></div>
 
-### Application performances
+### Bonus: Application performances (1/2)
 
 At this point, take a look at the number of requests to the API in the Network tab of Chrome's developer tools.
 
@@ -196,30 +194,63 @@ At this point, take a look at the number of requests to the API in the Network t
 - Each time you visit the `"basket"` page, 1 request is sent to fetch the basket items
 
 You can improve this behavior and ensure that requests are made only once.
-To do this, you need to update the `dispatchProducts` and `dispatchItems` methods.
+To do this, you need to update the `fetchProducts` and `fetchItems` methods.
 
-- Here's an example for the `dispatchProducts` method:
+- Here's an example for the `fetchProducts` method:
 
 ```ts
 import { of } from 'rxjs';
 
+@Injectable({
+  providedIn: 'root',
+})
 export class CatalogService {
-  private _products$ = new BehaviorSubject<Product[] | undefined>(undefined);
+  private _products?: Product[];
 
-  constructor(private apiService: ApiService) {}
+  get products(): Product[] | undefined {
+    return this._products;
+  }
+
+  get hasProductsInStock(): boolean | undefined {
+    return this._products?.some(({ stock }) => stock > 0);
+  }
 
   /**
    *  @param refresh
    *    Fetch the products from the API server even if they
-   *    have already been fetched and stored in the service.
+   *    have already been fetched and stored in the service
    */
-  dispatchProducts(refresh = false): Observable<void> {
-    if (!refresh && this._products$.value) {
-      return of(undefined);
+  fetchProducts(refresh = false) {
+    if (!refresh && this._products) {
+      return of(this._products);
     }
-    return this.apiService.fetchProducts().pipe(/* ... */);
+    return this.httpClient
+      .get<Product[]>('http://localhost:8080/api/products')
+      .pipe(tap((products) => (this._products = products)));
   }
 }
+```
+
+<div class="pb"></div>
+
+### Bonus: Application performances (2/2)
+
+Also, have you noticed that when loading the catalog, the message *"Désolé, notre stock est vide !"* appears briefly and is then replaced by the products once fetched?
+
+You can improve this by not displaying anything as long as the `products` are undefined.
+
+- In the `/catalog/catalog.component.html` template, wrap the content with `<ng-container *ngIf="products">` like this:
+
+```html
+<ng-container *ngIf="products">
+  <div *ngIf="hasProductsInStock; else stockEmpty">
+    <ng-container *ngFor="let product of products">...</ng-container>
+  </div>
+
+  <ng-template #stockEmpty>
+    <p>Désolé, notre stock est vide !</p>
+  </ng-template>
+</ng-container>
 ```
 
 <div class="pb"></div>

@@ -1,14 +1,13 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { APP_TITLE } from './app.token';
 import { BasketService } from './basket/basket.service';
 import { BasketStubService } from './basket/basket.service.stub';
 import { CatalogService } from './catalog/catalog.service';
 import { CatalogStubService } from './catalog/catalog.service.stub';
-import { SortProductsStubPipe } from './sort-products/sort-products.pipe.stub';
+import { SortProductsPipe } from './sort-products/sort-products.pipe';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -16,7 +15,7 @@ describe('AppComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent, SortProductsStubPipe],
+      declarations: [AppComponent, SortProductsPipe],
       providers: [
         { provide: CatalogService, useClass: CatalogStubService },
         { provide: BasketService, useClass: BasketStubService },
@@ -52,6 +51,36 @@ describe('AppComponent', () => {
     const productDebugElements = fixture.debugElement.queryAll(By.css('app-product'));
     productDebugElements.forEach((productDebugElement, index) => {
       expect(productDebugElement.properties['product']).toBe(component.products[index]);
+    });
+  });
+
+  it('should display the products sorted by price', () => {
+    component.productKey = 'price';
+    fixture.detectChanges();
+
+    const productDebugElements = fixture.debugElement.queryAll(By.css('app-product'));
+
+    const expectedComponentProducts = component.products
+      .filter(({ stock }) => stock > 0)
+      .sort((p1, p2) => (p1.price > p2.price ? 1 : p1.price < p2.price ? -1 : 0));
+
+    productDebugElements.forEach((productDebugElement, index) => {
+      expect(productDebugElement.properties['product']).toBe(expectedComponentProducts[index]);
+    });
+  });
+
+  it('should display the products sorted by stock', () => {
+    component.productKey = 'stock';
+    fixture.detectChanges();
+
+    const productDebugElements = fixture.debugElement.queryAll(By.css('app-product'));
+
+    const expectedComponentProducts = component.products
+      .filter(({ stock }) => stock > 0)
+      .sort((p1, p2) => (p1.stock > p2.stock ? 1 : p1.stock < p2.stock ? -1 : 0));
+
+    productDebugElements.forEach((productDebugElement, index) => {
+      expect(productDebugElement.properties['product']).toBe(expectedComponentProducts[index]);
     });
   });
 

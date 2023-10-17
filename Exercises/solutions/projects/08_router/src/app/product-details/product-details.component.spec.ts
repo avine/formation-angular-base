@@ -1,8 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-
-import { ApiService } from '../shared/services/api.service';
-import { ApiStubService } from '../shared/services/api.service.stub';
+import { of } from 'rxjs';
+import { Product } from '../product/product.types';
 import { ProductDetailsComponent } from './product-details.component';
 
 describe('ProductDetailsComponent', () => {
@@ -13,7 +13,12 @@ describe('ProductDetailsComponent', () => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [ProductDetailsComponent],
-      providers: [{ provide: ApiService, useClass: ApiStubService }],
+      providers: [
+        {
+          provide: HttpClient,
+          useValue: { get: () => of({} as Product) },
+        },
+      ],
     });
     fixture = TestBed.createComponent(ProductDetailsComponent);
     component = fixture.componentInstance;

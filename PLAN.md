@@ -77,7 +77,6 @@ Développeur web
 
 9. Http
   - Utilisation
-  - Observables
 
 10. Router
   - Configuration du Router

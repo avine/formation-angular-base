@@ -29,8 +29,6 @@ Strigo Lab provides a Windows VM with the following functional environment:
 If you use VSCode as your IDE, install the following extensions in addition:
 
 - Angular Language Service
-- ESLint
-- Prettier - Code formatter
 - Auto Rename Tag (optional)
 - Github Theme (optional)
 - vscode-icons (optional)

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BasketEmptyComponent } from './basket-empty.component';
 
 describe('BasketEmptyComponent', () => {

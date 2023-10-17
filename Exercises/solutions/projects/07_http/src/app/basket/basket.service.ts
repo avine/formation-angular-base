@@ -1,42 +1,33 @@
-import { map, Observable, ReplaySubject, tap } from 'rxjs';
-
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import { ApiService } from '../shared/services/api.service';
+import { tap } from 'rxjs';
 import { BasketItem } from './basket.types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BasketService {
-  itemsSnapshot: BasketItem[] | undefined = undefined;
+  private _items: BasketItem[] = [];
 
-  // Let's use a `ReplaySubject` (look at the `CatalogService` to see the usage of `BehaviorSubject`)
-  private _items$ = new ReplaySubject<BasketItem[]>(1);
-
-  items$ = this._items$.asObservable();
-
-  total$ = this._items$.pipe(map((items) => items.reduce((total, { price }) => total + price, 0)));
-
-  constructor(private apiService: ApiService) {}
-
-  dispatchItems(): Observable<void> {
-    return this.apiService.fetchBasket().pipe(
-      tap((items) => {
-        this.itemsSnapshot = items;
-        this._items$.next(this.itemsSnapshot);
-      }),
-      map(() => undefined),
-    );
+  get items(): BasketItem[] {
+    return this._items;
   }
 
-  addItem(productId: string): Observable<void> {
-    return this.apiService.addToBasket(productId).pipe(
-      tap((item) => {
-        this.itemsSnapshot = [...(this.itemsSnapshot ?? []), item];
-        this._items$.next(this.itemsSnapshot);
-      }),
-      map(() => undefined),
-    );
+  get total(): number {
+    return this._items.reduce((total, { price }) => total + price, 0);
+  }
+
+  constructor(private httpClient: HttpClient) {}
+
+  fetchItems() {
+    return this.httpClient
+      .get<BasketItem[]>('http://localhost:8080/api/basket')
+      .pipe(tap((items) => (this._items = items)));
+  }
+
+  addItem(productId: string) {
+    return this.httpClient
+      .post<BasketItem>('http://localhost:8080/api/basket', { productId })
+      .pipe(tap((item) => this._items.push(item)));
   }
 }

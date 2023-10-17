@@ -1,5 +1,4 @@
 import { Component, Inject } from '@angular/core';
-
 import { APP_TITLE } from './app.token';
 import { BasketService } from './basket/basket.service';
 import { CatalogService } from './catalog/catalog.service';
@@ -23,7 +22,7 @@ export class AppComponent {
     return this.basketService.total;
   }
 
-  productKey: SelectProductKey = 'price';
+  productKey: SelectProductKey = undefined;
 
   constructor(
     private catalogService: CatalogService,

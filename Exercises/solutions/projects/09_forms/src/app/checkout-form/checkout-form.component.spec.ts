@@ -1,10 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-
 import { BasketService } from '../basket/basket.service';
 import { BasketStubService } from '../basket/basket.service.stub';
-import { ApiService } from '../shared/services/api.service';
-import { ApiStubService } from '../shared/services/api.service.stub';
 import { CheckoutFormComponent } from './checkout-form.component';
 
 describe('CheckoutFormComponent', () => {
@@ -13,11 +11,8 @@ describe('CheckoutFormComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
-      providers: [
-        { provide: ApiService, useClass: ApiStubService },
-        { provide: BasketService, useClass: BasketStubService },
-      ],
+      imports: [FormsModule, HttpClientTestingModule],
+      providers: [{ provide: BasketService, useClass: BasketStubService }],
       declarations: [CheckoutFormComponent],
     });
     fixture = TestBed.createComponent(CheckoutFormComponent);

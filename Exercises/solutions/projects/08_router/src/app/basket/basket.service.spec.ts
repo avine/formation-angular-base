@@ -1,65 +1,85 @@
-import { TestBed, waitForAsync } from '@angular/core/testing';
-
-import { firstValueFrom } from 'rxjs';
-import { ApiService } from '../shared/services/api.service';
-import { ApiStubService } from '../shared/services/api.service.stub';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
 import { BasketService } from './basket.service';
+import { BasketItem } from './basket.types';
 
 describe('BasketService', () => {
   let service: BasketService;
+  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [{ provide: ApiService, useClass: ApiStubService }],
-    });
+    TestBed.configureTestingModule({ imports: [HttpClientTestingModule] });
     service = TestBed.inject(BasketService);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
+
+  function fetchItemsController(response: BasketItem[]) {
+    const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
+    expect(req.request.method).toEqual('GET');
+    req.flush(response);
+
+    httpTestingController.verify(); // assert that there are no outstanding requests
+  }
+
+  function addItemController(response: BasketItem) {
+    const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
+    expect(req.request.method).toEqual('POST');
+    req.flush(response);
+
+    httpTestingController.verify(); // assert that there are no outstanding requests
+  }
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  /* ----- Using "waitForAsync" technique ----- */
-  it('should call "ApiService.fetchBasket" when dispatching items', waitForAsync(() => {
-    // Given
-    const fetchBasketSpy = spyOn(TestBed.inject(ApiService), 'fetchBasket').and.callThrough();
-    // When
-    service.dispatchItems().subscribe(() => {
-      // Then
-      expect(fetchBasketSpy).toHaveBeenCalled();
-    });
-  }));
+  it('should fetch items', () => {
+    const response: BasketItem[] = [{ id: 'ID_1' } as BasketItem, { id: 'ID_2' } as BasketItem];
 
-  /* ----- Using "async/await" technique ----- */
-  it('should have "items$" and "itemsSnapshot" producing values', async () => {
-    // Given
-    expect(service.itemsSnapshot).toBeUndefined();
+    service.fetchItems().subscribe((items) => expect(items).toEqual(response));
 
-    // When
-    await firstValueFrom(service.dispatchItems());
-
-    // Then
-    expect(service.itemsSnapshot).toHaveSize(0);
-    expect(await firstValueFrom(service.items$)).toHaveSize(0);
+    fetchItemsController(response);
   });
 
-  it('should update items when item added', async () => {
-    // When
-    await firstValueFrom(service.dispatchItems());
-    await firstValueFrom(service.addItem('XYZ'));
+  it('should fill items after fetching', () => {
+    const response: BasketItem[] = [{ id: 'ID_1' } as BasketItem, { id: 'ID_2' } as BasketItem];
 
-    // Then
-    expect(service.itemsSnapshot?.[0].id).toBe('XYZ');
-    expect((await firstValueFrom(service.items$))?.[0].id).toBe('XYZ');
+    service.fetchItems().subscribe(() => expect(service.items).toEqual(response));
+
+    fetchItemsController(response);
   });
 
-  it('should update the total when item added', async () => {
-    // When
-    await firstValueFrom(service.dispatchItems());
-    await firstValueFrom(service.addItem('A'));
-    await firstValueFrom(service.addItem('B'));
+  it('should send post request when item added', () => {
+    const response: BasketItem = { id: 'ID_1' } as BasketItem;
 
-    // Then
-    expect(await firstValueFrom(service.total$)).toBe(6);
+    service.addItem('ID_1').subscribe((item) => expect(item).toEqual(response));
+
+    addItemController(response);
+  });
+
+  it('should update items when item added', () => {
+    const response1: BasketItem = { id: 'ID_1' } as BasketItem;
+    const response2: BasketItem = { id: 'ID_2' } as BasketItem;
+
+    expect(service.items).toEqual(undefined);
+
+    service.addItem('ID_1').subscribe(() => expect(service.items).toEqual([response1]));
+    addItemController(response1);
+
+    service.addItem('ID_2').subscribe(() => expect(service.items).toEqual([response1, response2]));
+    addItemController(response2);
+  });
+
+  it('should update the total when item added', () => {
+    const response1: BasketItem = { id: 'ID_1', price: 1 } as BasketItem;
+    const response2: BasketItem = { id: 'ID_2', price: 2 } as BasketItem;
+
+    expect(service.total).toEqual(undefined);
+
+    service.addItem('ID_1').subscribe(() => expect(service.total).toEqual(response1.price));
+    addItemController(response1);
+
+    service.addItem('ID_2').subscribe(() => expect(service.total).toEqual(response1.price + response2.price));
+    addItemController(response2);
   });
 });

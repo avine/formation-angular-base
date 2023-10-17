@@ -1,6 +1,6 @@
 <span class="me-2">Trier par:</span>
 
-<div class="btn-group" role="group">
+<div class="btn-group btn-group-sm" role="group">
   <ng-container *ngFor="let input of inputs">
     <input
       type="radio"
@@ -9,7 +9,7 @@
       [name]="name"
       [id]="name + '-' + input.key"
       [checked]="productKey === input.key"
-      (change)="onChange(input.key)"
+      (click)="onClick(input.key)"
     />
     <label class="btn btn-outline-primary" [for]="name + '-' + input.key">{{ input.label }}</label>
   </ng-container>

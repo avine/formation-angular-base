@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { Product } from '../product/product.types';
 import { CatalogService } from './catalog.service';
 

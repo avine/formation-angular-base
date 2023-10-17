@@ -1,51 +1,36 @@
-import { BehaviorSubject, map, Observable, tap } from 'rxjs';
-
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { tap } from 'rxjs';
 import { Product } from '../product/product.types';
-import { ApiService } from '../shared/services/api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CatalogService {
-  // Let's use a `BehaviorSubject` (look at the `BasketService` to see the usage of `ReplaySubject`)
-  private _products$ = new BehaviorSubject<Product[] | undefined>(undefined);
+  private _products: Product[] = [];
 
-  products$ = this._products$.asObservable();
-
-  get productsSnapshot() {
-    return this._products$.value;
+  get products(): Product[] {
+    return this._products;
   }
 
-  hasProductsInStock$: Observable<boolean | undefined> = this._products$.pipe(
-    map((products) => products?.some(({ stock }) => stock > 0) ?? undefined),
-  );
+  get hasProductsInStock(): boolean {
+    return this._products.some(({ stock }) => stock > 0);
+  }
 
-  constructor(private apiService: ApiService) {}
+  constructor(private httpClient: HttpClient) {}
 
-  dispatchProducts(): Observable<void> {
-    return this.apiService.fetchProducts().pipe(
-      tap((products) => this._products$.next(products)),
-      map(() => undefined),
-    );
+  fetchProducts() {
+    return this.httpClient
+      .get<Product[]>('http://localhost:8080/api/products')
+      .pipe(tap((products) => (this._products = products)));
   }
 
   decreaseStock(productId: string): boolean {
-    let products = this._products$.value;
-    if (!products) {
-      return false;
-    }
-
-    products = structuredClone(products); // <-- for immutability
-
-    const product = products.find(({ id }) => id === productId);
+    const product = this._products.find(({ id }) => id === productId);
     if (!product || product.stock < 1) {
       return false;
     }
     product.stock -= 1;
-
-    this._products$.next(products);
     return true;
   }
 }
