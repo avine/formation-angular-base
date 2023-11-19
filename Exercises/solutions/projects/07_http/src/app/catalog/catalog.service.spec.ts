@@ -1,7 +1,7 @@
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { Product } from '../product/product.types';
 import { CatalogService } from './catalog.service';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { Product } from '../product/product.types';
 
 describe('CatalogService', () => {
   let service: CatalogService;
@@ -13,60 +13,86 @@ describe('CatalogService', () => {
     httpTestingController = TestBed.inject(HttpTestingController);
   });
 
-  function fetchProductsController(response: Product[]) {
-    const req = httpTestingController.expectOne('http://localhost:8080/api/products');
-    expect(req.request.method).toEqual('GET');
-    req.flush(response);
-
-    httpTestingController.verify(); // assert that there are no outstanding requests
-  }
-
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should fetch products', () => {
-    const response: Product[] = [{ id: 'ID_1' } as Product, { id: 'ID_2' } as Product];
+  describe('fetchProducts', () => {
+    it('should trigger an http call to get the product list', () => {
+      service.fetchProducts().subscribe()
 
-    service.fetchProducts().subscribe((products) => expect(products).toEqual(response));
+      const req = httpTestingController.expectOne('http://localhost:8080/api/products');
+      expect(req.request.method).toBe('GET');
+    })
 
-    fetchProductsController(response);
-  });
+    it('should expose an observable with the product list', () => {
+      const responseProducts: Product[] = [
+        { id: 't-shirt', title: 't-shirt', price: 10, description: '', photo: '', stock: 2 },
+        { id: 'sweatshirt', title: 'sweatshirt', price: 20, description: '', photo: '', stock: 3 }
+      ]
 
-  it('should fill products after fetching', () => {
-    const response: Product[] = [{ id: 'ID_1' } as Product, { id: 'ID_2' } as Product];
+      service.fetchProducts().subscribe(products => {
+        expect(products).toBe(responseProducts)
+      });
 
-    service.fetchProducts().subscribe(() => expect(service.products).toEqual(response));
-
-    fetchProductsController(response);
-  });
-
-  it('should decrease the product stock', () => {
-    const response: Product[] = [{ id: 'ID_1', stock: 1 } as Product];
-
-    service.fetchProducts().subscribe(() => {
-      expect(service.products[0].stock).toBe(1);
-
-      service.decreaseStock('ID_1');
-      expect(service.products[0].stock).toBe(0);
+      const req = httpTestingController.expectOne('http://localhost:8080/api/products');
+      req.flush(responseProducts);
     });
 
-    fetchProductsController(response);
+    it('should stock the received data on the products tracking property when the http call succeed', () => {
+      expect(service.products).toEqual([]);
+
+      const responseProducts: Product[] = [
+        { id: 't-shirt', title: 't-shirt', price: 10, description: '', photo: '', stock: 2 },
+        { id: 'sweatshirt', title: 'sweatshirt', price: 20, description: '', photo: '', stock: 3 }
+      ]
+
+      service.fetchProducts().subscribe(() => {
+        expect(service.products).toBe(responseProducts)
+      });
+
+      const req = httpTestingController.expectOne('http://localhost:8080/api/products');
+      req.flush(responseProducts);
+    })
   });
 
-  it('should not decrease the product stock when stock is empty', () => {
-    const response: Product[] = [{ id: 'ID_1', stock: 1 } as Product];
+  describe('decreaseStock', () => {
+    it('should decrease the product stock', () => {
+      // Given
+      service['_products'] = [
+        { id: 'welsch', title: 'welsch', price: 10, description: '', photo: '', stock: 2 },
+        { id: 'sweatshirt', title: 'sweatshirt', price: 20, description: '', photo: '', stock: 3 }
+      ];
 
-    service.fetchProducts().subscribe(() => {
+      expect(service.products[0].stock).toBe(2);
+  
+      // When
+      service.decreaseStock('welsch');
+  
+      // Then
       expect(service.products[0].stock).toBe(1);
+    });
+  
+    it('should not decrease the product stock when stock is empty', () => {
+      // Given
+      service['_products'] = [
+        { id: 'welsch', title: 'welsch', price: 10, description: '', photo: '', stock: 2 },
+        { id: 'sweatshirt', title: 'sweatshirt', price: 20, description: '', photo: '', stock: 3 }
+      ];
 
-      expect(service.decreaseStock('ID_1')).toBeTrue();
+      expect(service.products[0].stock).toBe(2);
+  
+      // When/Then
+      expect(service.decreaseStock('welsch')).toBeTrue();
+      expect(service.products[0].stock).toBe(1);
+  
+      // When/Then
+      expect(service.decreaseStock('welsch')).toBeTrue();
       expect(service.products[0].stock).toBe(0);
-
-      expect(service.decreaseStock('ID_1')).toBeFalse();
+  
+      // When/Then
+      expect(service.decreaseStock('welsch')).toBeFalse();
       expect(service.products[0].stock).toBe(0);
     });
-
-    fetchProductsController(response);
   });
 });

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
 import { BasketService } from './basket.service';
 import { BasketItem } from './basket.types';
+import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class BasketStubService implements Partial<BasketService> {
@@ -9,12 +9,11 @@ export class BasketStubService implements Partial<BasketService> {
 
   total = 0;
 
-  fetchItems() {
-    return of([] as BasketItem[]);
+  fetchBasket(): Observable<BasketItem[]> {
+    return of(this.items)
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  addItem(productId: string) {
-    return of({ id: productId, title: 'TITLE', price: 1 } as BasketItem);
+  addItem(productId: string): Observable<BasketItem> {
+    return of({ id: productId, title: '', price: 0 })
   }
 }
