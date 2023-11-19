@@ -30,14 +30,16 @@ Here are the available endpoints:
 
 ### `CatalogService`
 
+- Remove the default products in the `_products` property - it should now default to `[]`.
 - Inject the `HttpClient` service
 - Add a method `fetchProducts(): Observable<Product[]>` that queries our server for our products
 
 ### `AppComponent`
 
-- Remove the getter `get products`
+- Comment the getter `get products`
+- Create a `products` property which is an array of `Product`, default to `[]`
 - Call the `catalogService.fetchProducts` method to fetch products in `ngOnInit`
-- Create a `products` property to stock the result of the fetch
+- Set the `products` property with the data received from `fetchProducts`
 
 Everything should be compiling at this point, verify 
 - your app still display ours products
@@ -73,9 +75,27 @@ Let's improve that by using operators to keep track of our data and share it eas
 
 - In the `fetchProducts` method, use the `tap` operator to add the received products in the `_products` property.
 
+### `AppComponent`
+
+- Remove the `products` property
+- Uncomment the getter `get products`
+- Remove the function you wrote inside the subscribe of your call to `fetchProducts`, do you understand why ?
+
 At this point, your app should:
 - be able to change the color of the product card again when there is only 1 stock
 - display the message `Désolé, notre stock est vide !` again when there is no more products available
+
+<div class="pb"></div>
+
+### PART 3
+
+For this last part, you will be on your own. Fix the following problem : 
+
+When you refresh your application, there is still two problems : 
+- you don't display the correct basket total 
+- you don't display the correct number of items in your basket
+
+Use what you learn in the two previous parts to fix it.
 
 <div class="pb"></div>
 
