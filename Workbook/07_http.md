@@ -1,5 +1,11 @@
 ## Lab 7: Http
 
+### PART 1
+
+To begin with, you will learn how to send http requests from your Angular app to a web server.
+
+#### Communicate with an http server
+
 In this lab, you'll communicate with a REST API server that will manage the products and the basket.
 
 - To run the server, open a new shell window in the `Exercises/resources/server` folder and run the following commands:
@@ -22,170 +28,55 @@ Here are the available endpoints:
 
 - Import the `HttpClientModule`
 
-### `ApiService`
-
-- Create a new service `src/app/shared/services/api.service.ts` using Angular CLI
-
-- Implement the following methods:
-  - `fetchProducts(): Observable<Product[]>`
-  - `fetchProduct(productId: string): Observable<Product>`
-  - `fetchBasket(): Observable<BasketItem[]>`
-  - `addToBasket(productId: string): Observable<BasketItem>`
-
-<div class="pb"></div>
-
 ### `CatalogService`
 
-Update the service to use the new `ApiService`.
-
-- Here's a starting point using the `BehaviorSubject` technique to expose the products:
-
-```ts
-import { BehaviorSubject, map, Observable, tap } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { Product } from '../product/product.types';
-import { ApiService } from '../shared/services/api.service';
-
-@Injectable({
-  providedIn: 'root',
-})
-export class CatalogService {
-  // Store the products in a BehaviorSubject
-  private _products$ = new BehaviorSubject<Product[] | undefined>(undefined);
-
-  // Expose the products as observable
-  products$ = this._products$.asObservable();
-
-  // It's a good practice to make available the products as instant value 
-  // (but use it carefully after it's not a reactive value)
-  get productsSnapshot() {
-    return this._products$.value;
-  }
-
-  constructor(private apiService: ApiService) {}
-
-  dispatchProducts(): Observable<void> {
-    // Fetch the products from the API
-    return this.apiService.fetchProducts().pipe(
-      // Use a "side-effect" to store the server response in the service
-      tap((products) => this._products$.next(products)),
-      // Be sure the consumer of the service gets the
-      // products only from the `products$` observable
-      map(() => undefined),
-    );
-  }
-
-  // To be continued...
-}
-```
-
-<div class="pb"></div>
-
-### `BasketService`
-
-Update the service to use the new `ApiService`.
-
-- Here's a starting point using the `ReplaySubject` technique to expose the basket items:
-
-```ts
-import { ReplaySubject } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { BasketItem } from './basket.types';
-import { ApiService } from '../shared/services/api.service';
-
-@Injectable({
-  providedIn: 'root',
-})
-export class BasketService {
-  itemsSnapshot: BasketItem[] | undefined = undefined;
-
-  private _items$ = new ReplaySubject<BasketItem[]>(1);
-
-  items$ = this._items$.asObservable();
-
-  constructor(private apiService: ApiService) {}
-
-  dispatchItems(): Observable<void> {
-    // To be continued...
-  }
-
-  // To be continued...
-}
-```
-
-- Implement the method `dispatchItems` (like we did with `dispatchProducts` for the `CatalogService`)
-
-- Update the method `addItem`:
-  - Using the signature: `addItem(productId: string): Observable<void>`
-  - The method should have a "side-effet" (using the `tap` operator from RxJS) to update the `_items$` observable
-
-Remember that you get the new basket item from the API response:
-
-```ts
-addToBasket(productId: string): Observable<BasketItem>;
-```
-
-<div class="pb"></div>
+- Inject the `HttpClient` service
+- Add a method `fetchProducts(): Observable<Product[]>` that queries our server for our products
 
 ### `AppComponent`
 
-- Update the component to use the new versions of the `CatalogService` and the `BasketService`
+- Remove the getter `get products`
+- Call the `catalogService.fetchProducts` method to fetch products in `ngOnInit`
+- Create a `products` property to stock the result of the fetch
 
-- Use the `OnInit` lifecycle hook to subcribe to both `dispatchProducts` and `dispatchItems`
+Everything should be compiling at this point, verify 
+- your app still display ours products
+- you see a http request to `/products` in your devtools
 
-- Update the `addToBasket` method so that it subscribes correctly to `BasketService.addItem`
+### `BasketService`
 
-### `MenuComponent`
+- Inject the `HttpClient` service
+- Update the `addItem` method to save the added item on our server, it should have the following signature `addItem(productId: string): Observable<BasketItem>`
 
-- Update the way to retrieve the number of items
+### `AppComponent`
+
+- Update the method `addToBasket`: make sure you decrease the stock of a product only after it has been successfully added to the basket on our server.
+
+At this point your app should
+- display your products again by fetching them from our server
+- add a product to our basket kept in our server when clicking the 'add to basket' button (use the devtools again to verify the http call is working)
+
+<div class="pb"></div>
+
+### PART 2
+
+You now have succeeded in requesting data from your server. But there is still many places where your app does not use the requested data to avoid multiple http calls.  
+Let's improve that by using operators to keep track of our data and share it easily.
+
+#### Use operators to intercept data
+
+### `BasketService`
+
+- In the `addItem` method, use the `tap` operator to add the basket item to the property `_items` once the http called to our server suceeded.
+
+### `CatalogService`
+
+- In the `fetchProducts` method, use the `tap` operator to add the received products in the `_products` property.
+
+At this point, your app should:
+- be able to change the color of the product card again when there is only 1 stock
+- display the message `Désolé, notre stock est vide !` again when there is no more products available
 
 <div class="pb"></div>
 
-### Tests
 
-#### `api.service.spec.ts`
-
-- It should fetch the products
-
-- It should fetch one product
-
-- It should fetch the basket
-
-- It should add item to basket
-
-You need to import `HttpClientTestingModule` in the `TestBed` configuration and use `HttpTestingController` to simulate the requests.
-
-```ts
-import {
-  HttpClientTestingModule,
-  HttpTestingController
-} from '@angular/common/http/testing';
-import { TestBed } from '@angular/core/testing';
-import { ApiService } from './api.service';
-
-describe('ApiService', () => {
-  let service: ApiService;
-  let httpTestingController: HttpTestingController;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-    });
-    service = TestBed.inject(ApiService);
-    httpTestingController = TestBed.inject(HttpTestingController);
-  });
-
-  // To be continued...
-});
-```
-
-#### Disclaimer
-
-At this point, a lot of tests fail!
-This is because the structure of the application has changed radically.
-Refactoring the tests would take too much time in the context of this training.
-
-With the trainer, take a look at the new test implementation in the following folder:
-  - `Exercises/solutions/projects/07_http`
-
-<div class="pb"></div>
