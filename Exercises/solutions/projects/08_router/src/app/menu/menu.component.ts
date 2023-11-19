@@ -7,7 +7,7 @@ import { BasketService } from '../basket/basket.service';
 })
 export class MenuComponent {
   get numberOfItems() {
-    return this.basketService.items?.length;
+    return this.basketService.items.length;
   }
 
   constructor(private basketService: BasketService) {}

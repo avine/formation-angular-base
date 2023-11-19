@@ -27,7 +27,7 @@ describe('basketGuard', () => {
   });
 
   it('should fetch items', () => {
-    const fetchItemsSpy = spyOn(basketService, 'fetchItems').and.callThrough();
+    const fetchItemsSpy = spyOn(basketService, 'fetchBasket').and.callThrough();
 
     executeGuard();
 
@@ -40,7 +40,7 @@ describe('basketGuard', () => {
   });
 
   it('should return true when the basket is not empty', async () => {
-    spyOn(basketService, 'fetchItems').and.returnValue(of([{} as BasketItem]));
+    spyOn(basketService, 'fetchBasket').and.returnValue(of([{} as BasketItem]));
 
     const result = await firstValueFrom(executeGuard());
     expect(result).toBeTrue();
