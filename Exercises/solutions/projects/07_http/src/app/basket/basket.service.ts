@@ -28,7 +28,6 @@ export class BasketService {
   }
 
   addItem(productId: string): Observable<BasketItem> {
-    // this._items.push(item);
     return this.httpClient.post<BasketItem>('http://localhost:8080/api/basket', { productId })
       .pipe(
         tap(item => this._items.push(item))
