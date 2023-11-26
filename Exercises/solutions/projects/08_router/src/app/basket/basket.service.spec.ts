@@ -39,7 +39,7 @@ describe('BasketService', () => {
       req.flush(responseItems);
     });
 
-    it('should stock the received data on the items tracking property and update the total when the http call succeed', () => {
+    it('should update items with the received basket items when the http call succeed', () => {
       expect(service.items).toEqual([]);
 
       const responseItems: BasketItem[] = [
@@ -49,6 +49,21 @@ describe('BasketService', () => {
 
       service.fetchBasket().subscribe(() => {
         expect(service.items).toBe(responseItems)
+      });
+
+      const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
+      req.flush(responseItems);
+    });
+
+    it('should update total when the http call succeed', () => {
+      expect(service.items).toEqual([]);
+
+      const responseItems: BasketItem[] = [
+        { id: 't-shirt', title: 't-shirt', price: 10 },
+        { id: 'sweatshirt', title: 'sweatshirt', price: 20 }
+      ]
+
+      service.fetchBasket().subscribe(() => {
         expect(service.total).toBe(30)
       });
 
