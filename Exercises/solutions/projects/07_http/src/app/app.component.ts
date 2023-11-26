@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.catalogService.fetchProducts().subscribe()
+    this.catalogService.fetchProducts().subscribe();
     this.basketService.fetchBasket().subscribe();
   }
 

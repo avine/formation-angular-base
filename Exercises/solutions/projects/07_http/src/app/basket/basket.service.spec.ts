@@ -1,6 +1,6 @@
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { BasketService } from './basket.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { BasketItem } from './basket.types';
 
 describe('BasketService', () => {
@@ -19,7 +19,7 @@ describe('BasketService', () => {
 
   describe('fetchBasket', () => {
     it('should trigger an http call to get the basket items', () => {
-      service.fetchBasket().subscribe()
+      service.fetchBasket().subscribe();
 
       const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
       expect(req.request.method).toBe('GET');
@@ -28,11 +28,11 @@ describe('BasketService', () => {
     it('should expose an observable with the basket items', () => {
       const responseItems: BasketItem[] = [
         { id: 't-shirt', title: 't-shirt', price: 10 },
-        { id: 'sweatshirt', title: 'sweatshirt', price: 20 }
-      ]
+        { id: 'sweatshirt', title: 'sweatshirt', price: 20 },
+      ];
 
       service.fetchBasket().subscribe((items) => {
-        expect(items).toBe(responseItems)
+        expect(items).toBe(responseItems);
       });
 
       const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
@@ -44,11 +44,11 @@ describe('BasketService', () => {
 
       const responseItems: BasketItem[] = [
         { id: 't-shirt', title: 't-shirt', price: 10 },
-        { id: 'sweatshirt', title: 'sweatshirt', price: 20 }
-      ]
+        { id: 'sweatshirt', title: 'sweatshirt', price: 20 },
+      ];
 
       service.fetchBasket().subscribe(() => {
-        expect(service.items).toBe(responseItems)
+        expect(service.items).toBe(responseItems);
       });
 
       const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
@@ -60,11 +60,11 @@ describe('BasketService', () => {
 
       const responseItems: BasketItem[] = [
         { id: 't-shirt', title: 't-shirt', price: 10 },
-        { id: 'sweatshirt', title: 'sweatshirt', price: 20 }
-      ]
+        { id: 'sweatshirt', title: 'sweatshirt', price: 20 },
+      ];
 
       service.fetchBasket().subscribe(() => {
-        expect(service.total).toBe(30)
+        expect(service.total).toBe(30);
       });
 
       const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
@@ -74,7 +74,7 @@ describe('BasketService', () => {
 
   describe('addItem', () => {
     it('should trigger an http call to add the received item to the basket', () => {
-      service.addItem('t-shirt').subscribe()
+      service.addItem('t-shirt').subscribe();
 
       const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
       expect(req.request.method).toBe('POST');
@@ -84,15 +84,15 @@ describe('BasketService', () => {
       const responseItem = {
         id: 't-shirt',
         title: 't-shirt',
-        price: 20
-      }
+        price: 20,
+      };
 
-      service.addItem('t-shirt').subscribe(item => {
-        expect(item).toEqual(responseItem)
-      })
+      service.addItem('t-shirt').subscribe((item) => {
+        expect(item).toEqual(responseItem);
+      });
 
       const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
-      req.flush(responseItem)
+      req.flush(responseItem);
     });
 
     it('should add the item to the items tracking property and update the total when the http call succeed', () => {
@@ -101,16 +101,16 @@ describe('BasketService', () => {
       const responseItem = {
         id: 't-shirt',
         title: 't-shirt',
-        price: 20
-      }
+        price: 20,
+      };
 
       service.addItem('t-shirt').subscribe(() => {
-        expect(service.items).toEqual([responseItem])
-        expect(service.total).toBe(20)
-      })
+        expect(service.items).toEqual([responseItem]);
+        expect(service.total).toBe(20);
+      });
 
       const req = httpTestingController.expectOne('http://localhost:8080/api/basket');
-      req.flush(responseItem)
-    })
+      req.flush(responseItem);
+    });
   });
 });

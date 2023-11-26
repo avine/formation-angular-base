@@ -20,15 +20,14 @@ export class BasketService {
   constructor(private httpClient: HttpClient) {}
 
   fetchBasket(): Observable<BasketItem[]> {
-    return this.httpClient.get<BasketItem[]>('http://localhost:8080/api/basket')
-      .pipe(
-        tap(items => this._items = items)
-      );
+    return this.httpClient
+      .get<BasketItem[]>('http://localhost:8080/api/basket')
+      .pipe(tap((items) => (this._items = items)));
   }
 
   addItem(productId: string) {
-    return this.httpClient.post<BasketItem>('http://localhost:8080/api/basket', { productId }).pipe(
-      tap(item => this._items.push(item))
-    );
+    return this.httpClient
+      .post<BasketItem>('http://localhost:8080/api/basket', { productId })
+      .pipe(tap((item) => this._items.push(item)));
   }
 }

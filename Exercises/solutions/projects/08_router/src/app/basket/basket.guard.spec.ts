@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { CanMatchFn, Route } from '@angular/router';
-import { firstValueFrom, Observable, of } from 'rxjs';
+import { Observable, firstValueFrom, of } from 'rxjs';
 import { basketGuard } from './basket.guard';
 import { BasketService } from './basket.service';
 import { BasketStubService } from './basket.service.stub';

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { BasketItem } from './basket.types';
 
 @Injectable({
@@ -20,17 +20,15 @@ export class BasketService {
   constructor(private httpClient: HttpClient) {}
 
   fetchBasket(): Observable<BasketItem[]> {
-    return this.httpClient.get<BasketItem[]>('http://localhost:8080/api/basket')
-      .pipe(
-        tap(items => this._items = items)
-      );
+    return this.httpClient
+      .get<BasketItem[]>('http://localhost:8080/api/basket')
+      .pipe(tap((items) => (this._items = items)));
   }
 
   addItem(productId: string): Observable<BasketItem> {
-    return this.httpClient.post<BasketItem>('http://localhost:8080/api/basket', { productId })
-      .pipe(
-        tap(item => this._items.push(item))
-      )
+    return this.httpClient
+      .post<BasketItem>('http://localhost:8080/api/basket', { productId })
+      .pipe(tap((item) => this._items.push(item)));
   }
 
   clearBasket(): void {

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Product } from '../product/product.types';
 
 @Injectable({
@@ -20,10 +20,9 @@ export class CatalogService {
   constructor(private httpClient: HttpClient) {}
 
   fetchProducts(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>('http://localhost:8080/api/products')
-      .pipe(
-        tap(products => this._products = products)
-      )
+    return this.httpClient
+      .get<Product[]>('http://localhost:8080/api/products')
+      .pipe(tap((products) => (this._products = products)));
   }
 
   decreaseStock(productId: string): boolean {

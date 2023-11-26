@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Product } from '../product/product.types';
 import { CatalogService } from './catalog.service';
-import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class CatalogStubService implements Partial<CatalogService> {
@@ -14,7 +14,7 @@ export class CatalogStubService implements Partial<CatalogService> {
   hasProductsInStock = true;
 
   fetchProducts(): Observable<Product[]> {
-      return of(this.products)
+    return of(this.products);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

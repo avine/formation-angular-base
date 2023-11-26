@@ -1,7 +1,7 @@
-import { TestBed } from '@angular/core/testing';
-import { CatalogService } from './catalog.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
 import { Product } from '../product/product.types';
+import { CatalogService } from './catalog.service';
 
 describe('CatalogService', () => {
   let service: CatalogService;
@@ -19,20 +19,20 @@ describe('CatalogService', () => {
 
   describe('fetchProducts', () => {
     it('should trigger an http call to get the product list', () => {
-      service.fetchProducts().subscribe()
+      service.fetchProducts().subscribe();
 
       const req = httpTestingController.expectOne('http://localhost:8080/api/products');
       expect(req.request.method).toBe('GET');
-    })
+    });
 
     it('should expose an observable with the product list', () => {
       const responseProducts: Product[] = [
         { id: 't-shirt', title: 't-shirt', price: 10, description: '', photo: '', stock: 2 },
-        { id: 'sweatshirt', title: 'sweatshirt', price: 20, description: '', photo: '', stock: 3 }
-      ]
+        { id: 'sweatshirt', title: 'sweatshirt', price: 20, description: '', photo: '', stock: 3 },
+      ];
 
-      service.fetchProducts().subscribe(products => {
-        expect(products).toBe(responseProducts)
+      service.fetchProducts().subscribe((products) => {
+        expect(products).toBe(responseProducts);
       });
 
       const req = httpTestingController.expectOne('http://localhost:8080/api/products');
@@ -44,16 +44,16 @@ describe('CatalogService', () => {
 
       const responseProducts: Product[] = [
         { id: 't-shirt', title: 't-shirt', price: 10, description: '', photo: '', stock: 2 },
-        { id: 'sweatshirt', title: 'sweatshirt', price: 20, description: '', photo: '', stock: 3 }
-      ]
+        { id: 'sweatshirt', title: 'sweatshirt', price: 20, description: '', photo: '', stock: 3 },
+      ];
 
       service.fetchProducts().subscribe(() => {
-        expect(service.products).toBe(responseProducts)
+        expect(service.products).toBe(responseProducts);
       });
 
       const req = httpTestingController.expectOne('http://localhost:8080/api/products');
       req.flush(responseProducts);
-    })
+    });
   });
 
   describe('decreaseStock', () => {
@@ -61,35 +61,35 @@ describe('CatalogService', () => {
       // Given
       service['_products'] = [
         { id: 'welsch', title: 'welsch', price: 10, description: '', photo: '', stock: 2 },
-        { id: 'sweatshirt', title: 'sweatshirt', price: 20, description: '', photo: '', stock: 3 }
+        { id: 'sweatshirt', title: 'sweatshirt', price: 20, description: '', photo: '', stock: 3 },
       ];
 
       expect(service.products[0].stock).toBe(2);
-  
+
       // When
       service.decreaseStock('welsch');
-  
+
       // Then
       expect(service.products[0].stock).toBe(1);
     });
-  
+
     it('should not decrease the product stock when stock is empty', () => {
       // Given
       service['_products'] = [
         { id: 'welsch', title: 'welsch', price: 10, description: '', photo: '', stock: 2 },
-        { id: 'sweatshirt', title: 'sweatshirt', price: 20, description: '', photo: '', stock: 3 }
+        { id: 'sweatshirt', title: 'sweatshirt', price: 20, description: '', photo: '', stock: 3 },
       ];
 
       expect(service.products[0].stock).toBe(2);
-  
+
       // When/Then
       expect(service.decreaseStock('welsch')).toBeTrue();
       expect(service.products[0].stock).toBe(1);
-  
+
       // When/Then
       expect(service.decreaseStock('welsch')).toBeTrue();
       expect(service.products[0].stock).toBe(0);
-  
+
       // When/Then
       expect(service.decreaseStock('welsch')).toBeFalse();
       expect(service.products[0].stock).toBe(0);
