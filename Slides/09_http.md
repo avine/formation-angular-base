@@ -248,36 +248,52 @@ What are operators ?
 
 
 
-## RxJS - Operators | synchronous
+## RxJS - Operators | map
 
 <div>
 
 ```ts
-import {
-  Observable, filter, map // <-- "filter" and "map" are synchronous transformations
-} from 'rxjs';
+// ...
+import { filter } from 'rxjs';
 
-const data$ = new Observable<number>((observer) => {
-  observer.next(1);
-  observer.next(2);
-  observer.next(3);
-  observer.next(4);
-  observer.complete();
-});
+export class TodoComponent implements OnInit {
+  todo?: Todo;
 
-data$.pipe(/* no operator */).subscribe(console.log);                 // output: 1, 2, 3, 4
+  constructor(private httpClient: HttpClient) {}
 
-data$.pipe(filter((data) => data % 2 === 0)).subscribe(console.log);  // output: 2, 4
-
-data$.pipe(map((data) => data * 10)).subscribe(console.log);          // output: 10, 20, 30, 40
-
-data$.pipe(
-  filter((data) => data % 2 === 0),
-  map((data) => data * 10)
-).subscribe(console.log);                                             // output: 20, 40
+  ngOnInit(): void {
+    this.httpClient
+      .get<Todo>('https://jsonplaceholder.typicode.com/todos/1')
+      .pipe(filter(todo => todo.completed === false)) // <-- Filter the todo : only keep it if it is not completed
+      .subscribe(todo => this.todo = todo);
+  }
+}
 ```
 
-</div>
+Notes :
+
+
+
+## RxJS - Operators | tap
+
+<div>
+
+```ts
+// ...
+import { filter } from 'rxjs';
+
+export class TodoService {
+  todo?: Todo;
+
+  constructor(private httpClient: HttpClient) {}
+
+  getTodo(id: number): Observable<Todo> {
+    this.httpClient
+      .get<Todo>(`https://jsonplaceholder.typicode.com/todos/${id}`)
+      .pipe(tap(todo => this.todo = todo)); // See the response Todo and keep track of it without changing it
+  }
+}
+```
 
 Notes :
 
