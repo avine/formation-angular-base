@@ -209,6 +209,28 @@ Notes :
 
 
 
+## Http - call without a listener
+
+`no subscribe === no request sent`.
+
+The http request is the data source of your Observable.
+
+
+<div>
+
+```ts
+// Creates an Observable but do not trigger the http request
+this.httpClient.get<Todo>('https://jsonplaceholder.typicode.com/todos/1');
+```
+
+</div>
+
+Also, `x subscribe === x http requests sent`
+
+Notes :
+
+
+
 <!-- .slide: class="page-tp7.1" -->
 
 
