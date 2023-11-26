@@ -39,7 +39,7 @@ describe('CatalogService', () => {
       req.flush(responseProducts);
     });
 
-    it('should stock the received data on the products tracking property when the http call succeed', () => {
+    it('should update products with the received products when the http call succeed', () => {
       expect(service.products).toEqual([]);
 
       const responseProducts: Product[] = [
