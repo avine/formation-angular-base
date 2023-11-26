@@ -81,12 +81,18 @@ import { HttpClient } from '@angular/common/http';
 export class TodoComponent implements OnInit {
   todo?: Todo;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {} // <-- Inject service
 
   ngOnInit(): void {
     this.httpClient
-      .get<Todo>('https://jsonplaceholder.typicode.com/todos/1')
-      .subscribe((todo) => (this.todo = todo));
+      .get<Todo>('https://jsonplaceholder.typicode.com/todos/1') // <-- Define shape of GET request
+      .subscribe(todo => this.todo = todo); // <-- Execute request and store response
+  }
+  
+  addTodo(): void {
+    this.httpClient
+      .post('https://jsonplaceholder.typicode.com/todos', { title: 'test', completed: false }) // <-- Define shape of POST request with JSON body
+      .subscribe() // <-- Execute request
   }
 }
 ```
@@ -161,7 +167,7 @@ export class TodoComponent implements OnInit {
   ngOnInit(): void {
     this.httpClient
       .get<Todo>('https://jsonplaceholder.typicode.com/todos/1')
-      .subscribe((todo) => (this.todo = todo));
+      .subscribe(todo => this.todo = todo);
   }
 }
 ```
