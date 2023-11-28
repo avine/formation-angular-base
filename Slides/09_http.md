@@ -246,6 +246,8 @@ What are operators ?
 - Are commonly used to manipulate data going through an `Observable`
 - Can be chained
 
+Notes :
+
 
 
 ## RxJS - Operators | map

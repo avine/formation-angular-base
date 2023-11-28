@@ -32,43 +32,43 @@ Here are the available endpoints:
 
 - Remove the default products in the `_products` property - it should now default to `[]`.
 - Inject the `HttpClient` service
-- Add a method `fetchProducts(): void` that queries our server for our products and stock the products response in `_products`
+- Add a method `fetchProducts(): void` that queries the server for the products and stock the products response in `_products`
 
 ### `AppComponent`
 
 - Call the `catalogService.fetchProducts` method to fetch products in `ngOnInit`
 
 Everything should be compiling at this point, verify 
-- your app still display ours products
-- you see a http request to `/products` in your devtools
+- your app still display the products
+- you see a http request to `/products` in the devtools
 
 ### `BasketService`
 
 - Inject the `HttpClient` service
-- Update the `addItem` method to save the added item on our server, it should have the following signature `addItem(productId: string): void`. Once saved, push the added product to `_items`.
+- Update the `addItem` method to save the added item on the server, it should have the following signature `addItem(productId: string): void`. Once saved, push the added product to `_items`.
 
 ### `AppComponent`
 
-- Update the method `addToBasket` to use the new signature of your `basketService.addItem` method
+- Update the method `addToBasket` to use the new signature of the `basketService.addItem` method
 
 At this point your app should
-- display your products again by fetching them from our server
-- add a product to our basket kept in our server when clicking the 'add to basket' button (use the devtools again to verify the http call is working)
+- display the products again by fetching them from the server
+- add a product to the basket kept in the server when clicking the 'add to basket' button (use the devtools again to verify the http call is working)
 
 <div class="pb"></div>
 
 ### PART 2
 
-You now have succeeded in requesting data from your server. But there is still room for improvements. The main problem in your current app is that your components have no idea when your http calls are finished, even though they trigger them.
+You now have succeeded in requesting data from the server. But there is still room for improvements. The main problem in the current app is that the components have no idea when the http calls are finished.
 
-But why is it a problem ? My app is working correctly you might think.  
-In some cases (like when you fetch your product list) even if you don't know when the fetch is finished, it still works correctly as Angular detects it and updates your view. But what about when you have to explicitly trigger some code after a http call ?
+Why is it a problem ?   
+In some cases (like when you fetch the product list) even if you don't know when the fetch finishes, it still works correctly as Angular detects it and updates your view. But what about when you have to explicitly trigger some code after a http call ?
 
-For example, when you want to decrease the stock of your product after adding it to your basket ? Currently it is not working properly in your application: you decrease the stock before even knowing if your product was correctly added to your basket on your server
+For example, when you want to decrease the stock of the product after adding it to the basket ? Currently it is not working properly in the application: you decrease the stock before even knowing if the product was correctly added on the server.
 
-This is one of the reason why it is considered a good practice to **always expose the Observable you create** (unless you have a very good reason not to do so). You never know if your caller (the part of your app that called your method) might need to wait for the http call (of whatever process represented through your Observable) to finish before doing something.
+This is one of the reason why it is considered a good practice to **always expose the Observable you create** (unless you have a very good reason not to do so). You never know if your caller (the part of the app that called the method) might need to wait for the http call (of whatever process represented through your Observable) to finish before doing something.
 
-So let's improve your app.
+So let's improve the app.
 
 #### Expose observables and use operators
 
