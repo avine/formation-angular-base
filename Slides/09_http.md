@@ -71,13 +71,9 @@ Notes :
 - ...and then use the `HttpClient` service in our components
 
 ```ts
-import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-@Component({
-  selector: 'app-todo',
-  template: '<p>{{ todo?.title }}</p>'
-})
+// ...
 export class TodoComponent implements OnInit {
   todo?: Todo;
 
