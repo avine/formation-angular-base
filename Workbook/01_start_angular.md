@@ -60,7 +60,7 @@ This app will be used along all labs.
 
 ```shell
 npm i -g @angular/cli
-ng new zenika-ng-website
+ng new zenika-ng-website --standalone false
 ```
 
 You will be displayed some options for your app. Choose "No routing" and "CSS" as CSS preprocessor.

@@ -15,11 +15,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/01_start_angular",
             "index": "projects/01_start_angular/src/index.html",
-            "main": "projects/01_start_angular/src/main.ts",
+            "browser": "projects/01_start_angular/src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "projects/01_start_angular/tsconfig.app.json",
             "assets": ["projects/01_start_angular/src/favicon.ico", "projects/01_start_angular/src/assets"],
@@ -43,12 +43,9 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -57,10 +54,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "01_start_angular:build:production"
+              "buildTarget": "01_start_angular:build:production"
             },
             "development": {
-              "browserTarget": "01_start_angular:build:development"
+              "buildTarget": "01_start_angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +65,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "01_start_angular:build"
+            "buildTarget": "01_start_angular:build"
           }
         },
         "test": {
@@ -101,11 +98,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/02_components",
             "index": "projects/02_components/src/index.html",
-            "main": "projects/02_components/src/main.ts",
+            "browser": "projects/02_components/src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "projects/02_components/tsconfig.app.json",
             "assets": ["projects/02_components/src/favicon.ico", "projects/02_components/src/assets"],
@@ -129,12 +126,9 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -143,10 +137,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "02_components:build:production"
+              "buildTarget": "02_components:build:production"
             },
             "development": {
-              "browserTarget": "02_components:build:development"
+              "buildTarget": "02_components:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -154,7 +148,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "02_components:build"
+            "buildTarget": "02_components:build"
           }
         },
         "test": {
@@ -187,11 +181,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/03_tests",
             "index": "projects/03_tests/src/index.html",
-            "main": "projects/03_tests/src/main.ts",
+            "browser": "projects/03_tests/src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "projects/03_tests/tsconfig.app.json",
             "assets": ["projects/03_tests/src/favicon.ico", "projects/03_tests/src/assets"],
@@ -215,12 +209,9 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -229,10 +220,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "03_tests:build:production"
+              "buildTarget": "03_tests:build:production"
             },
             "development": {
-              "browserTarget": "03_tests:build:development"
+              "buildTarget": "03_tests:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -240,7 +231,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "03_tests:build"
+            "buildTarget": "03_tests:build"
           }
         },
         "test": {
@@ -273,11 +264,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/04_directives",
             "index": "projects/04_directives/src/index.html",
-            "main": "projects/04_directives/src/main.ts",
+            "browser": "projects/04_directives/src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "projects/04_directives/tsconfig.app.json",
             "assets": ["projects/04_directives/src/favicon.ico", "projects/04_directives/src/assets"],
@@ -301,12 +292,9 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -315,10 +303,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "04_directives:build:production"
+              "buildTarget": "04_directives:build:production"
             },
             "development": {
-              "browserTarget": "04_directives:build:development"
+              "buildTarget": "04_directives:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -326,7 +314,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "04_directives:build"
+            "buildTarget": "04_directives:build"
           }
         },
         "test": {
@@ -359,11 +347,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/05_services",
             "index": "projects/05_services/src/index.html",
-            "main": "projects/05_services/src/main.ts",
+            "browser": "projects/05_services/src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "projects/05_services/tsconfig.app.json",
             "assets": ["projects/05_services/src/favicon.ico", "projects/05_services/src/assets"],
@@ -387,12 +375,9 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -401,10 +386,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "05_services:build:production"
+              "buildTarget": "05_services:build:production"
             },
             "development": {
-              "browserTarget": "05_services:build:development"
+              "buildTarget": "05_services:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -412,7 +397,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "05_services:build"
+            "buildTarget": "05_services:build"
           }
         },
         "test": {
@@ -445,11 +430,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/06_pipes",
             "index": "projects/06_pipes/src/index.html",
-            "main": "projects/06_pipes/src/main.ts",
+            "browser": "projects/06_pipes/src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "projects/06_pipes/tsconfig.app.json",
             "assets": ["projects/06_pipes/src/favicon.ico", "projects/06_pipes/src/assets"],
@@ -473,12 +458,9 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -487,10 +469,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "06_pipes:build:production"
+              "buildTarget": "06_pipes:build:production"
             },
             "development": {
-              "browserTarget": "06_pipes:build:development"
+              "buildTarget": "06_pipes:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -498,7 +480,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "06_pipes:build"
+            "buildTarget": "06_pipes:build"
           }
         },
         "test": {
@@ -531,11 +513,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/07_http",
             "index": "projects/07_http/src/index.html",
-            "main": "projects/07_http/src/main.ts",
+            "browser": "projects/07_http/src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "projects/07_http/tsconfig.app.json",
             "assets": ["projects/07_http/src/favicon.ico", "projects/07_http/src/assets"],
@@ -559,12 +541,9 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -573,10 +552,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "07_http:build:production"
+              "buildTarget": "07_http:build:production"
             },
             "development": {
-              "browserTarget": "07_http:build:development"
+              "buildTarget": "07_http:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -584,7 +563,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "07_http:build"
+            "buildTarget": "07_http:build"
           }
         },
         "test": {
@@ -617,11 +596,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/08_router",
             "index": "projects/08_router/src/index.html",
-            "main": "projects/08_router/src/main.ts",
+            "browser": "projects/08_router/src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "projects/08_router/tsconfig.app.json",
             "assets": ["projects/08_router/src/favicon.ico", "projects/08_router/src/assets"],
@@ -645,12 +624,9 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -659,10 +635,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "08_router:build:production"
+              "buildTarget": "08_router:build:production"
             },
             "development": {
-              "browserTarget": "08_router:build:development"
+              "buildTarget": "08_router:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -670,7 +646,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "08_router:build"
+            "buildTarget": "08_router:build"
           }
         },
         "test": {
@@ -703,11 +679,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/09_forms",
             "index": "projects/09_forms/src/index.html",
-            "main": "projects/09_forms/src/main.ts",
+            "browser": "projects/09_forms/src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "projects/09_forms/tsconfig.app.json",
             "assets": ["projects/09_forms/src/favicon.ico", "projects/09_forms/src/assets"],
@@ -731,12 +707,9 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -745,10 +718,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "09_forms:build:production"
+              "buildTarget": "09_forms:build:production"
             },
             "development": {
-              "browserTarget": "09_forms:build:development"
+              "buildTarget": "09_forms:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -756,7 +729,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "09_forms:build"
+            "buildTarget": "09_forms:build"
           }
         },
         "test": {

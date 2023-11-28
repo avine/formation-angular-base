@@ -1,6 +1,14 @@
 {
   "root": true,
   "ignorePatterns": ["projects/**/*"],
+  "extends": ["prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "warn",
+    "arrow-body-style": "off",
+    "prefer-arrow-callback": "off"
+  },
+
   "overrides": [
     {
       "files": ["*.ts"],
@@ -8,8 +16,7 @@
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates",
-        "prettier"
+        "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
         "@angular-eslint/directive-selector": [
