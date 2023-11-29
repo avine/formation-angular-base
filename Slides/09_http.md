@@ -81,13 +81,15 @@ export class TodoComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpClient
-      .get<Todo>('https://jsonplaceholder.typicode.com/todos/1') // <-- Define shape of GET request
+      // Define shape of GET request
+      .get<Todo>('https://jsonplaceholder.typicode.com/todos/1') 
       .subscribe(todo => this.todo = todo); // <-- Execute request and store response
   }
   
   addTodo(): void {
     this.httpClient
-      .post('https://jsonplaceholder.typicode.com/todos', { title: 'test', completed: false }) // <-- Define shape of POST request with JSON body
+      // Define shape of POST request with JSON body
+      .post('https://jsonplaceholder.typicode.com/todos', { title: 'test', completed: false }) 
       .subscribe() // <-- Execute request
   }
 }
@@ -174,7 +176,7 @@ Notes :
 
 
 
-## Http - call without a listener
+## Http - no listener
 
 What whould happen if there is no listener on your Observable ? 
 
@@ -205,7 +207,7 @@ Notes :
 
 
 
-## Http - call without a listener
+## Http - no listener
 
 `no subscribe === no request sent`.
 
@@ -227,7 +229,7 @@ Notes :
 
 
 
-<!-- .slide: class="page-tp7.1" -->
+<!-- .slide: class="page-tp7" -->
 
 
 
@@ -246,7 +248,7 @@ Notes :
 
 
 
-## RxJS - Operators | map
+## RxJS - Operators | filter
 
 <div>
 
@@ -262,7 +264,8 @@ export class TodoComponent implements OnInit {
   ngOnInit(): void {
     this.httpClient
       .get<Todo>('https://jsonplaceholder.typicode.com/todos/1')
-      .pipe(filter(todo => todo.completed === false)) // <-- Filter the todo : only keep it if it is not completed
+      // Filter the todo : only keep it if it is not completed
+      .pipe(filter(todo => todo.completed === false)) 
       .subscribe(todo => this.todo = todo);
   }
 }
@@ -288,7 +291,8 @@ export class TodoService {
   getTodo(id: number): Observable<Todo> {
     this.httpClient
       .get<Todo>(`https://jsonplaceholder.typicode.com/todos/${id}`)
-      .pipe(tap(todo => this.todo = todo)); // See the response Todo and keep track of it without changing it
+      // See the response Todo and keep track of it without changing it
+      .pipe(tap(todo => this.todo = todo)); 
   }
 }
 ```
@@ -297,7 +301,7 @@ Notes :
 
 
 
-<!-- .slide: class="page-tp7.2" -->
+<!-- .slide: class="page-tp7" -->
 
 
 
