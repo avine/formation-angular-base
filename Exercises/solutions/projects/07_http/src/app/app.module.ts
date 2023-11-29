@@ -13,13 +13,13 @@ import { SortProductsPipe } from './sort-products/sort-products.pipe';
 registerLocaleData(localeFr);
 
 @NgModule({
+  declarations: [AppComponent, MenuComponent, ProductComponent, SelectProductKeyComponent, SortProductsPipe],
   imports: [BrowserModule, HttpClientModule],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },
     appTitleProvider,
   ],
-  declarations: [AppComponent, MenuComponent, ProductComponent, SelectProductKeyComponent, SortProductsPipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
