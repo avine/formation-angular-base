@@ -86,17 +86,18 @@ describe('AppComponent', () => {
   });
 
   it('should call "BasketService.addItem" and "CatalogService.decreaseStock" methods when a product is added to the basket', () => {
-    const product0 = component.products[0];
-
-    const decreaseStockSpy = spyOn(TestBed.inject(CatalogService), 'decreaseStock');
-    const addItemSpy = spyOn(TestBed.inject(BasketService), 'addItem').and.returnValue(of(product0));
+    const addItemSpy = spyOn(TestBed.inject(BasketService), 'addItem').and.returnValue(
+      of({ id: 't-shirt', title: 't-shirt', price: 10 }),
+    );
+    const decreaseStockSpy = spyOn(TestBed.inject(CatalogService), 'decreaseStock').and.returnValue(true);
 
     const productDebugElement = fixture.debugElement.query(By.css('app-product'));
-    productDebugElement.triggerEventHandler('addToBasket', product0);
+    productDebugElement.triggerEventHandler('addToBasket', component.products[0]);
 
     // Then
-    expect(decreaseStockSpy).toHaveBeenCalledWith(product0.id);
-    expect(addItemSpy).toHaveBeenCalledWith(product0.id);
+    const { id } = component.products[0];
+    expect(addItemSpy).toHaveBeenCalledWith(id);
+    expect(decreaseStockSpy).toHaveBeenCalledWith(id);
   });
 
   it('should not display products with empty stock', () => {

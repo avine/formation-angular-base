@@ -5,6 +5,6 @@ import { BasketService } from './basket.service';
 
 export const basketGuard: CanMatchFn = (): Observable<boolean> => {
   return inject(BasketService)
-    .fetchItems()
+    .fetchBasket()
     .pipe(map(({ length }) => length > 0));
 };

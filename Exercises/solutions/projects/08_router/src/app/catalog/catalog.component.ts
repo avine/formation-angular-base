@@ -32,7 +32,7 @@ export class CatalogComponent implements OnInit {
 
   ngOnInit(): void {
     this.catalogService.fetchProducts().subscribe();
-    this.basketService.fetchItems().subscribe();
+    this.basketService.fetchBasket().subscribe();
   }
 
   addToBasket({ id }: Product) {
