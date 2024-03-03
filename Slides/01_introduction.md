@@ -29,9 +29,9 @@ Notes :
 - Framework created by *Google* and announced in 2014
 - Total rewrite of *AngularJS*, although some concepts remain
 - First release of *Angular 2* in September 2016
-- Last major version `16` released in May 2023
+- Last major version `17` released in November 2023
 - Component oriented framework
-- Documentation: http://angular.io/
+- Documentation: http://angular.io/ and http://angular.dev/
 
 <img src="resources/angular-logo.png" height="200">
 
@@ -68,6 +68,7 @@ Notes :
 | 14.0.0  | 2022/06 | Strictly Typed Reactive Forms, Standalone Components with Optional NgModule                                        |
 | 15.0.0  | 2022/12 | Standalone API stable, Directive Composition API, Image Directive, Functional Router Guards                        |
 | 16.0.0  | 2023/05 | Angular Signals, Bind router Information to Component Inputs, Required Component Inputs, Non-Destructive Hydration |
+| 17.0.0  | 2023/11 | New website, Built-in control flow, Deferrable views, New lifecycle hooks, Vite and esbuild                        |
 
 Notes :
 
@@ -97,7 +98,7 @@ Notes :
 
 👎 Steep learning curve
 
-👎 Requires new concepts to learn (`Zone`, `Observable`, ...)
+👎 Requires new concepts to learn (`Observable`, ...)
 
 Notes :
 - New concepts are essential to know (especially Observables).

@@ -281,7 +281,7 @@ Notes :
 
 ```ts
 // ...
-import { filter } from 'rxjs';
+import { tap } from 'rxjs';
 
 export class TodoService {
   todo?: Todo;
