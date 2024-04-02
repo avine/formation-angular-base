@@ -146,9 +146,9 @@ Notes :
 
 
 
-## Directives - Input and Outout 1/2
+## Directives - Input and Output 1/2
 
-- Use `@Input` and `@Outout` decorators to make the directive configurable
+- Use `@Input` and `@Output` decorators to make the directive configurable
 
 ```ts
 import { Directive, Input, HostListener, HostBinding, Output } from '@angular/core';
@@ -177,7 +177,7 @@ Notes :
 
 
 
-## Directives - Input and Outout 2/2
+## Directives - Input and Output 2/2
 
 - Use regular property binding and event binding on the host element
 
