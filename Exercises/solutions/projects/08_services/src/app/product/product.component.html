@@ -1,0 +1,17 @@
+<div class="card h-100 text-center" [ngClass]="{ 'text-bg-warning': product().stock <= 1 }">
+  <img class="card-img-top" [src]="product().photo" alt="Product image" />
+
+  <div class="card-header">
+    <small>{{ product().description }}</small>
+  </div>
+
+  <div class="card-body">
+    <h3 class="h6 card-title">
+      <a class="card-link">{{ product().title }}</a>
+    </h3>
+
+    <p class="card-text">{{ product().price }} €</p>
+
+    <button class="btn btn-primary" (click)="onClick()">Ajoutez au panier</button>
+  </div>
+</div>

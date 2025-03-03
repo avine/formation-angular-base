@@ -1,6 +1,97 @@
-.blue {
-	color: blue;
+body {
+  --content-block-vertical-margin: 20px;
+  --main-content-horizontal-padding: 65px;
 }
-.reveal h2 {
-  padding-bottom: 0 !important;
+
+.slides section > section:not([class^="page-"]) {
+  --logo-offset-from-border: 30px;
+}
+
+.reveal h2, .reveal h3 {
+  margin-top: 1em;
+  margin-bottom: 0.75em;
+  font-size: 2.875rem;
+}
+
+.reveal h2 img {
+  display: inline-block;
+  position: absolute;
+  top: 0.75em;
+  height: 1.5em;
+  margin: 0 0 0 2rem;
+}
+
+.reveal p, ul {
+  margin: 0 0 var(--content-block-vertical-margin) 0;
+  line-height: 1.3em;
+}
+
+.reveal li {
+  margin-top: var(--content-block-vertical-margin);
+}
+
+.reveal li li {
+  --content-block-vertical-margin: 15px; /* a bit smaller than `--content-block-vertical-margin: 20px;` */
+}
+
+/* Replace ul `list-style` */
+/*.reveal ul {
+  list-style: none;
+  padding-left: 1em;
+
+}
+.reveal li {
+  padding-left: 0.5em;
+}
+.reveal li::marker {
+  content: "▻";
+}
+.reveal li li::marker {
+  content: "⚬";
+}*/
+/* End of: Replace ul `list-style` */
+
+.reveal em {
+  color: inherit;
+  font-style: italic;
+}
+
+.reveal strong {
+  color: inherit; /* Remove the "red" color <strong> elements */
+  font-weight: bold;
+  font-style: normal;
+
+  /*
+    This is a hack because the font `--content-font-family: "Open Sans", "Calibri", sans-serif;`
+    has only the "regular" weight available (so, the "bold" weight is missing and rendered as regular weight).
+  */
+  font-family: var(--header-font-family);
+}
+
+.reveal .slides .toc strong a {
+  color: var(--zenika-red); /* Restore the "red" color for this <strong> link */
+  font-family: var(--content-font-family);
+}
+
+.reveal pre > code, .reveal .code {
+  line-height: 1.25em;
+}
+
+.reveal .slides footer.slide-number {
+  color: var(--grey);
+}
+
+.reveal footer, .reveal .slides footer {
+  font-size: 65%;
+}
+
+.reveal .slides footer.copyright {
+  transform: rotate(90deg);
+  transform-origin: right;
+  text-align: left;
+  top: inherit;
+  right: 14px;
+  bottom: 200px;
+  left: inherit;
+  width: auto;
 }

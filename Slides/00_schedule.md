@@ -8,17 +8,20 @@
 
 <!-- .slide: id="master-toc" class="toc" -->
 
-- [Introduction](#/1)
-- [Reminders](#/2)
-- [Getting started with Angular](#/3)
+- [Getting started](#/1)
+- [Workspace](#/2)
+- [Technical prerequisites](#/3)
 - [Components](#/4)
 - [Unit testing](#/5)
-- [Directives](#/6)
-- [Services](#/7)
-- [Pipes](#/8)
-- [Http](#/9)
-- [Router](#/10)
-- [Forms](#/11)
+- [Control flow](#/6)
+- [Directives](#/7)
+- [Signals](#/8)
+- [Services](#/9)
+- [Pipes](#/10)
+- [Http](#/11)
+- [Routing](#/12)
+- [Forms](#/13)
+- [Appendix](#/14)
 
 Notes :
 

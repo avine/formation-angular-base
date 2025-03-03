@@ -1,0 +1,68 @@
+<div class="card mt-3">
+  <div class="card-header">Paiement <span class="ms-1 badge text-bg-warning">ReactiveFormsModule</span></div>
+
+  <div class="card-body">
+    <form [formGroup]="checkoutForm" (ngSubmit)="checkout()">
+      <div class="mb-2">
+        <label class="form-label" for="field-name">Nom</label>
+        <input
+          id="field-name"
+          class="form-control"
+          [formControl]="checkoutForm.controls.name"
+          [class.is-invalid]="checkoutForm.controls.name.touched && checkoutForm.controls.name.invalid"
+          [class.is-valid]="checkoutForm.controls.name.valid"
+        />
+        <span class="invalid-feedback">Champ obligatoire</span>
+      </div>
+
+      <div class="mb-2">
+        <label class="form-label" for="field-address">Adresse</label>
+        <textarea
+          id="field-address"
+          class="form-control"
+          [formControl]="checkoutForm.controls.address"
+          [class.is-invalid]="checkoutForm.controls.address.touched && checkoutForm.controls.address.invalid"
+          [class.is-valid]="checkoutForm.controls.address.valid"
+        ></textarea>
+        <span class="invalid-feedback">Champ obligatoire</span>
+      </div>
+
+      <div class="mb-2">
+        <label class="form-label" for="field-creditCard">Carte de crédit</label>
+        <input
+          id="field-creditCard"
+          class="form-control"
+          [formControl]="checkoutForm.controls.creditCard"
+          [class.is-invalid]="checkoutForm.controls.creditCard.touched && checkoutForm.controls.creditCard.invalid"
+          [class.is-valid]="checkoutForm.controls.creditCard.valid"
+          autocomplete="off"
+        />
+        @if (checkoutForm.controls.creditCard.hasError('required')) {
+          <span class="invalid-feedback"> Champ obligatoire </span>
+        }
+        @if (checkoutForm.controls.creditCard.hasError('pattern')) {
+          <span class="invalid-feedback"> Numéro invalide (exemple : 123-456) </span>
+        }
+      </div>
+
+      <div class="mt-3">
+        <button type="submit" class="btn btn-success" [disabled]="checkoutForm.invalid || checkoutForm.disabled">
+          Valider
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+@if (checkoutError()) {
+  <div class="mt-3 alert alert-danger" role="alert">Désolé, une erreur s'est produite.</div>
+}
+
+@if (orderNumber() !== undefined) {
+  <div class="mt-3 alert alert-success" role="alert">
+    <h4 class="alert-heading">Confirmation de la commande 🎉</h4>
+    n° de transaction: <strong>{{ orderNumber() }}</strong>
+    <hr />
+    <a routerLink="/" class="alert-link">Retourner à l'accueil</a>
+  </div>
+}

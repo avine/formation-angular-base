@@ -1,0 +1,182 @@
+# Control flow
+
+<!-- .slide: class="page-title" -->
+
+
+
+## Summary
+
+<!-- .slide: class="toc" -->
+
+- [Getting started](#/1)
+- [Workspace](#/2)
+- [Technical prerequisites](#/3)
+- [Components](#/4)
+- [Unit testing](#/5)
+- **[Control flow](#/6)**
+- [Directives](#/7)
+- [Signals](#/8)
+- [Services](#/9)
+- [Pipes](#/10)
+- [Http](#/11)
+- [Routing](#/12)
+- [Forms](#/13)
+- [Appendix](#/14)
+
+Notes :
+
+
+
+## Control flow
+
+- Angular templates support control flow blocks that let you **conditionally show, hide, and repeat elements**
+
+- The most common control flows are
+
+  - `@if`
+  - `@for`
+  - `@switch`
+
+😉 *Another control flow is `@defer` block, but its study goes beyond the scope of this training*
+
+Notes :
+
+
+
+## Control flow - @if 1/2
+
+- Conditionally display content with `@if {}`, `@else if {}` and `@else {}`
+
+```html
+@if (todos === undefined) {
+
+  <p>Please wait, your todo list is being loaded...</p>
+
+} @else if (todos.length === 0) {
+
+  <p>Your todo list is empty.</p>
+
+} @else {
+
+  <p>You have {{ todos.length }} todos in your list.</p>
+}
+```
+
+*In this example, we assume that the property `todos: Todo[]` is defined on the component class*
+
+Notes :
+
+
+
+## Control flow - @if 2/2
+
+- The `@if` conditional supports saving the result of the conditional expression into a variable for reuse inside of the block
+
+
+```html
+@if (todos === undefined) {
+
+  <p>Please wait, your todo list is being loaded...</p>
+
+} @else if (todos.length; as todosLength) {
+
+  <p>You have {{ todosLength }} todos in your list.</p>
+}
+```
+
+Notes :
+
+
+
+## Control flow - @for 1/3
+
+- Repeat content with the `@for` block
+
+```html
+<ul>
+  @for (todo of todos; track todo.id) {
+
+    <li>{{ todo.title }}</li>
+
+  }
+</ul>
+```
+
+- The `track` expression allows Angular to maintain a relationship between your data and the DOM nodes on the page
+
+- This allows Angular to optimize performance by executing the minimum necessary DOM operations when the data changes
+
+Notes :
+
+
+
+## Control flow - @for 2/3
+
+- Inside `@for` blocks, several implicit variables are always available
+
+```html
+<ul>
+  @for (todo of todos; track todo.id; let index = $index, count = $count) {
+
+    <li>{{ index + 1 }}/{{ count }} {{ todo.title }}</li>
+
+  }
+</ul>
+```
+
+- Here's the list of the implicit variables which are self-explanatory
+
+  - `$count`, `$index`, `$first`, `$last`, `$even`, `$odd` 
+
+Notes :
+
+
+
+## Control flow - @for 3/3
+
+- Providing a fallback for `@for` blocks with the `@empty` block
+
+```html
+<ul>
+  @for (todo of todos; track todo.id; let index = $index, count = $count) {
+
+    <li>{{ index + 1 }}/{{ count }} {{ todo.title }}</li>
+
+  } @empty {
+
+    <li>Your todo list is empty.</li>
+  }
+</ul>
+```
+
+Notes :
+
+
+
+## Control flow - @switch
+
+- Conditionally display content with the `@switch` block
+
+```html
+@switch (todos.length) {
+  @case (0) {
+    <p>Your todo list is empty.</p>
+  }
+
+  @case (1) {
+    <p>You have one todo in your list.</p>
+  }
+
+  @default {
+    <p>You have {{ todos.length }} todos in your list.</p>
+  }
+}
+```
+
+
+
+<!-- .slide: class="page-questions" -->
+
+
+
+<!-- .slide: class="page-tp5" -->

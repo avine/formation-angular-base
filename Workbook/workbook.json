@@ -1,12 +1,15 @@
 [
   "front_page.md",
-  "01_start_angular.md",
-  "02_components.md",
-  "03_tests.md",
-  "04_directives.md",
-  "05_services.md",
-  "06_pipes.md",
-  "07_http.md",
-  "08_router.md",
-  "09_forms.md"
+  "01_getting_started.md",
+  "02_workspace.md",
+  "03_components.md",
+  "04_tests.md",
+  "05_control_flow.md",
+  "06_directives.md",
+  "07_signals.md",
+  "08_services.md",
+  "09_pipes.md",
+  "10_http.md",
+  "11_routing.md",
+  "12_forms.md"
 ]

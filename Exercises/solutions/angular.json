@@ -3,27 +3,32 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "01_start_angular": {
+    "01_getting_started": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
           "strict": true
         }
       },
-      "root": "projects/01_start_angular",
-      "sourceRoot": "projects/01_start_angular/src",
+      "root": "projects/01_getting_started",
+      "sourceRoot": "projects/01_getting_started/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/01_start_angular",
-            "index": "projects/01_start_angular/src/index.html",
-            "browser": "projects/01_start_angular/src/main.ts",
+            "outputPath": "dist/01_getting_started",
+            "index": "projects/01_getting_started/src/index.html",
+            "browser": "projects/01_getting_started/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "projects/01_start_angular/tsconfig.app.json",
-            "assets": ["projects/01_start_angular/src/favicon.ico", "projects/01_start_angular/src/assets"],
-            "styles": ["projects/01_start_angular/src/styles.css"],
+            "tsConfig": "projects/01_getting_started/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/01_getting_started/public"
+              }
+            ],
+            "styles": ["projects/01_getting_started/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -54,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "01_start_angular:build:production"
+              "buildTarget": "01_getting_started:build:production"
             },
             "development": {
-              "buildTarget": "01_start_angular:build:development"
+              "buildTarget": "01_getting_started:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -65,48 +70,59 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "01_start_angular:build"
+            "buildTarget": "01_getting_started:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/01_start_angular/tsconfig.spec.json",
-            "assets": ["projects/01_start_angular/src/favicon.ico", "projects/01_start_angular/src/assets"],
-            "styles": ["projects/01_start_angular/src/styles.css"],
+            "tsConfig": "projects/01_getting_started/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/01_getting_started/public"
+              }
+            ],
+            "styles": ["projects/01_getting_started/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/01_start_angular/**/*.ts", "projects/01_start_angular/**/*.html"]
+            "lintFilePatterns": ["projects/01_getting_started/**/*.ts", "projects/01_getting_started/**/*.html"],
+            "eslintConfig": "projects/01_getting_started/eslint.config.js"
           }
         }
       }
     },
-    "02_components": {
+    "02_workspace": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
           "strict": true
         }
       },
-      "root": "projects/02_components",
-      "sourceRoot": "projects/02_components/src",
+      "root": "projects/02_workspace",
+      "sourceRoot": "projects/02_workspace/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/02_components",
-            "index": "projects/02_components/src/index.html",
-            "browser": "projects/02_components/src/main.ts",
+            "outputPath": "dist/02_workspace",
+            "index": "projects/02_workspace/src/index.html",
+            "browser": "projects/02_workspace/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "projects/02_components/tsconfig.app.json",
-            "assets": ["projects/02_components/src/favicon.ico", "projects/02_components/src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/02_components/src/styles.css"],
+            "tsConfig": "projects/02_workspace/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/02_workspace/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/02_workspace/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -137,10 +153,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "02_components:build:production"
+              "buildTarget": "02_workspace:build:production"
             },
             "development": {
-              "buildTarget": "02_components:build:development"
+              "buildTarget": "02_workspace:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -148,48 +164,59 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "02_components:build"
+            "buildTarget": "02_workspace:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/02_components/tsconfig.spec.json",
-            "assets": ["projects/02_components/src/favicon.ico", "projects/02_components/src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/02_components/src/styles.css"],
+            "tsConfig": "projects/02_workspace/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/02_workspace/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/02_workspace/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/02_components/**/*.ts", "projects/02_components/**/*.html"]
+            "lintFilePatterns": ["projects/02_workspace/**/*.ts", "projects/02_workspace/**/*.html"],
+            "eslintConfig": "projects/02_workspace/eslint.config.js"
           }
         }
       }
     },
-    "03_tests": {
+    "03_components": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
           "strict": true
         }
       },
-      "root": "projects/03_tests",
-      "sourceRoot": "projects/03_tests/src",
+      "root": "projects/03_components",
+      "sourceRoot": "projects/03_components/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/03_tests",
-            "index": "projects/03_tests/src/index.html",
-            "browser": "projects/03_tests/src/main.ts",
+            "outputPath": "dist/03_components",
+            "index": "projects/03_components/src/index.html",
+            "browser": "projects/03_components/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "projects/03_tests/tsconfig.app.json",
-            "assets": ["projects/03_tests/src/favicon.ico", "projects/03_tests/src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/03_tests/src/styles.css"],
+            "tsConfig": "projects/03_components/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/03_components/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/03_components/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -220,10 +247,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "03_tests:build:production"
+              "buildTarget": "03_components:build:production"
             },
             "development": {
-              "buildTarget": "03_tests:build:development"
+              "buildTarget": "03_components:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -231,48 +258,59 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "03_tests:build"
+            "buildTarget": "03_components:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/03_tests/tsconfig.spec.json",
-            "assets": ["projects/03_tests/src/favicon.ico", "projects/03_tests/src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/03_tests/src/styles.css"],
+            "tsConfig": "projects/03_components/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/03_components/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/03_components/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/03_tests/**/*.ts", "projects/03_tests/**/*.html"]
+            "lintFilePatterns": ["projects/03_components/**/*.ts", "projects/03_components/**/*.html"],
+            "eslintConfig": "projects/03_components/eslint.config.js"
           }
         }
       }
     },
-    "04_directives": {
+    "04_tests": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
           "strict": true
         }
       },
-      "root": "projects/04_directives",
-      "sourceRoot": "projects/04_directives/src",
+      "root": "projects/04_tests",
+      "sourceRoot": "projects/04_tests/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/04_directives",
-            "index": "projects/04_directives/src/index.html",
-            "browser": "projects/04_directives/src/main.ts",
+            "outputPath": "dist/04_tests",
+            "index": "projects/04_tests/src/index.html",
+            "browser": "projects/04_tests/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "projects/04_directives/tsconfig.app.json",
-            "assets": ["projects/04_directives/src/favicon.ico", "projects/04_directives/src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/04_directives/src/styles.css"],
+            "tsConfig": "projects/04_tests/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/04_tests/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/04_tests/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -303,10 +341,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "04_directives:build:production"
+              "buildTarget": "04_tests:build:production"
             },
             "development": {
-              "buildTarget": "04_directives:build:development"
+              "buildTarget": "04_tests:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -314,48 +352,59 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "04_directives:build"
+            "buildTarget": "04_tests:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/04_directives/tsconfig.spec.json",
-            "assets": ["projects/04_directives/src/favicon.ico", "projects/04_directives/src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/04_directives/src/styles.css"],
+            "tsConfig": "projects/04_tests/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/04_tests/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/04_tests/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/04_directives/**/*.ts", "projects/04_directives/**/*.html"]
+            "lintFilePatterns": ["projects/04_tests/**/*.ts", "projects/04_tests/**/*.html"],
+            "eslintConfig": "projects/04_tests/eslint.config.js"
           }
         }
       }
     },
-    "05_services": {
+    "05_control_flow": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
           "strict": true
         }
       },
-      "root": "projects/05_services",
-      "sourceRoot": "projects/05_services/src",
+      "root": "projects/05_control_flow",
+      "sourceRoot": "projects/05_control_flow/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/05_services",
-            "index": "projects/05_services/src/index.html",
-            "browser": "projects/05_services/src/main.ts",
+            "outputPath": "dist/05_control_flow",
+            "index": "projects/05_control_flow/src/index.html",
+            "browser": "projects/05_control_flow/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "projects/05_services/tsconfig.app.json",
-            "assets": ["projects/05_services/src/favicon.ico", "projects/05_services/src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/05_services/src/styles.css"],
+            "tsConfig": "projects/05_control_flow/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/05_control_flow/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/05_control_flow/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -386,10 +435,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "05_services:build:production"
+              "buildTarget": "05_control_flow:build:production"
             },
             "development": {
-              "buildTarget": "05_services:build:development"
+              "buildTarget": "05_control_flow:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -397,48 +446,59 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "05_services:build"
+            "buildTarget": "05_control_flow:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/05_services/tsconfig.spec.json",
-            "assets": ["projects/05_services/src/favicon.ico", "projects/05_services/src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/05_services/src/styles.css"],
+            "tsConfig": "projects/05_control_flow/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/05_control_flow/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/05_control_flow/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/05_services/**/*.ts", "projects/05_services/**/*.html"]
+            "lintFilePatterns": ["projects/05_control_flow/**/*.ts", "projects/05_control_flow/**/*.html"],
+            "eslintConfig": "projects/05_control_flow/eslint.config.js"
           }
         }
       }
     },
-    "06_pipes": {
+    "06_directives": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
           "strict": true
         }
       },
-      "root": "projects/06_pipes",
-      "sourceRoot": "projects/06_pipes/src",
+      "root": "projects/06_directives",
+      "sourceRoot": "projects/06_directives/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/06_pipes",
-            "index": "projects/06_pipes/src/index.html",
-            "browser": "projects/06_pipes/src/main.ts",
+            "outputPath": "dist/06_directives",
+            "index": "projects/06_directives/src/index.html",
+            "browser": "projects/06_directives/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "projects/06_pipes/tsconfig.app.json",
-            "assets": ["projects/06_pipes/src/favicon.ico", "projects/06_pipes/src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/06_pipes/src/styles.css"],
+            "tsConfig": "projects/06_directives/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/06_directives/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/06_directives/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -469,10 +529,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "06_pipes:build:production"
+              "buildTarget": "06_directives:build:production"
             },
             "development": {
-              "buildTarget": "06_pipes:build:development"
+              "buildTarget": "06_directives:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -480,48 +540,59 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "06_pipes:build"
+            "buildTarget": "06_directives:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/06_pipes/tsconfig.spec.json",
-            "assets": ["projects/06_pipes/src/favicon.ico", "projects/06_pipes/src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/06_pipes/src/styles.css"],
+            "tsConfig": "projects/06_directives/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/06_directives/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/06_directives/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/06_pipes/**/*.ts", "projects/06_pipes/**/*.html"]
+            "lintFilePatterns": ["projects/06_directives/**/*.ts", "projects/06_directives/**/*.html"],
+            "eslintConfig": "projects/06_directives/eslint.config.js"
           }
         }
       }
     },
-    "07_http": {
+    "07_signals": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
           "strict": true
         }
       },
-      "root": "projects/07_http",
-      "sourceRoot": "projects/07_http/src",
+      "root": "projects/07_signals",
+      "sourceRoot": "projects/07_signals/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/07_http",
-            "index": "projects/07_http/src/index.html",
-            "browser": "projects/07_http/src/main.ts",
+            "outputPath": "dist/07_signals",
+            "index": "projects/07_signals/src/index.html",
+            "browser": "projects/07_signals/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "projects/07_http/tsconfig.app.json",
-            "assets": ["projects/07_http/src/favicon.ico", "projects/07_http/src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/07_http/src/styles.css"],
+            "tsConfig": "projects/07_signals/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/07_signals/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/07_signals/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -552,10 +623,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "07_http:build:production"
+              "buildTarget": "07_signals:build:production"
             },
             "development": {
-              "buildTarget": "07_http:build:development"
+              "buildTarget": "07_signals:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -563,48 +634,341 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "07_http:build"
+            "buildTarget": "07_signals:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/07_http/tsconfig.spec.json",
-            "assets": ["projects/07_http/src/favicon.ico", "projects/07_http/src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/07_http/src/styles.css"],
+            "tsConfig": "projects/07_signals/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/07_signals/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/07_signals/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/07_http/**/*.ts", "projects/07_http/**/*.html"]
+            "lintFilePatterns": ["projects/07_signals/**/*.ts", "projects/07_signals/**/*.html"],
+            "eslintConfig": "projects/07_signals/eslint.config.js"
           }
         }
       }
     },
-    "08_router": {
+    "08_services": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
           "strict": true
         }
       },
-      "root": "projects/08_router",
-      "sourceRoot": "projects/08_router/src",
+      "root": "projects/08_services",
+      "sourceRoot": "projects/08_services/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/08_router",
-            "index": "projects/08_router/src/index.html",
-            "browser": "projects/08_router/src/main.ts",
+            "outputPath": "dist/08_services",
+            "index": "projects/08_services/src/index.html",
+            "browser": "projects/08_services/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "projects/08_router/tsconfig.app.json",
-            "assets": ["projects/08_router/src/favicon.ico", "projects/08_router/src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/08_router/src/styles.css"],
+            "tsConfig": "projects/08_services/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/08_services/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/08_services/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "08_services:build:production"
+            },
+            "development": {
+              "buildTarget": "08_services:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "08_services:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/08_services/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/08_services/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/08_services/src/styles.css"],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/08_services/**/*.ts", "projects/08_services/**/*.html"],
+            "eslintConfig": "projects/08_services/eslint.config.js"
+          }
+        }
+      }
+    },
+    "09_pipes": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/09_pipes",
+      "sourceRoot": "projects/09_pipes/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/09_pipes",
+            "index": "projects/09_pipes/src/index.html",
+            "browser": "projects/09_pipes/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "projects/09_pipes/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/09_pipes/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/09_pipes/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "09_pipes:build:production"
+            },
+            "development": {
+              "buildTarget": "09_pipes:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "09_pipes:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/09_pipes/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/09_pipes/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/09_pipes/src/styles.css"],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/09_pipes/**/*.ts", "projects/09_pipes/**/*.html"],
+            "eslintConfig": "projects/09_pipes/eslint.config.js"
+          }
+        }
+      }
+    },
+    "10_http": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/10_http",
+      "sourceRoot": "projects/10_http/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/10_http",
+            "index": "projects/10_http/src/index.html",
+            "browser": "projects/10_http/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "projects/10_http/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/10_http/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/10_http/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "10_http:build:production"
+            },
+            "development": {
+              "buildTarget": "10_http:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "10_http:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/10_http/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/10_http/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/10_http/src/styles.css"],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/10_http/**/*.ts", "projects/10_http/**/*.html"],
+            "eslintConfig": "projects/10_http/eslint.config.js"
+          }
+        }
+      }
+    },
+    "11_routing": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/11_routing",
+      "sourceRoot": "projects/11_routing/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/11_routing",
+            "index": "projects/11_routing/src/index.html",
+            "browser": "projects/11_routing/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "projects/11_routing/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/11_routing/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/11_routing/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -635,10 +999,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "08_router:build:production"
+              "buildTarget": "11_routing:build:production"
             },
             "development": {
-              "buildTarget": "08_router:build:development"
+              "buildTarget": "11_routing:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -646,48 +1010,59 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "08_router:build"
+            "buildTarget": "11_routing:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/08_router/tsconfig.spec.json",
-            "assets": ["projects/08_router/src/favicon.ico", "projects/08_router/src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/08_router/src/styles.css"],
+            "tsConfig": "projects/11_routing/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/11_routing/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/11_routing/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/08_router/**/*.ts", "projects/08_router/**/*.html"]
+            "lintFilePatterns": ["projects/11_routing/**/*.ts", "projects/11_routing/**/*.html"],
+            "eslintConfig": "projects/11_routing/eslint.config.js"
           }
         }
       }
     },
-    "09_forms": {
+    "12_forms": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
           "strict": true
         }
       },
-      "root": "projects/09_forms",
-      "sourceRoot": "projects/09_forms/src",
+      "root": "projects/12_forms",
+      "sourceRoot": "projects/12_forms/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/09_forms",
-            "index": "projects/09_forms/src/index.html",
-            "browser": "projects/09_forms/src/main.ts",
+            "outputPath": "dist/12_forms",
+            "index": "projects/12_forms/src/index.html",
+            "browser": "projects/12_forms/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "projects/09_forms/tsconfig.app.json",
-            "assets": ["projects/09_forms/src/favicon.ico", "projects/09_forms/src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/09_forms/src/styles.css"],
+            "tsConfig": "projects/12_forms/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/12_forms/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/12_forms/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -718,10 +1093,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "09_forms:build:production"
+              "buildTarget": "12_forms:build:production"
             },
             "development": {
-              "buildTarget": "09_forms:build:development"
+              "buildTarget": "12_forms:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -729,29 +1104,36 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "09_forms:build"
+            "buildTarget": "12_forms:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/09_forms/tsconfig.spec.json",
-            "assets": ["projects/09_forms/src/favicon.ico", "projects/09_forms/src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/09_forms/src/styles.css"],
+            "tsConfig": "projects/12_forms/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/12_forms/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/12_forms/src/styles.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/09_forms/**/*.ts", "projects/09_forms/**/*.html"]
+            "lintFilePatterns": ["projects/12_forms/**/*.ts", "projects/12_forms/**/*.html"],
+            "eslintConfig": "projects/12_forms/eslint.config.js"
           }
         }
       }
     }
   },
   "cli": {
-    "schematicCollections": ["@angular-eslint/schematics"]
+    "schematicCollections": ["angular-eslint"],
+    "analytics": false
   }
 }
