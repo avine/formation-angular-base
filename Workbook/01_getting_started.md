@@ -26,10 +26,11 @@ Strigo Lab provides a Windows VM with the following functional environment:
 
 If you use VSCode as your IDE, install the following extensions in addition:
 
-- Angular Language Service
-- Auto Rename Tag (optional)
-- Github Theme (optional)
-- vscode-icons (optional)
+- [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template)
+- [Auto import](https://marketplace.visualstudio.com/items?itemName=steoates.autoimport) (optional)
+- [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag) (optional)
+- [Github Theme](https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme) (optional)
+- [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons) (optional)
 
 <div class="pb"></div>
 
