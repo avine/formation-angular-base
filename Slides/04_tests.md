@@ -29,6 +29,8 @@ Notes :
 
 ## Unit testing - Introduction 
 
+Testing your Angular application helps you check that your application is working as you expect.
+
 To test an application, you need two functional building blocks:
 
 - A **test runner** that identifies and runs the files containing the tests
