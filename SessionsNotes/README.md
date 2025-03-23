@@ -3,5 +3,5 @@ Placer ici vos remarques ou comptes rendus de sessions
 Format de fichier proposé :
 
 ```
-YYYYMMDD-('Inter'|<Client>)-<Agence>-<Votre nom>.md
+YYYY-MM-DD_('Inter'|<Client>)_<Agence>_<Votre nom>.md
 ```

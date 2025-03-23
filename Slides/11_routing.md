@@ -65,7 +65,7 @@ Notes :
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
 
   { path: 'contacts', component: ContactListComponent },
 
@@ -196,7 +196,7 @@ export class AppComponent {
   private router = inject(Router);
 
   protected navigate() {
-    this.router.navigate('/contacts');
+    this.router.navigate(['/contacts']); // Same as <a [routerLink]="['/contacts']">Contacts</a>
   }
 }
 ```
@@ -214,6 +214,7 @@ Notes :
 ```ts
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component ({
   template: 'Contact ID: {{ id }} (dynamic).'
@@ -224,7 +225,7 @@ export class ContactComponent {
   id!: number;
 
   constructor() {
-    this.activatedRoute.params.subscribe((params: Params) => {
+    this.activatedRoute.params.pipe(takeUntilDestroyed()).subscribe((params: Params) => {
       this.id = Number(params['id']); // note: route parameters are always of type `string`
     });
   }

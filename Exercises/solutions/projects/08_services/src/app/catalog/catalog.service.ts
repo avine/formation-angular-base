@@ -20,7 +20,7 @@ export class CatalogService {
       description: 'Tee-shirt col rond - Homme',
       photo: '/assets/coding-the-world.jpg',
       price: 18,
-      stock: 2,
+      stock: 1,
     },
     {
       id: 'vador',

@@ -89,7 +89,6 @@ describe('AppComponent', () => {
     component.addToBasket(component.products()[0]);
     component.addToBasket(component.products()[0]);
     component.addToBasket(component.products()[1]);
-    component.addToBasket(component.products()[1]);
     fixture.detectChanges();
 
     // Then

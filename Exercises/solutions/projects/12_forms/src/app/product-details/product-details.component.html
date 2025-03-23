@@ -1,13 +1,11 @@
-@let data = product();
-
-@if (data) {
+@if (product(); as _product) {
   <div class="row">
     <div class="col-12 col-md-4">
-      <img [src]="data.photo" class="mb-3 mb-md-0 w-100 rounded-3" alt="Product image" />
+      <img [src]="_product.photo" class="mb-3 mb-md-0 w-100 rounded-3" alt="Product image" />
     </div>
 
     <div class="col-12 col-md-8">
-      <h1>{{ data.title | uppercase }}</h1>
+      <h1>{{ _product.title | uppercase }}</h1>
 
       <div class="table-responsive-sm">
         <table class="table caption-top">
@@ -18,17 +16,17 @@
           <tbody>
             <tr>
               <th scope="row">Description</th>
-              <td style="min-width: 280px">{{ data.description }}</td>
+              <td style="min-width: 280px">{{ _product.description }}</td>
             </tr>
 
             <tr>
               <th scope="row">Stock disponible</th>
-              <td>{{ data.stock }}</td>
+              <td>{{ _product.stock }}</td>
             </tr>
 
             <tr>
               <th scope="row">Prix</th>
-              <td>{{ data.price | currency }}</td>
+              <td>{{ _product.price | currency }}</td>
             </tr>
           </tbody>
         </table>

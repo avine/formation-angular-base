@@ -70,8 +70,8 @@ import { NgStyle } from '@angular/common';
   selector: 'app-font-size-selector',
   imports: [NgStyle],
   template: `
-   <h1 [ngStyle]="{ 'font-size': currentSize + 'px' }">Example<h1>
-   Change size: <input type="number" [value]="currentSize" (input)="changeSize($event)">
+    <h1 [ngStyle]="{ 'font-size': currentSize + 'px' }">Example<h1>
+    Change size: <input type="number" [value]="currentSize" (input)="changeSize($event)">
   `
 })
 export class FontSizeSelectorComponent {
@@ -151,7 +151,7 @@ export class HighlightDirective {
       renderer.setStyle(elementRef.nativeElement, 'backgroundColor', 'yellow');
     });
     renderer.listen(elementRef.nativeElement, 'mouseleave', () => {
-      renderer.setStyle(elementRef.nativeElement, 'backgroundColor', undefined);
+      renderer.setStyle(elementRef.nativeElement, 'backgroundColor', null);
     });
   }
 }

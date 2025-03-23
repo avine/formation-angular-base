@@ -42,7 +42,7 @@ always used before the introduction of the signals.
 
 - Signals may be either **writable** or **read-only**
 
-😉 *Later, we'll talk about a process called **synchronisation** to understand when and why you should **use signals rather than raw values** to manage the state of your application...*
+😉 *Later, we'll talk about a process called **synchronization** to understand when and why you should **use signals rather than raw values** to manage the state of your application...*
 
 Notes :
 
@@ -198,14 +198,16 @@ Notes :
 import { Component, signal } from '@angular/core';
 
 @Component ({
-  selector: 'app-counter',
+  selector: 'app-counter-delay',
   template: `<button (click)="increment()">{{ count() }}</button>`
 })
-export class CounterComponent {
+export class CounterDelayComponent {
   count = signal(0);
 
   increment() {
-    this.count.update((count) => count + 1);
+    // Angular will correctly synchronize the UI with the updated signal value,
+    // even if the signal mutation occurs asynchronously!
+    setTimeout(() => this.count.update((count) => count + 1), 1000);
   }
 }
 ```
@@ -230,6 +232,7 @@ export class CounterComponent {
   count = model(0);
   increment() { this.count.update((count) => count + 1); }
 }
+
 @Component ({
   selector: 'app-root',
   imports: [CounterComponent],

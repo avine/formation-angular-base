@@ -63,7 +63,7 @@ Notes :
 
 ```ts
 import { Injectable, ApplicationConfig } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 
 @Injectable()
 export class ApiService {
@@ -76,7 +76,7 @@ export class ApiService {
 }
 
 export const appConfig: ApplicationConfig = {
-  providers: [ApiService],
+  providers: [provideHttpClient(withFetch()), ApiService],
 };
 ```
 

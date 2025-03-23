@@ -15,7 +15,7 @@ export const getProducts = (): Product[] => [
     description: 'Tee-shirt col rond - Homme',
     photo: 'http://localhost:8080/assets/coding-the-world.jpg',
     price: 18,
-    stock: 2,
+    stock: 1,
   },
   {
     id: 'vador',

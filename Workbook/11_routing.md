@@ -49,7 +49,8 @@ Add `routerLink` directives in the following templates (don't forget to add the 
   - to visit the page _"Voir mon panier"_
 
 - In `product.component.html`:
-  - to visit the product details page
+  - to visit the product details page at `['/product', product.id]`<br />
+    (below, you will create the `ProductDetailsComponent` in the bonus section)
 
 <div class="pb"></div>
 
@@ -125,8 +126,6 @@ export const basketGuard: CanMatchFn = () => {
 - At this point, you can safely remove the `BasketService.fetchBasket()` subscription from the `BasketComponent` constructor, 
   because data fetching is now triggered by the guard itself anyway (see above *)
 
-<div class="pb"></div>
-
 ### Bonus: `ProductDetailsComponent`
 
 - Create the component and add a lazy-loaded route `'product/:id'`
@@ -134,50 +133,13 @@ export const basketGuard: CanMatchFn = () => {
 - Retrieve the `:id` from the `ActivatedRoute` snapshot
 
 - Fetch the product from the server using the `HttpClient` service:
-
   - `http://localhost:8080/api/product/:id`
 
-- Use the following code snippet to display the product details:
+- Store the fetched product in a class property:
+  - `product = signal<Product | undefined>(undefined);`
 
-```html
-<div class="row" *ngIf="product">
-  <div class="col-12 col-md-4">
-    <img
-      [src]="product.photo"
-      class="mb-3 mb-md-0 w-100 rounded-3"
-      alt="Product image"
-    />
-  </div>
-
-  <div class="col-12 col-md-8">
-    <h1>{{ product.title | uppercase }}</h1>
-
-    <div class="table-responsive-sm">
-      <table class="table caption-top">
-        <caption>
-          Détails du produit
-        </caption>
-        <tbody>
-          <tr>
-            <th scope="row">Description</th>
-            <td style="min-width: 280px">{{ product.description }}</td>
-          </tr>
-
-          <tr>
-            <th scope="row">Stock disponible</th>
-            <td>{{ product.stock }}</td>
-          </tr>
-
-          <tr>
-            <th scope="row">Prix</th>
-            <td>{{ product.price | currency }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-```
+- For the component template, copy/paste the following:
+  - `Exercises/resources/product-details/product-details.component.html`
 
 <div class="pb"></div>
 
