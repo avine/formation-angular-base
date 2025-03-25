@@ -269,11 +269,11 @@ describe('JoinArrayPipe', () => {
   let pipe;
 
   beforeEach(() => {
-    pipe = new JoinArrayPipe ();
+    pipe = new JoinArrayPipe();
   });
 
   it('should works', () => {
-    var output = pipe.transform(['apple', 'orange', 'banana'], ', ');
+    const output = pipe.transform(['apple', 'orange', 'banana'], ', ');
 
     expect(output).toEqual('apple, orange, banana');
   });

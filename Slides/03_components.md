@@ -208,7 +208,7 @@ Example: `role` is a valid HTML attribute of the `<div>` tag, but there's no suc
 ```
 
 ```html
-<td [role]="expression">NOT OK</td>
+<div [role]="expression">NOT OK</div>
 
 <!-- ❌ Can't bind to 'role' since it isn't a known property of 'div'. -->
 ```
