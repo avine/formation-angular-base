@@ -83,6 +83,8 @@ import { Component } from '@angular/core';
 export class AppComponent {}
 ```
 
+- Under the hood, the `ngModel` directive tracks the **value**, user **interaction**, and **validation status** of the control element (such as an `<input />`) to which it is attached
+
 Notes :
 
 
