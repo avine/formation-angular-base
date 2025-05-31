@@ -62,7 +62,9 @@ npm i -g @angular/cli
 ng new zenika-ng-website
 ```
 
+
 You will be displayed some options for your app.
+- Choose "No" for 'zoneless' application
 - Choose "CSS" as style preprocessor
 - Choose "No" for SSR/SSG/Prerendering
 
