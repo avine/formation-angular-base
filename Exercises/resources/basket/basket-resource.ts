@@ -1,10 +1,10 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { BasketItem } from './basket.types';
+import { BasketItem } from './basket-types';
 
 @Injectable({
   providedIn: 'root',
 })
-export class BasketService {
+export class BasketResource {
   private _items = signal<BasketItem[]>([]);
 
   items = this._items.asReadonly();
