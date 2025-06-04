@@ -26,26 +26,37 @@
   "references": [
     { "path": "./projects/01_getting_started/tsconfig.app.json" },
     { "path": "./projects/01_getting_started/tsconfig.spec.json" },
+
     { "path": "./projects/02_workspace/tsconfig.app.json" },
     { "path": "./projects/02_workspace/tsconfig.spec.json" },
+
     { "path": "./projects/03_components/tsconfig.app.json" },
     { "path": "./projects/03_components/tsconfig.spec.json" },
+
     { "path": "./projects/04_tests/tsconfig.app.json" },
     { "path": "./projects/04_tests/tsconfig.spec.json" },
+
     { "path": "./projects/05_control_flow/tsconfig.app.json" },
     { "path": "./projects/05_control_flow/tsconfig.spec.json" },
+
     { "path": "./projects/06_directives/tsconfig.app.json" },
     { "path": "./projects/06_directives/tsconfig.spec.json" },
+
     { "path": "./projects/07_signals/tsconfig.app.json" },
     { "path": "./projects/07_signals/tsconfig.spec.json" },
+
     { "path": "./projects/08_services/tsconfig.app.json" },
     { "path": "./projects/08_services/tsconfig.spec.json" },
+
     { "path": "./projects/09_pipes/tsconfig.app.json" },
     { "path": "./projects/09_pipes/tsconfig.spec.json" },
+
     { "path": "./projects/10_http/tsconfig.app.json" },
     { "path": "./projects/10_http/tsconfig.spec.json" },
+
     { "path": "./projects/11_routing/tsconfig.app.json" },
     { "path": "./projects/11_routing/tsconfig.spec.json" },
+
     { "path": "./projects/12_forms/tsconfig.app.json" },
     { "path": "./projects/12_forms/tsconfig.spec.json" }
   ]
