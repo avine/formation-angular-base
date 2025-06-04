@@ -1,27 +1,27 @@
 import { Routes } from '@angular/router';
-import { BasketEmptyComponent } from './basket-empty/basket-empty.component';
-import { BasketComponent } from './basket/basket.component';
-import { basketGuard } from './basket/basket.guard';
-import { CatalogComponent } from './catalog/catalog.component';
-import { PRODUCT_DETAILS_PARAM_KEY } from './product-details/product-details.config';
+import { BasketEmpty } from './basket-empty/basket-empty';
+import { Basket } from './basket/basket';
+import { basketGuard } from './basket/basket-guard';
+import { Catalog } from './catalog/catalog';
+import { PRODUCT_DETAILS_PARAM_KEY } from './product-details/product-details-config';
 
 export const routes: Routes = [
   {
     path: 'catalog',
-    component: CatalogComponent,
+    component: Catalog,
   },
   {
     path: `product/:${PRODUCT_DETAILS_PARAM_KEY}`,
-    loadComponent: () => import('./product-details/product-details.component'),
+    loadComponent: () => import('./product-details/product-details'),
   },
   {
     path: 'basket',
-    component: BasketComponent,
+    component: Basket,
     canMatch: [basketGuard],
   },
   {
     path: 'basket',
-    component: BasketEmptyComponent,
+    component: BasketEmpty,
   },
   {
     path: '**',
