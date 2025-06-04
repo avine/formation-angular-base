@@ -9,8 +9,8 @@ import { BasketResourceStub } from '../basket/basket-resource.stub';
 import { Catalog } from './catalog';
 import { CatalogResource } from './catalog-resource';
 import { CatalogResourceStub } from './catalog-resource.stub';
-import { ProductCard } from './product-card/product-card';
-import { Product } from './product-card/product-types';
+import { ProductCard } from './product/product-card';
+import { Product } from './product/product-types';
 
 describe('Catalog', () => {
   let fixture: ComponentFixture<Catalog>;

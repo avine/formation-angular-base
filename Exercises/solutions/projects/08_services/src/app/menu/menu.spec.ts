@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BasketResource } from '../basket/basket-resource';
 import { BasketResourceStub } from '../basket/basket-resource.stub';
-import { BasketItem } from '../basket/basket.types';
+import { BasketItem } from '../basket/basket-types';
 import { Menu } from './menu';
 
 describe('Menu', () => {

@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { App } from './app';
-import { ProductCard } from './product-card/product-card';
+import { ProductCard } from './product/product-card';
 
 describe('App', () => {
   let fixture: ComponentFixture<App>;

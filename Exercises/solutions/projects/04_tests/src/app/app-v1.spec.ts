@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { App } from './app';
-import { ProductCard } from './product-card/product-card';
+import { ProductCard } from './product/product-card';
 
 describe('App (first approach - with explicit dependency declaration)', () => {
   let fixture: ComponentFixture<App>;

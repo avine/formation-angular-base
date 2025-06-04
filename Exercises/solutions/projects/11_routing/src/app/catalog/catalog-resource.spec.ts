@@ -2,7 +2,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { CatalogResource } from './catalog-resource';
-import { Product } from './product-card/product-types';
+import { Product } from './product/product-types';
 
 describe('CatalogResource', () => {
   let service: CatalogResource;

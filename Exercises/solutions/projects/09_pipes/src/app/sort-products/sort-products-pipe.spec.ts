@@ -1,4 +1,4 @@
-import { Product } from '../product-card/product-types';
+import { Product } from '../product/product-types';
 import { SortProductsPipe } from './sort-products-pipe';
 
 describe('SortProductsPipe', () => {
