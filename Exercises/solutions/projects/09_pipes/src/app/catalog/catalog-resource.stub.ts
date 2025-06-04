@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { Product } from '../product-card/product-types';
+import { Product } from '../product/product-types';
 import { CatalogResource } from './catalog-resource';
 
 @Injectable()

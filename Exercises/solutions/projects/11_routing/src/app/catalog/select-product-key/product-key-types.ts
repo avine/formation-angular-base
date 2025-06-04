@@ -1,3 +1,3 @@
-import { Product } from '../product-card/product-types';
+import { Product } from '../product/product-types';
 
 export type ProductKey = keyof Pick<Product, 'price' | 'stock'> | undefined;

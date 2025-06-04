@@ -2,7 +2,7 @@ import { CurrencyPipe, UpperCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '../catalog/product-card/product-types';
+import { Product } from '../catalog/product/product-types';
 import { PRODUCT_DETAILS_PARAM_KEY } from './product-details-config';
 
 @Component({

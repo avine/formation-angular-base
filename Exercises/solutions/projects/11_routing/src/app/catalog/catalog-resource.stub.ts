@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { CatalogResource } from './catalog-resource';
-import { Product } from './product-card/product-types';
+import { Product } from './product/product-types';
 
 @Injectable()
 export class CatalogResourceStub implements Partial<CatalogResource> {

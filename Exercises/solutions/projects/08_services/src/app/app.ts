@@ -3,8 +3,8 @@ import { APP_TITLE } from './app.token';
 import { BasketResource } from './basket/basket-resource';
 import { CatalogResource } from './catalog/catalog-resource';
 import { Menu } from './menu/menu';
-import { ProductCard } from './product-card/product-card';
-import { Product } from './product-card/product-types';
+import { ProductCard } from './product/product-card';
+import { Product } from './product/product-types';
 
 @Component({
   selector: 'app-root',
