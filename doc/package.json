@@ -1,0 +1,25 @@
+{
+  "name": "doc",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start:course": "vite --config course/vite.config.js",
+    "start:workbook": "vite --config workbook/vite.config.js",
+    "build:course": "vite build --config course/vite.config.js --base /course/ --out-dir ../dist/course",
+    "build:workbook": "vite build --config workbook/vite.config.js --base /workbook/ --out-dir ../dist/workbook",
+    "build": "npm run doc:course && npm run doc:workbook"
+  },
+  "dependencies": {
+    "@fontsource/fira-code": "^5.1.0",
+    "@fontsource/nunito": "^5.1.0",
+    "@fontsource/open-sans": "^5.1.0",
+    "canvas-confetti": "^1.9.3",
+    "highlight.js": "^11.11.0",
+    "reveal.js": "^5.1.0"
+  },
+  "devDependencies": {
+    "sass": "1.78.0",
+    "vite": "^5.4.11"
+  }
+}
