@@ -1,5 +1,4 @@
-## Lab 1: Getting started
-
+## Lab 1: Getting started 1/6
 ### Setting up your environment
 
 #### Training on Local system
@@ -35,6 +34,7 @@ If you use VSCode as your IDE, install the following extensions in addition:
 
 
 
+## Lab 1: Getting started 2/6
 #### Version control system
 
 - Open the browser and login to your favorite cloud-based version control system (Github, Gitlab, ...)
@@ -48,6 +48,7 @@ git config --global user.email <YOUR_EMAIL>
 
 
 
+## Lab 1: Getting started 3/6
 ### Creating and running your Angular application
 
 This app will be used along all labs.
@@ -90,6 +91,7 @@ You should see the app with a placeholder content. 🚀
 
 
 
+## Lab 1: Getting started 4/6
 ### Taking control of your application
 
 Even if we haven't yet studied the main concepts, let's modify the application right away!
@@ -118,6 +120,9 @@ class App {
 
 - Check that the application has been updated correctly in the browser. 🚀
 
+
+
+## Lab 1: Getting started 5/6
 ### Now let's try running the application tests
 
 ```shell
@@ -128,8 +133,6 @@ Because we've modified the application, the tests in `app.spec.ts` fail.
 
 - Fix the test on property `title`
 - Fix the test on tag `h1`
-
-
 
 ### Finally let's build the application for production
 
@@ -150,6 +153,7 @@ Note that this package is not related to the `ng serve` command.
 
 
 
+## Lab 1: Getting started 6/6
 ### Synchronize your repository
 
 Push your local repository from the command line over *HTTPS* (not SSH).

@@ -1,10 +1,14 @@
-# Angular
+# Angular Labs
 
 <!-- .slide: class="page-title" -->
 
 
 
 ## Summary
+
+<div class="col-right-50">
+  <img src="/resources/background-lab.svg" width="100%" />
+</div>
 
 - [Lab 1: Getting started](#/1)
 - [Lab 2: Workspace](#/2)
@@ -18,20 +22,5 @@
 - [Lab 10: Http](#/10)
 - [Lab 11 Routing](#/11)
 - [Lab 12: Forms](#/12)
-- [Lab 13: Appendix](#/13)
 
 Notes :
-
-
-
-## Logistics
-
-- Schedules
-- Lunch & breaks
-- Other questions ?
-
-Notes :
-
-
-
-<!-- .slide: class="page-questions" -->

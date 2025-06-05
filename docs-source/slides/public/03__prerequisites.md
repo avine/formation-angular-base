@@ -419,4 +419,5 @@ Notes :
 
 
 
-<!-- .slide: class="page-questions" -->
+## Technical prerequisites - Questions
+<!-- .slide: data-background-image="/resources/background-questions.svg" data-background-size="45%" -->

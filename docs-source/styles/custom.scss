@@ -96,10 +96,16 @@ hr {
 
 // -----------------------------------------
 // Special addon style to display page title
-
 .page-title {
+  height: 100%;
+
   h1 {
-    margin-top: 2.35em; // Required to center the content vertically (for `/?print-pdf` also...)
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
 
     &::before {
@@ -127,31 +133,6 @@ hr {
   position: absolute;
   right: 0;
   width: 48%;
-}
-
-// -------------------------------------------------
-// Special addon style to display image to the right [[[DEPRECATED]]]
-.col-right {
-  position: absolute;
-  right: 0;
-  width: 40%;
-
-  &--alt {
-    width: 25%;
-  }
-
-  > img {
-    display: block;
-    margin: 0 auto !important;
-  }
-}
-
-.col-left {
-  width: 60%;
-
-  &--alt {
-    width: 75%;
-  }
 }
 
 // ---------------------------------------------------------------------

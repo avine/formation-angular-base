@@ -451,8 +451,10 @@ Talk about "ng-mocks" library (https://www.npmjs.com/package/ng-mocks).
 
 
 
-<!-- .slide: class="page-questions" -->
+## Unit testing - Questions
+<!-- .slide: data-background-image="/resources/background-questions.svg" data-background-size="45%" -->
 
 
 
-<!-- .slide: class="page-tp4" -->
+## Unit testing - Lab 4
+<!-- .slide: data-background-image="/resources/background-lab.svg" data-background-size="45%" -->

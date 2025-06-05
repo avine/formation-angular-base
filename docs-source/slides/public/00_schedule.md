@@ -33,6 +33,13 @@ Notes :
 
 
 
+## About me
+<!-- .slide: data-background-image="/resources/background-about-me.svg" data-background-size="45%" -->
+
+Notes :
+
+
+
 ## Logistics
 
 - Schedules
@@ -40,7 +47,3 @@ Notes :
 - Other questions ?
 
 Notes :
-
-
-
-<!-- .slide: class="page-questions" -->

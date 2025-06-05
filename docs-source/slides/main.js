@@ -27,6 +27,7 @@ import CopyCode from '../plugins/copy-code/copy-code';
 Reveal.initialize({
   hash: true,
   transition: 'none',
+  backgroundTransition: 'none',
   margin: 0.06,
   width: 1920,
   height: 1080,

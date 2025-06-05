@@ -280,8 +280,10 @@ Notes :
 
 
 
-<!-- .slide: class="page-questions" -->
+## Workspace - Questions
+<!-- .slide: data-background-image="/resources/background-questions.svg" data-background-size="45%" -->
 
 
 
-<!-- .slide: class="page-tp2" -->
+## Workspace - Lab 2
+<!-- .slide: data-background-image="/resources/background-lab.svg" data-background-size="45%" -->

@@ -373,3 +373,13 @@ Notes :
 - **Angular:** https://angular.dev
 
 Notes :
+
+
+
+## Getting started - Questions
+<!-- .slide: data-background-image="/resources/background-questions.svg" data-background-size="45%" -->
+
+
+
+## Getting started - Lab 1
+<!-- .slide: data-background-image="/resources/background-lab.svg" data-background-size="45%" -->

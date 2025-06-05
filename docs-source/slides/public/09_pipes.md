@@ -290,8 +290,10 @@ Notes :
 
 
 
-<!-- .slide: class="page-questions" -->
+## Pipes - Questions
+<!-- .slide: data-background-image="/resources/background-questions.svg" data-background-size="45%" -->
 
 
 
-<!-- .slide: class="page-tp9" -->
+## Pipes - Lab 9
+<!-- .slide: data-background-image="/resources/background-lab.svg" data-background-size="45%" -->
