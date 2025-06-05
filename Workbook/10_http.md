@@ -32,7 +32,7 @@ Here are the available endpoints:
 
 <div class="pb"></div>
 
-### `CatalogService`
+### `CatalogResource`
 
 - Inject the `HttpClient` service
 
@@ -44,12 +44,12 @@ Here are the available endpoints:
 ```ts
 import { Observable, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Product } from '../product/product.types';
+import { Product } from '../product/product-types';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CatalogService {
+export class CatalogResource {
   fetchProducts(): Observable<Product[]> {
     return this.httpClient
       .get<Product[]>('http://localhost:8080/api/products')
@@ -58,23 +58,23 @@ export class CatalogService {
 }
 ```
 
-#### Updating the `AppComponent`
+#### Updating the `App` component
 
-- Subcribe to `CatalogService.fetchProducts()` method in the class constructor, to trigger data fetching
+- Subcribe to `CatalogResource.fetchProducts()` method in the class constructor, to trigger data fetching
 
-### `BasketService`
+### `BasketResource`
 
 - Inject the `HttpClient` service
 
-- Add a `fetchBasket(): Observable<BasketItem[]>` method (such as we did with `fetchProducts()` for the `CatalogService`)
+- Add a `fetchBasket(): Observable<BasketItem[]>` method (such as we did with `fetchProducts()` for the `CatalogResource`)
 
 - Add a `addItem(productId: string): Observable<BasketItem>` method posts the item to be added and update the `_basket` property accordingly
 
-#### Updating the `AppComponent`
+#### Updating the `App` component
 
-- Subcribe to `BasketService.fetchBasket()` method in the class constructor, to trigger data fetching
+- Subcribe to `BasketResource.fetchBasket()` method in the class constructor, to trigger data fetching
 
-- Update the `addToBasket()` method so that it subscribes correctly to `BasketService.addItem()` method
+- Update the `addToBasket()` method so that it subscribes correctly to `BasketResource.addItem()` method
 
 ### Tests
 

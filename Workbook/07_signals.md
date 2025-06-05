@@ -1,8 +1,8 @@
 ## Lab 7: Signals
 
-In this Lab, you'll convert `AppComponent` properties into signals.
+In this Lab, you'll convert `App` component properties into signals.
 
-### `AppComponent`
+### `App` component
 
 - Use a `signal<Product[]>` signal for the `products` property
 
@@ -16,7 +16,7 @@ In this Lab, you'll convert `AppComponent` properties into signals.
 
 ### Tests
 
-#### `app.component.spec.ts`
+#### `app.spec.ts`
 
 - Fix the tests to properly consume the different signals
 

@@ -2,13 +2,13 @@
 
 In this lab, you'll use the `@for`, `@if` and `@else` to improve the application's logic.
 
-### `AppComponent`
+### `App` component
 
 - Update `addToBasket` method to decrease the product stock when user clicks _"Ajouter au panier"_
 
 - Add a getter `get hasProductsInStock(): boolean` that returns `true` when at least one product has a stock greater than 0
 
-- Use `@for` to iterate over the `products` arrays to display each `<app-product />` component
+- Use `@for` to iterate over the `products` arrays to display each `<app-product-card />` component
 
 - Use `@if` to display only the products with a `stock` greater than 0
 
@@ -16,7 +16,7 @@ In this lab, you'll use the `@for`, `@if` and `@else` to improve the application
 
 ### Tests
 
-#### `app.component.spec.ts`
+#### `app.spec.ts`
 
 - It should decrease the stock of the product added to the basket
 

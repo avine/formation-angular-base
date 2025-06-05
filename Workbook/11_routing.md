@@ -6,23 +6,23 @@ In this lab, you'll create a multi-page application (SPA) using the Angular rout
 
 - Create the following components and declare a route for each one of them:
 
-  - Component: `CatalogComponent` --> Route: `'catalog'`
-  - Component: `BasketComponent` --> Route: `'basket'`
+  - Component: `Catalog` --> Route: `'catalog'`
+  - Component: `Basket` --> Route: `'basket'`
 
-- Add a route `**` that redirects to the `'catalog'`
+- Add a route `**` that redirects to `'/catalog'`
 
-### `CatalogComponent`
+### `Catalog` component
 
-- Move the main content you have developed in the `AppComponent` to this one, including:
+- Move the main content you have developed in the `App` component to this one, including:
   - the template
   - the class logic
   - the tests (optional)
 
-### `AppComponent`
+### `App` component
 
-- In `src/app/app.component.ts`, add `RouterOutlet` to the component `imports`
+- In `src/app/app.ts`, add `RouterOutlet` to the component `imports`
 
-- In `src/app/app.component.html`, put a `<router-outlet />` directive, instead of the main content you just moved.
+- In `src/app/app.html`, put a `<router-outlet />` directive, instead of the main content you just moved.
   The template should now look like this:
 
 ```html
@@ -39,22 +39,22 @@ In this lab, you'll create a multi-page application (SPA) using the Angular rout
 
 Add `routerLink` directives in the following templates (don't forget to add the `RouterLink` in the related components `imports`):
 
-- In `catalog.component.html`:
+- In `catalog.html`:
 
   - to visit the page _"Voir mon panier"_
 
-- In `menu.component.html`:
+- In `menu.html`:
 
   - to return the home page when clicking on _"Zenika Ecommerce"_
   - to visit the page _"Voir mon panier"_
 
-- In `product.component.html`:
+- In `product-card.html`:
   - to visit the product details page at `['/product', product.id]`<br />
-    (below, you will create the `ProductDetailsComponent` in the bonus section)
+    (below, you will create the `ProductDetails` component in the bonus section)
 
 <div class="pb"></div>
 
-### `BasketComponent`
+### `Basket` component
 
 - Use the following markup for the component template:
 
@@ -82,9 +82,9 @@ Add `routerLink` directives in the following templates (don't forget to add the 
 </div>
 ```
 
-- Use the `BasketService` to implement the component logic
+- Use the `BasketResource` service to implement the component logic
 
-- Subcribe to `BasketService.fetchBasket()` method in the class constructor, to trigger data fetching<br />
+- Subcribe to `BasketResource.fetchBasket()` method in the class constructor, to trigger data fetching<br />
   Note that you'll remove this part once you've implemented the basket guard (see below *)
 
 - To check that everything is working properly, you should be able to:
@@ -97,36 +97,36 @@ Add `routerLink` directives in the following templates (don't forget to add the 
 
 When visiting the page `http://localhost:4200/basket`:
 
-- If there are items in the basket, the `BasketComponent` should be displayed
-- It the basket is empty, an alternate `BasketEmptyComponent` should be displayed
+- If there are items in the basket, the `Basket` component should be displayed
+- It the basket is empty, an alternate `BasketEmpty` component should be displayed
 
 Let's do this!
 
-- Generate a `CanMatch` guard in `src/app/basket/basket.guard.ts`
+- Generate a `CanMatch` guard in `src/app/basket/basket-guard.ts`
 
 ```ts
 import { inject } from "@angular/core";
 import { CanMatchFn } from "@angular/router";
-import { BasketService } from "./basket.service";
+import { BasketResource } from "./basket-resource";
 
 export const basketGuard: CanMatchFn = () => {
-  const basketService = inject(BasketService);
+  const basketResource = inject(BasketResource);
   return /* to be continued... */;
 };
 ```
 
 - Add the guard to the appropriate route
 
-- Generate a new component `BasketEmptyComponent`
+- Generate a new component `BasketEmpty` component
   - It simply displays _"Votre panier est vide."_
 
 - Add the route `'basket'` to display the component
-  - Yes, it's the same route as for the `BasketComponent`
+  - Yes, it's the same route as for the `Basket` component
 
-- At this point, you can safely remove the `BasketService.fetchBasket()` subscription from the `BasketComponent` constructor, 
+- At this point, you can safely remove the `BasketResource.fetchBasket()` subscription from the `Basket` component constructor, 
   because data fetching is now triggered by the guard itself anyway (see above *)
 
-### Bonus: `ProductDetailsComponent`
+### Bonus: `ProductDetails` component
 
 - Create the component and add a lazy-loaded route `'product/:id'`
 
@@ -139,7 +139,7 @@ export const basketGuard: CanMatchFn = () => {
   - `product = signal<Product | undefined>(undefined);`
 
 - For the component template, copy/paste the following:
-  - `Exercises/resources/product-details/product-details.component.html`
+  - `Exercises/resources/product-details/product-details.html`
 
 <div class="pb"></div>
 
@@ -149,13 +149,13 @@ Have you noticed that when loading the catalog, the message _"Désolé, notre st
 
 You can improve this by not displaying anything as long as the `products` are undefined.
 
-- In the `/catalog/catalog.component.ts` component, change the `_product` signature: 
+- In the `/catalog/catalog-resource.ts` service, change the `_product` signature: 
 
 ```ts
 @Injectable({
   providedIn: 'root',
 })
-export class CatalogService {
+export class CatalogResource {
   private _products = signal<Product[] | undefined>(undefined);
   // Remember that previously, it was: `signal<Product[]>([])`
 }
@@ -163,7 +163,7 @@ export class CatalogService {
 
 - Fix the errors raised by this change
 
-- Finally, in the `/catalog/catalog.component.html` template, use `@if {}` statement like this:
+- Finally, in the `/catalog/catalog.html` component template, use `@if {}` statement like this:
 
 ```html
 @if (products()) {

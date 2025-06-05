@@ -2,7 +2,7 @@
 
 In this lab, you'll use pipes to format the application content.
 
-### `ProductComponent`
+### `ProductCard` component
 
 Let's start by using pipes provided by the Angular framework:
 
@@ -41,7 +41,7 @@ export const appConfig: ApplicationConfig = {
 
 The product price should now be displayed correctly.
 
-### `AppComponent`
+### `App` component
 
 - Use the `currency` pipe to display the basket total
 
@@ -53,12 +53,12 @@ Now, let's create a custom pipe of our own!
 
 We want to be able to sort the displayed products by `price` or `stock`.
 
-- Generate the pipe `src/app/sort-products/sort-products.pipe.ts` using Angular CLI
+- Generate the pipe `src/app/sort-products/sort-products-pipe.ts` using Angular CLI
 
   - Implement the `transform` method that returns the sorted array of products
   - Add an optional parameter to the pipe to specify on which property (`price` or `stock`) to sort the products
 
-- Once your finished, use your pipe to sort the products in the `AppComponent` template
+- Once your finished, use your pipe to sort the products in the `App` component template
 
 Finally, let's add a selector to choose between `price` and `stock` sorting.
 You'll find a component ready for use here: `Exercises/resources/select-product-key`.
@@ -67,21 +67,21 @@ You'll find a component ready for use here: `Exercises/resources/select-product-
 
 Use the component:
 
-- Add `productKey` in `app.component.ts`
+- Add `productKey` in `app.ts` component
 
 ```ts
 import { Component } from "@angular/core";
-import { SelectProductKey } from "./select-product-key/select-product-key.types";
+import { ProductKey } from "./select-product-key/product-key-types";
 
 @Component({
   /* ... */
 })
-export class AppComponent {
-  productKey = signal<SelectProductKey>(undefined);
+export class App {
+  productKey = signal<ProductKey>(undefined);
 }
 ```
 
-- Use `<app-select-product-key>` in `app.component.html`
+- Use `<app-select-product-key>` in `app.html`
 
 ```html
 <app-select-product-key [(productKey)]="productKey" />
@@ -91,7 +91,7 @@ export class AppComponent {
 
 ### Tests
 
-#### `app.component.spec.ts`
+#### `app.spec.ts`
 
 - It should display the products sorted by price
 
@@ -99,7 +99,7 @@ export class AppComponent {
 
 - It should display the basket total with currency
 
-#### `sort-products.pipe.spec.ts`
+#### `sort-products-pipe.spec.ts`
 
 - It should not sort products when key is undefined
 
@@ -107,7 +107,7 @@ export class AppComponent {
 
 - It should sort products by title
 
-#### `product.component.spec.ts`
+#### `product.spec.ts`
 
 - It should display product title in uppercase
 

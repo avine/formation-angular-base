@@ -17,26 +17,25 @@ Unzip the learning materials given by your trainer.
 
 Strigo Lab provides a Windows VM with the following functional environment:
 
-- Node.js
-- NPM
-- Git
-- Visual Studio Code (`"C:\Programs Files\Microsoft VS Code"`)
+- [Node.js](https://nodejs.org/en/download)
+- NPM (installed with Node.js)
+- [Git](https://git-scm.com/downloads/win)
+- [Visual Studio Code](https://code.visualstudio.com/download) (`"C:\Programs Files\Microsoft VS Code"`)
+
+Note: Software can be installed easily if they are not pre-installed.
 
 #### Visual Studio Code Extensions
 
 If you use VSCode as your IDE, install the following extensions in addition:
 
 - [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template)
-- [Auto import](https://marketplace.visualstudio.com/items?itemName=steoates.autoimport) (optional)
 - [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag) (optional)
 - [Github Theme](https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme) (optional)
-- [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons) (optional)
+- [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) (optional)
 
 <div class="pb"></div>
 
 #### Version control system
-
-Note: to use "Git Credential Manager", you need to restart the Windows VM once all the programs have been installed.
 
 - Open the browser and login to your favorite cloud-based version control system (Github, Gitlab, ...)
 - Remotely, create a new empty repository named `zenika-ng-website` in which to save your code
@@ -85,16 +84,10 @@ In this case, to run an Angular CLI command, you will have to use NPM first `npm
 #### Run the Angular dev server
 
 ```shell
-ng serve
+ng serve # or: `npm start`
 ```
 
-or:
-
-```shell
-npm start
-```
-
-Open the Chrome browser and visit: http://localhost:4200.
+- Open the Chrome browser and visit: http://localhost:4200.
 
 You should see the app with a placeholder content. 🚀
 
@@ -106,13 +99,13 @@ You should see the app with a placeholder content. 🚀
 
 Even if we haven't yet studied the main concepts, let's modify the application right away!
 
-- Replace the content of `src/app/app.component.html` with:
+- Replace the content of `src/app/app.html` with:
 
 ```html
 <h1>Welcome to {{ title }}!</h1>
 ```
 
-- Add some style in `src/app/app.component.css`:
+- Add some style in `src/app/app.css`:
 
 ```css
 h1 {
@@ -120,10 +113,10 @@ h1 {
 }
 ```
 
-- Replace the property `title` in `src/app/app.component.ts` with:
+- Replace the property `title` in `src/app/app.ts` with:
 
 ```ts
-class AppComponent {
+class App {
   title = 'my first component';
 }
 ```
@@ -133,19 +126,15 @@ class AppComponent {
 ### Now let's try running the application tests
 
 ```shell
-ng test
+ng test # or: `npm test`
 ```
 
-or:
-
-```shell
-npm test
-```
-
-Because we've modified the application, the tests in `app.component.spec.ts` fail.
+Because we've modified the application, the tests in `app.spec.ts` fail.
 
 - Fix the test on property `title`
 - Fix the test on tag `h1`
+
+
 
 ### Finally let's build the application for production
 
@@ -158,6 +147,9 @@ ng build
 ```shell
 npx serve --single .
 ```
+
+This command will download and run the NPM package named [serve](https://www.npmjs.com/package/serve).
+Note that this package is not related to the `ng serve` command.
 
 - Open the browser at the URL specified in the console
 
