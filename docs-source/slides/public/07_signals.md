@@ -6,7 +6,7 @@
 
 ## Summary
 
-<!-- .slide: class="toc" -->
+<div class="col-left-50">
 
 - [Getting started](#/1)
 - [Workspace](#/2)
@@ -15,13 +15,19 @@
 - [Unit testing](#/5)
 - [Control flow](#/6)
 - [Directives](#/7)
-- **[Signals](#/8)**
+
+</div>
+<div class="col-right-50">
+
+- **Signals**
 - [Services](#/9)
 - [Pipes](#/10)
 - [Http](#/11)
 - [Routing](#/12)
 - [Forms](#/13)
 - [Appendix](#/14)
+
+</div>
 
 Notes :
 ECMA proposal for signal

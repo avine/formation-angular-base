@@ -65,8 +65,6 @@ fixture.componentRef.setInput('product', {
 
 Now, the test setup should pass (but we're not testing anything useful at the moment).
 
-
-
 #### Tests
 
 - It should display the product photo as image url
@@ -79,6 +77,8 @@ Now, the test setup should pass (but we're not testing anything useful at the mo
 
 - It should emit addToBasket event with the given product when the button is clicked
   - Spy on the `emit` method of the `addToBasket` output to check that it is called
+
+
 
 ### `app.spec.ts`
 

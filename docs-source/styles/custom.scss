@@ -10,9 +10,20 @@ hr {
 }
 
 .reveal {
+  h1 {
+    color: inherit;
+  }
+
   h2 {
     margin-top: 0;
     margin-bottom: calc(var(--r-block-margin) * 1.5);
+
+    img {
+      position: absolute;
+      top: 0;
+      height: 1.2em;
+      margin: 0 0 0 2rem;
+    }
   }
 
   ul,
@@ -49,11 +60,11 @@ hr {
       padding-left: 0.5em;
 
       &::marker {
-        content: "◦";
+        content: '◦';
       }
 
       ul > li::marker {
-        content: "→";
+        content: '→';
       }
     }
   }
@@ -83,8 +94,21 @@ hr {
   }
 }
 
+// ---------------------------------------------------
+// Special addon style to display content as 2 columns
+.col-left-50 {
+  position: absolute;
+  left: 0;
+  width: 48%;
+}
+.col-right-50 {
+  position: absolute;
+  right: 0;
+  width: 48%;
+}
+
 // -------------------------------------------------
-// Special addon style to display image to the right
+// Special addon style to display image to the right [[[DEPRECATED]]]
 .col-right {
   position: absolute;
   right: 0;
@@ -142,7 +166,7 @@ hr {
 
 @media print {
   .slides > ::after {
-    content: "";
+    content: '';
     position: absolute;
     z-index: 9;
     top: 1rem;
