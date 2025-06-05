@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/x-icon" href="/logo.webp" />
+
+    <title>Formation Angular | Slides</title>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <script>
+          [
+            './00_schedule.md',
+            './01_getting_started.md',
+            './02_workspace.md',
+            './03__prerequisites.md',
+            './03_components.md',
+            './04_tests.md',
+            './05_control_flow.md',
+            './06_directives.md',
+            './07_signals.md',
+            './08_services.md',
+            './09_pipes.md',
+            './10_http.md',
+            './11_routing.md',
+            './12_forms.md',
+            './13_appendix.md',
+            './99_thankyou.md',
+          ].forEach((url) => {
+            document.write(`
+<section
+  data-markdown="${url}"
+  data-separator="^\n\n\n\n\n\n\n\n\n\n"
+  data-separator-vertical="^\n\n\n"
+  data-separator-notes="^Notes :"
+  data-charset="UTF-8"
+></section>
+            `);
+          });
+        </script>
+      </div>
+    </div>
+
+    <div class="screen-logo"></div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
