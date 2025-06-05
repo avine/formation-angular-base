@@ -517,9 +517,9 @@ Notes :
 
 
 ## Components - Questions
-<!-- .slide: data-background-image="/resources/background-questions.svg" data-background-size="45%" -->
+<!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
 
 
 ## Components - Lab 3
-<!-- .slide: data-background-image="/resources/background-lab.svg" data-background-size="45%" -->
+<!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->

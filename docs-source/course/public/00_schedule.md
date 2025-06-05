@@ -1,4 +1,4 @@
-# Angular
+# Angular course
 
 <!-- .slide: class="page-title" -->
 
@@ -34,7 +34,7 @@ Notes :
 
 
 ## About me
-<!-- .slide: data-background-image="/resources/background-about-me.svg" data-background-size="45%" -->
+<!-- .slide: data-background-image="./resources/background-about-me.svg" data-background-size="45%" -->
 
 Notes :
 

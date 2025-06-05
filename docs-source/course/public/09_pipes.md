@@ -291,9 +291,9 @@ Notes :
 
 
 ## Pipes - Questions
-<!-- .slide: data-background-image="/resources/background-questions.svg" data-background-size="45%" -->
+<!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
 
 
 ## Pipes - Lab 9
-<!-- .slide: data-background-image="/resources/background-lab.svg" data-background-size="45%" -->
+<!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->

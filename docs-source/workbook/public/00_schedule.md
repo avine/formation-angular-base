@@ -1,4 +1,4 @@
-# Angular Labs
+# Angular workbook
 
 <!-- .slide: class="page-title" -->
 
@@ -7,7 +7,7 @@
 ## Summary
 
 <div class="col-right-50">
-  <img src="/resources/background-lab.svg" width="100%" />
+  <img src="./resources/background-lab.svg" width="100%" />
 </div>
 
 - [Lab 1: Getting started](#/1)

@@ -379,4 +379,4 @@ Notes :
 
 
 ## Appendix - Questions
-<!-- .slide: data-background-image="/resources/background-questions.svg" data-background-size="45%" -->
+<!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->

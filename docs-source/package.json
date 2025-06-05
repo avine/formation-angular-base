@@ -1,17 +1,17 @@
 {
-  "name": "slides",
+  "name": "docs-source",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "slides": "vite --config slides/vite.config.js",
+    "course": "vite --config course/vite.config.js",
     "workbook": "vite --config workbook/vite.config.js",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "docs:slides": "vite build --config slides/vite.config.js --base /slides/ --out-dir ../../docs/slides",
+    "docs:course": "vite build --config course/vite.config.js --base /course/ --out-dir ../../docs/course",
     "docs:workbook": "vite build --config workbook/vite.config.js --base /workbook/ --out-dir ../../docs/workbook",
-    "docs": "npm run docs:slides && npm run docs:workbook"
+    "docs": "npm run docs:course && npm run docs:workbook"
   },
   "dependencies": {
     "@fontsource/fira-code": "^5.1.0",

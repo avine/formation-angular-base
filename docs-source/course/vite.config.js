@@ -1,6 +1,6 @@
 /** @type {import('vite').UserConfig} */
 export default {
-  root: 'slides',
+  root: 'course',
   server: {
     port: 3000,
   },

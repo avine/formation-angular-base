@@ -320,9 +320,9 @@ Notes :
 
 
 ## Directives - Questions
-<!-- .slide: data-background-image="/resources/background-questions.svg" data-background-size="45%" -->
+<!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
 
 
 ## Directives - Lab 6
-<!-- .slide: data-background-image="/resources/background-lab.svg" data-background-size="45%" -->
+<!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->
