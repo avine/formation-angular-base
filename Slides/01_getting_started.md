@@ -328,9 +328,9 @@ import { bootstrapApplication } from '@angular/platform-browser';
   selector: 'app-root',
   template: '<p>Hello world!</p>',
 })
-class AppComponent {}
+class App {}
 
-bootstrapApplication(AppComponent);
+bootstrapApplication(App);
 ```
 
 *(for the moment, let's leave aside the code implementation details and focus on the big picture...)*

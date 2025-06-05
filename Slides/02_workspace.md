@@ -121,7 +121,7 @@ The presence of a `tsconfig.json` file indicates that the directory is the root 
 ```json
 {
   "compilerOptions": {
-    "outDir": "./dist/out-tsc",
+    "strict": true,
     "experimentalDecorators": true,
     ...
   },
@@ -176,14 +176,12 @@ Notes :
       "architect": {
         "build": {
           "options": {
-             "outputPath": "dist/zenika-ng-website",
               "index": "src/index.html",
               "browser": "src/main.ts",
               "polyfills": ["zone.js"],
               "tsConfig": "tsconfig.app.json",
               "assets": [{ "glob": "**/*", "input": "public" }],
-              "styles": ["src/styles.css"],
-              "scripts": []
+              "styles": ["src/styles.css"]
           }
         }
       }
@@ -200,7 +198,7 @@ Notes :
 
 - `index.html`: final **document** of the Single Page Application (SPA)
 - `main.ts`: **entry point** of the app (from which Vite builds the JavaScript bundle)
-- `app/app.component.*`: **main component** of the app (the one used to bootstrap the app)
+- `app/app.*`: **main component** of the app (the one used to bootstrap the app)
 - `styles.css`: **global styles** of the app
 - `public/*`: **resources** of the app (images, pdf, ...)
 
@@ -255,8 +253,8 @@ ng generate component menu
 ng g c product
 
 # Generate services
-ng generate service catalog
-ng g s basket
+ng generate service catalog-resource
+ng g s basket-resource
 
 # Generate pipes
 ng generate pipe sort-array
