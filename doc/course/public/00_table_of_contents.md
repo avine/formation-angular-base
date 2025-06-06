@@ -4,7 +4,7 @@
 
 
 
-## Summary
+## Table of Contents
 
 <div class="col-left-50">
 
@@ -33,17 +33,17 @@ Notes :
 
 
 
-## About me
-<!-- .slide: data-background-image="./resources/background-about-me.svg" data-background-size="45%" -->
-
-Notes :
-
-
-
 ## Logistics
 
 - Schedules
 - Lunch & breaks
 - Other questions ?
+
+Notes :
+
+
+
+## About me
+<!-- .slide: data-background-image="./resources/background-about-me.svg" data-background-size="45%" -->
 
 Notes :

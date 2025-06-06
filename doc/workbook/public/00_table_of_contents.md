@@ -4,7 +4,7 @@
 
 
 
-## Summary
+## Table of Contents
 
 <div class="col-right-50">
   <img src="./resources/background-lab.svg" width="100%" />

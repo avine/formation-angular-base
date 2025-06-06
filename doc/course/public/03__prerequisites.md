@@ -4,7 +4,7 @@
 
 
 
-## Summary
+## Table of Contents
 
 <div class="col-left-50">
 
@@ -316,7 +316,7 @@ Notes :
 
 
 
-## NPM - Commands
+## NPM - Commands 1/2
 
 - Set up a directory as an npm package by creating a `package.json` file<br />
   *(created automatically when you generates your application with the Angular CLI)*
@@ -338,10 +338,21 @@ npm install <packageName>
 npm install -g <packageName>
 ```
 
-- Update/remove a package
+Notes :
+
+
+
+## NPM - Commands 2/2
+
+- Update a package
 
 ```shell
 npm update <packageName>
+```
+
+- Remove a package
+
+```shell
 npm remove <packageName>
 ```
 

@@ -4,7 +4,7 @@
 
 
 
-## Summary
+## Table of Contents
 
 <div class="col-left-50">
 
@@ -242,7 +242,6 @@ ng new my-app-name
 ng serve
 ng test
 ng build
-ng update
 ```
 
 Notes :
