@@ -185,15 +185,11 @@ Notes :
   - and so on up to the application's **main injector**
   - if no provider can be found, Angular **throws an error**
 
-<div style="padding: 1em 40px; border-radius: 0.5em; background-color: #eee">
-  In a typical Angular application, **most services are provided globally** at the application configuration level
-</div>
-
+- In a typical Angular application, **most services are provided globally** at the application configuration level
 
 - However, it is sometimes useful to **delegate part of a component's logic to a dedicated service**, which is then **provided at the component level itself**
 
 Notes :
-
 
 
 

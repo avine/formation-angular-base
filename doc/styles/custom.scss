@@ -119,6 +119,18 @@ hr {
       background-position: center;
       background-repeat: no-repeat;
     }
+
+    &::after {
+      content: 'All rights reserved © Zenika';
+      display: block;
+      width: 100%;
+      height: 2rem;
+      font-size: 2rem;
+      font-weight: normal;
+      line-height: 1em;
+      opacity: 0.5;
+      transform: translateY(12rem); // Note: works fine for screen and print (do NOT use `margin-top`)
+    }
   }
 }
 
