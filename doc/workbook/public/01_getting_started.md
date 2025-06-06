@@ -1,4 +1,4 @@
-## Lab 1: Getting started 1/6
+## Lab 1: Getting started 1/7
 ### Setting up your environment
 
 #### Training on Local system
@@ -23,6 +23,9 @@ Strigo Lab provides a Windows VM with the following functional environment:
 
 Note: Software can be installed easily if they are not pre-installed.
 
+
+
+## Lab 1: Getting started 2/7
 #### Visual Studio Code Extensions
 
 If you use VSCode as your IDE, install the following extensions in addition:
@@ -32,9 +35,6 @@ If you use VSCode as your IDE, install the following extensions in addition:
 - [Github Theme](https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme) (optional)
 - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) (optional)
 
-
-
-## Lab 1: Getting started 2/6
 #### Version control system
 
 - Open the browser and login to your favorite cloud-based version control system (Github, Gitlab, ...)
@@ -48,7 +48,7 @@ git config --global user.email <YOUR_EMAIL>
 
 
 
-## Lab 1: Getting started 3/6
+## Lab 1: Getting started 3/7
 ### Creating and running your Angular application
 
 This app will be used along all labs.
@@ -65,6 +65,9 @@ You will be displayed some options for your app.
 - Choose "CSS" as style preprocessor
 - Choose "No" for SSR/SSG/Prerendering
 
+
+
+## Lab 1: Getting started 4/7
 #### If you can't install the Angular CLI globally, create your app with one of the following shell commands
 
 ```shell
@@ -91,7 +94,7 @@ You should see the app with a placeholder content. 🚀
 
 
 
-## Lab 1: Getting started 4/6
+## Lab 1: Getting started 5/7
 ### Taking control of your application
 
 Even if we haven't yet studied the main concepts, let's modify the application right away!
@@ -122,7 +125,7 @@ class App {
 
 
 
-## Lab 1: Getting started 5/6
+## Lab 1: Getting started 6/7
 ### Now let's try running the application tests
 
 ```shell
@@ -153,7 +156,7 @@ Note that this package is not related to the `ng serve` command.
 
 
 
-## Lab 1: Getting started 6/6
+## Lab 1: Getting started 7/7
 ### Synchronize your repository
 
 Push your local repository from the command line over *HTTPS* (not SSH).

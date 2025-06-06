@@ -1,4 +1,4 @@
-## Lab 12: Forms
+## Lab 12: Forms 1/5
 
 In this lab, you'll create an Angular form to checkout the basket.
 
@@ -15,6 +15,7 @@ In this lab, you'll create an Angular form to checkout the basket.
 
 
 
+## Lab 12: Forms 2/5
 ### Handle form fields
 
 - For each field, add the `ngModel` directive and create a template variable to access it
@@ -34,6 +35,9 @@ In this lab, you'll create an Angular form to checkout the basket.
 - Credit card field has 2 "invalid-feedback":
   - Use `@if` directive to display only the relevant error
 
+
+
+## Lab 12: Forms 3/5
 ### Handle form submission
 
 - In the component class, add a new method:
@@ -52,6 +56,7 @@ In this lab, you'll create an Angular form to checkout the basket.
 
 
 
+## Lab 12: Forms 4/5
 ### Basket related changes
 
 - In `src/app/basket/basket-types.ts`, add new interfaces:
@@ -86,6 +91,7 @@ export class BasketResource {
 
 
 
+## Lab 12: Forms 5/5
 ### Back to `CheckoutForm` component
 
 You now have everything you need to implement the `checkout()` method you created earlier

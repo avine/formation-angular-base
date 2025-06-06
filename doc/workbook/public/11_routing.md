@@ -1,4 +1,4 @@
-## Lab 11: Routing
+## Lab 11: Routing 1/7
 
 In this lab, you'll create a multi-page application (SPA) using the Angular router.
 
@@ -35,6 +35,7 @@ In this lab, you'll create a multi-page application (SPA) using the Angular rout
 
 
 
+## Lab 11: Routing 2/7
 ### `RouterLink`
 
 Add `routerLink` directives in the following templates (don't forget to add the `RouterLink` in the related components `imports`):
@@ -54,6 +55,7 @@ Add `routerLink` directives in the following templates (don't forget to add the 
 
 
 
+## Lab 11: Routing 3/7
 ### `Basket` component
 
 - Use the following markup for the component template:
@@ -93,6 +95,7 @@ Add `routerLink` directives in the following templates (don't forget to add the 
 
 
 
+## Lab 11: Routing 4/7
 ### `BasketGuard`
 
 When visiting the page `http://localhost:4200/basket`:
@@ -126,6 +129,9 @@ export const basketGuard: CanMatchFn = () => {
 - At this point, you can safely remove the `BasketResource.fetchBasket()` subscription from the `Basket` component constructor, 
   because data fetching is now triggered by the guard itself anyway (see above *)
 
+
+
+## Lab 11: Routing 5/7
 ### Bonus: `ProductDetails` component
 
 - Create the component and add a lazy-loaded route `'product/:id'`
@@ -143,6 +149,7 @@ export const basketGuard: CanMatchFn = () => {
 
 
 
+## Lab 11: Routing 6/7
 ### Bonus: Application performances
 
 Have you noticed that when loading the catalog, the message _"Désolé, notre stock est vide !"_ appears briefly and is then replaced by the products once fetched?
@@ -171,6 +178,9 @@ export class CatalogResource {
 }
 ```
 
+
+
+## Lab 11: Routing 7/7
 ### Bonus: Directories organisation
 
 - The following directories can be moved within the `src/app/catalog/` directory:

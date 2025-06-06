@@ -1,4 +1,4 @@
-## Lab 9: Pipes
+## Lab 9: Pipes 1/5
 
 In this lab, you'll use pipes to format the application content.
 
@@ -14,6 +14,10 @@ At the moment, notice that the price is in `$` and formatted for the `en-US` loc
 But we need to display it in `€` for the `fr` locale (example: **"21 €"**).
 
 Let's fix this!
+
+
+
+## Lab 9: Pipes 2/5
 
 - First, register the `"fr"` locale in your application
 
@@ -47,6 +51,7 @@ The product price should now be displayed correctly.
 
 
 
+## Lab 9: Pipes 3/5
 ### `SortProductsPipe`
 
 Now, let's create a custom pipe of our own!
@@ -64,6 +69,10 @@ Finally, let's add a selector to choose between `price` and `stock` sorting.
 You'll find a component ready for use here: `Exercises/resources/select-product-key`.
 
 - Copy/paste the component `Exercises/resources/select-product-key` into your app at `src/app/select-product-key`
+
+
+
+## Lab 9: Pipes 4/5
 
 Use the component:
 
@@ -89,6 +98,7 @@ export class App {
 
 
 
+## Lab 9: Pipes 5/5
 ### Tests
 
 #### `app.spec.ts`

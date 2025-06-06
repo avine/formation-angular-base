@@ -1,4 +1,4 @@
-## Lab 3: Components
+## Lab 3: Components 1/3
 
 In this lab, you'll start creating Angular components to break down the giant `App` component template into smaller parts
 
@@ -14,6 +14,7 @@ ng generate component menu
 
 
 
+## Lab 3: Components 2/3
 ### Creating the "product-card" component
 
 - Create a product-card component with the following shell command and move the corresponding code into it
@@ -49,6 +50,7 @@ export interface Product {
 
 
 
+## Lab 3: Components 3/3
 ### Storing all products in the `App` component
 
 Currently, the products are hard-coded in the template `src/app/app.html`.

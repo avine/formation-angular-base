@@ -1,4 +1,4 @@
-## Lab 10: Http
+## Lab 10: Http 1/3
 
 In this lab, you'll communicate with a REST API server that will manage the products and the basket.
 
@@ -32,6 +32,7 @@ Here are the available endpoints:
 
 
 
+## Lab 10: Http 2/3
 ### `CatalogResource`
 
 - Inject the `HttpClient` service
@@ -62,6 +63,9 @@ export class CatalogResource {
 
 - Subcribe to `CatalogResource.fetchProducts()` method in the class constructor, to trigger data fetching
 
+
+
+## Lab 10: Http 3/3
 ### `BasketResource`
 
 - Inject the `HttpClient` service

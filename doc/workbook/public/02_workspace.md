@@ -1,4 +1,4 @@
-## Lab 2: Workspace
+## Lab 2: Workspace 1/3
 
 During the rest of the training, you will develop an e-commerce application.
 
@@ -23,6 +23,7 @@ npx serve .
 
 
 
+## Lab 2: Workspace 2/3
 ### Adding Bootstrap CSS
 
 - Install Bootstrap with NPM:
@@ -60,6 +61,9 @@ npm i bootstrap
 }
 ```
 
+
+
+## Lab 2: Workspace 3/3
 ### Adding the HTML code
 
 - Copy/paste the inner content of the `body` tag to `src/app/app.html`
