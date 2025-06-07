@@ -31,8 +31,6 @@ module.exports = tseslint.config(
           style: 'kebab-case',
         },
       ],
-      // NOTE: This option has been disabled because this workspace is currently based on Angular modules.
-      '@angular-eslint/prefer-standalone': ['off'],
     },
   },
   {
@@ -41,4 +39,9 @@ module.exports = tseslint.config(
     rules: {},
   },
   eslintPluginPrettierRecommended,
+  {
+    rules: {
+      'prettier/prettier': 'warn',
+    },
+  },
 );
