@@ -1,59 +1,99 @@
 # ZenikaNgWebsite
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
+This project was generated using the [Angular CLI](https://github.com/angular/angular-cli).
 
-## Development server
+## ESLint
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+ESLint was installed and configured by running the Angular schematic:
 
 ```bash
-ng generate component component-name
+ng add angular-eslint
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Result of the schematic:
+
+- NPM packages installed: `angular-eslint`, `eslint` and `typescript-eslint`
+
+- `eslint.config.js` file added
+
+- `"lint"` section added in the `angular.json` configuration file
+
+## Prettier
+
+Prettier was installed and configured manually.
+
+- NPM packages installed as "dev" dependencies:
 
 ```bash
-ng generate --help
+npm i -D prettier prettier-plugin-organize-imports eslint-config-prettier eslint-plugin-prettier
 ```
 
-## Building
+- `.prettierignore` file added
 
-To build the project run:
-
-```bash
-ng build
+```txt
+/.angular
+/coverage
+/dist
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- `.prettierrc.json` files added
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+```json
+{
+  "printWidth": 120,
+  "singleQuote": true,
+  "plugins": ["prettier-plugin-organize-imports"],
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": { "parser": "angular" }
+    },
+    {
+      "files": "index.html",
+      "options": { "parser": "html" }
+    }
+  ]
+}
 ```
 
-## Running end-to-end tests
+- `eslint.config.js` file modified (adding `eslint-plugin-prettier`):
 
-For end-to-end (e2e) testing, run:
+```js
+...
+const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
 
-```bash
-ng e2e
+module.exports = tseslint.config(
+  ...,
+  eslintPluginPrettierRecommended,
+  {
+    rules: {
+      'prettier/prettier': 'warn',
+    },
+  },
+);
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- `"format"` script added in `package.json` file
 
-## Additional Resources
+```json
+{
+  "scripts": {
+    "format": "prettier --write ."
+  }
+}
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## VSCode extensions
+
+If you are using VSCode, you should install the following extensions:
+
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+Finally, you should configure VSCode to `"formatOnSave"` using Prettier extension.
+
+## In-depth resources
+
+- [eslint-angular](https://github.com/angular-eslint/angular-eslint)
+- [Install Prettier](https://prettier.io/docs/install)
+- [Configure ESLint](https://eslint.org/docs/latest/use/configure/)

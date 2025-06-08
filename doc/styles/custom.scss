@@ -186,12 +186,6 @@ hr {
   }
 }
 
-// ---------------------------------
-// Help debugging the slides content
-/*.slides > section {
-  outline: 1px dashed red;
-}*/
-
 @media screen {
   .screen-logo {
     position: absolute;
@@ -218,3 +212,9 @@ hr {
     background-size: contain;
   }
 }
+
+// ---------------------------------
+// Help debugging the slides content
+/*.slides > section {
+  outline: 1px dashed red;
+}*/
