@@ -136,15 +136,41 @@ hr {
 
 // ---------------------------------------------------
 // Special addon style to display content as 2 columns
-.col-left-50 {
-  position: absolute;
-  left: 0;
-  width: 48%;
+.columns {
+  display: flex;
+  gap: 4%;
+
+  margin: var(--r-block-margin) 0; // Preserve margin collapse
 }
-.col-right-50 {
-  position: absolute;
-  right: 0;
+.column-40 {
+  width: 38%;
+
+  > *:first-child {
+    margin-top: 0;
+  }  
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+.column-50 {
   width: 48%;
+
+  > *:first-child {
+    margin-top: 0;
+  }  
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+.column-60 {
+  width: 58%;
+
+  > *:first-child {
+    margin-top: 0;
+  }  
+  > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 // ---------------------------------------------------------------------

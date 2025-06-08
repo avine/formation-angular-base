@@ -6,7 +6,8 @@
 
 ## Table of Contents
 
-<div class="col-left-50">
+<div class="columns">
+<div class="column-50">
 
 - [Getting started](#/1)
 - [Workspace](#/2)
@@ -17,7 +18,7 @@
 - [Directives](#/7)
 
 </div>
-<div class="col-right-50">
+<div class="column-50">
 
 - [Signals](#/8)
 - [Services](#/9)
@@ -27,6 +28,7 @@
 - [Forms](#/13)
 - [Appendix](#/14)
 
+</div>
 </div>
 
 Notes :
@@ -96,7 +98,7 @@ const sayHello = function(message: string): void { /* ... */ };
 const sayHello = (message: string): void => { /* ... */ };
 ```
 
-*Note that the arrow functions treat the resolution of the `this` keyword differently, but this is beyond the scope of this training*
+*⚠️ Note that the arrow functions treat the resolution of the `this` keyword differently, but this is beyond the scope of this training*
 
 Notes :
 
@@ -321,20 +323,20 @@ Notes :
 - Set up a directory as an npm package by creating a `package.json` file<br />
   *(created automatically when you generates your application with the Angular CLI)*
 
-```shell
+```bash
 npm init
 ```
 
 - Download a package and install it in `./node_modules` directory
 
-```shell
+```bash
 npm install <packageName>
 ```
 
 - Install a package globally on your system<br />
   *(mostly used to install CLI tools such as the Angular CLI)*
 
-```shell
+```bash
 npm install -g <packageName>
 ```
 
@@ -346,13 +348,13 @@ Notes :
 
 - Update a package
 
-```shell
+```bash
 npm update <packageName>
 ```
 
 - Remove a package
 
-```shell
+```bash
 npm remove <packageName>
 ```
 
@@ -412,12 +414,12 @@ Notes :
 
 Angular package versions strongly follow the semver standard
 
-- most of the framework dependencies accepts **minor** updates such as
-  - `"@angular/core": "^19.0.0"`
-  - `"@angular/common": "^19.0.0"`
+- Most of the framework dependencies accepts **minor** updates such as
+  - `"@angular/core": "^XX.0.0"`
+  - `"@angular/common": "^XX.0.0"`
 
 - Some of them only accepts **patch** updates such as
-  - `"@angular/cli": "~19.0.0"`
+  - `"@angular/cli": "~XX.0.0"`
 
 To update the Angular package versions of your project use the command `ng update`
 

@@ -6,7 +6,8 @@
 
 ## Table of Contents
 
-<div class="col-left-50">
+<div class="columns">
+<div class="column-50">
 
 - [Getting started](#/1)
 - [Workspace](#/2)
@@ -17,7 +18,7 @@
 - [Directives](#/7)
 
 </div>
-<div class="col-right-50">
+<div class="column-50">
 
 - [Signals](#/8)
 - [Services](#/9)
@@ -27,6 +28,7 @@
 - [Forms](#/13)
 - [Appendix](#/14)
 
+</div>
 </div>
 
 Notes :
@@ -83,6 +85,8 @@ import { HelloComponent } from './hello/hello.component.ts';
 })
 export class AppComponent {}
 ```
+
+*😉 The `AppComponent` is the only one to be **bootstrapped**. Its selector (`app-root`) is searched for in the web page.<br /> All other components are necessarily **imported** by the main component or its children.*
 
 Notes :
 

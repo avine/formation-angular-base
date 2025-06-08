@@ -9,7 +9,7 @@ First, let's start a local server to see what to app looks like.
 
 - Open a new shell window in the directory `design` and run the command:
 
-```shell
+```bash
 npx serve .
 ```
 
@@ -28,7 +28,7 @@ npx serve .
 
 - Install Bootstrap with NPM:
 
-```shell
+```bash
 npm i bootstrap
 ```
 

@@ -4,7 +4,7 @@ In this lab, you'll communicate with a REST API server that will manage the prod
 
 - To run the server, open a new shell window in the `Exercises/resources/server` directory and run the following commands:
 
-```shell
+```bash
 npm install
 npm start
 ```

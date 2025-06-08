@@ -6,7 +6,7 @@
 
 ## Table of Contents
 
-<div class="col-right-50">
+<div style="position: absolute; right: 0; width: 48%;">
   <img src="./resources/background-lab.svg" width="100%" />
 </div>
 

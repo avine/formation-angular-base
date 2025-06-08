@@ -6,7 +6,8 @@
 
 ## Table of Contents
 
-<div class="col-left-50">
+<div class="columns">
+<div class="column-50">
 
 - **Getting started**
 - [Workspace](#/2)
@@ -17,7 +18,7 @@
 - [Directives](#/7)
 
 </div>
-<div class="col-right-50">
+<div class="column-50">
 
 - [Signals](#/8)
 - [Services](#/9)
@@ -27,6 +28,7 @@
 - [Forms](#/13)
 - [Appendix](#/14)
 
+</div>
 </div>
 
 Notes :
@@ -312,7 +314,7 @@ Notes :
 
 - Major release every 6 months
 
-- Last major version `19` released in November 2024
+- Last major version `20` released in May 2025
 
 - Maintained by a dedicated team at **Google**
 

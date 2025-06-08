@@ -34,7 +34,7 @@ describe('App', () => {
 
 - Run the tests using Angular CLI:
 
-```shell
+```bash
 ng test
 ```
 

@@ -6,7 +6,7 @@ In this lab, you'll start creating Angular components to break down the giant `A
 
 - Create a menu component with the following shell command and move the corresponding code into it
 
-```shell
+```bash
 ng generate component menu
 ```
 
@@ -19,7 +19,7 @@ ng generate component menu
 
 - Create a product-card component with the following shell command and move the corresponding code into it
 
-```shell
+```bash
 ng g c --flat true product/product-card
 ```
 
