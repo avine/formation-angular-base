@@ -57,7 +57,7 @@ There are 3 types of directives:
 
 Note:
   - Components have already been covered
-  - Structural directives are complex and beyond the scope of this training 
+  - Structural directives are complex and beyond the scope of this course 
 
 ✅ Therefore, we'll only cover **attribute directives**
 

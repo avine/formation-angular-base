@@ -98,7 +98,7 @@ const sayHello = function(message: string): void { /* ... */ };
 const sayHello = (message: string): void => { /* ... */ };
 ```
 
-*⚠️ Note that the arrow functions treat the resolution of the `this` keyword differently, but this is beyond the scope of this training*
+*⚠️ Note that the arrow functions treat the resolution of the `this` keyword differently, but this is beyond the scope of this course*
 
 Notes :
 

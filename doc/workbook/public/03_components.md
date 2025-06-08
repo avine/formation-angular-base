@@ -60,7 +60,7 @@ Let's give the `App` component class, data ownership.
 
 - Fill the array with the content of the file `Exercises/design/products.json`
 
-- In `src/app/app.html`, use the component `<app-product-card />` instead of each hard-coded product (later in the training, we'll use a "for" loop to achieve this)
+- In `src/app/app.html`, use the component `<app-product-card />` instead of each hard-coded product (later in the course, we'll use a "for" loop to achieve this)
 
 ```html
 <app-product-card [product]="products[0]" />

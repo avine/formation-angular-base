@@ -45,7 +45,7 @@ Notes :
   - `@for`
   - `@switch`
 
-😉 *Another control flow is `@defer` block, but its study goes beyond the scope of this training*
+😉 *Another control flow is `@defer` block, but its study goes beyond the scope of this course*
 
 Notes :
 

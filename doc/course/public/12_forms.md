@@ -66,7 +66,7 @@ Any form can be created using either of the following technique, but...
 
 <br />
 
-✅ The rest of this training focuses solely on Template-driven forms
+✅ The rest of this course focuses solely on Template-driven forms
 
 Notes :
 

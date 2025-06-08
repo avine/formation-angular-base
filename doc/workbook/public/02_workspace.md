@@ -1,6 +1,6 @@
 ## Lab 2: Workspace 1/3
 
-During the rest of the training, you will develop an e-commerce application.
+During the rest of the course, you will develop an e-commerce application.
 
 The design team have been working hard, and the result is available in the `Exercises/resources/design` directory.
 You're going to integrate this design into your Angular application.

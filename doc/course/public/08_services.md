@@ -250,7 +250,7 @@ export class AppComponent {
 }
 ```
 
-*Note that there's also a `FactoryProvider`, but its study goes beyond the scope of this training*
+*Note that there's also a `FactoryProvider`, but its study goes beyond the scope of this course*
 
 Notes :
 

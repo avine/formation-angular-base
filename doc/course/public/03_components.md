@@ -518,7 +518,7 @@ export class Counter {
 
 - `input` and `model` are in fact "**signals**"
 - `.set()` and `.update()` methods are part of the signals API
-- Signals play a crucial role in the Angular reactivity model and whole chapter is devoted to them later in the training
+- Signals play a crucial role in the Angular reactivity model and whole chapter is devoted to them later in the course
 
 Notes :
 

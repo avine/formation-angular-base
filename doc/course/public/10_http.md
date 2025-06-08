@@ -271,7 +271,7 @@ Notes :
 
 ## Http - Observables
 
-*The `HttpClient` service is built on top of **RxJS Observables**, but its study goes beyond the scope of this training*
+*The `HttpClient` service is built on top of **RxJS Observables**, but its study goes beyond the scope of this course*
 
 - In a nutshell, an **Observable**
   - represent a **stream of data** that can be subscribed to

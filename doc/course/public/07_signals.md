@@ -144,7 +144,7 @@ Notes :
 
 - In other words, for now, Zone.js is responsible for telling Angular when to trigger its change detection process and update the UI to reflect the state of the application
 
-- Understanding Zone.js goes beyond the scope of this training
+- Understanding Zone.js goes beyond the scope of this course
 
 - However, Angular is moving towards **Zoneless** applications
 
@@ -188,7 +188,7 @@ Notes :
 
 ## Signals - Synchronization process 3/3
 
-😉 *A deeper understanding of the synchronization process goes beyond the scope of this training*
+😉 *A deeper understanding of the synchronization process goes beyond the scope of this course*
 
 - In-depth resources: https://angular.dev/guide/experimental/zoneless
 

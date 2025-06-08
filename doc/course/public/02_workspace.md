@@ -327,7 +327,7 @@ export class Menu {}
 </div>
 </div>
 
-*😉 This training is based on the latest style guide recommandations*
+*😉 This course is based on the latest style guide recommandations*
 
 Notes :
 

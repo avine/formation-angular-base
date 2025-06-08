@@ -49,7 +49,7 @@ Out of the box, Angular uses **Karma** as test runner and **Jasmine** as asserti
 By default, test files are identified by the pattern: `*.spec.ts`.
 
 Notes :
-The training focuses on `TestBed` which is the envrionment provided by Angular for testing Angular apps.
+The course focuses on `TestBed` which is the envrionment provided by Angular for testing Angular apps.
 We therefore only learn the basics of Jasmine and Karma...
 
 

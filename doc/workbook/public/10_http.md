@@ -84,7 +84,7 @@ export class CatalogResource {
 
 At this point, a lot of tests fail!
 This is because the structure of the application has changed radically.
-Refactoring the tests would take too much time in the context of this training.
+Refactoring the tests would take too much time in the context of this course.
 
 With the trainer, take a look at the new test implementation in the following directory:
   - `Exercises/solutions/projects/10_http`

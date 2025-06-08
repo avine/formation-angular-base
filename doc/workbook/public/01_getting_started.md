@@ -1,7 +1,7 @@
 ## Lab 1: Getting started 1/7
 ### Setting up your environment
 
-#### Training on Local system
+#### Follow the course on your Local system
 
 You should install the following on your system:
 
@@ -12,7 +12,7 @@ You should install the following on your system:
 
 Unzip the learning materials given by your trainer.
 
-#### Training on Strigo VM
+#### Follow the course on Strigo VM
 
 Strigo Lab provides a Windows VM with the following functional environment:
 

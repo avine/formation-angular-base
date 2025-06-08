@@ -383,7 +383,7 @@ Notes :
   - `canMatch`
   - `resolve`
 
-*In this training, we wil focus on `canActivate` and `canMatch` guards*
+*In this course, we wil focus on `canActivate` and `canMatch` guards*
 
 Notes :
 
