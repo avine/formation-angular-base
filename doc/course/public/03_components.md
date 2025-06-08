@@ -58,7 +58,7 @@ import { Component } from '@angular/core';
   selector: 'app-hello',
   template: '<p>Hello world!</p>',
 })
-export class HelloComponent {}
+export class Hello {}
 ```
 
 Notes :
@@ -73,20 +73,20 @@ Notes :
 
 ```ts
 import { Component } from '@angular/core';
-import { HelloComponent } from './hello/hello.component.ts';
+import { Hello } from './hello/hello.ts';
 
 @Component({
   selector: 'app-root',
-  imports: [HelloComponent],
+  imports: [Hello],
   template: `
     <h1>My Awesome App</h1>
     <app-hello />
   `,
 })
-export class AppComponent {}
+export class App {}
 ```
 
-*😉 The `AppComponent` is the only one to be **bootstrapped**. Its selector (`app-root`) is searched for in the web page.<br /> All other components are necessarily **imported** by the main component or its children.*
+*😉 The `App` component is the only one to be **bootstrapped**. Its selector (`app-root`) is searched for in the web page.<br /> All other components are necessarily **imported** by the main component or its children.*
 
 Notes :
 
@@ -99,19 +99,19 @@ Notes :
   - using a `templateUrl` property: path to an HTML file (relative to the component)
 
 ```ts
-// app.component.ts
+// app.ts
 
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  templateUrl: './app.html',
 })
-export class AppComponent {}
+export class App {}
 ```
 
 ```html
-<!-- app.component.html -->
+<!-- app.html -->
 
 <h1>My Awesome App</h1>
 ```
@@ -130,20 +130,20 @@ The styles can be configured in two ways:
 @Component ({
   styles: `h1 { font-weight: normal; }`
 })
-export class AppComponent {}
+export class App {}
 ``` 
 
 - using a `styleUrl` property that indicates a path to `.css` (or `.scss`) file
 
 ```ts
 @Component ({
-  styleUrl: './app.component.css'
+  styleUrl: './app.css'
 })
-export class AppComponent {}
+export class App {}
 ```
 
 ```css
-/* app.component.css */
+/* app.css */
 
 h1 { font-weight: normal; }
 ```
@@ -164,18 +164,15 @@ Notes :
 
 ```ts
 @Component ({
-  selector: 'app-product',
-  template: `<p><img src="{{ product?.photo }}" /> {{ product?.title }}</p>`
+  selector: 'app-product-card',
+  template: `<p>{{ product?.title }}</p>`
 })
-export class ProductComponent {
+export class ProductCard {
   protected product?: Product;
 }
 ```
 
 Notes :
-
-- The 'Elvis operator' (optional chaining) is now part of ES2020 & Typescript 3.8
-- `src="{{ product?.photo }}"` is OK but property binding is better `[src]="product?.photo"` (next slide)
 
 
 
@@ -187,17 +184,19 @@ Notes :
 ```html
 <button [disabled]="isUnchanged">Save</button>  <!-- HTML property -->
 
-<app-hero-form [hero]="currentHero" />          <!-- property of a component -->
+<app-checkout-form [formData]="data" />         <!-- Component input -->
 
-<p [class.highlight]="isHighlight">Hello</p>    <!-- special case -->
+```
 
-<button [style.color]="isHighlight? 'orange': 'black'">Save</button> <!-- special case -->
+- Angular provides a special syntax for applying dynamic `class` and `style` properties
+
+```html
+<p [class.highlight]="isHighlight">Hello</p>
+
+<button [style.color]="isHighlight ? 'orange': 'black'">Save</button>
 ```
 
 Notes :
-
-Indicate that there are no differences between the use of properties and interpolation
-Angular will transform interpolation syntax into property binding
 
 
 
@@ -234,11 +233,15 @@ Notes :
 - Using the syntax `(eventName)="expression"`
 
 ```html
-<button (click)="handler()">Save</button>       <!-- HTML event -->
+<button (click)="handler()">Save</button>                   <!-- HTML event -->
 
-<app-hero-form (deleted)="onHeroDeleted()" />   <!-- event of a component -->
+<app-checkout-form (formSubmitted)="onFormSubmitted()" />   <!-- Component output -->
+```
 
-<input (keyup.enter)="onEnter()" />             <!-- special case: pseudo events -->
+- Angular provides a special syntax for handling "pseudo" events
+
+```html
+<input (keyup.enter)="onEnter()" />
 ```
 
 Notes :
@@ -254,7 +257,7 @@ Notes :
   selector: 'app-demo',
   template: `<input [value]="name" (input)="updateName($event.target)" />`,
 })
-export class DemoComponent {
+export class Demo {
   name = 'Carl';
 
   updateName(eventTarget: EventTarget | null) {
@@ -284,7 +287,7 @@ import { Component, input } from '@angular/core';
   selector: 'app-counter',
   template: `<p>{{ count() }}</p>`
 })
-export class CounterComponent {
+export class Counter {
   count = input<number>(0);
 }
 ```
@@ -311,7 +314,7 @@ import { Component, input } from '@angular/core';
   selector: 'app-counter',
   template: `<p>{{ count() }}</p>`
 })
-export class CounterComponent {
+export class Counter {
   count = input.required<number>();
 }
 ```
@@ -321,7 +324,7 @@ export class CounterComponent {
 ```html
 <app-counter />
 
-<!-- ❌ Required input 'count' from component CounterComponent must be specified. -->
+<!-- ❌ Required input 'count' from component Counter must be specified. -->
 ```
 
 Notes :
@@ -334,14 +337,14 @@ Notes :
 
 ```ts
 import { Component } from '@angular/core';
-import { CounterComponent } from './counter/counter.component.ts';
+import { Counter } from './counter/counter.ts';
 
 @Component ({
   selector: 'app-root',
-  imports [CounterComponent],
+  imports [Counter],
   template: `<app-counter [count]="parentCount" />`
 })
-export class AppComponent {
+export class App {
   protected parentCount = 5;
 }
 ```
@@ -361,7 +364,7 @@ import { Component, output } from '@angular/core';
   selector: 'app-counter',
   template: `<button (click)="onClick()">{{ count }}</button>`
 })
-export class CounterComponent {
+export class Counter {
   protected count = 0;
 
   countChange = output<number>();
@@ -383,16 +386,16 @@ Notes :
 
 ```ts
 import { Component } from '@angular/core';
-import { CounterComponent } from './counter/counter.component.ts';
+import { Counter } from './counter/counter.ts';
 
 @Component ({
   selector: 'app-root',
-  imports [CounterComponent],
+  imports [Counter],
   template:
     `<app-counter (countChange)="updateCount($event)" />
      <p>Count: {{ parentCount }}</p>`
 })
-export class AppComponent {
+export class App {
   protected parentCount: number | undefined = undefined;
 
   protected updateCount(count: number) {
@@ -404,7 +407,7 @@ export class AppComponent {
 - **Output events** are never propagated to the consumer's parent component, whereas **native DOM events** are (event bubbling)
 
 Notes :
-The `parentCount` is deliberately set to `undefined` to show that it is the `CounterComponent` which has ownership of the data.
+The `parentCount` is deliberately set to `undefined` to show that it is the `Counter` which has ownership of the data.
 This problem will be solved with `model`.
 
 
@@ -422,7 +425,7 @@ import { Component, model } from '@angular/core';
   selector: 'app-counter',
   template: `<button (click)="onClick()">{{ count }}</button>`
 })
-export class CounterComponent {
+export class Counter {
   count = model<number>(0);
 
   protected onClick() {
@@ -441,16 +444,16 @@ Notes :
 
 ```ts
 import { Component } from '@angular/core';
-import { CounterComponent } from './counter/counter.component.ts';
+import { Counter } from './counter/counter.ts';
 
 @Component ({
   selector: 'app-root',
-  imports [CounterComponent],
+  imports [Counter],
   template: `
     <app-counter [count]="parentCount" (countChange)="updateCount($event)" />
   `
 })
-export class AppComponent {
+export class App {
   protected parentCount = 5;
 
   protected updateCount(count: number) {
@@ -471,16 +474,16 @@ Notes :
 
 ```ts
 import { Component } from '@angular/core';
-import { CounterComponent } from './counter/counter.component.ts';
+import { Counter } from './counter/counter.ts';
 
 @Component ({
   selector: 'app-root',
-  imports [CounterComponent],
+  imports [Counter],
   template: `
     <app-counter [(count)]="parentCount" />
   `
 })
-export class AppComponent {
+export class App {
   protected parentCount = 5;
 
   protected updateCount(count: number) {
@@ -498,7 +501,8 @@ Notes :
 - Unlike `input`s which are "realony", `model`s are "writable"
 
 ```ts
-export class CounterComponent {
+@Component({ ... })
+export class Counter {
   count = model(0);
   constructor() {
     console.log(this.count());          // <-- output: 0
