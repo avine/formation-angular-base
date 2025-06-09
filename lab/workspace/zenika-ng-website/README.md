@@ -4,6 +4,8 @@ This project was generated using the [Angular CLI](https://github.com/angular/an
 
 ## ESLint
 
+> ESLint statically analyzes your code to quickly find problems.
+
 ESLint was installed and configured by running the Angular schematic:
 
 ```bash
@@ -19,6 +21,8 @@ Result of the schematic:
 - `"lint"` section added in the `angular.json` configuration file
 
 ## Prettier
+
+> Prettier is an opinionated code formatter.
 
 Prettier was installed and configured manually.
 
