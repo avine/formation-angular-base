@@ -1,0 +1,19 @@
+// Background of the presentation
+$backgroundColor: #212327;
+
+// Primary/body text
+$mainColor: rgba(255, 255, 255, 0.87);
+
+// Headings
+$headingColor: #df2147;
+
+// Links and actions
+$linkColor: #df2147;
+$linkColorHover: lighten($linkColor, 20%);
+
+// Text selection
+$selectionBackgroundColor: #df2147;
+$selectionColor: rgba(255, 255, 255, 0.87);
+
+// Change text colors against dark slide backgrounds
+@include light-bg-text-color(#212327);

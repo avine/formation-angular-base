@@ -1,0 +1,220 @@
+body {
+  box-sizing: border-box;
+  border-top: 10px solid #df2147;
+}
+
+hr {
+  margin: 2.5rem 0;
+  border: 0px solid #aaa;
+  border-top-width: 1px;
+}
+
+.reveal {
+  h1 {
+    color: inherit;
+  }
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: calc(var(--r-block-margin) * 1.5);
+
+    img {
+      position: absolute;
+      top: 0;
+      height: 1.2em;
+      margin: 0 0 0 2rem;
+    }
+  }
+
+  ul,
+  ol {
+    margin: 0;
+  }
+
+  ul ul,
+  ul ol,
+  ol ul,
+  ol ol {
+    margin: var(--r-block-margin) 0 0 var(--r-block-margin);
+  }
+
+  li {
+    &::marker {
+      color: var(--r-link-color);
+    }
+
+    + li {
+      margin-top: var(--r-block-margin);
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0.5em;
+
+    > li {
+      padding-left: 0.5em;
+
+      &::marker {
+        content: '◦';
+      }
+
+      ul > li::marker {
+        content: '→';
+      }
+    }
+  }
+
+  code:not(.hljs) {
+    font-weight: 500;
+  }
+
+  pre {
+    box-shadow: none;
+    border-radius: 0.25em;
+    border: 1px solid rgba(160 160 160 / 0.5);
+    font-size: 0.8em;
+    line-height: 1.3em;
+
+    code {
+      border-radius: inherit;
+      max-height: none;
+    }
+  }
+}
+
+.fragment {
+  &:has(> ul),
+  &:has(> ol) {
+    margin-top: var(--r-block-margin) !important;
+  }
+}
+
+// -----------------------------------------
+// Special addon style to display page title
+.page-title {
+  height: 100%;
+
+  h1 {
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    &::before {
+      content: '';
+      margin-bottom: 3rem;
+      display: block;
+      width: 100%;
+      height: 2em;
+      background-image: url(/logo.webp);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &::after {
+      content: 'All rights reserved © Zenika';
+      display: block;
+      width: 100%;
+      height: 2rem;
+      font-size: 2rem;
+      font-weight: normal;
+      line-height: 1em;
+      opacity: 0.5;
+      transform: translateY(12rem); // Note: works fine for screen and print (do NOT use `margin-top`)
+    }
+  }
+}
+
+// ---------------------------------------------------
+// Special addon style to display content as 2 columns
+.columns {
+  display: flex;
+  gap: 4%;
+
+  margin: var(--r-block-margin) 0; // Preserve margin collapse
+}
+.column-40 {
+  width: 38%;
+
+  > *:first-child {
+    margin-top: 0;
+  }  
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+.column-50 {
+  width: 48%;
+
+  > *:first-child {
+    margin-top: 0;
+  }  
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+.column-60 {
+  width: 58%;
+
+  > *:first-child {
+    margin-top: 0;
+  }  
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// ---------------------------------------------------------------------
+// Use the following to align the slides to the left
+// Additionally, use the config: `Reveal.initialize({ center: false });`
+.reveal {
+  section {
+    text-align: left;
+  }
+
+  pre {
+    width: auto;
+  }
+}
+
+@media screen {
+  .screen-logo {
+    position: absolute;
+    z-index: 9;
+    top: 1rem;
+    right: 1rem;
+    width: 4rem;
+    height: 4rem;
+    background-image: url(/logo.webp);
+    background-size: contain;
+  }
+}
+
+@media print {
+  .slides > ::after {
+    content: '';
+    position: absolute;
+    z-index: 9;
+    top: 1rem;
+    right: 1rem;
+    width: 4rem;
+    height: 4rem;
+    background-image: url(/logo.webp);
+    background-size: contain;
+  }
+}
+
+// ---------------------------------
+// Help debugging the slides content
+/*.slides > section {
+  outline: 2px dashed grey;
+}*/
