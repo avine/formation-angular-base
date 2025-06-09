@@ -1,6 +1,6 @@
 ## Lab 7: Signals
 
-In this Lab, you'll convert `App` component properties into signals.
+In this Lab, you'll convert the `App` component properties into signals.
 
 ### `App` component
 

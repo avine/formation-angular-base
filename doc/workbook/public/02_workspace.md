@@ -2,12 +2,17 @@
 
 During the rest of the course, you will develop an e-commerce application.
 
-The design team have been working hard, and the result is available in the `Exercises/resources/design` directory.
+The design team have been working hard, and the result is available in the following directory:
+
+```txt
+lab/resources/design
+```
+
 You're going to integrate this design into your Angular application.
 
 First, let's start a local server to see what to app looks like.
 
-- Open a new shell window in the directory `design` and run the command:
+- Open a new Terminal in the directory `design` and run the command:
 
 ```bash
 npx serve .
@@ -19,7 +24,7 @@ npx serve .
 
 - Finally, open the file `design/index.html` in your code editor
   - It contains **brief informations** about the layout of the design
-  - Follow the **detailed instructions** provided in this lab to integrate the design into your Angular application
+  - Follow the **detailed instructions** provided below in this document to integrate the design into your Angular application
 
 
 
@@ -70,7 +75,7 @@ npm i bootstrap
 
 ```html
 <body>
-  <!-- ONLY WHAT'S INSIDE -->
+  <!-- ONLY WHAT'S INSIDE THE BODY TAG -->
 </body>
 ```
 

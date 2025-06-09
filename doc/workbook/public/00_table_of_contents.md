@@ -6,7 +6,7 @@
 
 ## Table of Contents
 
-<div style="position: absolute; right: 0; width: 48%;">
+<div style="position:absolute; right:0; width:65%">
   <img src="./resources/background-lab.svg" width="100%" />
 </div>
 
@@ -22,5 +22,3 @@
 - [Lab 10: Http](#/10)
 - [Lab 11 Routing](#/11)
 - [Lab 12: Forms](#/12)
-
-Notes :

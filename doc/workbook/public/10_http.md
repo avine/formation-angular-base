@@ -2,7 +2,7 @@
 
 In this lab, you'll communicate with a REST API server that will manage the products and the basket.
 
-- To run the server, open a new shell window in the `Exercises/resources/server` directory and run the following commands:
+- To run the server, open a new Terminal in the `lab/resources/server` directory and run the following commands:
 
 ```bash
 npm install
@@ -87,4 +87,4 @@ This is because the structure of the application has changed radically.
 Refactoring the tests would take too much time in the context of this course.
 
 With the trainer, take a look at the new test implementation in the following directory:
-  - `Exercises/solutions/projects/10_http`
+  - `lab/solutions/projects/10_http`

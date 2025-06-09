@@ -1,4 +1,4 @@
-## Lab 1: Getting started 1/8
+## Lab 1: Getting started 1/6
 ### Setting up your environment
 
 The following software must be installed in your environment:
@@ -11,7 +11,7 @@ The following software must be installed in your environment:
 
 Install the LTS versions of each software.
 
-#### Following the course on Strigo VM
+#### Following the course on Strigo Virtual Machine
 
 The required software should already be installed.
 
@@ -21,20 +21,21 @@ For VSCode, be sure to use the one located at:
 C:\Programs Files\Microsoft VS Code
 ```
 
+### Application source code
 
-
-## Lab 1: Getting started 2/8
-
-To complete the labs, you'll use the Angular application provided, for which **ESLint** and **Prettier** are already configured:
+To complete the labs, you'll be using the Angular application provided, for which **ESLint** and **Prettier** are already configured:
 
 ```txt
 ./lab/workspace/zenika-ng-website
 ```
 
-See the `README.md` for details of how this configuration was achieved.
+The details of this configuration are beyond the scope of this course, but you'll find them clearly documented in the `README.md` file in the same directory.
 
-But to see for yourself how it works, you're going to create a raw Angular application, even if you won't be using it.
+Nevertheless, you will first create a raw Angular application to see for yourself how it works, even if you won't be using it for the rest of the course.
 
+
+
+## Lab 1: Getting started 2/6
 ### Creating and running an Angular application
 
 #### Install the Angular CLI globally and create the app with the shell commands
@@ -49,9 +50,6 @@ You will be displayed some options for the app:
 - Choose "CSS" as style preprocessor
 - Choose "No" for SSR/SSG/Prerendering
 
-
-
-## Lab 1: Getting started 3/8
 #### If you can't install the Angular CLI globally, create the app with the following shell command
 
 ```bash
@@ -72,7 +70,7 @@ You should see the app with a placeholder content. 🚀
 
 
 
-## Lab 1: Getting started 4/8
+## Lab 1: Getting started 3/6
 ### Taking control of the app
 
 Even if we haven't yet studied the main concepts, let's modify the app right away!
@@ -103,7 +101,7 @@ class App {
 
 
 
-## Lab 1: Getting started 5/8
+## Lab 1: Getting started 4/6
 ### Now let's try running the app tests
 
 ```bash
@@ -120,7 +118,7 @@ Because we've modified the app, a test in `app.spec.ts` fail!
 ng build # or: `npm run build`
 ```
 
-- Open a shell window in `dist/zenika-ng-website/browser/` directory and run the command:
+- Open a Terminal in `dist/zenika-ng-website/browser/` directory and run the command:
 
 ```bash
 npx serve --single .
@@ -133,9 +131,9 @@ Note that this package is not related to the `ng serve` command.
 
 
 
-## Lab 1: Getting started 6/8
+## Lab 1: Getting started 5/6
 
-Now, you are done with the raw application you've created!<br />
+Now, you are done with the raw application you've created! 🎉<br />
 From now on, you'll be using the Angular application provided:
 
 ```txt
@@ -152,10 +150,6 @@ From now on, you'll be using the Angular application provided:
 git config --global user.name "<YOUR_NAME>"
 git config --global user.email <YOUR_EMAIL>
 ```
-
-
-
-## Lab 1: Getting started 7/8
 
 - Open the directory `./lab/workspace/zenika-ng-website` in VSCode
 
@@ -179,7 +173,21 @@ git push -u origin main
 
 
 
-## Lab 1: Getting started 8/8
+## Lab 1: Getting started 6/6
+### NPM packages
+
+Install Angular dependencies with NPM, by running the following command:
+
+```bash
+npm i # or: npm install
+```
+
+Run the Angular dev server to verify that everything works fine.
+
+```bash
+ng serve # or: `npm start`
+```
+
 ### Visual Studio Code Extensions
 
 If you use VSCode as your IDE, install the following extensions in addition, to improve your developer experience:

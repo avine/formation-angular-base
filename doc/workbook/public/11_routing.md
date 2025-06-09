@@ -145,7 +145,7 @@ export const basketGuard: CanMatchFn = () => {
   - `product = signal<Product | undefined>(undefined);`
 
 - For the component template, copy/paste the following:
-  - `Exercises/resources/product-details/product-details.html`
+  - `lab/resources/product-details/product-details.html`
 
 
 

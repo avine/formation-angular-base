@@ -1,4 +1,4 @@
-## Lab 9: Pipes 1/5
+## Lab 9: Pipes 1/3
 
 In this lab, you'll use pipes to format the application content.
 
@@ -15,9 +15,7 @@ But we need to display it in `€` for the `fr` locale (example: **"21 €"**).
 
 Let's fix this!
 
-
-
-## Lab 9: Pipes 2/5
+### Application config
 
 - First, register the `"fr"` locale in your application
 
@@ -45,13 +43,13 @@ export const appConfig: ApplicationConfig = {
 
 The product price should now be displayed correctly.
 
+
+
+## Lab 9: Pipes 2/3
 ### `App` component
 
 - Use the `currency` pipe to display the basket total
 
-
-
-## Lab 9: Pipes 3/5
 ### `SortProductsPipe`
 
 Now, let's create a custom pipe of our own!
@@ -72,7 +70,7 @@ You'll find a component ready for use here: `Exercises/resources/select-product-
 
 
 
-## Lab 9: Pipes 4/5
+## Lab 9: Pipes 3/3
 
 Use the component:
 
@@ -96,9 +94,6 @@ export class App {
 <app-select-product-key [(productKey)]="productKey" />
 ```
 
-
-
-## Lab 9: Pipes 5/5
 ### Tests
 
 #### `app.spec.ts`

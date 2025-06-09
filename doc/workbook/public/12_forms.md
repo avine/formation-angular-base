@@ -8,7 +8,7 @@ In this lab, you'll create an Angular form to checkout the basket.
 - Add the `FormsModule` to the component `imports` metadata
 
 - For the component template, copy/paste the design made with love by the UI/UX team:
-  - `Exercises/resources/checkout-form/checkout-form.html`
+  - `lab/resources/checkout-form/checkout-form.html`
 
 - Insert the component selector at the end of the basket component template:
   - `<app-checkout-form />`
@@ -112,4 +112,4 @@ Subscribe to the `BasketResource.checkout()` method and handle "next" and "error
 
 Check the following directory to see the `ReactiveFormsModule` implementation:
 
-- `Exercises/solutions/projects/12_forms/src/app/basket/checkout-reactive-form/`
+- `lab/solutions/projects/12_forms/src/app/basket/checkout-reactive-form/`

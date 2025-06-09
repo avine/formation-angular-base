@@ -23,7 +23,7 @@ ng generate component menu
 ng g c --flat true product/product-card
 ```
 
-- Add a file `product-types.ts` in the same directory (`src/app/product/`) and define the product interface
+- Add a file `product-types.ts` in the same directory and define the product interface
 
 ```ts
 export interface Product {
@@ -36,7 +36,7 @@ export interface Product {
 }
 ```
 
-- The component should accept:
+- The `ProductCard` component should accept:
   - an input: `product = input.required<Product>();`
   - an output: `addToBasket = output<Product>();`
 
@@ -58,12 +58,13 @@ Let's give the `App` component class, data ownership.
 
 - In `src/app/app.ts`, define a `products: Product[] = [];` property
 
-- Fill the array with the content of the file `Exercises/design/products.json`
+- Fill the array with the content of the file `lab/resources/design/products.json`
 
 - In `src/app/app.html`, use the component `<app-product-card />` instead of each hard-coded product (later in the course, we'll use a "for" loop to achieve this)
 
 ```html
 <app-product-card [product]="products[0]" />
+...
 ```
 
 - Define a `total = 0;` property that should be updated each time the user clicks on the button "Ajoutez au panier"
