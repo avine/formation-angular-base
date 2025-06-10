@@ -1,4 +1,4 @@
-## Lab 8: Services 1/5
+## Lab 8: Dependency injection 1/5
 
 In this lab, you'll move the data ownership from the `App` component to **services**.
 
@@ -26,7 +26,7 @@ The service should have:
 
 
 
-## Lab 8: Services 2/5
+## Lab 8: Dependency injection 2/5
 ### `BasketResource`
 
 - Define a new interface:
@@ -59,7 +59,7 @@ The service should have:
 
 
 
-## Lab 8: Services 3/5
+## Lab 8: Dependency injection 3/5
 ### Use of injection token
 
 - Create an injection token `APP_TITLE` in `src/app/app.token.ts`
@@ -92,7 +92,7 @@ xdescribe("App", () => { /* ... */ });
 
 
 
-## Lab 8: Services 4/5
+## Lab 8: Dependency injection 4/5
 #### `menu.spec.ts`
 
 The component now depends on the newly created `BasketResource`.
@@ -129,7 +129,7 @@ Add test:
 
 
 
-## Lab 8: Services 5/5
+## Lab 8: Dependency injection 5/5
 #### `app.spec.ts`
 
 Some tests currently performed in this component do not need to be fixed, but simply removed, as they are no longer relevant.

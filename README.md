@@ -76,8 +76,8 @@ Développeur web
   - Signaux dérivés
   - Effects
 
-9. Services
-  - Injection de dépendances
+9. Injection de dépendances
+  - Services
   - Injecteurs
   - Providers
 

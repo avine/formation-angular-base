@@ -1,4 +1,4 @@
-# Services
+# Dependency injection
 
 <!-- .slide: class="page-title" -->
 
@@ -21,7 +21,7 @@
 <div class="column-50">
 
 - [Signals](#/8)
-- **Services**
+- **Dependency injection**
 - [Pipes](#/10)
 - [Http](#/11)
 - [Routing](#/12)
@@ -35,7 +35,7 @@ Notes :
 
 
 
-## Services - In a nutshell
+## Dependency injection - In a nutshell
 
 - A broad category encompassing any value or feature that an application needs
 
@@ -64,7 +64,7 @@ Notes :
 
 
 
-## Services - Injectable
+## Dependency injection - Injectable
 
 - If a service has dependencies, use the `@Injectable` decorator to enable dependency injection for the service itself
 - This is only required if you are using "Constructor-based dependency injection"
@@ -95,7 +95,7 @@ Notes :
 
 
 
-## Services - Injectable | providedIn
+## Dependency injection - Injectable | providedIn
 
 - Use `providedIn` metadata to **provide a service globally** right from its definition
 - This is usefull even for "Function-based dependency injection"
@@ -124,7 +124,7 @@ Notes :
 
 
 
-## Services - Component providers 
+## Dependency injection - Component providers 
 
 - Use `providers` metadata of the component decorator to **provide a service locally**
 - The service lifecycle (creation and destruction) follows the component lifecycle
@@ -151,7 +151,7 @@ Notes :
 
 
 
-## Services - Injectors
+## Dependency injection - Injectors
 
 - Responsible for providing dependencies to components, services, ...
 - An application can have more than one injector, but **within an injector every dependency is a singleton**
@@ -179,7 +179,7 @@ Notes :
 
 
 
-## Services - Injectors hierarchy
+## Dependency injection - Injectors hierarchy
 
 - During a dependency injection
   - the local injector tries to **find a compatible provider**
@@ -195,7 +195,7 @@ Notes :
 
 
 
-## Services - Providers | ClassProvider
+## Dependency injection - Providers | ClassProvider
 
 - So far we've provided services by adding them to the `provider` array
 
@@ -227,7 +227,7 @@ The full syntax is very useful when, for example, you need to mock your dependen
 
 
 
-## Services - Providers | ValueProvider
+## Dependency injection - Providers | ValueProvider
 
 - Use `InjectionToken` and `ValueProvider` to provide primitive values (such as `string`, `number`, ...)
 
@@ -256,7 +256,7 @@ Notes :
 
 
 
-## Services - App Initializer
+## Dependency injection - App Initializer
 
 - Use an "app initializer" when you need asynchronous data to be available before the application is bootstrapped
 - If needed, you can `inject` dependencies into the initializer
@@ -283,7 +283,7 @@ Thanks to the initializer, the user can no longer be "unknown", once the app is 
 
 
 
-## Services - Testing in isolation
+## Dependency injection - Testing in isolation
 
 - You can configure the providers in your `TestBed`
 - Powerful mechanism that isolates the element you really want to test
@@ -312,10 +312,10 @@ Notes :
 
 
 
-## Services - Questions
+## Dependency injection - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
 
 
-## Services - Lab 8
+## Dependency injection - Lab 8
 <!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->

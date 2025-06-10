@@ -21,7 +21,7 @@
 <div class="column-50">
 
 - [Signals](#/8)
-- [Services](#/9)
+- [Dependency injection](#/9)
 - **Pipes**
 - [Http](#/11)
 - [Routing](#/12)

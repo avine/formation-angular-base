@@ -45,8 +45,8 @@
     { "path": "./projects/07_signals/tsconfig.app.json" },
     { "path": "./projects/07_signals/tsconfig.spec.json" },
 
-    { "path": "./projects/08_services/tsconfig.app.json" },
-    { "path": "./projects/08_services/tsconfig.spec.json" },
+    { "path": "./projects/08_dependency_injection/tsconfig.app.json" },
+    { "path": "./projects/08_dependency_injection/tsconfig.spec.json" },
 
     { "path": "./projects/09_pipes/tsconfig.app.json" },
     { "path": "./projects/09_pipes/tsconfig.spec.json" },

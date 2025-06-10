@@ -598,25 +598,25 @@
         }
       }
     },
-    "08_services": {
+    "08_dependency_injection": {
       "projectType": "application",
-      "root": "projects/08_services",
-      "sourceRoot": "projects/08_services/src",
+      "root": "projects/08_dependency_injection",
+      "sourceRoot": "projects/08_dependency_injection/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "browser": "projects/08_services/src/main.ts",
+            "browser": "projects/08_dependency_injection/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "projects/08_services/tsconfig.app.json",
+            "tsConfig": "projects/08_dependency_injection/tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/08_services/public"
+                "input": "projects/08_dependency_injection/public"
               }
             ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/08_services/src/styles.css"]
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/08_dependency_injection/src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -646,10 +646,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "08_services:build:production"
+              "buildTarget": "08_dependency_injection:build:production"
             },
             "development": {
-              "buildTarget": "08_services:build:development"
+              "buildTarget": "08_dependency_injection:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -657,28 +657,28 @@
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n",
           "options": {
-            "buildTarget": "08_services:build"
+            "buildTarget": "08_dependency_injection:build"
           }
         },
         "test": {
           "builder": "@angular/build:karma",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/08_services/tsconfig.spec.json",
+            "tsConfig": "projects/08_dependency_injection/tsconfig.spec.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/08_services/public"
+                "input": "projects/08_dependency_injection/public"
               }
             ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/08_services/src/styles.css"]
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/08_dependency_injection/src/styles.css"]
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/08_services/**/*.ts", "projects/08_services/**/*.html"],
-            "eslintConfig": "projects/08_services/eslint.config.js"
+            "lintFilePatterns": ["projects/08_dependency_injection/**/*.ts", "projects/08_dependency_injection/**/*.html"],
+            "eslintConfig": "projects/08_dependency_injection/eslint.config.js"
           }
         }
       }

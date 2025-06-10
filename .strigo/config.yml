@@ -16,8 +16,8 @@ classes:
         file: ../doc/workbook/public/06_directives.md
       - title: Signals
         file: ../doc/workbook/public/07_signals.md
-      - title: Services
-        file: ../doc/workbook/public/08_services.md
+      - title: Dependency injection
+        file: ../doc/workbook/public/08_dependency_injection.md
       - title: Pipes
         file: ../doc/workbook/public/09_pipes.md
       - title: Http
