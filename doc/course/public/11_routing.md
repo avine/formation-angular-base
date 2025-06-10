@@ -383,7 +383,7 @@ Notes :
   - `canMatch`
   - `resolve`
 
-*In this course, we wil focus on `canActivate` and `canMatch` guards*
+*In this course, we will focus on `canActivate` and `canMatch` guards*
 
 Notes :
 
@@ -443,7 +443,8 @@ export const contactGuard: CanMatchFn = (route: Route, segments: UrlSegment[]) =
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: 'contacts/:id', component: Contact, canMatch: [contactGuard] }
+  { path: 'contacts/:id', component: Contact, canMatch: [contactGuard] },
+  { path: 'contacts/:id', component: NoContactFallback }, // <-- activated when guard returns false
 ];
 ```
 

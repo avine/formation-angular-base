@@ -166,14 +166,14 @@ Notes :
 import {
   ApplicationConfig,
   // provideZoneChangeDetection,
-  provideExperimentalZonelessChangeDetection,
+  provideZonelessChangeDetection,
 } from '@angular/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     // provideZoneChangeDetection({ eventCoalescing: true }),   // <-- Default
 
-    provideExperimentalZonelessChangeDetection(),               // <-- Zoneless
+    provideZonelessChangeDetection(),                           // <-- Zoneless
   ],
 };
 ```
