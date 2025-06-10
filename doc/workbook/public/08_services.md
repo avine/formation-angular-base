@@ -12,17 +12,17 @@ You need to create 2 services using Angular CLI:
 
 The service should have:
 
-- A `_products = signal<Product[]>(...)` private property (move here the 4 products defined in `app.ts`)
+- A `_products = signal<Product[]>(...)` private property *(move here the 4 products defined in `app.ts`)*
 
 - A `products = _products.asReadonly()` public property
 
-- A `hasProductsInStock = computed<boolean>(...)` computed signal that returns `true` if at least one product stock is greater than 0
+- A `hasProductsInStock = computed<boolean>(...)` computed signal that returns `true` if at least one product stock is greater than 0 *(move some code from `app.ts`)*
 
-- A `decreaseStock(productId: string)` method to decrease the corresponding product stock if it is greater than 0
+- A `decreaseStock(productId: string)` method to decrease the corresponding product stock if it is greater than 0 *(move some code from `app.ts`)*
 
 #### Usage
 
-- `App`: refactor the component to use the `CatalogResource` service
+- Refactor the `App` component to use the `CatalogResource` service
 
 
 
@@ -52,9 +52,9 @@ The service should have:
 
 #### Usage
 
-- `App`: refactor the component to use the  `BasketResource` service
+- Refactor the `App` component to use the  `BasketResource` service
 
-- `Menu`: use the `BasketResource` to display the number of items in the basket.<br />
+- In the `Menu` component, use the `BasketResource` to display the number of items in the basket.
   To achieve this, add a `numberOfItems = computed<number>(...)` property to the menu component.
 
 

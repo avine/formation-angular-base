@@ -33,7 +33,7 @@ In this lab, you'll create an Angular form to checkout the basket.
   - Add CSS class `.is-valid` when the field's state is "valid"
 
 - Credit card field has 2 "invalid-feedback":
-  - Use `@if` directive to display only the relevant error
+  - Use `@if` block to display only the relevant error
 
 
 

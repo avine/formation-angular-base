@@ -10,7 +10,7 @@ In this lab, you'll start creating Angular components to break down the giant `A
 ng generate component menu
 ```
 
-- Once done, add the component `<app-menu />` to `src/app/app.html`
+- Once done, use the component `<app-menu />` in `src/app/app.html`
 
 
 

@@ -88,7 +88,7 @@ import { Component } from '@angular/core';
     <input ngModel />
   `,
 })
-export class AppComponent {}
+export class App {}
 ```
 
 - Under the hood, the `ngModel` directive tracks the **value**, user **interaction**, and **validation status** of the control element (such as an `<input />`) to which it is attached
@@ -183,17 +183,17 @@ When creating a custom directive, you can define the `exportAs` metadata and use
 import { Directive, Component } from '@angular/core';
 
 @Directive({ selector: 'appHello' exportAs: 'helloExportedName' })
-export class HelloDirective {}
+export class Hello {}
 
 @Component({
   selector: 'app-root',
-  imports: [HelloDirective],
+  imports: [Hello],
   template: '<div appHello #myDirective="helloExportedName" #myDiv></div>',
 })
-export class AppComponent {}
+export class App {}
 ```
 
-- Here, the template variable `myDirective` holds the `HelloDirective` instance
+- Here, the template variable `myDirective` holds the `Hello` directive instance
 
 - While the template variable `myDiv` simply holds the `HTMLDivElement` instance (default)
 
@@ -222,7 +222,7 @@ Let's take a closer look at the `NgModel` directive
     <p>The field is {{ model.valid ? 'valid' : 'invalid' }}.</p>
   `,
 })
-export class AppComponent {}
+export class App {}
 ```
 
 Notes :
@@ -250,7 +250,7 @@ Notes :
   `,
   styles: [`.ng-valid{ color: green; }   .ng-touched.ng-invalid{ color: red; }`],
 })
-export class AppComponent {}
+export class App {}
 ```
 
 Notes :
@@ -278,7 +278,7 @@ Notes :
   `,
   styles: [`.is-valid { color: green; }   .is-invalid { color: red; }`],
 })
-export class AppComponent {}
+export class App {}
 ```
 
 Notes :
@@ -304,7 +304,7 @@ Typically, the field is marked invalid only if both "touched" and "invalid".
     <input #inputRef [value]="data" (input)="data = inputRef.value" />
   `,
 })
-export class AppComponent { data = ''; }
+export class App { data = ''; }
 ```
 
 Notes :
@@ -354,7 +354,7 @@ Notes :
       <button type="submit" [disabled]="userForm.invalid">Submit</button>
     </form>`,
 })
-export class AppComponent {
+export class App {
   submitForm(userFormValue: { name: string; email: string; message: string }) { /* ... */ }
 }
 ```
@@ -437,10 +437,10 @@ import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@an
 @Directive({
   selector: '[appStartWith][ngModel]',
   providers: [{
-    provide: NG_VALIDATORS, useExisting: StartWithDirective, multi: true 
+    provide: NG_VALIDATORS, useExisting: StartWith, multi: true 
   }],
 })
-export class StartWithDirective implements Validator {
+export class StartWith implements Validator {
   startWith = input.required<string>({ alias: 'appStartWith' });
 
   validate(control: AbstractControl): ValidationErrors | null {
@@ -463,11 +463,11 @@ Notes :
 ```ts
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { StartWithDirective } from './starts-with.directive';
+import { StartWith } from './starts-with';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, StartWithDirective],
+  imports: [FormsModule, StartWith],
   template: `
     <form>
       <input name="example" ngModel #model="ngModel" appStartWith="xyz" />
@@ -479,7 +479,7 @@ import { StartWithDirective } from './starts-with.directive';
       }
     </form>`,
 })
-export class AppComponent {}
+export class App {}
 ```
 
 Notes :

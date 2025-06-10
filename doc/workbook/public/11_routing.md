@@ -67,7 +67,7 @@ Add `routerLink` directives in the following templates (don't forget to add the 
   <div class="card-header">2 articles</div>
 
   <ul class="list-group list-group-flush">
-    <!-- Use `@for` to loop over the basket items -->
+    <!-- Use `@for` block to loop over the basket items -->
     <li class="list-group-item d-flex justify-content-between">
       Coding the snow <span class="text-primary">19 €</span>
     </li>
@@ -75,7 +75,7 @@ Add `routerLink` directives in the following templates (don't forget to add the 
     <li class="list-group-item d-flex justify-content-between">
       Coding the world <span class="text-primary">18 €</span>
     </li>
-    <!-- End of: Use `@for` to loop over the basket items -->
+    <!-- End of: Use `@for` block to loop over the basket items -->
 
     <li class="list-group-item d-flex justify-content-between fw-bold">
       Total <span class="text-primary">37 €</span>
@@ -86,8 +86,8 @@ Add `routerLink` directives in the following templates (don't forget to add the 
 
 - Use the `BasketResource` service to implement the component logic
 
-- Subcribe to `BasketResource.fetchBasket()` method in the class constructor, to trigger data fetching<br />
-  Note that you'll remove this part once you've implemented the basket guard (see below *)
+- Subcribe to `BasketResource.fetchBasket` method in the class constructor, to trigger data fetching<br />
+  Note that you'll remove this part once you've implemented the basket guard (see below ***)
 
 - To check that everything is working properly, you should be able to:
   - Visit the `http://localhost:4200/catalog` page, click on _"Voir mon panier"_ and view the basket items
@@ -126,8 +126,8 @@ export const basketGuard: CanMatchFn = () => {
 - Add the route `'basket'` to display the component
   - Yes, it's the same route as for the `Basket` component
 
-- At this point, you can safely remove the `BasketResource.fetchBasket()` subscription from the `Basket` component constructor, 
-  because data fetching is now triggered by the guard itself anyway (see above *)
+- At this point, you can safely remove the `BasketResource.fetchBasket` subscription from the `Basket` component constructor, 
+  because data fetching is now triggered by the guard itself anyway (see above ***)
 
 
 
@@ -150,7 +150,7 @@ export const basketGuard: CanMatchFn = () => {
 
 
 ## Lab 11: Routing 6/7
-### Bonus: Application performances
+### Bonus: application performances
 
 Have you noticed that when loading the catalog, the message _"Désolé, notre stock est vide !"_ appears briefly and is then replaced by the products once fetched?
 
@@ -174,14 +174,14 @@ export class CatalogResource {
 
 ```html
 @if (products()) {
-  <!-- The "for" loop that displays the products -->
+  <!-- The "@for" loop that displays the products -->
 }
 ```
 
 
 
 ## Lab 11: Routing 7/7
-### Bonus: Directories organisation
+### Bonus: directories organisation
 
 - The following directories can be moved within the `src/app/catalog/` directory:
   - `/product/`

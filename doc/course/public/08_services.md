@@ -54,7 +54,7 @@ export const appConfig: ApplicationConfig = {
   selector: 'app-root',
   template: '<h1>{{ msg.data }}</h1>',
 })
-export class AppComponent {
+export class App {
   private apiService = inject(ApiService);        // <-- 3. Injecting
   msg = this.apiService.fetchMsg();               // <-- 4. Consuming
 }
@@ -134,16 +134,16 @@ Notes :
 @Component ({
   selector: 'app-parent',
   providers: [ParentService],
-  imports: [ChildComponent],
+  imports: [Child],
   template: '<app-child />',
 })
-export class ParentComponent {
+export class Parent {
   parentService = inject(ParentService);
 }
 
 @Component ({ selector: 'app-child', template: '...' })
-export class ChildComponent {
-  parentService = inject(ParentService); // Get the service from the `ParentComponent` injector
+export class Child {
+  parentService = inject(ParentService); // Get the service from the `Parent` component injector
 }
 ```
 
@@ -163,12 +163,12 @@ import { Component, Injectable, inject } from '@angular/core';
 export class DataService { data?: string; }
 
 @Component({ selector: 'app-setter', template: '...', })
-export class SetterComponent {
+export class Setter {
   constructor() { inject(DataService).data = 'Hello World!'; }
 }
 
 @Component({ selector: 'app-getter', template: '<h1>{{ data }}</h1>' })
-export class GetterComponent {
+export class Getter {
   private dataService = inject(DataService);
 
   get data() { return this.dataService.data; } // <-- 'Hello World!' 
@@ -245,7 +245,7 @@ export const appConfig: ApplicationConfig = {
 };
 
 @Component({ /* ... */ })
-export class AppComponent {
+export class App {
   appTitle = inject(APP_TITLE); // <-- 'My Awesome App'
 }
 ```
@@ -294,16 +294,16 @@ In the following example, we test a component in isolation, replacing the servic
 ```ts
 import { TestBed } from '@angular/core/testing';
 
-describe('AppComponent', () => {
+describe('App', () => {
   let apiService: ApiService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
-      providers: [{ provide: ApiService, useClass: ApiStubService }],
+      imports: [App],
+      providers: [{ provide: ApiService, useClass: ApiServiceStub }],
     }).compileComponents();
 
-    apiService = TestBed.inject(ApiService); // <-- Get the `ApiStubService`
+    apiService = TestBed.inject(ApiService); // <-- Get the `ApiServiceStub`
   });
 });
 ```

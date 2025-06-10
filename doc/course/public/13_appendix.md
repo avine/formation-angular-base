@@ -48,7 +48,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styles: `h1 { color: red }`,
   encapsulation: ViewEncapsulation.Emulated, // <-- Default value
 })
-export class AppComponent {}
+export class App {}
 ```
 
 - At runtime, Angular adds **unique attributes** to achieve encapsulation
@@ -80,7 +80,7 @@ import { Component } from '@angular/core';
   template: `<h1>My Awesome App</h1>`,
   styles: `:host { display: block }`,
 })
-export class AppComponent {}
+export class App {}
 ```
 
 
@@ -120,7 +120,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   `,
   encapsulation: ViewEncapsulation.None,
 })
-export class AppComponent {}
+export class App {}
 ```
 
 Notes :
@@ -138,7 +138,7 @@ Notes :
     <ng-content />
   </article>`
 })
-export class CardComponent {}
+export class Card {}
 
 @Component ({ selector: 'app-root', template:
   `<app-card>
@@ -146,7 +146,7 @@ export class CardComponent {}
     <section>Content</section>
   </app-card>`
 })
-export class AppComponent {}
+export class App {}
 ```
 
 Notes :
@@ -165,7 +165,7 @@ Notes :
     <section> <ng-content select="[card-content]"/> </section>
   </article>`
 })
-export class CardComponent {}
+export class Card {}
 
 @Component ({ selector: 'app-root', template:
   `<app-card>
@@ -173,7 +173,7 @@ export class CardComponent {}
     <span card-content>Content</span>
   </app-card>`
 })
-export class AppComponent {}
+export class App {}
 ```
 
 Notes :
@@ -191,7 +191,7 @@ Notes :
     <section> <ng-content select="[card-content]"/> </section>
   </article>`
 })
-export class CardComponent {}
+export class Card {}
 
 @Component ({ selector: 'app-root', template:
   `<app-card>
@@ -199,7 +199,7 @@ export class CardComponent {}
     <ng-container card-content>Content</ng-container>
   </app-card>`
 })
-export class AppComponent {}
+export class App {}
 ```
 
 Notes :
@@ -218,7 +218,7 @@ import {
 } from '@angular/core';
 
 @Component ({/* ... */})
-export class AppComponent implements
+export class App implements
   OnChanges, OnInit, AfterContentInit, AfterViewInit, OnDestroy {
 
     constructor() {/* Perform tasks that does NOT depend on the component's inputs */}
@@ -246,7 +246,7 @@ Notes :
 import { Component, OnInit, input } from '@angular/core';
 
 @Component ({/* ... */})
-export class PostsComponent implements OnInit {
+export class Posts implements OnInit {
   userId = input.required<string>();
 
   protected posts?: Post[];
@@ -276,7 +276,7 @@ import { Component, OnDestroy } from '@angular/core';
   selector: 'app-interval',
   template: '<p>{{ data }}</p>'
 })
-export class IntervalComponent implements OnDestroy {
+export class Interval implements OnDestroy {
   protected data = 0;
 
   private interval = setInterval(() => this.data++, 1000);
@@ -302,7 +302,7 @@ import { Component, DestroyRef } from '@angular/core';
   selector: 'app-interval',
   template: '<p>{{ data }}</p>'
 })
-export class IntervalComponent {
+export class Interval {
   protected data = 0;
 
   private interval = setInterval(() => this.data++, 1000);
@@ -331,17 +331,17 @@ import { Component, viewChild, OnInit, AfterViewInit } from '@angular/core';
 @Component({
   selector: 'app-hello', template: `<h1>Hello world!</h1>`
 })
-export class HelloComponent {}
+export class Hello {}
 
 @Component({
   selector: 'app-root', template: `<app-hello />`
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class App implements OnInit, AfterViewInit {
 
-  helloComponent = viewChild(HelloComponent);
+  hello = viewChild(Hello);
 
-  ngOnInit() { console.log(this.helloComponent()); }            // <-- output: undefined
-  ngAfterViewInit() { console.log(this.helloComponent()); }     // <-- output: HelloComponent
+  ngOnInit() { console.log(this.hello()); }            // <-- output: undefined
+  ngAfterViewInit() { console.log(this.hello()); }     // <-- output: Hello
 }
 ```
 
@@ -361,17 +361,17 @@ import { Component, viewChild, afterNextRender } from '@angular/core';
 @Component({
   selector: 'app-hello', template: `<h1>Hello world!</h1>`
 })
-export class HelloComponent {}
+export class Hello {}
 
 @Component({
   selector: 'app-root', template: `<app-hello />`
 })
-export class AppComponent {
+export class App {
 
-  helloComponent = viewChild(HelloComponent);
+  hello = viewChild(Hello);
 
   constructor() {
-    afterNextRender(() => console.log(this.helloComponent()));  // <-- output: HelloComponent
+    afterNextRender(() => console.log(this.hello()));  // <-- output: Hello
   }
 }
 ```

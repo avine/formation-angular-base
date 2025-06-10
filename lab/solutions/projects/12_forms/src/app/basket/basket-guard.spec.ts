@@ -12,14 +12,14 @@ describe('basketGuard', () => {
 
   const executeGuard = () => _executeGuard({} as Route, []) as Observable<boolean>;
 
-  let basketService: BasketResource;
+  let basketResource: BasketResource;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [{ provide: BasketResource, useClass: BasketResourceStub }],
     });
 
-    basketService = TestBed.inject(BasketResource);
+    basketResource = TestBed.inject(BasketResource);
   });
 
   it('should be created', () => {
@@ -27,7 +27,7 @@ describe('basketGuard', () => {
   });
 
   it('should fetch items', () => {
-    const fetchItemsSpy = spyOn(basketService, 'fetchBasket').and.callThrough();
+    const fetchItemsSpy = spyOn(basketResource, 'fetchBasket').and.callThrough();
 
     executeGuard();
 
@@ -40,7 +40,7 @@ describe('basketGuard', () => {
   });
 
   it('should return true when the basket is not empty', async () => {
-    spyOn(basketService, 'fetchBasket').and.returnValue(of([{} as BasketItem]));
+    spyOn(basketResource, 'fetchBasket').and.returnValue(of([{} as BasketItem]));
 
     const result = await firstValueFrom(executeGuard());
     expect(result).toBeTrue();

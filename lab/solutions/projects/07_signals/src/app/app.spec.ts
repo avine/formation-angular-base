@@ -33,10 +33,10 @@ describe('App', () => {
   });
 
   it('should display the products', () => {
-    const productDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
+    const productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
 
-    productDebugElements.forEach((productDebugElement, index) => {
-      expect(productDebugElement.properties['product']).toBe(component.products()[index]);
+    productCardDebugElements.forEach((productCardDebugElement, index) => {
+      expect(productCardDebugElement.properties['product']).toBe(component.products()[index]);
     });
   });
 
@@ -50,8 +50,8 @@ describe('App', () => {
     expect(header?.textContent).toContain(99);
 
     // When
-    const productDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
-    productDebugElements[1].triggerEventHandler('addToBasket', component.products()[1]);
+    const productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
+    productCardDebugElements[1].triggerEventHandler('addToBasket', component.products()[1]);
     fixture.detectChanges();
 
     // Then
@@ -75,8 +75,8 @@ describe('App', () => {
     expect(component.products()[0].stock).toBe(2);
 
     // When
-    const productDebugElement = fixture.debugElement.query(By.css('app-product-card'));
-    productDebugElement.triggerEventHandler('addToBasket', component.products()[0]);
+    const productCardDebugElement = fixture.debugElement.query(By.css('app-product-card'));
+    productCardDebugElement.triggerEventHandler('addToBasket', component.products()[0]);
 
     // Then
     expect(component.products()[0].stock).toBe(1);
@@ -84,8 +84,8 @@ describe('App', () => {
 
   it('should not display products whose stock is empty', () => {
     // Given
-    let productDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
-    expect(productDebugElements).toHaveSize(4);
+    let productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
+    expect(productCardDebugElements).toHaveSize(4);
 
     // When
     component.addToBasket(component.products()[0]);
@@ -94,10 +94,10 @@ describe('App', () => {
     fixture.detectChanges();
 
     // Then
-    productDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
-    expect(productDebugElements).toHaveSize(2);
-    expect(productDebugElements[0].properties['product']).toBe(component.products()[2]);
-    expect(productDebugElements[1].properties['product']).toBe(component.products()[3]);
+    productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
+    expect(productCardDebugElements).toHaveSize(2);
+    expect(productCardDebugElements[0].properties['product']).toBe(component.products()[2]);
+    expect(productCardDebugElements[1].properties['product']).toBe(component.products()[3]);
   });
 
   it('should display the message "Désolé, notre stock est vide !" when the stock is completely empty', () => {

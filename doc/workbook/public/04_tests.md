@@ -84,9 +84,9 @@ Now, the test setup should pass (but we're not testing anything useful at the mo
 ## Lab 4: Unit testing 3/3
 ### `app.spec.ts`
 
-- Now remove the "f" ("focus") prefix you previously added to the `describe` function.
+- Now remove the "f" ("focus") prefix you previously added to the `describe` function of the `ProductCard` test.
 
-This component depends on 2 other components:
+The `App` component depends on 2 other components:
 
 - `Menu`
 

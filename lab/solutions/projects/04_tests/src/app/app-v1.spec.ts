@@ -23,10 +23,10 @@ describe('App (first approach - with explicit dependency declaration)', () => {
   });
 
   it('should display the products', () => {
-    const productDebugElements = fixture.debugElement.queryAll(By.directive(ProductCard));
-    productDebugElements.forEach((productDebugElement, index) => {
-      const productComponent: ProductCard = productDebugElement.componentInstance;
-      expect(productComponent.product()).toBe(component.products[index]);
+    const productCardDebugElements = fixture.debugElement.queryAll(By.directive(ProductCard));
+    productCardDebugElements.forEach((productCardDebugElement, index) => {
+      const productCard: ProductCard = productCardDebugElement.componentInstance;
+      expect(productCard.product()).toBe(component.products[index]);
     });
   });
 
@@ -40,9 +40,9 @@ describe('App (first approach - with explicit dependency declaration)', () => {
     expect(header?.textContent).toContain(99);
 
     // When
-    const productDebugElements = fixture.debugElement.queryAll(By.directive(ProductCard));
-    const productComponent: ProductCard = productDebugElements[1].componentInstance;
-    productComponent.addToBasket.emit(productComponent.product());
+    const productCardDebugElements = fixture.debugElement.queryAll(By.directive(ProductCard));
+    const productCard: ProductCard = productCardDebugElements[1].componentInstance;
+    productCard.addToBasket.emit(productCard.product());
     fixture.detectChanges();
 
     // Then

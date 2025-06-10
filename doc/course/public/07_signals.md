@@ -209,7 +209,7 @@ import { Component, signal } from '@angular/core';
   selector: 'app-counter-delay',
   template: `<button (click)="increment()">{{ count() }}</button>`
 })
-export class CounterDelayComponent {
+export class CounterDelay {
   count = signal(0);
 
   increment() {
@@ -236,17 +236,17 @@ import { Component, model, signal } from '@angular/core';
   selector: 'app-counter',
   template: `<button (click)="increment()">{{ count() }}</button>`
 })
-export class CounterComponent {
+export class Counter {
   count = model(0);
   increment() { this.count.update((count) => count + 1); }
 }
 
 @Component ({
   selector: 'app-root',
-  imports: [CounterComponent],
+  imports: [Counter],
   template: `<app-counter [(count)]="appCount" /> <p>{{ appCount() }}</p>`
 })
-export class AppComponent {
+export class App {
   appCount = signal(0);
 }
 ```

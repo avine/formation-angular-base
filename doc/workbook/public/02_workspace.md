@@ -10,7 +10,7 @@ lab/resources/design
 
 You're going to integrate this design into your Angular application.
 
-First, let's start a local server to see what to app looks like.
+First, let's start a local server to see what the app looks like.
 
 - Open a new Terminal in the directory `design` and run the command:
 

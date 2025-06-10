@@ -8,9 +8,9 @@ import { BasketResource } from './basket-resource';
   imports: [CurrencyPipe],
 })
 export class Basket {
-  private basketService = inject(BasketResource);
+  private basketResource = inject(BasketResource);
 
-  protected items = this.basketService.items;
+  protected items = this.basketResource.items;
 
-  protected total = this.basketService.total;
+  protected total = this.basketResource.total;
 }

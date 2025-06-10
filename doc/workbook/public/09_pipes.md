@@ -41,7 +41,7 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-The product price should now be displayed correctly.
+The product price should now be displayed correctly. 🎉
 
 
 
@@ -64,9 +64,9 @@ We want to be able to sort the displayed products by `price` or `stock`.
 - Once your finished, use your pipe to sort the products in the `App` component template
 
 Finally, let's add a selector to choose between `price` and `stock` sorting.
-You'll find a component ready for use here: `Exercises/resources/select-product-key`.
+You'll find a component ready for use here: `lab/resources/select-product-key`.
 
-- Copy/paste the component `Exercises/resources/select-product-key` into your app at `src/app/select-product-key`
+- Copy/paste the `lab/resources/select-product-key` directory into your app at `src/app/select-product-key`
 
 
 
@@ -88,7 +88,7 @@ export class App {
 }
 ```
 
-- Use `<app-select-product-key>` in `app.html`
+- Use `<app-select-product-key />` in `app.html`
 
 ```html
 <app-select-product-key [(productKey)]="productKey" />

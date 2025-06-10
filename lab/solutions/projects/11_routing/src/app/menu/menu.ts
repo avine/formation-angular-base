@@ -8,7 +8,7 @@ import { BasketResource } from '../basket/basket-resource';
   imports: [RouterLink],
 })
 export class Menu {
-  private basketService = inject(BasketResource);
+  private basketResource = inject(BasketResource);
 
-  numberOfItems = computed<number>(() => this.basketService.items().length);
+  numberOfItems = computed<number>(() => this.basketResource.items().length);
 }

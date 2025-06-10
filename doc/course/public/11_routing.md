@@ -73,14 +73,14 @@ Notes :
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '', component: Home, pathMatch: 'full' },
 
-  { path: 'contacts', component: ContactListComponent },
+  { path: 'contacts', component: ContactList },
 
-  { path: 'contacts/:id', component: ContactComponent },
+  { path: 'contacts/:id', component: Contact },
 
-  { path: '**', redirectTo: '/' },                     // <-- Option 1. Redirect to home page
-  // { path: '**', component: PageNotFoundComponent }, // <-- Option 2. Display "Not found" page
+  { path: '**', redirectTo: '/' },            // <-- Option 1. Redirect to home page
+  // { path: '**', component: PageNotFound }, // <-- Option 2. Display "Not found" page
 ];
 ```
 
@@ -107,7 +107,7 @@ import { RouterOutlet } from '@angular/router';
     <footer>Copyright Zenika</footer>
   `
 })
-export class AppComponent {}
+export class App {}
 ```
 
 Notes :
@@ -131,7 +131,7 @@ Notes :
     <a [routerLink]="['/contacts', id]"> Contact {{ id }} </a>
   `
 })
-export class NavComponent {
+export class Nav {
   id = 2;
 }
 ```
@@ -156,7 +156,7 @@ Notes :
   `,
   styles: `.link-active { color: blue }`,
 })
-export class NavComponent {}
+export class Nav {}
 ```
 
 Notes :
@@ -181,7 +181,7 @@ Notes :
   `,
   styles: `.link-active { color: blue }`,
 })
-export class NavComponent {}
+export class Nav {}
 ```
 
 Notes :
@@ -200,7 +200,7 @@ import { Router } from '@angular/router';
   selector: 'app-root',
   template: '<button (click)="navigate()">Go to contact list</button>'
 })
-export class AppComponent {
+export class App {
   private router = inject(Router);
 
   protected navigate() {
@@ -227,7 +227,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Component ({
   template: 'Contact ID: {{ id }} (dynamic).'
 })
-export class ContactComponent {
+export class Contact {
   private activatedRoute = inject(ActivatedRoute);
 
   id!: number;
@@ -257,7 +257,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component ({
   template: 'Contact ID: {{ id }} (static).'
 })
-export class ContactComponent {
+export class Contact {
   private activatedRoute = inject(ActivatedRoute);
 
   id = Number(this.activatedRoute.snapshot.params['id']);
@@ -298,7 +298,7 @@ Notes :
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: 'contacts/:id', component: ContactComponent }
+  { path: 'contacts/:id', component: Contact }
 ];
 ```
 
@@ -311,7 +311,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component ({
   template: 'Contact ID: {{ id }} (dynamic).'
 })
-export class ContactComponent {
+export class Contact {
   private activatedRoute = inject(ActivatedRoute);
 
   id = input.required<number>({ transform: numberAttribute });
@@ -332,16 +332,16 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: 'contacts/:id',
-    component: ContactComponent,
+    component: Contact,
     children: [
-      { path: 'view', component: ViewContactComponent },
-      { path: 'edit', component: EditContactComponent },
+      { path: 'view', component: ViewContact },
+      { path: 'edit', component: EditContact },
     ],
   },
 ];
 ```
 
-*In this example, we assume that the template of the `ContactComponent` component contains the nested `<router-outlet />` directive*
+*In this example, we assume that the template of the `Contact` component contains the nested `<router-outlet />` directive*
 
 Notes :
 
@@ -357,12 +357,12 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: Home,
     title: 'Home',
   },
   {
     path: 'contacts',
-    component: ContactListComponent,
+    component: ContactList,
     title: 'Contacts',
   },
 ];
@@ -396,7 +396,7 @@ Notes :
 ```ts
 import { inject } from '@angular/core';
 import { CanActivateFn, ActivatedRouteSnapshot } from '@angular/router';
-import { ContactService } from './contact.service';
+import { ContactService } from './contact-service';
 
 export const contactGuard: CanActivateFn = (snapshot: ActivatedRouteSnapshot) => {
 
@@ -412,7 +412,7 @@ export const contactGuard: CanActivateFn = (snapshot: ActivatedRouteSnapshot) =>
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: 'contacts/:id', component: ContactComponent, canActivate: [contactGuard] }
+  { path: 'contacts/:id', component: Contact, canActivate: [contactGuard] }
 ];
 ```
 
@@ -427,7 +427,7 @@ Notes :
 ```ts
 import { inject } from '@angular/core';
 import { CanMatchFn, Route, UrlSegment } from '@angular/router';
-import { ContactService } from './contact.service';
+import { ContactService } from './contact-service';
 
 export const contactGuard: CanMatchFn = (route: Route, segments: UrlSegment[]) => {
 
@@ -443,7 +443,7 @@ export const contactGuard: CanMatchFn = (route: Route, segments: UrlSegment[]) =
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: 'contacts/:id', component: ContactComponent, canMatch: [contactGuard] }
+  { path: 'contacts/:id', component: Contact, canMatch: [contactGuard] }
 ];
 ```
 
@@ -504,12 +504,12 @@ export const routes: Routes = [
     path: 'contacts',
 
     // Use lazy-loaded JavaScript module...
-    loadComponent: () => import('./contact-list/contact-list.component.ts').then(
-      (module) => module.ContactListComponent
+    loadComponent: () => import('./contact-list/contact-list.ts').then(
+      (module) => module.ContactList
     ),
 
     // ...instead of eagerly-loaded component
-    /* component: ContactListComponent, */
+    /* component: ContactList, */
   },
 ];
 ```
@@ -527,9 +527,9 @@ Notes :
   selector: 'app-contact-list',
   template: `...`,
 })
-export class ContactListComponent {}
+export class ContactList {}
 
-export default ContactListComponent;
+export default ContactList;
 ```
 
 ```ts
@@ -538,7 +538,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: 'contacts',
-    loadComponent: () => import('./contact-list/contact-list.component.ts'),
+    loadComponent: () => import('./contact-list/contact-list.ts'),
   },
 ];
 ```
@@ -568,8 +568,8 @@ export const routes: Routes = [
 import { Routes } from '@angular/router';
 
 export default [
-  { path: '', component: ContactListComponent },
-  { path: ':id', component: ContactComponent },
+  { path: '', component: ContactList },
+  { path: ':id', component: Contact },
 ] satisfies Routes;
 ```
 

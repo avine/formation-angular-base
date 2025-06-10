@@ -33,9 +33,9 @@ describe('App (second approach - allowing unknown HTML elements)', () => {
   });
 
   it('should display the products', () => {
-    const productDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
-    productDebugElements.forEach((productDebugElement, index) => {
-      expect(productDebugElement.properties['product']).toBe(component.products[index]);
+    const productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
+    productCardDebugElements.forEach((productCardDebugElement, index) => {
+      expect(productCardDebugElement.properties['product']).toBe(component.products[index]);
     });
   });
 
@@ -49,8 +49,8 @@ describe('App (second approach - allowing unknown HTML elements)', () => {
     expect(header?.textContent).toContain(99);
 
     // When
-    const productDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
-    productDebugElements[1].triggerEventHandler('addToBasket', component.products[1]);
+    const productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
+    productCardDebugElements[1].triggerEventHandler('addToBasket', component.products[1]);
     fixture.detectChanges();
 
     // Then

@@ -11,7 +11,7 @@ import { CheckoutDetails } from '../basket-types';
   imports: [ReactiveFormsModule, RouterLink],
 })
 export class CheckoutReactiveForm {
-  private basketService = inject(BasketResource);
+  private basketResource = inject(BasketResource);
 
   protected orderNumber = signal<number | undefined>(undefined);
 
@@ -30,7 +30,7 @@ export class CheckoutReactiveForm {
   protected checkout() {
     this.checkoutForm.disable();
 
-    this.basketService.checkout(this.checkoutForm.value as CheckoutDetails).subscribe({
+    this.basketResource.checkout(this.checkoutForm.value as CheckoutDetails).subscribe({
       next: ({ orderNumber }) => {
         this.orderNumber.set(orderNumber);
       },

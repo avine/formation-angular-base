@@ -172,11 +172,11 @@ Notes :
 
 ```ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import { App } from './app';
 
-await TestBed.configureTestingModule({ imports: [AppComponent] }).compileComponents();
+await TestBed.configureTestingModule({ imports: [App] }).compileComponents();
 
-let fixture = TestBed.createComponent(AppComponent);
+let fixture = TestBed.createComponent(App);
 
 let component = fixture.componentInstance;
 let hostElement = fixture.nativeElement;
@@ -219,7 +219,7 @@ import { Component, model } from '@angular/core';
   selector: 'app-counter',
   template: '<button (click)="increment()">{{ count }}</button>'
 })
-export class CounterComponent {
+export class Counter {
   count = model(0);
 
   protected increment() {
@@ -238,17 +238,17 @@ Notes :
 
 ```ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CounterComponent } from './counter.component';
+import { Counter } from './counter';
 
-describe('CounterComponent', () => {
-  let fixture: ComponentFixture<CounterComponent>;
+describe('Counter', () => {
+  let fixture: ComponentFixture<Counter>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CounterComponent],
+      imports: [Counter],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CounterComponent);
+    fixture = TestBed.createComponent(Counter);
 
     fixture.detectChanges(); // <-- The template state needs to be initialized manually
   });
@@ -325,7 +325,7 @@ import { Component } from '@angular/core';
     <span>{{ count % 2 ? 'is odd' : 'is even' }}</span>
   `,
 })
-export class NumberParityComponent {
+export class NumberParity {
   count = 0;
 }
 ```
@@ -340,18 +340,18 @@ Notes :
 ```ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NumberParityComponent } from './number-parity.component';
+import { NumberParity } from './number-parity';
 
-describe('NumberParityComponent', () => {
-  let component: NumberParityComponent;
-  let fixture: ComponentFixture<NumberParityComponent>;
+describe('NumberParity', () => {
+  let component: NumberParity;
+  let fixture: ComponentFixture<NumberParity>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NumberParityComponent] // <-- `CounterComponent` also imported
+      imports: [NumberParity] // <-- `Counter` also imported
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NumberParityComponent);
+    fixture = TestBed.createComponent(NumberParity);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -368,19 +368,19 @@ Notes :
 
 ```ts
 it('should bind parent "count" to child component', () => {
-  const counterComponent: CounterComponent =
-    fixture.debugElement.query(By.directive(CounterComponent)).componentInstance;
+  const counter: Counter =
+    fixture.debugElement.query(By.directive(counter)).componentInstance;
 
   // Accessing the child component properties
-  expect(counterComponent.count).toBe(component.count);
+  expect(counter.count).toBe(component.count);
 });
 
 it('should be "odd" when child component emits', () => {
-  const counterComponent: CounterComponent =
-    fixture.debugElement.query(By.directive(CounterComponent)).componentInstance;
+  const counter: Counter =
+    fixture.debugElement.query(By.directive(counter)).componentInstance;
 
   // Accessing the child component methods
-  counterComponent.count.set(1);
+  counter.count.set(1);
   fixture.detectChanges();
 
   const span = (fixture.nativeElement as HTMLElement).querySelector('span');
@@ -398,18 +398,18 @@ Notes :
 
 ```ts
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CounterComponent } from '../counter/counter.component';
+import { Counter } from '../counter/counter';
 // The rest of the imports...
 
-describe('NumberParityComponent', () => {
-  let component: NumberParityComponent;
-  let fixture: ComponentFixture<NumberParityComponent>;
+describe('NumberParity', () => {
+  let component: NumberParity;
+  let fixture: ComponentFixture<NumberParity>;
 
   beforeEach(async () => {
     await TestBed
-      .configureTestingModule({ imports: [NumberParityComponent] })
-      .overrideComponent(NumberParityComponent, {
-        remove: { imports: [CounterComponent] },
+      .configureTestingModule({ imports: [NumberParity] })
+      .overrideComponent(NumberParity, {
+        remove: { imports: [Counter] },
         add: { schemas: [CUSTOM_ELEMENTS_SCHEMA] },
       })
       .compileComponents();

@@ -75,7 +75,7 @@ import { DatePipe, UpperCasePipe, CurrencyPipe } from '@angular/common';
     <p>{{ myPrice | currency : 'EUR' : 'symbol' }}</p>  <!-- 123,46 €     -->
   `,
 })
-export class AppComponent {
+export class App {
   myDate = new Date();
   myPrice = 123.456789;
 }
@@ -171,7 +171,7 @@ import { Component, inject } from '@angular/core';
 import { CurrencyPipe, UpperCasePipe } from '@angular/common';
 
 @Component ({ selector: 'app-root', providers: [CurrencyPipe] })
-class AppComponent {
+class App {
   constructor() {
     console.log(new UpperCasePipe().transform('Hello World!'));   // <-- HELLO WORLD!
 
@@ -226,7 +226,7 @@ import { JsonPipe } from '@angular/common';
     
     <button (click)=" data.msg = 'Bye' ">Mutate</button>`,
 })
-export class AppComponent {
+export class App {
   data = { msg: 'Hello' };
 }
 ```
@@ -255,7 +255,7 @@ export class JoinArrayPipe implements PipeTransform {
   template: `{{ appList | joinArray }}
     <button (click)=" appList.push('kiwi') ">Mutate</button>`, // <-- Mutation
 })
-export class AppComponent {
+export class App {
   appList = ['apple', 'orange', 'banana'];
 }
 ```
@@ -271,7 +271,7 @@ Notes :
 - Call the `transform` method to test all possible cases
 
 ```ts
-import { JoinArrayPipe } from './pipes/join-array.pipe';
+import { JoinArrayPipe } from './pipes/join-array-pipe';
 
 describe('JoinArrayPipe', () => {
   let pipe;

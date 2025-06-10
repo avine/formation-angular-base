@@ -56,7 +56,7 @@ You will be displayed some options for the app:
 npx @angular/cli new zenika-ng-website
 ```
 
-In this case, to run an Angular CLI command, you will have to use NPM first `npm run ng <command>` instead of just `ng <command>`.
+However, in this case, to run an Angular CLI command, you will have to use NPM first `npm run ng <command>` instead of just `ng <command>`.
 
 #### Run the Angular dev server
 
@@ -176,7 +176,7 @@ git push -u origin main
 ## Lab 1: Getting started 6/6
 ### NPM packages
 
-Install Angular dependencies with NPM, by running the following command:
+Install your app dependencies with NPM, by running the following command:
 
 ```bash
 npm i # or: npm install

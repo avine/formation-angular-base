@@ -82,7 +82,7 @@ import { NgStyle } from '@angular/common';
     Change size: <input type="number" [value]="currentSize" (input)="changeSize($event)">
   `
 })
-export class FontSizeSelectorComponent {
+export class FontSizeSelector {
   currentSize = 20;
   changeSize(event: Event) {
     this.currentSize = Number((event.target as HTMLInputElement).value);
@@ -131,7 +131,7 @@ import { NgClass } from '@angular/common';
     .highlight { background-color: yellow }
   `]
 })
-export class ToggleHighlightComponent {
+export class ToggleHighlight {
   isHighlighted = false;
 }
 ```
@@ -150,7 +150,7 @@ Notes :
 import { Directive, ElementRef, Renderer2, inject } from '@angular/core';
 
 @Directive({ selector: '[appHighlight]' })
-export class HighlightDirective {
+export class Highlight {
   constructor() {
     const elementRef = inject(ElementRef);
     const renderer = inject(Renderer2);
@@ -178,14 +178,14 @@ Notes :
 
 ```ts
 import { Component } from '@angular/core';
-import { HighlightDirective } from './highlight.directive.ts';
+import { Highlight } from './highlight.ts';
 
 @Component({
   selector: 'app-root',
-  imports: [HighlightDirective],
+  imports: [Highlight],
   template: `<p appHighlight> Highlight me! </p>`,
 })
-export class AppComponent {}
+export class App {}
 ```
 
 - At runtime, if we open the Chrome inspector, we can verify that the style has been correctly applied to the paragraph
@@ -213,7 +213,7 @@ import { Directive } from '@angular/core';
     '(mouseleave)': 'onMouseLeave()',
   }
 })
-export class HighlightDirective {
+export class Highlight {
   currentColor?: string;
 
   onMouseEnter() { this.currentColor = 'yellow'; }
@@ -239,7 +239,7 @@ import { Directive, input, output } from '@angular/core';
   selector: '[appHighlight]',
   host: { /* ...same bindings as previous slide... */ }
 })
-export class HighlightDirective {
+export class Highlight {
   currentColor?: string;
   highlightColor = input('yellow', { alias: 'appHighlight' });
   highlighted = output<boolean>();
@@ -277,7 +277,7 @@ import { Component } from '@angular/core';
     </p>
   `,
 })
-export class AppComponent {
+export class App {
   highlightColor = 'green';
 
   highlightedHandler(highlighted: boolean) {
@@ -297,21 +297,21 @@ Notes :
 ```ts
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HighlightDirective } from './highlight.directive';
+import { Highlight } from './highlight';
 
 @Component({
   selector: 'app-wrapper',
-  imports: [HighlightDirective],
+  imports: [Highlight],
   template: '<div appHighlight>Highlight</div>',
 })
-class WrapperComponent {}
+class Wrapper {}
 
-describe('HighlightDirective', () => {
-  let fixture: ComponentFixture<WrapperComponent>;
+describe('Highlight', () => {
+  let fixture: ComponentFixture<Wrapper>;
   let hostElement: HTMLElement;
   beforeEach(async () => {
-    await TestBed.configureTestingModule({ imports: [WrapperComponent] }).compileComponents();
-    fixture = TestBed.createComponent(WrapperComponent);
+    await TestBed.configureTestingModule({ imports: [Wrapper] }).compileComponents();
+    fixture = TestBed.createComponent(Wrapper);
     hostElement = fixture.nativeElement.querySelector('[appHighlight]') as HTMLElement;
   });
 });

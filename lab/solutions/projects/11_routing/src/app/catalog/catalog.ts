@@ -16,26 +16,26 @@ import { SortProductsPipe } from './sort-products/sort-products-pipe';
   imports: [CurrencyPipe, RouterLink, ProductCard, SelectProductKey, SortProductsPipe],
 })
 export class Catalog {
-  private catalogService = inject(CatalogResource);
+  private catalogResource = inject(CatalogResource);
 
-  private basketService = inject(BasketResource);
+  private basketResource = inject(BasketResource);
 
   appTitle = inject(APP_TITLE);
 
-  products = this.catalogService.products;
+  products = this.catalogResource.products;
 
-  hasProductsInStock = this.catalogService.hasProductsInStock;
+  hasProductsInStock = this.catalogResource.hasProductsInStock;
 
-  total = this.basketService.total;
+  total = this.basketResource.total;
 
   productKey = signal<ProductKey>(undefined);
 
   constructor() {
-    this.catalogService.fetchProducts().subscribe();
-    this.basketService.fetchBasket().subscribe();
+    this.catalogResource.fetchProducts().subscribe();
+    this.basketResource.fetchBasket().subscribe();
   }
 
   addToBasket({ id }: Product) {
-    this.basketService.addItem(id).subscribe(() => this.catalogService.decreaseStock(id));
+    this.basketResource.addItem(id).subscribe(() => this.catalogResource.decreaseStock(id));
   }
 }

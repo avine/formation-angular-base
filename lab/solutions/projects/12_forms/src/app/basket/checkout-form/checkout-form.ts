@@ -10,7 +10,7 @@ import { CheckoutDetails } from '../basket-types';
   imports: [FormsModule, RouterLink],
 })
 export class CheckoutForm {
-  private basketService = inject(BasketResource);
+  private basketResource = inject(BasketResource);
 
   protected orderNumber = signal<number | undefined>(undefined);
 
@@ -21,7 +21,7 @@ export class CheckoutForm {
   protected checkout(checkoutDetails: CheckoutDetails) {
     this.checkoutInProgress.set(true);
 
-    this.basketService.checkout(checkoutDetails).subscribe({
+    this.basketResource.checkout(checkoutDetails).subscribe({
       next: ({ orderNumber }) => {
         this.orderNumber.set(orderNumber);
       },
