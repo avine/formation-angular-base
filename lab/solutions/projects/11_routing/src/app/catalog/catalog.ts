@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { APP_TITLE } from '../app.token';
 import { BasketResource } from '../basket/basket-resource';
 import { CatalogResource } from './catalog-resource';
+import { HighlightPrice } from './highlight-price/highlight-price';
 import { ProductCard } from './product/product-card';
 import { Product } from './product/product-types';
 import { ProductKey } from './select-product-key/product-key-types';
@@ -13,7 +14,7 @@ import { SortProductsPipe } from './sort-products/sort-products-pipe';
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.html',
-  imports: [CurrencyPipe, RouterLink, ProductCard, SelectProductKey, SortProductsPipe],
+  imports: [CurrencyPipe, RouterLink, HighlightPrice, ProductCard, SelectProductKey, SortProductsPipe],
 })
 export class Catalog {
   private catalogResource = inject(CatalogResource);

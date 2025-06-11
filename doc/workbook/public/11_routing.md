@@ -184,6 +184,7 @@ export class CatalogResource {
 ### Bonus: directories organisation
 
 - The following directories can be moved within the `src/app/catalog/` directory:
+  - `/highlight-price/`
   - `/product/`
   - `/select-product-key/`
   - `/sort-products/`

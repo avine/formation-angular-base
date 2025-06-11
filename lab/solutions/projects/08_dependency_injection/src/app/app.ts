@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { APP_TITLE } from './app.token';
 import { BasketResource } from './basket/basket-resource';
 import { CatalogResource } from './catalog/catalog-resource';
+import { HighlightPrice } from './highlight-price/highlight-price';
 import { Menu } from './menu/menu';
 import { ProductCard } from './product/product-card';
 import { Product } from './product/product-types';
@@ -9,7 +10,7 @@ import { Product } from './product/product-types';
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
-  imports: [Menu, ProductCard],
+  imports: [HighlightPrice, Menu, ProductCard],
 })
 export class App {
   private catalogResource = inject(CatalogResource);

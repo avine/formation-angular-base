@@ -140,6 +140,32 @@ Notes :
 
 
 
+## Built-in attr. directives - disclaimer
+
+The built-in `NgStyle` and `NgClass` directives, given as an example, helped us understand the usefulness of attribute directives
+
+- However, there are alternatives to these two specific directives: **class binding** and **style binding**, which we've already covered in the chapter on components
+
+```html
+<h1 [ngStyle]="{ 'font-size': currentSize + 'px' }">Example<h1>
+
+<!-- Style binding -->
+<h1 [style.font-size]="currentSize + 'px'">Example<h1>
+  ```
+
+```html
+<div [ngClass]="{ 'highlight': isHighlighted }">{{ isHighlighted ? 'On' : 'Off' }}</div>
+
+<!-- Class binding -->
+<div [class.highlight]="isHighlighted">{{ isHighlighted ? 'On' : 'Off' }}</div>
+```
+
+_😉 Later in the course, you'll discover fundamental directives such as `RouterLink` (Router) and `NgModel` (Forms)_
+
+Notes :
+
+
+
 ## Attribute directive - Custom
 
 - To create a custom directive, add the `@Directive` decorator on a class
@@ -222,7 +248,7 @@ export class Highlight {
 }
 ```
 
-- Note that `host` property also applies to component metadata
+_😉 Note that `host` property also applies to component metadata_
 
 Notes :
 
@@ -295,16 +321,16 @@ Notes :
 - Create a wrapper component for DOM testing purposes
 
 ```ts
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { Highlight } from './highlight';
 
 @Component({
   selector: 'app-wrapper',
   imports: [Highlight],
-  template: '<div appHighlight>Highlight</div>',
-})
-class Wrapper {}
+  template: '<div appHighlight="green">Highlight me!</div>',
+}) class Wrapper {}
 
 describe('Highlight', () => {
   let fixture: ComponentFixture<Wrapper>;
@@ -312,7 +338,8 @@ describe('Highlight', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({ imports: [Wrapper] }).compileComponents();
     fixture = TestBed.createComponent(Wrapper);
-    hostElement = fixture.nativeElement.querySelector('[appHighlight]') as HTMLElement;
+    fixture.detectChanges();
+    hostElement = fixture.debugElement.query(By.directive(Highlight)).nativeElement;
   });
 });
 ```
