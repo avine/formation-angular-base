@@ -14,7 +14,7 @@ The service should have:
 
 - A `_products = signal<Product[]>(...)` private property *(move here the 4 products defined in `app.ts`)*
 
-- A `products = _products.asReadonly()` public property
+- A `products = this._products.asReadonly()` public property
 
 - A `productsInStock = computed<Product[]>(...)` computed signal which returns the list of products whose stock is greater than 0 *(move some code from `app.ts`)*
 
@@ -44,7 +44,7 @@ The service should have:
 
 - A `_items = signal<BasketItem[]>(...)` private property
 
-- A `items = _items.asReadonly()` public property
+- A `items = this._items.asReadonly()` public property
 
 - A `total = computed<number>(...)` computed signal that returns the basket total
 
@@ -60,7 +60,7 @@ The service should have:
 
 
 ## Lab 8: Dependency injection 3/5
-### Use of injection token
+### Bonus: use of injection token
 
 - Create an injection token `APP_TITLE` in `src/app/app.token.ts`
 
