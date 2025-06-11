@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { Product } from '../product/product-types';
 import { CatalogResource } from './catalog-resource';
 
@@ -10,7 +10,7 @@ export class CatalogResourceStub implements Partial<CatalogResource> {
     { id: 'ID_3', title: 'TITLE_3', description: 'DESC_3', photo: 'PHOTO_3', price: 1, stock: 0 },
   ]);
 
-  hasProductsInStock = signal(true);
+  productsInStock = computed<Product[]>(() => this.products().filter(({ stock }) => stock > 0));
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
   decreaseStock(productId: string) {}

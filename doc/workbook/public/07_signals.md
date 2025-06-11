@@ -6,7 +6,7 @@ In this Lab, you'll convert the `App` component properties into signals.
 
 - Use a `signal<Product[]>` signal for the `products` property
 
-- Use a `computed<boolean>` signal for the `hasProductsInStock` property
+- Use a `computed<Product[]>` signal for the `productsInStock` property
 
 - Use a `signal<number>` signal for the `total` property
 

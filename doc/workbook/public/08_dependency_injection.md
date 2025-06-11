@@ -16,7 +16,7 @@ The service should have:
 
 - A `products = _products.asReadonly()` public property
 
-- A `hasProductsInStock = computed<boolean>(...)` computed signal that returns `true` if at least one product stock is greater than 0 *(move some code from `app.ts`)*
+- A `productsInStock = computed<Product[]>(...)` computed signal which returns the list of products whose stock is greater than 0 *(move some code from `app.ts`)*
 
 - A `decreaseStock(productId: string)` method to decrease the corresponding product stock if it is greater than 0 *(move some code from `app.ts`)*
 

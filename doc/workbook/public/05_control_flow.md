@@ -6,13 +6,11 @@ In this lab, you'll use the `@for`, `@if` and `@else` blocks to improve the appl
 
 - Update `addToBasket` method to decrease the product stock when user clicks on _"Ajouter au panier"_
 
-- Add a getter `get hasProductsInStock(): boolean` that returns `true` when at least one product has a stock greater than 0
+- Add a getter `get productsInStock(): Product[]` which returns the list of products whose stock is greater than 0
 
 - Use a `@for` block to iterate over the `products` arrays to display each `<app-product-card />` component
 
-- Use a `@if` block to display only the products with a `stock` greater than 0
-
-- Use `@if (hasProductsInStock) {} @else {}` to display the message _"Désolé, notre stock est vide !"_ when there's no product left in the catalog
+- Use `@if (productsInStock.length) {} @else {}` to display the message _"Désolé, notre stock est vide !"_ when all products have an sotck equal to 0
 
 ### Tests
 

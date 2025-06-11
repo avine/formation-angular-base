@@ -121,7 +121,10 @@ describe('Catalog', () => {
     expect(productCardDebugElements).toHaveSize(2); // Note: the third product stock equals 0
 
     // When
-    ((TestBed.inject(CatalogResource) as unknown as CatalogResourceStub).products()?.[0] as Product).stock = 0;
+    (TestBed.inject(CatalogResource) as unknown as CatalogResourceStub).products.update((products) => {
+      const [first, ...rest] = products;
+      return [{ ...first, stock: 0 }, ...rest];
+    });
     fixture.detectChanges();
 
     // Then
@@ -136,7 +139,16 @@ describe('Catalog', () => {
     expect(element).toBeNull();
 
     // When
-    (TestBed.inject(CatalogResource) as unknown as CatalogResourceStub).hasProductsInStock.set(false);
+    (TestBed.inject(CatalogResource) as unknown as CatalogResourceStub).products.set([
+      {
+        id: 'ID_3',
+        title: 'TITLE_3',
+        description: 'DESC_3',
+        photo: 'PHOTO_3',
+        price: 1,
+        stock: 0,
+      },
+    ]);
     fixture.detectChanges();
 
     // Then

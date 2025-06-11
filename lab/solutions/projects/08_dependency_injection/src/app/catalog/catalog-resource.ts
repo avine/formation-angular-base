@@ -42,7 +42,7 @@ export class CatalogResource {
 
   products = this._products.asReadonly();
 
-  hasProductsInStock = computed<boolean>(() => this._products().some(({ stock }) => stock > 0));
+  productsInStock = computed<Product[]>(() => this._products().filter(({ stock }) => stock > 0));
 
   decreaseStock(productId: string) {
     this._products.update((products) =>

@@ -44,7 +44,7 @@ export class App {
     },
   ]);
 
-  hasProductsInStock = computed<boolean>(() => this.products().some(({ stock }) => stock > 0));
+  productsInStock = computed<Product[]>(() => this.products().filter(({ stock }) => stock > 0));
 
   total = signal(0);
 

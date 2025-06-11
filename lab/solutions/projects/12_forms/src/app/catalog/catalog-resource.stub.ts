@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { CatalogResource } from './catalog-resource';
 import { Product } from './product/product-types';
@@ -11,7 +11,7 @@ export class CatalogResourceStub implements Partial<CatalogResource> {
     { id: 'ID_3', title: 'TITLE_3', description: 'DESC_3', photo: 'PHOTO_3', price: 1, stock: 0 },
   ]);
 
-  hasProductsInStock = signal(true);
+  productsInStock = computed<Product[]>(() => this.products().filter(({ stock }) => stock > 0));
 
   fetchProducts(): Observable<Product[]> {
     return of(this.products());

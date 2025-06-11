@@ -13,7 +13,7 @@ export class CatalogResource {
 
   products = this._products.asReadonly();
 
-  hasProductsInStock = computed<boolean>(() => (this._products() ?? []).some(({ stock }) => stock > 0));
+  productsInStock = computed<Product[] | undefined>(() => this._products()?.filter(({ stock }) => stock > 0));
 
   fetchProducts(): Observable<Product[]> {
     return this.httpClient

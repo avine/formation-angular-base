@@ -43,7 +43,7 @@ export interface Product {
 - Use the properties of the `product` object in the template to display the `title`, `description`, ...
 
 ```html
-... <a class="card-link">{{ product.title }}</a> ...
+... <a class="card-link">{{ product().title }}</a> ...
 ```
 
 - The output should emit the product when the user clicks on the button "Ajoutez au panier"
@@ -63,8 +63,12 @@ Let's give the `App` component class, data ownership.
 - In `src/app/app.html`, use the component `<app-product-card />` instead of each hard-coded product (later in the course, we'll use a "for" loop to achieve this)
 
 ```html
-<app-product-card [product]="products[0]" />
+<app-product-card [product]="products[0]" class="col" />
 ...
 ```
 
-- Define a `total = 0;` property that should be updated each time the user clicks on the button "Ajoutez au panier"
+_😉 Note that the tag added by the component selector `<app-product-card class="col" />` replace the tag `<div class="col">` in the original HTML markup._
+
+- In `src/app/app.ts`, define a `total = 0;` property that should be updated each time the user clicks on the button "Ajoutez au panier"
+  - To achieve this add a method `addToBasket` in the `App` component class and use it in its template
+  - Display the `total` in the component template

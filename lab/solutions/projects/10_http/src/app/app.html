@@ -15,12 +15,10 @@
     <app-select-product-key class="text-end" [(productKey)]="productKey" />
   </div>
 
-  @if (hasProductsInStock()) {
+  @if (productsInStock().length) {
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-      @for (product of products() | sortProducts: productKey(); track product.id) {
-        @if (product.stock) {
-          <app-product-card class="col" [product]="product" (addToBasket)="addToBasket($event)" />
-        }
+      @for (product of productsInStock() | sortProducts: productKey(); track product.id) {
+        <app-product-card class="col" [product]="product" (addToBasket)="addToBasket($event)" />
       }
     </div>
   } @else {

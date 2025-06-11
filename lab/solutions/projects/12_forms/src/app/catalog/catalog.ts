@@ -24,7 +24,7 @@ export class Catalog {
 
   products = this.catalogResource.products;
 
-  hasProductsInStock = this.catalogResource.hasProductsInStock;
+  productsInStock = this.catalogResource.productsInStock;
 
   total = this.basketResource.total;
 

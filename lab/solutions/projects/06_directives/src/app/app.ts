@@ -44,8 +44,8 @@ export class App {
     },
   ];
 
-  get hasProductsInStock(): boolean {
-    return this.products.some(({ stock }) => stock > 0);
+  get productsInStock(): Product[] {
+    return this.products.filter(({ stock }) => stock > 0);
   }
 
   total = 0;
