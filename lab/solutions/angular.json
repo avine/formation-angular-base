@@ -777,25 +777,25 @@
         }
       }
     },
-    "10_http": {
+    "10_http_client": {
       "projectType": "application",
-      "root": "projects/10_http",
-      "sourceRoot": "projects/10_http/src",
+      "root": "projects/10_http_client",
+      "sourceRoot": "projects/10_http_client/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "browser": "projects/10_http/src/main.ts",
+            "browser": "projects/10_http_client/src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "projects/10_http/tsconfig.app.json",
+            "tsConfig": "projects/10_http_client/tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/10_http/public"
+                "input": "projects/10_http_client/public"
               }
             ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/10_http/src/styles.css"]
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/10_http_client/src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -825,10 +825,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "10_http:build:production"
+              "buildTarget": "10_http_client:build:production"
             },
             "development": {
-              "buildTarget": "10_http:build:development"
+              "buildTarget": "10_http_client:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -836,28 +836,28 @@
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n",
           "options": {
-            "buildTarget": "10_http:build"
+            "buildTarget": "10_http_client:build"
           }
         },
         "test": {
           "builder": "@angular/build:karma",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/10_http/tsconfig.spec.json",
+            "tsConfig": "projects/10_http_client/tsconfig.spec.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/10_http/public"
+                "input": "projects/10_http_client/public"
               }
             ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/10_http/src/styles.css"]
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/10_http_client/src/styles.css"]
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/10_http/**/*.ts", "projects/10_http/**/*.html"],
-            "eslintConfig": "projects/10_http/eslint.config.js"
+            "lintFilePatterns": ["projects/10_http_client/**/*.ts", "projects/10_http_client/**/*.html"],
+            "eslintConfig": "projects/10_http_client/eslint.config.js"
           }
         }
       }

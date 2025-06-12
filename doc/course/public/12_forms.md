@@ -23,7 +23,7 @@
 - [Signals](#/8)
 - [Dependency injection](#/9)
 - [Pipes](#/10)
-- [Http](#/11)
+- [Http client](#/11)
 - [Routing](#/12)
 - **Forms**
 - [Appendix](#/14)

@@ -1,4 +1,4 @@
-# Http
+# Http client
 
 <!-- .slide: class="page-title" -->
 
@@ -23,7 +23,7 @@
 - [Signals](#/8)
 - [Dependency injection](#/9)
 - [Pipes](#/10)
-- **Http**
+- **Http client**
 - [Routing](#/12)
 - [Forms](#/13)
 - [Appendix](#/14)
@@ -35,7 +35,7 @@ Notes :
 
 
 
-## Http - Getting started 1/5
+## Http client - Getting started 1/5
 
 - Let's use the `jsonplaceholder` API to display todo items
 
@@ -68,7 +68,7 @@ Notes :
 
 
 
-## Http - Getting started 2/5
+## Http client - Getting started 2/5
 
 - To enable Http capabilities to an app, add `provideHttpClient()` to the app configuration
 
@@ -89,7 +89,7 @@ Notes :
 
 
 
-## Http - Getting started 3/5
+## Http client - Getting started 3/5
 
 - Then use the `HttpClient` service in the component that needs to display the data
 
@@ -119,7 +119,7 @@ Notes :
 
 
 
-## Http - Getting started 4/5
+## Http client - Getting started 4/5
 
 - While `HttpClient` can be injected and used directly from **components**
 
@@ -148,7 +148,7 @@ Notes :
 
 
 
-## Http - Getting started 5/5
+## Http client - Getting started 5/5
 
 - Therefore, in most cases, **do NOT subscribe in services** but in components only,
   allowing the consumer to react to every status of the request (**loading**, **error** and **fetched**) in the UI
@@ -178,7 +178,7 @@ Notes :
 
 
 
-## Http - State management 1/2
+## Http client - State management 1/2
 
 - To share data between components, we need to store fetched data in a service facade
 
@@ -208,7 +208,7 @@ Notes :
 
 
 
-## Http - State management 2/2
+## Http client - State management 2/2
 
 - ✅ We can still access fetched data before subscribing, using the `.pipe(tap(...))` pattern
 
@@ -239,7 +239,7 @@ Notes :
 
 
 
-## Http - Methods
+## Http client - Methods
 
 - There are many `HttpClient` methods and they are highly configurable
 
@@ -269,7 +269,7 @@ Notes :
 
 
 
-## Http - Observables
+## Http client - Observables
 
 *The `HttpClient` service is built on top of **RxJS Observables**, but its study goes beyond the scope of this course*
 
@@ -285,7 +285,7 @@ Notes :
 
 
 
-## Http - Error handling
+## Http client - Error handling
 
 - When subscribing
   - use a **callback function** to handle Http **response** only
@@ -312,7 +312,7 @@ Notes :
 
 
 
-## Http - HttpClient | Pipe 1/3
+## Http client - HttpClient | Pipe 1/3
 
 - Remember that a request consists of at least two parts
   - defining its shape, using: `.get()`, `.post()`, ...
@@ -334,7 +334,7 @@ Notes :
 
 
 
-## Http - HttpClient | Pipe 2/3
+## Http client - HttpClient | Pipe 2/3
 
 - Use the `map(...)` operator to adapt the API response to your needs
 
@@ -360,7 +360,7 @@ Notes :
 
 
 
-## Http - HttpClient | Pipe 3/3
+## Http client - HttpClient | Pipe 3/3
 
 - Use the `tap(...)` operator to tap into the stream, handling side-effect without affecting the stream
 
@@ -388,7 +388,7 @@ Notes :
 
 
 
-## Http - State management 1/3
+## Http client - State management 1/3
 
 - Let's revisit the solution shown above that uses the `.pipe(tap(...))` pattern 
 
@@ -418,7 +418,7 @@ Notes :
 
 
 
-## Http - State management 2/3
+## Http client - State management 2/3
 
 - We subscribe in the component, which consumes centralised data and handles potential errors
 
@@ -449,7 +449,7 @@ Notes :
 
 
 
-## Http - State management 3/3
+## Http client - State management 3/3
 
 - As already mentionned, we subscribe in the component (data source consumer) and not in the service (data source provider)
 
@@ -477,7 +477,7 @@ Notes :
 
 
 
-## Http - Testing 1/2
+## Http client - Testing 1/2
 
 - Angular provides `provideHttpClientTesting` and `HttpTestingController` for mocking Http requests
 
@@ -505,7 +505,7 @@ Notes :
 
 
 
-## Http - Testing 2/2
+## Http client - Testing 2/2
 
 - The Controller can be injected into tests and used for mocking and flushing requests
 
@@ -534,10 +534,10 @@ Notes :
 
 
 
-## Http - Questions
+## Http client - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
 
 
-## Http - Lab 10
+## Http client - Lab 10
 <!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->

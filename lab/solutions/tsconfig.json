@@ -51,8 +51,8 @@
     { "path": "./projects/09_pipes/tsconfig.app.json" },
     { "path": "./projects/09_pipes/tsconfig.spec.json" },
 
-    { "path": "./projects/10_http/tsconfig.app.json" },
-    { "path": "./projects/10_http/tsconfig.spec.json" },
+    { "path": "./projects/10_http_client/tsconfig.app.json" },
+    { "path": "./projects/10_http_client/tsconfig.spec.json" },
 
     { "path": "./projects/10_http_resource/tsconfig.app.json" },
     { "path": "./projects/10_http_resource/tsconfig.spec.json" },

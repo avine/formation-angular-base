@@ -1,4 +1,4 @@
-## Lab 10: Http 1/3
+## Lab 10: Http client 1/3
 
 In this lab, you'll communicate with a REST API server that will manage the products and the basket.
 
@@ -32,7 +32,7 @@ Here are the available endpoints:
 
 
 
-## Lab 10: Http 2/3
+## Lab 10: Http client 2/3
 ### `CatalogResource`
 
 - Inject the `HttpClient` service
@@ -65,7 +65,7 @@ export class CatalogResource {
 
 
 
-## Lab 10: Http 3/3
+## Lab 10: Http client 3/3
 ### `BasketResource`
 
 - Inject the `HttpClient` service
@@ -87,4 +87,4 @@ This is because the structure of the application has changed radically.
 Refactoring the tests would take too much time in the context of this course.
 
 With the trainer, take a look at the new test implementation in the following directory:
-  - `lab/solutions/projects/10_http`
+  - `lab/solutions/projects/10_http_client`

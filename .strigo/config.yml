@@ -21,7 +21,7 @@ classes:
       - title: Pipes
         file: ../doc/workbook/public/09_pipes.md
       - title: Http
-        file: ../doc/workbook/public/10_http.md
+        file: ../doc/workbook/public/10_http_client.md
       - title: Router
         file: ../doc/workbook/public/11_routing.md
       - title: Forms
