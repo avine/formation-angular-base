@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BasketResource } from '../basket/basket-resource';
-import { BasketResourceStub } from '../basket/basket-resource.stub';
+import { BasketResourceMock } from '../basket/basket-resource.mock';
 import { BasketItem } from '../basket/basket-types';
 import { Menu } from './menu';
 
@@ -11,7 +11,7 @@ describe('Menu', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Menu],
-      providers: [{ provide: BasketResource, useClass: BasketResourceStub }],
+      providers: [{ provide: BasketResource, useClass: BasketResourceMock }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Menu);
@@ -30,7 +30,7 @@ describe('Menu', () => {
     expect(numberOfItems).toContain(0);
 
     // When
-    (TestBed.inject(BasketResource) as unknown as BasketResourceStub).items.set([{} as BasketItem, {} as BasketItem]);
+    (TestBed.inject(BasketResource) as unknown as BasketResourceMock).items.set([{} as BasketItem, {} as BasketItem]);
     fixture.detectChanges();
 
     // Then

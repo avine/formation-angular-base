@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { Basket } from './basket';
 import { BasketResource } from './basket-resource';
-import { BasketResourceStub } from './basket-resource.stub';
+import { BasketResourceMock } from './basket-resource.mock';
 
 describe('Basket', () => {
   let component: Basket;
@@ -11,7 +11,7 @@ describe('Basket', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Basket],
-      providers: [provideRouter([]), { provide: BasketResource, useClass: BasketResourceStub }],
+      providers: [provideRouter([]), { provide: BasketResource, useClass: BasketResourceMock }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Basket);

@@ -5,9 +5,9 @@ import { of } from 'rxjs';
 import { App } from './app';
 import { APP_TITLE } from './app.token';
 import { BasketResource } from './basket/basket-resource';
-import { BasketResourceStub } from './basket/basket-resource.stub';
+import { BasketResourceMock } from './basket/basket-resource.mock';
 import { CatalogResource } from './catalog/catalog-resource';
-import { CatalogResourceStub } from './catalog/catalog-resource.stub';
+import { CatalogResourceMock } from './catalog/catalog-resource.mock';
 import { ProductCard } from './product/product-card';
 
 describe('App', () => {
@@ -18,8 +18,8 @@ describe('App', () => {
     await TestBed.configureTestingModule({
       imports: [App],
       providers: [
-        { provide: CatalogResource, useClass: CatalogResourceStub },
-        { provide: BasketResource, useClass: BasketResourceStub },
+        { provide: CatalogResource, useClass: CatalogResourceMock },
+        { provide: BasketResource, useClass: BasketResourceMock },
         { provide: APP_TITLE, useValue: 'The App Title' },
       ],
     })
@@ -49,7 +49,7 @@ describe('App', () => {
   });
 
   it('should display the basket total with currency', () => {
-    (TestBed.inject(BasketResource) as unknown as BasketResourceStub).total.set(99);
+    (TestBed.inject(BasketResource) as unknown as BasketResourceMock).total.set(99);
     fixture.detectChanges();
 
     const header = (fixture.nativeElement as HTMLElement).querySelector('header');
@@ -59,7 +59,7 @@ describe('App', () => {
   it('should display the products', () => {
     const productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
     productCardDebugElements.forEach((productCardDebugElement, index) => {
-      expect(productCardDebugElement.properties['product']).toBe(component.products()[index]);
+      expect(productCardDebugElement.properties['product']).toBe(component.productsInStock()[index]);
     });
   });
 
@@ -70,7 +70,7 @@ describe('App', () => {
     const productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
 
     const expectedComponentProducts = component
-      .products()
+      .productsInStock()
       .filter(({ stock }) => stock > 0)
       .sort((p1, p2) => (p1.price > p2.price ? 1 : p1.price < p2.price ? -1 : 0));
 
@@ -86,7 +86,7 @@ describe('App', () => {
     const productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
 
     const expectedComponentProducts = component
-      .products()
+      .productsInStock()
       .filter(({ stock }) => stock > 0)
       .sort((p1, p2) => (p1.stock > p2.stock ? 1 : p1.stock < p2.stock ? -1 : 0));
 
@@ -102,33 +102,34 @@ describe('App', () => {
     const decreaseStockSpy = spyOn(TestBed.inject(CatalogResource), 'decreaseStock');
 
     const productCardDebugElement = fixture.debugElement.query(By.css('app-product-card'));
-    productCardDebugElement.triggerEventHandler('addToBasket', component.products()[0]);
+    productCardDebugElement.triggerEventHandler('addToBasket', component.productsInStock()[0]);
 
     // Then
-    const { id } = component.products()[0];
+    const { id } = component.productsInStock()[0];
     expect(addItemSpy).toHaveBeenCalledWith(id);
     expect(decreaseStockSpy).toHaveBeenCalledWith(id);
   });
 
   it('should not display products with empty stock', () => {
     // Given
-    expect(component.products()).toHaveSize(3);
+    const catalogResource = TestBed.inject(CatalogResource) as unknown as CatalogResourceMock;
+    expect(catalogResource.products()).toHaveSize(3);
 
     // When/Then
     let productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
     expect(productCardDebugElements).toHaveSize(2); // Note: the third product stock equals 0
 
     // When
-    (TestBed.inject(CatalogResource) as unknown as CatalogResourceStub).products.update((products) => {
+    catalogResource.products.update((products) => {
       const [first, ...rest] = products;
-      return [{ ...first, stock: 0 }, ...rest];
+      return [{ ...first, stock: 0 }, ...rest]; // Note: now, the first product stock equals 0 too
     });
     fixture.detectChanges();
 
     // Then
     productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
     expect(productCardDebugElements).toHaveSize(1);
-    expect(productCardDebugElements[0].properties['product']).toBe(component.products()[1]);
+    expect(productCardDebugElements[0].properties['product']).toBe(catalogResource.products()[1]);
   });
 
   it('should display the message "Désolé, notre stock est vide !" when the stock is completely empty', () => {
@@ -137,7 +138,7 @@ describe('App', () => {
     expect(element).toBeNull();
 
     // When
-    (TestBed.inject(CatalogResource) as unknown as CatalogResourceStub).products.set([
+    (TestBed.inject(CatalogResource) as unknown as CatalogResourceMock).products.set([
       {
         id: 'ID_3',
         title: 'TITLE_3',

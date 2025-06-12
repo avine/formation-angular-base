@@ -2,7 +2,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BasketResource } from '../basket-resource';
-import { BasketResourceStub } from '../basket-resource.stub';
+import { BasketResourceMock } from '../basket-resource.mock';
 import { CheckoutForm } from './checkout-form';
 
 describe('CheckoutForm', () => {
@@ -15,7 +15,7 @@ describe('CheckoutForm', () => {
       providers: [
         provideHttpClient(withFetch()),
         provideHttpClientTesting(),
-        { provide: BasketResource, useClass: BasketResourceStub },
+        { provide: BasketResource, useClass: BasketResourceMock },
       ],
     }).compileComponents();
 

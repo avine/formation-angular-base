@@ -104,15 +104,15 @@ export class BasketResource {}
 ```
 
 But remember that the goal of unit testing is to test each unit in isolation.
-So, we need to use _Stubs_ instead of real implementations.
+So, we need to use _Mocks_ instead of real implementations.
 
-- Create a minimalist class called `BasketResourceStub` that will replace the `BasketResource`
+- Create a minimalist class called `BasketResourceMock` that will replace the `BasketResource`
 
 ```ts
 // Note: do not use `{ providedIn: "root" }` metadata
-// because the stub will be provided manually in our tests.
+// because the mock will be provided manually in our tests.
 @Injectable()
-export class BasketResourceStub implements Partial<BasketResource> {
+export class BasketResourceMock implements Partial<BasketResource> {
   items = signal<BasketItem[]>([]);
   total = signal(0);
   addItem(item: BasketItem): void {
@@ -121,7 +121,7 @@ export class BasketResourceStub implements Partial<BasketResource> {
 }
 ```
 
-- Provide the stub in `menu.spec.ts`
+- Provide the mock in `menu.spec.ts`
 
 Add test:
 
@@ -142,9 +142,9 @@ Some tests currently performed in this component do not need to be fixed, but si
 
 - Remove the `x` from `xdescribe()` that you added previously to re-enable the tests
 
-- Create a minimalist class `CatalogResourceStub` that will replace the `CatalogResource` (such as you did above for the `BasketResource`)
+- Create a minimalist class `CatalogResourceMock` that will replace the `CatalogResource` (such as you did above for the `BasketResource`)
 
-- Provide the 2 stubs in `app.spec.ts`
+- Provide the 2 mocks in `app.spec.ts`
 
 - Provide a value for `APP_TITLE` injection token
 

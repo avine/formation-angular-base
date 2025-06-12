@@ -289,7 +289,7 @@ Thanks to the initializer, the user can no longer be "unknown", once the app is 
 - Powerful mechanism that isolates the element you really want to test
 - Use `TestBed.inject` to access the service instance in your test
 
-In the following example, we test a component in isolation, replacing the service with a stub:
+In the following example, we test a component in isolation, replacing the service with a Mock:
 
 ```ts
 import { TestBed } from '@angular/core/testing';
@@ -300,10 +300,10 @@ describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [{ provide: ApiService, useClass: ApiServiceStub }],
+      providers: [{ provide: ApiService, useClass: ApiServiceMock }],
     }).compileComponents();
 
-    apiService = TestBed.inject(ApiService); // <-- Get the `ApiServiceStub`
+    apiService = TestBed.inject(ApiService); // <-- Get the `ApiServiceMock`
   });
 });
 ```

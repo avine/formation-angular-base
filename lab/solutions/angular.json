@@ -616,7 +616,10 @@
                 "input": "projects/08_dependency_injection/public"
               }
             ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/08_dependency_injection/src/styles.css"]
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "projects/08_dependency_injection/src/styles.css"
+            ]
           },
           "configurations": {
             "production": {
@@ -671,13 +674,19 @@
                 "input": "projects/08_dependency_injection/public"
               }
             ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/08_dependency_injection/src/styles.css"]
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "projects/08_dependency_injection/src/styles.css"
+            ]
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/08_dependency_injection/**/*.ts", "projects/08_dependency_injection/**/*.html"],
+            "lintFilePatterns": [
+              "projects/08_dependency_injection/**/*.ts",
+              "projects/08_dependency_injection/**/*.html"
+            ],
             "eslintConfig": "projects/08_dependency_injection/eslint.config.js"
           }
         }
@@ -849,6 +858,91 @@
           "options": {
             "lintFilePatterns": ["projects/10_http/**/*.ts", "projects/10_http/**/*.html"],
             "eslintConfig": "projects/10_http/eslint.config.js"
+          }
+        }
+      }
+    },
+    "10_http_resource": {
+      "projectType": "application",
+      "root": "projects/10_http_resource",
+      "sourceRoot": "projects/10_http_resource/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/10_http_resource/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "projects/10_http_resource/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/10_http_resource/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/10_http_resource/src/styles.css"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "10_http_resource:build:production"
+            },
+            "development": {
+              "buildTarget": "10_http_resource:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n",
+          "options": {
+            "buildTarget": "10_http_resource:build"
+          }
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/10_http_resource/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/10_http_resource/public"
+              }
+            ],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/10_http_resource/src/styles.css"]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/10_http_resource/**/*.ts", "projects/10_http_resource/**/*.html"],
+            "eslintConfig": "projects/10_http_resource/eslint.config.js"
           }
         }
       }

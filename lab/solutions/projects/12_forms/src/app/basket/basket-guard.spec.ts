@@ -3,7 +3,7 @@ import { CanMatchFn, Route } from '@angular/router';
 import { Observable, firstValueFrom, of } from 'rxjs';
 import { basketGuard } from './basket-guard';
 import { BasketResource } from './basket-resource';
-import { BasketResourceStub } from './basket-resource.stub';
+import { BasketResourceMock } from './basket-resource.mock';
 import { BasketItem } from './basket-types';
 
 describe('basketGuard', () => {
@@ -16,7 +16,7 @@ describe('basketGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [{ provide: BasketResource, useClass: BasketResourceStub }],
+      providers: [{ provide: BasketResource, useClass: BasketResourceMock }],
     });
 
     basketResource = TestBed.inject(BasketResource);

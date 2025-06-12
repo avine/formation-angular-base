@@ -19,8 +19,6 @@ export class App {
 
   appTitle = inject(APP_TITLE);
 
-  products = this.catalogResource.products;
-
   productsInStock = this.catalogResource.productsInStock;
 
   total = this.basketResource.total;

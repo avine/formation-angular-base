@@ -4,7 +4,7 @@ import { BasketResource } from './basket-resource';
 import { BasketItem } from './basket-types';
 
 @Injectable()
-export class BasketResourceStub implements Partial<BasketResource> {
+export class BasketResourceMock implements Partial<BasketResource> {
   items = signal<BasketItem[]>([]);
 
   total = signal(0);

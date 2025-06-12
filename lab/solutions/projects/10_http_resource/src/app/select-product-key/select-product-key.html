@@ -1,0 +1,16 @@
+<span class="me-2">Trier par:</span>
+
+<div class="btn-group btn-group-sm" role="group">
+  @for (input of inputs; track input) {
+    <input
+      type="radio"
+      class="btn-check"
+      autocomplete="off"
+      [name]="name"
+      [id]="name + '-' + input.key"
+      [checked]="productKey() === input.key"
+      (click)="onClick(input.key)"
+    />
+    <label class="btn btn-outline-primary" [for]="name + '-' + input.key">{{ input.label }}</label>
+  }
+</div>
