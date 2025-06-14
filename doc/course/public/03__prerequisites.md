@@ -86,6 +86,58 @@ Notes :
 
 
 
+## Typescript - Destructuring syntax
+
+Makes it possible to unpack values from **arrays**, or properties from **objects**, into distinct variables
+
+- Destructuring array
+
+```ts
+const [a, b, ...rest] = [10, 20, 30, 40];
+
+// a == 10
+// b == 20
+// rest == [30, 40]
+```
+
+- Destructuring object
+
+```ts
+const { a, b, ...rest } = { a: 10, b: 20, c: 30, d: 40 };
+
+// a == 10
+// b == 20
+// rest == { c: 30, d: 40 }
+```
+
+Notes :
+
+
+
+## Typescript - Array instance methods
+
+Arrays can be manipulated using methods such as the following
+
+- Some methods are **non-destructive**...
+
+```ts
+[0, 1, 2, 3].map((value) => value * 10);                // --> [0, 10, 20, 30]
+
+[0, 1, 2, 3].filter((value) => value % 2);              // --> [1, 3]
+
+[0, 1, 2, 3].reduce((sum, value) => sum + value, 0);    // --> 6
+```
+
+- ...while others are **destructive**
+
+```ts
+[2, 0, 3, 1].sort();                                    // --> [0, 1, 2, 3]
+```
+
+Notes :
+
+
+
 ## Typescript - Functions 1/2
 
 - 3 types of functions: ***named***, ***anonymous*** and ***arrow***
