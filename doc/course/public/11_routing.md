@@ -119,8 +119,12 @@ Notes :
 - Navigate between views using the `routerLink` directive
 
 ```ts
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
 @Component ({
   selector: 'app-nav',
+  imports: [RouterLink],
   template: `
     <a routerLink="/"> Home </a>
 
@@ -142,11 +146,15 @@ Notes :
 
 ## Routing - RouterLink 2/3
 
-- Use `routerLinkActive` input to specify one or more CSS classes to be added when the linked route is active
+- Use `routerLinkActive` directive to specify one or more CSS classes to be added when the linked route is active
 
 ```ts
+import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+
 @Component ({
   selector: 'app-nav',
+  imports: [RouterLink, RouterLinkActive],
   template: `
     <a routerLink="/" routerLinkActive="link-active"> Home </a>
 
@@ -168,8 +176,12 @@ Notes :
 - Use `routerLinkActiveOptions` input to add the classes only when the URL matches the link exactly
 
 ```ts
+import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+
 @Component ({
   selector: 'app-nav',
+  imports: [RouterLink, RouterLinkActive],
   template: `
     <a
       routerLink="/"
