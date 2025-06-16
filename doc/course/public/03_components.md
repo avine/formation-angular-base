@@ -274,9 +274,11 @@ Notes :
 
 
 
-## Component - Input 1/3
+## Component - Input 1/4
 
 - Use the `input()` function to declare a component class property as input
+
+- Acts as a wrapper around the value
 
 - To read the value contained in the input, you need to call it as a function
 
@@ -302,10 +304,35 @@ Notes :
 
 
 
-## Component - Input 2/3
+## Component - Input 2/4
+
+- The consumer of this component can optionally bind to the input in its template
+
+```ts
+import { Component } from '@angular/core';
+import { Counter } from './counter/counter.ts';
+
+@Component ({
+  selector: 'app-root',
+  imports [Counter],
+  template: `
+    <app-counter />                                 <!-- rendering:  <p></p>  -->
+
+    <app-counter [count]="parentCount" />           <!-- rendering:  <p>5</p> -->
+  `
+})
+export class App {
+  protected parentCount = 5;
+}
+```
+
+Notes :
+
+
+
+## Component - Input 3/4
 
 - Use the `input.required()` function to declare a component class property as required input
-
 
 ```ts
 import { Component, input } from '@angular/core';
@@ -319,21 +346,15 @@ export class Counter {
 }
 ```
 
-- When using the component, Angular will throw an error if the required input is missing
-
-```html
-<app-counter />
-
-<!-- ❌ Required input 'count' from component Counter must be specified. -->
-```
-
 Notes :
 
 
 
-## Component - Input 3/3
+## Component - Input 4/4
 
 - The consumer of this component must bind to the required input in its template
+
+- Angular will throw an error if the required input is missing
 
 ```ts
 import { Component } from '@angular/core';
@@ -342,7 +363,11 @@ import { Counter } from './counter/counter.ts';
 @Component ({
   selector: 'app-root',
   imports [Counter],
-  template: `<app-counter [count]="parentCount" />`
+  template: `
+    <app-counter />     <!-- ❌ Required input 'count' from component Counter must be specified. -->
+
+    <app-counter [count]="parentCount" />
+  `
 })
 export class App {
   protected parentCount = 5;
@@ -396,7 +421,7 @@ import { Counter } from './counter/counter.ts';
      <p>Count: {{ parentCount }}</p>`
 })
 export class App {
-  protected parentCount: number | undefined = undefined;
+  protected parentCount?: number;
 
   protected updateCount(count: number) {
     this.parentCount = count;
@@ -423,7 +448,7 @@ import { Component, model } from '@angular/core';
 
 @Component ({
   selector: 'app-counter',
-  template: `<button (click)="onClick()">{{ count }}</button>`
+  template: `<button (click)="onClick()">{{ count() }}</button>`
 })
 export class Counter {
   count = model<number>(0);
