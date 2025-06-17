@@ -69,6 +69,6 @@ Let's give the `App` component class, data ownership.
 
 _😉 Note that the tag added by the component selector `<app-product-card class="col" />` replace the tag `<div class="col">` in the original HTML markup._
 
-- In `src/app/app.ts`, define a `total = 0;` property that should be updated each time the user clicks on the button "Ajoutez au panier"
+- In `src/app/app.ts`, define a `total = 0;` property for the total basket price, that should be updated each time the user clicks on the button "Ajoutez au panier"
   - To achieve this add a method `addToBasket` in the `App` component class and use it in its template
   - Display the `total` in the component template

@@ -2,6 +2,10 @@
 
 In this Lab, you'll convert the `App` component properties into signals.
 
+### `HighlightPrice` directive
+
+- Use a `computed<string>` signal for the `highlightClass` property
+
 ### `App` component
 
 - Use a `signal<Product[]>` signal for the `products` property
@@ -20,6 +24,6 @@ In this Lab, you'll convert the `App` component properties into signals.
 
 - Fix the tests to properly consume the different signals
 
-### `ApplicationConfig`
+### Bonus: `ApplicationConfig`
 
-- Switch to "Zoneless" change detection
+- Switch the app to "Zoneless" change detection

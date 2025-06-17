@@ -75,7 +75,7 @@ import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 
 @Injectable()
 export class ApiService {
-  // Service dependency requires `@Injectable` decorator
+  // `HttpClient` is a dependency of `ApiService` and requires `@Injectable` decorator
   constructor(private httpClient: HttpClient) {}
 
   fetchMsg() {
@@ -90,9 +90,6 @@ export const appConfig: ApplicationConfig = {
 
 Notes :
 
-- The documentation states that it is (very) good practice to annotate all services with @Injectable, even those with no dependency (see here: https://angular.io/guide/dependency-injection).
-- Ability to have optional dependencies (using the @Optional () annotation on the parameter).
-
 
 
 ## Dependency injection - Injectable | providedIn
@@ -102,10 +99,10 @@ Notes :
 
 ```ts
 import { Injectable, ApplicationConfig } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'  // <-- Service is automatically provided at `ApplicationConfig` level
+  providedIn: 'root'  // <-- `ApiService` is automatically provided at `ApplicationConfig` level
 })
 export class ApiService {
   private httpClient = inject(HttpClient);
@@ -116,7 +113,7 @@ export class ApiService {
 }
 
 export const appConfig: ApplicationConfig = {
-  providers: [],      // <-- It is no longer necessary to provide it manually!
+  providers: [provideHttpClient(withFetch())],  // <-- No need to provide `ApiService` manually anymore!
 };
 ```
 
@@ -250,7 +247,9 @@ export class App {
 }
 ```
 
-*Note that there's also a `FactoryProvider`, but its study goes beyond the scope of this course*
+In the next chapter on `Pipe`s, you'll see how Angular uses `InjectionToken`s
+
+*😉 Note that there's also a `FactoryProvider`, but its study goes beyond the scope of this course*
 
 Notes :
 

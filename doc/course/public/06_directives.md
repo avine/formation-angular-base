@@ -224,7 +224,7 @@ Notes :
 
 
 
-## Attribute directive - Host element
+## Attribute directive - Host metadata
 
 - When possible, instead of the `Renderer2`, use the `host` metadata to configure *host binding* and *host listener*
 
@@ -291,14 +291,13 @@ Notes :
 
 ```ts
 import { Component } from '@angular/core';
+import { Highlight } from './highlight.ts';
 
 @Component({
   selector: 'app-root',
+  imports: [Highlight],
   template: `
-    <p
-      [appHighlight]="highlightColor"
-      (highlighted)="highlightedHandler($event)"
-    >
+    <p [appHighlight]="highlightColor" (highlighted)="highlightedHandler($event)">
       Highlight me!
     </p>
   `,

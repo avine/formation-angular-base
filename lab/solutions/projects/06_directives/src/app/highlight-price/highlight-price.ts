@@ -1,16 +1,16 @@
-import { computed, Directive, input, numberAttribute } from '@angular/core';
+import { Directive, input, numberAttribute } from '@angular/core';
 
 @Directive({
   selector: '[appHighlightPrice]',
   host: {
-    '[class]': 'highlightClass()',
+    '[class]': 'highlightClass',
     '[style.transition]': '"color 200ms ease"',
   },
 })
 export class HighlightPrice {
   price = input(NaN, { alias: 'appHighlightPrice', transform: numberAttribute });
 
-  highlightClass = computed(() => {
+  get highlightClass() {
     const price = this.price();
 
     if (!price) {
@@ -22,5 +22,5 @@ export class HighlightPrice {
     }
 
     return 'text-body-emphasis';
-  });
+  }
 }
