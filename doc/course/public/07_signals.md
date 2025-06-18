@@ -226,7 +226,7 @@ Notes :
 
 ## Signals - Component input and model
 
-Note that the `input` and `model` functions, mentioned in the chapter on components, are in fact signals.
+Note that the `input` and `model` functions, mentioned in the chapter on components, **are in fact signals**.
 This design makes communication between components highly reactive.
 
 ```ts

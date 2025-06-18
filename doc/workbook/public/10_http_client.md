@@ -72,7 +72,7 @@ export class CatalogResource {
 
 - Add a `fetchBasket(): Observable<BasketItem[]>` method (such as we did with `fetchProducts()` for the `CatalogResource`)
 
-- Add a `addItem(productId: string): Observable<BasketItem>` method posts the item to be added and update the `_basket` property accordingly
+- Add a `addItem(productId: string): Observable<BasketItem>` method that posts (to the server) the item to be added and then update the `_items` property accordingly (in the service)
 
 #### Updating the `App` component
 

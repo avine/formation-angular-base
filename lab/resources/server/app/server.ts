@@ -118,8 +118,25 @@ server.listen(port);
 
 const serverUrl = `http://localhost:${port}`;
 
-console.log('REST API Server for "Zenika Ecommerce" App');
-console.log('------------------------------------------');
-console.log(`\n- Express server is listening on:\n\t${serverUrl}/`);
-console.log(`\n- Get products on:\n\t${serverUrl}${context}/products`);
-console.log(`\n- Reset products on:\n\t${serverUrl}/reset`);
+console.log(`
+REST API Server for "Zenika Ecommerce" App
+------------------------------------------
+
+- Express server is listening on:
+\thttp://localhost:8080/
+
+- Get all products:
+\t[GET] http://localhost:8080/api/products
+
+- Get one product:
+\t[GET] http://localhost:8080/api/products/:id
+
+- Get basket:
+\t[GET] http://localhost:8080/api/basket
+
+- Add item to basket:
+\t[POST] http://localhost:8080/api/basket
+
+- Reset server:
+\t[GET] http://localhost:8080/reset
+`);

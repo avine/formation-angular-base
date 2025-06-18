@@ -67,7 +67,7 @@ Notes :
 ## Dependency injection - Injectable
 
 - If a service has dependencies, use the `@Injectable` decorator to enable dependency injection for the service itself
-- This is only required if you are using "Constructor-based dependency injection"
+- This is only required if you are using "**Constructor-based dependency injection**"
 
 ```ts
 import { Injectable, ApplicationConfig } from '@angular/core';
@@ -95,7 +95,7 @@ Notes :
 ## Dependency injection - Injectable | providedIn
 
 - Use `providedIn` metadata to **provide a service globally** right from its definition
-- This is usefull even for "Function-based dependency injection"
+- This is usefull even for "**Function-based dependency injection**"
 
 ```ts
 import { Injectable, ApplicationConfig } from '@angular/core';
