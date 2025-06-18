@@ -118,7 +118,15 @@ Notes :
 
 Arrays can be manipulated using methods such as the following
 
-- Some methods are **non-destructive**...
+- Some methods are **destructive**...
+
+```ts
+[2, 0, 3, 1].sort();                                    // --> [0, 1, 2, 3]
+
+[2, 0, 3, 1].sort((a, b) => b - a);                     // --> [3, 2, 1, 0]
+```
+
+- ...while others are **non-destructive**
 
 ```ts
 [0, 1, 2, 3].map((value) => value * 10);                // --> [0, 10, 20, 30]
@@ -128,10 +136,34 @@ Arrays can be manipulated using methods such as the following
 [0, 1, 2, 3].reduce((sum, value) => sum + value, 0);    // --> 6
 ```
 
-- ...while others are **destructive**
+Notes :
+
+
+
+## Typescript - Adding item to an Array
+
+There are 2 ways of adding an element to an array
+
+- In a **mutable** way...
 
 ```ts
-[2, 0, 3, 1].sort();                                    // --> [0, 1, 2, 3]
+const items = [0, 1, 2, 3];
+const newItem = 4;
+
+items.push(newItem);
+
+console.log(items);                                     // --> [0, 1, 2, 3, 4]
+```
+
+- ...in an **immutable** way
+
+```ts
+const items = [0, 1, 2, 3];
+const newItem = 4;
+
+const newItems = [...items, newItem];
+
+console.log(newItems);                                  // --> [0, 1, 2, 3, 4]
 ```
 
 Notes :

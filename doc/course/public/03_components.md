@@ -227,7 +227,7 @@ Notes :
 
 
 
-## Template syntax - Event binding
+## Template syntax - Event listeners
 
 - Generic syntax for listening to an event of an HTML element
 - Using the syntax `(eventName)="expression"`
@@ -248,7 +248,7 @@ Notes :
 
 
 
-## Template syntax - Event binding | $event
+## Template syntax - Event listeners | $event
 
 - In this example, we listen to the `input` event of the `<input />` element
 
@@ -267,7 +267,7 @@ export class Demo {
 ```
 
 - `$event` refers to the native browser DOM `InputEvent`
-- We achieve a *two-way data binding* using both property and event bindings
+- We achieve a *two-way data binding* using both property binding and Event listeners
   - the **class** property `name` and the **template** input `value` will always be in sync
 
 Notes :

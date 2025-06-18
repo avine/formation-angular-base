@@ -287,7 +287,7 @@ Notes :
 
 ## Attribute directive - Input and Output 2/2
 
-- Use regular property binding and event binding on the host element
+- Use regular property binding and Event listeners on the host element
 
 ```ts
 import { Component } from '@angular/core';
