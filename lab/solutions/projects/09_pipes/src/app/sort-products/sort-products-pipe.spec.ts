@@ -8,9 +8,9 @@ describe('SortProductsPipe', () => {
   beforeEach(() => {
     pipe = new SortProductsPipe();
     products = [
-      { title: 'C', price: 1 } as Product,
-      { title: 'A', price: 3 } as Product,
-      { title: 'B', price: 2 } as Product,
+      { stock: 30, price: 1 } as Product,
+      { stock: 10, price: 3 } as Product,
+      { stock: 20, price: 2 } as Product,
     ];
   });
 
@@ -29,19 +29,19 @@ describe('SortProductsPipe', () => {
 
   it('should sort products by price', () => {
     const sortedProducts: Product[] = [
-      { title: 'C', price: 1 } as Product,
-      { title: 'B', price: 2 } as Product,
-      { title: 'A', price: 3 } as Product,
+      { stock: 30, price: 1 } as Product,
+      { stock: 20, price: 2 } as Product,
+      { stock: 10, price: 3 } as Product,
     ];
     expect(pipe.transform(products, 'price')).toEqual(sortedProducts);
   });
 
-  it('should sort products by title', () => {
+  it('should sort products by stock', () => {
     const sortedProducts: Product[] = [
-      { title: 'A', price: 3 } as Product,
-      { title: 'B', price: 2 } as Product,
-      { title: 'C', price: 1 } as Product,
+      { stock: 10, price: 3 } as Product,
+      { stock: 20, price: 2 } as Product,
+      { stock: 30, price: 1 } as Product,
     ];
-    expect(pipe.transform(products, 'title')).toEqual(sortedProducts);
+    expect(pipe.transform(products, 'stock')).toEqual(sortedProducts);
   });
 });

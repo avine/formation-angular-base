@@ -1,23 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Product } from '../product/product-types';
+import { ProductKey } from '../select-product-key/product-key-types';
 
 @Pipe({
   name: 'sortProducts',
   pure: false,
 })
 export class SortProductsPipe implements PipeTransform {
-  transform(products: Product[] | null | undefined, key?: keyof Product): Product[] {
+  transform(products: Product[] | null | undefined, key?: ProductKey): Product[] {
     if (!key) {
       return products ?? [];
     }
-    return [...(products ?? [])].sort((productA, productB) => {
-      if (productA[key] > productB[key]) {
-        return 1;
-      }
-      if (productA[key] < productB[key]) {
-        return -1;
-      }
-      return 0;
-    });
+    return [...(products ?? [])].sort((productA, productB) => productA[key] - productB[key]);
   }
 }
