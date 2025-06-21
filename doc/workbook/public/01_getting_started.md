@@ -42,7 +42,7 @@ Nevertheless, you will first create a raw Angular application to see for yoursel
 
 ```bash
 npm i -g @angular/cli
-ng new zenika-ng-website
+ng new my-first-app
 ```
 
 You will be displayed some options for the app:
@@ -53,7 +53,7 @@ You will be displayed some options for the app:
 #### If you can't install the Angular CLI globally, create the app with the following shell command
 
 ```bash
-npx @angular/cli new zenika-ng-website
+npx @angular/cli new my-first-app
 ```
 
 However, in this case, to run an Angular CLI command, you will have to use NPM first `npm run ng <command>` instead of just `ng <command>`.
@@ -118,7 +118,7 @@ Because we've modified the app, a test in `app.spec.ts` fail!
 ng build # or: `npm run build`
 ```
 
-- Open a Terminal in `dist/zenika-ng-website/browser/` directory and run the command:
+- Open a Terminal in `dist/my-first-app/browser/` directory and run the command:
 
 ```bash
 npx serve --single .
