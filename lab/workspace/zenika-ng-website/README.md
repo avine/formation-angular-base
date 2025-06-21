@@ -29,7 +29,7 @@ Prettier was installed and configured manually.
 - NPM packages installed as "dev" dependencies:
 
 ```bash
-npm i -D prettier prettier-plugin-organize-imports eslint-config-prettier eslint-plugin-prettier
+npm i -D prettier prettier-plugin-organize-imports eslint-config-prettier
 ```
 
 - `.prettierignore` file added
@@ -60,20 +60,15 @@ npm i -D prettier prettier-plugin-organize-imports eslint-config-prettier eslint
 }
 ```
 
-- `eslint.config.js` file modified (adding `eslint-plugin-prettier`):
+- `eslint.config.js` file updated (adding `eslint-config-prettier`):
 
 ```js
 ...
-const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
+const eslintConfigPrettier = require('eslint-config-prettier/flat');
 
 module.exports = tseslint.config(
   ...,
-  eslintPluginPrettierRecommended,
-  {
-    rules: {
-      'prettier/prettier': 'warn',
-    },
-  },
+  eslintConfigPrettier,
 );
 ```
 
