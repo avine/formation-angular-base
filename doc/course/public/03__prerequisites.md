@@ -153,9 +153,7 @@ document.addEventListener('click', () => {                    // <-- is always "
 
 *⚠️ Note that arrow functions do not treat the keyword `this` in the same way as functions defined with the keyword `function`, but this is beyond the scope of this course*
 
-In-depth resources:
-
-- **Functions**: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions
+- **In-depth resource:** https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions
 
 Notes :
 

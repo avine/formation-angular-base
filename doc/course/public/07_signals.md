@@ -190,7 +190,7 @@ Notes :
 
 😉 *A deeper understanding of the synchronization process goes beyond the scope of this course*
 
-- In-depth resources: https://angular.dev/guide/experimental/zoneless
+- **In-depth resource:** https://angular.dev/guide/experimental/zoneless
 
 Notes :
 
