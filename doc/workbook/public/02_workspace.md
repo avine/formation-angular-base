@@ -24,7 +24,7 @@ npx serve .
 
 - Finally, open the file `design/index.html` in your code editor
   - It contains **brief informations** about the layout of the design
-  - Follow the **detailed instructions** provided below in this document to integrate the design into your Angular application
+  - Follow the **detailed instructions** provided below in this workbook to integrate the design into your Angular application
 
 
 

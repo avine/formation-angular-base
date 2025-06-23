@@ -7,7 +7,7 @@
 
 ## OBJ01
 
-### Quelle est la fonctionnalité majeure de Typescript ?
+### Quelle est la fonctionnalité majeure de TypeScript ?
 
 - [ ] L'amélioration des performances
 - [ ] Un meilleur support des versions récentes des navigateurs

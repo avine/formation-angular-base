@@ -35,9 +35,7 @@ Notes :
 
 
 
-## Typescript - Types 1/2
-
-- Two ways to define variables: `const` and `let`
+## TypeScript - Types 1/3
 
 - Type examples: `boolean`, `number`
 
@@ -59,34 +57,138 @@ age = 33;
 age = 'Carl';           // ❌ is still throwing the same Type error
 ```
 
+_😉 Note that `const` and `let` are two different ways of defining variables_
+
 Notes :
 
 
 
-## Typescript - Types 2/2
+## TypeScript - Types 2/3
 
-- More type examples: `string`, `array`, `object`
+- More type examples: `string`, `template string`, `array`, `object`
 
 ```ts
 const name: string = 'Carl';
+
+const hello: string = `Hello ${name}!`;
 
 const nameList: string[] = ['Carl', 'Laurent'];
 
 const products: { title: string; price: number } = { title: 'Tee-shirt', price: 8.5 };
 ```
 
-- Type `any` may be necessary in some cases, but should be avoided wherever possible
+Notes :
+
+
+
+## TypeScript - Types 3/3
+
+
+- Type `any` may be necessary in some cases, but should be avoided wherever possible...
 
 ```ts
 let notSure: any = 4;
 notSure = true;
 ```
 
+- ...instead, use type `unknown` whenever possible
+
+```ts
+let x: unknown = 1;
+
+if (typeof x === 'number') {
+  x = x * 2;                  // <-- In this scope, TypeScript infers that `x` is of type `number`
+}
+
+if (typeof x === 'string') {
+  x = x + '...';              // <-- In this scope, TypeScript infers that `x` is of type `string`
+}
+```
+
 Notes :
 
 
 
-## Typescript - Destructuring syntax
+## TypeScript - Functions 1/3
+
+- **Function declaration** (or statement)
+
+```ts
+function clickHandler() {
+  console.log('Clicked!');
+}
+
+document.addEventListener('click', clickHandler);
+
+clickHandler(); // ✅ The function has been declared and can therefore be referenced
+```
+
+- **Function expression**
+
+```ts
+document.addEventListener('click', function clickHandler() {  // <-- can be a "named" function...
+  console.log('Clicked!');
+});
+
+clickHandler(); // ❌ Uncaught ReferenceError: `clickHandler` is not defined
+
+document.addEventListener('click', function() {               // <-- ...or even an "anonymous" function
+  console.log('Clicked!');
+});
+```
+
+Notes :
+
+
+
+## TypeScript - Functions 2/3
+
+- **Arrow function expression**
+
+```ts
+document.addEventListener('click', () => {                    // <-- is always "anonymous" function
+  console.log('Clicked!');
+});
+```
+
+*⚠️ Note that arrow functions do not treat the keyword `this` in the same way as functions defined with the keyword `function`, but this is beyond the scope of this course*
+
+In-depth resources:
+
+- **Functions**: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions
+
+Notes :
+
+
+
+## TypeScript - Functions 3/3
+
+- TypeScript allows typing for function arguments and return value
+  - Set **default** argument value with "`=`"
+  - Define **optional** argument with "`?`"
+  - Use "`return`" keyword to return a value
+
+```ts
+function getFullName(lastName = 'Doe', firstName?: string): string {
+  return firstName ? `${firstName} ${lastName}` : lastName;
+}
+```
+
+- Arrow functions can be used without "`return`" keyword and still return a value
+
+```ts
+const sayHello = (name: string) => {
+  return `Hello ${name}!`;
+} 
+
+const sayHello = (name: string) => `Hello ${name}!`;    // <-- Same as above, but shorter!
+```
+
+Notes :
+
+
+
+## TypeScript - Destructuring syntax
 
 Makes it possible to unpack values from **arrays**, or properties from **objects**, into distinct variables
 
@@ -114,7 +216,39 @@ Notes :
 
 
 
-## Typescript - Array instance methods
+## TypeScript - Spread syntax
+
+- "Expands" an **array** or **object** into its elements
+
+- In a way, spread syntax is the **opposite of rest syntax** (that we saw just above)
+
+```ts
+const sum = (a: number, b: number) => a + b;
+sum(1, 2);                                      // <-- 3
+
+const args = [1, 2];
+sum(...args);                                   // <-- 3
+```
+
+```ts
+const arr = [1, 2, 3];
+const arrCopy = [...arr];
+
+console.log(arr !== arrCopy);                   // <-- true
+```
+
+```ts
+const obj = { a: 1, b: 2 };
+const objCopy = { ...obj };
+
+console.log(obj !== objCopy);                   // <-- true
+```
+
+Notes :
+
+
+
+## TypeScript - Array instance methods
 
 Arrays can be manipulated using methods such as the following
 
@@ -140,7 +274,7 @@ Notes :
 
 
 
-## Typescript - Adding item to an Array
+## TypeScript - Adding item to an Array
 
 There are 2 ways of adding an element to an array
 
@@ -170,44 +304,7 @@ Notes :
 
 
 
-## Typescript - Functions 1/2
-
-- 3 types of functions: ***named***, ***anonymous*** and ***arrow***
-
-```ts
-function sayHello(message: string): void { /* ... */ }
-
-const sayHello = function(message: string): void { /* ... */ };
-
-const sayHello = (message: string): void => { /* ... */ };
-```
-
-*⚠️ Note that the arrow functions treat the resolution of the `this` keyword differently, but this is beyond the scope of this course*
-
-Notes :
-
-
-
-## Typescript - Functions 2/2
-
-- TypeScript allows typing for arguments and return value
-  - Set **default** argument value with `=`
-  - Define **optional** argument with `?`
-  - Use `return` keyword to return a value
-
-```ts
-function getFullName(lastName = 'Doe', firstName?: string): string {
-
-  return firstName ? `${firstName} ${lastName}` : lastName;
-}
-```
-
-Notes :
-Default value parameter have their value replaced only when equals to undefined (null is a valid value)
-
-
-
-## Typescript - Classes 1/4
+## TypeScript - Classes 1/4
 
 *Classes and interfaces are similar to those in Object Oriented Programming (OOP)*
 
@@ -235,7 +332,7 @@ Notes :
 
 
 
-## Typescript - Classes 2/4
+## TypeScript - Classes 2/4
 
 - 3 scopes for encapsulation: `public`, `protected` and `private`
   - `public` is the default scope
@@ -261,7 +358,7 @@ Notes :
 
 
 
-## Typescript - Classes 3/4
+## TypeScript - Classes 3/4
 
 - TypeScript provides a shortcut to **link constructor arguments to class properties**
 
@@ -289,7 +386,7 @@ Notes :
 
 
 
-## Typescript - Classes 4/4
+## TypeScript - Classes 4/4
 
 - Possibility to have "**getter**" and "**setter**"
 
@@ -320,7 +417,7 @@ Notes :
 
 
 
-## Typescript - Interfaces
+## TypeScript - Interfaces
 
 - Can be used to define object shape
 
@@ -351,7 +448,7 @@ Notes :
 
 
 
-## Typescript - Generics
+## TypeScript - Generics
 
 - Similar to generics in *Java* or *C#*
 - Generics need typing at instantiation
