@@ -193,7 +193,7 @@ Notes :
 ```html
 <p [class.highlight]="isHighlight">Hello</p>
 
-<button [style.color]="isHighlight ? 'orange': 'black'">Save</button>
+<button [style.color]="isHighlight ? 'orange': null">Save</button>
 ```
 
 Notes :

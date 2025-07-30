@@ -41,7 +41,7 @@ Notes :
 - Needs a **host element** to be attached to
 - Adds **additional behavior** to host elements in your template
 - Defined in a single place, it can be used in several components
-- Angular offers several **built-in directives** to manage forms, lists, styles, and what users see
+- Angular offers several **built-in directives** to manage routing, forms, and what users see
 
 Notes :
 
@@ -59,116 +59,18 @@ Note:
   - Components have already been covered
   - Structural directives are complex and beyond the scope of this course 
 
-✅ Therefore, we'll only cover **attribute directives**
+✅ Therefore, this course focuses only on **attribute directives**
+
+- In this chapter, we'll cover the definition and usage of **custom** attribute directives
+- Later in the course, you'll discover some Angular **built-in** attribute directives such as `RouterLink` (Routing) and `NgModel` (Forms)
 
 Notes :
 
 
 
-## Built-in attr. directives - NgStyle
+## Attribute directive - Definition
 
-- The `ngStyle` directive adds CSS styles
-- Takes an object with CSS properties as keys
-
-```ts
-import { Component } from '@angular/core';
-import { NgStyle } from '@angular/common';
-
-@Component ({
-  selector: 'app-font-size-selector',
-  imports: [NgStyle],
-  template: `
-    <h1 [ngStyle]="{ 'font-size': currentSize + 'px' }">Example<h1>
-    Change size: <input type="number" [value]="currentSize" (input)="changeSize($event)">
-  `
-})
-export class FontSizeSelector {
-  currentSize = 20;
-  changeSize(event: Event) {
-    this.currentSize = Number((event.target as HTMLInputElement).value);
-  }
-}
-```
-
-Notes :
-
-
-
-## Built-in attr. directives - NgClass 1/2
-
-- The `ngClass` directive adds CSS classes conditionally
-- Can be used in addition to the standard class attribute
-- Three syntaxes coexist:
-  - `[ngClass]=" 'class1 class2' "`
-  - `[ngClass]=" ['class1', 'class2'] "`
-  - `[ngClass]=" { 'class1': hasClass1, 'class2': hasClass2 } "`
-
-- The last syntax is the most commonly used
-
-Notes :
-
-
-
-## Built-in attr. directives - NgClass 2/2
-
-- Example of using the `ngClass` directive
-
-```ts
-import { Component } from '@angular/core';
-import { NgClass } from '@angular/common';
-
-@Component ({
-  selector: 'app-toggle-highlight',
-  imports: [NgClass],
-  template: `
-    <div [ngClass]="{ 'highlight': isHighlighted }">
-      {{ isHighlighted ? 'On' : 'Off' }}
-    </div>
-
-    <button (click)="isHighlighted = !isHighlighted">Toggle</button>
-  `,
-  styles: [`
-    .highlight { background-color: yellow }
-  `]
-})
-export class ToggleHighlight {
-  isHighlighted = false;
-}
-```
-
-Notes :
-
-
-
-## Built-in attr. directives - disclaimer
-
-The built-in `NgStyle` and `NgClass` directives, given as an example, helped us understand the usefulness of attribute directives
-
-- However, there are alternatives to these two specific directives: **class binding** and **style binding**, which we've already covered in the chapter on components
-
-```html
-<h1 [ngStyle]="{ 'font-size': currentSize + 'px' }">Example<h1>
-
-<!-- Style binding -->
-<h1 [style.font-size]="currentSize + 'px'">Example<h1>
-  ```
-
-```html
-<div [ngClass]="{ 'highlight': isHighlighted }">{{ isHighlighted ? 'On' : 'Off' }}</div>
-
-<!-- Class binding -->
-<div [class.highlight]="isHighlighted">{{ isHighlighted ? 'On' : 'Off' }}</div>
-```
-
-_😉 Later in the course, you'll discover fundamental directives such as `RouterLink` (Router) and `NgModel` (Forms)_
-
-Notes :
-
-
-
-## Attribute directive - Custom
-
-- To create a custom directive, add the `@Directive` decorator on a class
+- To create a directive, add the `@Directive` decorator on a class
 - `ElementRef` gives you access to the host element
 - `Renderer2` let you change the appearance or behavior of the host element
 

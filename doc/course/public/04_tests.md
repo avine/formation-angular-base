@@ -316,9 +316,11 @@ Notes :
 
 ```ts
 import { Component } from '@angular/core';
+import { Counter } from './counter';
 
 @Component({
   selector: 'app-number-parity',
+  import: [Counter],
   template: `
     <app-counter [(count)]="count" />
 
@@ -372,7 +374,7 @@ it('should bind parent "count" to child component', () => {
     fixture.debugElement.query(By.directive(Counter)).componentInstance;
 
   // Accessing the child component properties
-  expect(counter.count).toBe(component.count);
+  expect(counter.count()).toBe(component.count);
 });
 
 it('should be "odd" when child component emits', () => {
