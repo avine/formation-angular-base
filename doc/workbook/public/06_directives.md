@@ -1,22 +1,4 @@
-## Lab 6: Directives 1/2
-
-In this lab, you'll use the built-in `ngClass` directive and create a custom directive to improve the application's behavior.
-
-### `ProductCard` component
-
-- Use `ngClass` directive the add the CSS class `.text-bg-warning` on the element `<div class="card h-100 text-center">` but only when the product `stock` is equal to 1 (last chance to buy it!).
-
-### Tests
-
-#### `app.spec.ts`
-
-- It should not add the "text-bg-warning" className when stock is greater than 1
-
-- It should add the "text-bg-warning" className when stock is equal to 1
-
-
-
-## Lab 6: Directives 2/2
+## Lab 6: Directives
 ### `HighlightPrice` directive
 
 - Generate the directive with the following command:

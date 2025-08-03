@@ -63,8 +63,6 @@ describe('ProductCard', () => {
     expect(emitSpy).toHaveBeenCalledWith(component.product());
   });
 
-  /* ----- NEW TESTS STARTS HERE ----- */
-
   it('should not add the "text-bg-warning" className when stock is greater than 1', () => {
     const card = nativeElement.querySelector('.card');
     expect(card?.className).not.toContain('text-bg-warning');

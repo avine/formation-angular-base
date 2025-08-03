@@ -79,6 +79,10 @@ Now, the test setup should pass (but we're not testing anything useful at the mo
 - It should emit addToBasket event with the given product when the button is clicked
   - Spy on the `emit` method of the `addToBasket` output to check that it is called
 
+- It should not add the "text-bg-warning" className when stock is greater than 1
+
+- It should add the "text-bg-warning" className when stock is equal to 1
+
 
 
 ## Lab 4: Unit testing 3/3

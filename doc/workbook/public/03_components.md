@@ -46,6 +46,8 @@ export interface Product {
 ... <a class="card-link">{{ product().title }}</a> ...
 ```
 
+- Use `[class.*]` syntax the add the CSS class `.text-bg-warning` on the element `<div class="card h-100 text-center">` but only when the product `stock` is equal to 1 (last chance to buy it!).
+
 - The output should emit the product when the user clicks on the button "Ajoutez au panier"
 
 

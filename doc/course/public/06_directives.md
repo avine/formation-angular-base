@@ -61,8 +61,8 @@ Note:
 
 ✅ Therefore, this course focuses only on **attribute directives**
 
-- In this chapter, we'll cover the definition and usage of **custom** attribute directives
-- Later in the course, you'll discover some Angular **built-in** attribute directives such as `RouterLink` (Routing) and `NgModel` (Forms)
+😉 _In this chapter, we'll cover the definition and usage of **custom** attribute directives.<br />
+Later in the course, you'll discover some Angular **built-in** attribute directives such as `RouterLink` (Routing) and `NgModel` (Forms)._
 
 Notes :
 
@@ -128,7 +128,7 @@ Notes :
 
 ## Attribute directive - Host metadata
 
-- When possible, instead of the `Renderer2`, use the `host` metadata to configure *host binding* and *host listener*
+- When possible, instead of the `Renderer2` (imperative programming), use the `host` metadata (declarative programming) to configure *host binding* and *event listener*
 
 ```ts
 import { Directive } from '@angular/core';
@@ -222,7 +222,7 @@ Notes :
 - Create a wrapper component for DOM testing purposes
 
 ```ts
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Highlight } from './highlight';

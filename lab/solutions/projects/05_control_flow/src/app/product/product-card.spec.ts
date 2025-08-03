@@ -62,4 +62,21 @@ describe('ProductCard', () => {
     // Then
     expect(emitSpy).toHaveBeenCalledWith(component.product());
   });
+
+  it('should not add the "text-bg-warning" className when stock is greater than 1', () => {
+    const card = nativeElement.querySelector('.card');
+    expect(card?.className).not.toContain('text-bg-warning');
+  });
+
+  it('should add the "text-bg-warning" className when stock is equal to 1', () => {
+    // Given
+    const card = nativeElement.querySelector('.card');
+
+    // When
+    component.product().stock = 1;
+    fixture.detectChanges();
+
+    // Then
+    expect(card?.className).toContain('text-bg-warning');
+  });
 });

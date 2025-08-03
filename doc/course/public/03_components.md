@@ -387,14 +387,14 @@ import { Component, output } from '@angular/core';
 
 @Component ({
   selector: 'app-counter',
-  template: `<button (click)="onClick()">{{ count }}</button>`
+  template: `<button (click)="increment()">{{ count }}</button>`
 })
 export class Counter {
   protected count = 0;
 
   countChange = output<number>();
 
-  protected onClick() {
+  protected increment() {
     this.count += 1;
     this.countChange.emit(this.count);
   }
@@ -448,12 +448,12 @@ import { Component, model } from '@angular/core';
 
 @Component ({
   selector: 'app-counter',
-  template: `<button (click)="onClick()">{{ count() }}</button>`
+  template: `<button (click)="increment()">{{ count() }}</button>`
 })
 export class Counter {
   count = model<number>(0);
 
-  protected onClick() {
+  protected increment() {
     this.count.update((count) => count + 1);
   }
 }

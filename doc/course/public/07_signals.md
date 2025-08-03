@@ -255,6 +255,88 @@ Notes :
 
 
 
+## Signals - Testing 1/3
+
+- Angular provides powerful tooling for testing signal-based components
+
+Let's revisit the `Counter` component...
+
+```ts
+import { Component, model } from '@angular/core';
+
+@Component({
+  selector: 'app-counter',
+  template: `<button (click)="increment()">{{ count() }}</button>`,
+})
+export class Counter {
+  count = model<number>(0);
+
+  protected increment() {
+    this.count.update((count) => count + 1);
+  }
+}
+```
+
+Notes :
+
+
+
+## Signals - Testing 2/3
+
+- Use `inputBinding` and `outputBinding` functions in the test component `bindings` options 
+
+```ts
+import { inputBinding, outputBinding, signal } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { Counter } from './counter';
+
+describe('Counter', () => {
+  beforeEach(async () => await TestBed.configureTestingModule({ imports: [Counter] }).compileComponents());
+
+  it('should works', () => {
+    const count = signal(1);                        // <-- Define "input"
+    const countChange = jasmine.createSpy();        // <-- Define "output"
+
+    const fixture = TestBed.createComponent(Counter, {
+      bindings: [
+        inputBinding('count', count),               // <-- Bind "input"
+        outputBinding('countChange', countChange),  // <-- Bind "output"
+      ],
+    });
+
+    // ...
+```
+
+Notes :
+
+
+
+## Signals - Testing 3/3
+
+```ts
+    // ...
+
+    const component = fixture.componentInstance;
+
+    fixture.detectChanges();
+    expect(component.count()).toBe(1);
+
+    count.set(2);                                   // <-- Interact with "input" bindings
+    fixture.detectChanges();
+    expect(component.count()).toBe(2);
+
+    (fixture.nativeElement as HTMLElement).querySelector('button')?.click();
+    fixture.detectChanges();
+    expect(component.count()).toBe(3);
+    expect(countChange).toHaveBeenCalledWith(3);    // <-- Interact with "output" bindings
+  });
+});
+```
+
+Notes :
+
+
+
 ## Signals - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 

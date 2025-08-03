@@ -120,14 +120,22 @@ Notes :
 
 ## Control flow - @for 2/3
 
-- Inside `@for` blocks, several implicit variables are always available
+- Inside `@for` blocks, several implicit variables are always available...
 
 ```html
 <ul>
-  @for (todo of todos; track todo.id; let index = $index, count = $count) {
+  @for (todo of todos; track todo.id) {
+    <li>{{ $index + 1 }}/{{ $count }} {{ todo.title }}</li>
+  }
+</ul>
+```
 
-    <li>{{ index + 1 }}/{{ count }} {{ todo.title }}</li>
+- ...but can be aliased if needed, using `let` syntax
 
+```html
+<ul>
+  @for (todo of todos; track todo.id; let idx = $index, cnt = $count) {
+    <li>{{ idx + 1 }}/{{ cnt }} {{ todo.title }}</li>
   }
 </ul>
 ```

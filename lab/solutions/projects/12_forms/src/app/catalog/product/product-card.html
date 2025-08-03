@@ -1,4 +1,4 @@
-<div class="card h-100 text-center" [ngClass]="{ 'text-bg-warning': product().stock <= 1 }">
+<div class="card h-100 text-center" [class.text-bg-warning]="product().stock === 1">
   <img class="card-img-top" [src]="product().photo" alt="Product image" />
 
   <div class="card-header">
