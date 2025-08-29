@@ -99,11 +99,11 @@ import { JsonPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-todos',
-  template: `<pre>{{ todos | json }}</pre>`
+  selector: 'app-todo-list',
+  template: `<pre>{{ todos | json }}</pre>`,
   imports: [JsonPipe],
 })
-export class Todos {
+export class TodoList {
   private httpClient = inject(HttpClient);          // <-- 2. Inject service
 
   protected todos?: Todo[];
@@ -132,7 +132,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class TodosService {
+export class TodoService {
   private httpClient = inject(HttpClient);
 
   fetch() {
@@ -156,20 +156,20 @@ Notes :
 ```ts
 import { Component, inject, signal } from '@angular/core';
 import { JsonPipe } from '@angular/common';
-import { TodosService } from './todos-service.ts';
+import { TodoService } from './todo-service';
 
 @Component({
-  selector: 'app-todo',
+  selector: 'app-todo-list',
   template: `<pre>{{ todos() | json }}</pre>`,
   imports: [JsonPipe],
 })
-export class Todo {
-  private todosService = inject(TodosService);
+export class TodoList {
+  private todoService = inject(TodoService);
 
   protected todos = signal<Todo[] | undefined>(undefined);
 
   constructor() {
-    this.todosService.fetch().subscribe((todos) => this.todos.set(todos));
+    this.todoService.fetch().subscribe((todos) => this.todos.set(todos));
   }
 }
 ```
@@ -191,7 +191,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class TodosService {
+export class TodoService {
   private httpClient = inject(HttpClient);
 
   todos = signal<Todo[] | undefined>(undefined);
@@ -220,7 +220,7 @@ import { Observable, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TodosService {
+export class TodoService {
   private httpClient = inject(HttpClient);
 
   private todos = signal<Todo[] | undefined>(undefined);
@@ -400,7 +400,7 @@ import { Observable, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TodosService {                                 // <-- Data source provider
+export class TodoService {                                  // <-- Data source provider
   private httpClient = inject(HttpClient);
 
   private _todos = signal<Todo[] | undefined>(undefined);   // <-- Encapsulate data
@@ -425,22 +425,22 @@ Notes :
 ```ts
 import { Component, inject, signal } from '@angular/core';
 import { JsonPipe } from '@angular/common';
-import { TodosService } from './todos-service.ts';
+import { TodoService } from './todo-service';
 
 @Component({
-  selector: 'app-todos',
-  templateUrl: 'todos.html',
+  selector: 'app-todo-list',
+  templateUrl: 'todo-list.html',
   imports: [JsonPipe],
 })
-export class Todos {                               // <-- Data source consumer
-  private todosService = inject(TodosService);
+export class TodoList {                                     // <-- Data source consumer
+  private todoService = inject(TodoService);
 
-  todos = this.todosService.todos; // Data can be consumed here and in other components too...
+  todos = this.todoService.todos; // Data can be consumed here and in other components too...
   hasError = signal(false);
 
   constructor() {
     // ...while fetching data can be done in one strategic place
-    this.todosService.fetch().subscribe({ error: () => this.hasError.set(true) });
+    this.todoService.fetch().subscribe({ error: () => this.hasError.set(true) });
   }
 }
 ```
@@ -456,11 +456,11 @@ Notes :
 - Allowing the component to react to every status of the request (**loading**, **error** and **fetched**) in its template
 
 ```html
-<!-- todos.html -->
+<!-- todo-list.html -->
 
 @if (todos() === undefined) {
 
-  <p>Loading...</p>
+  <p>Initial loading...</p>
 
 } @else if (hasError()) {
 
@@ -476,7 +476,6 @@ Notes :
 
 
 
-
 ## Http client - Testing 1/2
 
 - Angular provides `provideHttpClientTesting` and `HttpTestingController` for mocking Http requests
@@ -486,8 +485,8 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-describe('TodosService', () => {
-  let service: TodosService;
+describe('TodoService', () => {
+  let service: TodoService;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
@@ -495,10 +494,11 @@ describe('TodosService', () => {
       providers: [provideHttpClient(withFetch()), provideHttpClientTesting()],
     });
 
-    service = TestBed.inject(TodosService);
+    service = TestBed.inject(TodoService);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
-});
+
+  // ...
 ```
 
 Notes :
@@ -510,7 +510,6 @@ Notes :
 - The Controller can be injected into tests and used for mocking and flushing requests
 
 ```ts
-describe('TodosService', () => {
   // ...
 
   it('should fetch and store todos', () => {

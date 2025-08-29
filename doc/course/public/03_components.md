@@ -226,7 +226,6 @@ Notes :
 
 
 
-
 ## Template syntax - Event listeners
 
 - Generic syntax for listening to an event of an HTML element
