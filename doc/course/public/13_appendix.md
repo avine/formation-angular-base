@@ -130,7 +130,7 @@ Notes :
 ## Appendix - Component projection 1/3
 
 - Allows to put HTML content inside the tag of an Angular component
-- The `<ng-content />` directive allows reinserting the content in the component template
+- The `<ng-content />` element acts as a placeholder to mark where projected content should go
 
 ```ts
 @Component({ selector: 'app-card', template:
