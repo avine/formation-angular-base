@@ -24,7 +24,7 @@ The service should have:
 
 - Refactor the `App` component to use the `CatalogResource` service
 
-
+<!-- separator-vertical -->
 
 ## Lab 8: Dependency injection 2/5
 ### `BasketResource`
@@ -57,7 +57,7 @@ The service should have:
 - In the `Menu` component, use the `BasketResource` to display the number of items in the basket.
   To achieve this, add a `numberOfItems = computed<number>(...)` property to the menu component.
 
-
+<!-- separator-vertical -->
 
 ## Lab 8: Dependency injection 3/5
 ### Bonus: use of injection token
@@ -90,7 +90,7 @@ xdescribe("App", () => { /* ... */ });
 
 - It should update the total when a product is added
 
-
+<!-- separator-vertical -->
 
 ## Lab 8: Dependency injection 4/5
 #### `menu.spec.ts`
@@ -127,7 +127,7 @@ Add test:
 
 - It should display the number of items
 
-
+<!-- separator-vertical -->
 
 ## Lab 8: Dependency injection 5/5
 #### `app.spec.ts`

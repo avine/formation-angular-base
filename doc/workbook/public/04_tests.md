@@ -40,7 +40,7 @@ ng test
 
 Some tests fail. Let's fix them!
 
-
+<!-- separator-vertical -->
 
 ## Lab 4: Unit testing 2/3
 ### `product-card.spec.ts`
@@ -83,7 +83,7 @@ Now, the test setup should pass (but we're not testing anything useful at the mo
 
 - It should add the "text-bg-warning" className when stock is equal to 1
 
-
+<!-- separator-vertical -->
 
 ## Lab 4: Unit testing 3/3
 ### `app.spec.ts`

@@ -33,7 +33,7 @@ In this lab, you'll create a multi-page application (SPA) using the Angular rout
 </main>
 ```
 
-
+<!-- separator-vertical -->
 
 ## Lab 11: Routing 2/7
 ### `RouterLink`
@@ -53,7 +53,7 @@ Add `routerLink` directives in the following templates (don't forget to add the 
   - to visit the product details page at `['/product', product.id]`<br />
     (below, you will create the `ProductDetails` component in the bonus section)
 
-
+<!-- separator-vertical -->
 
 ## Lab 11: Routing 3/7
 ### `Basket` component
@@ -93,7 +93,7 @@ Add `routerLink` directives in the following templates (don't forget to add the 
   - Visit the `http://localhost:4200/catalog` page, click on _"Voir mon panier"_ and view the basket items
   - Reload the `http://localhost:4200/basket` page and view the basket items
 
-
+<!-- separator-vertical -->
 
 ## Lab 11: Routing 4/7
 ### `BasketGuard`
@@ -129,7 +129,7 @@ export const basketGuard: CanMatchFn = () => {
 - At this point, you can safely remove the `BasketResource.fetchBasket` subscription from the `Basket` component constructor, 
   because data fetching is now triggered by the guard itself anyway (see above ***)
 
-
+<!-- separator-vertical -->
 
 ## Lab 11: Routing 5/7
 ### Bonus: `ProductDetails` component
@@ -147,7 +147,7 @@ export const basketGuard: CanMatchFn = () => {
 - For the component template, copy/paste the following:
   - `lab/resources/product-details/product-details.html`
 
-
+<!-- separator-vertical -->
 
 ## Lab 11: Routing 6/7
 ### Bonus: application performances
@@ -178,7 +178,7 @@ export class CatalogResource {
 }
 ```
 
-
+<!-- separator-vertical -->
 
 ## Lab 11: Routing 7/7
 ### Bonus: directories organisation

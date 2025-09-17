@@ -2,7 +2,7 @@
 
 <!-- .slide: class="page-title" -->
 
-
+<!-- separator-vertical -->
 
 ## Table of Contents
 
@@ -31,9 +31,7 @@
 </div>
 </div>
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Types 1/3
 
@@ -59,9 +57,7 @@ age = 'Carl';           // ❌ is still throwing the same Type error
 
 _😉 Note that `const` and `let` are two different ways of defining variables_
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Types 2/3
 
@@ -77,9 +73,7 @@ const nameList: string[] = ['Carl', 'Laurent'];
 const products: { title: string; price: number } = { title: 'Tee-shirt', price: 8.5 };
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Types 3/3
 
@@ -105,9 +99,7 @@ if (typeof x === 'string') {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Functions 1/3
 
@@ -137,9 +129,7 @@ document.addEventListener('click', function() {               // <-- ...or even 
 });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Functions 2/3
 
@@ -155,9 +145,7 @@ document.addEventListener('click', () => {                    // <-- is always "
 
 - **In-depth resource:** https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Functions 3/3
 
@@ -182,9 +170,7 @@ const sayHello = (name: string) => {
 const sayHello = (name: string) => `Hello ${name}!`;    // <-- Same as above, but shorter!
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Destructuring syntax
 
@@ -210,9 +196,7 @@ const { a, b, ...rest } = { a: 10, b: 20, c: 30, d: 40 };
 // rest == { c: 30, d: 40 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Spread syntax
 
@@ -242,9 +226,7 @@ const objCopy = { ...obj };
 console.log(obj !== objCopy);                   // <-- true
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Array instance methods
 
@@ -268,9 +250,7 @@ Arrays can be manipulated using methods such as the following
 [0, 1, 2, 3].reduce((sum, value) => sum + value, 0);    // --> 6
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Adding item to an Array
 
@@ -298,9 +278,7 @@ const newItems = [...items, newItem];
 console.log(newItems);                                  // --> [0, 1, 2, 3, 4]
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Classes 1/4
 
@@ -326,9 +304,7 @@ person.name = 'Carl';
 person.sayHello(); // --> Hello, I'm Carl!
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Classes 2/4
 
@@ -352,9 +328,7 @@ class Demo {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Classes 3/4
 
@@ -380,9 +354,7 @@ class Person {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Classes 4/4
 
@@ -411,9 +383,7 @@ console.log(person.firstName); // --> Jean
 console.log(person.lastName); // --> Dupont
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Interfaces
 
@@ -442,9 +412,7 @@ class TrumpetPlayer implements Musician {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Generics
 
@@ -468,9 +436,7 @@ logOfString.log('Hello');
 logOfString.log('world!');
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript - Decorators
 
@@ -493,9 +459,7 @@ class Foo {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## NPM - Commands 1/2
 
@@ -519,9 +483,7 @@ npm install <packageName>
 npm install -g <packageName>
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## NPM - Commands 2/2
 
@@ -537,9 +499,7 @@ npm update <packageName>
 npm remove <packageName>
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## NPM - Package versioning 1/2
 
@@ -565,9 +525,7 @@ Example:
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## NPM - Package versioning 2/2
 
@@ -585,9 +543,7 @@ Allowing a range of versions when **installing** or **updating** a package
 
 For a given dependency, the exact version installed is locked in the `package-lock.json` configuration file
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## NPM - Angular package versioning
 
@@ -607,9 +563,7 @@ To update the Angular package versions of your project use the command `ng updat
 - [Angular update guide](https://angular.dev/update-guide)
 - [Angular version compatibility (with Node.js, TypeScript, ...)](https://angular.dev/reference/versions)
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Technical prerequisites - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->

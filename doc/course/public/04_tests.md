@@ -2,7 +2,7 @@
 
 <!-- .slide: class="page-title" -->
 
-
+<!-- separator-vertical -->
 
 ## Table of Contents
 
@@ -31,9 +31,7 @@
 </div>
 </div>
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Unit testing - Introduction 
 
@@ -49,10 +47,10 @@ Out of the box, Angular uses **Karma** as test runner and **Jasmine** as asserti
 By default, test files are identified by the pattern: `*.spec.ts`.
 
 Notes :
-The course focuses on `TestBed` which is the envrionment provided by Angular for testing Angular apps.
+The course focuses on `TestBed` which is the environment provided by Angular for testing Angular apps.
 We therefore only learn the basics of Jasmine and Karma...
 
-
+<!-- separator-vertical -->
 
 ## Unit testing - Jasmine 
 
@@ -78,9 +76,7 @@ describe('boolean variable', () => {
 });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Unit testing - Jasmine | Hooks
 
@@ -106,9 +102,7 @@ describe('boolean variable', () => {
 });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Unit testing - Jasmine | Spies
 
@@ -135,9 +129,7 @@ count.increment();
 expect(logSpy).toHaveBeenCalledWith('increment');
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Unit testing - Angular environment
 
@@ -158,9 +150,7 @@ describe('my feature', () => {
 });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Unit testing - Components
 
@@ -184,9 +174,7 @@ let hostElement = fixture.nativeElement;
 fixture.detectChanges();
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Unit testing - Components | Strategies
 
@@ -204,9 +192,7 @@ Notes :
 
 ✅ Overall, **DOM testing is more robust**, but require more work to setup
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Unit testing - Example 1
 
@@ -228,9 +214,7 @@ export class Counter {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Unit testing - Example 1
 
@@ -255,9 +239,7 @@ describe('Counter', () => {
 });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Unit testing - Example 1
 
@@ -285,9 +267,7 @@ it('should increment the count when clicking', () => {
 });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Unit testing - Example 1
 
@@ -305,9 +285,7 @@ it('should call count "update" method when clicking', () => {
 });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Unit testing - Example 2
 
@@ -331,9 +309,7 @@ export class NumberParity {
   count = 0;
 }
 ```
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Unit testing - Example 2 | First approach
 
@@ -360,9 +336,7 @@ describe('NumberParity', () => {
 });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Unit testing - Example 2 | First approach
 
@@ -390,9 +364,7 @@ it('should be "odd" when child component emits', () => {
 });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Unit testing - Example 2 | Second approach
 
@@ -421,9 +393,7 @@ describe('NumberParity', () => {
 });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Unit testing - Example 2 | Second approach
 
@@ -453,12 +423,12 @@ it('should be "odd" when child component emits', () => {
 Notes :
 Talk about "ng-mocks" library (https://www.npmjs.com/package/ng-mocks).
 
-
+<!-- separator-vertical -->
 
 ## Unit testing - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
-
+<!-- separator-vertical -->
 
 ## Unit testing - Lab 4
 <!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->

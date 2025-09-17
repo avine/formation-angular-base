@@ -2,7 +2,7 @@
 
 <!-- .slide: class="page-title" -->
 
-
+<!-- separator-vertical -->
 
 ## Table of Contents
 
@@ -31,9 +31,7 @@
 </div>
 </div>
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Workspace
 
@@ -44,9 +42,7 @@ An Angular workspace is **structured** by the following parts
 - `angular.json`
 - `src/app/*`
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Workspace - package.json
 
@@ -66,9 +62,7 @@ The presence of a `package.json` file indicates that the directory is the root o
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Workspace - package.json
 
@@ -92,9 +86,7 @@ Notes :
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Workspace - package.json
 
@@ -113,9 +105,7 @@ Notes :
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Workspace - tsconfig.json
 
@@ -139,9 +129,7 @@ The presence of a `tsconfig.json` file indicates that the directory is the root 
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Workspace - angular.json
 
@@ -167,9 +155,7 @@ The presence of an `angular.json` file indicates that the directory is the root 
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Workspace - angular.json
 
@@ -196,9 +182,7 @@ Notes :
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Workspace - src/app/*
 
@@ -217,9 +201,7 @@ ng build
 
 When the build is complete, the application bundle is in the `dist/` directory
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Angular CLI
 
@@ -244,9 +226,7 @@ ng test
 ng build
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Angular CLI - Generate 1/3
 
@@ -275,9 +255,7 @@ ng generate --help
 ng generate component --help
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Angular CLI - Generate 2/3
 
@@ -327,9 +305,7 @@ export class Menu {}
 
 *😉 This course is based on the latest style guide recommandations*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Angular CLI - Generate 3/3
 
@@ -350,14 +326,12 @@ Notes :
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Workspace - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
-
+<!-- separator-vertical -->
 
 ## Workspace - Lab 2
 <!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->

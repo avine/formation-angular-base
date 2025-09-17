@@ -33,7 +33,7 @@ The details of this configuration are beyond the scope of this course, but you'l
 
 Nevertheless, you will first create a raw Angular application to see for yourself how it works, even if you won't be using it for the rest of the course.
 
-
+<!-- separator-vertical -->
 
 ## Lab 1: Getting started 2/6
 ### Creating and running an Angular application
@@ -68,7 +68,7 @@ ng serve # or: `npm start`
 
 You should see the app with a placeholder content. 🚀
 
-
+<!-- separator-vertical -->
 
 ## Lab 1: Getting started 3/6
 ### Taking control of the app
@@ -99,7 +99,7 @@ class App {
 
 - Check that the app has been updated correctly in the browser. 🚀
 
-
+<!-- separator-vertical -->
 
 ## Lab 1: Getting started 4/6
 ### Now let's try running the app tests
@@ -129,7 +129,7 @@ Note that this package is not related to the `ng serve` command.
 
 - Open the browser at the URL specified in the console to see the production build in action. 🚀
 
-
+<!-- separator-vertical -->
 
 ## Lab 1: Getting started 5/6
 
@@ -171,7 +171,7 @@ git branch -M main
 git push -u origin main
 ```
 
-
+<!-- separator-vertical -->
 
 ## Lab 1: Getting started 6/6
 ### NPM packages

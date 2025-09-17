@@ -2,7 +2,7 @@
 
 <!-- .slide: class="page-title" -->
 
-
+<!-- separator-vertical -->
 
 ## Table of Contents
 
@@ -31,9 +31,7 @@
 </div>
 </div>
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing
 
@@ -56,9 +54,7 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - Routes
 
@@ -84,9 +80,7 @@ export const routes: Routes = [
 ];
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - RouterOutlet
 
@@ -110,9 +104,7 @@ import { RouterOutlet } from '@angular/router';
 export class App {}
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - RouterLink 1/3
 
@@ -140,9 +132,7 @@ export class Nav {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - RouterLink 2/3
 
@@ -167,9 +157,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class Nav {}
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - RouterLink 3/3
 
@@ -196,9 +184,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class Nav {}
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - Router service
 
@@ -223,9 +209,7 @@ export class App {
 
 😉 *Whenever possible, prefer using the `routerLink` directive on the component template side*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - ActivatedRoute
 
@@ -254,9 +238,7 @@ export class Contact {
 
 😉 *Note that `params` is an RxJS Observable*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - ActivatedRoute | Snapshot
 
@@ -276,9 +258,7 @@ export class Contact {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - With component input binding 1/2
 
@@ -298,9 +278,7 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - With component input binding 2/2
 
@@ -330,9 +308,7 @@ export class Contact {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - Nested routes
 
@@ -355,9 +331,7 @@ export const routes: Routes = [
 
 *In this example, we assume that the template of the `Contact` component contains the nested `<router-outlet />` directive*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - Route title
 
@@ -380,9 +354,7 @@ export const routes: Routes = [
 ];
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - Guards
 
@@ -397,9 +369,7 @@ Notes :
 
 *In this course, we will focus on `canActivate` and `canMatch` guards*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - Guards | Can activate
 
@@ -428,9 +398,7 @@ export const routes: Routes = [
 ];
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - Guards | Can match
 
@@ -460,9 +428,7 @@ export const routes: Routes = [
 ];
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - Guards | Difference in behaviour
 
@@ -474,9 +440,7 @@ Notes :
   - If all guards return `true`, navigation continues
   - If any guard returns `false`, navigation is **skipped** for matching and **next route configurations are processed** instead
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - Guards | Redirect command
 
@@ -501,9 +465,7 @@ export const contactGuard: CanActivateFn = () => {
 };
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - Lazy Loading 1/3
 
@@ -527,9 +489,7 @@ export const routes: Routes = [
 ];
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - Lazy Loading 2/3
 
@@ -556,9 +516,7 @@ export const routes: Routes = [
 ];
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - Lazy Loading 3/3
 
@@ -586,14 +544,12 @@ export default [
 ] satisfies Routes;
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Routing - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
-
+<!-- separator-vertical -->
 
 ## Routing - Lab 11
 <!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->

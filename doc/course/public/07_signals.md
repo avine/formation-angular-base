@@ -2,7 +2,7 @@
 
 <!-- .slide: class="page-title" -->
 
-
+<!-- separator-vertical -->
 
 ## Table of Contents
 
@@ -38,7 +38,7 @@ https://github.com/tc39/proposal-signals
 If the interns ask how it works before, talk about the Zone.js and of the change detection strategy that Angular has 
 always used before the introduction of the signals.
 
-
+<!-- separator-vertical -->
 
 ## Signals - Definition
 
@@ -52,9 +52,7 @@ always used before the introduction of the signals.
 
 😉 *Later, we'll talk about a process called **synchronization** to understand when and why you should **use signals rather than raw values** to manage the state of your application...*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Signals - signal
 
@@ -76,9 +74,7 @@ count.update((c) => c + 1);
 console.log(count());                 // <-- output: 2
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Signals - computed
 
@@ -106,9 +102,7 @@ count.update((c) => c + 1);
 console.log(isEven());                 // <-- output: true
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Signals - effect
 
@@ -132,9 +126,7 @@ count.set(1);
 count.update((c) => c + 1);
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Signals - Synchronization process 1/3
 
@@ -154,9 +146,7 @@ As a rule of thumb
   - if the part of the **state to be rendered in your templates** only **changes through signals**
   - then your app should be **ready to go Zoneless**
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Signals - Synchronization process 2/3
 
@@ -182,9 +172,7 @@ export const appConfig: ApplicationConfig = {
 
 - Then you can safely uninstall Zone.js by running the command `npm uninstall zone.js`
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Signals - Synchronization process 3/3
 
@@ -192,9 +180,7 @@ Notes :
 
 - **In-depth resource:** https://angular.dev/guide/experimental/zoneless
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Signals - Usage in components
 
@@ -220,9 +206,7 @@ export class CounterDelay {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Signals - Component input and model
 
@@ -251,9 +235,7 @@ export class App {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Signals - Testing 1/3
 
@@ -277,9 +259,7 @@ export class Counter {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Signals - Testing 2/3
 
@@ -307,9 +287,7 @@ describe('Counter', () => {
     // ...
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Signals - Testing 3/3
 
@@ -333,14 +311,12 @@ Notes :
 });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Signals - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
-
+<!-- separator-vertical -->
 
 ## Signals - Lab 7
 <!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->

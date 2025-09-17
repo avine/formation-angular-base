@@ -2,7 +2,7 @@
 
 <!-- .slide: class="page-title" -->
 
-
+<!-- separator-vertical -->
 
 ## Table of Contents
 
@@ -31,9 +31,7 @@
 </div>
 </div>
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Directives
 
@@ -43,9 +41,7 @@ Notes :
 - Defined in a single place, it can be used in several components
 - Angular offers several **built-in directives** to manage routing, forms, and what users see
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Directives
 
@@ -64,9 +60,7 @@ Note:
 😉 _In this chapter, we'll cover the definition and usage of **custom** attribute directives.<br />
 Later in the course, you'll discover some Angular **built-in** attribute directives such as `RouterLink` (Routing) and `NgModel` (Forms)._
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Attribute directive - Definition
 
@@ -93,11 +87,9 @@ export class Highlight {
 }
 ```
 
-Notes :
-
 - Specify that we use the native API mainly to allow server-side rendering
 
-
+<!-- separator-vertical -->
 
 ## Attribute directive - Usage
 
@@ -122,9 +114,7 @@ export class App {}
 <p style="background-color: yellow"> Highlight me! </p>
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Attribute directive - Host metadata
 
@@ -152,9 +142,7 @@ export class Highlight {
 
 _😉 Note that `host` property also applies to component metadata_
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Attribute directive - Input and Output 1/2
 
@@ -183,9 +171,7 @@ export class Highlight {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Attribute directive - Input and Output 2/2
 
@@ -213,9 +199,7 @@ export class App {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Directives - Testing
 
@@ -245,14 +229,12 @@ describe('Highlight', () => {
 });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Directives - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
-
+<!-- separator-vertical -->
 
 ## Directives - Lab 6
 <!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->

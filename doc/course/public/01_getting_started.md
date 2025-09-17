@@ -2,7 +2,7 @@
 
 <!-- .slide: class="page-title" -->
 
-
+<!-- separator-vertical -->
 
 ## Table of Contents
 
@@ -31,9 +31,7 @@
 </div>
 </div>
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Client-server architecture
 
@@ -47,9 +45,7 @@ Notes :
   - the **headers**, which contain contextual metadata
   - the **body**, which contains the transmitted data
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Client-server architecture - Example
 
@@ -79,9 +75,7 @@ Accept-Encoding: gzip
 
 😉 *This is not a random example, it's in fact the typical server return for an Angular application*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Web browser technologies 
 
@@ -92,9 +86,7 @@ Notes :
   - **CSS**
   - **JavaScript**
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## HTML - HyperText Markup Language <img src="./resources/01-html.png" />
 
@@ -114,9 +106,7 @@ Notes :
   - **attributes** `attribute-name="value"` (such as `href`, `src`, ...) applicable to opening and self-closing tags
   - the **content** (between the opening and closing tags) may contain other *nested tags*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## CSS - Cascading Style Sheets <img src="./resources/01-css.png" />
 
@@ -140,9 +130,7 @@ Notes :
 - A style sheet can be defined in a `<style>` tag, or in an external file
   - `<link href="styles.css" rel="stylesheet" />`
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## JavaScript <img src="./resources/01-javascript.png" />
 
@@ -161,9 +149,7 @@ Notes :
 - A script can be defined in a `<script>` tag, or in an external file
   - `<script src="main.js"></script>`
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## HTML - CSS - JavaScript
 
@@ -188,9 +174,7 @@ Notes :
 
 😉 *Later, we'll explain the role of the `<app-root>` tag in relation to **Angular**...*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Technologies outside the web browser
 
@@ -206,9 +190,7 @@ Notes :
   - **NPM**
   - **Vite**
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript <img src="./resources/01-typescript.svg" />
 
@@ -230,9 +212,7 @@ data = 1;         // ✅ Here the assignment is valid
 data = true;      // ❌ And here the assignment is invalid
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## TypeScript <img src="./resources/01-typescript.svg" />
 
@@ -240,9 +220,7 @@ Notes :
 - Transpilation simply involves **removing the typing** to make it a valid JavaScript program
 - TypeScript is used in the **development phase** whereas JavaScript is used in the **execution phase**
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Node.js <img src="./resources/01-nodejs.svg" />
 
@@ -265,9 +243,7 @@ JavaScript can, for example, know the user's preferred language, the size of the
 window.innerWidth # ...returns for example: `1135` (window width in px)
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## NPM (Node package Manager) <img src="./resources/01-npm.svg" />
 
@@ -286,9 +262,7 @@ npm install --global @angular/cli
 ng new
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Vite <img src="./resources/01-vite.svg" />
 
@@ -300,9 +274,7 @@ Notes :
 
 <img src="./resources/01-bundler.drawio.svg" width="60%" style="display: block; margin: 4rem auto 0 auto" />
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Angular <img src="./resources/01-angular.png" />
 
@@ -318,9 +290,7 @@ Notes :
 
 - Maintained by a dedicated team at **Google**
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Angular - The big picture 1/2 <img src="./resources/01-angular.png" />
 
@@ -343,9 +313,7 @@ bootstrapApplication(App);
 
 *(for the moment, let's leave aside the code implementation details and focus on the big picture...)*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Angular - The big picture 2/2 <img src="./resources/01-angular.png" />
 
@@ -361,9 +329,7 @@ Notes :
 
 😉 *You now know the role of the `<app-root>` tag in relation to **Angular**, which was present in the web page given above as an example*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## In-depth resources
 
@@ -374,14 +340,12 @@ Notes :
 - **Vite:** https://vitejs.dev
 - **Angular:** https://angular.dev
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Getting started - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
-
+<!-- separator-vertical -->
 
 ## Getting started - Lab 1
 <!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->

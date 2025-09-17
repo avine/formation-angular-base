@@ -2,7 +2,7 @@
 
 <!-- .slide: class="page-title" -->
 
-
+<!-- separator-vertical -->
 
 ## Table of Contents
 
@@ -31,9 +31,7 @@
 </div>
 </div>
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - Modules 1/3
 
@@ -48,9 +46,7 @@ Angular provides 2 different ways to handle forms
   - the form fields are then linked in the component template using property bindings
   - you're responsible for ensuring the consistency of the form between the component and the template
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - Modules 2/3
 
@@ -68,9 +64,7 @@ Any form can be created using either of the following technique, but...
 
 ✅ The rest of this course focuses solely on Template-driven forms
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - Modules 3/3
 
@@ -93,9 +87,7 @@ export class App {}
 
 - Under the hood, the `ngModel` directive tracks the **value**, user **interaction**, and **validation status** of the control element (such as an `<input />`) to which it is attached
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - Getting started 1/2
 
@@ -121,9 +113,7 @@ Notes :
 </form>
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - Getting started 2/2
 
@@ -147,9 +137,7 @@ Notes :
 </form>
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - Accessing ngForm & ngModel 1/2
 
@@ -171,9 +159,7 @@ These variables are very important and we will be using them throughout this cha
 
 😉 *But for now, let's look at where the names of the values `xyz="ngForm"` and `xyz="ngModel"` come from...*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - Accessing ngForm & ngModel 2/2
 
@@ -199,9 +185,7 @@ export class App {}
 
 😉 *...so you've guessed that the `NgModel` directive metadata contains: `{exportAs: 'ngModel'}`*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - NgModel 1/4
 
@@ -225,9 +209,7 @@ Let's take a closer look at the `NgModel` directive
 export class App {}
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - NgModel 2/4
 
@@ -253,9 +235,7 @@ Notes :
 export class App {}
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - NgModel 3/4
 
@@ -284,7 +264,7 @@ export class App {}
 Notes :
 Typically, the field is marked invalid only if both "touched" and "invalid".
 
-
+<!-- separator-vertical -->
 
 ## Forms - NgModel 4/4
 
@@ -307,9 +287,7 @@ Typically, the field is marked invalid only if both "touched" and "invalid".
 export class App { data = ''; }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - NgForm 1/2
 
@@ -330,9 +308,7 @@ Now let's take a closer look at the `NgForm` directive
 <form></form> <!-- will become `<form novalidate></form>` in the DOM -->
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - NgForm 2/2
 
@@ -359,9 +335,7 @@ export class App {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - Validators 1/3
 
@@ -373,9 +347,7 @@ Notes :
 - But you can create custom validators too
   - we'll come back to this later...
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - Validators 2/3
 
@@ -396,9 +368,7 @@ Notes :
 -->
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - Validators 3/3
 
@@ -422,9 +392,7 @@ Notes :
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - Validators | Custom 1/2
 
@@ -452,9 +420,7 @@ export class StartWith implements Validator {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - Validators | Custom 2/2
 
@@ -482,14 +448,12 @@ import { StartWith } from './starts-with';
 export class App {}
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Forms - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
-
+<!-- separator-vertical -->
 
 ## Forms - Lab 12
 <!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->

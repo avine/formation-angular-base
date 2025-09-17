@@ -2,7 +2,7 @@
 
 <!-- .slide: class="page-title" -->
 
-
+<!-- separator-vertical -->
 
 ## Table of Contents
 
@@ -31,9 +31,7 @@
 </div>
 </div>
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Logistics
 
@@ -41,11 +39,7 @@ Notes :
 - Lunch & breaks
 - Other questions ?
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## About me
 <!-- .slide: data-background-image="./resources/background-about-me.svg" data-background-size="45%" -->
-
-Notes :

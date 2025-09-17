@@ -13,7 +13,7 @@ In this lab, you'll create an Angular form to checkout the basket.
 - Insert the component selector at the end of the basket component template:
   - `<app-checkout-form />`
 
-
+<!-- separator-vertical -->
 
 ## Lab 12: Forms 2/5
 ### Handle form fields
@@ -35,7 +35,7 @@ In this lab, you'll create an Angular form to checkout the basket.
 - Credit card field has 2 "invalid-feedback":
   - Use `@if` block to display only the relevant error
 
-
+<!-- separator-vertical -->
 
 ## Lab 12: Forms 3/5
 ### Handle form submission
@@ -54,7 +54,7 @@ In this lab, you'll create an Angular form to checkout the basket.
   - Form fields and the submit button should be disabled when the form is being submitted
     (to achieve this 2 points, add a new property `checkoutInProgress: signal<boolean>` in the component class)
 
-
+<!-- separator-vertical -->
 
 ## Lab 12: Forms 4/5
 ### Basket related changes
@@ -89,7 +89,7 @@ export class BasketResource {
 }
 ```
 
-
+<!-- separator-vertical -->
 
 ## Lab 12: Forms 5/5
 ### Back to `CheckoutForm` component

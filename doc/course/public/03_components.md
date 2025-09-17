@@ -2,7 +2,7 @@
 
 <!-- .slide: class="page-title" -->
 
-
+<!-- separator-vertical -->
 
 ## Table of Contents
 
@@ -31,9 +31,7 @@
 </div>
 </div>
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Components - Definition 1/3
 
@@ -41,9 +39,7 @@ Notes :
 - Each component represents a **part of a larger web page**
 - Organizing an application into components helps **provide structure to your project**, clearly separating code into specific parts that are easy to maintain and grow over time
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Components - Definition 2/3
 
@@ -61,9 +57,7 @@ import { Component } from '@angular/core';
 export class Hello {}
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Components - Definition 3/3
 
@@ -88,9 +82,7 @@ export class App {}
 
 *😉 The `App` component is the only one to be **bootstrapped**. Its selector (`app-root`) is searched for in the web page.<br /> All other components are necessarily **imported** by the main component or its children.*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Component - Template
 
@@ -116,9 +108,7 @@ export class App {}
 <h1>My Awesome App</h1>
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Component - Styles
 
@@ -148,9 +138,7 @@ export class App {}
 h1 { font-weight: normal; }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Template syntax - Text interpolation
 
@@ -172,9 +160,7 @@ export class ProductCard {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Template syntax - Property binding
 
@@ -196,9 +182,7 @@ Notes :
 <button [style.color]="isHighlight ? 'orange': null">Save</button>
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Template syntax - Attribute binding
 
@@ -222,9 +206,7 @@ Example: `role` is a valid HTML attribute of the `<div>` tag, but there's no suc
 <!-- ❌ Can't bind to 'role' since it isn't a known property of 'div'. -->
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Template syntax - Event listeners
 
@@ -243,9 +225,7 @@ Notes :
 <input (keyup.enter)="onEnter()" />
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Template syntax - Event listeners | $event
 
@@ -269,9 +249,7 @@ export class Demo {
 - We achieve a *two-way data binding* using both property binding and Event listeners
   - the **class** property `name` and the **template** input `value` will always be in sync
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Component - Input 1/4
 
@@ -299,9 +277,7 @@ export class Counter {
 count = input<number>(); // is equivalent to `input<number | undefined>();`
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Component - Input 2/4
 
@@ -325,9 +301,7 @@ export class App {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Component - Input 3/4
 
@@ -345,9 +319,7 @@ export class Counter {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Component - Input 4/4
 
@@ -373,9 +345,7 @@ export class App {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Component - Output 1/2
 
@@ -400,9 +370,7 @@ export class Counter {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Component - Output 2/2
 
@@ -434,7 +402,7 @@ Notes :
 The `parentCount` is deliberately set to `undefined` to show that it is the `Counter` which has ownership of the data.
 This problem will be solved with `model`.
 
-
+<!-- separator-vertical -->
 
 ## Component - Model input 1/4
 
@@ -458,9 +426,7 @@ export class Counter {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Component - Model input 2/4
 
@@ -488,9 +454,7 @@ export class App {
 
 - The `output` name is based on the `input` name but with the suffix: `"Change"`
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Component - Model input 3/4
 
@@ -516,9 +480,7 @@ export class App {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Component - Model input 4/4
 
@@ -544,14 +506,12 @@ export class Counter {
 - `.set()` and `.update()` methods are part of the signals API
 - Signals play a crucial role in the Angular reactivity model and whole chapter is devoted to them later in the course
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Components - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
-
+<!-- separator-vertical -->
 
 ## Components - Lab 3
 <!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->

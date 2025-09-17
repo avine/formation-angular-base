@@ -43,7 +43,7 @@ export const appConfig: ApplicationConfig = {
 
 The product price should now be displayed correctly. 🎉
 
-
+<!-- separator-vertical -->
 
 ## Lab 9: Pipes 2/3
 ### `App` component
@@ -68,7 +68,7 @@ You'll find a component ready for use here: `lab/resources/select-product-key`.
 
 - Copy/paste the `lab/resources/select-product-key` directory into your app at `src/app/select-product-key`
 
-
+<!-- separator-vertical -->
 
 ## Lab 9: Pipes 3/3
 

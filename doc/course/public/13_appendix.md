@@ -2,7 +2,7 @@
 
 <!-- .slide: class="page-title" -->
 
-
+<!-- separator-vertical -->
 
 ## Table of Contents
 
@@ -31,9 +31,7 @@
 </div>
 </div>
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Appendix - Component view encapsulation 1/3
 
@@ -63,10 +61,7 @@ h1[_ngcontent-ng-529479] { color: blue }
 </app-root>
 ```
 
-Notes :
-Host bindings are covered in the Directives chapter (`@Directive({ host: ... })` which also applies to `@Component({ host: ... })`).
-
-
+<!-- separator-vertical -->
 
 ## Appendix - Component view encapsulation 2/3
 
@@ -83,7 +78,6 @@ import { Component } from '@angular/core';
 export class App {}
 ```
 
-
 - At runtime, Angular transforms the pseudo class into **unique attributes**
 
 ```css
@@ -96,9 +90,7 @@ export class App {}
 </app-root>
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Appendix - Component view encapsulation 3/3
 
@@ -123,9 +115,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 export class App {}
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Appendix - Component projection 1/3
 
@@ -149,9 +139,7 @@ export class Card {}
 export class App {}
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Appendix - Component projection 2/3
 
@@ -176,9 +164,7 @@ export class Card {}
 export class App {}
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Appendix - Component projection 3/3
 
@@ -202,9 +188,7 @@ export class Card {}
 export class App {}
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Appendix - Component lifecycle
 
@@ -233,9 +217,7 @@ export class App implements
   }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Appendix - Component lifecycle | OnInit
 
@@ -261,9 +243,7 @@ export class Posts implements OnInit {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Appendix - Component lifecycle | OnDestroy
 
@@ -287,9 +267,7 @@ export class Interval implements OnDestroy {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Appendix - Comp. lifecycle hooks | DestroyRef
 
@@ -315,9 +293,7 @@ export class Interval {
 
 😉 *It is considered a more modern approach*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Appendix - Component queries 1/2
 
@@ -345,9 +321,7 @@ export class App implements OnInit, AfterViewInit {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Appendix - Component queries 2/2
 
@@ -376,9 +350,7 @@ export class App {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Appendix - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->

@@ -2,7 +2,7 @@
 
 <!-- .slide: class="page-title" -->
 
-
+<!-- separator-vertical -->
 
 ## Table of Contents
 
@@ -31,9 +31,7 @@
 </div>
 </div>
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Pipes - Definition
 
@@ -52,9 +50,7 @@ import {
 
 - ... but you can also create custom pipes based on your business logic
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Pipes - Usage in template
 
@@ -81,9 +77,7 @@ export class App {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Pipes - Custom
 
@@ -111,9 +105,9 @@ export class JoinArrayPipe implements PipeTransform {
 ```
 
 Notes :
-In fact this pipe does not really work because it needs to be "impure" (this is explained later...).
+In fact this pipe does not really works because it needs to be "impure" (this is explained later...).
 
-
+<!-- separator-vertical -->
 
 ## Pipes - Configuration
 
@@ -129,9 +123,7 @@ Here's an example with the `CurrencyPipe`
   - should display `€3.50` for United States
   - should display `3,50 €` for France
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Pipes - Configuration | CurrencyPipe
 
@@ -155,9 +147,7 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Pipes - Usage in class
 
@@ -180,9 +170,7 @@ class App {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Pipes - Pure
 
@@ -203,9 +191,7 @@ export class FancyPipe implements PipeTransform {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Pipes - Impure 1/2
 
@@ -231,9 +217,7 @@ export class App {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Pipes - Impure 2/2
 
@@ -260,9 +244,7 @@ export class App {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Pipes - Testing
 
@@ -288,14 +270,12 @@ describe('JoinArrayPipe', () => {
 });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Pipes - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
-
+<!-- separator-vertical -->
 
 ## Pipes - Lab 9
 <!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->

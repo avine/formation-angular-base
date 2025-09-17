@@ -30,7 +30,7 @@ Here are the available endpoints:
 
 - Add the HTTP provider: `provideHttpClient(withFetch())`
 
-
+<!-- separator-vertical -->
 
 ## Lab 10: Http client 2/3
 ### `CatalogResource`
@@ -63,7 +63,7 @@ export class CatalogResource {
 
 - Subcribe to `CatalogResource.fetchProducts` method in the `App` class constructor, to trigger data fetching
 
-
+<!-- separator-vertical -->
 
 ## Lab 10: Http client 3/3
 ### `BasketResource`

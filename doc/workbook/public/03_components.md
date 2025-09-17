@@ -12,7 +12,7 @@ ng generate component menu
 
 - Once done, use the component `<app-menu />` in `src/app/app.html`
 
-
+<!-- separator-vertical -->
 
 ## Lab 3: Components 2/3
 ### Creating the "product-card" component
@@ -50,7 +50,7 @@ export interface Product {
 
 - The output should emit the product when the user clicks on the button "Ajoutez au panier"
 
-
+<!-- separator-vertical -->
 
 ## Lab 3: Components 3/3
 ### Storing all products in the `App` component

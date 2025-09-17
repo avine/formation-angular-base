@@ -2,7 +2,7 @@
 
 <!-- .slide: class="page-title" -->
 
-
+<!-- separator-vertical -->
 
 ## Table of Contents
 
@@ -31,9 +31,7 @@
 </div>
 </div>
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Control flow
 
@@ -47,9 +45,7 @@ Notes :
 
 😉 *Another control flow is `@defer` block, but its study goes beyond the scope of this course*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Control flow - @if 1/2
 
@@ -72,9 +68,7 @@ Notes :
 
 *In this example, we assume that the property `todos: Todo[]` is defined on the component class*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Control flow - @if 2/2
 
@@ -92,9 +86,7 @@ Notes :
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Control flow - @for 1/3
 
@@ -114,9 +106,7 @@ Notes :
 
 - This allows Angular to optimize performance by executing the minimum necessary DOM operations when the data changes
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Control flow - @for 2/3
 
@@ -144,9 +134,7 @@ Notes :
 
   - `$count`, `$index`, `$first`, `$last`, `$even`, `$odd` 
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Control flow - @for 3/3
 
@@ -165,9 +153,7 @@ Notes :
 </ul>
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Control flow - @switch
 
@@ -189,12 +175,12 @@ Notes :
 }
 ```
 
-
+<!-- separator-vertical -->
 
 ## Control flow - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
-
+<!-- separator-vertical -->
 
 ## Control flow - Lab 5
 <!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->

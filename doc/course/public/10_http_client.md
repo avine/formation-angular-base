@@ -2,7 +2,7 @@
 
 <!-- .slide: class="page-title" -->
 
-
+<!-- separator-vertical -->
 
 ## Table of Contents
 
@@ -31,9 +31,7 @@
 </div>
 </div>
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - Getting started 1/5
 
@@ -64,9 +62,7 @@ interface Todo {
 
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - Getting started 2/5
 
@@ -85,9 +81,7 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - Getting started 3/5
 
@@ -115,9 +109,7 @@ export class TodoList {
   }
 }
 ```
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - Getting started 4/5
 
@@ -144,9 +136,7 @@ export class TodoService {
 - **Data source providers** (typically Services) should only **expose the shape of requests**
   and let **data source consumers** (typically Components) **subscribe** to them
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - Getting started 5/5
 
@@ -174,9 +164,7 @@ export class TodoList {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - State management 1/2
 
@@ -204,9 +192,7 @@ export class TodoService {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - State management 2/2
 
@@ -235,9 +221,7 @@ export class TodoService {
 
 *But to understand this solution, we need to understand how the `HttpClient` methods work*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - Methods
 
@@ -265,9 +249,7 @@ interface HttpOptions {
 
 - Each of these methods returns an `Observable`, but what are observables anyway?
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - Observables
 
@@ -281,9 +263,7 @@ Notes :
   - a **single value** if the request succeeds
   - an **error** if the request fails (`HttpErrorResponse`)
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - Error handling
 
@@ -308,9 +288,7 @@ this.httpClient.get(TODOS_URL).subscribe(
 );
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - HttpClient | Pipe 1/3
 
@@ -330,9 +308,7 @@ this.httpClient
 
 - Both `.pipe()` and `.subscribe()` methods are parts of the Observable API
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - HttpClient | Pipe 2/3
 
@@ -356,9 +332,7 @@ this.httpClient
   });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - HttpClient | Pipe 3/3
 
@@ -384,9 +358,7 @@ this.httpClient
   });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - State management 1/3
 
@@ -414,9 +386,7 @@ export class TodoService {                                  // <-- Data source p
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - State management 2/3
 
@@ -445,9 +415,7 @@ export class TodoList {                                     // <-- Data source c
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - State management 3/3
 
@@ -472,9 +440,7 @@ Notes :
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - Testing 1/2
 
@@ -501,9 +467,7 @@ describe('TodoService', () => {
   // ...
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - Testing 2/2
 
@@ -529,14 +493,12 @@ Notes :
 });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Http client - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
-
+<!-- separator-vertical -->
 
 ## Http client - Lab 10
 <!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->

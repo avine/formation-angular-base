@@ -26,7 +26,7 @@ npx serve .
   - It contains **brief informations** about the layout of the design
   - Follow the **detailed instructions** provided below in this workbook to integrate the design into your Angular application
 
-
+<!-- separator-vertical -->
 
 ## Lab 2: Workspace 2/3
 ### Adding Bootstrap CSS
@@ -66,7 +66,7 @@ npm i bootstrap
 }
 ```
 
-
+<!-- separator-vertical -->
 
 ## Lab 2: Workspace 3/3
 ### Adding the HTML code

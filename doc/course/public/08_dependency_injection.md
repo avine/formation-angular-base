@@ -2,7 +2,7 @@
 
 <!-- .slide: class="page-title" -->
 
-
+<!-- separator-vertical -->
 
 ## Table of Contents
 
@@ -31,9 +31,7 @@
 </div>
 </div>
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Dependency injection - In a nutshell
 
@@ -60,9 +58,7 @@ export class App {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Dependency injection - Injectable
 
@@ -88,9 +84,7 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Dependency injection - Injectable | providedIn
 
@@ -117,9 +111,7 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Dependency injection - Component providers 
 
@@ -144,9 +136,7 @@ export class Child {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Dependency injection - Injectors
 
@@ -172,9 +162,7 @@ export class Getter {
 }
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Dependency injection - Injectors hierarchy
 
@@ -188,9 +176,7 @@ Notes :
 
 - However, it is sometimes useful to **delegate part of a component's logic to a dedicated service**, which is then **provided at the component level itself**
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Dependency injection - Providers | ClassProvider
 
@@ -222,7 +208,7 @@ export const appConfig: ApplicationConfig = {
 Notes :
 The full syntax is very useful when, for example, you need to mock your dependencies in your tests, as will be shown at the end of the chapter.
 
-
+<!-- separator-vertical -->
 
 ## Dependency injection - Providers | ValueProvider
 
@@ -251,9 +237,7 @@ In the next chapter on `Pipe`s, you'll see how Angular uses `InjectionToken`s
 
 *😉 Note that there's also a `FactoryProvider`, but its study goes beyond the scope of this course*
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Dependency injection - App Initializer
 
@@ -275,12 +259,11 @@ export const appConfig: ApplicationConfig = {
 ```
 
 Notes :
-
 Without the initializer, the user's status would have 3 possible values: "unknown", "not authenticated", "authenticated".
 
 Thanks to the initializer, the user can no longer be "unknown", once the app is bootstrapped.
 
-
+<!-- separator-vertical -->
 
 ## Dependency injection - Testing in isolation
 
@@ -307,14 +290,12 @@ describe('App', () => {
 });
 ```
 
-Notes :
-
-
+<!-- separator-vertical -->
 
 ## Dependency injection - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
-
+<!-- separator-vertical -->
 
 ## Dependency injection - Lab 8
 <!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->
