@@ -1,4 +1,4 @@
-import { CurrencyPipe, NgClass, UpperCasePipe } from '@angular/common';
+import { CurrencyPipe, UpperCasePipe } from '@angular/common';
 import { Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Product } from './product-types';
@@ -6,7 +6,7 @@ import { Product } from './product-types';
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.html',
-  imports: [CurrencyPipe, NgClass, UpperCasePipe, RouterLink],
+  imports: [CurrencyPipe, UpperCasePipe, RouterLink],
 })
 export class ProductCard {
   readonly product = input.required<Product>();
