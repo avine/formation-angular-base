@@ -6,10 +6,6 @@
     {
       "files": "*.html",
       "options": { "parser": "angular" }
-    },
-    {
-      "files": "index.html",
-      "options": { "parser": "html" }
     }
   ]
 }
