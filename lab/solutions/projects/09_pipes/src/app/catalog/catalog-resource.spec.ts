@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { CatalogResource } from './catalog-resource';
 
@@ -5,7 +6,7 @@ describe('CatalogResource', () => {
   let service: CatalogResource;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ providers: [provideZonelessChangeDetection()] });
     service = TestBed.inject(CatalogResource);
   });
 

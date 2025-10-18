@@ -23,7 +23,3 @@ In this Lab, you'll convert the `App` component properties into signals.
 #### `app.spec.ts`
 
 - Fix the tests to properly consume the different signals
-
-### Bonus: `ApplicationConfig`
-
-- Switch the app to "Zoneless" change detection

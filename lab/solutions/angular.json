@@ -13,7 +13,6 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "projects/01_getting_started/src/main.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "projects/01_getting_started/tsconfig.app.json",
             "assets": [
               {
@@ -68,7 +67,6 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/01_getting_started/tsconfig.spec.json",
             "assets": [
               {
@@ -98,7 +96,6 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "projects/02_workspace/src/main.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "projects/02_workspace/tsconfig.app.json",
             "assets": [
               {
@@ -153,7 +150,6 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/02_workspace/tsconfig.spec.json",
             "assets": [
               {
@@ -183,7 +179,6 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "projects/03_components/src/main.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "projects/03_components/tsconfig.app.json",
             "assets": [
               {
@@ -238,7 +233,6 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/03_components/tsconfig.spec.json",
             "assets": [
               {
@@ -268,7 +262,6 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "projects/04_tests/src/main.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "projects/04_tests/tsconfig.app.json",
             "assets": [
               {
@@ -323,7 +316,6 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/04_tests/tsconfig.spec.json",
             "assets": [
               {
@@ -353,7 +345,6 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "projects/05_control_flow/src/main.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "projects/05_control_flow/tsconfig.app.json",
             "assets": [
               {
@@ -408,7 +399,6 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/05_control_flow/tsconfig.spec.json",
             "assets": [
               {
@@ -438,7 +428,6 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "projects/06_directives/src/main.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "projects/06_directives/tsconfig.app.json",
             "assets": [
               {
@@ -493,7 +482,6 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/06_directives/tsconfig.spec.json",
             "assets": [
               {
@@ -523,7 +511,6 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "projects/07_signals/src/main.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "projects/07_signals/tsconfig.app.json",
             "assets": [
               {
@@ -578,7 +565,6 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/07_signals/tsconfig.spec.json",
             "assets": [
               {
@@ -608,7 +594,6 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "projects/08_dependency_injection/src/main.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "projects/08_dependency_injection/tsconfig.app.json",
             "assets": [
               {
@@ -666,7 +651,6 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/08_dependency_injection/tsconfig.spec.json",
             "assets": [
               {
@@ -702,7 +686,6 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "projects/09_pipes/src/main.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "projects/09_pipes/tsconfig.app.json",
             "assets": [
               {
@@ -757,7 +740,6 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/09_pipes/tsconfig.spec.json",
             "assets": [
               {
@@ -787,7 +769,6 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "projects/10_http_client/src/main.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "projects/10_http_client/tsconfig.app.json",
             "assets": [
               {
@@ -842,7 +823,6 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/10_http_client/tsconfig.spec.json",
             "assets": [
               {
@@ -872,7 +852,6 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "projects/10_http_resource/src/main.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "projects/10_http_resource/tsconfig.app.json",
             "assets": [
               {
@@ -927,7 +906,6 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/10_http_resource/tsconfig.spec.json",
             "assets": [
               {
@@ -957,7 +935,6 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "projects/11_routing/src/main.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "projects/11_routing/tsconfig.app.json",
             "assets": [
               {
@@ -1012,7 +989,6 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/11_routing/tsconfig.spec.json",
             "assets": [
               {
@@ -1042,7 +1018,6 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "projects/12_forms/src/main.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "projects/12_forms/tsconfig.app.json",
             "assets": [
               {
@@ -1097,7 +1072,6 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/12_forms/tsconfig.spec.json",
             "assets": [
               {

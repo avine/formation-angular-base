@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
@@ -18,6 +18,7 @@ describe('App', () => {
     await TestBed.configureTestingModule({
       imports: [App],
       providers: [
+        provideZonelessChangeDetection(),
         { provide: CatalogResource, useClass: CatalogResourceMock },
         { provide: BasketResource, useClass: BasketResourceMock },
         { provide: APP_TITLE, useValue: 'The App Title' },
@@ -36,6 +37,10 @@ describe('App', () => {
     fixture = TestBed.createComponent(App);
     component = fixture.componentInstance;
 
+    // Labs 1-6 didn't use signals, so we had to call `fixture.detectChanges` after setting the component's state.
+    // Otherwise, we would have gotten the `ExpressionChangedAfterItHasBeenCheckedError` error.
+    // But now we're using signals, so it's fine to change the component's state via signals even after `fixture.detectChanges`.
+    // That's why we can call it here in the `beforeEach` section.
     fixture.detectChanges();
   });
 

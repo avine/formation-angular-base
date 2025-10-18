@@ -97,7 +97,6 @@ The presence of a `package.json` file indicates that the directory is the root o
   "dependencies": {
     "rxjs": "...",
     "tslib": "...",
-    "zone.js": "..."
   },
   "devDependencies": {
     "typescript": "..."
@@ -170,7 +169,6 @@ The presence of an `angular.json` file indicates that the directory is the root 
           "options": {
               "index": "src/index.html",
               "browser": "src/main.ts",
-              "polyfills": ["zone.js"],
               "tsConfig": "tsconfig.app.json",
               "assets": [{ "glob": "**/*", "input": "public" }],
               "styles": ["src/styles.css"]

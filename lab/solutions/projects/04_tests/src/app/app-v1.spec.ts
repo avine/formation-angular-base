@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { App } from './app';
@@ -10,19 +11,28 @@ describe('App (first approach - with explicit dependency declaration)', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
+      providers: [provideZonelessChangeDetection()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(App);
     component = fixture.componentInstance;
 
-    fixture.detectChanges();
+    // We must call `fixture.detectChanges()` at the beginning of each test (not in the `beforeEach` section).
+    // This is because our component's state is defined by raw values (like `total`),
+    // not signals (we'll cover signals later in the training).
+    // And since we're using raw values, we must modify them before calling `fixture.detectChanges()`,
+    // otherwise we'll encounter the error `ExpressionChangedAfterItHasBeenCheckedError`.
   });
 
   it('should create the app', () => {
+    fixture.detectChanges();
+
     expect(component).toBeTruthy();
   });
 
   it('should display the products', () => {
+    fixture.detectChanges();
+
     const productCardDebugElements = fixture.debugElement.queryAll(By.directive(ProductCard));
     productCardDebugElements.forEach((productCardDebugElement, index) => {
       const productCard: ProductCard = productCardDebugElement.componentInstance;

@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductCard } from './product-card';
 
@@ -9,6 +10,7 @@ describe('ProductCard', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ProductCard],
+      providers: [provideZonelessChangeDetection()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProductCard);
@@ -73,7 +75,14 @@ describe('ProductCard', () => {
     const card = nativeElement.querySelector('.card');
 
     // When
-    component.product().stock = 1;
+    fixture.componentRef.setInput('product', {
+      id: 'ID',
+      title: 'TITLE',
+      description: 'DESC',
+      photo: 'PHOTO',
+      price: 10,
+      stock: 1,
+    });
     fixture.detectChanges();
 
     // Then

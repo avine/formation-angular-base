@@ -6,7 +6,7 @@ import {
   DEFAULT_CURRENCY_CODE,
   LOCALE_ID,
   provideBrowserGlobalErrorListeners,
-  provideZoneChangeDetection,
+  provideZonelessChangeDetection,
 } from '@angular/core';
 import { appTitleProvider } from './app.token';
 
@@ -15,7 +15,7 @@ registerLocaleData(localeFr);
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideZonelessChangeDetection(),
     provideHttpClient(withFetch()),
     { provide: LOCALE_ID, useValue: 'fr' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },

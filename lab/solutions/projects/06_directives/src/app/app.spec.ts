@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { App } from './app';
@@ -11,6 +11,7 @@ describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
+      providers: [provideZonelessChangeDetection()],
     })
       .overrideComponent(App, {
         remove: {
@@ -25,14 +26,22 @@ describe('App', () => {
     fixture = TestBed.createComponent(App);
     component = fixture.componentInstance;
 
-    fixture.detectChanges();
+    // We must call `fixture.detectChanges()` at the beginning of each test (not in the `beforeEach` section).
+    // This is because our component's state is defined by raw values (like `total`),
+    // not signals (we'll cover signals later in the training).
+    // And since we're using raw values, we must modify them before calling `fixture.detectChanges()`,
+    // otherwise we'll encounter the error `ExpressionChangedAfterItHasBeenCheckedError`.
   });
 
   it('should create the app', () => {
+    fixture.detectChanges();
+
     expect(component).toBeTruthy();
   });
 
   it('should display the products', () => {
+    fixture.detectChanges();
+
     const productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
 
     productCardDebugElements.forEach((productCardDebugElement, index) => {
@@ -73,6 +82,8 @@ describe('App', () => {
   /* ----- NEW TESTS STARTS HERE ----- */
 
   it('should decrease the stock of the product added to the basket', () => {
+    fixture.detectChanges();
+
     // Given
     expect(component.products[0].stock).toBe(2);
 
@@ -85,6 +96,8 @@ describe('App', () => {
   });
 
   it('should not display products whose stock is empty', () => {
+    fixture.detectChanges();
+
     // Given
     let productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
     expect(productCardDebugElements).toHaveSize(4);

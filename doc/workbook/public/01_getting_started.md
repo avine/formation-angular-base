@@ -46,9 +46,9 @@ ng new my-first-app
 ```
 
 You will be displayed some options for the app:
-- Choose "No" for 'zoneless' application
-- Choose "CSS" as style preprocessor
-- Choose "No" for SSR/SSG/Prerendering
+- Choose **"Yes"** for 'zoneless' application
+- Choose **"CSS"** for style preprocessor
+- Choose **"No"** for SSR/SSG/Prerendering
 
 #### If you can't install the Angular CLI globally, create the app with the following shell command
 
@@ -193,6 +193,8 @@ ng serve # or: `npm start`
 If you use VSCode as your IDE, install the following extensions in addition, to improve your developer experience:
 
 - [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag) (optional)
 - [Github Theme](https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme) (optional)
 - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) (optional)

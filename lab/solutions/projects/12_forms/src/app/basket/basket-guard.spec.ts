@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { CanMatchFn, Route } from '@angular/router';
 import { Observable, firstValueFrom, of } from 'rxjs';
@@ -16,7 +17,7 @@ describe('basketGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [{ provide: BasketResource, useClass: BasketResourceMock }],
+      providers: [provideZonelessChangeDetection(), { provide: BasketResource, useClass: BasketResourceMock }],
     });
 
     basketResource = TestBed.inject(BasketResource);

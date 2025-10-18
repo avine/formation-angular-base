@@ -280,7 +280,7 @@ console.log(newItems);                                  // --> [0, 1, 2, 3, 4]
 
 <!-- separator-vertical -->
 
-## TypeScript - Classes 1/4
+## TypeScript - Classes 1/3
 
 *Classes and interfaces are similar to those in Object Oriented Programming (OOP)*
 
@@ -306,7 +306,7 @@ person.sayHello(); // --> Hello, I'm Carl!
 
 <!-- separator-vertical -->
 
-## TypeScript - Classes 2/4
+## TypeScript - Classes 2/3
 
 - 3 scopes for encapsulation: `public`, `protected` and `private`
   - `public` is the default scope
@@ -330,33 +330,7 @@ class Demo {
 
 <!-- separator-vertical -->
 
-## TypeScript - Classes 3/4
-
-- TypeScript provides a shortcut to **link constructor arguments to class properties**
-
-The following shortcut...
-
-```ts
-class Person {
-  constructor(public firstName: string) {}
-}
-```
-
-...is equivalent to
-
-```ts
-class Person {
-  public firstName: string;
-
-  constructor(firstName: string) {
-    this.firstName = firstName;
-  }
-}
-```
-
-<!-- separator-vertical -->
-
-## TypeScript - Classes 4/4
+## TypeScript - Classes 3/3
 
 - Possibility to have "**getter**" and "**setter**"
 

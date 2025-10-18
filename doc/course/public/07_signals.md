@@ -128,60 +128,6 @@ count.update((c) => c + 1);
 
 <!-- separator-vertical -->
 
-## Signals - Synchronization process 1/3
-
-- The goal of synchronization is to keep the **UI** in sync with the **state** of the application
-
-- This is a very complex process, formerly called **Change detection** and still based today on a third-party library called **Zone.js**
-
-- In other words, for now, Zone.js is responsible for telling Angular when to trigger its change detection process and update the UI to reflect the state of the application
-
-- Understanding Zone.js goes beyond the scope of this course
-
-- However, Angular is moving towards **Zoneless** applications
-
-- In this new era, **signals** will play a crucial role in enabling Angular to know exactly when and which parts of the UI needs to be synchronized
-
-As a rule of thumb
-  - if the part of the **state to be rendered in your templates** only **changes through signals**
-  - then your app should be **ready to go Zoneless**
-
-<!-- separator-vertical -->
-
-## Signals - Synchronization process 2/3
-
-- Enabling Zoneless in your application is still an experimental feature
-
-```ts
-import {
-  ApplicationConfig,
-  // provideZoneChangeDetection,
-  provideZonelessChangeDetection,
-} from '@angular/core';
-
-export const appConfig: ApplicationConfig = {
-  providers: [
-    // provideZoneChangeDetection({ eventCoalescing: true }),   // <-- Default
-
-    provideZonelessChangeDetection(),                           // <-- Zoneless
-  ],
-};
-```
-
-- You also need to remove `"zone.js"` and `"zone.js/testing"` in your angular.json configuration file
-
-- Then you can safely uninstall Zone.js by running the command `npm uninstall zone.js`
-
-<!-- separator-vertical -->
-
-## Signals - Synchronization process 3/3
-
-😉 *A deeper understanding of the synchronization process goes beyond the scope of this course*
-
-- **In-depth resource:** https://angular.dev/guide/experimental/zoneless
-
-<!-- separator-vertical -->
-
 ## Signals - Usage in components
 
 - When a signal changes, Angular will automatically re-render the templates that depend on it
@@ -251,7 +197,7 @@ import { Component, model } from '@angular/core';
   template: `<button (click)="increment()">{{ count() }}</button>`,
 })
 export class Counter {
-  count = model<number>(0);
+  count = model(0);
 
   protected increment() {
     this.count.update((count) => count + 1);
@@ -310,6 +256,25 @@ describe('Counter', () => {
   });
 });
 ```
+
+<!-- separator-vertical -->
+
+## Signals - Synchronization process
+
+- The goal of synchronization is to keep the **UI** in sync with the **state** of the application
+
+- **signals** play a crucial role in enabling Angular to know exactly when and which parts of the UI needs to be synchronized
+
+- As a rule of thumb, if the part of the **state to be rendered in your templates** only **changes through signals** then your UI should always be in sync with the state of your application
+
+_⚠️​ Note that with signals Angular has entered a new era._
+_Previously, the synchronization process was achieved using a third-party library called **Zone.js**._
+
+- _This was a very complex process, formerly called **Change detection**_
+
+- _In a nutshell, Zone.js was responsible for telling Angular when to trigger its change detection process and update the UI to reflect the state of the application_
+
+- _So today, Angular no longer relies on Zone.js, and that's why we've entered the era of **Zoneless applications**_
 
 <!-- separator-vertical -->
 
