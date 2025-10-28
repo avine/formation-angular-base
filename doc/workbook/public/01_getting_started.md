@@ -46,9 +46,9 @@ ng new my-first-app
 ```
 
 You will be displayed some options for the app:
-- Choose **"Yes"** for 'zoneless' application
 - Choose **"CSS"** for style preprocessor
 - Choose **"No"** for SSR/SSG/Prerendering
+- Choose **"Yes"** for 'zoneless' application
 
 #### If you can't install the Angular CLI globally, create the app with the following shell command
 
