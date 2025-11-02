@@ -254,13 +254,15 @@ window.innerWidth # ...returns for example: `1135` (window width in px)
 
 ```bash
 # Running the following command in a Terminal,
-# will install the `@angular/cli` package on your computer
+# will install the `@angular/cli` package globally on your computer
 npm install --global @angular/cli
 
 # Once the package has been installed, it globally provides the `ng` command,
 # which for example, lets you generate an Angular application skeleton
 ng new
 ```
+
+😉 *Note: within a Node.js project folder, installing a package without the `--global` option, will install it locally for the project.*
 
 <!-- separator-vertical -->
 
@@ -303,10 +305,10 @@ import { Component } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-root',
-  template: '<p>Hello world!</p>',
+  selector: 'app-root',             // --> CSS selector
+  template: '<p>Hello world!</p>',  // --> HTML template
 })
-class App {}
+class App {}                        // --> JavaScript class (supercharged by its decorator's metadata)
 
 bootstrapApplication(App);
 ```
@@ -317,7 +319,7 @@ bootstrapApplication(App);
 
 ## Angular - The big picture 2/2 <img src="./resources/01-angular.png" />
 
-- In the **execution phase** (once the app has been built and is running in a web browser), Angular tries to bootstrap the application
+- In the **execution phase** (once the app has been built and is running in a web browser), Angular tries to **bootstrap** the application
   - it searches the web page for the tag corresponding to the component's **CSS selector**
   - it then renders the component's **HTML template** inside this tag
 

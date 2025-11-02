@@ -167,7 +167,7 @@ The presence of an `angular.json` file indicates that the directory is the root 
       "architect": {
         "build": {
           "options": {
-              "index": "src/index.html",
+              "index": "src/index.html", // This is optional as it is the default value.
               "browser": "src/main.ts",
               "tsConfig": "tsconfig.app.json",
               "assets": [{ "glob": "**/*", "input": "public" }],
