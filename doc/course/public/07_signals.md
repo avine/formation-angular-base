@@ -31,7 +31,7 @@
 </div>
 </div>
 
-Notes :
+NOTES:
 ECMA proposal for signal
 https://github.com/tc39/proposal-signals
 

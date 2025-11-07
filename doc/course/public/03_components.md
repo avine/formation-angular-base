@@ -249,6 +249,9 @@ export class Demo {
 - We achieve a *two-way data binding* using both property binding and Event listeners
   - the **class** property `name` and the **template** input `value` will always be in sync
 
+NOTES:
+☕ We need to let the participants take a break here to divide this long chapter in two.
+
 <!-- separator-vertical -->
 
 ## Component - Input 1/4
@@ -398,7 +401,7 @@ export class App {
 
 - **Output events** are never propagated to the consumer's parent component, whereas **native DOM events** are (event bubbling)
 
-Notes :
+NOTES:
 The `parentCount` is deliberately set to `undefined` to show that it is the `Counter` which has ownership of the data.
 This problem will be solved with `model`.
 

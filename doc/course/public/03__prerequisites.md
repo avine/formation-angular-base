@@ -45,7 +45,7 @@ age = 33;
 age = 'Carl';           // ❌ Type 'string' is not assignable to type 'number'
 ```
 
-- Type inference: used to provide type information when there is no explicit type annotation
+- **Type inference:** used to provide type information when there is no explicit type annotation
 
 ```ts
 const alwaysTrue = true; // is still of type `boolean`
@@ -77,8 +77,7 @@ const products: { title: string; price: number } = { title: 'Tee-shirt', price: 
 
 ## TypeScript - Types 3/3
 
-
-- Type `any` may be necessary in some cases, but should be avoided wherever possible...
+- Type `any` may be necessary in some cases, but **should be avoided** wherever possible...
 
 ```ts
 let notSure: any = 4;
@@ -260,9 +259,8 @@ There are 2 ways of adding an element to an array
 
 ```ts
 const items = [0, 1, 2, 3];
-const newItem = 4;
 
-items.push(newItem);
+items.push(4);
 
 console.log(items);                                     // --> [0, 1, 2, 3, 4]
 ```
@@ -271,12 +269,14 @@ console.log(items);                                     // --> [0, 1, 2, 3, 4]
 
 ```ts
 const items = [0, 1, 2, 3];
-const newItem = 4;
 
-const newItems = [...items, newItem];
+const newItems = [...items, 4];
 
 console.log(newItems);                                  // --> [0, 1, 2, 3, 4]
 ```
+
+_😉 Treating a value as immutable means prohibiting any modification to it after its creation._<br />
+_Immutability is an important concept in functional programming and state management._
 
 <!-- separator-vertical -->
 
@@ -369,13 +369,13 @@ class Person {
 const person = new Person('John', 'Doe');
 
 // Calling the "getter" function
-console.log(person.fullName); // --> John Doe
+console.log(person.fullName);       // --> John Doe
 
 // Calling the "setter" function
 person.fullName = 'Jean Dupont';
 
-console.log(person.firstName); // --> Jean
-console.log(person.lastName); // --> Dupont
+console.log(person.firstName);      // --> Jean
+console.log(person.lastName);       // --> Dupont
 ```
 
 <!-- separator-vertical -->

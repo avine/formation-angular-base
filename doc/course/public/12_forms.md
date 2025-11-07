@@ -261,7 +261,7 @@ export class App {}
 export class App {}
 ```
 
-Notes :
+NOTES:
 Typically, the field is marked invalid only if both "touched" and "invalid".
 
 <!-- separator-vertical -->

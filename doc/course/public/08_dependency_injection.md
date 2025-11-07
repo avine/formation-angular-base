@@ -205,7 +205,7 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-Notes :
+NOTES:
 The full syntax is very useful when, for example, you need to mock your dependencies in your tests, as will be shown at the end of the chapter.
 
 <!-- separator-vertical -->
@@ -258,7 +258,7 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-Notes :
+NOTES:
 Without the initializer, the user's status would have 3 possible values: "unknown", "not authenticated", "authenticated".
 
 Thanks to the initializer, the user can no longer be "unknown", once the app is bootstrapped.

@@ -44,7 +44,7 @@ An Angular workspace is **structured** by the following parts
 
 <!-- separator-vertical -->
 
-## Workspace - package.json
+## Workspace - package.json 1/3
 
 The presence of a `package.json` file indicates that the directory is the root of a **Node.js** project
 
@@ -64,7 +64,7 @@ The presence of a `package.json` file indicates that the directory is the root o
 
 <!-- separator-vertical -->
 
-## Workspace - package.json
+## Workspace - package.json 2/3
 
 - **Dependencies** of the Angular framework are scoped under `@angular/*`
 
@@ -88,7 +88,7 @@ The presence of a `package.json` file indicates that the directory is the root o
 
 <!-- separator-vertical -->
 
-## Workspace - package.json
+## Workspace - package.json 3/3
 
 - Angular also depends on some **third-party libraries**
 
@@ -130,7 +130,7 @@ The presence of a `tsconfig.json` file indicates that the directory is the root 
 
 <!-- separator-vertical -->
 
-## Workspace - angular.json
+## Workspace - angular.json 1/2
 
 The presence of an `angular.json` file indicates that the directory is the root of an **Angular** project
 
@@ -156,7 +156,7 @@ The presence of an `angular.json` file indicates that the directory is the root 
 
 <!-- separator-vertical -->
 
-## Workspace - angular.json
+## Workspace - angular.json 2/2
 
 - The build `"options"` in the architect section are frequently used
 

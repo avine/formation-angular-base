@@ -104,7 +104,7 @@ export class JoinArrayPipe implements PipeTransform {
 <!-- List: apple / orange / banana -->
 ```
 
-Notes :
+NOTES:
 In fact this pipe does not really works because it needs to be "impure" (this is explained later...).
 
 <!-- separator-vertical -->

@@ -46,7 +46,7 @@ Out of the box, Angular uses **Karma** as test runner and **Jasmine** as asserti
 
 By default, test files are identified by the pattern: `*.spec.ts`.
 
-Notes :
+NOTES:
 The course focuses on `TestBed` which is the environment provided by Angular for testing Angular apps.
 We therefore only learn the basics of Jasmine and Karma...
 
@@ -420,7 +420,7 @@ it('should be "odd" when child component emits', () => {
 });
 ```
 
-Notes :
+NOTES:
 Talk about "ng-mocks" library (https://www.npmjs.com/package/ng-mocks).
 
 <!-- separator-vertical -->

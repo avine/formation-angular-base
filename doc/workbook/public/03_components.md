@@ -66,6 +66,7 @@ Let's give the `App` component class, data ownership.
 
 ```html
 <app-product-card [product]="products[0]" class="col" />
+<app-product-card [product]="products[1]" class="col" />
 ...
 ```
 
