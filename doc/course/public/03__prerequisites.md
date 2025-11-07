@@ -280,7 +280,7 @@ console.log(newItems);                                  // --> [0, 1, 2, 3, 4]
 
 <!-- separator-vertical -->
 
-## TypeScript - Classes 1/3
+## TypeScript - Classes 1/4
 
 *Classes and interfaces are similar to those in Object Oriented Programming (OOP)*
 
@@ -306,11 +306,11 @@ person.sayHello(); // --> Hello, I'm Carl!
 
 <!-- separator-vertical -->
 
-## TypeScript - Classes 2/3
+## TypeScript - Classes 2/4
 
 - 3 scopes for encapsulation: `public`, `protected` and `private`
   - `public` is the default scope
-  - private scope alternative: using standard JavaScript private field (using hash `#` prefix)
+  - private scope alternative: using standard JavaScript private field (with the hash prefix `#`)
 
 ```ts
 class Demo {
@@ -330,29 +330,50 @@ class Demo {
 
 <!-- separator-vertical -->
 
-## TypeScript - Classes 3/3
+## TypeScript - Classes 3/4
 
 - Possibility to have "**getter**" and "**setter**"
 
 ```ts
 class Person {
-  constructor(public firstName: string, public lastName: string) {}
+  public firstName: string;
+  public lastName: string;
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
 
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
   }
 
-  set fullName(value: string): void {
+  set fullName(value: string) {
     const [firstName, lastName] = value.split(' ');
     this.firstName = firstName;
     this.lastName = lastName;
   }
 }
 
+// ...
+```
+
+<!-- separator-vertical -->
+
+## TypeScript - Classes 4/4
+
+
+```ts
+// ...
+
 const person = new Person('John', 'Doe');
+
+// Calling the "getter" function
 console.log(person.fullName); // --> John Doe
 
+// Calling the "setter" function
 person.fullName = 'Jean Dupont';
+
 console.log(person.firstName); // --> Jean
 console.log(person.lastName); // --> Dupont
 ```

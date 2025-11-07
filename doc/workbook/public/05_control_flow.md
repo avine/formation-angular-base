@@ -8,7 +8,7 @@ In this lab, you'll use the `@for`, `@if` and `@else` blocks to improve the appl
 
 - Add a getter `get productsInStock(): Product[]` which returns the list of products whose stock is greater than 0
 
-- Use a `@for` block to iterate over the `products` arrays to display each `<app-product-card />` component
+- Use a `@for` block to iterate over the `products` (in stock) array to display each `<app-product-card />` component
 
 - Use `@if (productsInStock.length) {} @else {}` to display the message _"Désolé, notre stock est vide !"_ when all products have an sotck equal to 0
 

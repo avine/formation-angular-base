@@ -62,8 +62,7 @@ export const appConfig: ApplicationConfig = {
 
 - Define path **parameters** using the syntax `:paramName`
 
-- Catch unknown paths using **wildcard** route `**`
-  - and then redirect to a known path or display a dedicated "Not found" page
+- Catch unknown paths using **wildcard** route `**` and redirect to a known path or display a dedicated "Not found" page
 
 ```ts
 import { Routes } from '@angular/router';

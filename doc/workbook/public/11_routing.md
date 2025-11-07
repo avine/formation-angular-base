@@ -1,7 +1,35 @@
-## Lab 11: Routing 1/7
+## Lab 11: Routing 1/8
 
 In this lab, you'll create a multi-page application (SPA) using the Angular router.
 
+### `app.config.ts`
+
+- Create the `app.routes.ts` file with the following content:
+
+```ts
+import { Routes } from '@angular/router';
+
+export const routes: Routes = [];
+```
+
+- Provide the router in the `app.config.ts` file:
+
+```ts
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    // ...
+    provideRouter(routes),
+  ],
+};
+```
+
+<!-- separator-vertical -->
+
+## Lab 11: Routing 2/8
 ### `app.routes.ts`
 
 - Create the following components and declare a route for each one of them:
@@ -35,7 +63,7 @@ In this lab, you'll create a multi-page application (SPA) using the Angular rout
 
 <!-- separator-vertical -->
 
-## Lab 11: Routing 2/7
+## Lab 11: Routing 3/8
 ### `RouterLink`
 
 Add `routerLink` directives in the following templates (don't forget to add the `RouterLink` in the related components `imports`):
@@ -55,7 +83,7 @@ Add `routerLink` directives in the following templates (don't forget to add the 
 
 <!-- separator-vertical -->
 
-## Lab 11: Routing 3/7
+## Lab 11: Routing 4/8
 ### `Basket` component
 
 - Use the following markup for the component template:
@@ -95,7 +123,7 @@ Add `routerLink` directives in the following templates (don't forget to add the 
 
 <!-- separator-vertical -->
 
-## Lab 11: Routing 4/7
+## Lab 11: Routing 5/8
 ### `BasketGuard`
 
 When visiting the page `http://localhost:4200/basket`:
@@ -131,7 +159,7 @@ export const basketGuard: CanMatchFn = () => {
 
 <!-- separator-vertical -->
 
-## Lab 11: Routing 5/7
+## Lab 11: Routing 6/8
 ### Bonus: `ProductDetails` component
 
 - Create the component and add a lazy-loaded route `'product/:id'`
@@ -149,7 +177,7 @@ export const basketGuard: CanMatchFn = () => {
 
 <!-- separator-vertical -->
 
-## Lab 11: Routing 6/7
+## Lab 11: Routing 7/8
 ### Bonus: application performances
 
 Have you noticed that when loading the catalog, the message _"Désolé, notre stock est vide !"_ appears briefly and is then replaced by the products once fetched?
@@ -180,7 +208,7 @@ export class CatalogResource {
 
 <!-- separator-vertical -->
 
-## Lab 11: Routing 7/7
+## Lab 11: Routing 8/8
 ### Bonus: directories organisation
 
 - The following directories can be moved within the `src/app/catalog/` directory:

@@ -50,6 +50,8 @@ export class App {
   total = signal(0);
 
   addToBasket({ id, price }: Product) {
+    // Option 1)
+    // Modern JavaScript Syntax
     this.products.update((products) =>
       products.map((product) => {
         if (product.id === id) {
@@ -58,6 +60,23 @@ export class App {
         return product;
       }),
     );
+
+    // Option 2)
+    // If the syntax above is too difficult to understand,
+    // here is an alternative implementation that uses a more classic JavaScript syntax.
+    /*this.products.update((products) => {
+      const newProducts: Product[] = [];
+      for (const product of products) {
+        if (product.id === id) {
+          const newProduct = Object.assign({}, product);
+          newProduct.stock -= 1;
+          newProducts.push(newProduct);
+        } else {
+          newProducts.push(product);
+        }
+      }
+      return newProducts;
+    });*/
 
     this.total.update((total) => total + price);
   }

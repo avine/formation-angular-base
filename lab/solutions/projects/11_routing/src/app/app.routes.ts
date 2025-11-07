@@ -25,6 +25,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'catalog',
+    redirectTo: '/catalog',
   },
 ];
