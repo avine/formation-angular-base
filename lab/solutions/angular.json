@@ -65,16 +65,9 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/01_getting_started/tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/01_getting_started/public"
-              }
-            ],
-            "styles": ["projects/01_getting_started/src/styles.css"]
+            "tsConfig": "projects/01_getting_started/tsconfig.spec.json"
           }
         },
         "lint": {
@@ -148,16 +141,9 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/02_workspace/tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/02_workspace/public"
-              }
-            ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/02_workspace/src/styles.css"]
+            "tsConfig": "projects/02_workspace/tsconfig.spec.json"
           }
         },
         "lint": {
@@ -231,16 +217,9 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/03_components/tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/03_components/public"
-              }
-            ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/03_components/src/styles.css"]
+            "tsConfig": "projects/03_components/tsconfig.spec.json"
           }
         },
         "lint": {
@@ -314,16 +293,9 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/04_tests/tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/04_tests/public"
-              }
-            ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/04_tests/src/styles.css"]
+            "tsConfig": "projects/04_tests/tsconfig.spec.json"
           }
         },
         "lint": {
@@ -397,16 +369,9 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/05_control_flow/tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/05_control_flow/public"
-              }
-            ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/05_control_flow/src/styles.css"]
+            "tsConfig": "projects/05_control_flow/tsconfig.spec.json"
           }
         },
         "lint": {
@@ -480,16 +445,9 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/06_directives/tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/06_directives/public"
-              }
-            ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/06_directives/src/styles.css"]
+            "tsConfig": "projects/06_directives/tsconfig.spec.json"
           }
         },
         "lint": {
@@ -563,16 +521,9 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/07_signals/tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/07_signals/public"
-              }
-            ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/07_signals/src/styles.css"]
+            "tsConfig": "projects/07_signals/tsconfig.spec.json"
           }
         },
         "lint": {
@@ -649,19 +600,9 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/08_dependency_injection/tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/08_dependency_injection/public"
-              }
-            ],
-            "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "projects/08_dependency_injection/src/styles.css"
-            ]
+            "tsConfig": "projects/08_dependency_injection/tsconfig.spec.json"
           }
         },
         "lint": {
@@ -738,16 +679,9 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/09_pipes/tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/09_pipes/public"
-              }
-            ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/09_pipes/src/styles.css"]
+            "tsConfig": "projects/09_pipes/tsconfig.spec.json"
           }
         },
         "lint": {
@@ -821,16 +755,9 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/10_http_client/tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/10_http_client/public"
-              }
-            ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/10_http_client/src/styles.css"]
+            "tsConfig": "projects/10_http_client/tsconfig.spec.json"
           }
         },
         "lint": {
@@ -904,16 +831,9 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/10_http_resource/tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/10_http_resource/public"
-              }
-            ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/10_http_resource/src/styles.css"]
+            "tsConfig": "projects/10_http_resource/tsconfig.spec.json"
           }
         },
         "lint": {
@@ -987,16 +907,9 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/11_routing/tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/11_routing/public"
-              }
-            ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/11_routing/src/styles.css"]
+            "tsConfig": "projects/11_routing/tsconfig.spec.json"
           }
         },
         "lint": {
@@ -1070,16 +983,9 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/12_forms/tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/12_forms/public"
-              }
-            ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/12_forms/src/styles.css"]
+            "tsConfig": "projects/12_forms/tsconfig.spec.json"
           }
         },
         "lint": {

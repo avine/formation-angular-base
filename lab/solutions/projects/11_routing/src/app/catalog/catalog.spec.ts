@@ -106,8 +106,8 @@ describe('Catalog', () => {
   it('should call "BasketResource.addItem" and "CatalogResource.decreaseStock" methods when a product is added to the basket', () => {
     const product0 = component.productsInStock()?.[0] as Product;
 
-    const decreaseStockSpy = spyOn(TestBed.inject(CatalogResource), 'decreaseStock');
-    const addItemSpy = spyOn(TestBed.inject(BasketResource), 'addItem').and.returnValue(of(product0));
+    const decreaseStockSpy = vitest.spyOn(TestBed.inject(CatalogResource), 'decreaseStock');
+    const addItemSpy = vitest.spyOn(TestBed.inject(BasketResource), 'addItem').mockReturnValue(of(product0));
 
     const productCardDebugElement = fixture.debugElement.query(By.css('app-product-card'));
     productCardDebugElement.triggerEventHandler('addToBasket', product0);
@@ -120,11 +120,11 @@ describe('Catalog', () => {
   it('should not display products with empty stock', () => {
     // Given
     const catalogResource = TestBed.inject(CatalogResource) as unknown as CatalogResourceMock;
-    expect(catalogResource.products()).toHaveSize(3);
+    expect(catalogResource.products()).toHaveLength(3);
 
     // When/Then
     let productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
-    expect(productCardDebugElements).toHaveSize(2); // Note: the third product stock equals 0
+    expect(productCardDebugElements).toHaveLength(2); // Note: the third product stock equals 0
 
     // When
     catalogResource.products.update((products) => {
@@ -135,7 +135,7 @@ describe('Catalog', () => {
 
     // Then
     productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
-    expect(productCardDebugElements).toHaveSize(1);
+    expect(productCardDebugElements).toHaveLength(1);
     expect(productCardDebugElements[0].properties['product']).toBe(catalogResource.products()[1]);
   });
 

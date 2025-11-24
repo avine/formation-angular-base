@@ -100,7 +100,7 @@ describe('App', () => {
 
     // Given
     let productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
-    expect(productCardDebugElements).toHaveSize(4);
+    expect(productCardDebugElements).toHaveLength(4);
 
     // When
     component.products[0].stock = 0;
@@ -109,7 +109,7 @@ describe('App', () => {
 
     // Then
     productCardDebugElements = fixture.debugElement.queryAll(By.css('app-product-card'));
-    expect(productCardDebugElements).toHaveSize(2);
+    expect(productCardDebugElements).toHaveLength(2);
     expect(productCardDebugElements[0].properties['product']).toBe(component.products[2]);
     expect(productCardDebugElements[1].properties['product']).toBe(component.products[3]);
   });

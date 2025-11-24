@@ -28,7 +28,7 @@ describe('basketGuard', () => {
   });
 
   it('should fetch items', () => {
-    const fetchItemsSpy = spyOn(basketResource, 'fetchBasket').and.callThrough();
+    const fetchItemsSpy = vitest.spyOn(basketResource, 'fetchBasket');
 
     executeGuard();
 
@@ -37,13 +37,13 @@ describe('basketGuard', () => {
 
   it('should return false when the basket is empty', async () => {
     const result = await firstValueFrom(executeGuard());
-    expect(result).toBeFalse();
+    expect(result).toBe(false);
   });
 
   it('should return true when the basket is not empty', async () => {
-    spyOn(basketResource, 'fetchBasket').and.returnValue(of([{} as BasketItem]));
+    vitest.spyOn(basketResource, 'fetchBasket').mockReturnValue(of([{} as BasketItem]));
 
     const result = await firstValueFrom(executeGuard());
-    expect(result).toBeTrue();
+    expect(result).toBe(true);
   });
 });
