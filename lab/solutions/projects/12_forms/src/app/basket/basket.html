@@ -22,13 +22,34 @@
   </div>
 }
 
-@if (!reactive) {
-  <app-checkout-form />
-} @else {
-  <app-checkout-reactive-form />
+@switch (formSystem) {
+  @case ('template-driven') {
+    <app-checkout-form />
+  }
+  @case ('reactive') {
+    <app-checkout-reactive-form />
+  }
+  @case ('signal') {
+    <app-checkout-signal-form />
+  }
 }
 
-<div class="mt-3 form-check form-check-reverse form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="use-reactive-form" [(ngModel)]="reactive" />
-  <label class="form-check-label" for="use-reactive-form">Version reactive</label>
+<div class="mt-3">
+  @for (inputRadioContext of inputRadioContexts; track $index) {
+    <ng-container *ngTemplateOutlet="inputRadio; context: inputRadioContext" />
+  }
 </div>
+
+<ng-template #inputRadio let-value="value" let-label="label">
+  <div class="form-check form-check-reverse">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="form-system"
+      [value]="value"
+      [id]="`form-system-${value}`"
+      [(ngModel)]="formSystem"
+    />
+    <label class="form-check-label" [for]="`form-system-${value}`">{{ label }}</label>
+  </div>
+</ng-template>

@@ -1,0 +1,67 @@
+<div class="card mt-3">
+  <div class="card-header">Paiement <span class="ms-1 badge text-bg-warning">Signal form</span></div>
+
+  <div class="card-body">
+    <form (submit)="checkout($event)">
+      <div class="mb-2">
+        <label class="form-label" for="field-name">Nom</label>
+        <input
+          id="field-name"
+          class="form-control"
+          [field]="checkoutForm.name"
+          [class.is-invalid]="checkoutForm.name().touched() && checkoutForm.name().invalid()"
+          [class.is-valid]="checkoutForm.name().valid()"
+        />
+        <span class="invalid-feedback">{{ checkoutForm.name().errors().at(0)?.message }}</span>
+      </div>
+
+      <div class="mb-2">
+        <label class="form-label" for="field-address">Adresse</label>
+        <textarea
+          id="field-address"
+          class="form-control"
+          [field]="checkoutForm.address"
+          [class.is-invalid]="checkoutForm.address().touched() && checkoutForm.address().invalid()"
+          [class.is-valid]="checkoutForm.address().valid()"
+        ></textarea>
+        <span class="invalid-feedback">{{ checkoutForm.address().errors().at(0)?.message }}</span>
+      </div>
+
+      <div class="mb-2">
+        <label class="form-label" for="field-creditCard">Carte de crédit</label>
+        <input
+          id="field-creditCard"
+          class="form-control"
+          [field]="checkoutForm.creditCard"
+          [class.is-invalid]="checkoutForm.creditCard().touched() && checkoutForm.creditCard().invalid()"
+          [class.is-valid]="checkoutForm.creditCard().valid()"
+          autocomplete="off"
+        />
+        <span class="invalid-feedback">{{ checkoutForm.creditCard().errors().at(0)?.message }}</span>
+      </div>
+
+      <div class="mt-3">
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="checkoutForm().invalid() || checkoutForm().submitting() || !!this.orderNumber()"
+        >
+          Valider
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+@if (checkoutForm().errors().at(0); as serverError) {
+  <div class="mt-3 alert alert-danger" role="alert">{{ serverError.message }}</div>
+}
+
+@if (orderNumber() !== undefined) {
+  <div class="mt-3 alert alert-success" role="alert">
+    <h4 class="alert-heading">Confirmation de la commande 🎉</h4>
+    n° de transaction: <strong>{{ orderNumber() }}</strong>
+    <hr />
+    <a routerLink="/" class="alert-link">Retourner à l'accueil</a>
+  </div>
+}
