@@ -57,8 +57,8 @@ Note:
 
 ✅ Therefore, this course focuses only on **attribute directives**
 
-😉 _In this chapter, we'll cover the definition and usage of **custom** attribute directives.<br />
-Later in the course, you'll discover some Angular **built-in** attribute directives such as `RouterLink` (Routing) and `NgModel` (Forms)._
+😉 *In this chapter, we'll cover the definition and usage of **custom** attribute directives.*<br />
+*Later in the course, you'll discover some Angular **built-in** attribute directives such as `RouterLink` (Routing) and `NgModel` (Forms).*
 
 <!-- separator-vertical -->
 
@@ -140,7 +140,7 @@ export class Highlight {
 }
 ```
 
-_😉 Note that `host` property also applies to component metadata_
+😉 *Note that `host` property also applies to component metadata*
 
 <!-- separator-vertical -->
 

@@ -35,9 +35,6 @@ NOTES:
 ECMA proposal for signal
 https://github.com/tc39/proposal-signals
 
-If the interns ask how it works before, talk about the Zone.js and of the change detection strategy that Angular has 
-always used before the introduction of the signals.
-
 <!-- separator-vertical -->
 
 ## Signals - Definition
@@ -91,15 +88,15 @@ const count = signal<number>(0);
 
 const isEven = computed(() => count() % 2 === 0);
 
-console.log(isEven());                 // <-- output: true
+console.log(isEven());                // <-- output: true
 
 count.set(1);
 
-console.log(isEven());                 // <-- output: false
+console.log(isEven());                // <-- output: false
 
 count.update((c) => c + 1);
 
-console.log(isEven());                 // <-- output: true
+console.log(isEven());                // <-- output: true
 ```
 
 <!-- separator-vertical -->
@@ -126,6 +123,8 @@ count.set(1);
 count.update((c) => c + 1);
 ```
 
+😉 *Another signal is the `linkedSignal`, but its study goes beyond the scope of this course*
+
 <!-- separator-vertical -->
 
 ## Signals - Usage in components
@@ -137,9 +136,9 @@ count.update((c) => c + 1);
 ```ts
 import { Component, signal } from '@angular/core';
 
-@Component ({
+@Component({
   selector: 'app-counter-delay',
-  template: `<button (click)="increment()">{{ count() }}</button>`
+  template: `<button (click)="increment()">{{ count() }}</button>`,
 })
 export class CounterDelay {
   count = signal(0);
@@ -154,30 +153,48 @@ export class CounterDelay {
 
 <!-- separator-vertical -->
 
-## Signals - Component input and model
+## Signals - Component input and model 1/2
 
-Note that the `input` and `model` functions, mentioned in the chapter on components, **are in fact signals**.
-This design makes communication between components highly reactive.
+- Note that `input` and `model` functions (mentioned in the chapter on components) **are in fact signals**
+
+- Using signals for parent/child communication, makes this communication highly reactive and efficient
 
 ```ts
 import { Component, model, signal } from '@angular/core';
 
-@Component ({
+@Component({
   selector: 'app-counter',
-  template: `<button (click)="increment()">{{ count() }}</button>`
+  template: `<button (click)="increment()">{{ count() }}</button>`,
 })
 export class Counter {
   count = model(0);
-  increment() { this.count.update((count) => count + 1); }
+
+  protected increment() {
+    this.count.update((count) => count + 1);
+  }
 }
 
-@Component ({
+// ...
+```
+
+<!-- separator-vertical -->
+
+## Signals - Component input and model 2/2
+
+```ts
+// ...
+
+@Component({
   selector: 'app-root',
   imports: [Counter],
-  template: `<app-counter [(count)]="appCount" /> <p>{{ appCount() }}</p>`
+  template: `
+    <app-counter [(count)]="appCount" />
+
+    <p>{{ appCount() }}</p>
+  `,
 })
 export class App {
-  appCount = signal(0);
+  protected appCount = signal(0);
 }
 ```
 
@@ -209,10 +226,10 @@ export class Counter {
 
 ## Signals - Testing 2/3
 
-- Use `inputBinding` and `outputBinding` functions in the test component `bindings` options 
+- Use `inputBinding`, `outputBinding` and `twoWayBinding` functions in the test component `bindings` options
 
 ```ts
-import { inputBinding, outputBinding, signal } from '@angular/core';
+import { inputBinding, outputBinding, signal, twoWayBinding } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Counter } from './counter';
 
@@ -227,6 +244,7 @@ describe('Counter', () => {
       bindings: [
         inputBinding('count', count),               // <-- Bind "input"
         outputBinding('countChange', countChange),  // <-- Bind "output"
+        // twoWayBinding('count', count)            // <-- Alternative (to handle both input and output)
       ],
     });
 

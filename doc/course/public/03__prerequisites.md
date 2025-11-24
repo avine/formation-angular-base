@@ -55,7 +55,7 @@ age = 33;
 age = 'Carl';           // ❌ is still throwing the same Type error
 ```
 
-_😉 Note that `const` and `let` are two different ways of defining variables_
+😉 *Note that `const` and `let` are two different ways of defining variables*
 
 <!-- separator-vertical -->
 
@@ -275,8 +275,8 @@ const newItems = [...items, 4];
 console.log(newItems);                                  // --> [0, 1, 2, 3, 4]
 ```
 
-_😉 Treating a value as immutable means prohibiting any modification to it after its creation._<br />
-_Immutability is an important concept in functional programming and state management._
+😉 *Treating a value as immutable means prohibiting any modification to it after its creation.*<br />
+*Immutability is an important concept in functional programming and state management.*
 
 <!-- separator-vertical -->
 

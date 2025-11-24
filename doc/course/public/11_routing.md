@@ -353,6 +353,9 @@ export const routes: Routes = [
 ];
 ```
 
+NOTES:
+☕ We need to let the participants take a break here to divide this long chapter in two.
+
 <!-- separator-vertical -->
 
 ## Routing - Guards

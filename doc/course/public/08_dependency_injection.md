@@ -41,7 +41,7 @@
 import { ApplicationConfig, Component, inject } from '@angular/core';
 
 export class ApiService {                         // <-- 1. Defining
-  fetchMsg() { return { data: 'Hello World!' }; }
+  getData() { return 'Hello World!'; }
 }
 
 export const appConfig: ApplicationConfig = {
@@ -50,117 +50,101 @@ export const appConfig: ApplicationConfig = {
 
 @Component({
   selector: 'app-root',
-  template: '<h1>{{ msg.data }}</h1>',
+  template: '<h1>{{ data }}</h1>',
 })
 export class App {
   private apiService = inject(ApiService);        // <-- 3. Injecting
-  msg = this.apiService.fetchMsg();               // <-- 4. Consuming
+
+  data = this.apiService.getData();               // <-- 4. Consuming
 }
 ```
 
 <!-- separator-vertical -->
 
-## Dependency injection - Injectable
+## Dependency injection - Injectable decorator
 
-- If a service has dependencies, use the `@Injectable` decorator to enable dependency injection for the service itself
-- This is only required if you are using "**Constructor-based dependency injection**"
-
-```ts
-import { Injectable, ApplicationConfig } from '@angular/core';
-import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
-
-@Injectable()
-export class ApiService {
-  // `HttpClient` is a dependency of `ApiService` and requires `@Injectable` decorator
-  constructor(private httpClient: HttpClient) {}
-
-  fetchMsg() {
-    return this.httpClient.get('/api/msg');
-  }
-}
-
-export const appConfig: ApplicationConfig = {
-  providers: [provideHttpClient(withFetch()), ApiService],
-};
-```
-
-<!-- separator-vertical -->
-
-## Dependency injection - Injectable | providedIn
-
-- Use `providedIn` metadata to **provide a service globally** right from its definition
-- This is usefull even for "**Function-based dependency injection**"
+- Use `@Injectable` decorator and `providedIn` metadata to **provide a service globally** right from its definition
 
 ```ts
 import { Injectable, ApplicationConfig } from '@angular/core';
 import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'  // <-- `ApiService` is automatically provided at `ApplicationConfig` level
+  providedIn: 'root', // <-- Instruct Angular to provide the service automatically (if used by the app)
 })
 export class ApiService {
-  private httpClient = inject(HttpClient);
-
-  fetchMsg() {
-    return this.httpClient.get('/api/msg');
-  }
+  getData() { return 'Hello World!'; }
 }
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideHttpClient(withFetch())],  // <-- No need to provide `ApiService` manually anymore!
+  providers: [],      // <-- Therefore, it is no longer necessary to provide it manually!
 };
 ```
 
 <!-- separator-vertical -->
 
-## Dependency injection - Component providers 
+## Dependency injection - Injectors 1/3
 
-- Use `providers` metadata of the component decorator to **provide a service locally**
-- The service lifecycle (creation and destruction) follows the component lifecycle
-- A service provided in a component can also be injected into its child components
-
-```ts
-@Component ({
-  selector: 'app-parent',
-  providers: [ParentService],
-  imports: [Child],
-  template: '<app-child />',
-})
-export class Parent {
-  parentService = inject(ParentService);
-}
-
-@Component ({ selector: 'app-child', template: '...' })
-export class Child {
-  parentService = inject(ParentService); // Get the service from the `Parent` component injector
-}
-```
-
-<!-- separator-vertical -->
-
-## Dependency injection - Injectors
-
-- Responsible for providing dependencies to components, services, ...
-- An application can have more than one injector, but **within an injector every dependency is a singleton**
+- Injectors are responsible for **providing dependencies** to any part of the application (components, services, ...)
+- An application can have more than one injector:
+  - the `providers` array in `ApplicationConfig` is the main injector...
+  - ...but dependencies can be **provided at other levels** _(more details below)_
+- **Within an injector every dependency is a singleton**
 
 ```ts
 import { Component, Injectable, inject } from '@angular/core';
 
-@Injectable({ providedIn: 'root' })
-export class DataService { data?: string; }
-
-@Component({ selector: 'app-setter', template: '...', })
-export class Setter {
-  constructor() { inject(DataService).data = 'Hello World!'; }
+@Injectable({
+  providedIn: 'root',                                 // <-- Providing globally
+})
+export class DataService {
+  data = signal<string | undefined>(undefined);       // <-- Defining property
 }
 
-@Component({ selector: 'app-getter', template: '<h1>{{ data }}</h1>' })
-export class Getter {
-  private dataService = inject(DataService);
+// ...
+```
 
-  get data() { return this.dataService.data; } // <-- 'Hello World!' 
+<!-- separator-vertical -->
+
+## Dependency injection - Injectors 2/3
+
+```ts
+// ...
+
+@Component({
+  selector: 'app-data-setter',
+  template: '<button (click)="setData()">Set data</button>',
+})
+export class DataSetter {
+  private dataService = inject(DataService);          // <-- Injecting
+
+  protected setData() {
+    this.dataService.data.set('Hello World!');        // <-- Setting property in one place
+  }
+}
+
+// ...
+```
+
+<!-- separator-vertical -->
+
+## Dependency injection - Injectors 3/3
+
+```ts
+// ...
+
+@Component({
+  selector: 'app-data-getter',
+  template: '<h1>{{ data() }}</h1>',                  // <-- output: Hello World!
+})
+export class DataGetter {
+  private dataService = inject(DataService);          // <-- Injecting
+
+  protected data = this.dataService.data;             // <-- Getting modified property in another place
 }
 ```
+
+😉 *In this example, `DataSetter` and `DataGetter` components share the same `DataService` instance*
 
 <!-- separator-vertical -->
 
@@ -178,6 +162,56 @@ export class Getter {
 
 <!-- separator-vertical -->
 
+## Dependency injection - Component providers
+
+- Use the `providers` array in the component decorator metadata to manually **provide a service locally**
+  - The service lifecycle (creation and destruction) follows the component lifecycle
+  - A service provided in a component can also be injected into its child components
+
+```ts
+@Component({
+  selector: 'app-parent',
+  providers: [ParentService],                 // <-- Service provided locally
+  imports: [Child],
+  template: '<app-child />',
+})
+export class Parent {
+  parentService = inject(ParentService);      // <-- Get the service from the local injector
+}
+
+@Component({ selector: 'app-child', template: '...' })
+export class Child {
+  parentService = inject(ParentService);      // <-- Get the service from the parent injector
+}
+```
+
+<!-- separator-vertical -->
+
+## Dependency injection - Injection context
+
+- The dependency injection (DI) system relies internally on a **runtime context** where the current **injector is available**
+- This means that injectors can only work when code is executed in such a context
+
+```ts
+@Component({
+  selector: 'app-root',
+  template: '...',
+})
+export class App {
+  private dataService = inject(DataService);    // ✅ Field initialization
+
+  constructor() {
+    const dataService = inject(DataService);    // ✅ Class constructor
+  }
+
+  doSomething() {
+    const dataService = inject(DataService);    // ❌ Class method
+  }
+}
+```
+
+<!-- separator-vertical -->
+
 ## Dependency injection - Providers | ClassProvider
 
 - So far we've provided services by adding them to the `provider` array
@@ -186,7 +220,7 @@ export class Getter {
 import { ApplicationConfig } from '@angular/core';
 
 export const appConfig: ApplicationConfig = {
-  providers: [ApiService],
+  providers: [ApiService],
 };
 ```
 
@@ -196,17 +230,19 @@ export const appConfig: ApplicationConfig = {
 import { ApplicationConfig, ClassProvider } from '@angular/core';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    { 
-      provide: ApiService, 
-      useClass: ApiService
-    }
+  providers: [
+    {
+      provide: ApiService,
+      useClass: ApiService,
+    },
   ] satisfies ClassProvider,
 };
 ```
 
 NOTES:
 The full syntax is very useful when, for example, you need to mock your dependencies in your tests, as will be shown at the end of the chapter.
+
+☕ We need to let the participants take a break here to divide this long chapter in two.
 
 <!-- separator-vertical -->
 
@@ -224,10 +260,10 @@ const APP_TITLE = new InjectionToken<string>('app title');
 const appTitleProvider: ValueProvider = { provide: APP_TITLE, useValue: 'My Awesome App' };
 
 export const appConfig: ApplicationConfig = {
-  providers: [appTitleProvider],
+  providers: [appTitleProvider],
 };
 
-@Component({ /* ... */ })
+@Component({/* ... */})
 export class App {
   appTitle = inject(APP_TITLE); // <-- 'My Awesome App'
 }
@@ -235,14 +271,14 @@ export class App {
 
 In the next chapter on `Pipe`s, you'll see how Angular uses `InjectionToken`s
 
-*😉 Note that there's also a `FactoryProvider`, but its study goes beyond the scope of this course*
+😉 _Note that there's also a `FactoryProvider`, but its study goes beyond the scope of this course_
 
 <!-- separator-vertical -->
 
 ## Dependency injection - App Initializer
 
-- Use an "app initializer" when you need asynchronous data to be available before the application is bootstrapped
-- If needed, you can `inject` dependencies into the initializer
+- Perform asynchronous tasks before the application is bootstrapped
+- Accepts the use of dependency injection
 
 ```ts
 import { ApplicationConfig, provideAppInitializer } from '@angular/core';
@@ -253,10 +289,14 @@ export const appConfig: ApplicationConfig = {
     provideAppInitializer((): Observable<unknown> | Promise<unknown> | void => {
       // In this example, we restore the user's status before bootstrapping the application
       return inject(UserService).fetchUser();
-    })
+    }),
   ],
 };
 ```
+
+😉 *Note that Angular executes the initializer function in an injection context*
+
+😉 *Note that there is another initialization function: `provideEnvironmentInitializer`*
 
 NOTES:
 Without the initializer, the user's status would have 3 possible values: "unknown", "not authenticated", "authenticated".

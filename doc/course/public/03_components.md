@@ -80,7 +80,8 @@ import { Hello } from './hello/hello.ts';
 export class App {}
 ```
 
-*😉 The `App` component is the only one to be **bootstrapped**. Its selector (`app-root`) is searched for in the web page.<br /> All other components are necessarily **imported** by the main component or its children.*
+😉 *The `App` component is the only one to be **bootstrapped**. Its selector (`app-root`) is searched for in the web page.*<br />
+*All other components are necessarily **imported** by the main component or its children.*
 
 <!-- separator-vertical -->
 
