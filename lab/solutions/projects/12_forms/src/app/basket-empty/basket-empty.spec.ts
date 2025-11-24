@@ -1,4 +1,3 @@
-import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BasketEmpty } from './basket-empty';
 
@@ -9,7 +8,6 @@ describe('BasketEmpty', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [BasketEmpty],
-      providers: [provideZonelessChangeDetection()],
     });
 
     fixture = TestBed.createComponent(BasketEmpty);

@@ -1,6 +1,5 @@
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
-import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { BasketResource } from './basket-resource';
 import { BasketItem } from './basket-types';
@@ -11,7 +10,7 @@ describe('BasketResource', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [provideZonelessChangeDetection(), provideHttpClient(withFetch()), provideHttpClientTesting()],
+      providers: [provideHttpClient(withFetch()), provideHttpClientTesting()],
     });
     service = TestBed.inject(BasketResource);
     httpTestingController = TestBed.inject(HttpTestingController);

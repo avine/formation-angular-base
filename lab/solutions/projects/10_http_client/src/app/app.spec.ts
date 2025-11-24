@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, provideZonelessChangeDetection } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
@@ -18,7 +18,6 @@ describe('App', () => {
     await TestBed.configureTestingModule({
       imports: [App],
       providers: [
-        provideZonelessChangeDetection(),
         { provide: CatalogResource, useClass: CatalogResourceMock },
         { provide: BasketResource, useClass: BasketResourceMock },
         { provide: APP_TITLE, useValue: 'The App Title' },

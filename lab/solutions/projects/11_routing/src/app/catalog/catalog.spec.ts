@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, provideZonelessChangeDetection } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
@@ -20,7 +20,6 @@ describe('Catalog', () => {
     await TestBed.configureTestingModule({
       imports: [Catalog],
       providers: [
-        provideZonelessChangeDetection(),
         provideRouter([]),
         { provide: CatalogResource, useClass: CatalogResourceMock },
         { provide: BasketResource, useClass: BasketResourceMock },

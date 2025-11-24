@@ -1,4 +1,4 @@
-import { Component, provideZonelessChangeDetection, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { HighlightPrice } from './highlight-price';
@@ -19,7 +19,6 @@ describe('HighlightPrice', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Wrapper],
-      providers: [provideZonelessChangeDetection()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Wrapper);

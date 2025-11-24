@@ -1,4 +1,3 @@
-import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { BasketResource } from './basket-resource';
 
@@ -6,7 +5,7 @@ describe('BasketResource', () => {
   let service: BasketResource;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ providers: [provideZonelessChangeDetection()] });
+    TestBed.configureTestingModule({});
     service = TestBed.inject(BasketResource);
   });
 

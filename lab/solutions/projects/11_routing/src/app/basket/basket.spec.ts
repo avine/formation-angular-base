@@ -1,4 +1,3 @@
-import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { Basket } from './basket';
@@ -12,11 +11,7 @@ describe('Basket', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Basket],
-      providers: [
-        provideZonelessChangeDetection(),
-        provideRouter([]),
-        { provide: BasketResource, useClass: BasketResourceMock },
-      ],
+      providers: [provideRouter([]), { provide: BasketResource, useClass: BasketResourceMock }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Basket);

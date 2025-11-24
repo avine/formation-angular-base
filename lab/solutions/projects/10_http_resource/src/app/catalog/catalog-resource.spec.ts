@@ -1,6 +1,6 @@
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
-import { ApplicationRef, provideZonelessChangeDetection } from '@angular/core';
+import { ApplicationRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Product } from '../product/product-types';
 import { CatalogResource } from './catalog-resource';
@@ -12,7 +12,7 @@ describe('CatalogResource', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [provideZonelessChangeDetection(), provideHttpClient(withFetch()), provideHttpClientTesting()],
+      providers: [provideHttpClient(withFetch()), provideHttpClientTesting()],
     });
     service = TestBed.inject(CatalogResource);
     appRef = TestBed.inject(ApplicationRef);
