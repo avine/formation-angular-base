@@ -1,3 +1,2 @@
-/.angular
-/coverage
-/dist
+.github/
+.vscode/

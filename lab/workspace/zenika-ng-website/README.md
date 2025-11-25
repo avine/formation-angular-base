@@ -35,28 +35,25 @@ npm i -D prettier prettier-plugin-organize-imports eslint-config-prettier
 - `.prettierignore` file added
 
 ```txt
-/.angular
-/coverage
-/dist
+.github/
+.vscode/
 ```
 
-- `.prettierrc.json` files added
+- `package.json` file updated
 
 ```json
 {
-  "printWidth": 120,
-  "singleQuote": true,
-  "plugins": ["prettier-plugin-organize-imports"],
-  "overrides": [
-    {
-      "files": "*.html",
-      "options": { "parser": "angular" }
-    },
-    {
-      "files": "index.html",
-      "options": { "parser": "html" }
-    }
-  ]
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true,
+    "plugins": ["prettier-plugin-organize-imports"], // <-- Added line
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": { "parser": "angular" }
+      }
+    ]
+  }
 }
 ```
 
@@ -66,10 +63,10 @@ npm i -D prettier prettier-plugin-organize-imports eslint-config-prettier
 ...
 const eslintConfigPrettier = require('eslint-config-prettier/flat');
 
-module.exports = tseslint.config(
+module.exports = defineConfig([
   ...,
   eslintConfigPrettier,
-);
+]);
 ```
 
 - `"format"` script added in `package.json` file
