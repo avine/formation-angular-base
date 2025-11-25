@@ -15,6 +15,7 @@
           [class.is-valid]="nameModel.valid"
           [disabled]="checkoutInProgress()"
           required
+          autocomplete="off"
         />
         <span class="invalid-feedback">Champ obligatoire</span>
       </div>
@@ -31,6 +32,7 @@
           [class.is-valid]="addressModel.valid"
           [disabled]="checkoutInProgress()"
           required
+          autocomplete="off"
         ></textarea>
         <span class="invalid-feedback">Champ obligatoire</span>
       </div>

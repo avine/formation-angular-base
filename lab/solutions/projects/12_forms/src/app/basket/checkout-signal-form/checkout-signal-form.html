@@ -11,6 +11,7 @@
           [field]="checkoutForm.name"
           [class.is-invalid]="checkoutForm.name().touched() && checkoutForm.name().invalid()"
           [class.is-valid]="checkoutForm.name().valid()"
+          autocomplete="off"
         />
         <span class="invalid-feedback">{{ checkoutForm.name().errors().at(0)?.message }}</span>
       </div>
@@ -23,6 +24,7 @@
           [field]="checkoutForm.address"
           [class.is-invalid]="checkoutForm.address().touched() && checkoutForm.address().invalid()"
           [class.is-valid]="checkoutForm.address().valid()"
+          autocomplete="off"
         ></textarea>
         <span class="invalid-feedback">{{ checkoutForm.address().errors().at(0)?.message }}</span>
       </div>

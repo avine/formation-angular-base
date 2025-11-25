@@ -11,6 +11,7 @@
           [formControl]="checkoutForm.controls.name"
           [class.is-invalid]="checkoutForm.controls.name.touched && checkoutForm.controls.name.invalid"
           [class.is-valid]="checkoutForm.controls.name.valid"
+          autocomplete="off"
         />
         <span class="invalid-feedback">Champ obligatoire</span>
       </div>
@@ -23,6 +24,7 @@
           [formControl]="checkoutForm.controls.address"
           [class.is-invalid]="checkoutForm.controls.address.touched && checkoutForm.controls.address.invalid"
           [class.is-valid]="checkoutForm.controls.address.valid"
+          autocomplete="off"
         ></textarea>
         <span class="invalid-feedback">Champ obligatoire</span>
       </div>
