@@ -83,13 +83,13 @@ export const appConfig: ApplicationConfig = {
 
 <!-- separator-vertical -->
 
-## Dependency injection - Injectors 1/3
+## Dependency injection - Injectors & Singleton 1/3
 
 - Injectors are responsible for **providing dependencies** to any part of the application (components, services, ...)
 - An application can have more than one injector:
-  - the `providers` array in `ApplicationConfig` is the main injector...
+  - the `providers` array in the `ApplicationConfig` object is the main injector...
   - ...but dependencies can be **provided at other levels** _(more details below)_
-- **Within an injector every dependency is a singleton**
+- The important point is that **within an injector every dependency is a singleton**
 
 ```ts
 import { Component, Injectable, inject } from '@angular/core';
@@ -106,7 +106,7 @@ export class DataService {
 
 <!-- separator-vertical -->
 
-## Dependency injection - Injectors 2/3
+## Dependency injection - Injectors & Singleton 2/3
 
 ```ts
 // ...
@@ -128,7 +128,7 @@ export class DataSetter {
 
 <!-- separator-vertical -->
 
-## Dependency injection - Injectors 3/3
+## Dependency injection - Injectors & Singleton 3/3
 
 ```ts
 // ...
@@ -145,6 +145,8 @@ export class DataGetter {
 ```
 
 😉 *In this example, `DataSetter` and `DataGetter` components share the same `DataService` instance*
+
+- Services allow **data** to be **shared** between any parts of the application (components, services, ...)
 
 <!-- separator-vertical -->
 
@@ -329,6 +331,33 @@ describe('App', () => {
   });
 });
 ```
+
+<!-- separator-vertical -->
+
+## Dependency injection - Summary
+
+**In this chapter on dependency injection, we have covered the following topics**
+
+<div class="columns">
+<div class="column-50">
+
+- @Injectable decorator
+- Injectors and Singleton
+- Injectors hierarchy
+- App providers
+- Component providers
+- Injection context
+
+</div>
+<div class="column-50">
+
+- ClassProvider
+- ValueProvider
+- App Initializer
+- Testing in isolation
+
+</div>
+</div>
 
 <!-- separator-vertical -->
 

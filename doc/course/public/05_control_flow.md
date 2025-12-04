@@ -177,6 +177,16 @@
 
 <!-- separator-vertical -->
 
+## Control flow - Summary
+
+**In this chapter on control flow, we have covered the following topics**
+
+- @if
+- @for
+- @switch
+
+<!-- separator-vertical -->
+
 ## Control flow - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 

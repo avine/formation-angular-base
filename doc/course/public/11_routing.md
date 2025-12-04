@@ -185,7 +185,7 @@ export class Nav {}
 
 <!-- separator-vertical -->
 
-## Routing - Router service
+## Routing - Router
 
 - Use the `Router` service to navigate programmatically on the component class side
 
@@ -545,6 +545,33 @@ export default [
   { path: ':id', component: Contact },
 ] satisfies Routes;
 ```
+
+<!-- separator-vertical -->
+
+## Routing - Summary
+
+**In this chapter on routing, we have covered the following topics**
+
+<div class="columns">
+<div class="column-50">
+
+- Routes
+- RouterOutlet
+- RouterLink
+- Router
+- ActivatedRoute
+- withComponentInputBinding
+
+</div>
+<div class="column-50">
+
+- Nested routes
+- Route title
+- Guards
+- Lazy Loading
+
+</div>
+</div>
 
 <!-- separator-vertical -->
 

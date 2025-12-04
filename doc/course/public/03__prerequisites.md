@@ -560,5 +560,35 @@ To update the Angular package versions of your project use the command `ng updat
 
 <!-- separator-vertical -->
 
+## Technical prerequisites - Summary
+
+**In this chapter on technical prerequisites, we have covered the following topics**
+
+<div class="columns">
+<div class="column-50">
+
+- **TypeScript**
+  - Types
+  - Functions
+  - Destructuring syntax
+  - Spread syntax
+  - Array instance methods
+  - Classes
+  - Interfaces
+  - Generics
+  - Decorators
+
+</div>
+<div class="column-50">
+
+- **NPM**
+  - Commands
+  - Package versioning
+
+</div>
+</div>
+
+<!-- separator-vertical -->
+
 ## Technical prerequisites - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->

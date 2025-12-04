@@ -272,6 +272,19 @@ describe('JoinArrayPipe', () => {
 
 <!-- separator-vertical -->
 
+## Pipes - Summary
+
+**In this chapter on pipes, we have covered the following topics**
+
+- Built-in pipes
+- Custom pipe
+- Configuration
+- Usage in template
+- Usage in class
+- Pure VS Impure
+
+<!-- separator-vertical -->
+
 ## Pipes - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 

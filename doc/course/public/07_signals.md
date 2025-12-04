@@ -296,6 +296,29 @@ _Previously, the synchronization process was achieved using a third-party librar
 
 <!-- separator-vertical -->
 
+## Signals - Summary
+
+**In this chapter on signals, we have covered the following topics**
+
+<div class="columns">
+<div class="column-50">
+
+- Signal
+- Computed signal
+- Effect
+- Usage in components
+
+</div>
+<div class="column-50">
+
+- Component input and model
+- Synchronization process
+
+</div>
+</div>
+
+<!-- separator-vertical -->
+
 ## Signals - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 

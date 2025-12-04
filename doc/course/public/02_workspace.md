@@ -40,7 +40,7 @@ An Angular workspace is **structured** by the following parts
 - `package.json`
 - `tsconfig.json`
 - `angular.json`
-- `src/app/*`
+- `src/*`
 
 <!-- separator-vertical -->
 
@@ -182,7 +182,7 @@ The presence of an `angular.json` file indicates that the directory is the root 
 
 <!-- separator-vertical -->
 
-## Workspace - src/app/*
+## Workspace - src/*
 
 - `index.html`: final **document** of the Single Page Application (SPA)
 - `main.ts`: **entry point** of the app (from which Vite builds the JavaScript bundle)
@@ -323,6 +323,28 @@ export class Menu {}
   }
 }
 ```
+
+<!-- separator-vertical -->
+
+## Workspace - Summary
+
+**In this chapter on workspace, we have covered the following topics**
+
+<div class="columns">
+<div class="column-50">
+
+- package.json
+- tsconfig.json
+- angular.json
+
+</div>
+<div class="column-50">
+
+- src/*
+- Angular CLI
+
+</div>
+</div>
 
 <!-- separator-vertical -->
 

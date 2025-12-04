@@ -175,7 +175,7 @@ export class Highlight {
 
 ## Attribute directive - Input and Output 2/2
 
-- Use regular property binding and Event listeners on the host element
+- Use regular property binding and event listeners on the host element
 
 ```ts
 import { Component } from '@angular/core';
@@ -228,6 +228,18 @@ describe('Highlight', () => {
   });
 });
 ```
+
+<!-- separator-vertical -->
+
+## Directives - Summary
+
+**In this chapter on directives, we have covered the following topics**
+
+- Attribute directives
+- Usage in components
+- Selector
+- Host metadata
+- Input and Output
 
 <!-- separator-vertical -->
 

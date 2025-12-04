@@ -495,6 +495,31 @@ describe('TodoService', () => {
 
 <!-- separator-vertical -->
 
+## Http client - Summary
+
+**In this chapter on http client, we have covered the following topics**
+
+<div class="columns">
+<div class="column-50">
+
+- **HttpClient**
+  - Provider
+  - Service
+  - State management
+
+</div>
+<div class="column-50">
+
+- **Observables**
+  - Subcription
+  - Error handling
+  - Pipe operator
+
+</div>
+</div>
+
+<!-- separator-vertical -->
+
 ## Http client - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 

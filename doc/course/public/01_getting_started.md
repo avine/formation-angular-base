@@ -344,6 +344,32 @@ bootstrapApplication(App);
 
 <!-- separator-vertical -->
 
+## Getting started - Summary
+
+**In this chapter on getting started, we have covered the following topics**
+
+<div class="columns">
+<div class="column-50">
+
+- Client-server architecture
+- HTML
+- CSS
+- JavaScript
+- TypeScript
+
+</div>
+<div class="column-50">
+
+- Node.js
+- NPM
+- Vite
+- Angular
+
+</div>
+</div>
+
+<!-- separator-vertical -->
+
 ## Getting started - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 

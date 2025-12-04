@@ -425,6 +425,18 @@ Talk about "ng-mocks" library (https://www.npmjs.com/package/ng-mocks).
 
 <!-- separator-vertical -->
 
+## Unit testing - Summary
+
+**In this chapter on unit testing, we have covered the following topics**
+
+- Test runner
+- Assertion library
+- TestBed
+- Components testing
+- Class testing VS Dom testing
+
+<!-- separator-vertical -->
+
 ## Unit testing - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 

@@ -450,6 +450,19 @@ export class App {}
 
 <!-- separator-vertical -->
 
+## Forms - Summary
+
+**In this chapter on forms, we have covered the following topics**
+
+- Template-driven forms
+- NgForm
+- NgModel
+- Template reference variables
+- Built-in validators
+- Custom validators
+
+<!-- separator-vertical -->
+
 ## Forms - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 

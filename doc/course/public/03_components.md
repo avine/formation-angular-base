@@ -512,6 +512,33 @@ export class Counter {
 
 <!-- separator-vertical -->
 
+## Components - Summary
+
+**In this chapter on components, we have covered the following topics**
+
+<div class="columns">
+<div class="column-50">
+
+- Selector
+- Template
+- Styles
+- Text interpolation
+- Property binding
+- Attribute binding
+- Event listeners
+
+</div>
+<div class="column-50">
+
+- Input
+- Output
+- Model
+
+</div>
+</div>
+
+<!-- separator-vertical -->
+
 ## Components - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
