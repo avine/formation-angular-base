@@ -321,7 +321,7 @@ class Demo {
   #prop4 = 'Big secret'; // <-- standard JavaScript private field
 
   method1() {}
-  protected method1() {}
+  protected method2() {}
   private method3() {}
 
   #method4() {} // <-- standard JavaScript private field

@@ -448,7 +448,7 @@ export const routes: Routes = [
 
 - The guard can eventually return a `RedirectCommand` to instruct the Router to redirect rather than continue processing the current path
 
-- This is particularly usefull when a navigation is cancelled by a `canActivate` guard
+- This is particularly useful when a navigation is cancelled by a `canActivate` guard
 
 ```ts
 import { inject } from '@angular/core';

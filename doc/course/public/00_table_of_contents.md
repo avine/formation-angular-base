@@ -37,7 +37,7 @@
 
 - Schedules
 - Lunch & breaks
-- Other questions ?
+- Other questions?
 
 <!-- separator-vertical -->
 

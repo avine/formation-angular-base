@@ -73,7 +73,7 @@ Accept-Encoding: gzip
 </html>
 ```
 
-😉 *This is not a random example, it's in fact the typical server return for an Angular application*
+😉 *This is not a random example; it's actually the typical server return for an Angular application*
 
 <!-- separator-vertical -->
 
@@ -95,7 +95,7 @@ Accept-Encoding: gzip
 ```html
 <h1>Google Chrome is a web browser</h1>
 
-<p> <a href="https://www.google.com/chrome/">More infos</a> </p>
+<p> <a href="https://www.google.com/chrome/">More info</a> </p>
 
 <img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" />
 ```

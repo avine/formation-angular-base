@@ -170,7 +170,7 @@ export class TodoList {
 
 - To share data between components, we need to store fetched data in a service facade
 
-- ❌ However, the following implementation breaks the best pratice we just mentionned!
+- ❌ However, the following implementation breaks the best practice we just mentioned!
 
 ```ts
 import { Injectable, inject, signal } from '@angular/core';
@@ -432,7 +432,7 @@ export class TodoList {                                     // <-- Data source c
 
 } @else if (hasError()) {
 
-  <p>An error occured...</p>
+  <p>An error occurred...</p>
 
 } @else {
 
@@ -511,7 +511,7 @@ describe('TodoService', () => {
 <div class="column-50">
 
 - **Observables**
-  - Subcription
+  - Subscription
   - Error handling
   - Pipe operator
 

@@ -168,7 +168,7 @@ When creating a custom directive, you can define the `exportAs` metadata and use
 ```ts
 import { Directive, Component } from '@angular/core';
 
-@Directive({ selector: 'appHello' exportAs: 'helloExportedName' })
+@Directive({ selector: 'appHello', exportAs: 'helloExportedName' })
 export class Hello {}
 
 @Component({
@@ -224,7 +224,7 @@ export class App {}
     <!-- 1. Initial state -->
     <input required ngModel class="ng-untouched ng-pristine ng-invalid" />
   
-    <!-- 2. After the user has entered and leaved the input (without modification) -->
+    <!-- 2. After the user has entered and left the input (without modification) -->
     <input required ngModel class="ng-touched ng-pristine ng-invalid" />
   
     <!-- 3. After the user has modified the input value -->

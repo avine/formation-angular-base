@@ -301,7 +301,7 @@ export class Menu {}
 </div>
 </div>
 
-😉 *This course is based on the latest style guide recommandations*
+😉 *This course is based on the latest style guide recommendations*
 
 <!-- separator-vertical -->
 

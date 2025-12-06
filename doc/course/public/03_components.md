@@ -293,7 +293,7 @@ import { Counter } from './counter/counter.ts';
 
 @Component ({
   selector: 'app-root',
-  imports [Counter],
+  imports: [Counter],
   template: `
     <app-counter />                                 <!-- rendering:  <p></p>  -->
 
@@ -337,7 +337,7 @@ import { Counter } from './counter/counter.ts';
 
 @Component ({
   selector: 'app-root',
-  imports [Counter],
+  imports: [Counter],
   template: `
     <app-counter />     <!-- ❌ Required input 'count' from component Counter must be specified. -->
 
@@ -386,7 +386,7 @@ import { Counter } from './counter/counter.ts';
 
 @Component ({
   selector: 'app-root',
-  imports [Counter],
+  imports: [Counter],
   template:
     `<app-counter (countChange)="updateCount($event)" />
      <p>Count: {{ parentCount }}</p>`
@@ -442,7 +442,7 @@ import { Counter } from './counter/counter.ts';
 
 @Component ({
   selector: 'app-root',
-  imports [Counter],
+  imports: [Counter],
   template: `
     <app-counter [count]="parentCount" (countChange)="updateCount($event)" />
   `
@@ -470,7 +470,7 @@ import { Counter } from './counter/counter.ts';
 
 @Component ({
   selector: 'app-root',
-  imports [Counter],
+  imports: [Counter],
   template: `
     <app-counter [(count)]="parentCount" />
   `
@@ -488,7 +488,7 @@ export class App {
 
 ## Component - Model input 4/4
 
-- Unlike `input`s which are "realony", `model`s are "writable"
+- Unlike `input`s which are "readonly", `model`s are "writable"
 
 ```ts
 @Component({ ... })

@@ -106,7 +106,7 @@ describe('boolean variable', () => {
 
 ## Unit testing - Jasmine | Spies
 
-- Use spy to watch how a method is been used during the test
+- Use spy to watch how a method has been used during the test
 - Create a spy: `jasmine.createSpy` or `spyOn`
 - Spy matchers: `toHaveBeenCalled`, `toHaveBeenCalledWith`, `and.returnValue`, ...
 
@@ -188,7 +188,7 @@ fixture.detectChanges();
 
   - **pros:** make sure your component behave exactly the way it should
 
-  - **cons:** harder to setup, Harder to write
+  - **cons:** harder to setup, harder to write
 
 ✅ Overall, **DOM testing is more robust**, but require more work to setup
 

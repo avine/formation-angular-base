@@ -194,7 +194,7 @@ export class App {}
 
 - It is possible to execute code using component lifecycle hooks
 
-- More infos: https://angular.dev/guide/components/lifecycle
+- More info: https://angular.dev/guide/components/lifecycle
 
 ```ts
 import {

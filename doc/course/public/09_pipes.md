@@ -64,7 +64,7 @@ import { DatePipe, UpperCasePipe, CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [DatePipe, UpperCasePipe, CurrencyPipe]
+  imports: [DatePipe, UpperCasePipe, CurrencyPipe],
   template: `
     <p>{{ myDate | date }}</p>                          <!-- 29 août 2023 -->
     <p>{{ myDate | date | uppercase }}</p>              <!-- 29 AOÛT 2023 -->
