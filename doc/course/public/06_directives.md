@@ -36,8 +36,8 @@
 ## Directives
 
 - Live in the **component template**
-- Needs a **host element** to be attached to
-- Adds **additional behavior** to host elements in your template
+- Need a **host element** to be attached to
+- Add **additional behavior** to host elements in your template
 - Defined in a single place, it can be used in several components
 - Angular offers several **built-in directives** to manage routing, forms, and what users see
 
@@ -45,10 +45,10 @@
 
 ## Directives
 
-There are 3 types of directives:
+There are three types of directives:
 
-- **Attribute directive**: change the appearance or behavior of DOM elements
-- **Structural directive**: change the DOM layout by adding and removing DOM elements
+- **Attribute directives**: change the appearance or behavior of DOM elements
+- **Structural directives**: change the DOM layout by adding and removing DOM elements
 - **Component**: yes! components are in fact directives that embed their own template 
 
 Note:
@@ -86,8 +86,6 @@ export class Highlight {
   }
 }
 ```
-
-- Specify that we use the native API mainly to allow server-side rendering
 
 <!-- separator-vertical -->
 

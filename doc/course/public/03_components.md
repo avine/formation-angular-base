@@ -149,7 +149,7 @@ h1 { font-weight: normal; }
   - accepts basic JavaScript expressions
   - more: https://angular.dev/guide/templates
 - All `public` or `protected` component properties can be used in the template
-- An expression used in template must not change the component state
+- An expression used in the template must not change the component state
 
 ```ts
 @Component ({
@@ -259,7 +259,7 @@ NOTES:
 
 - Use the `input()` function to declare a component class property as input
 
-- Acts as a wrapper around the value
+- It acts as a wrapper around the value
 
 - To read the value contained in the input, you need to call it as a function
 

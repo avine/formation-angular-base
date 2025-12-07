@@ -42,7 +42,7 @@ To test an application, you need two functional building blocks:
 - A **test runner** that identifies and runs the files containing the tests
 - An **assertion library** that verifies the expected behavior
 
-Out of the box, Angular uses **Karma** as test runner and **Jasmine** as assertion library.
+Out of the box, Angular uses **Karma** as a test runner and **Jasmine** as an assertion library.
 
 By default, test files are identified by the pattern: `*.spec.ts`.
 
@@ -55,7 +55,7 @@ We therefore only learn the basics of Jasmine and Karma...
 ## Unit testing - Jasmine 
 
 - Organize your tests using `describe`  and `it` functions
-- Follow the 3 steps pattern in each test: *"Given"*, *"When"*, *"Then"*
+- Follow the 3-step pattern in each test: *"Given"*, *"When"*, *"Then"*
 - Identify the thing being tested using `expect`
 - Use matchers to verify the expected behavior: `toBe`, `toBeTrue`, `toBeTruthy`, `toContain`, ...
 
@@ -182,15 +182,15 @@ fixture.detectChanges();
 
   - **pros:** easy to setup, easy to write, most usual way to write unit tests
 
-  - **cons:** does not make sure your component behave the way it should
+  - **cons:** does not make sure your component behaves the way it should
 
 - DOM testing
 
-  - **pros:** make sure your component behave exactly the way it should
+  - **pros:** make sure your component behaves exactly the way it should
 
   - **cons:** harder to setup, harder to write
 
-✅ Overall, **DOM testing is more robust**, but require more work to setup
+✅ Overall, **DOM testing is more robust**, but requires more work to setup
 
 <!-- separator-vertical -->
 

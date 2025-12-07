@@ -75,7 +75,7 @@ console.log(count());                 // <-- output: 2
 
 ## Signals - computed
 
-- Use `computed` function to derive signal from other signals
+- Use the `computed` function to derive a signal from other signals
 
 - Re-evaluated only when the signals on which they depend change
 
@@ -103,7 +103,7 @@ console.log(isEven());                // <-- output: true
 
 ## Signals - effect
 
-- Use `effect` function to run "side-effect", whenever one or more signal values change
+- Use the `effect` function to run "side-effect", whenever one or more signal values change
 
 - Re-evaluated only when the signals on which they depend change
 
@@ -123,7 +123,7 @@ count.set(1);
 count.update((c) => c + 1);
 ```
 
-😉 *Another signal is the `linkedSignal`, but its study goes beyond the scope of this course*
+😉 *Another signal is the `linkedSignal`, but it is beyond the scope of this course*
 
 <!-- separator-vertical -->
 
@@ -281,7 +281,7 @@ describe('Counter', () => {
 
 - The goal of synchronization is to keep the **UI** in sync with the **state** of the application
 
-- **signals** play a crucial role in enabling Angular to know exactly when and which parts of the UI needs to be synchronized
+- **signals** play a crucial role in enabling Angular to know exactly when and which parts of the UI need to be synchronized
 
 - As a rule of thumb, if the part of the **state to be rendered in your templates** only **changes through signals** then your UI should always be in sync with the state of your application
 

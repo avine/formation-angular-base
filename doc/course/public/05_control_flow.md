@@ -43,7 +43,7 @@
   - `@for`
   - `@switch`
 
-😉 *Another control flow is `@defer` block, but its study goes beyond the scope of this course*
+😉 *Another control flow is the `@defer` block, but it is beyond the scope of this course*
 
 <!-- separator-vertical -->
 

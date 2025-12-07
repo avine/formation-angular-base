@@ -273,14 +273,14 @@ export class App {
 
 In the next chapter on `Pipe`s, you'll see how Angular uses `InjectionToken`s
 
-😉 _Note that there's also a `FactoryProvider`, but its study goes beyond the scope of this course_
+😉 _Note that there's also a `FactoryProvider`, but it is beyond the scope of this course_
 
 <!-- separator-vertical -->
 
 ## Dependency injection - App Initializer
 
 - Perform asynchronous tasks before the application is bootstrapped
-- Accepts the use of dependency injection
+- Supports dependency injection
 
 ```ts
 import { ApplicationConfig, provideAppInitializer } from '@angular/core';

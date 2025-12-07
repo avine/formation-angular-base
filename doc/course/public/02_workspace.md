@@ -35,7 +35,7 @@
 
 ## Workspace
 
-An Angular workspace is **structured** by the following parts
+An Angular workspace is **structured** by the following elements
 
 - `package.json`
 - `tsconfig.json`

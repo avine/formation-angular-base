@@ -253,7 +253,7 @@ Arrays can be manipulated using methods such as the following
 
 ## TypeScript - Adding item to an Array
 
-There are 2 ways of adding an element to an array
+There are two ways of adding an element to an array
 
 - In a **mutable** way...
 
@@ -286,7 +286,7 @@ console.log(newItems);                                  // --> [0, 1, 2, 3, 4]
 
 - Classes are composed of one **constructor**, **properties** and **methods**
 - Explicitly defining a constructor is optional
-- Properties and methods are accessible with `this` keyword
+- Properties and methods are accessible with the `this` keyword
 
 ```ts
 class Person {

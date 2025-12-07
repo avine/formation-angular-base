@@ -37,7 +37,7 @@
 
 In a single-page app, you change what the user sees by showing or hiding portions of the display that correspond to particular components, rather than going out to the server to get a new page
 
-- The Angular router allows to
+- The Angular router allows you to
   - display different **views**
   - at a defined **insertion point**
   - depending on the **browser's URL**
@@ -58,7 +58,7 @@ export const appConfig: ApplicationConfig = {
 
 ## Routing - Routes
 
-- Define the routes of you app by associating different **components** to different **paths** in `app.routes.ts` file
+- Define the routes of your app by associating different **components** to different **paths** in the `app.routes.ts` file
 
 - Define path **parameters** using the syntax `:paramName`
 

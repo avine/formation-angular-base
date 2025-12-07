@@ -35,13 +35,13 @@
 
 ## Client-server architecture
 
-- Refers to a mode of **communication** between 2 computers
+- Refers to a mode of **communication** between two computers
   - the client sends a **request** to the server
   - the server sends the **response** back to the client 
 
 - This communication generally uses the HTTP **protocol** (but other protocols exist...)
 
-- Each HTTP **message** between the client and the server generally consists of 2 parts
+- Each HTTP **message** between the client and the server generally consists of two parts
   - the **headers**, which contain contextual metadata
   - the **body**, which contains the transmitted data
 
@@ -79,7 +79,7 @@ Accept-Encoding: gzip
 
 ## Web browser technologies 
 
-- A web browser is a software capable of displaying **web pages**
+- A web browser is software capable of displaying **web pages**
 
 - Web pages are built around 3 main technologies
   - **HTML**
@@ -288,7 +288,7 @@ ng new
 
 - Major release every 6 months
 
-- Last major version `20` released in May 2025
+- Last major version `21` released in November 2025
 
 - Maintained by a dedicated team at **Google**
 

@@ -205,7 +205,7 @@ import {
 export class App implements
   OnChanges, OnInit, AfterContentInit, AfterViewInit, OnDestroy {
 
-    constructor() {/* Perform tasks that does NOT depend on the component's inputs */}
+    constructor() {/* Perform tasks that do NOT depend on the component's inputs */}
 
     ngOnInit(): void {/* Perform tasks that depend on the component's inputs */}
 
@@ -234,7 +234,7 @@ export class Posts implements OnInit {
   protected posts?: Post[];
 
   ngOnInit() {
-    // Doing this is the `constructor` will fail!
+    // Doing this in the `constructor` will fail!
     // Because the property `userId` is `undefined` at the time the constructor is executed.
     this.fetchUserPosts(this.userId()).then((posts) => (this.posts = posts));
   }
@@ -247,7 +247,7 @@ export class Posts implements OnInit {
 
 ## Appendix - Component lifecycle | OnDestroy
 
-- `OnDestroy` lifecycle hook is frequently used for cleaning component
+- `OnDestroy` lifecycle hook is frequently used for cleaning up the component
 
 ```ts
 import { Component, OnDestroy } from '@angular/core';
@@ -299,7 +299,7 @@ export class Interval {
 
 - It is possible to access template details from the class using `viewChild`
 
-- Retrieved informations are available as soon as `AfterViewInit` has been triggered
+- Retrieved information is available as soon as `AfterViewInit` has been triggered
 
 ```ts
 import { Component, viewChild, OnInit, AfterViewInit } from '@angular/core';

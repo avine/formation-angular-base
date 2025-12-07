@@ -35,7 +35,7 @@
 
 ## Forms - Modules 1/3
 
-Angular provides 2 different ways to handle forms
+Angular provides two different ways to handle forms
 
 - **Template-driven forms**
   - the form is fully defined in the component *template*
@@ -50,7 +50,7 @@ Angular provides 2 different ways to handle forms
 
 ## Forms - Modules 2/3
 
-Any form can be created using either of the following technique, but...
+Any form can be created using either of the following techniques, but...
 
 - **Template-driven forms**
   - are recommended when form structure is not fixed over time
@@ -97,7 +97,7 @@ export class App {}
 
 - So, your template looks like something familiar!
 
-- Here's a basic HTML form example with 3 fields:
+- Here's a basic HTML form example with three fields:
   - `name`, `email` (both required) and `message` (optional)
 
 ```html
@@ -351,7 +351,7 @@ export class App {
 
 ## Forms - Validators 2/3
 
-- Use the `.errors` property on the `NgModel` directive the track the validation errors
+- Use the `.errors` property on the `NgModel` directive to track the validation errors
 
 - Here's an example with a form field that is *required* and must be a *valid email*
 

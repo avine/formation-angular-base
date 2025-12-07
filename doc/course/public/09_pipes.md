@@ -37,8 +37,8 @@
 
 - Special operator in Angular template expressions
 - Transform data declaratively in your template
-- Transformation function are declared once and then used across multiple templates
-- Angular provides a lots of pipes for common use cases...
+- Transformation functions are declared once and then used across multiple templates
+- Angular provides a lot of pipes for common use cases...
 
 ```ts
 import {
@@ -105,7 +105,7 @@ export class JoinArrayPipe implements PipeTransform {
 ```
 
 NOTES:
-In fact this pipe does not really works because it needs to be "impure" (this is explained later...).
+In fact this pipe does not really work because it needs to be "impure" (this is explained later...).
 
 <!-- separator-vertical -->
 
