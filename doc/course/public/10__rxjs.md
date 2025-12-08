@@ -24,7 +24,7 @@
 - [Dependency injection](#/9)
 - [Pipes](#/10)
 - **RxJS**
-- [Http client](#/12)
+- [HTTP client](#/12)
 - [Routing](#/13)
 - [Forms](#/14)
 - [Appendix](#/15)
@@ -36,9 +36,9 @@
 
 ## RxJS
 
-💡 *This chapter covers the **RxJS** prerequisites needed to confidently follow the next chapter on **Http client***
+💡 *This chapter covers the **RxJS** prerequisites needed to confidently follow the next chapter on **HTTP client***
 
-- Refers to a __paradigm__ called ReactiveX (http://reactivex.io/)
+- RxJS refers to a __paradigm__ called ReactiveX (http://reactivex.io/)
   - an API for asynchronous programming with observable streams
   - implemented in all major programming languages: *RxJava, Rx.NET, ...*
 
@@ -142,7 +142,7 @@ const subscription: Subscription = data$.subscribe((data: number) => {
 
 ## RxJS - Operators 1/2
 
-- Operators such as `filter` and `map` are functions that let you filter, transform, and control streams of data 
+- Operators such as `filter` and `map` are functions that let you filter, transform, and control the Observable
 
 ```ts
 import { Observable, filter, map } from 'rxjs';

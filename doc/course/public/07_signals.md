@@ -24,7 +24,7 @@
 - [Dependency injection](#/9)
 - [Pipes](#/10)
 - [RxJS](#/11)
-- [Http client](#/12)
+- [HTTP client](#/12)
 - [Routing](#/13)
 - [Forms](#/14)
 - [Appendix](#/15)
@@ -104,7 +104,7 @@ console.log(isEven());                // <-- output: true
 
 ## Signals - effect
 
-- Use the `effect` function to run "side-effect", whenever one or more signal values change
+- Use the `effect` function to run "side effect", whenever one or more signal values change
 
 - Re-evaluated only when the signals on which they depend change
 

@@ -1,4 +1,4 @@
-## Lab 10: Http client 1/3
+## Lab 10: HTTP client 1/3
 
 In this lab, you'll communicate with a REST API server that will manage the products and the basket.
 
@@ -32,7 +32,7 @@ Here are the available endpoints:
 
 <!-- separator-vertical -->
 
-## Lab 10: Http client 2/3
+## Lab 10: HTTP client 2/3
 ### `CatalogResource`
 
 - Inject the `HttpClient` service
@@ -40,7 +40,7 @@ Here are the available endpoints:
 - Remove the hard coded products from the `_products` property
 
 - Add a `fetchProducts(): Observable<Product[]>` method that gets the products from the server and stores them in the `_products` signal.<br />
-  To achieve this side-effect, use the RxJS `tap` operator in the `.pipe()` transformation chain:
+  To achieve this side effect, use the RxJS `tap` operator in the `.pipe()` transformation chain:
 
 ```ts
 import { Observable, tap } from 'rxjs';
@@ -65,7 +65,7 @@ export class CatalogResource {
 
 <!-- separator-vertical -->
 
-## Lab 10: Http client 3/3
+## Lab 10: HTTP client 3/3
 ### `BasketResource`
 
 - Inject the `HttpClient` service

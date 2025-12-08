@@ -1,4 +1,4 @@
-# Http client
+# HTTP client
 
 <!-- .slide: class="page-title" -->
 
@@ -24,7 +24,7 @@
 - [Dependency injection](#/9)
 - [Pipes](#/10)
 - [RxJS](#/11)
-- **Http client**
+- **HTTP client**
 - [Routing](#/13)
 - [Forms](#/14)
 - [Appendix](#/15)
@@ -34,7 +34,7 @@
 
 <!-- separator-vertical -->
 
-## Http client - Getting started 1/5
+## HTTP client - Getting started 1/4
 
 - Let's use the `jsonplaceholder` API to display todo items
 
@@ -65,11 +65,11 @@ interface Todo {
 
 <!-- separator-vertical -->
 
-## Http client - Getting started 2/5
+## HTTP client - Getting started 2/4
 
-- To enable Http capabilities to an app, add `provideHttpClient()` to the app configuration
+- Provide the `HttpClient` service using the `provideHttpClient()` helper function
 
-- Optionally, add `withFetch()` option to use the browser's native `fetch` API
+- Optionally, configure the service to use the browser's native `fetch` API, by adding the `withFetch()` feature
 
 ```ts
 import { ApplicationConfig } from '@angular/core';
@@ -82,11 +82,15 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
+😉 *Note: providing the HTTP client is optional, unless you need to add features*
+
+😉 *Note: `withInterceptors(...)` is another common feature, but this is beyond the scope of this course*
+
 <!-- separator-vertical -->
 
-## Http client - Getting started 3/5
+## HTTP client - Getting started 3/4
 
-- Then use the `HttpClient` service in the component that needs to display the data
+- Use the `HttpClient` service into components that needs to display the data
 
 ```ts
 import { Component, inject } from '@angular/core';
@@ -110,123 +114,14 @@ export class TodoList {
   }
 }
 ```
-<!-- separator-vertical -->
-
-## Http client - Getting started 4/5
-
-- While `HttpClient` can be injected and used directly from **components**
-
-- It is recommended to create reusable, injectable **services** which encapsulate data access logic
-
-```ts
-import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class TodoService {
-  private httpClient = inject(HttpClient);
-
-  fetch() {
-    return this.httpClient.get<Todo[]>(TODOS_URL);
-  }
-}
-```
-
-- **Data source providers** (typically Services) should only **expose the shape of requests**
-  and let **data source consumers** (typically Components) **subscribe** to them
 
 <!-- separator-vertical -->
 
-## Http client - Getting started 5/5
-
-- Therefore, in most cases, **do NOT subscribe in services** but in components only,
-  allowing the consumer to react to every status of the request (**loading**, **error** and **fetched**) in the UI
-
-```ts
-import { Component, inject, signal } from '@angular/core';
-import { JsonPipe } from '@angular/common';
-import { TodoService } from './todo-service';
-
-@Component({
-  selector: 'app-todo-list',
-  template: `<pre>{{ todos() | json }}</pre>`,
-  imports: [JsonPipe],
-})
-export class TodoList {
-  private todoService = inject(TodoService);
-
-  protected todos = signal<Todo[] | undefined>(undefined);
-
-  constructor() {
-    this.todoService.fetch().subscribe((todos) => this.todos.set(todos));
-  }
-}
-```
-
-<!-- separator-vertical -->
-
-## Http client - State management 1/2
-
-- To share data between components, we need to store fetched data in a service facade
-
-- ❌ However, the following implementation breaks the best practice we just mentioned!
-
-```ts
-import { Injectable, inject, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class TodoService {
-  private httpClient = inject(HttpClient);
-
-  todos = signal<Todo[] | undefined>(undefined);
- 
-  fetch(): void {
-    this.httpClient
-      .get<Todo[]>(TODOS_URL)
-      .subscribe((todos) => this.todos.set(todos)); // <-- ❌ Do NOT subscribe in services!
-  }
-}
-```
-
-<!-- separator-vertical -->
-
-## Http client - State management 2/2
-
-- ✅ We can still access fetched data before subscribing, using the `.pipe(tap(...))` pattern
-
-```ts
-import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class TodoService {
-  private httpClient = inject(HttpClient);
-
-  private todos = signal<Todo[] | undefined>(undefined);
-
-  fetch(): Observable<Todo[]> {
-    return this.httpClient
-      .get<Todo[]>(TODOS_URL)
-      .pipe(tap((todos) => this.todos.set(todos))); // <-- ✅ Tapping into the data stream
-  }
-}
-```
-
-*But to understand this solution, we need to understand how the `HttpClient` methods work*
-
-<!-- separator-vertical -->
-
-## Http client - Methods
+## HTTP client - Getting started 4/4
 
 - There are many `HttpClient` methods and they are highly configurable
+
+- They describe the shape of requests as **RxJS Observables**
 
 ```ts
 class HttpClient {
@@ -248,122 +143,65 @@ interface HttpOptions {
 }
 ```
 
-- Each of these methods returns an `Observable`, but what are observables anyway?
-
 <!-- separator-vertical -->
 
-## Http client - Observables
+## HTTP client - Service and Component layers 1/2
 
-*The `HttpClient` service is built on top of **RxJS Observables**, but they are beyond the scope of this course*
+- While `HttpClient` can be injected and used directly into **components**
 
-- In a nutshell, an **Observable**
-  - represent a **stream of data** that can be subscribed to
-  - allowing **multiple values** to be emitted over time
+- It is recommended to create reusable, injectable **services** which encapsulate data access logic
 
-- In the specific case of an **Http request**, the observable emits
-  - a **single value** if the request succeeds
-  - an **error** if the request fails (`HttpErrorResponse`)
-
-<!-- separator-vertical -->
-
-## Http client - Error handling
-
-- When subscribing
-  - use a **callback function** to handle Http **response** only
-  - use an **object** to handle Http **response** and **error**
+- **Data providers** *(service layer)* should only **expose the shape of requests**<br />
+  and let **data consumers** *(component layer)* **subscribe** to them
 
 ```ts
-// ----- Using a callback function -----
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-this.httpClient.get(TODOS_URL).subscribe(
-  (response: Todo[]) => { /* Response handler... */ }
-);
+@Injectable({
+  providedIn: 'root'
+})
+export class TodoService {
+  private httpClient = inject(HttpClient);
 
-// ----- Using an object -----
-
-this.httpClient.get(TODOS_URL).subscribe(
-  {
-    next: (response: Todo[]) => { /* Response handler... */ },
-    error: (error: HttpErrorResponse) => { /* Error handler... */ }
+  fetch() {
+    return this.httpClient.get<Todo[]>(TODOS_URL); // <-- Do NOT "subscribe" in service layer
   }
-);
+}
 ```
 
 <!-- separator-vertical -->
 
-## Http client - HttpClient | Pipe 1/3
+## HTTP client - Service and Component layers 2/2
 
-- Remember that a request consists of at least two parts
-  - defining its shape, using: `.get()`, `.post()`, ...
-  - triggering its execution, using: `.subscribe()`
-
-- But you can also transform the incoming response before calling the subscribe method
-  - using the `.pipe()` method to apply chainable operators
+- Subscribe in components to react to each status of the request as needed (**loading**, **error** and **fetched**)
 
 ```ts
-this.httpClient
-  .get()                            // <-- 1. Definition
-  .pipe(/* List of operators */)    // <-- 2. Transformation
-  .subscribe();                     // <-- 3. Execution
-```
+import { Component, inject, signal } from '@angular/core';
+import { JsonPipe } from '@angular/common';
+import { TodoService } from './todo-service';
 
-- Both `.pipe()` and `.subscribe()` methods are parts of the Observable API
+@Component({
+  selector: 'app-todo-list',
+  template: `<pre>{{ todos() | json }}</pre>`,
+  imports: [JsonPipe],
+})
+export class TodoList {
+  private todoService = inject(TodoService);
 
-<!-- separator-vertical -->
+  protected todos = signal<Todo[] | undefined>(undefined);
 
-## Http client - HttpClient | Pipe 2/3
-
-- Use the `map(...)` operator to adapt the API response to your needs
-
-```ts
-import { map } from 'rxjs';
-
-const TODO_1_URL = 'https://jsonplaceholder.typicode.com/todos/1';
-
-this.httpClient
-  .get<Todo>(TODO_1_URL)    // <-- { id: 1, title: "delectus aut autem", completed: false }
-
-  .pipe(
-    map((todo) => ({ title: todo.title })),           // <-- { title: "delectus aut autem" }
-    map((todo: Pick<Todo, 'title'>) => todo.title)),  // <-- "delectus aut autem"
-  )
-
-  .subscribe((title: string) => {
-    console.log(title);                               // <-- "delectus aut autem"
-  });
+  constructor() {
+    this.todoService.fetch().subscribe((todos) => this.todos.set(todos)); // <-- Do "subscribe" in
+  }                                                                       //     component layer
+}
 ```
 
 <!-- separator-vertical -->
 
-## Http client - HttpClient | Pipe 3/3
+## HTTP client - State management 1/3
 
-- Use the `tap(...)` operator to tap into the stream, handling side-effect without affecting the stream
-
-```ts
-import { tap } from 'rxjs';
-
-const TODO_1_URL = 'https://jsonplaceholder.typicode.com/todos/1';
-
-this.httpClient
-  .get<Todo>(TODO_1_URL)        // <-- { id: 1, title: "delectus aut autem", completed: false }
-
-  .pipe(
-    tap((todo) => {
-      this.todo = todo;         // <-- Side-effect
-      return 'whatever';        // <-- Return value does NOT affect the stream
-    }),
-  )
-
-  .subscribe((todo: Todo) => {
-    console.log(todo);          // <-- { id: 1, title: "delectus aut autem", completed: false }
-  });
-```
-
-<!-- separator-vertical -->
-
-## Http client - State management 1/3
-
-- Let's revisit the solution shown above that uses the `.pipe(tap(...))` pattern 
+- To share data between components, **store** the fetched data in the **service layer** by leveraging **RxJS operators**
 
 ```ts
 import { Injectable, inject } from '@angular/core';
@@ -382,16 +220,16 @@ export class TodoService {                                  // <-- Data source p
   fetch(): Observable<Todo[]> {
     return this.httpClient
       .get<Todo[]>(TODOS_URL)
-      .pipe(tap((todos) => this._todos.set(todos)));        // <-- Handle side-effect
+      .pipe(tap((todos) => this._todos.set(todos)));        // <-- RxJS operators to handle side effect
   }
 }
 ```
 
 <!-- separator-vertical -->
 
-## Http client - State management 2/3
+## HTTP client - State management 2/3
 
-- We subscribe in the component, which consumes centralised data and handles potential errors
+- **Subscribe** in the **component layer**, consuming centralised data and **handling** potential **errors**
 
 ```ts
 import { Component, inject, signal } from '@angular/core';
@@ -418,11 +256,10 @@ export class TodoList {                                     // <-- Data source c
 
 <!-- separator-vertical -->
 
-## Http client - State management 3/3
+## HTTP client - State management 3/3
 
-- As already mentionned, we subscribe in the component (data source consumer) and not in the service (data source provider)
-
-- Allowing the component to react to every status of the request (**loading**, **error** and **fetched**) in its template
+- Finally, in the component template, adapt the display according to the different statuses of the request
+  (**loading**, **error** and **fetched**)
 
 ```html
 <!-- todo-list.html -->
@@ -443,9 +280,9 @@ export class TodoList {                                     // <-- Data source c
 
 <!-- separator-vertical -->
 
-## Http client - Testing 1/2
+## HTTP client - Testing 1/2
 
-- Angular provides `provideHttpClientTesting` and `HttpTestingController` for mocking Http requests
+- Angular provides `provideHttpClientTesting` and `HttpTestingController` for mocking HTTP requests
 
 ```ts
 import { provideHttpClient, withFetch } from '@angular/common/http';
@@ -470,7 +307,7 @@ describe('TodoService', () => {
 
 <!-- separator-vertical -->
 
-## Http client - Testing 2/2
+## HTTP client - Testing 2/2
 
 - The Controller can be injected into tests and used for mocking and flushing requests
 
@@ -496,35 +333,27 @@ describe('TodoService', () => {
 
 <!-- separator-vertical -->
 
-## Http client - Summary
+## HTTP client - Summary
 
 **In this chapter on http client, we have covered the following topics**
 
-<div class="columns">
-<div class="column-50">
+- Provider
+- Provider options
+- Service
+- Methods (RxJS Observables)
+- Error handling
+- State management
 
-- **HttpClient**
-  - Provider
-  - Service
-  - State management
+<hr />
 
-</div>
-<div class="column-50">
-
-- **Observables**
-  - Subscription
-  - Error handling
-  - Pipe operator
-
-</div>
-</div>
+😉 *To go further, discover: [Reactive data fetching with `httpResource`](https://angular.dev/guide/http/http-resource)*
 
 <!-- separator-vertical -->
 
-## Http client - Questions
+## HTTP client - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->
 
 <!-- separator-vertical -->
 
-## Http client - Lab 10
+## HTTP client - Lab 10
 <!-- .slide: data-background-image="./resources/background-lab.svg" data-background-size="45%" -->

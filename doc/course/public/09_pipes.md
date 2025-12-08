@@ -24,7 +24,7 @@
 - [Dependency injection](#/9)
 - **Pipes**
 - [RxJS](#/11)
-- [Http client](#/12)
+- [HTTP client](#/12)
 - [Routing](#/13)
 - [Forms](#/14)
 - [Appendix](#/15)
