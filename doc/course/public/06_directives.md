@@ -27,7 +27,7 @@
 - [HTTP client](#/12)
 - [Routing](#/13)
 - [Forms](#/14)
-- [Appendix](#/15)
+- [More on Components](#/15)
 
 </div>
 </div>
@@ -239,6 +239,11 @@ describe('Highlight', () => {
 - Renderer2
 - Host metadata
 - Input and Output
+- Attribute directives
+
+<hr />
+
+😉 *To go further, discover: [Structural directives](https://angular.dev/guide/directives/structural-directives)*
 
 <!-- separator-vertical -->
 

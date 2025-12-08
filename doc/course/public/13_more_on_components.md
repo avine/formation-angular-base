@@ -1,4 +1,4 @@
-# Appendix
+# More on Components
 
 <!-- .slide: class="page-title" -->
 
@@ -27,14 +27,14 @@
 - [HTTP client](#/12)
 - [Routing](#/13)
 - [Forms](#/14)
-- **Appendix**
+- **More on Components**
 
 </div>
 </div>
 
 <!-- separator-vertical -->
 
-## Appendix - Component view encapsulation 1/3
+## More on Components - View encapsulation 1/3
 
 - By default, **component's styles are encapsulated** within the component's host element so that they **don't affect the rest of the application**
 
@@ -64,7 +64,7 @@ h1[_ngcontent-ng-529479] { color: blue }
 
 <!-- separator-vertical -->
 
-## Appendix - Component view encapsulation 2/3
+## More on Components - View encapsulation 2/3
 
 - Use `:host {}` pseudo class to style the component's host element
 
@@ -93,7 +93,7 @@ export class App {}
 
 <!-- separator-vertical -->
 
-## Appendix - Component view encapsulation 3/3
+## More on Components - View encapsulation 3/3
 
 - If needed, use `ViewEncapsulation.None` to disable component's encapsulation
 - Then, all styles defined in the component are global and can therefore affect the entire page
@@ -118,7 +118,7 @@ export class App {}
 
 <!-- separator-vertical -->
 
-## Appendix - Component projection 1/3
+## More on Components - Content projection 1/3
 
 - Allows to put HTML content inside the tag of an Angular component
 - The `<ng-content />` element acts as a placeholder to mark where projected content should go
@@ -142,7 +142,7 @@ export class App {}
 
 <!-- separator-vertical -->
 
-## Appendix - Component projection 2/3
+## More on Components - Content projection 2/3
 
 - Ability to have multiple insertion points using the `select` property
 - The select value must be a valid **CSS selector** targeting the HTML fragment to be used
@@ -167,7 +167,7 @@ export class App {}
 
 <!-- separator-vertical -->
 
-## Appendix - Component projection 3/3
+## More on Components - Content projection 3/3
 
 - Use `<ng-container>` to avoid adding unnecessary tags
 
@@ -191,7 +191,7 @@ export class App {}
 
 <!-- separator-vertical -->
 
-## Appendix - Component lifecycle
+## More on Components - Lifecycle 1/4
 
 - It is possible to execute code using component lifecycle hooks
 
@@ -220,7 +220,7 @@ export class App implements
 
 <!-- separator-vertical -->
 
-## Appendix - Component lifecycle | OnInit
+## More on Components - Lifecycle 2/4
 
 - `OnInit` lifecycle hook is frequently used for initialization
 - because you can safely read component `input`s when this hook is triggered
@@ -246,7 +246,7 @@ export class Posts implements OnInit {
 
 <!-- separator-vertical -->
 
-## Appendix - Component lifecycle | OnDestroy
+## More on Components - Lifecycle 3/4
 
 - `OnDestroy` lifecycle hook is frequently used for cleaning up the component
 
@@ -270,7 +270,7 @@ export class Interval implements OnDestroy {
 
 <!-- separator-vertical -->
 
-## Appendix - Comp. lifecycle hooks | DestroyRef
+## More on Components - Lifecycle 4/4
 
 - `DestroyRef` allows you to achieve the same result as `ngOnDestroy`
 
@@ -296,7 +296,7 @@ export class Interval {
 
 <!-- separator-vertical -->
 
-## Appendix - Component queries 1/2
+## More on Components - Queries 1/2
 
 - It is possible to access template details from the class using `viewChild`
 
@@ -324,7 +324,7 @@ export class App implements OnInit, AfterViewInit {
 
 <!-- separator-vertical -->
 
-## Appendix - Component queries 2/2
+## More on Components - Queries 2/2
 
 - `afterNextRender` allows you to achieve (almost) the same result as `AfterViewInit`
 
@@ -353,5 +353,5 @@ export class App {
 
 <!-- separator-vertical -->
 
-## Appendix - Questions
+## More on Components - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->

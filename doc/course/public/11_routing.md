@@ -27,7 +27,7 @@
 - [HTTP client](#/12)
 - **Routing**
 - [Forms](#/14)
-- [Appendix](#/15)
+- [More on Components](#/15)
 
 </div>
 </div>
@@ -36,7 +36,8 @@
 
 ## Routing
 
-In a single-page app, you change what the user sees by showing or hiding portions of the display that correspond to particular components, rather than going out to the server to get a new page
+💡 In a single-page application (SPA), the browser only makes a request to a web server for the first page<br />
+After that, a client-side router takes over, controlling which content displays based on the URL
 
 - The Angular router allows you to
   - display different **views**
@@ -60,10 +61,9 @@ export const appConfig: ApplicationConfig = {
 ## Routing - Routes
 
 - Define the routes of your app by associating different **components** to different **paths** in the `app.routes.ts` file
-
-- Define path **parameters** using the syntax `:paramName`
-
-- Catch unknown paths using **wildcard** route `**` and redirect to a known path or display a dedicated "Not found" page
+  - Define path **parameters** using the syntax `:paramName`
+  - Catch unknown paths using **wildcard** route (`**`)<br />
+    then redirect to a known path or display a dedicated "Not found" page
 
 ```ts
 import { Routes } from '@angular/router';
@@ -96,9 +96,11 @@ import { RouterOutlet } from '@angular/router';
   template: `
     <header>My Awesome App</header>
 
-    <router-outlet />
+    <main>
+      <router-outlet />
+    </main>
 
-    <footer>Copyright Zenika</footer>
+    <footer>Copyright - Zenika</footer>
   `
 })
 export class App {}
@@ -117,20 +119,21 @@ import { RouterLink } from '@angular/router';
 @Component ({
   selector: 'app-nav',
   imports: [RouterLink],
-  template: `
-    <a routerLink="/"> Home </a>
+  template:
+   `<a routerLink="/"> Home </a>
 
     <a routerLink="/contacts"> Contact list </a>
 
     <a routerLink="/contacts/1"> Contact 1 </a>
 
-    <a [routerLink]="['/contacts', id]"> Contact {{ id }} </a>
-  `
+    <a [routerLink]="['/contacts', id]"> Contact {{ id }} </a>`
 })
 export class Nav {
   id = 2;
 }
 ```
+
+😉 *Note: using `href` attribute instead of `routerLink` directive will trigger full-page reload*
 
 <!-- separator-vertical -->
 
@@ -264,7 +267,7 @@ export class Contact {
 
 *Using `ActivatedRoute` requires the understanding of observables*
 
-- Use `withComponentInputBinding()` in the router configuration to enable binding information from the router state directly to the component's inputs
+- Add `withComponentInputBinding()` feature to the router configuration to enable binding information from the router state directly to the component's inputs
 
 ```ts
 import { ApplicationConfig } from '@angular/core';
@@ -310,29 +313,6 @@ export class Contact {
 
 <!-- separator-vertical -->
 
-## Routing - Nested routes
-
-- Use the `children` property to define nested views
-
-```ts
-import { Routes } from '@angular/router';
-
-export const routes: Routes = [
-  {
-    path: 'contacts/:id',
-    component: Contact,
-    children: [
-      { path: 'view', component: ViewContact },
-      { path: 'edit', component: EditContact },
-    ],
-  },
-];
-```
-
-*In this example, we assume that the template of the `Contact` component contains the nested `<router-outlet />` directive*
-
-<!-- separator-vertical -->
-
 ## Routing - Route title
 
 - Use the `title` property to define a unique title for each route, so that they can be identified in the browser history
@@ -354,8 +334,116 @@ export const routes: Routes = [
 ];
 ```
 
+🎉 *At this point, we have covered the **basics** of Routing!*
+
+👇 *The rest of the chapter is **optional** and covers **advanced concepts***
+
 NOTES:
 ☕ We need to let the participants take a break here to divide this long chapter in two.
+
+🤔 The trainer must decide, based on the participants' level and the time remaining, whether to cover the rest of the chapter.
+
+<!-- separator-vertical -->
+
+## Routing - Nested routes
+
+- Use the `children` property to define nested views
+
+```ts
+import { Routes } from '@angular/router';
+
+export const routes: Routes = [
+  {
+    path: 'contacts/:id',
+    component: Contact,
+    children: [
+      { path: 'view', component: ViewContact },
+      { path: 'edit', component: EditContact },
+    ],
+  },
+];
+```
+
+*For this example to work, the `Contact` component template must contain the nested `<router-outlet />` directive*
+
+<!-- separator-vertical -->
+
+## Routing - Lazy Loading 1/3
+
+- Configure your routes to lazy load modules using `loadComponent`
+
+```ts
+import { Routes } from '@angular/router';
+
+export const routes: Routes = [
+  {
+    path: 'contacts',
+
+    // Use lazy-loaded JavaScript module...
+    loadComponent: () => import('./contact-list/contact-list.ts').then(
+      (module) => module.ContactList
+    ),
+
+    // ...instead of eagerly-loaded component
+    /* component: ContactList, */
+  },
+];
+```
+
+<!-- separator-vertical -->
+
+## Routing - Lazy Loading 2/3
+
+- Use `default` export to get rid of `.then((module) => ...)` part
+
+```ts
+@Component({
+  selector: 'app-contact-list',
+  template: `...`,
+})
+export class ContactList {}
+
+export default ContactList;
+```
+
+```ts
+import { Routes } from '@angular/router';
+
+export const routes: Routes = [
+  {
+    path: 'contacts',
+    loadComponent: () => import('./contact-list/contact-list.ts'),
+  },
+];
+```
+
+<!-- separator-vertical -->
+
+## Routing - Lazy Loading 3/3
+
+- Lazy load routes using `loadChildren`
+
+```ts
+// src/app/contacts/contacts.routes.ts
+import { Routes } from '@angular/router';
+
+export default [
+  { path: '', component: ContactList },
+  { path: ':id', component: Contact },
+] satisfies Routes;
+```
+
+```ts
+// src/app/app.routes.ts
+import { Routes } from '@angular/router';
+
+export const routes: Routes = [
+  {
+    path: 'contacts',
+    loadChildren: () => import('./contacts/contacts.routes.ts'),
+  },
+];
+```
 
 <!-- separator-vertical -->
 
@@ -470,85 +558,6 @@ export const contactGuard: CanActivateFn = () => {
 
 <!-- separator-vertical -->
 
-## Routing - Lazy Loading 1/3
-
-- Configure your routes to lazy load modules using `loadComponent`
-
-```ts
-import { Routes } from '@angular/router';
-
-export const routes: Routes = [
-  {
-    path: 'contacts',
-
-    // Use lazy-loaded JavaScript module...
-    loadComponent: () => import('./contact-list/contact-list.ts').then(
-      (module) => module.ContactList
-    ),
-
-    // ...instead of eagerly-loaded component
-    /* component: ContactList, */
-  },
-];
-```
-
-<!-- separator-vertical -->
-
-## Routing - Lazy Loading 2/3
-
-- Use `default` export to get rid of `.then((module) => ...)` part
-
-```ts
-@Component({
-  selector: 'app-contact-list',
-  template: `...`,
-})
-export class ContactList {}
-
-export default ContactList;
-```
-
-```ts
-import { Routes } from '@angular/router';
-
-export const routes: Routes = [
-  {
-    path: 'contacts',
-    loadComponent: () => import('./contact-list/contact-list.ts'),
-  },
-];
-```
-
-<!-- separator-vertical -->
-
-## Routing - Lazy Loading 3/3
-
-- Lazy load routes using `loadChildren`
-
-```ts
-// src/app/app.routes.ts
-import { Routes } from '@angular/router';
-
-export const routes: Routes = [
-  {
-    path: 'contacts',
-    loadChildren: () => import('./contacts/contacts.routes.ts'),
-  },
-];
-```
-
-```ts
-// src/app/contacts/contacts.routes.ts
-import { Routes } from '@angular/router';
-
-export default [
-  { path: '', component: ContactList },
-  { path: ':id', component: Contact },
-] satisfies Routes;
-```
-
-<!-- separator-vertical -->
-
 ## Routing - Summary
 
 **In this chapter on routing, we have covered the following topics**
@@ -556,20 +565,22 @@ export default [
 <div class="columns">
 <div class="column-50">
 
-- Routes
-- RouterOutlet
-- RouterLink
-- Router
-- ActivatedRoute
-- withComponentInputBinding
+- **Basics**
+  - Routes
+  - RouterOutlet
+  - RouterLink
+  - Router
+  - ActivatedRoute
+  - withComponentInputBinding
+  - Route title
 
 </div>
 <div class="column-50">
 
-- Nested routes
-- Route title
-- Guards
-- Lazy Loading
+- **Advanced concepts**
+  - Nested routes
+  - Lazy Loading
+  - Guards
 
 </div>
 </div>

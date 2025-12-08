@@ -27,7 +27,7 @@
 - **HTTP client**
 - [Routing](#/13)
 - [Forms](#/14)
-- [Appendix](#/15)
+- [More on Components](#/15)
 
 </div>
 </div>

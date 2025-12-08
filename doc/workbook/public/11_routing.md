@@ -1,6 +1,6 @@
 ## Lab 11: Routing 1/8
 
-In this lab, you'll create a multi-page application (SPA) using the Angular router.
+In this lab, you'll create a single-page application (SPA) using the Angular router.
 
 ### `app.config.ts`
 
@@ -114,8 +114,7 @@ Add `routerLink` directives in the following templates (don't forget to add the 
 
 - Use the `BasketResource` service to implement the component logic
 
-- Subcribe to `BasketResource.fetchBasket` method in the class constructor, to trigger data fetching<br />
-  Note that you'll remove this part once you've implemented the basket guard (see below ***)
+- Subcribe to `BasketResource.fetchBasket` method in the class constructor, to trigger data fetching
 
 - To check that everything is working properly, you should be able to:
   - Visit the `http://localhost:4200/catalog` page, click on _"Voir mon panier"_ and view the basket items
@@ -124,7 +123,7 @@ Add `routerLink` directives in the following templates (don't forget to add the 
 <!-- separator-vertical -->
 
 ## Lab 11: Routing 5/8
-### `BasketGuard`
+### Bonus: `BasketGuard`
 
 When visiting the page `http://localhost:4200/basket`:
 
@@ -155,7 +154,7 @@ export const basketGuard: CanMatchFn = () => {
   - Yes, it's the same route as for the `Basket` component
 
 - At this point, you can safely remove the `BasketResource.fetchBasket` subscription from the `Basket` component constructor, 
-  because data fetching is now triggered by the guard itself anyway (see above ***)
+  because data fetching is now triggered by the guard itself anyway
 
 <!-- separator-vertical -->
 
