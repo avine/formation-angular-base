@@ -11,9 +11,9 @@
     "build": "npm run doc:course && npm run doc:workbook"
   },
   "dependencies": {
-    "@fontsource/fira-code": "^5.2.7",
     "@fontsource/nunito": "^5.2.7",
     "@fontsource/open-sans": "^5.2.7",
+    "@fontsource/source-code-pro": "^5.2.7",
     "canvas-confetti": "^1.9.4",
     "highlight.js": "^11.11.1",
     "reveal.js": "^5.2.1"
