@@ -11,22 +11,23 @@
 
 - [Getting started](#/1)
 - [Workspace](#/2)
-- [Technical prerequisites](#/3)
+- [TypeScript](#/3)
 - [Components](#/4)
 - [Unit testing](#/5)
 - [Control flow](#/6)
 - [Directives](#/7)
+- [Signals](#/8)
 
 </div>
 <div class="column-50">
 
-- [Signals](#/8)
 - **Dependency injection**
 - [Pipes](#/10)
-- [Http client](#/11)
-- [Routing](#/12)
-- [Forms](#/13)
-- [Appendix](#/14)
+- [RxJS](#/11)
+- [Http client](#/12)
+- [Routing](#/13)
+- [Forms](#/14)
+- [Appendix](#/15)
 
 </div>
 </div>
@@ -342,7 +343,7 @@ describe('App', () => {
 <div class="column-50">
 
 - @Injectable decorator
-- Injectors and Singleton
+- Injectors and Singleton pattern
 - Injectors hierarchy
 - App providers
 - Component providers
@@ -354,7 +355,6 @@ describe('App', () => {
 - ClassProvider
 - ValueProvider
 - App Initializer
-- Testing in isolation
 
 </div>
 </div>

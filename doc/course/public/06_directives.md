@@ -11,22 +11,23 @@
 
 - [Getting started](#/1)
 - [Workspace](#/2)
-- [Technical prerequisites](#/3)
+- [TypeScript](#/3)
 - [Components](#/4)
 - [Unit testing](#/5)
 - [Control flow](#/6)
 - **Directives**
+- [Signals](#/8)
 
 </div>
 <div class="column-50">
 
-- [Signals](#/8)
 - [Dependency injection](#/9)
 - [Pipes](#/10)
-- [Http client](#/11)
-- [Routing](#/12)
-- [Forms](#/13)
-- [Appendix](#/14)
+- [RxJS](#/11)
+- [Http client](#/12)
+- [Routing](#/13)
+- [Forms](#/14)
+- [Appendix](#/15)
 
 </div>
 </div>
@@ -49,13 +50,13 @@ There are three types of directives:
 
 - **Attribute directives**: change the appearance or behavior of DOM elements
 - **Structural directives**: change the DOM layout by adding and removing DOM elements
-- **Component**: yes! components are in fact directives that embed their own template 
+- **Components**: yes! components are in fact directives that embed their own template 
 
-Note:
-  - Components have already been covered
-  - Structural directives are complex and beyond the scope of this course 
+*Note:*
 
-✅ Therefore, this course focuses only on **attribute directives**
+- Components have already been covered 🎉
+- Structural directives are complex and beyond the scope of this course 🚀
+- Therefore, this course focuses only on **attribute directives** ✅
 
 😉 *In this chapter, we'll cover the definition and usage of **custom** attribute directives.*<br />
 *Later in the course, you'll discover some Angular **built-in** attribute directives such as `RouterLink` (Routing) and `NgModel` (Forms).*
@@ -233,9 +234,9 @@ describe('Highlight', () => {
 
 **In this chapter on directives, we have covered the following topics**
 
-- Attribute directives
-- Usage in components
+- @Directive decorator
 - Selector
+- Renderer2
 - Host metadata
 - Input and Output
 

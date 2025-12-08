@@ -11,22 +11,23 @@
 
 - [Getting started](#/1)
 - [Workspace](#/2)
-- [Technical prerequisites](#/3)
+- [TypeScript](#/3)
 - **Components**
 - [Unit testing](#/5)
 - [Control flow](#/6)
 - [Directives](#/7)
+- [Signals](#/8)
 
 </div>
 <div class="column-50">
 
-- [Signals](#/8)
 - [Dependency injection](#/9)
 - [Pipes](#/10)
-- [Http client](#/11)
-- [Routing](#/12)
-- [Forms](#/13)
-- [Appendix](#/14)
+- [RxJS](#/11)
+- [Http client](#/12)
+- [Routing](#/13)
+- [Forms](#/14)
+- [Appendix](#/15)
 
 </div>
 </div>
@@ -85,7 +86,7 @@ export class App {}
 
 <!-- separator-vertical -->
 
-## Component - Template
+## Components - Template
 
 - The template can be configured in two ways:
   - using a `template` property: string literal (as shown above)
@@ -111,7 +112,7 @@ export class App {}
 
 <!-- separator-vertical -->
 
-## Component - Styles
+## Components - Styles
 
 The styles can be configured in two ways:
 
@@ -238,10 +239,10 @@ Example: `role` is a valid HTML attribute of the `<div>` tag, but there's no suc
   template: `<input [value]="name" (input)="updateName($event.target)" />`,
 })
 export class Demo {
-  name = 'Carl';
+  name = 'John';
 
-  updateName(eventTarget: EventTarget | null) {
-    this.name = (eventTarget as HTMLInputElement).value;
+  updateName(eventTarget: HTMLInputElement) {
+    this.name = eventTarget.value;
   }
 }
 ```
@@ -250,12 +251,33 @@ export class Demo {
 - We achieve a *two-way data binding* using both property binding and Event listeners
   - the **class** property `name` and the **template** input `value` will always be in sync
 
-NOTES:
-☕ We need to let the participants take a break here to divide this long chapter in two.
+<!-- separator-vertical -->
+
+## Components - Mini lab
+
+✋ *Given its length, this chapter has been divided into two parts*
+
+💪 *Now it's time to put what you've learned into practice, with this mini lab*
+
+<hr />
+
+- Create a `Counter` component
+  - it should display a `count` property starting at `0`
+  - the `count` can be incremented or decremented using HTML buttons
+  - the decrement button should be disabled when the `count` is equal to `0`
+  - the increment button should be disabled when the `count` is equal to `5`
+
+- Import the created component into your application component's class
+
+- Insert it into your application component's template
+
+<hr />
+
+👇 *When you have finished, we will move on to the second part of the chapter...*
 
 <!-- separator-vertical -->
 
-## Component - Input 1/4
+## Components - Input 1/4
 
 - Use the `input()` function to declare a component class property as input
 
@@ -283,7 +305,7 @@ count = input<number>(); // is equivalent to `input<number | undefined>();`
 
 <!-- separator-vertical -->
 
-## Component - Input 2/4
+## Components - Input 2/4
 
 - The consumer of this component can optionally bind to the input in its template
 
@@ -307,7 +329,7 @@ export class App {
 
 <!-- separator-vertical -->
 
-## Component - Input 3/4
+## Components - Input 3/4
 
 - Use the `input.required()` function to declare a component class property as required input
 
@@ -325,7 +347,7 @@ export class Counter {
 
 <!-- separator-vertical -->
 
-## Component - Input 4/4
+## Components - Input 4/4
 
 - The consumer of this component must bind to the required input in its template
 
@@ -351,7 +373,7 @@ export class App {
 
 <!-- separator-vertical -->
 
-## Component - Output 1/2
+## Components - Output 1/2
 
 - Use the `output()` function to declare a component class property as output
 
@@ -376,7 +398,7 @@ export class Counter {
 
 <!-- separator-vertical -->
 
-## Component - Output 2/2
+## Components - Output 2/2
 
 - The consumer of this component can bind to the event in its template
 
@@ -408,7 +430,7 @@ This problem will be solved with `model`.
 
 <!-- separator-vertical -->
 
-## Component - Model input 1/4
+## Components - Model input 1/4
 
 - Use the `model()` function to declare a component class property as model input
 
@@ -432,7 +454,7 @@ export class Counter {
 
 <!-- separator-vertical -->
 
-## Component - Model input 2/4
+## Components - Model input 2/4
 
 - The consumer of this component can bind to both "property" and "event" in its template
 
@@ -460,7 +482,7 @@ export class App {
 
 <!-- separator-vertical -->
 
-## Component - Model input 3/4
+## Components - Model input 3/4
 
 - Use the "Banana in a box" [🍌] syntax to easily achieve two-way data binding
 
@@ -486,7 +508,7 @@ export class App {
 
 <!-- separator-vertical -->
 
-## Component - Model input 4/4
+## Components - Model input 4/4
 
 - Unlike `input`s which are "readonly", `model`s are "writable"
 
@@ -519,20 +541,23 @@ export class Counter {
 <div class="columns">
 <div class="column-50">
 
-- Selector
-- Template
-- Styles
-- Text interpolation
-- Property binding
-- Attribute binding
-- Event listeners
+- **Class-Template interactions**
+  - @Component decorator
+  - Selector
+  - Template
+  - Styles
+  - Text interpolation
+  - Property binding
+  - Attribute binding
+  - Event listeners
 
 </div>
 <div class="column-50">
 
-- Input
-- Output
-- Model
+- **Parent-Child communication**
+  - Input
+  - Output
+  - Model
 
 </div>
 </div>

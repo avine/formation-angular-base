@@ -11,22 +11,23 @@
 
 - [Getting started](#/1)
 - [Workspace](#/2)
-- [Technical prerequisites](#/3)
+- [TypeScript](#/3)
 - [Components](#/4)
 - [Unit testing](#/5)
 - [Control flow](#/6)
 - [Directives](#/7)
+- [Signals](#/8)
 
 </div>
 <div class="column-50">
 
-- [Signals](#/8)
 - [Dependency injection](#/9)
 - [Pipes](#/10)
-- [Http client](#/11)
+- [RxJS](#/11)
+- [Http client](#/12)
 - **Routing**
-- [Forms](#/13)
-- [Appendix](#/14)
+- [Forms](#/14)
+- [Appendix](#/15)
 
 </div>
 </div>

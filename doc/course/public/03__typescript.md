@@ -1,4 +1,4 @@
-# Technical prerequisites
+# TypeScript <br /><i style="font-size: 0.65em; font-weight:normal">(prerequisites)</i>
 
 <!-- .slide: class="page-title" -->
 
@@ -11,22 +11,23 @@
 
 - [Getting started](#/1)
 - [Workspace](#/2)
-- **Technical prerequisites**
+- **TypeScript**
 - [Components](#/4)
 - [Unit testing](#/5)
 - [Control flow](#/6)
 - [Directives](#/7)
+- [Signals](#/8)
 
 </div>
 <div class="column-50">
 
-- [Signals](#/8)
 - [Dependency injection](#/9)
 - [Pipes](#/10)
-- [Http client](#/11)
-- [Routing](#/12)
-- [Forms](#/13)
-- [Appendix](#/14)
+- [RxJS](#/11)
+- [Http client](#/12)
+- [Routing](#/13)
+- [Forms](#/14)
+- [Appendix](#/15)
 
 </div>
 </div>
@@ -35,6 +36,8 @@
 
 ## TypeScript - Types 1/3
 
+💡 *This chapter covers the TypeScript prerequisites needed to confidently follow the rest of the training*
+
 - Type examples: `boolean`, `number`
 
 ```ts
@@ -42,17 +45,17 @@ const alwaysTrue: boolean = true;
 
 let age: number = 32;
 age = 33;
-age = 'Carl';           // ❌ Type 'string' is not assignable to type 'number'
+age = 'John';             // ❌ Type 'string' is not assignable to type 'number'
 ```
 
 - **Type inference:** used to provide type information when there is no explicit type annotation
 
 ```ts
-const alwaysTrue = true; // is still of type `boolean`
+const alwaysTrue = true;  // is still of type `boolean`
 
-let age = 32;            // is still of type `number`
+let age = 32;             // is still of type `number`
 age = 33;
-age = 'Carl';           // ❌ is still throwing the same Type error
+age = 'John';             // ❌ is still throwing the same Type error
 ```
 
 😉 *Note that `const` and `let` are two different ways of defining variables*
@@ -64,11 +67,11 @@ age = 'Carl';           // ❌ is still throwing the same Type error
 - More type examples: `string`, `template string`, `array`, `object`
 
 ```ts
-const name: string = 'Carl';
+const name: string = 'John';
 
 const hello: string = `Hello ${name}!`;
 
-const nameList: string[] = ['Carl', 'Laurent'];
+const nameList: string[] = ['John', 'Jane'];
 
 const products: { title: string; price: number } = { title: 'Tee-shirt', price: 8.5 };
 ```
@@ -300,8 +303,8 @@ class Person {
 }
 
 const person = new Person();
-person.name = 'Carl';
-person.sayHello(); // --> Hello, I'm Carl!
+person.name = 'John';
+person.sayHello(); // --> Hello, I'm John!
 ```
 
 <!-- separator-vertical -->
@@ -456,139 +459,31 @@ class Foo {
 
 <!-- separator-vertical -->
 
-## NPM - Commands 1/2
+## TypeScript - Summary
 
-- Set up a directory as an npm package by creating a `package.json` file<br />
-  *(created automatically when you generates your application with the Angular CLI)*
-
-```bash
-npm init
-```
-
-- Download a package and install it in `./node_modules` directory
-
-```bash
-npm install <packageName>
-```
-
-- Install a package globally on your system<br />
-  *(mostly used to install CLI tools such as the Angular CLI)*
-
-```bash
-npm install -g <packageName>
-```
-
-<!-- separator-vertical -->
-
-## NPM - Commands 2/2
-
-- Update a package
-
-```bash
-npm update <packageName>
-```
-
-- Remove a package
-
-```bash
-npm remove <packageName>
-```
-
-<!-- separator-vertical -->
-
-## NPM - Package versioning 1/2
-
-Package versions generally follow the [semver](https://github.com/isaacs/node-semver) (semantic versioning) standard
-
-```json
-{
-  "name": "<packageName>",
-  "version": "<major>.<minor>.<patch>"
-}
-```
-
-- `major`: might introduce breaking changes
-- `minor`: can add new features but in a retro-compatible way
-- `patch`: bug fixes
-
-Example: 
-
-```json
-{
-  "name": "my-awesome-package",
-  "version": "1.2.3"
-}
-```
-
-<!-- separator-vertical -->
-
-## NPM - Package versioning 2/2
-
-Allowing a range of versions when **installing** or **updating** a package
-
-- **`1.2.3`** will install the **exact** version
-- **`~1.2.3`** will install any **patch** update such as 
-  - `1.2.4`
-  - `1.2.5`
-  - `1.2.99`
-- **`^1.2.3`** will install any **minor** update such as 
-  - `1.2.3`
-  - `1.3.0`
-  - `1.99.0`
-
-For a given dependency, the exact version installed is locked in the `package-lock.json` configuration file
-
-<!-- separator-vertical -->
-
-## NPM - Angular package versioning
-
-Angular package versions strongly follow the semver standard
-
-- Most of the framework dependencies accepts **minor** updates such as
-  - `"@angular/core": "^XX.0.0"`
-  - `"@angular/common": "^XX.0.0"`
-
-- Some of them only accepts **patch** updates such as
-  - `"@angular/cli": "~XX.0.0"`
-
-To update the Angular package versions of your project use the command `ng update`
-
-**In-depth resources:**
-
-- [Angular update guide](https://angular.dev/update-guide)
-- [Angular version compatibility (with Node.js, TypeScript, ...)](https://angular.dev/reference/versions)
-
-<!-- separator-vertical -->
-
-## Technical prerequisites - Summary
-
-**In this chapter on technical prerequisites, we have covered the following topics**
+**In this chapter on TypeScript, we have covered the following topics**
 
 <div class="columns">
 <div class="column-50">
 
-- **TypeScript**
-  - Types
-  - Functions
-  - Destructuring syntax
-  - Spread syntax
-  - Array instance methods
-  - Classes
-  - Interfaces
-  - Generics
-  - Decorators
+- Types
+- Functions
+- Destructuring syntax
+- Spread syntax
+- Array instance methods
 
 </div>
 <div class="column-50">
 
-- **NPM**
-  - Commands
-  - Package versioning
+- Classes
+- Interfaces
+- Generics
+- Decorators
 
 </div>
 </div>
 
 <!-- separator-vertical -->
 
-## Technical prerequisites - Questions
+## TypeScript - Questions
 <!-- .slide: data-background-image="./resources/background-questions.svg" data-background-size="45%" -->

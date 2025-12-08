@@ -11,22 +11,23 @@
 
 - [Getting started](#/1)
 - [Workspace](#/2)
-- [Technical prerequisites](#/3)
+- [TypeScript](#/3)
 - [Components](#/4)
 - [Unit testing](#/5)
 - [Control flow](#/6)
 - [Directives](#/7)
+- [Signals](#/8)
 
 </div>
 <div class="column-50">
 
-- [Signals](#/8)
 - [Dependency injection](#/9)
 - **Pipes**
-- [Http client](#/11)
-- [Routing](#/12)
-- [Forms](#/13)
-- [Appendix](#/14)
+- [RxJS](#/11)
+- [Http client](#/12)
+- [Routing](#/13)
+- [Forms](#/14)
+- [Appendix](#/15)
 
 </div>
 </div>
@@ -276,12 +277,24 @@ describe('JoinArrayPipe', () => {
 
 **In this chapter on pipes, we have covered the following topics**
 
+
+<div class="columns">
+<div class="column-50">
+
+- @Pipe decorator
 - Built-in pipes
 - Custom pipe
 - Configuration
+
+</div>
+<div class="column-50">
+
 - Usage in template
 - Usage in class
 - Pure VS Impure
+
+</div>
+</div>
 
 <!-- separator-vertical -->
 

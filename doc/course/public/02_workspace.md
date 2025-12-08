@@ -11,22 +11,23 @@
 
 - [Getting started](#/1)
 - **Workspace**
-- [Technical prerequisites](#/3)
+- [TypeScript](#/3)
 - [Components](#/4)
 - [Unit testing](#/5)
 - [Control flow](#/6)
 - [Directives](#/7)
+- [Signals](#/8)
 
 </div>
 <div class="column-50">
 
-- [Signals](#/8)
 - [Dependency injection](#/9)
 - [Pipes](#/10)
-- [Http client](#/11)
-- [Routing](#/12)
-- [Forms](#/13)
-- [Appendix](#/14)
+- [RxJS](#/11)
+- [Http client](#/12)
+- [Routing](#/13)
+- [Forms](#/14)
+- [Appendix](#/15)
 
 </div>
 </div>
@@ -44,31 +45,19 @@ An Angular workspace is **structured** by the following elements
 
 <!-- separator-vertical -->
 
-## Workspace - package.json 1/3
+## Workspace - package.json 1/5
 
 The presence of a `package.json` file indicates that the directory is the root of a **Node.js** project
 
-- Scripts can be run using the shell command `npm run <scriptName>`
-
-```json
-{
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  }
-}
-```
-
-<!-- separator-vertical -->
-
-## Workspace - package.json 2/3
-
 - **Dependencies** of the Angular framework are scoped under `@angular/*`
 
+- Angular also depends on some **third-party libraries**
+
+<div class="columns">
+<div class="column-50">
+
 ```json
+// --> @angular/* dependencies
 {
   "dependencies": {
     "@angular/common": "...",
@@ -86,22 +75,115 @@ The presence of a `package.json` file indicates that the directory is the root o
 }
 ```
 
-<!-- separator-vertical -->
-
-## Workspace - package.json 3/3
-
-- Angular also depends on some **third-party libraries**
+</div>
+<div class="column-50">
 
 ```json
+// --> third-party libraries
 {
   "dependencies": {
     "rxjs": "...",
     "tslib": "...",
   },
   "devDependencies": {
-    "typescript": "..."
+    "typescript": "...",
+    "vitest": "..."
   }
 }
+```
+
+</div>
+</div>
+
+<!-- separator-vertical -->
+
+## Workspace - package.json 2/5
+
+Package versions generally follow the [semver](https://github.com/npm/node-semver) (semantic versioning) standard...
+
+```json
+// Contents of the `package.json` file of the <packageName> package
+{
+  "name": "<packageName>",
+  "version": "<major>.<minor>.<patch>"
+}
+```
+
+- `major`: might introduce breaking changes
+- `minor`: can add new features but in a retro-compatible way
+- `patch`: bug fixes
+
+<!-- separator-vertical -->
+
+## Workspace - package.json 3/5
+
+...allowing a range of versions when **installing** or **updating** a package
+
+- **`1.2.3`** will install the **exact** version
+- **`~1.2.3`** will install any **patch** update such as 
+  - `1.2.4`
+  - `1.2.5`
+  - `1.2.99`
+- **`^1.2.3`** will install any **minor** update such as 
+  - `1.2.3`
+  - `1.3.0`
+  - `1.99.0`
+
+For a given dependency, the exact version installed is locked in the `package-lock.json` configuration file
+
+<!-- separator-vertical -->
+
+## Workspace - package.json 4/5
+
+- Dependencies are typically downloaded from the [NPM registry](https://npmjs.com/)
+  and installed locally in `./node_modules` directory
+
+- You can manage any dependency of your project using NPM commands
+
+```bash
+npm install <packageName>
+
+npm update <packageName>
+
+npm remove <packageName>
+```
+
+- However, to update the Angular framework dependencies, use the dedicated command
+
+```bash
+ng update
+```
+
+**In-depth resources:**
+
+- [Angular update guide](https://angular.dev/update-guide)
+- [Angular version compatibility (with Node.js, TypeScript, ...)](https://angular.dev/reference/versions)
+
+<!-- separator-vertical -->
+
+## Workspace - package.json 5/5
+
+- The `package.json` file also contains scripts...
+
+```json
+{
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  }
+}
+```
+
+- ...that can be run using the shell command
+
+```bash
+npm run <scriptName>
+
+# Build your Angular app
+npm run build
 ```
 
 <!-- separator-vertical -->
