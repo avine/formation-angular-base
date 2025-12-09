@@ -13,7 +13,7 @@
 - **Workspace**
 - [TypeScript](#/3)
 - [Components](#/4)
-- [Unit testing](#/5)
+- [Testing](#/5)
 - [Control flow](#/6)
 - [Directives](#/7)
 - [Signals](#/8)

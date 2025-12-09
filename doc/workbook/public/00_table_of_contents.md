@@ -13,7 +13,7 @@
 - [Lab 1: Getting started](#/1)
 - [Lab 2: Workspace](#/2)
 - [Lab 3: Components](#/3)
-- [Lab 4: Unit testing](#/4)
+- [Lab 4: Testing](#/4)
 - [Lab 5: Control flow](#/5)
 - [Lab 6: Directives](#/6)
 - [Lab 7: Signals](#/7)

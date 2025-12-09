@@ -91,7 +91,7 @@ Course chapters (in order):
 2. Workspace
 3. TypeScript (prerequisite)
 4. Components
-5. Unit testing
+5. Testing
 6. Control flow
 7. Directives
 8. Signals

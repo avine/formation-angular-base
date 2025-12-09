@@ -1,4 +1,4 @@
-## Lab 4: Unit testing 1/3
+## Lab 4: Testing 1/3
 
 In this lab, you will implement the tests for the app you developed in the "**Lab 3: Components**".
 
@@ -42,7 +42,7 @@ Some tests fail. Let's fix them!
 
 <!-- separator-vertical -->
 
-## Lab 4: Unit testing 2/3
+## Lab 4: Testing 2/3
 ### `product-card.spec.ts`
 
 - First, let's focus on this test, disabling all the others:
@@ -85,7 +85,7 @@ Now, the test setup should pass (but we're not testing anything useful at the mo
 
 <!-- separator-vertical -->
 
-## Lab 4: Unit testing 3/3
+## Lab 4: Testing 3/3
 ### `app.spec.ts`
 
 - Now remove the "f" ("focus") prefix you previously added to the `describe` function of the `ProductCard` test.
