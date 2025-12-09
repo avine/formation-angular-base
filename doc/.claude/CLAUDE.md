@@ -101,7 +101,7 @@ Course chapters (in order):
 12. HTTP client
 13. Routing
 14. Forms
-15. More on Components
+15. More on Components (appendix)
 
 The workbook follows the same structure minus the prerequisite chapters (TypeScript, RxJS) and the chapter "More on Components".
 
