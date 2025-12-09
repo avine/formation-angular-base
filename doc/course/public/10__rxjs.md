@@ -1,4 +1,4 @@
-# RxJS <br /><i style="font-size: 0.65em; font-weight:normal">(prerequisites)</i>
+# RxJS <div class="subtitle">— prerequisites —</div>
 
 <!-- .slide: class="page-title" -->
 

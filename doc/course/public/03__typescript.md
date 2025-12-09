@@ -1,4 +1,4 @@
-# TypeScript <br /><i style="font-size: 0.65em; font-weight:normal">(prerequisites)</i>
+# TypeScript <div class="subtitle">— prerequisites —</div>
 
 <!-- .slide: class="page-title" -->
 

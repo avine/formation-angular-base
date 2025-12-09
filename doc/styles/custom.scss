@@ -11,7 +11,20 @@ hr {
 
 .reveal {
   h1 {
+    position: relative;
     color: inherit;
+
+    .subtitle {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      transform: translateY(5rem);
+      text-align: center;
+      font-size: 0.6em;
+      font-weight: normal;
+      font-style: italic;
+      color: var(--r-heading-color);
+    }
   }
 
   h2 {

@@ -1,4 +1,4 @@
-# More on Components
+# More on Components <div class="subtitle">— appendix —</div>
 
 <!-- .slide: class="page-title" -->
 
