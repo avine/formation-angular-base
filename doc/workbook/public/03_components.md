@@ -46,7 +46,7 @@ export interface Product {
 ... <a class="card-link">{{ product().title }}</a> ...
 ```
 
-- Use `[class.*]` syntax the add the CSS class `.text-bg-warning` on the element `<div class="card h-100 text-center">` but only when the product `stock` is equal to 1 (last chance to buy it!).
+- Use `[class.*]` syntax to add the CSS class `.text-bg-warning` to the element `<div class="card h-100 text-center">` but only when the product `stock` is equal to 1 (last chance to buy it!).
 
 - The output should emit the product when the user clicks on the button "Ajoutez au panier"
 
@@ -56,7 +56,7 @@ export interface Product {
 ### Storing all products in the `App` component
 
 Currently, the products are hard-coded in the template `src/app/app.html`.
-Let's give the `App` component class, data ownership.
+Let's give the `App` component class data ownership.
 
 - In `src/app/app.ts`, define a `products: Product[] = [];` property
 
@@ -70,8 +70,8 @@ Let's give the `App` component class, data ownership.
 ...
 ```
 
-😉 *Note that the tag added by the component selector `<app-product-card class="col" />` replace the tag `<div class="col">` in the original HTML markup.*
+😉 *Note that the tag added by the component selector `<app-product-card class="col" />` replaces the tag `<div class="col">` in the original HTML markup.*
 
 - In `src/app/app.ts`, define a `total = 0;` property for the total basket price, that should be updated each time the user clicks on the button "Ajoutez au panier"
-  - To achieve this add a method `addToBasket` in the `App` component class and use it in its template
+  - To achieve this, add a method `addToBasket` in the `App` component class and use it in its template
   - Display the `total` in the component template

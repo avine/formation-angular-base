@@ -2,7 +2,7 @@
 
 In this lab, you will implement the tests for the app you developed in the "**Lab 3: Components**".
 
-The `Menu` component don't need to be tested, since it have no logic.
+The `Menu` component doesn't need to be tested, since it has no logic.
 
 You're going to focus on the `ProductCard` and `App` components.
 

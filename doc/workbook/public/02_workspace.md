@@ -2,7 +2,7 @@
 
 During the rest of the course, you will develop an e-commerce application.
 
-The design team have been working hard, and the result is available in the following directory:
+The design team has been working hard, and the result is available in the following directory:
 
 ```txt
 lab/resources/design
@@ -12,7 +12,7 @@ You're going to integrate this design into your Angular application.
 
 First, let's start a local server to see what the app looks like.
 
-- Open a new Terminal in the directory `design` and run the command:
+- Open a new Terminal in the `design` directory and run the command:
 
 ```bash
 npx serve .
@@ -20,10 +20,10 @@ npx serve .
 
 - Open the browser at the URL specified in the console. You should see the 4 products available in the catalog.
 
-- Next, copy/paste the content of `design/assets` into `public/assets`
+- Next, copy/paste the contents of `design/assets` into `public/assets`
 
 - Finally, open the file `design/index.html` in your code editor
-  - It contains **brief informations** about the layout of the design
+  - It contains **brief information** about the layout of the design
   - Follow the **detailed instructions** provided below in this workbook to integrate the design into your Angular application
 
 <!-- separator-vertical -->
@@ -79,4 +79,4 @@ npm i bootstrap
 </body>
 ```
 
-- Serve your app using `ng serve` to see if the result is equivalent to that of the designers
+- Serve your app using `ng serve` to see if the result is equivalent to the design

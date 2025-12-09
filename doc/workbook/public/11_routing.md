@@ -32,7 +32,7 @@ export const appConfig: ApplicationConfig = {
 ## Lab 11: Routing 2/8
 ### `app.routes.ts`
 
-- Create the following components and declare a route for each one of them:
+- Create the following components and declare a route for each one:
 
   - Component: `Catalog` --> Route: `'catalog'`
   - Component: `Basket` --> Route: `'basket'`
@@ -50,7 +50,7 @@ export const appConfig: ApplicationConfig = {
 
 - In `src/app/app.ts`, add `RouterOutlet` to the component `imports`
 
-- In `src/app/app.html`, put a `<router-outlet />` directive, instead of the main content you just moved.
+- In `src/app/app.html`, add a `<router-outlet />` directive, instead of the main content you just moved.
   The template should now look like this:
 
 ```html
@@ -66,7 +66,7 @@ export const appConfig: ApplicationConfig = {
 ## Lab 11: Routing 3/8
 ### `RouterLink`
 
-Add `routerLink` directives in the following templates (don't forget to add the `RouterLink` in the related components `imports`):
+Add `routerLink` directives in the following templates (don't forget to add `RouterLink` to the related component imports):
 
 - In `catalog.html`:
 
@@ -74,7 +74,7 @@ Add `routerLink` directives in the following templates (don't forget to add the 
 
 - In `menu.html`:
 
-  - to return the home page when clicking on _"Zenika Ecommerce"_
+  - to return to the home page when clicking on _"Zenika Ecommerce"_
   - to visit the page _"Voir mon panier"_
 
 - In `product-card.html`:
@@ -114,7 +114,7 @@ Add `routerLink` directives in the following templates (don't forget to add the 
 
 - Use the `BasketResource` service to implement the component logic
 
-- Subcribe to `BasketResource.fetchBasket` method in the class constructor, to trigger data fetching
+- Subscribe to `BasketResource.fetchBasket` method in the class constructor, to trigger data fetching
 
 - To check that everything is working properly, you should be able to:
   - Visit the `http://localhost:4200/catalog` page, click on _"Voir mon panier"_ and view the basket items
@@ -128,7 +128,7 @@ Add `routerLink` directives in the following templates (don't forget to add the 
 When visiting the page `http://localhost:4200/basket`:
 
 - If there are items in the basket, the `Basket` component should be displayed
-- It the basket is empty, an alternate `BasketEmpty` component should be displayed
+- If the basket is empty, an alternate `BasketEmpty` component should be displayed
 
 Let's do this!
 
@@ -147,7 +147,7 @@ export const basketGuard: CanMatchFn = () => {
 
 - Add the guard to the appropriate route
 
-- Generate a new component `BasketEmpty` component
+- Generate a new `BasketEmpty` component
   - It simply displays _"Votre panier est vide."_
 
 - Add the route `'basket'` to display the component
@@ -177,7 +177,7 @@ export const basketGuard: CanMatchFn = () => {
 <!-- separator-vertical -->
 
 ## Lab 11: Routing 7/8
-### Bonus: application performances
+### Bonus: application performance
 
 Have you noticed that when loading the catalog, the message _"Désolé, notre stock est vide !"_ appears briefly and is then replaced by the products once fetched?
 
@@ -197,7 +197,7 @@ export class CatalogResource {
 
 - Fix the errors raised by this change
 
-- Finally, in the `/catalog/catalog.html` component template, use `@if {}` statement like this:
+- Finally, in the `/catalog/catalog.html` component template, use an `@if {}` statement like this:
 
 ```html
 @if (products()) {
@@ -208,7 +208,7 @@ export class CatalogResource {
 <!-- separator-vertical -->
 
 ## Lab 11: Routing 8/8
-### Bonus: directories organisation
+### Bonus: directories organization
 
 - The following directories can be moved within the `src/app/catalog/` directory:
   - `/highlight-price/`

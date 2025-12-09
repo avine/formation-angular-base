@@ -61,7 +61,7 @@ We want to be able to sort the displayed products by `price` or `stock`.
   - Implement the `transform` method that returns the sorted array of products
   - Add an optional parameter to the pipe to specify on which property (`price` or `stock`) to sort the products
 
-- Once your finished, use your pipe to sort the products in the `App` component template
+- Once you're finished, use your pipe to sort the products in the `App` component template
 
 Finally, let's add a selector to choose between `price` and `stock` sorting.
 You'll find a component ready for use here: `lab/resources/select-product-key`.

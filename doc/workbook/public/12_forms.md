@@ -27,13 +27,13 @@ In this lab, you'll create an Angular form to checkout the basket.
   - All fields are required
   - Credit card field must match the pattern `^[0-9]{3}-[0-9]{3}$`
 
-- Fields appearence:
+- Fields appearance:
 
   - Add CSS class `.is-invalid` when the field's state is "touched" and "invalid"
   - Add CSS class `.is-valid` when the field's state is "valid"
 
-- Credit card field has 2 "invalid-feedback":
-  - Use `@if` block to display only the relevant error
+- Credit card field has 2 "invalid-feedback" messages:
+  - Use an `@if` block to display only the relevant error
 
 <!-- separator-vertical -->
 
@@ -47,17 +47,17 @@ In this lab, you'll create an Angular form to checkout the basket.
 - In the component template, on the `<form>` element:
   - Create a template variable `#checkoutForm` to access the `ngForm` directive
   - Handle the `ngSubmit` event to call the `checkout` method you just created
-  - And use the `checkoutForm.value` property as `checkout` method argument
+  - And use the `checkoutForm.value` property as the `checkout` method argument
 
 - Still in the component template:
   - The submit button should be disabled as long as the form is invalid
   - Form fields and the submit button should be disabled when the form is being submitted
-    (to achieve this 2 points, add a new property `checkoutInProgress: signal<boolean>` in the component class)
+    (to achieve these 2 points, add a new property `checkoutInProgress: signal<boolean>` in the component class)
 
 <!-- separator-vertical -->
 
 ## Lab 12: Forms 4/5
-### Basket related changes
+### Basket-related changes
 
 - In `src/app/basket/basket-types.ts`, add new interfaces:
 

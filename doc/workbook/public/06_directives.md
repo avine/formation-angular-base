@@ -12,9 +12,9 @@ ng generate directive highlight-price --flat false
   - with an `alias` equal to the `'appHighlightPrice'`
   
 - Add a getter `highlightClass` that
-  - should returns `'text-body-tertiary fst-italic'` when price == 0
-  - should returns `'text-body-secondary'` when price < 50
-  - should returns `'text-body-emphasis'` when price >= 50
+  - should return `'text-body-tertiary fst-italic'` when price == 0
+  - should return `'text-body-secondary'` when price < 50
+  - should return `'text-body-emphasis'` when price >= 50
 
 - Use `host` directive metadata to bind `highlightClass` value to the `class` attribute 
 

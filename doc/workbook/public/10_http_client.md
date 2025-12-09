@@ -61,7 +61,7 @@ export class CatalogResource {
 
 #### Updating the `App` component
 
-- Subcribe to `CatalogResource.fetchProducts` method in the `App` class constructor, to trigger data fetching
+- Subscribe to `CatalogResource.fetchProducts` method in the `App` class constructor, to trigger data fetching
 
 <!-- separator-vertical -->
 
@@ -76,7 +76,7 @@ export class CatalogResource {
 
 #### Updating the `App` component
 
-- Subcribe to `basketResource.fetchBasket()` method in the `App` class constructor, to trigger data fetching
+- Subscribe to `basketResource.fetchBasket()` method in the `App` class constructor, to trigger data fetching
 
 - Update the `addToBasket()` method so that it subscribes correctly to `BasketResource.addItem` method
 

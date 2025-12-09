@@ -20,5 +20,5 @@
 - [Lab 8: Dependency injection](#/8)
 - [Lab 9: Pipes](#/9)
 - [Lab 10: HTTP client](#/10)
-- [Lab 11 Routing](#/11)
+- [Lab 11: Routing](#/11)
 - [Lab 12: Forms](#/12)

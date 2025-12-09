@@ -16,7 +16,7 @@ The service should have:
 
 - A `products = this._products.asReadonly()` public property
 
-- A `productsInStock = computed<Product[]>(...)` computed signal which returns the list of products whose stock is greater than 0 *(move some code from `app.ts`)*
+- A `productsInStock = computed<Product[]>(...)` computed signal that returns the list of products whose stock is greater than 0 *(move some code from `app.ts`)*
 
 - A `decreaseStock(productId: string)` method to decrease the corresponding product stock if it is greater than 0 *(move some code from `app.ts`)*
 
@@ -48,11 +48,11 @@ The service should have:
 
 - A `total = computed<number>(...)` computed signal that returns the basket total
 
-- A `addItem(item: BasketItem): void` method that add an item to the basket
+- A `addItem(item: BasketItem): void` method that adds an item to the basket
 
 #### Usage
 
-- Refactor the `App` component to use the  `BasketResource` service
+- Refactor the `App` component to use the `BasketResource` service
 
 - In the `Menu` component, use the `BasketResource` to display the number of items in the basket.
   To achieve this, add a `numberOfItems = computed<number>(...)` property to the menu component.

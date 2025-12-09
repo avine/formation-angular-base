@@ -10,7 +10,7 @@ In this lab, you'll use the `@for`, `@if` and `@else` blocks to improve the appl
 
 - Use a `@for` block to iterate over the `products` (in stock) array to display each `<app-product-card />` component
 
-- Use `@if (productsInStock.length) {} @else {}` to display the message _"Désolé, notre stock est vide !"_ when all products have an sotck equal to 0
+- Use `@if (productsInStock.length) {} @else {}` to display the message _"Désolé, notre stock est vide !"_ when all products have a stock equal to 0
 
 ### Tests
 

@@ -7,7 +7,7 @@ The following software must be installed in your environment:
 - [Git](https://git-scm.com/downloads)
 - [Visual Studio Code](https://code.visualstudio.com/download)
 
-#### Following the course on your Local system
+#### Following the course on your local system
 
 Install the LTS versions of each software.
 
@@ -18,7 +18,7 @@ The required software should already be installed.
 For VSCode, be sure to use the one located at:
 
 ```txt
-C:\Programs Files\Microsoft VS Code
+C:\Program Files\Microsoft VS Code
 ```
 
 ### Application source code
@@ -38,14 +38,14 @@ Nevertheless, you will first create a raw Angular application to see for yoursel
 ## Lab 1: Getting started 2/6
 ### Creating and running an Angular application
 
-#### Install the Angular CLI globally and create the app with the shell commands
+#### Install the Angular CLI globally and create the app with these shell commands
 
 ```bash
 npm i -g @angular/cli
 ng new my-first-app
 ```
 
-You will be displayed some options for the app:
+You will be shown some options for the app:
 - Choose **"CSS"** for style preprocessor
 - Choose **"No"** for SSR/SSG/Prerendering
 - Choose **"Yes"** for 'zoneless' application
@@ -56,7 +56,7 @@ You will be displayed some options for the app:
 npx @angular/cli new my-first-app
 ```
 
-However, in this case, to run an Angular CLI command, you will have to use NPM first `npm run ng <command>` instead of just `ng <command>`.
+However, in this case, to run an Angular CLI command, you will need to use NPM first: `npm run ng <command>` instead of just `ng <command>`.
 
 #### Run the Angular dev server
 
@@ -66,14 +66,14 @@ ng serve # or: `npm start`
 
 - Open the Chrome browser and visit: http://localhost:4200.
 
-You should see the app with a placeholder content. 🚀
+You should see the app with placeholder content. 🚀
 
 <!-- separator-vertical -->
 
 ## Lab 1: Getting started 3/6
 ### Taking control of the app
 
-Even if we haven't yet studied the main concepts, let's modify the app right away!
+Even though we haven't yet studied the main concepts, let's modify the app right away!
 
 - Replace the content of `src/app/app.html` with:
 
@@ -81,7 +81,7 @@ Even if we haven't yet studied the main concepts, let's modify the app right awa
 <h1>Welcome to {{ title }}!</h1>
 ```
 
-- Add some style in `src/app/app.css`:
+- Add some styling in `src/app/app.css`:
 
 ```css
 h1 {
@@ -108,17 +108,17 @@ class App {
 ng test # or: `npm test`
 ```
 
-Because we've modified the app, a test in `app.spec.ts` fail!
+Because we've modified the app, a test in `app.spec.ts` fails!
 
 - Fix the test *"should render title"* by guessing what's wrong
 
-### Finally let's build the app for production
+### Finally, let's build the app for production
 
 ```bash
 ng build # or: `npm run build`
 ```
 
-- Open a Terminal in `dist/my-first-app/browser/` directory and run the command:
+- Open a Terminal in the `dist/my-first-app/browser/` directory and run the command:
 
 ```bash
 npx serve --single .
@@ -142,7 +142,7 @@ From now on, you'll be using the Angular application provided:
 
 ### Version control system
 
-- Open the browser and login to your favorite cloud-based version control system (Github, Gitlab, ...)
+- Open the browser and log in to your favorite cloud-based version control system (Github, Gitlab, ...)
 - Remotely, create a new empty repository named `zenika-ng-website` in which to save your code
 - Locally, configure your Git user **name** and **email**:
 
@@ -176,7 +176,7 @@ git push -u origin main
 ## Lab 1: Getting started 6/6
 ### NPM packages
 
-Install your app dependencies with NPM, by running the following command:
+Install your app dependencies with NPM by running the following command:
 
 ```bash
 npm i # or: npm install
@@ -190,7 +190,7 @@ ng serve # or: `npm start`
 
 ### Visual Studio Code Extensions
 
-If you use VSCode as your IDE, install the following extensions in addition, to improve your developer experience:
+If you use VSCode as your IDE, install the following extensions to improve your developer experience:
 
 - [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template)
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
