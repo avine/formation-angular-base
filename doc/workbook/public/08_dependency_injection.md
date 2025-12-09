@@ -154,6 +154,6 @@ Add new, more relevant tests:
 
 - It should call "CatalogResource.decreaseStock" and "BasketResource.addItem" methods when a product is added to the basket
 
-  - For that use `TestBed.inject` function (to get the services instances) and `spyOn` Jasmine function (to spy on these methods)
+  - For that use `TestBed.inject` function (to get the services instances) and `vi.spyOn` function (to spy on these methods)
 
 - It should display the app title

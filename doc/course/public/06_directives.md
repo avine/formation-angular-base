@@ -200,9 +200,9 @@ export class App {
 
 <!-- separator-vertical -->
 
-## Directives - Testing
+## Directives - Testing 1/2
 
-- Create a wrapper component for DOM testing purposes
+- Create a `Wrapper` component for DOM testing purposes
 
 ```ts
 import { Component } from '@angular/core';
@@ -214,16 +214,36 @@ import { Highlight } from './highlight';
   selector: 'app-wrapper',
   imports: [Highlight],
   template: '<div appHighlight="green">Highlight me!</div>',
-}) class Wrapper {}
+})
+class Wrapper {}
+
+// ...
+```
+
+<!-- separator-vertical -->
+
+## Directives - Testing 2/2
+
+- Use `By.directive` to retrieve the directive being tested
+
+```ts
+// ...
 
 describe('Highlight', () => {
   let fixture: ComponentFixture<Wrapper>;
   let hostElement: HTMLElement;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({ imports: [Wrapper] }).compileComponents();
+
     fixture = TestBed.createComponent(Wrapper);
-    fixture.detectChanges();
-    hostElement = fixture.debugElement.query(By.directive(Highlight)).nativeElement;
+    await fixture.whenStable();
+
+    hostElement: HTMLElement = fixture.debugElement.query(By.directive(Highlight)).nativeElement;
+  });
+
+  it('should work', async () => {
+    expect(hostElement.style.backgroundColor).toBe('green');
   });
 });
 ```

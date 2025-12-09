@@ -237,9 +237,9 @@ import { Counter } from './counter';
 describe('Counter', () => {
   beforeEach(async () => await TestBed.configureTestingModule({ imports: [Counter] }).compileComponents());
 
-  it('should works', () => {
+  it('should work', async () => {
     const count = signal(1);                        // <-- Define "input"
-    const countChange = jasmine.createSpy();        // <-- Define "output"
+    const countChange = vi.fn();                    // <-- Define "output"
 
     const fixture = TestBed.createComponent(Counter, {
       bindings: [
@@ -261,15 +261,13 @@ describe('Counter', () => {
 
     const component = fixture.componentInstance;
 
-    fixture.detectChanges();
     expect(component.count()).toBe(1);
 
     count.set(2);                                   // <-- Interact with "input" bindings
-    fixture.detectChanges();
     expect(component.count()).toBe(2);
 
     (fixture.nativeElement as HTMLElement).querySelector('button')?.click();
-    fixture.detectChanges();
+    await fixture.whenStable();
     expect(component.count()).toBe(3);
     expect(countChange).toHaveBeenCalledWith(3);    // <-- Interact with "output" bindings
   });

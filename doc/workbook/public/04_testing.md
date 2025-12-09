@@ -23,7 +23,7 @@ describe('App', () => {
 
     fixture = TestBed.createComponent(App);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should create', () => {
