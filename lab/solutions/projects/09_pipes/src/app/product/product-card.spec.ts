@@ -54,7 +54,7 @@ describe('ProductCard', () => {
 
   it('should emit addToBasket event with the given product when the button is clicked', () => {
     // Given
-    const emitSpy = vitest.spyOn(component.addToBasket, 'emit');
+    const emitSpy = vi.spyOn(component.addToBasket, 'emit');
 
     // When
     nativeElement.querySelector('button')?.click();

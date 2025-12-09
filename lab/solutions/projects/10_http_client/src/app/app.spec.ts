@@ -103,7 +103,7 @@ describe('App', () => {
     const addItemSpy = vitest
       .spyOn(TestBed.inject(BasketResource), 'addItem')
       .mockReturnValue(of({ id: 't-shirt', title: 't-shirt', price: 10 }));
-    const decreaseStockSpy = vitest.spyOn(TestBed.inject(CatalogResource), 'decreaseStock');
+    const decreaseStockSpy = vi.spyOn(TestBed.inject(CatalogResource), 'decreaseStock');
 
     const productCardDebugElement = fixture.debugElement.query(By.css('app-product-card'));
     productCardDebugElement.triggerEventHandler('addToBasket', component.productsInStock()[0]);

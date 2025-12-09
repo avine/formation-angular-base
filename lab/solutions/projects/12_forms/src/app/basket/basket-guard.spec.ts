@@ -27,7 +27,7 @@ describe('basketGuard', () => {
   });
 
   it('should fetch items', () => {
-    const fetchItemsSpy = vitest.spyOn(basketResource, 'fetchBasket');
+    const fetchItemsSpy = vi.spyOn(basketResource, 'fetchBasket');
 
     executeGuard();
 
@@ -40,7 +40,7 @@ describe('basketGuard', () => {
   });
 
   it('should return true when the basket is not empty', async () => {
-    vitest.spyOn(basketResource, 'fetchBasket').mockReturnValue(of([{} as BasketItem]));
+    vi.spyOn(basketResource, 'fetchBasket').mockReturnValue(of([{} as BasketItem]));
 
     const result = await firstValueFrom(executeGuard());
     expect(result).toBe(true);

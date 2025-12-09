@@ -99,8 +99,8 @@ describe('App', () => {
   });
 
   it('should call "CatalogResource.decreaseStock" and "BasketResource.addItem" methods when a product is added to the basket', () => {
-    const decreaseStockSpy = vitest.spyOn(TestBed.inject(CatalogResource), 'decreaseStock');
-    const addItemSpy = vitest.spyOn(TestBed.inject(BasketResource), 'addItem');
+    const decreaseStockSpy = vi.spyOn(TestBed.inject(CatalogResource), 'decreaseStock');
+    const addItemSpy = vi.spyOn(TestBed.inject(BasketResource), 'addItem');
 
     const productCardDebugElement = fixture.debugElement.query(By.css('app-product-card'));
     productCardDebugElement.triggerEventHandler('addToBasket', component.productsInStock()[0]);
