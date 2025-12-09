@@ -32,8 +32,8 @@
     { "path": "./projects/03_components/tsconfig.app.json" },
     { "path": "./projects/03_components/tsconfig.spec.json" },
 
-    { "path": "./projects/04_tests/tsconfig.app.json" },
-    { "path": "./projects/04_tests/tsconfig.spec.json" },
+    { "path": "./projects/04_testing/tsconfig.app.json" },
+    { "path": "./projects/04_testing/tsconfig.spec.json" },
 
     { "path": "./projects/05_control_flow/tsconfig.app.json" },
     { "path": "./projects/05_control_flow/tsconfig.spec.json" },

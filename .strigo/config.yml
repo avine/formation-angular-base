@@ -9,7 +9,7 @@ classes:
       - title: Components
         file: ../doc/workbook/public/03_components.md
       - title: Unit testing
-        file: ../doc/workbook/public/04_tests.md
+        file: ../doc/workbook/public/04_testing.md
       - title: Control flow
         file: ../doc/workbook/public/05_control_flow.md
       - title: Directives

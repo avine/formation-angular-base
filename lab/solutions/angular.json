@@ -231,24 +231,24 @@
         }
       }
     },
-    "04_tests": {
+    "04_testing": {
       "projectType": "application",
-      "root": "projects/04_tests",
-      "sourceRoot": "projects/04_tests/src",
+      "root": "projects/04_testing",
+      "sourceRoot": "projects/04_testing/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "browser": "projects/04_tests/src/main.ts",
-            "tsConfig": "projects/04_tests/tsconfig.app.json",
+            "browser": "projects/04_testing/src/main.ts",
+            "tsConfig": "projects/04_testing/tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/04_tests/public"
+                "input": "projects/04_testing/public"
               }
             ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/04_tests/src/styles.css"]
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "projects/04_testing/src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -278,10 +278,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "04_tests:build:production"
+              "buildTarget": "04_testing:build:production"
             },
             "development": {
-              "buildTarget": "04_tests:build:development"
+              "buildTarget": "04_testing:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -289,20 +289,20 @@
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n",
           "options": {
-            "buildTarget": "04_tests:build"
+            "buildTarget": "04_testing:build"
           }
         },
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/04_tests/tsconfig.spec.json"
+            "tsConfig": "projects/04_testing/tsconfig.spec.json"
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["projects/04_tests/**/*.ts", "projects/04_tests/**/*.html"],
-            "eslintConfig": "projects/04_tests/eslint.config.js"
+            "lintFilePatterns": ["projects/04_testing/**/*.ts", "projects/04_testing/**/*.html"],
+            "eslintConfig": "projects/04_testing/eslint.config.js"
           }
         }
       }
