@@ -267,24 +267,82 @@ In the next chapter on `Pipe`s, you'll see how Angular uses `InjectionToken`s
 
 <!-- separator-vertical -->
 
-## Dependency injection - Testing in isolation
+## Dependency injection - Testing 1/3
 
-- Use `ClassProvider` (or `ValueProvider`) to replace real dependencies with mocks
-- This lets you test components in isolation without hitting actual APIs, databases, or complex services, while keeping the same injection tokens
 - Use `TestBed.inject` to access the service instances in your tests
 
+- Use `ClassProvider` (or `ValueProvider`) to replace real dependencies with mocks
+  - This lets you test services (or components, ...) in isolation without hitting actual APIs, databases, or complex services, while keeping the same injection tokens
+
+👇 *Here's a full example, where an `ApiService` depends on a network call...*
+
 ```ts
-describe('Feature', () => {
-  let apiService: ApiService;
+interface User {
+  id: number;
+  email: string;
+}
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      providers: [
-        { provide: ApiService, useClass: ApiServiceMock }
-      ],
-    }).compileComponents();
+class ApiService {
+  async fetchUser(): Promise<User> {
+    const response = await fetch('/api/user');        // <-- Depends on fetch API
+    return await response.json();
+  }
+}
 
-    apiService = TestBed.inject(ApiService); // <-- Get the `ApiServiceMock`
+// ...
+```
+
+<!-- separator-vertical -->
+
+## Dependency injection - Testing 2/3
+
+👇 *... and we want to test the following `UserService` that depends on it...*
+
+```ts
+// ...
+
+import { inject, signal } from '@angular/core';
+
+class UserService {
+  private apiService = inject(ApiService);            // <-- Depends on ApiService
+
+  user = signal<User | undefined>(undefined);
+
+  async getUser() {
+    const user = await this.apiService.fetchUser();
+    this.user.set(user);
+  }
+}
+
+// ...
+```
+
+<!-- separator-vertical -->
+
+## Dependency injection - Testing 3/3
+
+👇 *... we simply need to provide an `ApiService` Mock in our test!*
+
+```ts
+// ...
+
+import { TestBed } from '@angular/core/testing';
+
+const apiServiceMock: Partial<ApiService> = {
+  fetchUser: () => Promise.resolve({ id: 123, email: 'john@doe.com' }), // <-- Define Mock
+};
+
+describe('UserService', () => {
+  it('should get user', async () => {
+    TestBed.configureTestingModule({
+      providers: [UserService, { provide: ApiService, useValue: apiServiceMock }], // <-- Provide Mock
+    });
+
+    expect(TestBed.inject(ApiService)).toBe(apiServiceMock); // <-- Assert what is actually being injected
+
+    const service = TestBed.inject(UserService);
+    await service.getUser();
+    expect(service.user()).toEqual({ id: 123, email: 'john@doe.com' });
   });
 });
 ```
