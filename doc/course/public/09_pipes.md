@@ -231,7 +231,7 @@ export class App {
 ```ts
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'joinArray', pure: false }) // <-- Should be impure!
+@Pipe({ name: 'joinArray', pure: false })                             // <-- Should be impure!
 export class JoinArrayPipe implements PipeTransform {
   transform(value: (string | number)[], separator = ' '): string {
     return value.join(separator);
@@ -241,7 +241,7 @@ export class JoinArrayPipe implements PipeTransform {
 @Component({
   selector: 'app-root',
   template: `{{ appList | joinArray }}
-    <button (click)=" appList.push('kiwi') ">Mutate</button>`, // <-- Mutation
+    <button (click)=" appList.push('kiwi') ">Mutate</button>`,        // <-- Mutation
 })
 export class App {
   appList = ['apple', 'orange', 'banana'];
@@ -250,29 +250,52 @@ export class App {
 
 <!-- separator-vertical -->
 
-## Pipes - Testing
+## Pipes - Testing 1/2
 
-- A Pipe is nothing but a function!
-  - You can simply instantiate it in a `beforeEach` hook
-  - And call the `transform` method in your to test cases
+- You can simply instantiate the pipe manually, in a `beforeEach` hook
+- Then call the `transform` method in your to tests
 
 ```ts
 import { JoinArrayPipe } from './pipes/join-array-pipe';
 
 describe('JoinArrayPipe', () => {
-  let pipe;
+  let pipe: JoinArrayPipe;
 
-  beforeEach(() => { pipe = new JoinArrayPipe(); });
+  beforeEach(() => {
+    pipe = new JoinArrayPipe();
+  });
 
   it('should work', () => {
-    const output = pipe.transform(['apple', 'orange', 'banana'], ', ');
+    const output = pipe.transform(['apple', 'orange'], ', ');
 
-    expect(output).toEqual('apple, orange, banana');
+    expect(output).toEqual('apple, orange');
   });
 });
 ```
 
-😉 *But you can also provide the pipe in `TestBed.configureTestingModule`*
+<!-- separator-vertical -->
+
+## Pipes - Testing 2/2
+
+- You can also provide the pipe in `TestBed.configureTestingModule`
+- Then let Angular create the instance for you
+
+```ts
+import { JoinArrayPipe } from './pipes/join-array-pipe';
+import { TestBed } from '@angular/core/testing';
+
+describe('JoinArrayPipe', () => {
+  it('should work', () => {
+    TestBed.configureTestingModule({ providers: [JoinArrayPipe] });
+
+    const pipe = TestBed.inject(JoinArrayPipe);
+
+    const output = pipe.transform(['apple', 'orange'], ', ');
+
+    expect(output).toEqual('apple, orange');
+  });
+});
+```
 
 <!-- separator-vertical -->
 
