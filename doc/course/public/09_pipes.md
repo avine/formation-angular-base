@@ -112,25 +112,23 @@ In fact this pipe does not really work because it needs to be "impure" (this is 
 
 ## Pipes - Configuration
 
-Some Angular pipes can be configured globally
+- Some Angular pipes can be configured globally via `InjectionToken`s (as illustrated in the following slide)
 
-Here's an example with the `CurrencyPipe`
+👇 *Here is an example of the expected outputs of the `CurrencyPipe`*
 
 - Depending on the locale:
-  - should display `$3.50` for United States (this is the default behavior)
-  - should display `3,50 $` for France
+  - it should display `$3.50` for United States (this is the default behavior)
+  - it should display `3,50 $` for France
 
 - You may also need to configure the default symbol to be `€` instead of `$`:
-  - should display `€3.50` for United States
-  - should display `3,50 €` for France
-
-- Typically, pipes are configured via `InjectionToken`s (as illustrated in the following slide)
+  - it should display `€3.50` for United States
+  - it should display `3,50 €` for France
 
 <!-- separator-vertical -->
 
 ## Pipes - Configuration | CurrencyPipe
 
-- Here's the configuration to display the currency in EUR for France (`3,50 €`)
+👇 *Here is the providers configuration to display currencies in **euros** and in **French** for the entire application (`3,50 €`)*
 
 ```ts
 import { ApplicationConfig, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
