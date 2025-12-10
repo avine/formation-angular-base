@@ -246,7 +246,7 @@ window.innerWidth # ...returns for example: `1135` (window width in px)
 
 <!-- separator-vertical -->
 
-## NPM (Node package Manager) <img src="./resources/01-npm.svg" />
+## NPM <img src="./resources/01-npm.svg" />
 
 - NPM is the **package manager** for the Node.js JavaScript runtime environment
 - Provides programs and libraries for the JavaScript ecosystem in the form of downloadable packages from a **registry**

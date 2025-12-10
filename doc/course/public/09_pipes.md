@@ -124,6 +124,8 @@ Here's an example with the `CurrencyPipe`
   - should display `€3.50` for United States
   - should display `3,50 €` for France
 
+- Typically, pipes are configured via `InjectionToken`s (as illustrated in the following slide)
+
 <!-- separator-vertical -->
 
 ## Pipes - Configuration | CurrencyPipe
@@ -131,19 +133,18 @@ Here's an example with the `CurrencyPipe`
 - Here's the configuration to display the currency in EUR for France (`3,50 €`)
 
 ```ts
-// src/app/app.config.ts
-
 import { ApplicationConfig, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
 
-// Defines how to format currency, date, ... in french
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-registerLocaleData(localeFr);
+
+registerLocaleData(localeFr); // <-- Register the set of functions for French, globally
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    { provide: LOCALE_ID, useValue: 'fr' },
-    { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },
+    { provide: LOCALE_ID, useValue: 'fr' },                 // <-- with that alone: "3,50 $"
+
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },    // <-- with that alone: "€3.50"
   ],
 };
 ```
@@ -179,12 +180,14 @@ class App {
   - the function return values are identical for identical arguments
   - the function has no side effects
 - When Angular re-evaluate a template, it will only re-evaluate the pipe if its input value **reference** has changed
-- Pipes are pure by default
+- By default, pipes are pure
 
 ```ts
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'fancy' /*, pure: true */ })
+@Pipe({
+  name: 'fancy' /*, pure: true */
+})
 export class FancyPipe implements PipeTransform {
   transform(value: string): string {
     return `Fancy ${value}`;
@@ -199,7 +202,7 @@ export class FancyPipe implements PipeTransform {
 - Angular always re-evaluate "impure" pipe, even if its input value **reference** has not changed
   - Should be used for input value such as `Array` or `Object` that may be mutated over time
 
-Example: because Angular's `JsonPipe` is defined as `impure`, after clicking on the button, the mutated object will be properly displayed in the UI.
+Example: because Angular's `JsonPipe` is defined as `impure`, after clicking on the button, the mutated object will be properly displayed in the UI
 
 ```ts
 import { Component } from '@angular/core';
@@ -209,12 +212,12 @@ import { JsonPipe } from '@angular/common';
   selector: 'app-root',
   imports: [JsonPipe],
   template:
-    `<pre>{{ data | json }}</pre>
+   `<pre>{{ data | json }}</pre>
     
-    <button (click)=" data.msg = 'Bye' ">Mutate</button>`,
+    <button (click)=" data.message = 'World' ">Mutate</button>`,
 })
 export class App {
-  data = { msg: 'Hello' };
+  data = { message: 'Hello' };
 }
 ```
 
@@ -250,8 +253,8 @@ export class App {
 ## Pipes - Testing
 
 - A Pipe is nothing but a function!
-- Instantiate the pipe in a `beforeEach` hook
-- Call the `transform` method to test all possible cases
+  - You can simply instantiate it in a `beforeEach` hook
+  - And call the `transform` method in your to test cases
 
 ```ts
 import { JoinArrayPipe } from './pipes/join-array-pipe';
@@ -259,17 +262,17 @@ import { JoinArrayPipe } from './pipes/join-array-pipe';
 describe('JoinArrayPipe', () => {
   let pipe;
 
-  beforeEach(() => {
-    pipe = new JoinArrayPipe();
-  });
+  beforeEach(() => { pipe = new JoinArrayPipe(); });
 
-  it('should works', () => {
+  it('should work', () => {
     const output = pipe.transform(['apple', 'orange', 'banana'], ', ');
 
     expect(output).toEqual('apple, orange, banana');
   });
 });
 ```
+
+😉 *But you can also provide the pipe in `TestBed.configureTestingModule`*
 
 <!-- separator-vertical -->
 

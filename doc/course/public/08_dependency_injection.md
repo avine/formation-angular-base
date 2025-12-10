@@ -217,35 +217,24 @@ export class App {
 
 ## Dependency injection - Providers | ClassProvider
 
-- So far we've provided services by adding them to the `provider` array
+So far, we have provided services by adding their class names to the `providers` array
 
-```ts
-import { ApplicationConfig } from '@angular/core';
-
-export const appConfig: ApplicationConfig = {
-  providers: [ApiService],
-};
-```
-
-- It is in fact a shorthand of the class provider, whose full syntax is
+- This is actually a shorthand for `ClassProvider`, whose full syntax uses
+  - `{ provide: Token, useClass: Implementation }`
+- To tell Angular
+  - when someone injects `Token`, create and return an instance of `Implementation`
 
 ```ts
 import { ApplicationConfig, ClassProvider } from '@angular/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    {
-      provide: ApiService,
-      useClass: ApiService,
-    },
-  ] satisfies ClassProvider,
+    { provide: ApiService, useClass: ApiService } satisfies ClassProvider
+  ],
 };
 ```
 
-NOTES:
-The full syntax is very useful when, for example, you need to mock your dependencies in your tests, as will be shown at the end of the chapter.
-
-☕ We need to let the participants take a break here to divide this long chapter in two.
+😉 *The full syntax can be used in testing, to replace real dependencies with mocks (this is detailed further below)*
 
 <!-- separator-vertical -->
 
@@ -278,54 +267,21 @@ In the next chapter on `Pipe`s, you'll see how Angular uses `InjectionToken`s
 
 <!-- separator-vertical -->
 
-## Dependency injection - App Initializer
-
-- Perform asynchronous tasks before the application is bootstrapped
-- Supports dependency injection
-
-```ts
-import { ApplicationConfig, provideAppInitializer } from '@angular/core';
-import { Observable } from 'rxjs';
-
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideAppInitializer((): Observable<unknown> | Promise<unknown> | void => {
-      // In this example, we restore the user's status before bootstrapping the application
-      return inject(UserService).fetchUser();
-    }),
-  ],
-};
-```
-
-😉 *Note that Angular executes the initializer function in an injection context*
-
-😉 *Note that there is another initialization function: `provideEnvironmentInitializer`*
-
-NOTES:
-Without the initializer, the user's status would have 3 possible values: "unknown", "not authenticated", "authenticated".
-
-Thanks to the initializer, the user can no longer be "unknown", once the app is bootstrapped.
-
-<!-- separator-vertical -->
-
 ## Dependency injection - Testing in isolation
 
-- You can configure the providers in your `TestBed`
-- Powerful mechanism that isolates the element you really want to test
-- Use `TestBed.inject` to access the service instance in your test
-
-In the following example, we test a component in isolation, replacing the service with a Mock:
+- Use `ClassProvider` (or `ValueProvider`) to replace real dependencies with mocks
+- This lets you test components in isolation without hitting actual APIs, databases, or complex services, while keeping the same injection tokens
+- Use `TestBed.inject` to access the service instances in your tests
 
 ```ts
-import { TestBed } from '@angular/core/testing';
-
-describe('App', () => {
+describe('Feature', () => {
   let apiService: ApiService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [App],
-      providers: [{ provide: ApiService, useClass: ApiServiceMock }],
+      providers: [
+        { provide: ApiService, useClass: ApiServiceMock }
+      ],
     }).compileComponents();
 
     apiService = TestBed.inject(ApiService); // <-- Get the `ApiServiceMock`
@@ -354,10 +310,15 @@ describe('App', () => {
 
 - ClassProvider
 - ValueProvider
-- App Initializer
 
 </div>
 </div>
+
+<hr />
+
+😉 *To go further, discover:*
+*[App Initializer](https://angular.dev/api/core/provideAppInitializer) and*
+*[Environment Initializer](https://angular.dev/api/core/provideEnvironmentInitializer)*
 
 <!-- separator-vertical -->
 

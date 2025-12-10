@@ -97,7 +97,7 @@ export class Highlight {
 
 ```ts
 import { Component } from '@angular/core';
-import { Highlight } from './highlight.ts';
+import { Highlight } from './highlight';
 
 @Component({
   selector: 'app-root',
@@ -178,7 +178,7 @@ export class Highlight {
 
 ```ts
 import { Component } from '@angular/core';
-import { Highlight } from './highlight.ts';
+import { Highlight } from './highlight';
 
 @Component({
   selector: 'app-root',
@@ -206,7 +206,7 @@ export class App {
 
 ```ts
 import { Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Highlight } from './highlight';
 
@@ -230,20 +230,22 @@ class Wrapper {}
 // ...
 
 describe('Highlight', () => {
-  let fixture: ComponentFixture<Wrapper>;
-  let hostElement: HTMLElement;
-
-  beforeEach(async () => {
+  it('should work', async () => {
     await TestBed.configureTestingModule({ imports: [Wrapper] }).compileComponents();
 
-    fixture = TestBed.createComponent(Wrapper);
+    const fixture = TestBed.createComponent(Wrapper);
     await fixture.whenStable();
 
-    hostElement: HTMLElement = fixture.debugElement.query(By.directive(Highlight)).nativeElement;
-  });
+    const debugEl = fixture.debugElement.query(By.directive(Highlight));
 
-  it('should work', async () => {
-    expect(hostElement.style.backgroundColor).toBe('green');
+    const highlight = debugEl.injector.get(Highlight);                  // <-- Get the directive instance
+    const highlightOnMouseEnter = vi.spyOn(highlight, 'onMouseEnter');  // <-- Spy on the directive method
+
+    debugEl.triggerEventHandler('mouseenter');
+    await fixture.whenStable();
+
+    expect(highlightOnMouseEnter).toHaveBeenCalled();
+    expect(debugEl.nativeElement.style.backgroundColor).toBe('green');
   });
 });
 ```

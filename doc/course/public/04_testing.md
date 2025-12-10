@@ -194,7 +194,7 @@ describe('MyFeature', () => {
 
 - `TestBed.createComponent` helps you create the component being tested
   - The `fixture` gives you access to the **component instance** and its **template in the DOM** 
-  - You must wait until the fixture is stable before verifying assertions
+  - You must wait until the fixture is stable before verifying DOM related assertions
 
 ```ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -401,6 +401,8 @@ it('should be "odd" when child component emits', async () => {
 });
 ```
 
+❌ *Overall, this **test** is **quite fragile**, as it relies on the implementation details of the child component*
+
 <!-- separator-vertical -->
 
 ## Testing - Comp. with dep. | Second approach 1/2
@@ -454,6 +456,8 @@ it('should be "odd" when child component emits', async () => {
   expect(span?.textContent).toContain('odd');
 });
 ```
+
+✅ *Overall, this **test** is **more robust**, because it relies solely on the template of the component being tested*
 
 <!-- separator-vertical -->
 
